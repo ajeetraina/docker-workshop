@@ -1,0 +1,106 @@
+# Project information
+site_name: Docker workshop @ WeAreDevelopers
+site_url: 
+site_author: Ajeet Singh Raina
+
+
+# Repository
+repo_name: wad2024-workshop
+repo_url: https://github.com/ajeetraina/wad2024-workshop
+edit_uri: edit/master/docs
+
+# Copyright
+copyright: 'Copyright &copy; 2024 Docker'
+
+# Settings
+docs_dir: 'docs'
+site_dir: 'site'
+
+
+# Navigation
+nav:
+  - Getting Started: index.md
+  - Prerequisites: prereq/prereq.md
+  - Lab 1 - Inner-loop Development workflow:
+    - Introduction to Inner Loop Development workflow: lab1/overview.md
+    - Docker Developer workflow: lab1/docker-workflow.md
+    - Image Best Practices: lab1/best-practices.md
+    - Introduction to Docker init: lab1/docker-init.md
+    - Overview of Compose Watch: lab1/compose-watch.md
+
+  - Lab 2 - Container-first Development workflow:
+    - Overview of a Todo-List application Tech Stack: lab2/overview.md
+    - Installing Docker Desktop: lab2/install.md
+    - Cloud Setup: lab2/cloud-setup.md
+    - Spinning up Compose: lab2/spin-up.md
+    - Review and Key Takeaways: lab2/key-takeaways.md
+    
+
+  - Lab 3 - Container-supported developent workflow:
+    - Overview of container-supported Dev workflow: lab3/intro.md
+    - Overview of container-supported tech stack: lab3/tech-stack.md
+    - Spinning up Compose: lab3/key-takeaways.md
+
+
+# Theme
+theme:
+  name: material
+
+
+# Plugins
+plugins:
+  - search:
+      separator: '[\s\-,:!=\[\]()"`/]+|\.(?!\d)|&[lg]t;|(?!\b)(?=[A-Z][a-z])'
+
+
+# Customization
+extra:
+  analytics:
+    provider: google
+    property: !ENV GOOGLE_ANALYTICS_KEY
+  social:
+    - icon: fontawesome/brands/github
+      link: https://github.com/docker
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/docker
+    - icon: fontawesome/brands/github
+      link: https://github.com/docker
+
+
+# Extensions
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - meta
+  - toc:
+      permalink: true
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.betterem:
+      smart_enable: all
+  - pymdownx.caret
+  - pymdownx.critic
+  - pymdownx.details
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - pymdownx.highlight
+  - pymdownx.inlinehilite
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.smartsymbols
+  - pymdownx.snippets:
+      check_paths: true
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+  - pymdownx.tabbed
+  - pymdownx.tasklist:
+      custom_checkbox: true
+  - pymdownx.tilde
+
