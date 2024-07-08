@@ -30,6 +30,7 @@ nav:
 
   - Lab 2 - Container-first Development workflow:
     - Overview: lab2/overview.md
+    - Getting Started: lab2/getting-started.md
     - Tech stack: lab2/tech-stack.md
     - AWS S3 Setup: lab2/aws-s3-setup.md
     - Bringing up the services: lab2/services.md

@@ -11,13 +11,17 @@
       
       
       
+        <link rel="prev" href="../tech-stack/">
+      
+      
+        <link rel="next" href="../key-takeaways/">
       
       <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.4.2, mkdocs-material-9.1.15">
     
     
       
-        <title>Services - Docker workshop @ WeAreDevelopers</title>
+        <title>Bringing up the services - Docker workshop @ WeAreDevelopers</title>
       
     
     
@@ -68,6 +72,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -99,7 +108,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Services
+              Bringing up the services
             
           </span>
         </div>
@@ -385,6 +394,20 @@
   
   
     <li class="md-nav__item">
+      <a href="../../lab2/getting-started/" class="md-nav__link">
+        Getting Started
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../lab2/tech-stack/" class="md-nav__link">
         Tech stack
       </a>
@@ -447,14 +470,16 @@
 
   
   
+    
+  
   
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
       
       
       
-      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+      <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
       
       
       
@@ -463,7 +488,7 @@
           <span class="md-nav__icon md-icon"></span>
         </label>
       
-      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+      <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_5">
           <span class="md-nav__icon md-icon"></span>
           Lab 3 - Container-supported developent workflow
@@ -502,11 +527,83 @@
               
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../Bringing up the services/services.md" class="md-nav__link">
-        Configuration
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Bringing up the services
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        Bringing up the services
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-s3-bucket-manually" class="md-nav__link">
+    Create S3 bucket manually
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-logs" class="md-nav__link">
+    Check the logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-the-app-and-try-uploading-the-image" class="md-nav__link">
+    Access the app and try uploading the image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-if-item-gets-into-mongo" class="md-nav__link">
+    Verify if item gets into Mongo
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -550,6 +647,56 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    Prerequisites
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    Installation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-s3-bucket-manually" class="md-nav__link">
+    Create S3 bucket manually
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-logs" class="md-nav__link">
+    Check the logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#access-the-app-and-try-uploading-the-image" class="md-nav__link">
+    Access the app and try uploading the image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-if-item-gets-into-mongo" class="md-nav__link">
+    Verify if item gets into Mongo
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -566,9 +713,89 @@
   
 
 
-  <h1>Services</h1>
+  <h1>Bringing up the services</h1>
 
+<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Docker Desktop</li>
+<li>JWT Secret</li>
+<li>awscli installed</li>
+</ul>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">&para;</a></h2>
+<ol>
+<li><strong>Clone the repository:</strong></li>
+</ol>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dockersamples/getting-started-todo-app
+<span class="nb">cd</span><span class="w"> </span>getting-started-todo-app
+</code></pre></div>
+<ol>
+<li><strong>Bringing up services:</strong></li>
+</ol>
+<p>Switch to container-supported branch before you run the following command:</p>
+<div class="highlight"><pre><span></span><code>git checkout container-supported
+</code></pre></div>
+<div class="highlight"><pre><span></span><code> docker compose up -d
+</code></pre></div>
+<p><img width="1151" alt="image" src="https://github.com/dockersamples/getting-started-todo-app/assets/313480/c81c8e3b-847a-4a93-a960-8d01960d7b4c"></p>
+<h2 id="create-s3-bucket-manually">Create S3 bucket manually<a class="headerlink" href="#create-s3-bucket-manually" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>awslocal s3 mb s3://sample-bucket
+make_bucket: sample-bucket
+</code></pre></div>
+<h2 id="check-the-logs">Check the logs<a class="headerlink" href="#check-the-logs" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>2024-07-03 19:27:32 
+2024-07-03 19:27:32 LocalStack version: 3.5.1.dev
+2024-07-03 19:27:32 LocalStack build date: 2024-06-24
+2024-07-03 19:27:32 LocalStack build git hash: 9a3d238ac
+2024-07-03 19:27:32 
+2024-07-03 19:27:32 Ready.
+2024-07-03 19:28:13 2024-07-03T13:58:13.804  INFO --- [et.reactor-0] localstack.request.aws     : AWS s3.CreateBucket =&gt; 200
+</code></pre></div>
+<h2 id="access-the-app-and-try-uploading-the-image">Access the app and try uploading the image<a class="headerlink" href="#access-the-app-and-try-uploading-the-image" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code> awslocal s3api list-objects --bucket sample-bucket
+{
+    &quot;Contents&quot;: [
+        {
+            &quot;Key&quot;: &quot;1720015203095-Screenshot 2024-07-03 at 9.24.34â¯AM.png&quot;,
+            &quot;LastModified&quot;: &quot;2024-07-03T14:00:03.000Z&quot;,
+            &quot;ETag&quot;: &quot;\&quot;cd4396baa401efb22797472599faff87\&quot;&quot;,
+            &quot;Size&quot;: 735617,
+            &quot;StorageClass&quot;: &quot;STANDARD&quot;,
+            &quot;Owner&quot;: {
+                &quot;DisplayName&quot;: &quot;webfile&quot;,
+                &quot;ID&quot;: &quot;75aa57f09aa0c8caeab4f8c24e99d10f8e7faeebf76c078efc7c6caea54ba06a&quot;
+            }
+        }
+    ],
+    &quot;RequestCharged&quot;: null
+</code></pre></div>
+<h2 id="verify-if-item-gets-into-mongo">Verify if item gets into Mongo<a class="headerlink" href="#verify-if-item-gets-into-mongo" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.2.10
+Using MongoDB:          7.0.12
+Using Mongosh:          2.2.10
 
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-07-03T13:57:31.418+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-07-03T13:57:32.732+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2024-07-03T13:57:32.733+00:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
+   2024-07-03T13:57:32.733+00:00: vm.max_map_count is too low
+------
+
+test&gt; show dbs
+admin      40.00 KiB
+config     72.00 KiB
+local      80.00 KiB
+todo-app  180.00 KiB
+test&gt; use todo-app
+switched to db todo-app
+todo-app&gt; db.todos.countDocuments()
+5
+todo-app&gt; db.todos.countDocuments()
+6
+todo-app&gt;
+</code></pre></div>
 
 
   
