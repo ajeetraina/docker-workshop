@@ -44,9 +44,23 @@ nav:
     - Review and Key Takeaways: lab3/key-takeaways.md
 
 
-# Theme
+
 theme:
   name: material
+  language: en
+  palette:
+    primary: blue
+    accent: blue
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/images/favicon.png
+  logo: 'images/docker-logo-white.svg'
+
+extra_css:
+  - css/styles.css
+  - css/dark-mode.css
+
 
 
 # Plugins
