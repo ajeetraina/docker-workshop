@@ -40,8 +40,9 @@ nav:
   - Lab 3 - Container-supported developent workflow:
     - Overview: lab3/overview.md
     - Tech stack: lab3/tech-stack.md
-    - Configuration: Bringing up the services/services.md
+    - Bringing up the services: lab3/services.md
     - Review and Key Takeaways: lab3/key-takeaways.md
+
 
 
 theme:
@@ -55,6 +56,12 @@ theme:
     code: Roboto Mono
   favicon: assets/images/favicon.png
   logo: 'images/docker-logo-white.svg'
+
+extra_css:
+  - css/styles.css
+  - css/dark-mode.css
+
+
 
 # Plugins
 plugins:
