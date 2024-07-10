@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> 8fc41c0 (Added)
 
 ![stars](https://img.shields.io/github/stars/ajeetraina/wad2024-workshop)
 ![Twitter](https://img.shields.io/twitter/follow/ajeetsraina?style=social)
@@ -38,14 +41,6 @@ These hands-on labs will be a combination of theory and practical exercises.
 We welcome contributors to improve this lab workshop. 
 
 ### Building the Lab locally
-
-Clone this repository
-
-```
-https://github.com/ajeetraina/wad2024-workshop
-cd wad2024-workshop
-```
-
 
 ```
 docker build -t docker-wad-workshop:1.0

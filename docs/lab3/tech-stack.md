@@ -1,6 +1,5 @@
 
-![image](https://github.com/dockersamples/getting-started-todo-app/assets/313480/a8dc1a00-24b8-4d04-9252-e90c9e359dbd)
-
+![container-supported](images/container-supported.png)
 
 - Frontend: React, Material UI.
 - Backend: Node.js, Express

@@ -21,8 +21,8 @@ site_dir: 'site'
 nav:
   - Getting Started: index.md
   - Prerequisites: prereq/prereq.md
-  - Lab 1 - Inner-loop Development workflow:
-    - Introduction to Inner Loop Development workflow: lab1/overview.md
+  - Lab 1 - Inner-Loop Development workflow:
+    - Inner Vs Outer Loop Development workflow: lab1/overview.md
     - Docker Developer workflow: lab1/docker-workflow.md
     - Image Best Practices: lab1/best-practices.md
     - Introduction to Docker init: lab1/docker-init.md

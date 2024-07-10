@@ -5,4 +5,4 @@
 - Object Storage: AWS S3(for storing images)
 
 
-![cloud-development](images/cloud-development.png)
+![cloud-development](images/container-first.png)
