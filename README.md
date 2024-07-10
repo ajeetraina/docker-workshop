@@ -39,6 +39,14 @@ We welcome contributors to improve this lab workshop.
 
 ### Building the Lab locally
 
+Clone this repository
+
+```
+https://github.com/ajeetraina/wad2024-workshop
+cd wad2024-workshop
+```
+
+
 ```
 docker build -t docker-wad-workshop:1.0
 docker run -d -p 8000:8000 docker-wad-workshop:1.0
