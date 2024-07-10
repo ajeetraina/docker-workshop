@@ -1,7 +1,6 @@
 # Welcome to Docker Workshop
 
 
-
 ## GitHub Sources
 
 The source code for this workshop is available [here](https://github.com/ajeetraina/wad2024-workshop)
@@ -14,10 +13,11 @@ The source code for this workshop is available [here](https://github.com/ajeetra
 
 ## Benefits of this Docker Workshop
 
-- [Learn about Inner-loop development workflow](lab1/overview.md)
-- [Learn about Docker Developer workflow](lab1/docker-workflow.md)
+- [Learn about Inner-loop versus Outer-loop development workflow](lab1/overview.md)
+- [Learn about Docker development workflow](lab1/docker-workflow.md)
+- Get familiar with [Container-first](lab2/overview) Vs [Container-supported](lab3/overview) development workflow
 - [Learn about Docker Init](lab1/docker-init.md)
 - [Learn about Compose Watch](lab1/compose-watch.md)
-- [Learn how to containerise a Todo-List application]()
+- [Learn how to containerise a Todo-List application using AWS S3 and Mongo](lab2/services)
 
 

@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-clone-the-repository" class="md-skip">
+        <a href="#tech-stack" class="md-skip">
           Skip to content
         </a>
       
@@ -268,14 +268,14 @@
       
       
         <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-          Lab 1 - Inner-loop Development workflow
+          Lab 1 - Inner-Loop Development workflow
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Lab 1 - Inner-loop Development workflow
+          Lab 1 - Inner-Loop Development workflow
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -286,7 +286,7 @@
   
     <li class="md-nav__item">
       <a href="../../lab1/overview/" class="md-nav__link">
-        Introduction to Inner Loop Development workflow
+        Inner Vs Outer Loop Development workflow
       </a>
     </li>
   
@@ -436,6 +436,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#tech-stack" class="md-nav__link">
+    Tech Stack
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#1-clone-the-repository" class="md-nav__link">
     1. Clone the repository:
   </a>
@@ -521,20 +528,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../key-takeaways/" class="md-nav__link">
-        Review and Key Takeaways
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -612,20 +605,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lab3/key-takeaways/" class="md-nav__link">
-        Review and Key Takeaways
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -655,6 +634,13 @@
       Table of contents
     </label>
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#tech-stack" class="md-nav__link">
+    Tech Stack
+  </a>
+  
+</li>
       
         <li class="md-nav__item">
   <a href="#1-clone-the-repository" class="md-nav__link">
@@ -711,12 +697,33 @@
 
   <h1>Getting Started</h1>
 
+<p>This project provides a basic todo-list application. It demonstrates all of
+the current Docker best practices, ranging from the Compose file, to the
+Dockerfile, to CI (using GitHub Actions), and running tests. It's intended to 
+be a well-documented to ensure anyone can come in and easily learn.</p>
+<h2 id="tech-stack">Tech Stack<a class="headerlink" href="#tech-stack" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Frontend: React, Vite, CSS Pre-processor</li>
+<li>Backend: Node.js</li>
+<li>Database: MySQL, PhpMyAdmin for administrating MySQL</li>
+</ul>
+<p><img alt="image" src="https://github.com/docker/getting-started-todo-app/assets/313480/c128b8e4-366f-4b6f-ad73-08e6652b7c4d" /></p>
+<p>This sample application is a simple React frontend that receives data from a
+Node.js backend. </p>
+<p>When the application is packaged and shipped, the frontend is compiled into
+static HTML, CSS, and JS and then bundled with the backend where it is then
+served as static assets. So no... there is no server-side rendering going on
+with this sample app.</p>
+<p>During development, since the backend and frontend need different dev tools, 
+they are split into two separate services. This allows <a href="https://vitejs.dev/">Vite</a> 
+to manage the React app while <a href="https://nodemon.io/">nodemon</a> works with the 
+backend. With containers, it's easy to separate the development needs!</p>
 <h2 id="1-clone-the-repository">1. Clone the repository:<a class="headerlink" href="#1-clone-the-repository" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dockersamples/getting-started-todo-app
 <span class="nb">cd</span><span class="w"> </span>getting-started-todo-app
 </code></pre></div>
 <h2 id="2-bring-up-the-services">2. Bring up the services:<a class="headerlink" href="#2-bring-up-the-services" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>docker compose up -d
+<div class="highlight"><pre><span></span><code>docker compose up -d --build
 </code></pre></div>
 <h2 id="5-access-the-app">5. Access the app<a class="headerlink" href="#5-access-the-app" title="Permanent link">&para;</a></h2>
 <p>Open <a href="http://localhost:80">http://localhost:80</a> to access the todo-list app.</p>

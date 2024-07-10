@@ -82,6 +82,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#docker-inner-loop-development-workflow" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -265,14 +270,14 @@
       
       
         <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-          Lab 1 - Inner-loop Development workflow
+          Lab 1 - Inner-Loop Development workflow
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Lab 1 - Inner-loop Development workflow
+          Lab 1 - Inner-Loop Development workflow
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -283,7 +288,7 @@
   
     <li class="md-nav__item">
       <a href="../overview/" class="md-nav__link">
-        Introduction to Inner Loop Development workflow
+        Inner Vs Outer Loop Development workflow
       </a>
     </li>
   
@@ -303,9 +308,38 @@
       
       
       
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          Docker Developer workflow
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
       <a href="./" class="md-nav__link md-nav__link--active">
         Docker Developer workflow
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#docker-inner-loop-development-workflow" class="md-nav__link">
+    Docker Inner-Loop Development workflow
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -459,20 +493,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lab2/key-takeaways/" class="md-nav__link">
-        Review and Key Takeaways
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -550,20 +570,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lab3/key-takeaways/" class="md-nav__link">
-        Review and Key Takeaways
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -588,6 +594,21 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#docker-inner-loop-development-workflow" class="md-nav__link">
+    Docker Inner-Loop Development workflow
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -606,8 +627,31 @@
 
   <h1>Docker Developer workflow</h1>
 
+<ul>
+<li>
+<p><strong>Build</strong>: Typically a developer run <code>docker build</code> command to build an image from a Dockerfile, which is a text document that contains instructions for how to build the image.</p>
+</li>
+<li>
+<p><strong>Share</strong>: Once a developer builds a Docker image, they can share it with others by pushing it to a container registry. You can use the <code>docker push</code> command to do this.</p>
+</li>
+<li>
+<p><strong>Run</strong>: The <code>docker run</code> command lets you create and start a running container based on a Docker image.</p>
+</li>
+</ul>
 <p><img alt="docker workflow" src="../images/dockerworkflow.png" /></p>
-<p><img alt="docker inner loop workflow" src="../images/dockerinnerloop.png" /></p>
+<h2 id="docker-inner-loop-development-workflow">Docker Inner-Loop Development workflow<a class="headerlink" href="#docker-inner-loop-development-workflow" title="Permanent link">&para;</a></h2>
+<ul>
+<li><strong>Development Environment</strong>: As you deep-dive into the inner-loop development workflow, developers have their own choice anduse any operating system (OS) they prefer, like Windows, Mac, or Linux. They can also leverage their favorite Integrated Development Environments (IDEs) for coding. This flexibility empowers developers to work in a familiar and comfortable setting.</li>
+</ul>
+<p><img alt="docker inner loop workflow" src="../images/inner_loop.png" /></p>
+<ul>
+<li>
+<p><strong>Building and storing the application</strong> - Once the code is written, the developer uses GitHub Actions. GitHub Actions is a built-in automation tool in GitHub that allows you to automate tasks within your development workflow. In this context, the developer uses GitHub Actions to trigger the building of a Docker image. A Dockerfile, which is a set of instructions that specifies how to build the image, is used in this process.  After the image is built, it's uploaded to a container registry. A container registry acts as a library or repository that stores Docker images.</p>
+</li>
+<li>
+<p><strong>Deployment</strong> - Finally, the image is deployed to the cloud. This means the image is uploaded to a cloud platform where it can be run on virtual machines. There are several cloud platforms available, including Google Cloud Platform, Amazon Web Services, and Microsoft Azure. The specific steps for deployment will vary depending on the chosen cloud platform. But generally, it involves using the cloud platform tools to run the Docker image and create a container instance. This container instance then executes the application.</p>
+</li>
+</ul>
 
 
   

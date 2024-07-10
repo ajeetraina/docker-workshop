@@ -82,11 +82,6 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
-        
-        <a href="#compose-watch" class="md-skip">
-          Skip to content
-        </a>
-      
     </div>
     <div data-md-component="announce">
       
@@ -270,14 +265,14 @@
       
       
         <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
-          Lab 1 - Inner-loop Development workflow
+          Lab 1 - Inner-Loop Development workflow
           <span class="md-nav__icon md-icon"></span>
         </label>
       
       <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
         <label class="md-nav__title" for="__nav_3">
           <span class="md-nav__icon md-icon"></span>
-          Lab 1 - Inner-loop Development workflow
+          Lab 1 - Inner-Loop Development workflow
         </label>
         <ul class="md-nav__list" data-md-scrollfix>
           
@@ -288,7 +283,7 @@
   
     <li class="md-nav__item">
       <a href="../overview/" class="md-nav__link">
-        Introduction to Inner Loop Development workflow
+        Inner Vs Outer Loop Development workflow
       </a>
     </li>
   
@@ -350,38 +345,9 @@
       
       
       
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          Overview of Compose Watch
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
       <a href="./" class="md-nav__link md-nav__link--active">
         Overview of Compose Watch
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#compose-watch" class="md-nav__link">
-    Compose Watch
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
       
     </li>
   
@@ -493,20 +459,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lab2/key-takeaways/" class="md-nav__link">
-        Review and Key Takeaways
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -584,20 +536,6 @@
 
             
           
-            
-              
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../lab3/key-takeaways/" class="md-nav__link">
-        Review and Key Takeaways
-      </a>
-    </li>
-  
-
-            
-          
         </ul>
       </nav>
     </li>
@@ -622,21 +560,6 @@
   
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#compose-watch" class="md-nav__link">
-    Compose Watch
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -655,7 +578,31 @@
 
   <h1>Overview of Compose Watch</h1>
 
-<h2 id="compose-watch">Compose Watch<a class="headerlink" href="#compose-watch" title="Permanent link">&para;</a></h2>
+<p>Compose File Watch is a feature introduced in Docker Compose version 2.22.0. It allows for automatic updates and previews of your running Compose services as you edit and save your code. This can enable a hands-off development workflow once Compose is running, as services automatically update themselves when you save your work.</p>
+<div class="highlight"><pre><span></span><code>services:
+  web:
+    build: .
+    command: npm start
+    develop:
+      watch:   
+        - actions: sync
+          path: ./web
+          target: /src/web
+          ignore: 
+            - node_modules/
+        - action: rebuild
+          path: package.json
+</code></pre></div>
+<p>The <code>watch</code> attribute in the Compose file defines a list of rules that control these automatic service updates based on local file changes. Each rule requires a path pattern and an action to take when a modification is detected. The action can be set to rebuild, sync, or sync+restart.</p>
+<p>Here's a brief explanation of these actions:</p>
+<ul>
+<li><strong>rebuild</strong>: Compose rebuilds the service image based on the build section and recreates the service with the updated image.</li>
+<li><strong>sync</strong>: Compose keeps the existing service container(s) running, but synchronizes source files with container content according to the target attribute.</li>
+<li><strong>sync+restart</strong>: Compose synchronizes source files with container content according to the target attribute, and then restarts the container.</li>
+</ul>
+<p>You can also define a list of patterns for paths to be ignored using the ignore attribute. Any updated file that matches a pattern, or belongs to a folder that matches a pattern, won't trigger services to be re-created.
+To use Compose Watch, you need to add the watch instructions to your compose.yaml file and then run your application with the docker compose watch command.</p>
+<p><img alt="file watch actions" src="../images/file-watch-actions.png" /></p>
 
 
   
