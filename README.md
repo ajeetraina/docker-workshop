@@ -1,4 +1,4 @@
-# wad2024-workshop
+
 
 ![stars](https://img.shields.io/github/stars/ajeetraina/wad2024-workshop)
 ![Twitter](https://img.shields.io/twitter/follow/ajeetsraina?style=social)
@@ -37,11 +37,11 @@ These hands-on labs will be a combination of theory and practical exercises.
 
 We welcome contributors to improve this lab workshop. 
 
-### Running Lab using a Docker container
+### Building the Lab locally
 
 ```
- docker run -d -p 8000:8000 docker-wad-workshop:0.1
-
+docker build -t docker-wad-workshop:1.0
+docker run -d -p 8000:8000 docker-wad-workshop:1.0
 ```
 
 Open your browser and access the lab via `http://localhost:8000`
