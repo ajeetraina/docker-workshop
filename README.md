@@ -1,7 +1,4 @@
-<<<<<<< HEAD
 
-=======
->>>>>>> 8fc41c0 (Added)
 
 ![stars](https://img.shields.io/github/stars/ajeetraina/wad2024-workshop)
 ![Twitter](https://img.shields.io/twitter/follow/ajeetsraina?style=social)
