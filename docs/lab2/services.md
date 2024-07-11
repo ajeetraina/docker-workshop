@@ -13,18 +13,15 @@ git checkout container-first
 
 ## 3. Add the Environment Variables
 
-Ensure that you have the right environmental variable added to your Docker Compose file
+Copy .env.sample to .env file and Ensure that you have the right environmental variable added as shown:
 
 ```
-   environment:
-      - MONGODB_URI=mongodb://mongodb:27017/todo-app
-      - JWT_SECRET=603b31XXXXXXX90d3b8cb62f0a585fd70a5ee0b4d
-      - AWS_ACCESS_KEY_ID=AKIAXXXXXDDDX
-      - AWS_SECRET_ACCESS_KEY=hSYXtvXXXXXXXO/k39FGt3u078pYWsh
-      - AWS_REGION=us-east-1
-      - S3_BUCKET_NAME=localbuckett
-   networks:
-      - localnet
+MONGODB_URI=mongodb://mongodb:27017/todo-app
+JWT_SECRET=603b31XXXXXXX90d3b8cb62f0a585fd70a5ee0b4d
+AWS_ACCESS_KEY_ID=AKIAXXXXXDDDX
+AWS_SECRET_ACCESS_KEY=hSYXtvXXXXXXXO/k39FGt3u078pYWsh
+AWS_REGION=us-east-1
+S3_BUCKET_NAME=localbuckett
 ```
 
 You can leverage [this link](https://www.javainuse.com/jwtgenerator) to generate JWT token.
