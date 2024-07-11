@@ -719,16 +719,13 @@
 <div class="highlight"><pre><span></span><code>git checkout container-first
 </code></pre></div>
 <h2 id="3-add-the-environment-variables">3. Add the Environment Variables<a class="headerlink" href="#3-add-the-environment-variables" title="Permanent link">&para;</a></h2>
-<p>Ensure that you have the right environmental variable added to your Docker Compose file</p>
-<div class="highlight"><pre><span></span><code>   environment:
-      - MONGODB_URI=mongodb://mongodb:27017/todo-app
-      - JWT_SECRET=603b31XXXXXXX90d3b8cb62f0a585fd70a5ee0b4d
-      - AWS_ACCESS_KEY_ID=AKIAXXXXXDDDX
-      - AWS_SECRET_ACCESS_KEY=hSYXtvXXXXXXXO/k39FGt3u078pYWsh
-      - AWS_REGION=us-east-1
-      - S3_BUCKET_NAME=localbuckett
-   networks:
-      - localnet
+<p>Copy .env.sample to .env file and Ensure that you have the right environmental variable added as shown:</p>
+<div class="highlight"><pre><span></span><code>MONGODB_URI=mongodb://mongodb:27017/todo-app
+JWT_SECRET=603b31XXXXXXX90d3b8cb62f0a585fd70a5ee0b4d
+AWS_ACCESS_KEY_ID=AKIAXXXXXDDDX
+AWS_SECRET_ACCESS_KEY=hSYXtvXXXXXXXO/k39FGt3u078pYWsh
+AWS_REGION=us-east-1
+S3_BUCKET_NAME=localbuckett
 </code></pre></div>
 <p>You can leverage <a href="https://www.javainuse.com/jwtgenerator">this link</a> to generate JWT token.</p>
 <h2 id="4-bring-up-the-services">4. Bring up the services:<a class="headerlink" href="#4-bring-up-the-services" title="Permanent link">&para;</a></h2>
