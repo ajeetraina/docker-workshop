@@ -1,4 +1,3 @@
-## Introducing Docker Init
 
 ![docker init](images/dockerinit.png)
 
