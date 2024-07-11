@@ -8,7 +8,7 @@ cd getting-started-todo-app
 ## 2. Switch to container-first branch
 
 ```
-git checkout container-first
+git checkout container-first-aws-mongo
 ```
 
 ## 3. Add the Environment Variables
