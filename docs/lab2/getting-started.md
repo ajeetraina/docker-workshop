@@ -38,5 +38,5 @@ After the application starts, navigate to `http://localhost:3000` in your web br
 
 ## Logging into Mongo Express
 
-Enter admin/pass as credential to login into Mongo Express and view the database and collections/items.
+Enter `admin/pass` as credential to login into Mongo Express and view the database and collections/items.
 
