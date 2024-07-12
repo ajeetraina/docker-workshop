@@ -83,7 +83,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#tech-stack" class="md-skip">
+        <a href="#a-basic-todo-list-app" class="md-skip">
           Skip to content
         </a>
       
@@ -314,7 +314,7 @@
   
     <li class="md-nav__item">
       <a href="../../lab1/best-practices/" class="md-nav__link">
-        Image Best Practices
+        Image Building Best Practices
       </a>
     </li>
   
@@ -436,6 +436,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#a-basic-todo-list-app" class="md-nav__link">
+    A Basic Todo List App
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tech-stack" class="md-nav__link">
     Tech Stack
   </a>
@@ -443,36 +450,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-clone-the-repository" class="md-nav__link">
-    1. Clone the repository:
+  <a href="#clone-the-repository" class="md-nav__link">
+    Clone the repository
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-bring-up-the-services" class="md-nav__link">
-    2. Bring up the services:
+  <a href="#switch-to-basic-branch" class="md-nav__link">
+    Switch to basic branch
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-access-the-app" class="md-nav__link">
-    5. Access the app
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-accessing-the-phpmyadmin" class="md-nav__link">
-    6. Accessing the PhpMyAdmin
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-tearing-it-down" class="md-nav__link">
-    7. Tearing it down
+  <a href="#bringing-up-the-service-containers" class="md-nav__link">
+    Bringing up the service containers
   </a>
   
 </li>
@@ -636,6 +629,13 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#a-basic-todo-list-app" class="md-nav__link">
+    A Basic Todo List App
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tech-stack" class="md-nav__link">
     Tech Stack
   </a>
@@ -643,36 +643,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-clone-the-repository" class="md-nav__link">
-    1. Clone the repository:
+  <a href="#clone-the-repository" class="md-nav__link">
+    Clone the repository
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-bring-up-the-services" class="md-nav__link">
-    2. Bring up the services:
+  <a href="#switch-to-basic-branch" class="md-nav__link">
+    Switch to basic branch
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-access-the-app" class="md-nav__link">
-    5. Access the app
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#6-accessing-the-phpmyadmin" class="md-nav__link">
-    6. Accessing the PhpMyAdmin
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#7-tearing-it-down" class="md-nav__link">
-    7. Tearing it down
+  <a href="#bringing-up-the-service-containers" class="md-nav__link">
+    Bringing up the service containers
   </a>
   
 </li>
@@ -697,50 +683,36 @@
 
   <h1>Getting Started</h1>
 
-<p>This project provides a basic todo-list application. It demonstrates all of
-the current Docker best practices, ranging from the Compose file, to the
-Dockerfile, to CI (using GitHub Actions), and running tests. It's intended to 
-be a well-documented to ensure anyone can come in and easily learn.</p>
+<h2 id="a-basic-todo-list-app">A Basic Todo List App<a class="headerlink" href="#a-basic-todo-list-app" title="Permanent link">&para;</a></h2>
+<p>This is a starting point for todo-list app powered with React, Node and Mongo.</p>
 <h2 id="tech-stack">Tech Stack<a class="headerlink" href="#tech-stack" title="Permanent link">&para;</a></h2>
+<p><img alt="image" src="https://github.com/user-attachments/assets/107e89d6-6cbf-4f4f-b969-9e17b9f8b10d" /></p>
 <ul>
-<li>Frontend: React, Vite, CSS Pre-processor</li>
+<li>Frontend: React</li>
 <li>Backend: Node.js</li>
-<li>Database: MySQL, PhpMyAdmin for administrating MySQL</li>
+<li>Database: Mongo DB</li>
+<li>Database Admin Interface: MongoExpress</li>
 </ul>
-<p><img alt="image" src="https://github.com/docker/getting-started-todo-app/assets/313480/c128b8e4-366f-4b6f-ad73-08e6652b7c4d" /></p>
-<p>This sample application is a simple React frontend that receives data from a
-Node.js backend. </p>
-<p>When the application is packaged and shipped, the frontend is compiled into
-static HTML, CSS, and JS and then bundled with the backend where it is then
-served as static assets. So no... there is no server-side rendering going on
-with this sample app.</p>
-<p>During development, since the backend and frontend need different dev tools, 
-they are split into two separate services. This allows <a href="https://vitejs.dev/">Vite</a> 
-to manage the React app while <a href="https://nodemon.io/">nodemon</a> works with the 
-backend. With containers, it's easy to separate the development needs!</p>
-<h2 id="1-clone-the-repository">1. Clone the repository:<a class="headerlink" href="#1-clone-the-repository" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dockersamples/getting-started-todo-app
-<span class="nb">cd</span><span class="w"> </span>getting-started-todo-app
+<h2 id="clone-the-repository">Clone the repository<a class="headerlink" href="#clone-the-repository" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/dockersamples/getting-started-todo-app
+cd getting-started-todo-app
 </code></pre></div>
-<h2 id="2-bring-up-the-services">2. Bring up the services:<a class="headerlink" href="#2-bring-up-the-services" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>docker compose up -d --build
+<h2 id="switch-to-basic-branch">Switch to <code>basic</code> branch<a class="headerlink" href="#switch-to-basic-branch" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>git checkout basic
 </code></pre></div>
-<h2 id="5-access-the-app">5. Access the app<a class="headerlink" href="#5-access-the-app" title="Permanent link">&para;</a></h2>
-<p>Open <a href="http://localhost:80">http://localhost:80</a> to access the todo-list app.</p>
-<p>You'll see several container images get downloaded from Docker Hub and, after a
-moment, the application will be up and running! No need to install or configure
-anything on your machine!</p>
-<p>Simply open to <a href="http://localhost">http://localhost</a> to see the app up and running!</p>
-<p>Any changes made to either the backend or frontend should be seen immediately
-without needing to rebuild or restart the containers.</p>
-<h2 id="6-accessing-the-phpmyadmin">6. Accessing the PhpMyAdmin<a class="headerlink" href="#6-accessing-the-phpmyadmin" title="Permanent link">&para;</a></h2>
-<p>To help with the database, the development stack also includes phpMyAdmin, which
-can be access at <a href="http://db.localhost">http://db.localhost</a> (most browsers will 
-resolve <code>*.localhost</code> correctly, so no hosts file changes should be required).</p>
-<h2 id="7-tearing-it-down">7. Tearing it down<a class="headerlink" href="#7-tearing-it-down" title="Permanent link">&para;</a></h2>
-<p>When you're done, simply remove the containers by running the following command:</p>
-<div class="highlight"><pre><span></span><code>docker compose down
+<h2 id="bringing-up-the-service-containers">Bringing up the service containers<a class="headerlink" href="#bringing-up-the-service-containers" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>docker compose up -d
 </code></pre></div>
+<p>After the application starts, navigate to <code>http://localhost:3000</code> in your web browser.</p>
+<p>Stop and remove the containers
+```
+$ docker compose down
+Stopping server   ... done
+Stopping frontend ... done
+Stopping mongo    ... done
+Removing server   ... done
+Removing frontend ... done
+Removing mongo    ... done</p>
 
 
   
