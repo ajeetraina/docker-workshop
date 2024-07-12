@@ -11,6 +11,7 @@ cd getting-started-todo-app
 git checkout container-first-aws-mongo
 ```
 
+
 ## 3. Add the Environment Variables
 
 Copy .env.sample to .env file and Ensure that you have the right environmental variable added as shown:
@@ -30,7 +31,7 @@ You can leverage [this link](https://www.javainuse.com/jwtgenerator) to generate
 ## 4. Bring up the services:
 
 ```
-docker compose up -d
+docker compose watch
 ```
 
 ## 5. Access the app

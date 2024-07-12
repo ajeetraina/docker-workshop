@@ -30,7 +30,7 @@ You can leverage [this link](https://www.javainuse.com/jwtgenerator) to generate
 ## 4. Bring up the services:
 
 ```
-docker compose up -d
+docker compose watch
 ```
 
 ## 5. Access the app
