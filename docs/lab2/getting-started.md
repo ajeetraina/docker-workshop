@@ -36,14 +36,7 @@ docker compose up -d
 
 After the application starts, navigate to `http://localhost:3000` in your web browser.
 
+## Logging into Mongo Express
 
-Stop and remove the containers
-```
-$ docker compose down
-Stopping server   ... done
-Stopping frontend ... done
-Stopping mongo    ... done
-Removing server   ... done
-Removing frontend ... done
-Removing mongo    ... done
+Enter admin/pass as credential to login into Mongo Express and view the database and collections/items.
 
