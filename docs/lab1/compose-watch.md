@@ -41,6 +41,13 @@ git clone https://github.com/docker/getting-started-todo-app/
 cd getting-started-todo-app
 ```
 
+## Switch to compose-watch branch
+
+```
+git checkout compose-watch
+```
+
+
 ## Bringing up the app
 
 ```
