@@ -37,7 +37,7 @@ To use Compose Watch, you need to add the watch instructions to your compose.yam
 ## Clone the repository
 
 ```
-git clone https://github.com/docker/getting-started-todo-app/
+git clone https://github.com/dockersamples/getting-started-todo-app/
 cd getting-started-todo-app
 ```
 
