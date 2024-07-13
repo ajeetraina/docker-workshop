@@ -1,8 +1,43 @@
-FROM python:3.11
+FROM golang:1.21-alpine AS builder
+ENV CGO_ENABLED=0
+WORKDIR /backend
+COPY backend/go.* .
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    go mod download
+COPY backend/. .
+RUN --mount=type=cache,target=/go/pkg/mod \
+    --mount=type=cache,target=/root/.cache/go-build \
+    go build -trimpath -ldflags="-s -w" -o bin/service
 
-WORKDIR /app
+FROM --platform=$BUILDPLATFORM node:21.6-alpine3.18 AS client-builder
+WORKDIR /ui
+# cache packages in layer
+COPY ui/package.json /ui/package.json
+COPY ui/package-lock.json /ui/package-lock.json
+RUN --mount=type=cache,target=/usr/src/app/.npm \
+    npm set cache /usr/src/app/.npm && \
+    npm ci
+# install
+COPY ui /ui
+RUN npm run build
 
-COPY . ./app
-RUN pip3 install -r ./app/requirements.txt
-EXPOSE 8000
-CMD ["mkdocs", "serve", "-f", "./app/mkdocs.yml", "--dev-addr=0.0.0.0:8000"]
+FROM alpine
+LABEL org.opencontainers.image.title="Docker Workshop" \
+    org.opencontainers.image.description="Docker workshop for WeAreDevelopers" \
+    org.opencontainers.image.vendor="Docker Inc" \
+    com.docker.desktop.extension.api.version="0.3.4" \
+    com.docker.extension.screenshots="" \
+    com.docker.desktop.extension.icon="" \
+    com.docker.extension.detailed-description="" \
+    com.docker.extension.publisher-url="" \
+    com.docker.extension.additional-urls="" \
+    com.docker.extension.categories="" \
+    com.docker.extension.changelog=""
+
+COPY --from=builder /backend/bin/service /
+COPY docker-compose.yaml .
+COPY metadata.json .
+COPY docker.svg .
+COPY --from=client-builder /ui/build ui
+CMD /service -socket /run/guest-services/backend.sock
