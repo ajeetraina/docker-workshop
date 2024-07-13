@@ -760,6 +760,14 @@ docker-compose.yaml
 <div class="highlight"><pre><span></span><code>git clone https://github.com/dockersamples/docker-init-demos
 cd docker-init-demos/node
 </code></pre></div>
+<p>The usual way to bring up this node application is to follow the steps:</p>
+<p><div class="highlight"><pre><span></span><code>npm install
+node app.js
+</code></pre></div>
+You can verify the output by accessing the URL:</p>
+<div class="highlight"><pre><span></span><code>curl localhost:8080
+</code></pre></div>
+<p>Now let's see how to containerise this project using the <code>docker init</code> CLI.</p>
 <h3 id="run-the-following-command">Run the following command:<a class="headerlink" href="#run-the-following-command" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="w"> </span>docker<span class="w"> </span>init
 </code></pre></div>

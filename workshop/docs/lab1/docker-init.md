@@ -37,6 +37,22 @@ git clone https://github.com/dockersamples/docker-init-demos
 cd docker-init-demos/node
 ```
 
+The usual way to bring up this node application is to follow the steps:
+
+```
+npm install
+node app.js
+```
+You can verify the output by accessing the URL:
+
+
+```
+curl localhost:8080
+```
+
+Now let's see how to containerise this project using the `docker init` CLI.
+
+
 ### Run the following command:
 
 ```bash
