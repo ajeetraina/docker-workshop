@@ -30,6 +30,12 @@ The advantages of using the docker init command include:
 
 ## Getting Started
 
+- Install the latest version of Docker Desktop
+- Install Node on your system
+
+> Note:
+> You must download and install the Node pre-built installer on your local system to get the `npm install` command to work seamlessly. [Click here to download](https://nodejs.org/en/download/)
+
 ### Clone the repository
 
 ```
