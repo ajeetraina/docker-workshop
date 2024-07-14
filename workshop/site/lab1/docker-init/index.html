@@ -395,13 +395,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#install-the-dependencies" class="md-nav__link">
-    Install the Dependencies
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#running-the-container-service" class="md-nav__link">
     Running the container service
   </a>
@@ -692,13 +685,6 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#install-the-dependencies" class="md-nav__link">
-    Install the Dependencies
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
   <a href="#running-the-container-service" class="md-nav__link">
     Running the container service
   </a>
@@ -779,12 +765,18 @@ You can verify the output by accessing the URL:</p>
 <h3 id="run-the-following-command">Run the following command:<a class="headerlink" href="#run-the-following-command" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><span class="w"> </span>docker<span class="w"> </span>init
 </code></pre></div>
-<p>This utility will walk you through creating the following files with sensible defaults for your project:
-  - .dockerignore
+<p>This utility will walk you through creating the following files with sensible defaults for your project:</p>
+<ul>
+<li>Select Node as your application platform</li>
+<li>Type "22.2.0" as Node version, if it doesn't provide you any default option</li>
+<li>Select npm as package manager</li>
+<li>Select "node app.js" as the command</li>
+<li>Type "8080" as a port that server listens on</li>
+</ul>
+<p>The tool creates the following Docker assets for you:</p>
+<div class="highlight"><pre><span></span><code>  - .dockerignore
   - Dockerfile
-  - docker-compose.yaml</p>
-<h3 id="install-the-dependencies">Install the Dependencies<a class="headerlink" href="#install-the-dependencies" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code>npm install
+  - docker-compose.yaml
 </code></pre></div>
 <h3 id="running-the-container-service">Running the container service<a class="headerlink" href="#running-the-container-service" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code> docker compose up -d --build
