@@ -2,7 +2,10 @@
 
 - Docker Desktop
 - JWT Secret
-- awscli installed
+- Install Localstack on your system
+
+> Note:
+> If you're a Windows user, you need to download the pre-built binary using [this link](https://docs.localstack.cloud/getting-started/installation) 
 
 
 ## Getting Started
