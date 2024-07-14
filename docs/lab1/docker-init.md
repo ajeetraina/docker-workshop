@@ -67,16 +67,22 @@ Now let's see how to containerise this project using the `docker init` CLI.
 ```
 
 This utility will walk you through creating the following files with sensible defaults for your project:
+
+- Select Node as your application platform
+- Type "22.2.0" as Node version, if it doesn't provide you any default option
+- Select npm as package manager
+- Select "node app.js" as the command
+- Type "8080" as a port that server listens on
+
+
+The tool creates the following Docker assets for you:
+
+```
   - .dockerignore
   - Dockerfile
   - docker-compose.yaml
-
-
-### Install the Dependencies
-
 ```
-npm install
-```
+
  
 ### Running the container service
  
