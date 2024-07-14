@@ -2,7 +2,6 @@
 
 - Docker Desktop
 - JWT Secret
-- Install Localstack on your system
 
 > Note:
 > If you're a Windows user, you need to download the pre-built binary using [this link](https://docs.localstack.cloud/getting-started/installation) 
@@ -37,6 +36,9 @@ git checkout container-supported
 
 
 ## 4. Create S3 bucket manually
+
+
+Select Localstack container, select EXEC and run the following command to create S3 bucket.
 
 ```
 awslocal s3 mb s3://sample-bucket
