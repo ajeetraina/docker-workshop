@@ -5,6 +5,7 @@
 
 The source code for this workshop is available [here](https://github.com/ajeetraina/wad2024-workshop)
 
+[Click here](https://github.com/ajeetraina/wad2024-workshop/blob/421962f4069260bc2dcb57635ab03db00b1d7fe0/WeAreDevelopers-workshop.pdf) to download the workshop slides
 
 ## Authors
 
