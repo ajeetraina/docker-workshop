@@ -1,12 +1,12 @@
 # Project information
-site_name: Docker workshop @ WeAreDevelopers
+site_name: Docker workshop 
 site_url: 
 site_author: Ajeet Singh Raina
 
 
 # Repository
 repo_name: wad2024-workshop
-repo_url: https://github.com/ajeetraina/wad2024-workshop
+repo_url: https://github.com/ajeetraina/docker-workshop
 edit_uri: edit/master/docs
 
 # Copyright
