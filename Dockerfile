@@ -24,7 +24,7 @@ RUN npm run build
 
 FROM alpine
 LABEL org.opencontainers.image.title="Docker Workshop" \
-    org.opencontainers.image.description="Docker workshop for WeAreDevelopers" \
+    org.opencontainers.image.description="Docker workshop" \
     org.opencontainers.image.vendor="Docker Inc" \
     com.docker.desktop.extension.api.version="0.3.4" \
     com.docker.extension.screenshots="" \
