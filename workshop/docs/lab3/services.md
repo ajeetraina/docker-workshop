@@ -26,50 +26,47 @@ git checkout container-supported
 ```
 
 
+
 ## 3. Bring up the services
+Use Docker Compose to set up MongoDB and LocalStack:
 
+```bash
+docker compose -f compose-native.yml up -d --build
 ```
- docker compose up -d
-```
 
-<img width="1151" alt="image" src="https://github.com/dockersamples/getting-started-todo-app/assets/313480/c81c8e3b-847a-4a93-a960-8d01960d7b4c">
-
-
+![Container Supported](../images/container-supported.png)
+![Getting Started Todo App](https://github.com/dockersamples/getting-started-todo-app/assets/313480/c81c8e3b-847a-4a93-a960-8d01960d7b4c)
 
 ## 4. Create S3 bucket manually
+Select the LocalStack container, select EXEC, and run the following command to create the S3 bucket:
 
-Select Localstack container, select EXEC and run the following command to create S3 bucket.
-
-```
+```bash
 awslocal s3 mb s3://sample-bucket
 make_bucket: sample-bucket
 ```
 
 ## 5. Check the LocalStack logs
 
-```
-2024-07-03 19:27:32 
+```bash
 2024-07-03 19:27:32 LocalStack version: 3.5.1.dev
 2024-07-03 19:27:32 LocalStack build date: 2024-06-24
 2024-07-03 19:27:32 LocalStack build git hash: 9a3d238ac
-2024-07-03 19:27:32 
 2024-07-03 19:27:32 Ready.
-2024-07-03 19:28:13 2024-07-03T13:58:13.804  INFO --- [et.reactor-0] localstack.request.aws     : AWS s3.CreateBucket => 200
+2024-07-03 19:28:13 2024-07-03T13:58:13.804  INFO --- [et.reactor-0] localstack.request.aws     
+2024-07-03 19:28:32 AWS s3.CreateBucket => 200: AWS s3.CreateBucket => 200
 ```
 
 ## 6. Access the app and try uploading the image
-
 Open [http://localhost:3000](http://localhost:3000) and try to create a new task as well as upload the image.
-
 
 ## 7. Listing the items in the S3 bucket
 
-```
- awslocal s3api list-objects --bucket sample-bucket
+```bash
+awslocal s3api list-objects --bucket sample-bucket
 {
     "Contents": [
         {
-            "Key": "1720015203095-Screenshot 2024-07-03 at 9.24.34â¯AM.png",
+            "Key": "1720015203095-Screenshot 2024-07-03 at 9.24.34 AM.png",
             "LastModified": "2024-07-03T14:00:03.000Z",
             "ETag": "\"cd4396baa401efb22797472599faff87\"",
             "Size": 735617,
@@ -81,11 +78,12 @@ Open [http://localhost:3000](http://localhost:3000) and try to create a new task
         }
     ],
     "RequestCharged": null
+}
 ```
 
 ## 8. Verify if item gets into Mongo database
 
-```
+```bash
 Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.10
 Using MongoDB:          7.0.12
 Using Mongosh:          2.2.10
@@ -113,6 +111,7 @@ todo-app> db.todos.countDocuments()
 6
 todo-app>
 ```
+
 
 
 
