@@ -769,26 +769,33 @@ If you're a Windows user, you need to download the pre-built binary using <a hre
 <p>Switch to container-supported branch before you run the following command:</p>
 <div class="highlight"><pre><span></span><code>git checkout container-supported
 </code></pre></div>
+
 <h2 id="3-bring-up-the-services">3. Bring up the services<a class="headerlink" href="#3-bring-up-the-services" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code> docker compose up -d
+<p>Use Docker Compose to set up MongoDB and LocalStack:</p>
+<div class="highlight"><pre><span></span><code>docker compose -f compose-native.yml up -d --build
 </code></pre></div>
+<p><img width="1151" alt="image" src="../images/container-supported.png"></p>
 <p><img width="1151" alt="image" src="https://github.com/dockersamples/getting-started-todo-app/assets/313480/c81c8e3b-847a-4a93-a960-8d01960d7b4c"></p>
 <h2 id="4-create-s3-bucket-manually">4. Create S3 bucket manually<a class="headerlink" href="#4-create-s3-bucket-manually" title="Permanent link">&para;</a></h2>
-<p>Select Localstack container, select EXEC and run the following command to create S3 bucket.</p>
+<p>Select the LocalStack container, select EXEC, and run the following command to create the S3 bucket:</p>
 <div class="highlight"><pre><span></span><code>awslocal s3 mb s3://sample-bucket
 make_bucket: sample-bucket
 </code></pre></div>
+
+
 <h2 id="5-check-the-localstack-logs">5. Check the LocalStack logs<a class="headerlink" href="#5-check-the-localstack-logs" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>2024-07-03 19:27:32 
-2024-07-03 19:27:32 LocalStack version: 3.5.1.dev
+<div class="highlight"><pre><span></span><code>2024-07-03 19:27:32 LocalStack version: 3.5.1.dev
 2024-07-03 19:27:32 LocalStack build date: 2024-06-24
 2024-07-03 19:27:32 LocalStack build git hash: 9a3d238ac
-2024-07-03 19:27:32 
 2024-07-03 19:27:32 Ready.
-2024-07-03 19:28:13 2024-07-03T13:58:13.804  INFO --- [et.reactor-0] localstack.request.aws     : AWS s3.CreateBucket =&gt; 200
+2024-07-03 19:28:13 2024-07-03T13:58:13.804  INFO --- [et.reactor-0] localstack.request.aws     
+2024-07-03 19:28:32 AWS s3.CreateBucket => 200: AWS s3.CreateBucket =&gt; 200
 </code></pre></div>
+
 <h2 id="6-access-the-app-and-try-uploading-the-image">6. Access the app and try uploading the image<a class="headerlink" href="#6-access-the-app-and-try-uploading-the-image" title="Permanent link">&para;</a></h2>
 <p>Open <a href="http://localhost:3000">http://localhost:3000</a> and try to create a new task as well as upload the image.</p>
+
+
 <h2 id="7-listing-the-items-in-the-s3-bucket">7. Listing the items in the S3 bucket<a class="headerlink" href="#7-listing-the-items-in-the-s3-bucket" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code> awslocal s3api list-objects --bucket sample-bucket
 {
