@@ -770,69 +770,71 @@ If you're a Windows user, you need to download the pre-built binary using <a hre
 <div class="highlight"><pre><span></span><code>git checkout container-supported
 </code></pre></div>
 <h2 id="3-bring-up-the-services">3. Bring up the services<a class="headerlink" href="#3-bring-up-the-services" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code> docker compose up -d
+<p>Use Docker Compose to set up MongoDB and LocalStack:</p>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span>-f<span class="w"> </span>compose-native.yml<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
 </code></pre></div>
-<p><img width="1151" alt="image" src="https://github.com/dockersamples/getting-started-todo-app/assets/313480/c81c8e3b-847a-4a93-a960-8d01960d7b4c"></p>
+<p><img alt="Container Supported" src="../images/container-supported.png" />
+<img alt="Getting Started Todo App" src="https://github.com/dockersamples/getting-started-todo-app/assets/313480/c81c8e3b-847a-4a93-a960-8d01960d7b4c" /></p>
 <h2 id="4-create-s3-bucket-manually">4. Create S3 bucket manually<a class="headerlink" href="#4-create-s3-bucket-manually" title="Permanent link">&para;</a></h2>
-<p>Select Localstack container, select EXEC and run the following command to create S3 bucket.</p>
-<div class="highlight"><pre><span></span><code>awslocal s3 mb s3://sample-bucket
-make_bucket: sample-bucket
+<p>Select the LocalStack container, select EXEC, and run the following command to create the S3 bucket:</p>
+<div class="highlight"><pre><span></span><code>awslocal<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://sample-bucket
+make_bucket:<span class="w"> </span>sample-bucket
 </code></pre></div>
 <h2 id="5-check-the-localstack-logs">5. Check the LocalStack logs<a class="headerlink" href="#5-check-the-localstack-logs" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>2024-07-03 19:27:32 
-2024-07-03 19:27:32 LocalStack version: 3.5.1.dev
-2024-07-03 19:27:32 LocalStack build date: 2024-06-24
-2024-07-03 19:27:32 LocalStack build git hash: 9a3d238ac
-2024-07-03 19:27:32 
-2024-07-03 19:27:32 Ready.
-2024-07-03 19:28:13 2024-07-03T13:58:13.804  INFO --- [et.reactor-0] localstack.request.aws     : AWS s3.CreateBucket =&gt; 200
+<div class="highlight"><pre><span></span><code><span class="m">2024</span>-07-03<span class="w"> </span><span class="m">19</span>:27:32<span class="w"> </span>LocalStack<span class="w"> </span>version:<span class="w"> </span><span class="m">3</span>.5.1.dev
+<span class="m">2024</span>-07-03<span class="w"> </span><span class="m">19</span>:27:32<span class="w"> </span>LocalStack<span class="w"> </span>build<span class="w"> </span>date:<span class="w"> </span><span class="m">2024</span>-06-24
+<span class="m">2024</span>-07-03<span class="w"> </span><span class="m">19</span>:27:32<span class="w"> </span>LocalStack<span class="w"> </span>build<span class="w"> </span>git<span class="w"> </span>hash:<span class="w"> </span>9a3d238ac
+<span class="m">2024</span>-07-03<span class="w"> </span><span class="m">19</span>:27:32<span class="w"> </span>Ready.
+<span class="m">2024</span>-07-03<span class="w"> </span><span class="m">19</span>:28:13<span class="w"> </span><span class="m">2024</span>-07-03T13:58:13.804<span class="w">  </span>INFO<span class="w"> </span>---<span class="w"> </span><span class="o">[</span>et.reactor-0<span class="o">]</span><span class="w"> </span>localstack.request.aws<span class="w">     </span>
+<span class="m">2024</span>-07-03<span class="w"> </span><span class="m">19</span>:28:32<span class="w"> </span>AWS<span class="w"> </span>s3.CreateBucket<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="m">200</span>:<span class="w"> </span>AWS<span class="w"> </span>s3.CreateBucket<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span><span class="m">200</span>
 </code></pre></div>
 <h2 id="6-access-the-app-and-try-uploading-the-image">6. Access the app and try uploading the image<a class="headerlink" href="#6-access-the-app-and-try-uploading-the-image" title="Permanent link">&para;</a></h2>
 <p>Open <a href="http://localhost:3000">http://localhost:3000</a> and try to create a new task as well as upload the image.</p>
 <h2 id="7-listing-the-items-in-the-s3-bucket">7. Listing the items in the S3 bucket<a class="headerlink" href="#7-listing-the-items-in-the-s3-bucket" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code> awslocal s3api list-objects --bucket sample-bucket
-{
-    &quot;Contents&quot;: [
-        {
-            &quot;Key&quot;: &quot;1720015203095-Screenshot 2024-07-03 at 9.24.34â¯AM.png&quot;,
-            &quot;LastModified&quot;: &quot;2024-07-03T14:00:03.000Z&quot;,
-            &quot;ETag&quot;: &quot;\&quot;cd4396baa401efb22797472599faff87\&quot;&quot;,
-            &quot;Size&quot;: 735617,
-            &quot;StorageClass&quot;: &quot;STANDARD&quot;,
-            &quot;Owner&quot;: {
-                &quot;DisplayName&quot;: &quot;webfile&quot;,
-                &quot;ID&quot;: &quot;75aa57f09aa0c8caeab4f8c24e99d10f8e7faeebf76c078efc7c6caea54ba06a&quot;
-            }
-        }
-    ],
-    &quot;RequestCharged&quot;: null
+<div class="highlight"><pre><span></span><code>awslocal<span class="w"> </span>s3api<span class="w"> </span>list-objects<span class="w"> </span>--bucket<span class="w"> </span>sample-bucket
+<span class="o">{</span>
+<span class="w">    </span><span class="s2">&quot;Contents&quot;</span>:<span class="w"> </span><span class="o">[</span>
+<span class="w">        </span><span class="o">{</span>
+<span class="w">            </span><span class="s2">&quot;Key&quot;</span>:<span class="w"> </span><span class="s2">&quot;1720015203095-Screenshot 2024-07-03 at 9.24.34 AM.png&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;LastModified&quot;</span>:<span class="w"> </span><span class="s2">&quot;2024-07-03T14:00:03.000Z&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;ETag&quot;</span>:<span class="w"> </span><span class="s2">&quot;\&quot;cd4396baa401efb22797472599faff87\&quot;&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;Size&quot;</span>:<span class="w"> </span><span class="m">735617</span>,
+<span class="w">            </span><span class="s2">&quot;StorageClass&quot;</span>:<span class="w"> </span><span class="s2">&quot;STANDARD&quot;</span>,
+<span class="w">            </span><span class="s2">&quot;Owner&quot;</span>:<span class="w"> </span><span class="o">{</span>
+<span class="w">                </span><span class="s2">&quot;DisplayName&quot;</span>:<span class="w"> </span><span class="s2">&quot;webfile&quot;</span>,
+<span class="w">                </span><span class="s2">&quot;ID&quot;</span>:<span class="w"> </span><span class="s2">&quot;75aa57f09aa0c8caeab4f8c24e99d10f8e7faeebf76c078efc7c6caea54ba06a&quot;</span>
+<span class="w">            </span><span class="o">}</span>
+<span class="w">        </span><span class="o">}</span>
+<span class="w">    </span><span class="o">]</span>,
+<span class="w">    </span><span class="s2">&quot;RequestCharged&quot;</span>:<span class="w"> </span>null
+<span class="o">}</span>
 </code></pre></div>
 <h2 id="8-verify-if-item-gets-into-mongo-database">8. Verify if item gets into Mongo database<a class="headerlink" href="#8-verify-if-item-gets-into-mongo-database" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.2.10
-Using MongoDB:          7.0.12
-Using Mongosh:          2.2.10
+<div class="highlight"><pre><span></span><code>Connecting<span class="w"> </span>to:<span class="w">          </span>mongodb://127.0.0.1:27017/?directConnection<span class="o">=</span>true<span class="p">&amp;</span><span class="nv">serverSelectionTimeoutMS</span><span class="o">=</span><span class="m">2000</span><span class="p">&amp;</span><span class="nv">appName</span><span class="o">=</span>mongosh+2.2.10
+Using<span class="w"> </span>MongoDB:<span class="w">          </span><span class="m">7</span>.0.12
+Using<span class="w"> </span>Mongosh:<span class="w">          </span><span class="m">2</span>.2.10
 
-For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+For<span class="w"> </span>mongosh<span class="w"> </span>info<span class="w"> </span>see:<span class="w"> </span>https://docs.mongodb.com/mongodb-shell/
 
 ------
-   The server generated these startup warnings when booting
-   2024-07-03T13:57:31.418+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
-   2024-07-03T13:57:32.732+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-   2024-07-03T13:57:32.733+00:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
-   2024-07-03T13:57:32.733+00:00: vm.max_map_count is too low
+<span class="w">   </span>The<span class="w"> </span>server<span class="w"> </span>generated<span class="w"> </span>these<span class="w"> </span>startup<span class="w"> </span>warnings<span class="w"> </span>when<span class="w"> </span>booting
+<span class="w">   </span><span class="m">2024</span>-07-03T13:57:31.418+00:00:<span class="w"> </span>Using<span class="w"> </span>the<span class="w"> </span>XFS<span class="w"> </span>filesystem<span class="w"> </span>is<span class="w"> </span>strongly<span class="w"> </span>recommended<span class="w"> </span>with<span class="w"> </span>the<span class="w"> </span>WiredTiger<span class="w"> </span>storage<span class="w"> </span>engine.<span class="w"> </span>See<span class="w"> </span>http://dochub.mongodb.org/core/prodnotes-filesystem
+<span class="w">   </span><span class="m">2024</span>-07-03T13:57:32.732+00:00:<span class="w"> </span>Access<span class="w"> </span>control<span class="w"> </span>is<span class="w"> </span>not<span class="w"> </span>enabled<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>database.<span class="w"> </span>Read<span class="w"> </span>and<span class="w"> </span>write<span class="w"> </span>access<span class="w"> </span>to<span class="w"> </span>data<span class="w"> </span>and<span class="w"> </span>configuration<span class="w"> </span>is<span class="w"> </span>unrestricted
+<span class="w">   </span><span class="m">2024</span>-07-03T13:57:32.733+00:00:<span class="w"> </span>/sys/kernel/mm/transparent_hugepage/enabled<span class="w"> </span>is<span class="w"> </span><span class="s1">&#39;always&#39;</span>.<span class="w"> </span>We<span class="w"> </span>suggest<span class="w"> </span>setting<span class="w"> </span>it<span class="w"> </span>to<span class="w"> </span><span class="s1">&#39;never&#39;</span><span class="w"> </span><span class="k">in</span><span class="w"> </span>this<span class="w"> </span>binary<span class="w"> </span>version
+<span class="w">   </span><span class="m">2024</span>-07-03T13:57:32.733+00:00:<span class="w"> </span>vm.max_map_count<span class="w"> </span>is<span class="w"> </span>too<span class="w"> </span>low
 ------
 
-test&gt; show dbs
-admin      40.00 KiB
-config     72.00 KiB
-local      80.00 KiB
-todo-app  180.00 KiB
-test&gt; use todo-app
-switched to db todo-app
-todo-app&gt; db.todos.countDocuments()
-5
-todo-app&gt; db.todos.countDocuments()
-6
+test&gt;<span class="w"> </span>show<span class="w"> </span>dbs
+admin<span class="w">      </span><span class="m">40</span>.00<span class="w"> </span>KiB
+config<span class="w">     </span><span class="m">72</span>.00<span class="w"> </span>KiB
+<span class="nb">local</span><span class="w">      </span><span class="m">80</span>.00<span class="w"> </span>KiB
+todo-app<span class="w">  </span><span class="m">180</span>.00<span class="w"> </span>KiB
+test&gt;<span class="w"> </span>use<span class="w"> </span>todo-app
+switched<span class="w"> </span>to<span class="w"> </span>db<span class="w"> </span>todo-app
+todo-app&gt;<span class="w"> </span>db.todos.countDocuments<span class="o">()</span>
+<span class="m">5</span>
+todo-app&gt;<span class="w"> </span>db.todos.countDocuments<span class="o">()</span>
+<span class="m">6</span>
 todo-app&gt;
 </code></pre></div>
 
