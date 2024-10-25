@@ -81,7 +81,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#prerequisites" class="md-skip">
+        <a href="#how-to-build-and-test-aws-cloud-applications-with-localstack-and-docker" class="md-skip">
           Skip to content
         </a>
       
@@ -529,6 +529,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           Bringing up the services
@@ -545,6 +547,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -553,71 +557,134 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#tech-stack" class="md-nav__link">
+    Tech Stack
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
-    Getting Started
+  <a href="#project-structure" class="md-nav__link">
+    Project Structure
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-clone-the-repository" class="md-nav__link">
-    1. Clone the repository:
+  <a href="#development" class="md-nav__link">
+    Development
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-switch-to-the-right-branch" class="md-nav__link">
-    2. Switch to the right branch
+  <a href="#run-the-app-natively" class="md-nav__link">
+    Run the app natively
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bring-up-the-services" class="md-nav__link">
-    3. Bring up the services
+  <a href="#bring-up-localstack" class="md-nav__link">
+    Bring up LocalStack
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-create-s3-bucket-manually" class="md-nav__link">
-    4. Create S3 bucket manually
+  <a href="#verify-if-localstack-is-up-and-running" class="md-nav__link">
+    Verify if LocalStack is up and running
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-check-the-localstack-logs" class="md-nav__link">
-    5. Check the LocalStack logs
+  <a href="#add-a-sample-s3-bucket" class="md-nav__link">
+    Add a Sample S3 Bucket
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-access-the-app-and-try-uploading-the-image" class="md-nav__link">
-    6. Access the app and try uploading the image
+  <a href="#connecting-to-localstack-from-a-non-containerised-node-app" class="md-nav__link">
+    Connecting to LocalStack from a non-containerised Node app
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-listing-the-items-in-the-s3-bucket" class="md-nav__link">
-    7. Listing the items in the S3 bucket
+  <a href="#bring-up-backend" class="md-nav__link">
+    Bring up Backend
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-verify-if-item-gets-into-mongo-database" class="md-nav__link">
-    8. Verify if item gets into Mongo database
+  <a href="#start-the-frontend" class="md-nav__link">
+    Start the frontend
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-adding-a-task-and-uploading-the-image" class="md-nav__link">
+    Try adding a task and uploading the image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-localstack-container-logs" class="md-nav__link">
+    Check the LocalStack container logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-mongo-container-logs" class="md-nav__link">
+    Check the Mongo container logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop-the-container-services" class="md-nav__link">
+    Stop the container services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-containerised-localstack-from-a-containerised-node-app" class="md-nav__link">
+    Connecting to containerised LocalStack from a containerised Node app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-sample-s3-bucket_1" class="md-nav__link">
+    Add a Sample S3 Bucket
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-adding-a-task-and-uploading-the-image_1" class="md-nav__link">
+    Try adding a task and uploading the image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-localstack-container-logs_1" class="md-nav__link">
+    Check the LocalStack container logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-mongo-container-logs_1" class="md-nav__link">
+    Check the Mongo container logs
   </a>
   
 </li>
@@ -654,6 +721,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -662,71 +731,134 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prerequisites" class="md-nav__link">
-    Prerequisites
+  <a href="#tech-stack" class="md-nav__link">
+    Tech Stack
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
-    Getting Started
+  <a href="#project-structure" class="md-nav__link">
+    Project Structure
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-clone-the-repository" class="md-nav__link">
-    1. Clone the repository:
+  <a href="#development" class="md-nav__link">
+    Development
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-switch-to-the-right-branch" class="md-nav__link">
-    2. Switch to the right branch
+  <a href="#run-the-app-natively" class="md-nav__link">
+    Run the app natively
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-bring-up-the-services" class="md-nav__link">
-    3. Bring up the services
+  <a href="#bring-up-localstack" class="md-nav__link">
+    Bring up LocalStack
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-create-s3-bucket-manually" class="md-nav__link">
-    4. Create S3 bucket manually
+  <a href="#verify-if-localstack-is-up-and-running" class="md-nav__link">
+    Verify if LocalStack is up and running
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-check-the-localstack-logs" class="md-nav__link">
-    5. Check the LocalStack logs
+  <a href="#add-a-sample-s3-bucket" class="md-nav__link">
+    Add a Sample S3 Bucket
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#6-access-the-app-and-try-uploading-the-image" class="md-nav__link">
-    6. Access the app and try uploading the image
+  <a href="#connecting-to-localstack-from-a-non-containerised-node-app" class="md-nav__link">
+    Connecting to LocalStack from a non-containerised Node app
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#7-listing-the-items-in-the-s3-bucket" class="md-nav__link">
-    7. Listing the items in the S3 bucket
+  <a href="#bring-up-backend" class="md-nav__link">
+    Bring up Backend
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#8-verify-if-item-gets-into-mongo-database" class="md-nav__link">
-    8. Verify if item gets into Mongo database
+  <a href="#start-the-frontend" class="md-nav__link">
+    Start the frontend
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-adding-a-task-and-uploading-the-image" class="md-nav__link">
+    Try adding a task and uploading the image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-localstack-container-logs" class="md-nav__link">
+    Check the LocalStack container logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-mongo-container-logs" class="md-nav__link">
+    Check the Mongo container logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stop-the-container-services" class="md-nav__link">
+    Stop the container services
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#connecting-to-containerised-localstack-from-a-containerised-node-app" class="md-nav__link">
+    Connecting to containerised LocalStack from a containerised Node app
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#add-a-sample-s3-bucket_1" class="md-nav__link">
+    Add a Sample S3 Bucket
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#try-adding-a-task-and-uploading-the-image_1" class="md-nav__link">
+    Try adding a task and uploading the image
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-localstack-container-logs_1" class="md-nav__link">
+    Check the LocalStack container logs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#check-the-mongo-container-logs_1" class="md-nav__link">
+    Check the Mongo container logs
   </a>
   
 </li>
@@ -749,91 +881,181 @@
   
 
 
-  <h1>Bringing up the services</h1>
-
-<h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
+<h1 id="how-to-build-and-test-aws-cloud-applications-with-localstack-and-docker">How to build and test AWS Cloud applications with LocalStack and Docker<a class="headerlink" href="#how-to-build-and-test-aws-cloud-applications-with-localstack-and-docker" title="Permanent link">&para;</a></h1>
+<p>This repo contains the sample application for <a href="https://github.com/ajeetraina/todo-list-localstack-docker">Building and testing Cloud applications with LocalStack and Docker guide on Docker Docs</a>.
+This simple to-do List application allows developers to upload images to S3-emulated LocalStack.</p>
+<p>Notice: This sample repo is intended to support the guide mentioned above. As such, the application code is purposely kept simple to keep the focus on the guide's content and should not be considered production ready.</p>
+<h2 id="tech-stack">Tech Stack<a class="headerlink" href="#tech-stack" title="Permanent link">&para;</a></h2>
+<p><img width="806" alt="image" src="https://github.com/user-attachments/assets/496c7685-87e9-4f87-aaa7-69e46a3c0b5a"></p>
 <ul>
-<li>Docker Desktop</li>
-<li>JWT Secret</li>
+<li>Frontend: React, Material UI.</li>
+<li>Backend: Node.js, Express</li>
+<li>Database: Mongo(running locally for storing tasks)</li>
+<li>Object Storage: LocalStack (for emulating S3 and storing images locally for testing purposes)</li>
 </ul>
-<blockquote>
-<p>Note:
-If you're a Windows user, you need to download the pre-built binary using <a href="https://docs.localstack.cloud/getting-started/installation">this link</a> </p>
-</blockquote>
-<h2 id="getting-started">Getting Started<a class="headerlink" href="#getting-started" title="Permanent link">&para;</a></h2>
-<h2 id="1-clone-the-repository">1. Clone the repository:<a class="headerlink" href="#1-clone-the-repository" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dockersamples/getting-started-todo-app
-<span class="nb">cd</span><span class="w"> </span>getting-started-todo-app
+<h2 id="project-structure">Project Structure<a class="headerlink" href="#project-structure" title="Permanent link">&para;</a></h2>
+<p>This project contains the following components:
+- <strong>/backend</strong> - This directory contains the Node.js application that handles the server-side logic and interacts with the database. This directory contains configuration settings for uploading images to LocalStack (emulated AWS S3). The uploadConfig.js file is responsible for configuring the S3 client to connect to the LocalStack S3 endpoint. This allows the backend application to store and retrieve images associated with the Todo List items.
+- <strong>/frontend</strong> - The frontend directory contains the React application that handles the user interface and interacts with the backend. </p>
+<h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
+<ol>
+<li>Install awscli-local tool</li>
+</ol>
+<div class="highlight"><pre><span></span><code>pip install awscli-local
 </code></pre></div>
-<h2 id="2-switch-to-the-right-branch">2. Switch to the right branch<a class="headerlink" href="#2-switch-to-the-right-branch" title="Permanent link">&para;</a></h2>
-<p>Switch to container-supported branch before you run the following command:</p>
-<div class="highlight"><pre><span></span><code>git checkout container-supported
+<ol>
+<li>Clone the repository</li>
+</ol>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/dockersamples/todo-list-localstack-docker
 </code></pre></div>
-<h2 id="3-bring-up-the-services">3. Bring up the services<a class="headerlink" href="#3-bring-up-the-services" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code> docker compose up -d
+<ol>
+<li>Navigate into the project.</li>
+</ol>
+<div class="highlight"><pre><span></span><code>cd todo-list-localstack-docker
 </code></pre></div>
-<p><img width="1151" alt="image" src="https://github.com/dockersamples/getting-started-todo-app/assets/313480/c81c8e3b-847a-4a93-a960-8d01960d7b4c"></p>
-<h2 id="4-create-s3-bucket-manually">4. Create S3 bucket manually<a class="headerlink" href="#4-create-s3-bucket-manually" title="Permanent link">&para;</a></h2>
-<p>Select Localstack container, select EXEC and run the following command to create S3 bucket.</p>
-<div class="highlight"><pre><span></span><code>awslocal s3 mb s3://sample-bucket
-make_bucket: sample-bucket
+<h2 id="run-the-app-natively">Run the app natively<a class="headerlink" href="#run-the-app-natively" title="Permanent link">&para;</a></h2>
+<h2 id="bring-up-localstack">Bring up LocalStack<a class="headerlink" href="#bring-up-localstack" title="Permanent link">&para;</a></h2>
+<p>To run the app natively, you will need to run LocalStack and Mongo using Docker Compose while running frontend and backend locally.</p>
+<div class="highlight"><pre><span></span><code>docker compose -f compose-native.yml up -d --build
 </code></pre></div>
-<h2 id="5-check-the-localstack-logs">5. Check the LocalStack logs<a class="headerlink" href="#5-check-the-localstack-logs" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>2024-07-03 19:27:32 
-2024-07-03 19:27:32 LocalStack version: 3.5.1.dev
-2024-07-03 19:27:32 LocalStack build date: 2024-06-24
-2024-07-03 19:27:32 LocalStack build git hash: 9a3d238ac
-2024-07-03 19:27:32 
-2024-07-03 19:27:32 Ready.
-2024-07-03 19:28:13 2024-07-03T13:58:13.804  INFO --- [et.reactor-0] localstack.request.aws     : AWS s3.CreateBucket =&gt; 200
+<p><img width="1307" alt="image" src="https://github.com/user-attachments/assets/d643f92c-c7e3-4ebe-a3c1-9288deb14083"></p>
+<h2 id="verify-if-localstack-is-up-and-running">Verify if LocalStack is up and running<a class="headerlink" href="#verify-if-localstack-is-up-and-running" title="Permanent link">&para;</a></h2>
+<p><img width="762" alt="image" src="https://github.com/user-attachments/assets/ac832aeb-a9e8-4ae5-a2ca-8c538259023e"></p>
+<h2 id="add-a-sample-s3-bucket">Add a Sample S3 Bucket<a class="headerlink" href="#add-a-sample-s3-bucket" title="Permanent link">&para;</a></h2>
+<p>By using the AWS CLI with LocalStack, you can interact with the emulated services exactly as you would with real AWS services. This helps ensure that your application behaves the same way in a local environment as it would in a production environment on AWS.</p>
+<p>Let’s create a new S3 bucket within the LocalStack environment:</p>
+<div class="highlight"><pre><span></span><code>awslocal s3 mb s3://mysamplebucket
 </code></pre></div>
-<h2 id="6-access-the-app-and-try-uploading-the-image">6. Access the app and try uploading the image<a class="headerlink" href="#6-access-the-app-and-try-uploading-the-image" title="Permanent link">&para;</a></h2>
-<p>Open <a href="http://localhost:3000">http://localhost:3000</a> and try to create a new task as well as upload the image.</p>
-<h2 id="7-listing-the-items-in-the-s3-bucket">7. Listing the items in the S3 bucket<a class="headerlink" href="#7-listing-the-items-in-the-s3-bucket" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code> awslocal s3api list-objects --bucket sample-bucket
-{
-    &quot;Contents&quot;: [
-        {
-            &quot;Key&quot;: &quot;1720015203095-Screenshot 2024-07-03 at 9.24.34â¯AM.png&quot;,
-            &quot;LastModified&quot;: &quot;2024-07-03T14:00:03.000Z&quot;,
-            &quot;ETag&quot;: &quot;\&quot;cd4396baa401efb22797472599faff87\&quot;&quot;,
-            &quot;Size&quot;: 735617,
-            &quot;StorageClass&quot;: &quot;STANDARD&quot;,
-            &quot;Owner&quot;: {
-                &quot;DisplayName&quot;: &quot;webfile&quot;,
-                &quot;ID&quot;: &quot;75aa57f09aa0c8caeab4f8c24e99d10f8e7faeebf76c078efc7c6caea54ba06a&quot;
-            }
-        }
-    ],
-    &quot;RequestCharged&quot;: null
+<p>The command <code>s3 mb s3://mysamplebucket</code> tells the AWS CLI to create a new S3 bucket (mb stands for "make bucket"). The bucket is named <code>mysamplebucket</code>
+It should show the following result:</p>
+<div class="highlight"><pre><span></span><code>make_bucket: mysamplebucket
 </code></pre></div>
-<h2 id="8-verify-if-item-gets-into-mongo-database">8. Verify if item gets into Mongo database<a class="headerlink" href="#8-verify-if-item-gets-into-mongo-database" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code>Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.2.10
-Using MongoDB:          7.0.12
-Using Mongosh:          2.2.10
+<h2 id="connecting-to-localstack-from-a-non-containerised-node-app">Connecting to LocalStack from a non-containerised Node app<a class="headerlink" href="#connecting-to-localstack-from-a-non-containerised-node-app" title="Permanent link">&para;</a></h2>
+<p>Now it’s time to connect your app to LocalStack. The index.js file, located in the backend/ directory, serves as the main entry point for the backend application.</p>
+<p>The code interacts with LocalStack’s S3 service, which is accessed via the endpoint defined by the <code>S3_ENDPOINT_URL</code> environment variable, typically set to <code>http://localhost:4556</code> for local development.  </p>
+<p>The <code>S3Client</code> from the AWS SDK is configured to use this LocalStack endpoint, along with test credentials (<code>AWS_ACCESS_KEY_ID</code> and <code>AWS_SECRET_ACCESS_KEY</code>) that are also sourced from environment variables. This setup allows the application to perform operations on the locally simulated S3 service as if it were interacting with the real AWS S3, making the code flexible for different environments.</p>
+<p>The code uses multer and multer-s3 to handle file uploads. When a user uploads an image through the <code>/upload</code> route, the file is stored directly in the S3 bucket simulated by LocalStack. The bucket name is retrieved from the environment variable <code>S3_BUCKET_NAME</code>. Each uploaded file is given a unique name by appending the current timestamp to the original file name. The route then returns the URL of the uploaded file within the local S3 service, making it accessible just as it would be if hosted on a real AWS S3 bucket</p>
+<h2 id="bring-up-backend">Bring up Backend<a class="headerlink" href="#bring-up-backend" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>cd backend/
+npm install
+</code></pre></div>
+<p>Please note that these are placeholders that LocalStack uses to simulate AWS credentials and not the real values.
+Hence, no changes are needed.</p>
+<div class="highlight"><pre><span></span><code>AWS_ACCESS_KEY_ID=test
+AWS_SECRET_ACCESS_KEY=test
+S3_BUCKET_NAME=mysamplebucket
+S3_ENDPOINT_URL=http://localhost:4566
+MONGODB_URI=mongodb://mongodb:27017/todos
+AWS_REGION=us-east-1
+</code></pre></div>
+<p>Start the backend server:</p>
+<div class="highlight"><pre><span></span><code>node index.js
+</code></pre></div>
+<p>You will see the message that the backend service has successfully started at port 5000.</p>
+<h2 id="start-the-frontend">Start the frontend<a class="headerlink" href="#start-the-frontend" title="Permanent link">&para;</a></h2>
+<p>Open a new terminal and run the following command:</p>
+<div class="highlight"><pre><span></span><code>cd frontend/
+npm run dev
+</code></pre></div>
+<p>By now, you should see the following message</p>
+<div class="highlight"><pre><span></span><code>VITE v5.4.2  ready in 110 ms
 
-For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+</code></pre></div>
+<h2 id="try-adding-a-task-and-uploading-the-image">Try adding a task and uploading the image<a class="headerlink" href="#try-adding-a-task-and-uploading-the-image" title="Permanent link">&para;</a></h2>
+<p><img alt="image" src="https://github.com/user-attachments/assets/55ca86c0-c83b-4f5e-83d2-0e87c97ba48a" /></p>
+<p>It shows the image is successfully uploaded.</p>
+<h2 id="check-the-localstack-container-logs">Check the LocalStack container logs<a class="headerlink" href="#check-the-localstack-container-logs" title="Permanent link">&para;</a></h2>
+<p><img width="1337" alt="image" src="https://github.com/user-attachments/assets/e29f1a72-13a7-45d0-b55b-23a396916bfa"></p>
+<h2 id="check-the-mongo-container-logs">Check the Mongo container logs<a class="headerlink" href="#check-the-mongo-container-logs" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># mongosh
+Current Mongosh Log ID: 66cb1093118d7d4cc1c76a8a
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.3.0
+Using MongoDB:          7.0.12
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
 
 ------
    The server generated these startup warnings when booting
-   2024-07-03T13:57:31.418+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
-   2024-07-03T13:57:32.732+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-   2024-07-03T13:57:32.733+00:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
-   2024-07-03T13:57:32.733+00:00: vm.max_map_count is too low
+   2024-08-25T10:58:46.918+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-08-25T10:58:47.668+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2024-08-25T10:58:47.668+00:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
+   2024-08-25T10:58:47.668+00:00: vm.max_map_count is too low
 ------
 
 test&gt; show dbs
-admin      40.00 KiB
-config     72.00 KiB
-local      80.00 KiB
-todo-app  180.00 KiB
-test&gt; use todo-app
-switched to db todo-app
-todo-app&gt; db.todos.countDocuments()
-5
-todo-app&gt; db.todos.countDocuments()
-6
-todo-app&gt;
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+todos    8.00 KiB
+test&gt; use todos
+switched to db todos
+todos&gt; db.todos.countDocuments()
+2
+todos&gt; db.todos.countDocuments()
+3
+todos&gt; 
+</code></pre></div>
+<h2 id="stop-the-container-services">Stop the container services<a class="headerlink" href="#stop-the-container-services" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>docker compose -f compose-native.yml down
+</code></pre></div>
+<h2 id="connecting-to-containerised-localstack-from-a-containerised-node-app">Connecting to containerised LocalStack from a containerised Node app<a class="headerlink" href="#connecting-to-containerised-localstack-from-a-containerised-node-app" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code>docker compose -f compose.yml up -d --build
+</code></pre></div>
+<h2 id="add-a-sample-s3-bucket_1">Add a Sample S3 Bucket<a class="headerlink" href="#add-a-sample-s3-bucket_1" title="Permanent link">&para;</a></h2>
+<p>Using the AWS CLI with LocalStack lets you interact with the emulated services exactly as you would with real AWS services. This helps ensure that your application behaves the same way in a local environment as it would in a production environment on AWS.</p>
+<p>Let’s create a new S3 bucket within the LocalStack environment:</p>
+<div class="highlight"><pre><span></span><code>awslocal s3 mb s3://mysamplebucket
+</code></pre></div>
+<p>The command <code>s3 mb s3://mysamplebucket</code> tells the AWS CLI to create a new S3 bucket (mb stands for "make bucket"). The bucket is named <code>mysamplebucket</code>
+It should show the following result:</p>
+<div class="highlight"><pre><span></span><code>make_bucket: mysamplebucket
+</code></pre></div>
+<h2 id="try-adding-a-task-and-uploading-the-image_1">Try adding a task and uploading the image<a class="headerlink" href="#try-adding-a-task-and-uploading-the-image_1" title="Permanent link">&para;</a></h2>
+<p><img alt="image" src="https://github.com/user-attachments/assets/55ca86c0-c83b-4f5e-83d2-0e87c97ba48a" /></p>
+<p>It shows the image is successfully uploaded.</p>
+<h2 id="check-the-localstack-container-logs_1">Check the LocalStack container logs<a class="headerlink" href="#check-the-localstack-container-logs_1" title="Permanent link">&para;</a></h2>
+<p><img width="1337" alt="image" src="https://github.com/user-attachments/assets/e29f1a72-13a7-45d0-b55b-23a396916bfa"></p>
+<h2 id="check-the-mongo-container-logs_1">Check the Mongo container logs<a class="headerlink" href="#check-the-mongo-container-logs_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code># mongosh
+Current Mongosh Log ID: 66cb1093118d7d4cc1c76a8a
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.3.0
+Using MongoDB:          7.0.12
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2024-08-25T10:58:46.918+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-08-25T10:58:47.668+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2024-08-25T10:58:47.668+00:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
+   2024-08-25T10:58:47.668+00:00: vm.max_map_count is too low
+------
+
+test&gt; show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+todos    8.00 KiB
+test&gt; use todos
+switched to db todos
+todos&gt; db.todos.countDocuments()
+2
+todos&gt; db.todos.countDocuments()
+3
+todos&gt; 
 </code></pre></div>
 
 

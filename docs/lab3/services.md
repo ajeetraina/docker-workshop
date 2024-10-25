@@ -1,118 +1,280 @@
-## Prerequisites
+# How to build and test AWS Cloud applications with LocalStack and Docker
 
-- Docker Desktop
-- JWT Secret
+This repo contains the sample application for [Building and testing Cloud applications with LocalStack and Docker guide on Docker Docs](https://github.com/ajeetraina/todo-list-localstack-docker).
+This simple to-do List application allows developers to upload images to S3-emulated LocalStack.
 
-> Note:
-> If you're a Windows user, you need to download the pre-built binary using [this link](https://docs.localstack.cloud/getting-started/installation) 
+Notice: This sample repo is intended to support the guide mentioned above. As such, the application code is purposely kept simple to keep the focus on the guide's content and should not be considered production ready.
 
-## Getting Started
+## Tech Stack
 
-## 1. Clone the repository:
+<img width="806" alt="image" src="https://github.com/user-attachments/assets/496c7685-87e9-4f87-aaa7-69e46a3c0b5a">
 
-```sh
-git clone https://github.com/dockersamples/getting-started-todo-app
-cd getting-started-todo-app
+
+
+
+- Frontend: React, Material UI.
+- Backend: Node.js, Express
+- Database: Mongo(running locally for storing tasks)
+- Object Storage: LocalStack (for emulating S3 and storing images locally for testing purposes)
+
+## Project Structure
+
+This project contains the following components:
+
+- **/backend** - This directory contains the Node.js application that handles the server-side logic and interacts with the database. This directory contains configuration settings for uploading images to LocalStack (emulated AWS S3). The uploadConfig.js file is responsible for configuring the S3 client to connect to the LocalStack S3 endpoint. This allows the backend application to store and retrieve images associated with the Todo List items.
+- **/frontend** - The frontend directory contains the React application that handles the user interface and interacts with the backend. 
+  
+## Development
+
+1. Install awscli-local tool
+
+```
+pip install awscli-local
 ```
 
 
-## 2. Switch to the right branch
-
-Switch to container-supported branch before you run the following command:
+2. Clone the repository
 
 ```
-git checkout container-supported
+git clone https://github.com/dockersamples/todo-list-localstack-docker
+```
+
+3. Navigate into the project.
+
+```
+cd todo-list-localstack-docker
 ```
 
 
-## 3. Bring up the services
+## Run the app natively
+
+## Bring up LocalStack 
+
+To run the app natively, you will need to run LocalStack and Mongo using Docker Compose while running frontend and backend locally.
 
 ```
- docker compose up -d
+docker compose -f compose-native.yml up -d --build
 ```
 
-<img width="1151" alt="image" src="https://github.com/dockersamples/getting-started-todo-app/assets/313480/c81c8e3b-847a-4a93-a960-8d01960d7b4c">
+
+<img width="1307" alt="image" src="https://github.com/user-attachments/assets/d643f92c-c7e3-4ebe-a3c1-9288deb14083">
+
+
+## Verify if LocalStack is up and running
+
+<img width="762" alt="image" src="https://github.com/user-attachments/assets/ac832aeb-a9e8-4ae5-a2ca-8c538259023e">
 
 
 
-## 4. Create S3 bucket manually
+## Add a Sample S3 Bucket
+
+By using the AWS CLI with LocalStack, you can interact with the emulated services exactly as you would with real AWS services. This helps ensure that your application behaves the same way in a local environment as it would in a production environment on AWS.
 
 
-Select Localstack container, select EXEC and run the following command to create S3 bucket.
+Let’s create a new S3 bucket within the LocalStack environment:
+
 
 ```
-awslocal s3 mb s3://sample-bucket
-make_bucket: sample-bucket
+awslocal s3 mb s3://mysamplebucket
 ```
 
-## 5. Check the LocalStack logs
+The command `s3 mb s3://mysamplebucket` tells the AWS CLI to create a new S3 bucket (mb stands for "make bucket"). The bucket is named `mysamplebucket`
+It should show the following result:
 
 ```
-2024-07-03 19:27:32 
-2024-07-03 19:27:32 LocalStack version: 3.5.1.dev
-2024-07-03 19:27:32 LocalStack build date: 2024-06-24
-2024-07-03 19:27:32 LocalStack build git hash: 9a3d238ac
-2024-07-03 19:27:32 
-2024-07-03 19:27:32 Ready.
-2024-07-03 19:28:13 2024-07-03T13:58:13.804  INFO --- [et.reactor-0] localstack.request.aws     : AWS s3.CreateBucket => 200
+make_bucket: mysamplebucket
 ```
 
-## 6. Access the app and try uploading the image
+## Connecting to LocalStack from a non-containerised Node app
 
-Open [http://localhost:3000](http://localhost:3000) and try to create a new task as well as upload the image.
+Now it’s time to connect your app to LocalStack. The index.js file, located in the backend/ directory, serves as the main entry point for the backend application.
+
+The code interacts with LocalStack’s S3 service, which is accessed via the endpoint defined by the `S3_ENDPOINT_URL` environment variable, typically set to `http://localhost:4556` for local development.  
+
+The `S3Client` from the AWS SDK is configured to use this LocalStack endpoint, along with test credentials (`AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`) that are also sourced from environment variables. This setup allows the application to perform operations on the locally simulated S3 service as if it were interacting with the real AWS S3, making the code flexible for different environments.
+
+The code uses multer and multer-s3 to handle file uploads. When a user uploads an image through the `/upload` route, the file is stored directly in the S3 bucket simulated by LocalStack. The bucket name is retrieved from the environment variable `S3_BUCKET_NAME`. Each uploaded file is given a unique name by appending the current timestamp to the original file name. The route then returns the URL of the uploaded file within the local S3 service, making it accessible just as it would be if hosted on a real AWS S3 bucket
 
 
-## 7. Listing the items in the S3 bucket
-
-```
- awslocal s3api list-objects --bucket sample-bucket
-{
-    "Contents": [
-        {
-            "Key": "1720015203095-Screenshot 2024-07-03 at 9.24.34â¯AM.png",
-            "LastModified": "2024-07-03T14:00:03.000Z",
-            "ETag": "\"cd4396baa401efb22797472599faff87\"",
-            "Size": 735617,
-            "StorageClass": "STANDARD",
-            "Owner": {
-                "DisplayName": "webfile",
-                "ID": "75aa57f09aa0c8caeab4f8c24e99d10f8e7faeebf76c078efc7c6caea54ba06a"
-            }
-        }
-    ],
-    "RequestCharged": null
-```
-
-## 8. Verify if item gets into Mongo database
+## Bring up Backend
 
 ```
-Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.10
+cd backend/
+npm install
+
+```
+
+
+Please note that these are placeholders that LocalStack uses to simulate AWS credentials and not the real values.
+Hence, no changes are needed.
+
+
+```
+AWS_ACCESS_KEY_ID=test
+AWS_SECRET_ACCESS_KEY=test
+S3_BUCKET_NAME=mysamplebucket
+S3_ENDPOINT_URL=http://localhost:4566
+MONGODB_URI=mongodb://mongodb:27017/todos
+AWS_REGION=us-east-1
+```
+
+Start the backend server:
+
+
+```
+node index.js
+```
+
+You will see the message that the backend service has successfully started at port 5000.
+
+
+
+## Start the frontend
+
+Open a new terminal and run the following command:
+
+```
+cd frontend/
+npm run dev
+```
+
+By now, you should see the following message
+
+```
+VITE v5.4.2  ready in 110 ms
+
+  ➜  Local:   http://localhost:5173/
+  ➜  Network: use --host to expose
+  ➜  press h + enter to show help
+
+```
+
+## Try adding a task and uploading the image
+
+
+![image](https://github.com/user-attachments/assets/55ca86c0-c83b-4f5e-83d2-0e87c97ba48a)
+
+It shows the image is successfully uploaded.
+
+## Check the LocalStack container logs
+
+<img width="1337" alt="image" src="https://github.com/user-attachments/assets/e29f1a72-13a7-45d0-b55b-23a396916bfa">
+
+## Check the Mongo container logs
+
+```
+# mongosh
+Current Mongosh Log ID: 66cb1093118d7d4cc1c76a8a
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
 Using MongoDB:          7.0.12
-Using Mongosh:          2.2.10
+Using Mongosh:          2.3.0
 
-For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
 
 ------
    The server generated these startup warnings when booting
-   2024-07-03T13:57:31.418+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
-   2024-07-03T13:57:32.732+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-   2024-07-03T13:57:32.733+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version
-   2024-07-03T13:57:32.733+00:00: vm.max_map_count is too low
+   2024-08-25T10:58:46.918+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-08-25T10:58:47.668+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2024-08-25T10:58:47.668+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version
+   2024-08-25T10:58:47.668+00:00: vm.max_map_count is too low
 ------
 
 test> show dbs
-admin      40.00 KiB
-config     72.00 KiB
-local      80.00 KiB
-todo-app  180.00 KiB
-test> use todo-app
-switched to db todo-app
-todo-app> db.todos.countDocuments()
-5
-todo-app> db.todos.countDocuments()
-6
-todo-app>
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+todos    8.00 KiB
+test> use todos
+switched to db todos
+todos> db.todos.countDocuments()
+2
+todos> db.todos.countDocuments()
+3
+todos> 
 ```
 
+## Stop the container services
+
+```
+docker compose -f compose-native.yml down
+```
+
+## Connecting to containerised LocalStack from a containerised Node app
+
+```
+docker compose -f compose.yml up -d --build
+```
+
+## Add a Sample S3 Bucket
+
+Using the AWS CLI with LocalStack lets you interact with the emulated services exactly as you would with real AWS services. This helps ensure that your application behaves the same way in a local environment as it would in a production environment on AWS.
+
+
+Let’s create a new S3 bucket within the LocalStack environment:
+
+
+```
+awslocal s3 mb s3://mysamplebucket
+```
+
+The command `s3 mb s3://mysamplebucket` tells the AWS CLI to create a new S3 bucket (mb stands for "make bucket"). The bucket is named `mysamplebucket`
+It should show the following result:
+
+```
+make_bucket: mysamplebucket
+```
+
+
+## Try adding a task and uploading the image
+
+
+![image](https://github.com/user-attachments/assets/55ca86c0-c83b-4f5e-83d2-0e87c97ba48a)
+
+It shows the image is successfully uploaded.
+
+## Check the LocalStack container logs
+
+<img width="1337" alt="image" src="https://github.com/user-attachments/assets/e29f1a72-13a7-45d0-b55b-23a396916bfa">
+
+## Check the Mongo container logs
+
+```
+# mongosh
+Current Mongosh Log ID: 66cb1093118d7d4cc1c76a8a
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.12
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2024-08-25T10:58:46.918+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-08-25T10:58:47.668+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2024-08-25T10:58:47.668+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version
+   2024-08-25T10:58:47.668+00:00: vm.max_map_count is too low
+------
+
+test> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   40.00 KiB
+todos    8.00 KiB
+test> use todos
+switched to db todos
+todos> db.todos.countDocuments()
+2
+todos> db.todos.countDocuments()
+3
+todos> 
+```
 
 
