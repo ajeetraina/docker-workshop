@@ -20,7 +20,7 @@ In this workshop, you will:
 
 These hands-on labs will be a combination of theory and practical exercises.
 
-[Access the Workshop Here!](https://wad2024-workshop.vercel.app/)
+[Access the Workshop Here!](https://dockerworkshop.vercel.app/)
 
 ## Benefits of this workshop
 
@@ -33,7 +33,7 @@ These hands-on labs will be a combination of theory and practical exercises.
 - Docker Compose File Watch
 - Building a todo-list Application using AWS S3 and Mongo
 
- [Download the workshop slides](https://github.com/ajeetraina/wad2024-workshop/blob/7c4b31c41e1e8b64252bb15859d5bdce18428973/WeAreDevelopers-workshop.pdf)
+ [Download the workshop slides](https://github.com/ajeetraina/docker-workshop/blob/7c4b31c41e1e8b64252bb15859d5bdce18428973/WeAreDevelopers-workshop.pdf)
 
 ## Contribution Guidelines
 
