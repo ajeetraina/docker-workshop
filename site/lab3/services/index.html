@@ -894,9 +894,11 @@ This simple to-do List application allows developers to upload images to S3-emul
 <li>Object Storage: LocalStack (for emulating S3 and storing images locally for testing purposes)</li>
 </ul>
 <h2 id="project-structure">Project Structure<a class="headerlink" href="#project-structure" title="Permanent link">&para;</a></h2>
-<p>This project contains the following components:
-- <strong>/backend</strong> - This directory contains the Node.js application that handles the server-side logic and interacts with the database. This directory contains configuration settings for uploading images to LocalStack (emulated AWS S3). The uploadConfig.js file is responsible for configuring the S3 client to connect to the LocalStack S3 endpoint. This allows the backend application to store and retrieve images associated with the Todo List items.
-- <strong>/frontend</strong> - The frontend directory contains the React application that handles the user interface and interacts with the backend. </p>
+<p>This project contains the following components:</p>
+<ul>
+<li><strong>/backend</strong> - This directory contains the Node.js application that handles the server-side logic and interacts with the database. This directory contains configuration settings for uploading images to LocalStack (emulated AWS S3). The uploadConfig.js file is responsible for configuring the S3 client to connect to the LocalStack S3 endpoint. This allows the backend application to store and retrieve images associated with the Todo List items.</li>
+<li><strong>/frontend</strong> - The frontend directory contains the React application that handles the user interface and interacts with the backend. </li>
+</ul>
 <h2 id="development">Development<a class="headerlink" href="#development" title="Permanent link">&para;</a></h2>
 <ol>
 <li>Install awscli-local tool</li>
