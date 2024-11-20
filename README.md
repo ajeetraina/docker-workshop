@@ -30,13 +30,13 @@ You can use `docker` to build, install and push your extension. Also, we provide
 To build the extension, use `make build-extension` **or**:
 
 ```shell
-  docker buildx build -t dockerdevrel/wad-docker-extension:latest . --load
+  docker buildx build -t dockerdevrel/dockerworkshop-extension:latest . --load
 ```
 
 To install the extension, use `make install-extension` **or**:
 
 ```shell
-  docker extension install dockerdevrel/wad-docker-extension:latest
+  docker extension install dockerdevrel/dockerworkshop-extension:latest
 ```
 
 > If you want to automate this command, use the `-f` or `--force` flag to accept the warning message.
@@ -59,19 +59,19 @@ This starts a development server that listens on port `3000`.
 You can now tell Docker Desktop to use this as the frontend source. In another terminal run:
 
 ```shell
-  docker extension dev ui-source dockerdevrel/wad-docker-extension:latest http://localhost:3000
+  docker extension dev ui-source dockerdevrel/dockerworkshop-extension:latest http://localhost:3000
 ```
 
 In order to open the Chrome Dev Tools for your extension when you click on the extension tab, run:
 
 ```shell
-  docker extension dev debug dockerdevrel/wad-docker-extension:latest
+  docker extension dev debug dockerdevrel/dockerworkshop-extension:latest
 ```
 
 Each subsequent click on the extension tab will also open Chrome Dev Tools. To stop this behaviour, run:
 
 ```shell
-  docker extension dev reset dockerdevrel/wad-docker-extension:latest
+  docker extension dev reset dockerdevrel/dockerworkshop-extension:latest
 ```
 
 ### Backend development (optional)
@@ -84,7 +84,7 @@ Whenever you make changes in the [backend](./backend) source code, you will need
 Use the `docker extension update` command to remove and re-install the extension automatically:
 
 ```shell
-docker extension update dockerdevrel/wad-docker-extension:latest
+docker extension update dockerdevrel/dockerworkshop-extension:latest
 ```
 
 > If you want to automate this command, use the `-f` or `--force` flag to accept the warning message.
@@ -96,7 +96,7 @@ docker extension update dockerdevrel/wad-docker-extension:latest
 To remove the extension:
 
 ```shell
-docker extension rm dockerdevrel/wad-docker-extension:latest
+docker extension rm dockerdevrel/dockerworkshop-extension:latest
 ```
 
 ## What's next?
