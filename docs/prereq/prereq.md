@@ -24,7 +24,7 @@ To demonstrate the container-first development workflow, you will require Nodejs
 ## 3. Access to the repositories
 
 - https://github.com/dockersamples/docker-init-demos
-- https://github.com/dockersamples/avatar
+- https://github.com/dockersamples/avatars
 - https://github.com/dockersamples/todo-list-localstack-docker
 - 
 
