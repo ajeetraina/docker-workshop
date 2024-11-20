@@ -1,7 +1,7 @@
 services:
 
   workshop:
-    image: dockerdevrel/docker-wad-workshop:1.0
+    image: dockerdevrel/dockerworkshop:1.0
     ports:
       - "8000:8000"
     networks:

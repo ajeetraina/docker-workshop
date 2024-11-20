@@ -1,5 +1,5 @@
-IMAGE?=dockerdevrel/wad-docker-extension
-TAG?=latest
+IMAGE?=dockerdevrel/dockerworkshop-extension
+TAG?=1.0
 
 BUILDER=buildx-multi-arch
 
