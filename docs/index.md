@@ -16,9 +16,9 @@ The source code for this workshop is available [here](https://github.com/ajeetra
 
 - [Learn about Inner-loop versus Outer-loop development workflow](lab1/overview.md)
 - [Learn about Docker development workflow](lab1/docker-workflow.md)
-- Get familiar with [Container-first](lab2/overview) Vs [Container-supported](lab3/overview) development workflow
+- Get familiar with [Container-first](lab2/overview) Vs [Container-supported](lab3/overview.md) development workflow
 - [Learn about Docker Init](lab1/docker-init.md)
 - [Learn about Compose Watch](lab1/compose-watch.md)
-- [Learn how to containerise a Todo-List application using AWS S3 and Mongo](lab2/services)
+- [Learn how to containerise a Todo-List application using AWS S3 and Mongo](lab2/services.md)
 
 

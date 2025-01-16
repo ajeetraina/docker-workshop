@@ -41,6 +41,13 @@ nav:
     - Tech stack: lab3/tech-stack.md
     - Bringing up the services: lab3/services.md
 
+  - Product catalog - A Sample Application:
+    - Overview: product-catalog/overview.md
+    - Tech stack: product-catalog/tech-stack.md
+    - Develop: product-catalog/develop.md
+    - Test: product-catalog/test.md
+    - Build: product-catalog/build.md
+    - Secure: product-catalog/secure.md
 
 
 theme:
