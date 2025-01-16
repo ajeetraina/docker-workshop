@@ -32,6 +32,14 @@ This project contains the following components:
 pip install awscli-local
 ```
 
+In case, it throws error related to python. Follow the below steps:
+
+```
+python3 -m venv venv
+source venv/bin/activate
+pip install awscli-local
+```
+
 
 2. Clone the repository
 
