@@ -16,7 +16,7 @@ The source code for this workshop is available [here](https://github.com/ajeetra
 - [Learn about Inner-loop versus Outer-loop development workflow](lab1/overview.md)
 - [Learn how to spin multiple Postgres containers](lab1/postgres.md)
 - [Learn how to develop a Product Catalog API from scratch](product-catalog/develop/)
-- [Learn how to perform unit and integration tests](product-catalog/integration-tests.md)
+- [Learn how to perform unit and integration tests](product-catalog/test.md)
 - [Learn how to build your Docker image over the Cloud using Docker Build Cloud](product-catalog/build.md)
 - [Secure your inner-loop with Docker Scout](product-catalog/secure.md)
 
