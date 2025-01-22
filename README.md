@@ -26,14 +26,13 @@ These hands-on labs will be a combination of theory and practical exercises.
 
 
 - Get familiar with Inner-Loop Vs Outer-Loop Development Workflow
-- Understanding of Container-first Vs Container-supported Development Workflow
-- Overview of Docker Developer Workflow
-- Docker Image Building Best Practices
-- Docker Init
-- Docker Compose File Watch
-- Building a todo-list Application using AWS S3 and Mongo
+- Understanding of Container-supported Development Workflow
+- SDLC - Development Phase
+- SDLC - Test
+- SDLC - Build
+- SDLC - Secure
 
- [Download the workshop slides](https://github.com/ajeetraina/docker-workshop/blob/7c4b31c41e1e8b64252bb15859d5bdce18428973/WeAreDevelopers-workshop.pdf)
+ [Download the workshop slides](https://github.com/ajeetraina/docker-workshop/blob/main/Shell_Docker_Workshop.pdf)
 
 ## Contribution Guidelines
 
@@ -42,8 +41,8 @@ We welcome contributors to improve this lab workshop.
 ### Building the Lab locally
 
 ```
-docker build -t docker-wad-workshop:1.0
-docker run -d -p 8000:8000 docker-wad-workshop:1.0
+docker build -t docker-workshop:1.0
+docker run -d -p 8000:8000 docker-workshop:1.0
 ```
 
 Open your browser and access the lab via `http://localhost:8000`
