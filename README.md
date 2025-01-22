@@ -8,7 +8,7 @@
 
 # Welcome to Docker workshop
 
-Are you tired of inconsistent development setups and slow testing environments slowing down your inner loop? This 2 hour workshop to learn the best practices, applied to an inner-loop development workflow, so you learn everything from getting set up, coding, testing and debugging your code locally without altering your existing development environment.
+Are you tired of inconsistent development setups and slow testing environments slowing down your inner loop? This 3 hour workshop to learn the best practices, applied to an inner-loop development workflow, so you learn everything from getting set up, coding, testing and debugging your code locally without altering your existing development environment.
 
 
 In this workshop, you will:
