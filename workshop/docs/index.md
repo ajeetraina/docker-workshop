@@ -3,7 +3,7 @@
 
 ## GitHub Sources
 
-The source code for this workshop is available [here](https://github.com/ajeetraina/wad2024-workshop)
+The source code for this workshop is available [here](https://github.com/ajeetraina/docker-workshop)
 
 [Click here](https://github.com/ajeetraina/docker-workshop/blob/main/Shell_Docker_Workshop.pdf) to download the workshop slides.
 

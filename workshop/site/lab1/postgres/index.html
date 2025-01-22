@@ -11,6 +11,10 @@
       
       
       
+        <link rel="prev" href="../what-is-a-container/">
+      
+      
+        <link rel="next" href="../../product-catalog/overview/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>Services - Docker workshop</title>
+        <title>Running Postgres Containers - Docker workshop</title>
       
     
     
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#1-clone-the-repository" class="md-skip">
+        <a href="#running-multiple-postgres-containers" class="md-skip">
           Skip to content
         </a>
       
@@ -107,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Services
+              Running Postgres Containers
             
           </span>
         </div>
@@ -260,17 +264,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
@@ -284,7 +290,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             Inner-Loop Development workflow
@@ -298,7 +304,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,7 +325,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/what-is-a-container/" class="md-nav__link">
+      <a href="../what-is-a-container/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -337,10 +343,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../lab1/postgres/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Running Postgres Containers
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -349,6 +373,87 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#running-multiple-postgres-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running Multiple Postgres Containers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#listing-all-the-databases-l" class="md-nav__link">
+    <span class="md-ellipsis">
+      Listing all the databases - \l
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-all-schemas" class="md-nav__link">
+    <span class="md-ellipsis">
+      List all schemas
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-following-command-to-show-the-database-activity" class="md-nav__link">
+    <span class="md-ellipsis">
+      Run the following command to show the database activity:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    <span class="md-ellipsis">
+      Result:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-2-using-ask-gordon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method 2: Using "Ask Gordon"
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#remove-the-container" class="md-nav__link">
+    <span class="md-ellipsis">
+      Remove the container
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -659,63 +764,63 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#1-clone-the-repository" class="md-nav__link">
+  <a href="#running-multiple-postgres-containers" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Clone the repository:
+      Running Multiple Postgres Containers
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-switch-to-container-first-branch" class="md-nav__link">
+  <a href="#listing-all-the-databases-l" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Switch to container-first branch
+      Listing all the databases - \l
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-add-the-environment-variables" class="md-nav__link">
+  <a href="#list-all-schemas" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Add the Environment Variables
+      List all schemas
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-bring-up-the-services" class="md-nav__link">
+  <a href="#run-the-following-command-to-show-the-database-activity" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Bring up the services:
+      Run the following command to show the database activity:
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-access-the-app" class="md-nav__link">
+  <a href="#result" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Access the app
+      Result:
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#verify-mongo" class="md-nav__link">
+  <a href="#method-2-using-ask-gordon" class="md-nav__link">
     <span class="md-ellipsis">
-      Verify Mongo
+      Method 2: Using "Ask Gordon"
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#verify-the-images-added-to-aws-s3" class="md-nav__link">
+  <a href="#remove-the-container" class="md-nav__link">
     <span class="md-ellipsis">
-      Verify the images added to AWS S3
+      Remove the container
     </span>
   </a>
   
@@ -739,77 +844,88 @@
   
 
 
-  <h1>Services</h1>
+  <h1>Running Postgres Containers</h1>
 
-<h2 id="1-clone-the-repository">1. Clone the repository:</h2>
-<pre><code class="language-sh">git clone https://github.com/dockersamples/getting-started-todo-app
-cd getting-started-todo-app
+<h2 id="running-multiple-postgres-containers">Running Multiple Postgres Containers</h2>
+<pre><code>docker run -d --name postgres1 -e POSTGRES_PASSWORD=dev -p 5432:5432 postgres:latest
 </code></pre>
-<h2 id="2-switch-to-container-first-branch">2. Switch to container-first branch</h2>
-<pre><code>git checkout container-first-aws-mongo
+<pre><code>docker run -d --name postgres2 -e POSTGRES_PASSWORD=dev -p 5433:5432 postgres:13
 </code></pre>
-<h2 id="3-add-the-environment-variables">3. Add the Environment Variables</h2>
-<p>Copy .env.sample to .env file and Ensure that you have the right environmental variable added as shown:</p>
-<pre><code>MONGODB_URI=mongodb://mongodb:27017/todo-app
-JWT_SECRET=603b31XXXXXXX90d3b8cb62f0a585fd70a5ee0b4d
-AWS_ACCESS_KEY_ID=AKIAXXXXXDDDX
-AWS_SECRET_ACCESS_KEY=hSYXtvXXXXXXXO/k39FGt3u078pYWsh
-AWS_REGION=us-east-1
-S3_BUCKET_NAME=localbuckett
+<pre><code>docker run -d --name postgres3 -e POSTGRES_PASSWORD=dev -p 5434:5432 postgres:12
 </code></pre>
-<p>You can leverage <a href="https://www.javainuse.com/jwtgenerator">this link</a> to generate JWT token.</p>
-<h2 id="4-bring-up-the-services">4. Bring up the services:</h2>
-<pre><code>docker compose watch
+<p>Open Docker Dashboard and run the following commands:</p>
+<pre><code># psql -d postgres -U postgres -W
+Password: 
+psql (17.2 (Debian 17.2-1.pgdg120+1))
+Type &quot;help&quot; for help.
+
+postgres=# 
 </code></pre>
-<h2 id="5-access-the-app">5. Access the app</h2>
-<p>Open <a href="http://localhost:3000">http://localhost:3000</a> to access the todo-list app.
-Try adding a task and uploading the image.</p>
-<h2 id="verify-mongo">Verify Mongo</h2>
-<p>You can verify if task gets added by selecting the container and clicking on "Exec" option on the Docker dashboard.
-Now you should be able to run the following command to verify the tasks.</p>
-<pre><code># mongosh
-Current Mongosh Log ID: 66879e864955d6e7b2f3f54d
-Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.2.10
-Using MongoDB:          7.0.12
-Using Mongosh:          2.2.10
-
-For mongosh info see: https://docs.mongodb.com/mongodb-shell/
-
-
-To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
-You can opt-out by running the disableTelemetry() command.
-
-------
-   The server generated these startup warnings when booting
-   2024-07-05T07:18:03.008+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
-   2024-07-05T07:18:03.737+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-   2024-07-05T07:18:03.738+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version
-   2024-07-05T07:18:03.738+00:00: vm.max_map_count is too low
-------
-
-test&gt; show dbs
-admin     40.00 KiB
-config    12.00 KiB
-local     40.00 KiB
-todo-app  68.00 KiB
-test&gt; use todo-app
-switched to db todo-app
-todo-app&gt; show collections
-todos
-users
-todo-app&gt; db.todos.showDocuments()
-TypeError: db.todos.showDocuments is not a function
-todo-app&gt; db.todos.countDocuments()
-1
-todo-app&gt; db.todos.countDocuments()
-2
-todo-app&gt; db.todos.countDocuments()
-3
-todo-app&gt;
+<p>The above command includes three flags:</p>
+<ul>
+<li>-d - specifies the name of the database to connect to</li>
+<li>-U - specifies the name of the user to connect as</li>
+<li>-W - forces psql to ask for the user password before connecting to the database</li>
+</ul>
+<h2 id="listing-all-the-databases-l">Listing all the databases - \l</h2>
+<pre><code>
+                                                    List of databases
+   Name    |  Owner   | Encoding | Locale Provider |  Collate   |   Ctype    | Locale | ICU Rules |   Access privileges   
+-----------+----------+----------+-----------------+------------+------------+--------+-----------+-----------------------
+ postgres  | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |        |           | 
+ template0 | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |        |           | =c/po
+stgres          +
+           |          |          |                 |            |            |        |           | postg
+res=CTc/postgres
+ template1 | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |        |           | =c/po
+stgres          +
+           |          |          |                 |            |            |        |           | postg
+res=CTc/postgres
+(3 rows)
 </code></pre>
-<h2 id="verify-the-images-added-to-aws-s3">Verify the images added to AWS S3</h2>
-<p>Open AWS Dashboard &gt; S3 service to see the list of images uploaded.</p>
-<p><img alt="image" src="https://github.com/dockersamples/getting-started-todo-app/assets/313480/ffb64c22-f358-41ef-a7a6-2c1055d43753" /></p>
+<h2 id="list-all-schemas">List all schemas</h2>
+<p>The <code>\dn</code> psql command lists all the database schemas.</p>
+<pre><code>postgres=# \dn
+      List of schemas
+  Name  |       Owner       
+--------+-------------------
+ public | pg_database_owner
+(1 row)
+
+postgres=#
+</code></pre>
+<h2 id="run-the-following-command-to-show-the-database-activity">Run the following command to show the database activity:</h2>
+<pre><code>SELECT * from pg_stat_activity;  &lt;--- DONT FORGET &quot;;&quot;
+</code></pre>
+<h2 id="result">Result:</h2>
+<pre><code>datid | datname  | pid | leader_pid | usesysid | usename  | application_name | client_addr | client_host
+name | client_port |         backend_start         |          xact_start           |          query_start
+          |         state_change          | wait_event_type |     wait_event      | state  | backend_xid 
+| backend_xmin | query_id |              query              |         backend_type         
+-------+----------+-----+------------+----------+----------+------------------+-------------+------------
+-----+-------------+-------------------------------+-------------------------------+---------------------
+----------+-------------------------------+-----------------+---------------------+--------+-------------
++--------------+----------+---------------------------------+------------------------------
+     5 | postgres |  85 |            |       10 | postgres | psql             |             |            
+     |          -1 | 2025-01-08 11:40:22.778949+00 |                               | 2025-01-08 11:40:56.
+590114+00 | 2025-01-08 11:41:26.598462+00 | Client          | ClientRead          | idle   |             
+|              |          | SELECT pg_sleep(30);            | client backend
+     5 | postgres |  92 |            |       10 | postgres | psql             |             |            
+     |          -1 | 2025-01-08 11:41:14.359414+00 | 2025-01-08 11:43:52.615603+00 | 2025-01-08 11:43:52.
+615603+00 | 2025-01-08 11:43:52.61561+00  |                 |                     | active |             
+|          750 |          | SELECT * FROM pg_stat_activity; | client backend
+       |          |  64 |            |          |          |                  |             |            
+     |             | 2025-01-08 11:38:28.74611+00  |                               |                     
+          |                               | Activity        | AutovacuumMain      |        |             
+|              |          |                                 | autovacuum launcher
+       |          |  65 |            |       10 | postgres |                  |             |            
+:
+</code></pre>
+<h2 id="method-2-using-ask-gordon">Method 2: Using "Ask Gordon"</h2>
+<pre><code>Run a multiple version of postgres with the standard port and POSTGRES_PASSWORD set to dev
+</code></pre>
+<h2 id="remove-the-container">Remove the container</h2>
+<p>Open Docker Dashboard &gt; Selecting all the running Postgres containsrs and delete them in a single step.</p>
 
 
 

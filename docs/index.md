@@ -3,10 +3,9 @@
 
 ## GitHub Sources
 
-The source code for this workshop is available [here](https://github.com/ajeetraina/wad2024-workshop)
+The source code for this workshop is available [here](https://github.com/ajeetraina/docker-workshop)
 
-[Click here](https://github.com/ajeetraina/wad2024-workshop/blob/7c4b31c41e1e8b64252bb15859d5bdce18428973/WeAreDevelopers-workshop.pdf) to download the workshop slides.
-
+[Click here](https://github.com/ajeetraina/docker-workshop/blob/main/Shell_Docker_Workshop.pdf) to download the workshop slides.
 ## Authors
 
 - [Ajeet Singh Raina](https://www.linkedin.com/in/ajeetsraina/) - DevRel @[Docker](https://docker.com)
