@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#how-it-works" class="md-skip">
+        <a href="#how-does-this-work" class="md-skip">
           Skip to content
         </a>
       
@@ -514,9 +514,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#how-does-this-work" class="md-nav__link">
     <span class="md-ellipsis">
-      How it works?
+      How does this work?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-inside-integrationspecjs-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's inside integration/.*\.spec\.js file?
     </span>
   </a>
   
@@ -553,6 +562,15 @@
   <a href="#accessing-testcontainers-desktop-app" class="md-nav__link">
     <span class="md-ellipsis">
       Accessing Testcontainers Desktop App
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-about-the-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      How about the unit-tests?
     </span>
   </a>
   
@@ -746,9 +764,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-it-works" class="md-nav__link">
+  <a href="#how-does-this-work" class="md-nav__link">
     <span class="md-ellipsis">
-      How it works?
+      How does this work?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-inside-integrationspecjs-file" class="md-nav__link">
+    <span class="md-ellipsis">
+      What's inside integration/.*\.spec\.js file?
     </span>
   </a>
   
@@ -790,6 +817,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-about-the-unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      How about the unit-tests?
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -813,14 +849,26 @@
 <pre><code>npm run unit-test
 npm run integration-test
 </code></pre>
-<p>The script includes the following key components:</p>
-<p>Test &gt; src &gt; integration &gt; </p>
+<h2 id="how-does-this-work">How does this work?</h2>
+<p>In your <code>package.json</code> file, several scripts are being defined related to testing your application:</p>
 <ul>
-<li>KafkaSupport</li>
-<li>containerSupport</li>
-<li>productCreation.integration.*.js</li>
+<li>test: This command runs all tests using Jest, with the --detectOpenHandles flag to detect and report any open handles.</li>
+<li>unit-test: This command runs unit tests using Jest, with the --detectOpenHandles flag and a specific testPathIgnorePatterns to exclude integration tests.</li>
+<li>integration-test: This command runs integration tests using Jest, with the --detectOpenHandles flag and a specific test pattern to include only integration tests.</li>
+<li>test-watch: This command runs Jest in watch mode, allowing you to run tests as you make changes to your code.</li>
+<li>prepare: This command runs the husky install script, which sets up Git hooks for your project.</li>
 </ul>
-<h2 id="how-it-works">How it works?</h2>
+<p>To determine which tests are executed when you run <code>npm run integration-test</code>, you need to look at the command itself. 
+The command is:</p>
+<pre><code>env-cmd --file .env.node -- jest &quot;test/integration/.*\\.spec\\.js&quot; --detectOpenHandles
+</code></pre>
+<p>In this command, Jest is executed with the <code>--testPathPattern</code> option set to "test/integration/.*\.spec\.js". This pattern matches all files in the test/integration directory that end with .spec.js. Therefore, only the integration tests will be executed when you run npm run integration-test.</p>
+<p>The other scripts, such as <code>test</code>, <code>unit-test</code>, and <code>test-watch</code>, are configured to run different types of tests based on the specified options. The unit-test script excludes integration tests by using the <code>--testPathIgnorePatterns</code> option. </p>
+<p>The <code>test-watch</code> script runs Jest in watch mode, allowing you to run tests as you make changes to your code.</p>
+<p>By running <code>npm run integration-test</code>, you can ensure that only the integration tests are executed, providing a focused and targeted testing experience.</p>
+<h2 id="whats-inside-integrationspecjs-file">What's inside integration/.*\.spec\.js file?</h2>
+<p>The file integration/.<em>\.spec\.js is a JavaScript file containing integration tests for your application. The file name pattern .</em>\.spec\.js is a regular expression that matches any file ending with .spec.js in the integration directory.</p>
+<p>Inside the integration/.*\.spec\.js file, you'll find the following components:</p>
 <h2 id="1importing-required-modules">1.Importing required modules:</h2>
 <ul>
 <li>fs for reading image files.</li>
@@ -847,6 +895,28 @@ npm run integration-test
 <h2 id="accessing-testcontainers-desktop-app">Accessing Testcontainers Desktop App</h2>
 <p>Open Testcontainer Desktop app and you'll notice that 3 containers appear and clean up once the test gets completed.</p>
 <p><img width="940" alt="image" src="https://github.com/user-attachments/assets/9277a932-2227-4cf2-97ab-758e1dd3ea38" /></p>
+<h2 id="how-about-the-unit-tests">How about the unit-tests?</h2>
+<p>Unit tests are tests that focus on individual components or units of your application, validating the functionality and behavior of specific parts of your code. They are essential for catching and identifying issues at a granular level, ensuring the reliability and correctness of your application.</p>
+<p>For example, the "Product creation" test suite includes tests such as:
+- "should publish and return a product when creating a product"
+- "should publish a Kafka message when creating a product"
+- "should upload a file correctly"
+- "doesn't allow duplicate UPCs"</p>
+<p>When you run <code>npm run unit-test</code>, the following steps are executed based on the configuration in your package.json file:</p>
+<ol>
+<li>
+<p>The <code>env-cmd</code> command is executed with the <code>--file .env.node option</code>, which loads environment variables from the <code>.env.node</code> file.</p>
+</li>
+<li>
+<p>The jest command is executed with the specified options:</p>
+</li>
+<li>
+<p><code>--detectOpenHandles</code>: This flag detects and reports any open handles.</p>
+</li>
+<li><code>--testPathIgnorePatterns "test/integration/.*\\.spec\\.js"</code>: This option excludes integration tests by using a regular expression pattern that matches the file names of integration test files.
+The jest command runs the unit tests defined in your project. The  <code>--testPathIgnorePatterns</code> option ensures that only unit tests are executed, excluding integration tests.</li>
+</ol>
+<p>In summary, when you run <code>npm run unit-test</code>, the unit tests are executed using Jest, with the specified options to exclude integration tests and detect open handles.</p>
 
 
 
