@@ -918,7 +918,7 @@
 npm run dev
 </code></pre>
 <h2 id="apply-the-patch">Apply the patch:</h2>
-<pre><code>git apply demo/e2e.patch
+<pre><code>patch -p1 &lt; demo/e2.patch
 </code></pre>
 <h3 id="accessing-the-web-client">Accessing the Web Client</h3>
 <p>Open the web client (http://localhost:5173) and create a few products.</p>
@@ -945,6 +945,9 @@ catalog=# SELECT * FROM products;
 <h3 id="configuring">Configuring</h3>
 <p>In VS Code, open the <code>src/services/ProductService.js</code> file and add the following to the publishEvent on line ~52:</p>
 <pre><code>upc: product.upc,
+</code></pre>
+<p>OR</p>
+<pre><code>patch -p1 -R &lt; demo/e2e.patch
 </code></pre>
 <p>Save the file and create a new product using the web UI. </p>
 <p><img width="1191" alt="image" src="https://github.com/user-attachments/assets/32c5ba6c-60c1-403b-9962-50c501a5e996" /></p>

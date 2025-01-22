@@ -25,7 +25,7 @@ npm run dev
 ## Apply the patch:
 
 ```
-git apply demo/e2e.patch
+patch -p1 < demo/e2.patch
 ```
 
 ### Accessing the Web Client
@@ -76,6 +76,12 @@ In VS Code, open the `src/services/ProductService.js` file and add the following
 
 ```
 upc: product.upc,
+```
+
+OR
+
+```
+patch -p1 -R < demo/e2e.patch
 ```
 
 Save the file and create a new product using the web UI. 
