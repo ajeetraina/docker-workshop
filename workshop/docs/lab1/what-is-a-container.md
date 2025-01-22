@@ -1,6 +1,6 @@
 Let’s compare containers to smartphone apps. 
 
-![what is a container](images/what-is-a-container.png)
+[what is a container](../images/what-is-a-container.png)
 
 Most of us have smartphones that have lots of apps installed on them.
 
