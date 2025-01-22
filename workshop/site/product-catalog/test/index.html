@@ -522,6 +522,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How it works?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1importing-required-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.Importing required modules:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2setting-up-and-tearing-down-test-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.Setting up and tearing down test environment:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3defining-unit-and-integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.Defining unit and integration tests:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-testcontainers-desktop-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Testcontainers Desktop App
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -718,6 +763,51 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#how-it-works" class="md-nav__link">
+    <span class="md-ellipsis">
+      How it works?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1importing-required-modules" class="md-nav__link">
+    <span class="md-ellipsis">
+      1.Importing required modules:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2setting-up-and-tearing-down-test-environment" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.Setting up and tearing down test environment:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3defining-unit-and-integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.Defining unit and integration tests:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accessing-testcontainers-desktop-app" class="md-nav__link">
+    <span class="md-ellipsis">
+      Accessing Testcontainers Desktop App
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -742,46 +832,40 @@
 <pre><code>npm run unit-test
 npm run integration-test
 </code></pre>
-<pre><code>The script includes the following key components:
-
-Test &gt; src &gt; integration &gt; 
-kAfkaSupport
-containerSupport
-productCreation.integration.*.js
-
-
-
-1.Importing required modules:
-
-
-fs for reading image files.
-containerSupport for creating and managing Docker containers for testing.
-kafkaSupport for consuming messages from Kafka.
-
-
-2.Setting up and tearing down test environment:
-
-
-Starting Docker containers for PostgreSQL, Kafka, and Localstack using the containerSupport module.
-Creating an instance of the KafkaConsumer for consuming messages from Kafka.
-Importing the ProductService and PublisherService for testing the product creation feature.
-Disconnecting from Kafka and tearing down the test environment after all tests have completed.
-
-
-3.Defining unit and integration tests:
-
-
-&quot;Product creation&quot; test suite:
-&quot;should publish and return a product when creating a product&quot;: Tests the creation of a product, verification of the product's properties, and retrieval of the product from the product service.
-&quot;should publish a Kafka message when creating a product&quot;: Tests the creation of a product and verification of the corresponding Kafka message.
-&quot;should upload a file correctly&quot;: Tests the upload of an image file, verification of the corresponding Kafka message, and retrieval of the image file from the product service.
-&quot;doesn't allow duplicate UPCs&quot;: Tests the prevention of creating products with duplicate UPCs.
-
-The script also includes a timeout value for starting the Docker containers and waiting for messages from Kafka, ensuring that the tests have enough time to complete.
-
-Overall, the script provides a comprehensive set of unit and integration tests for the &quot;Product creation&quot; feature, ensuring that the functionality is working as expected and providing valuable feedback on the overall system.
-</code></pre>
-<p>Open Testcontainer Desktop app and you'll notice that 3 containers appear and disppear.</p>
+<p>```
+The script includes the following key components:</p>
+<p>Test &gt; src &gt; integration &gt; </p>
+<ul>
+<li>KafkaSupport</li>
+<li>containerSupport</li>
+<li>productCreation.integration.*.js</li>
+</ul>
+<h2 id="how-it-works">How it works?</h2>
+<h2 id="1importing-required-modules">1.Importing required modules:</h2>
+<ul>
+<li>fs for reading image files.</li>
+<li>containerSupport for creating and managing Docker containers for testing.</li>
+<li>kafkaSupport for consuming messages from Kafka.</li>
+</ul>
+<h2 id="2setting-up-and-tearing-down-test-environment">2.Setting up and tearing down test environment:</h2>
+<ul>
+<li>Starting Docker containers for PostgreSQL, Kafka, and Localstack using the containerSupport module.</li>
+<li>Creating an instance of the KafkaConsumer for consuming messages from Kafka.</li>
+<li>Importing the ProductService and PublisherService for testing the product creation feature.</li>
+<li>Disconnecting from Kafka and tearing down the test environment after all tests have completed.</li>
+</ul>
+<h2 id="3defining-unit-and-integration-tests">3.Defining unit and integration tests:</h2>
+<ul>
+<li>"Product creation" test suite:</li>
+<li>"should publish and return a product when creating a product": Tests the creation of a product, verification of the product's properties, and retrieval of the product from the product service.</li>
+<li>"should publish a Kafka message when creating a product": Tests the creation of a product and verification of the corresponding Kafka message.</li>
+<li>"should upload a file correctly": Tests the upload of an image file, verification of the corresponding Kafka message, and retrieval of the image file from the product service.</li>
+<li>"doesn't allow duplicate UPCs": Tests the prevention of creating products with duplicate UPCs.</li>
+</ul>
+<p>The script also includes a timeout value for starting the Docker containers and waiting for messages from Kafka, ensuring that the tests have enough time to complete.</p>
+<p>Overall, the script provides a comprehensive set of unit and integration tests for the "Product creation" feature, ensuring that the functionality is working as expected and providing valuable feedback on the overall system.</p>
+<h2 id="accessing-testcontainers-desktop-app">Accessing Testcontainers Desktop App</h2>
+<p>Open Testcontainer Desktop app and you'll notice that 3 containers appear and clean up once the test gets completed.</p>
 <p><img width="940" alt="image" src="https://github.com/user-attachments/assets/9277a932-2227-4cf2-97ab-758e1dd3ea38" /></p>
 
 
