@@ -20,5 +20,7 @@ The source code for this workshop is available [here](https://github.com/ajeetra
 - [Learn how to build your Docker image over the Cloud using Docker Build Cloud](product-catalog/build.md)
 - [Secure your inner-loop with Docker Scout](product-catalog/secure.md)
 
+## Install Testcontainers Desktop App
 
+[Click here](https://testcontainers.com/desktop/) to download Testcontainers Desktop app and install it on your machine.
 

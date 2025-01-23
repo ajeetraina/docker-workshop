@@ -16,7 +16,7 @@ In case you're using Windows 11, you will need to enable WSL 2 by opening Docker
 
 ## 2. Install Nodejs
 
-To demonstrate the container-first development workflow, you will require Nodejs installed on your system.
+To demonstrate the Product Catalog sample app, you will require Node 22+ version installed on your system.
 
 
 > Note: You must download and install the Node pre-built installer on your local system to get the npm install command to work seamlessly. [Click here to download](https://nodejs.org/en/download/)
@@ -54,4 +54,6 @@ ssl_client-1.36.1-r29
 zlib-1.3.1-r1
 ```
 
+## Install Testcontainers Desktop App
 
+[Click here](https://testcontainers.com/desktop/) to download Testcontainers Desktop app and install it on your machine.
