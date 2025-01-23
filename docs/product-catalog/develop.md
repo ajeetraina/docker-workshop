@@ -25,7 +25,7 @@ npm run dev
 ## Apply the patch:
 
 ```
-git apply demo/e2e.patch
+patch -p1 < demo/e2.patch
 ```
 
 ### Accessing the Web Client
