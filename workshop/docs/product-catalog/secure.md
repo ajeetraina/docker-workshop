@@ -4,7 +4,7 @@
 docker build -t newcatalog .
 ```
 
-<img width="1128" alt="image" src="https://github.com/user-attachments/assets/bd5a0dfd-8580-4b39-951f-7f7d920887c8" />
+<img width="1156" alt="image" src="https://github.com/user-attachments/assets/b44ba25f-327a-43e3-95b7-60c8d49bab8e" />
 
 
 ## Apply the patches
