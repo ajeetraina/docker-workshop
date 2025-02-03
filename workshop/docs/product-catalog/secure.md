@@ -13,6 +13,6 @@ docker build -t newcatalog .
 patch -p1 < /demo/scout.patch
 ```
 
-<img width="1141" alt="image" src="https://github.com/user-attachments/assets/d95fe357-aad2-45ba-ae0d-b81fe743a898" />
+<img width="1147" alt="image" src="https://github.com/user-attachments/assets/079c563f-3f29-4629-9b23-782b7287d73a" />
 
 
