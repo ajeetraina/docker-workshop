@@ -5,6 +5,15 @@
 git clone https://github.com/dockersamples/catalog-service-node
 ```
 
+
+## Initial Setup
+
+```
+cd demo/sdlc-e2e
+./setup.sh
+```
+
+
 ### Run the Compose
 
 ```
@@ -22,11 +31,6 @@ npm install
 npm run dev
 ```
 
-## Apply the patch:
-
-```
-patch -p1 < demo/e2.patch
-```
 
 ### Accessing the Web Client
 
@@ -76,12 +80,6 @@ In VS Code, open the `src/services/ProductService.js` file and add the following
 
 ```
 upc: product.upc,
-```
-
-OR
-
-```
-patch -p1 -R < demo/e2e.patch
 ```
 
 Save the file and create a new product using the web UI. 

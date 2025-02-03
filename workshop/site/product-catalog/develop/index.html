@@ -502,11 +502,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initial Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#run-the-compose" class="md-nav__link">
     <span class="md-ellipsis">
       Run the Compose
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -517,16 +532,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apply-the-patch" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apply the patch:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Apply the patch:">
+    <nav class="md-nav" aria-label="Setting up the Demo">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -803,11 +809,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initial Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#run-the-compose" class="md-nav__link">
     <span class="md-ellipsis">
       Run the Compose
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -818,16 +839,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apply-the-patch" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apply the patch:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Apply the patch:">
+    <nav class="md-nav" aria-label="Setting up the Demo">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -909,6 +921,10 @@
 <h3 id="clone-the-repo">Clone the repo</h3>
 <pre><code>git clone https://github.com/dockersamples/catalog-service-node
 </code></pre>
+<h2 id="initial-setup">Initial Setup</h2>
+<pre><code>cd demo/sdlc-e2e
+./setup.sh
+</code></pre>
 <h3 id="run-the-compose">Run the Compose</h3>
 <pre><code>docker compose up -d
 </code></pre>
@@ -916,9 +932,6 @@
 <p>Bring up the API service </p>
 <pre><code>npm install
 npm run dev
-</code></pre>
-<h2 id="apply-the-patch">Apply the patch:</h2>
-<pre><code>patch -p1 &lt; demo/e2.patch
 </code></pre>
 <h3 id="accessing-the-web-client">Accessing the Web Client</h3>
 <p>Open the web client (http://localhost:5173) and create a few products.</p>
@@ -945,9 +958,6 @@ catalog=# SELECT * FROM products;
 <h3 id="configuring">Configuring</h3>
 <p>In VS Code, open the <code>src/services/ProductService.js</code> file and add the following to the publishEvent on line ~52:</p>
 <pre><code>upc: product.upc,
-</code></pre>
-<p>OR</p>
-<pre><code>patch -p1 -R &lt; demo/e2e.patch
 </code></pre>
 <p>Save the file and create a new product using the web UI. </p>
 <p><img width="1191" alt="image" src="https://github.com/user-attachments/assets/32c5ba6c-60c1-403b-9962-50c501a5e996" /></p>
