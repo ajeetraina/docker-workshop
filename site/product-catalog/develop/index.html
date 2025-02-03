@@ -502,11 +502,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initial Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#run-the-compose" class="md-nav__link">
     <span class="md-ellipsis">
       Run the Compose
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -517,16 +532,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apply-the-patch" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apply the patch:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Apply the patch:">
+    <nav class="md-nav" aria-label="Setting up the Demo">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -803,11 +809,26 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#initial-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Initial Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Initial Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#run-the-compose" class="md-nav__link">
     <span class="md-ellipsis">
       Run the Compose
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -818,16 +839,7 @@
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#apply-the-patch" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apply the patch:
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Apply the patch:">
+    <nav class="md-nav" aria-label="Setting up the Demo">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -909,21 +921,22 @@
 <h3 id="clone-the-repo">Clone the repo</h3>
 <pre><code>git clone https://github.com/dockersamples/catalog-service-node
 </code></pre>
+<h2 id="initial-setup">Initial Setup</h2>
+<pre><code>cd demo/sdlc-e2e
+./setup.sh
+</code></pre>
 <h3 id="run-the-compose">Run the Compose</h3>
 <pre><code>docker compose up -d
 </code></pre>
 <h2 id="setting-up-the-demo">Setting up the Demo</h2>
-<p>Bring up the API service </p>
+<p>Bring up the API service</p>
 <pre><code>npm install
 npm run dev
-</code></pre>
-<h2 id="apply-the-patch">Apply the patch:</h2>
-<pre><code>patch -p1 &lt; demo/e2.patch
 </code></pre>
 <h3 id="accessing-the-web-client">Accessing the Web Client</h3>
 <p>Open the web client (http://localhost:5173) and create a few products.</p>
 <h3 id="accessing-the-database-visualizer">Accessing the database visualizer</h3>
-<p>Open <a href="http://localhost:5050">http://localhost:5050</a> and validate the products exist in the database. 
+<p>Open <a href="http://localhost:5050">http://localhost:5050</a> and validate the products exist in the database.
 "Good! We see the UPCs are persisted in the database"</p>
 <p>Use the following Postgres CLI to check if the products are added or not.</p>
 <pre><code># psql -U postgres
@@ -938,7 +951,7 @@ catalog=# SELECT * FROM products;
 </code></pre>
 <h3 id="access-the-kafka-visualizer">Access the Kafka Visualizer</h3>
 <p>Before we access visualizer, let's apply the patch:</p>
-<p>Open the Kafka visualizer <a href="http://localhost:8080">http://localhost:8080</a> and look at the published messages. 
+<p>Open the Kafka visualizer <a href="http://localhost:8080">http://localhost:8080</a> and look at the published messages.
 "Ah! We see the messages don't have the UPC"</p>
 <p><img width="1213" alt="image" src="https://github.com/user-attachments/assets/a3e3ff3d-f08c-4168-bfb2-e59800be4d58" /></p>
 <h2 id="lets-fix-it">Let's fix it...</h2>
@@ -946,7 +959,7 @@ catalog=# SELECT * FROM products;
 <p>In VS Code, open the <code>src/services/ProductService.js</code> file and add the following to the publishEvent on line ~52:</p>
 <pre><code>upc: product.upc,
 </code></pre>
-<p>Save the file and create a new product using the web UI. </p>
+<p>Save the file and create a new product using the web UI.</p>
 <p><img width="1191" alt="image" src="https://github.com/user-attachments/assets/32c5ba6c-60c1-403b-9962-50c501a5e996" /></p>
 <p>Validate the message has the expected contents.</p>
 
