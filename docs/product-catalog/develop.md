@@ -1,212 +1,153 @@
-# Development Environment Setup
 
-In this section, you'll learn how to set up and run a containerized development environment for the Product Catalog application. This approach demonstrates how Docker simplifies the development process by providing consistent environments and dependencies.
+### Clone the repo
 
-## Prerequisites
-
-Before you begin, ensure you have:
-
-- Docker Desktop installed and running
-- Git installed
-- Node.js installed (for local development)
-- A code editor (VS Code recommended)
-
-## Getting Started
-
-### 1. Clone the Repository
-
-Start by cloning the sample repository:
-
-```bash
+```
 git clone https://github.com/dockersamples/catalog-service-node
-cd catalog-service-node
 ```
 
-### 2. Initial Setup
 
-Run the setup script to prepare your development environment:
+## Initial Setup
 
-```bash
+```
 cd demo/sdlc-e2e
 ./setup.sh
 ```
 
-This script performs several key actions:
-- Creates a new Git branch for your work
-- Applies necessary patches to prepare the demo
-- Installs npm dependencies
-- Pulls required Docker images
-- Configures Docker Build Cloud and Scout (optional)
+> The setup.sh script performs several important setup tasks to prepare the development environment for the Docker workshop. Let me explain what it does in detail:
+> The script performs the following tasks:
 
-### 3. Understanding the Development Environment
+> - Creates a demo branch:
 
-The development environment consists of several containerized services:
+> It determines the repository root using git rev-parse --show-toplevel
+> It creates a new git branch with a unique name combining "demo", the current date, and your username (e.g., demo-20250304-ajeet)
+> This ensures each participant has their own isolated branch to work with
 
-- **PostgreSQL**: Database for storing product information
-- **Kafka**: Message broker for event publishing
-- **LocalStack**: For simulating AWS S3 locally
-- **WireMock**: Mocks the external inventory service
-- **UI Client**: Web interface for testing the API
-- **pgAdmin & Kafbat**: Admin UIs for database and Kafka visualization
 
-This environment allows you to develop and test without needing to connect to external services.
+> - Cleans the environment:
 
-### 4. Starting the Development Environment
+> Runs git clean -f to remove untracked files
+> Deletes any existing branches named 'temp' or with the same demo branch name
+> Creates a temporary branch, deletes the main branch locally, then recreates it
+> This ensures everyone starts with a clean state
 
-Start all the required services using Docker Compose:
 
-```bash
-# Navigate back to the project root
-cd ../..
+> - Updates to latest code:
 
-# Start all services
+> Pulls the latest changes from the remote repository
+
+
+> - Applies the demo patch:
+
+> Applies the demo.patch file using git apply --whitespace=fix
+> This patch includes specific modifications to the codebase for the workshop
+> In particular, it removes the upc: product.upc, line from src/services/ProductService.js (line 52)
+> It also modifies the Dockerfile to use an older Node.js version and changes some package versions
+
+
+> - Creates a commit:
+
+> Commits the changes with the message "Demo prep"
+
+
+> -  Installs dependencies:
+
+> Runs npm install to install all required Node.js dependencies
+
+
+> -  Downloads container images:
+
+> Runs docker compose pull to download all the required Docker images in advance
+> This saves time during the workshop
+
+
+> -  Prepares for Docker Build Cloud:
+
+> Removes postgres:17.2 container image (if it exists)
+> Creates and configures a cloud buildx builder for Docker Build Cloud
+> This enables faster builds using Docker's cloud-based build infrastructure
+
+
+> - Configures Docker Scout:
+
+> Sets up Docker Scout with the dockerdevrel organization
+> This enables security scanning capabilities for the workshop
+
+
+> In summary, the setup.sh script prepares a consistent, clean environment with all necessary dependencies, tools, and configurations so that workshop participants can immediately start working on the exercises without spending time on setup. It also makes deliberate modifications to the codebase (like removing the UPC field from Kafka messages) that will be "fixed" during the workshop exercises.
+
+
+### Run the Compose
+
+```
 docker compose up -d
 ```
 
-You can verify the running containers with:
+## Setting up the Demo
 
-```bash
-docker compose ps
+
+Bring up the API service 
+
+
 ```
-
-Expected output:
-```
-NAME                             COMMAND                  SERVICE                CREATED             STATUS              PORTS
-catalog-service-node-client-1    "docker-entrypoint.s…"   client                 3 minutes ago       Up 3 minutes        0.0.0.0:5173->5173/tcp
-catalog-service-node-kafka-1     "/etc/confluent/dock…"   kafka                  3 minutes ago       Up 3 minutes        0.0.0.0:9092->9092/tcp
-catalog-service-node-kafbat-1    "/app/entrypoint.sh"     kafbat                 3 minutes ago       Up 3 minutes        0.0.0.0:8080->8080/tcp
-catalog-service-node-localstack-1  "docker-entrypoint.sh"   localstack             3 minutes ago       Up 3 minutes        0.0.0.0:4566-4583->4566-4583/tcp
-catalog-service-node-pgadmin-1   "/entrypoint.sh"         pgadmin                3 minutes ago       Up 3 minutes        0.0.0.0:5050->80/tcp
-catalog-service-node-postgres-1  "docker-entrypoint.s…"   postgres               3 minutes ago       Up 3 minutes        0.0.0.0:5432->5432/tcp
-catalog-service-node-wiremock-1  "/docker-entrypoint.…"   wiremock               3 minutes ago       Up 3 minutes        0.0.0.0:8081->8080/tcp
-```
-
-### 5. Starting the API Service
-
-Now, start the Node.js API service in development mode:
-
-```bash
 npm install
 npm run dev
 ```
 
-This will start the application in development mode with hot-reloading enabled.
 
-## Exploring the Application
+### Accessing the Web Client
 
-### 1. Accessing the Web Client
+Open the web client (http://localhost:5173) and create a few products.
 
-Open your browser and navigate to [http://localhost:5173](http://localhost:5173)
+### Accessing the database visualizer 
 
-This simple UI allows you to:
-- Create new products
-- View existing products
-- Upload product images
+Open [http://localhost:5050](http://localhost:5050) and validate the products exist in the database. 
+"Good! We see the UPCs are persisted in the database"
 
-Try creating a few products to verify the setup is working correctly.
 
-### 2. Examining the Database
+Use the following Postgres CLI to check if the products are added or not.
 
-#### Using pgAdmin
-
-1. Open [http://localhost:5050](http://localhost:5050)
-2. Log in with the following credentials:
-   - Email: `admin@example.com`
-   - Password: `admin`
-3. Connect to the PostgreSQL server:
-   - Right-click on "Servers" and select "Create" > "Server"
-   - Name: `Catalog DB`
-   - Connection tab:
-     - Host: `postgres`
-     - Port: `5432`
-     - Username: `postgres`
-     - Password: `postgres`
-4. Navigate to Servers > Catalog DB > Databases > catalog > Schemas > public > Tables > products
-5. Right-click on "products" and select "View/Edit Data" > "All Rows"
-
-#### Using Postgres CLI
-
-You can also access the database directly using the Postgres CLI:
-
-```bash
-# Connect to the PostgreSQL container
-docker exec -it catalog-service-node-postgres-1 psql -U postgres
-
-# Switch to the catalog database
+```
+# psql -U postgres
+psql (17.1 (Debian 17.1-1.pgdg120+1))
+Type "help" for help
 postgres=# \c catalog
-
-# Query the products table
+You are now connected to database "catalog" as user "postgres".
 catalog=# SELECT * FROM products;
-```
-
-You should see the products you created earlier:
-
-```
- id |    name     |     upc      | price  | is_deleted
-----+-------------+--------------+--------+------------
   1 | New Product | 100000000001 | 100.00 | f
   2 | New Product | 100000000002 | 100.00 | f
   3 | New Product | 100000000003 | 100.00 | f
 ```
 
-### 3. Observing Kafka Messages
 
-The application publishes events to Kafka when products are created, updated, or deleted.
 
-1. Open the Kafka visualizer at [http://localhost:8080](http://localhost:8080)
-2. Navigate to the "Topics" section
-3. Select the "products" topic
-4. Examine the messages
+### Access the Kafka Visualizer
 
-You'll notice that the Kafka messages don't include the UPC property:
+Before we access visualizer, let's apply the patch:
 
-![Kafka Messages Missing UPC](https://github.com/user-attachments/assets/a3e3ff3d-f08c-4168-bfb2-e59800be4d58)
 
-## Fixing the UPC Issue in Kafka Events
 
-Let's examine why the UPC is missing from Kafka events and fix it:
+Open the Kafka visualizer [http://localhost:8080](http://localhost:8080) and look at the published messages. 
+"Ah! We see the messages don't have the UPC"
 
-1. Open the `src/services/ProductService.js` file in your code editor
-2. Find the `publishEvent` function call around line 52
-3. Add the UPC field to the event payload:
+<img width="1213" alt="image" src="https://github.com/user-attachments/assets/a3e3ff3d-f08c-4168-bfb2-e59800be4d58" />
 
-```javascript
-publishEvent({
-  action: "product_created",
-  id: newProductId,
-  name: product.name,
-  upc: product.upc, // Add this line
-  price: product.price,
-});
+
+
+## Let's fix it...
+
+
+### Configuring 
+
+In VS Code, open the `src/services/ProductService.js` file and add the following to the publishEvent on line ~52:
+
+```
+upc: product.upc,
 ```
 
-4. Save the file
-5. The development server should automatically reload
-6. Create a new product using the web UI
-7. Check the Kafka messages again:
+Save the file and create a new product using the web UI. 
 
-![Kafka Messages With UPC](https://github.com/user-attachments/assets/32c5ba6c-60c1-403b-9962-50c501a5e996)
 
-Now you can see the UPC appears in the Kafka messages!
+<img width="1191" alt="image" src="https://github.com/user-attachments/assets/32c5ba6c-60c1-403b-9962-50c501a5e996" />
 
-## Development Best Practices with Docker
+Validate the message has the expected contents.
 
-Using Docker for development offers several advantages:
-
-1. **Consistent Environments**: Everyone works with the same dependencies and services
-2. **Isolated Services**: Each service runs in its own container
-3. **Easy Cleanup**: When you're done, just run `docker compose down`
-4. **Service Replication**: Local environment mirrors production services
-
-### Docker Compose Tips
-
-- Use `docker compose logs -f [service]` to follow service logs
-- Restart a single service with `docker compose restart [service]`
-- Access a container shell with `docker compose exec [service] bash`
-
-## Next Steps
-
-Now that you have the development environment running and have fixed the UPC issue, you're ready to:
-
-1. Continue developing the application with the confidence that your changes will work across environments
-2. Move on to the [Testing phase](test.md) to learn how to properly test your application with Testcontainers

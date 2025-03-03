@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#unit-and-integration-testing" class="md-skip">
+        <a href="#testing-your-containerized-application" class="md-skip">
           Skip to content
         </a>
       
@@ -478,6 +478,8 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
       
         <label class="md-nav__link md-nav__link--active" for="__toc">
           
@@ -506,6 +508,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -514,9 +518,138 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unit-and-integration-testing" class="md-nav__link">
+  <a href="#understanding-testcontainers" class="md-nav__link">
     <span class="md-ellipsis">
-      Unit and Integration Testing
+      Understanding Testcontainers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-testcontainers-desktop-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up Testcontainers Desktop (Optional)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-test-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Test Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-integration-test-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Integration Test Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the Integration Test Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Cases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-testcontainers-for-integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits of Testcontainers for Integration Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-testing-patterns-with-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Testing Patterns with Containers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
     </span>
   </a>
   
@@ -702,6 +835,8 @@
   
   
   
+    
+  
   
     <label class="md-nav__title" for="__toc">
       <span class="md-nav__icon md-icon"></span>
@@ -710,9 +845,138 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#unit-and-integration-testing" class="md-nav__link">
+  <a href="#understanding-testcontainers" class="md-nav__link">
     <span class="md-ellipsis">
-      Unit and Integration Testing
+      Understanding Testcontainers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-testcontainers-desktop-optional" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up Testcontainers Desktop (Optional)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-test-structure" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Test Structure
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the Tests
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Running the Tests">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#unit-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unit Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#integration-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Integration Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-integration-test-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Integration Test Code
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the Integration Test Code">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#test-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Test Cases
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#benefits-of-testcontainers-for-integration-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Benefits of Testcontainers for Integration Testing
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#common-testing-patterns-with-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Testing Patterns with Containers
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
     </span>
   </a>
   
@@ -736,41 +1000,167 @@
   
 
 
-  <h1>Test</h1>
-
-<h2 id="unit-and-integration-testing">Unit and Integration Testing</h2>
-<p>Run the following command from the root of the project
-directory:</p>
-<pre><code>npm run unit-test
-npm run integration-test
-</code></pre>
-<p>The script includes the following key components:</p>
+<h1 id="testing-your-containerized-application">Testing Your Containerized Application</h1>
+<p>In this section, you'll learn how to implement and run automated tests for your containerized application using Testcontainers. This approach ensures that your tests run in an environment that closely matches production, leading to more reliable test results.</p>
+<h2 id="understanding-testcontainers">Understanding Testcontainers</h2>
+<p><a href="https://testcontainers.com/">Testcontainers</a> is a library that provides lightweight, throwaway instances of common databases, message brokers, or anything else that can run in a Docker container. It's perfect for integration testing because:</p>
 <ul>
-<li>Test &gt; src &gt; integration &gt; </li>
-<li>kafkaSupport</li>
-<li>containerSupport</li>
-<li>productCreation.integration.*.js</li>
+<li>It creates isolated environments for each test</li>
+<li>It spins up actual services rather than mocks (when needed)</li>
+<li>It cleans up automatically after tests complete</li>
+<li>It's language-agnostic (though we'll use the JavaScript implementation)</li>
 </ul>
-<p>1.Importing required modules:</p>
-<p>fs for reading image files.
-containerSupport for creating and managing Docker containers for testing.
-kafkaSupport for consuming messages from Kafka.</p>
-<p>2.Setting up and tearing down test environment:</p>
-<p>Starting Docker containers for PostgreSQL, Kafka, and Localstack using the containerSupport module.
-Creating an instance of the KafkaConsumer for consuming messages from Kafka.
-Importing the ProductService and PublisherService for testing the product creation feature.
-Disconnecting from Kafka and tearing down the test environment after all tests have completed.</p>
-<p>3.Defining unit and integration tests:</p>
-<p>"Product creation" test suite:
-"should publish and return a product when creating a product": Tests the creation of a product, verification of the product's properties, and retrieval of the product from the product service.
-"should publish a Kafka message when creating a product": Tests the creation of a product and verification of the corresponding Kafka message.
-"should upload a file correctly": Tests the upload of an image file, verification of the corresponding Kafka message, and retrieval of the image file from the product service.
-"doesn't allow duplicate UPCs": Tests the prevention of creating products with duplicate UPCs.</p>
-<p>The script also includes a timeout value for starting the Docker containers and waiting for messages from Kafka, ensuring that the tests have enough time to complete.</p>
-<p>Overall, the script provides a comprehensive set of unit and integration tests for the "Product creation" feature, ensuring that the functionality is working as expected and providing valuable feedback on the overall system.
-```</p>
-<p>Open Testcontainer Desktop app and you'll notice that 3 containers appear and disppear.</p>
-<p><img width="940" alt="image" src="https://github.com/user-attachments/assets/9277a932-2227-4cf2-97ab-758e1dd3ea38" /></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before running the tests, ensure you have:</p>
+<ul>
+<li>Docker Desktop installed and running</li>
+<li>Testcontainers Desktop installed (optional but recommended)</li>
+<li>Completed the <a href="../develop/">Development phase</a></li>
+</ul>
+<h2 id="setting-up-testcontainers-desktop-optional">Setting Up Testcontainers Desktop (Optional)</h2>
+<ol>
+<li>Download and install <a href="https://testcontainers.com/desktop/">Testcontainers Desktop</a></li>
+<li>Open the application</li>
+<li>Ensure it can connect to your Docker instance</li>
+</ol>
+<p>Testcontainers Desktop provides a visual interface for monitoring containers created during testing.</p>
+<h2 id="understanding-the-test-structure">Understanding the Test Structure</h2>
+<p>Our application uses two types of tests:</p>
+<ol>
+<li><strong>Unit Tests</strong>: Test individual functions without external dependencies</li>
+<li><strong>Integration Tests</strong>: Test complete features with actual dependencies (using Testcontainers)</li>
+</ol>
+<p>The test files are located in:
+- <code>test/src/unit/</code> - Unit tests
+- <code>test/src/integration/</code> - Integration tests</p>
+<p>Key integration test files:
+- <code>containerSupport.js</code>: Manages container lifecycle for tests
+- <code>kafkaSupport.js</code>: Provides Kafka testing utilities
+- <code>productCreation.integration.test.js</code>: Tests product creation functionality</p>
+<h2 id="running-the-tests">Running the Tests</h2>
+<h3 id="unit-tests">Unit Tests</h3>
+<p>To run the unit tests:</p>
+<pre><code class="language-bash">npm run unit-test
+</code></pre>
+<p>These tests verify the behavior of individual functions without external dependencies.</p>
+<h3 id="integration-tests">Integration Tests</h3>
+<p>To run the integration tests:</p>
+<pre><code class="language-bash">npm run integration-test
+</code></pre>
+<p>When you run integration tests, Testcontainers will:
+1. Spin up required containers (PostgreSQL, Kafka, LocalStack)
+2. Run the tests against these containers
+3. Tear down the containers when tests complete</p>
+<p>You can observe these containers in Docker Desktop or Testcontainers Desktop:</p>
+<p><img alt="Testcontainers in Action" src="https://github.com/user-attachments/assets/9277a932-2227-4cf2-97ab-758e1dd3ea38" /></p>
+<h2 id="understanding-the-integration-test-code">Understanding the Integration Test Code</h2>
+<p>Let's examine the key components of the integration test:</p>
+<h3 id="container-setup">Container Setup</h3>
+<pre><code class="language-javascript">// From containerSupport.js
+async function setup() {
+  // Start PostgreSQL container
+  postgres = await new GenericContainer(&quot;postgres:15&quot;)
+    .withExposedPorts(5432)
+    .withEnvironment({ POSTGRES_PASSWORD: &quot;postgres&quot; })
+    .start();
+
+  // Start Kafka container
+  kafka = await new GenericContainer(&quot;confluentinc/cp-kafka:7.4.0&quot;)
+    .withExposedPorts(9092)
+    .withEnvironment({
+      KAFKA_ADVERTISED_LISTENERS: &quot;PLAINTEXT://localhost:9092&quot;,
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+    })
+    .start();
+
+  // Start LocalStack (for S3)
+  localstack = await new GenericContainer(&quot;localstack/localstack:2.2&quot;)
+    .withExposedPorts(4566)
+    .start();
+
+  // Configure environment variables for tests
+  process.env.DATABASE_URL = `postgres://postgres:postgres@localhost:${postgres.getMappedPort(5432)}/postgres`;
+  process.env.KAFKA_BROKER = `localhost:${kafka.getMappedPort(9092)}`;
+  process.env.S3_ENDPOINT = `http://localhost:${localstack.getMappedPort(4566)}`;
+}
+</code></pre>
+<p>This code sets up isolated containers for each service our application depends on.</p>
+<h3 id="test-cases">Test Cases</h3>
+<pre><code class="language-javascript">// From productCreation.integration.test.js
+describe(&quot;Product creation&quot;, () =&gt; {
+  it(&quot;should publish and return a product when creating a product&quot;, async () =&gt; {
+    const product = {
+      name: &quot;Test Product&quot;,
+      upc: &quot;123456789012&quot;,
+      price: 9.99
+    };
+
+    const createdProduct = await productService.createProduct(product);
+
+    expect(createdProduct.id).toBeDefined();
+    expect(createdProduct.name).toBe(product.name);
+    expect(createdProduct.upc).toBe(product.upc);
+    expect(createdProduct.price).toBe(product.price);
+
+    const retrievedProduct = await productService.getProduct(createdProduct.id);
+    expect(retrievedProduct).toEqual(createdProduct);
+  });
+
+  it(&quot;should publish a Kafka message when creating a product&quot;, async () =&gt; {
+    const product = {
+      name: &quot;Kafka Test Product&quot;,
+      upc: &quot;123456789013&quot;,
+      price: 19.99
+    };
+
+    await productService.createProduct(product);
+
+    const message = await kafkaConsumer.waitForMessage(&quot;products&quot;, 5000);
+    expect(message).toBeDefined();
+    expect(message.action).toBe(&quot;product_created&quot;);
+    expect(message.name).toBe(product.name);
+    expect(message.upc).toBe(product.upc);
+    expect(message.price).toBe(product.price);
+  });
+
+  // Additional tests...
+});
+</code></pre>
+<p>These tests verify that:
+1. Products can be created and retrieved
+2. Kafka messages are published correctly
+3. File uploads work as expected
+4. Business rules (like preventing duplicate UPCs) are enforced</p>
+<h2 id="benefits-of-testcontainers-for-integration-testing">Benefits of Testcontainers for Integration Testing</h2>
+<ol>
+<li><strong>Realistic Testing</strong>: Tests run against actual services, not mocks</li>
+<li><strong>Isolation</strong>: Each test run gets fresh containers</li>
+<li><strong>Portability</strong>: Tests run the same way on any machine with Docker</li>
+<li><strong>Parallelism</strong>: Tests can run in parallel with isolated containers</li>
+<li><strong>CI/CD Compatibility</strong>: Works well in CI/CD pipelines</li>
+</ol>
+<h2 id="common-testing-patterns-with-containers">Common Testing Patterns with Containers</h2>
+<ol>
+<li><strong>Database Testing</strong>: Use a containerized database with a known schema and test data</li>
+<li><strong>Message Queue Testing</strong>: Verify message publishing and consuming with real message brokers</li>
+<li><strong>API Testing</strong>: Test API endpoints against containerized dependencies</li>
+<li><strong>End-to-End Testing</strong>: Use containers for all services to test complete workflows</li>
+</ol>
+<h2 id="troubleshooting">Troubleshooting</h2>
+<p>If you encounter issues with Testcontainers:</p>
+<ol>
+<li><strong>Port Conflicts</strong>: Ensure no other services are using the same ports</li>
+<li><strong>Docker Connection</strong>: Verify Docker is running and accessible</li>
+<li><strong>Resource Limits</strong>: Check if Docker has sufficient resources (CPU, memory)</li>
+<li><strong>Network Issues</strong>: Ensure containers can communicate with each other</li>
+</ol>
+<h2 id="next-steps">Next Steps</h2>
+<p>Now that you've learned how to test your application with Testcontainers, you can:</p>
+<ol>
+<li>Add more tests to improve coverage</li>
+<li>Integrate tests into your CI/CD pipeline</li>
+<li>Move on to the <a href="../build/">Build phase</a> to learn how to build and package your application for deployment</li>
+</ol>
 
 
 
