@@ -13,6 +13,68 @@ cd demo/sdlc-e2e
 ./setup.sh
 ```
 
+> The setup.sh script performs several important setup tasks to prepare the development environment for the Docker workshop. Let me explain what it does in detail:
+> The script performs the following tasks:
+
+> 1. Creates a demo branch:
+
+> It determines the repository root using git rev-parse --show-toplevel
+> It creates a new git branch with a unique name combining "demo", the current date, and your username (e.g., demo-20250304-ajeet)
+> This ensures each participant has their own isolated branch to work with
+
+
+> 2. Cleans the environment:
+
+> Runs git clean -f to remove untracked files
+> Deletes any existing branches named 'temp' or with the same demo branch name
+> Creates a temporary branch, deletes the main branch locally, then recreates it
+> This ensures everyone starts with a clean state
+
+
+> 3. Updates to latest code:
+
+> Pulls the latest changes from the remote repository
+
+
+> Applies the demo patch:
+
+> Applies the demo.patch file using git apply --whitespace=fix
+> This patch includes specific modifications to the codebase for the workshop
+> In particular, it removes the upc: product.upc, line from src/services/ProductService.js (line 52)
+> It also modifies the Dockerfile to use an older Node.js version and changes some package versions
+
+
+> 4. Creates a commit:
+
+> Commits the changes with the message "Demo prep"
+
+
+> 5. Installs dependencies:
+
+> Runs npm install to install all required Node.js dependencies
+
+
+> 6. Downloads container images:
+
+> Runs docker compose pull to download all the required Docker images in advance
+> This saves time during the workshop
+
+
+> 7. Prepares for Docker Build Cloud:
+
+> Removes postgres:17.2 container image (if it exists)
+> Creates and configures a cloud buildx builder for Docker Build Cloud
+> This enables faster builds using Docker's cloud-based build infrastructure
+
+
+> 8. Configures Docker Scout:
+
+> Sets up Docker Scout with the dockerdevrel organization
+> This enables security scanning capabilities for the workshop
+
+
+> In summary, the setup.sh script prepares a consistent, clean environment with all necessary dependencies, tools, and configurations so that workshop participants can immediately start working on the exercises without spending time on setup. It also makes deliberate modifications to the codebase (like removing the UPC field from Kafka messages) that will be "fixed" during the workshop exercises.
+
 
 ### Run the Compose
 
