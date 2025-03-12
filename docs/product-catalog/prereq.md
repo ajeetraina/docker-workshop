@@ -9,7 +9,6 @@
 
 ### Enabling WSL 2 based engine on Docker Desktop for Windows
 
-
 In case you're using Windows 11, you will need to enable WSL 2 by opening Docker Desktop > Settings > Resources > WSL Integration
 
 ![wsl2](images/wsl2.png)
@@ -18,15 +17,11 @@ In case you're using Windows 11, you will need to enable WSL 2 by opening Docker
 
 To demonstrate the Product Catalog sample app, you will require Node 22+ version installed on your system.
 
-
 > Note: You must download and install the Node pre-built installer on your local system to get the npm install command to work seamlessly. [Click here to download](https://nodejs.org/en/download/)
 
 ## 3. Access to the repositories
 
-- https://github.com/dockersamples/docker-init-demos
-- https://github.com/dockersamples/avatars
-- https://github.com/dockersamples/todo-list-localstack-docker
-
+- [https://github.com/dockersamples/catalog-service-node](https://github.com/dockersamples/catalog-service-node) 
 
 ## 4. Access to the list of Packages
 
@@ -56,3 +51,4 @@ zlib-1.3.1-r1
 ## Install Testcontainers Desktop App
 
 [Click here](https://testcontainers.com/desktop/) to download Testcontainers Desktop app and install it on your machine.
+

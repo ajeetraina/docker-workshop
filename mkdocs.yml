@@ -28,6 +28,7 @@ nav:
 
 
   - Product catalog - A Sample Demo App:
+    - Prereq: product-catalog/prereq.md
     - Overview: product-catalog/overview.md
     - Tech stack: product-catalog/tech-stack.md
     - Develop: product-catalog/develop.md
