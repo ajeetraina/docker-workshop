@@ -41,6 +41,21 @@ nav:
     - Tech stack: lab3/tech-stack.md
     - Bringing up the services: lab3/services.md
 
+  - Model Runner:
+    - Overview: lab4/overview.md
+    - Getting Started: lab4/getting-started.md
+    - Projects:
+      - GenAI Chatbot: lab4/projects/genai-chatbot.md
+ 
+  
+  - MCP Catalog and Toolkit:
+    - Overview: lab5/overview.md
+    - Getting Started: lab5/getting-started.md
+    - Projects:
+      - GitHub MCP Server, VS Code and Co-Pilot: lab5/projects/github-mcp.md
+      - Kubernetes MCP Server, Claude Desktop: lab5/projects/k8s-mcp.md
+      - Slack MCP Server, Claude Desktop: lab5/projects/slack-mcp.md
+
 
 
 theme:

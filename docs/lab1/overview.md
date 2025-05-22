@@ -5,3 +5,5 @@ The **outer loop** is everything else that happens leading up to release. This i
 The inner loop is often associated with the development phase of the SDLC, while the outer loop is associated with the testing, deployment, and release phases. However, the two loops are not mutually exclusive, and they can overlap in some cases.
 
 ![innerloop development workflow](images/innerloop.png)
+
+
