@@ -307,27 +307,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-access-to-the-repositories" class="md-nav__link">
+  <a href="#3-access-to-the-repositories" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Access to the repositories
+      3. Access to the repositories
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-enable-docker-model-runner" class="md-nav__link">
+  <a href="#4-enable-docker-model-runner" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Enable Docker Model Runner
+      4. Enable Docker Model Runner
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-download-the-models" class="md-nav__link">
+  <a href="#5-download-the-models" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Download the models
+      5. Download the models
     </span>
   </a>
   
@@ -343,9 +343,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-install-and-configure-your-preferred-mcp-client" class="md-nav__link">
+  <a href="#6-install-and-configure-your-preferred-mcp-client" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Install and configure your preferred MCP Client
+      6. Install and configure your preferred MCP Client
     </span>
   </a>
   
@@ -740,27 +740,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#2-access-to-the-repositories" class="md-nav__link">
+  <a href="#3-access-to-the-repositories" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Access to the repositories
+      3. Access to the repositories
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-enable-docker-model-runner" class="md-nav__link">
+  <a href="#4-enable-docker-model-runner" class="md-nav__link">
     <span class="md-ellipsis">
-      3. Enable Docker Model Runner
+      4. Enable Docker Model Runner
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#4-download-the-models" class="md-nav__link">
+  <a href="#5-download-the-models" class="md-nav__link">
     <span class="md-ellipsis">
-      4. Download the models
+      5. Download the models
     </span>
   </a>
   
@@ -776,9 +776,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#5-install-and-configure-your-preferred-mcp-client" class="md-nav__link">
+  <a href="#6-install-and-configure-your-preferred-mcp-client" class="md-nav__link">
     <span class="md-ellipsis">
-      5. Install and configure your preferred MCP Client
+      6. Install and configure your preferred MCP Client
     </span>
   </a>
   
@@ -804,7 +804,7 @@
 
   <h1>Prerequisites</h1>
 
-<h2 id="1-docker-desktop">1. Docker Desktop</h2>
+<h3 id="1-docker-desktop">1. Docker Desktop</h3>
 <p><a href="https://www.docker.com/products/docker-desktop/">Download and Install Docker Desktop 4.40+</a> on your system. </p>
 <ul>
 <li><a href="https://desktop.docker.com/mac/main/arm64/Docker.dmg">Apple Chip</a></li>
@@ -812,32 +812,31 @@
 <li><a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe">Windows with NVIDIA GPUs</a></li>
 <li><a href="https://docs.docker.com/desktop/linux/install/">Linux</a></li>
 </ul>
-<h2 id="2-download-your-preferred-ides-optional">2. Download your preferred IDEs (optional)</h2>
+<h3 id="2-download-your-preferred-ides-optional">2. Download your preferred IDEs (optional)</h3>
 <ul>
 <li>Visual Studio Code</li>
 <li>IntelliJ IDEA</li>
 </ul>
-<h2 id="2-access-to-the-repositories">2. Access to the repositories</h2>
+<h3 id="3-access-to-the-repositories">3. Access to the repositories</h3>
 <ul>
 <li><a href="https://github.com/dockersamples/genai-model-runner-metrics">https://github.com/dockersamples/genai-model-runner-metrics</a></li>
 <li><a href="https://github.com/ajeetraina/docker-workshop">https://github.com/ajeetraina/docker-workshop</a></li>
 </ul>
-<h2 id="3-enable-docker-model-runner">3. Enable Docker Model Runner</h2>
+<h3 id="4-enable-docker-model-runner">4. Enable Docker Model Runner</h3>
 <pre><code>docker desktop enable model-runner
 </code></pre>
-<h2 id="4-download-the-models">4. Download the models</h2>
+<h3 id="5-download-the-models">5. Download the models</h3>
 <p>Ensure that you have sufficient space to download these models on your Macbook.</p>
 <pre><code>docker model pull ai/llama3.2:1B-Q8_0
 docker model pull ai/qwen3
 </code></pre>
-<h2 id="5-download-the-following-images-from-the-docker-hub">5. Download the following images from the Docker Hub</h2>
+<h3 id="5-download-the-following-images-from-the-docker-hub">5. Download the following images from the Docker Hub</h3>
 <pre><code>docker pull grafana/grafana:10.1.0
 docker pull jaegertracing/all-in-one:1.46
 docker pull prom/prometheus:v2.45.0
 </code></pre>
-<h2 id="5-install-and-configure-your-preferred-mcp-client">5. Install and configure your preferred MCP Client</h2>
+<h3 id="6-install-and-configure-your-preferred-mcp-client">6. Install and configure your preferred MCP Client</h3>
 <pre><code>Claude Desktop
-Claude Desktop
 Cursor
 Ask Gordon
 Continue.dev
