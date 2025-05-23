@@ -551,12 +551,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#3-client-management" class="md-nav__link">
     <span class="md-ellipsis">
       3. Client Management
@@ -564,8 +559,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#4-using-the-client-management-cli" class="md-nav__link">
     <span class="md-ellipsis">
       4. Using the Client Management CLI
@@ -573,8 +568,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#5-listing-clients" class="md-nav__link">
     <span class="md-ellipsis">
       5. Listing Clients
@@ -582,8 +577,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#6-accessing-the-mcp-toolkit-extension" class="md-nav__link">
     <span class="md-ellipsis">
       6. Accessing the MCP Toolkit Extension
@@ -591,13 +586,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#7-connecting-clients" class="md-nav__link">
     <span class="md-ellipsis">
       7. Connecting Clients
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -784,12 +784,7 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
+          <li class="md-nav__item">
   <a href="#3-client-management" class="md-nav__link">
     <span class="md-ellipsis">
       3. Client Management
@@ -797,8 +792,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#4-using-the-client-management-cli" class="md-nav__link">
     <span class="md-ellipsis">
       4. Using the Client Management CLI
@@ -806,8 +801,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#5-listing-clients" class="md-nav__link">
     <span class="md-ellipsis">
       5. Listing Clients
@@ -815,8 +810,8 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#6-accessing-the-mcp-toolkit-extension" class="md-nav__link">
     <span class="md-ellipsis">
       6. Accessing the MCP Toolkit Extension
@@ -824,13 +819,18 @@
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#7-connecting-clients" class="md-nav__link">
     <span class="md-ellipsis">
       7. Connecting Clients
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -900,7 +900,7 @@ Installing MCP Catalog extension, this might take a bit... Ok
 Docker MCP Plugin
 dev, commit 2cfe91cb9b714036b840a13aa245754e3453ca9d
 </code></pre>
-<h2 id="3-client-management">3. Client Management</h2>
+<h3 id="3-client-management">3. Client Management</h3>
 <p>The Docker MCP Toolkit enables seamless connection between AI assistant clients and the powerful tools available in the Docker MCP Catalog. Client management is a core functionality that allows you to connect, disconnect, and monitor the status of compatible AI clients like Claude, VS Code, Cursor, and more.
 With the docker mcp client commands, you can easily establish connections that allow these AI assistants to leverage the full power of Docker's MCP tools. Once connected, clients can perform actions through the MCP protocol without complicated setup or direct access to sensitive credentials.</p>
 <p>The Client Management interface provides a straightforward way to:</p>
@@ -911,7 +911,7 @@ With the docker mcp client commands, you can easily establish connections that a
 <li>Set up connections at either project or system-wide level</li>
 </ul>
 <p>This unified approach to client management simplifies what was previously a complex and fragmented process, bringing Docker's philosophy of simplicity and security to the AI tooling ecosystem.</p>
-<h2 id="4-using-the-client-management-cli">4. Using the Client Management CLI</h2>
+<h3 id="4-using-the-client-management-cli">4. Using the Client Management CLI</h3>
 <pre><code>docker mcp client --help
 This Docker CLI plugin adds experimental features.
 
@@ -922,7 +922,7 @@ Available Commands:
   disconnect  Disconnect the Docker MCP Catalog from a client.
   ls          List MCP configurations.
 </code></pre>
-<h2 id="5-listing-clients">5. Listing Clients</h2>
+<h3 id="5-listing-clients">5. Listing Clients</h3>
 <p>Check which clients are configured:</p>
 <pre><code class="language-shell">docker mcp client ls -g
 </code></pre>
@@ -930,8 +930,8 @@ Available Commands:
 ● cursor: no mcp configured
 ● vscode: no mcp configured</p>
 <p>The "no mcp configured" status means that while these clients are detected, they haven't been connected to Docker MCP yet. Neither client will have access to any MCP tools you enable in Docker.</p>
-<h2 id="6-accessing-the-mcp-toolkit-extension">6. Accessing the MCP Toolkit Extension</h2>
-<h2 id="7-connecting-clients">7. Connecting Clients</h2>
+<h3 id="6-accessing-the-mcp-toolkit-extension">6. Accessing the MCP Toolkit Extension</h3>
+<h3 id="7-connecting-clients">7. Connecting Clients</h3>
 <p>Currently, the supported clients are:</p>
 <ul>
 <li>claude-desktop</li>

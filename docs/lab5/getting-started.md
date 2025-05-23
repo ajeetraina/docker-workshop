@@ -66,7 +66,7 @@ Docker MCP Plugin
 dev, commit 2cfe91cb9b714036b840a13aa245754e3453ca9d
 ```
 
-## 3. Client Management 
+### 3. Client Management 
 
 The Docker MCP Toolkit enables seamless connection between AI assistant clients and the powerful tools available in the Docker MCP Catalog. Client management is a core functionality that allows you to connect, disconnect, and monitor the status of compatible AI clients like Claude, VS Code, Cursor, and more.
 With the docker mcp client commands, you can easily establish connections that allow these AI assistants to leverage the full power of Docker's MCP tools. Once connected, clients can perform actions through the MCP protocol without complicated setup or direct access to sensitive credentials.
@@ -80,7 +80,7 @@ The Client Management interface provides a straightforward way to:
 
 This unified approach to client management simplifies what was previously a complex and fragmented process, bringing Docker's philosophy of simplicity and security to the AI tooling ecosystem.
 
-## 4. Using the Client Management CLI
+### 4. Using the Client Management CLI
 
 ```
 docker mcp client --help
@@ -94,7 +94,7 @@ Available Commands:
   ls          List MCP configurations.
 ```
 
-## 5. Listing Clients
+### 5. Listing Clients
 
 Check which clients are configured:
 
@@ -110,10 +110,10 @@ docker mcp client ls -g
 
 The "no mcp configured" status means that while these clients are detected, they haven't been connected to Docker MCP yet. Neither client will have access to any MCP tools you enable in Docker.
 
-## 6. Accessing the MCP Toolkit Extension
+### 6. Accessing the MCP Toolkit Extension
 
 
-## 7. Connecting Clients
+### 7. Connecting Clients
 
 
 Currently, the supported clients are:
