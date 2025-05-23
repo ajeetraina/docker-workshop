@@ -20,7 +20,7 @@
 docker desktop enable model-runner
 ```
 
-## Download the models
+## 4. Download the models
 
 Ensure that you have sufficient space to download these models on your Macbook.
 
@@ -29,11 +29,11 @@ docker model pull ai/llama3.2:1B-Q8_0
 docker model pull ai/qwen3
 ```
 
-## Download the following images from the Docker Hub
+## 5. Download the following images from the Docker Hub
 
 ```
-grafana/grafana:10.1.0
-jaegertracing/all-in-one:1.46
-prom/prometheus:v2.45.0
+docker pull grafana/grafana:10.1.0
+docker pull jaegertracing/all-in-one:1.46
+docker pull prom/prometheus:v2.45.0
 ```
 
