@@ -21,27 +21,7 @@ site_dir: 'site'
 nav:
   - Getting Started: index.md
   - Prerequisites: prereq/prereq.md
-  - Inner-Loop Development workflow:
-    - Inner Vs Outer Loop Development workflow: lab1/overview.md
-    - What is a container: lab1/what-is-a-container.md
-    - Running Postgres Containers: lab1/postgres.md
-
-
-  - Product catalog - A Sample Demo App:
-    - Prereq: product-catalog/prereq.md
-    - Overview: product-catalog/overview.md
-    - Tech stack: product-catalog/tech-stack.md
-    - Develop: product-catalog/develop.md
-    - Test: product-catalog/test.md
-    - Build: product-catalog/build.md
-    - Secure: product-catalog/secure.md
-
-  - To-do List - A Sample Demo App:
-    - Overview: lab3/overview.md
-    - Tech stack: lab3/tech-stack.md
-    - Bringing up the services: lab3/services.md
-
-  - Model Runner:
+  - Docker Model Runner:
     - Overview: lab4/overview.md
     - Getting Started: lab4/getting-started.md
     - Projects:

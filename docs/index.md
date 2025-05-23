@@ -1,26 +1,19 @@
-# Welcome to Docker Workshop
+# Welcome to Docker GenAI Workshop
 
 
 ## GitHub Sources
 
 The source code for this workshop is available [here](https://github.com/ajeetraina/docker-workshop)
 
-[Click here](https://github.com/ajeetraina/docker-workshop/blob/main/Shell_Docker_Workshop.pdf) to download the workshop slides.
-## Authors
 
 - [Ajeet Singh Raina](https://www.linkedin.com/in/ajeetsraina/) - DevRel @[Docker](https://docker.com)
 
 
 ## Benefits of this Docker Workshop
 
-- [Learn about Inner-loop versus Outer-loop development workflow](lab1/overview.md)
-- [Learn how to spin multiple Postgres containers](lab1/postgres.md)
-- [Learn how to develop a Product Catalog API from scratch](product-catalog/develop/)
-- [Learn how to perform unit and integration tests](product-catalog/integration-tests.md)
-- [Learn how to build your Docker image over the Cloud using Docker Build Cloud](product-catalog/build.md)
-- [Secure your inner-loop with Docker Scout](product-catalog/secure.md)
+- [Learn about Docker Model Runner](lab4/overview)
+- [Learn how to get started with Model Runner CLI](lab4/getting-started/)
+- [Learn how to build GenAI Chatbot using Docker Model Runner](lab4/projects/genai-chatbot/)
+- [Learn how to use Docker MCP Catalog and Toolkit](lab5/getting-started)
 
-## Install Testcontainers Desktop App
-
-[Click here](https://testcontainers.com/desktop/) to download Testcontainers Desktop app and install it on your machine.
 
