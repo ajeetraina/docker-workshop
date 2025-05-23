@@ -1,6 +1,6 @@
 ### 1. Docker Desktop
 
-[Download and Install Docker Desktop 4.40+](https://www.docker.com/products/docker-desktop/) on your system. 
+[Download and Install Docker Desktop 4.41+](https://www.docker.com/products/docker-desktop/) on your system. 
 
  - [Apple Chip](https://desktop.docker.com/mac/main/arm64/Docker.dmg)
  - [Intel Chip](https://desktop.docker.com/mac/main/amd64/Docker.dmg)
