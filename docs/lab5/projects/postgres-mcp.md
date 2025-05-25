@@ -63,7 +63,7 @@ Perfect! Now we have a realistic database to work with instead of an empty one.
 Open Docker Desktop and navigate to the MCP Toolkit extension.
 Under "MCP Server", search for "Postgres" and select the Postgres MCP Server
 
-![postgresmcp](../images/postgres-mcp.png)
+![postgresmcp](images/postgres-mcp.png)
 
 ## Step 6. Configure the Postgres MCP Server
 
@@ -73,7 +73,7 @@ Click "Configuration" and add the right URL for your Postgres database:
 postgresql://postgres:postgres@host.docker.internal:5432/catalog
 ```
 
-![postgresmcp](../images/postgres-config.png)
+![postgresmcp](images/postgres-config.png)
 
 ## Step 7. Activate the Postgres MCP Server
 
@@ -81,7 +81,7 @@ Toggle the "Enable" switch to activate the Postgres MCP Server.
 
 ## Step 8. Configure the Claude Desktop
 
-![claude-config](../images/claude-config.png)
+![claude-config](images/claude-config.png)
 
 ## Step 9. Configure MCP_DOCKER in Claude Desktop 
 
@@ -114,10 +114,10 @@ Open Claude Desktop and go to the "Settings" tab. You will see the following ent
 
 Verify that the following tools gets highlighted in the Claude Desktop:
 
-![mcpdocker](../images/claude_mcp_docker.png)
+![mcpdocker](images/claude_mcp_docker.png)
 
 
-![mcpquery](../images/claude_postgres_query.png)
+![mcpquery](images/claude_postgres_query.png)
 
 ## Step 11. Start chatting with the Postgres Database
 
