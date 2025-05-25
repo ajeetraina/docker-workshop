@@ -32,6 +32,35 @@ Before we begin, make sure you have:
 - Familiarity with React and TypeScript (for frontend development)
 
 
+> ## Docker Compose Support for Model Runner
+> 
+> Docker Model Runner can be integrated with Docker Compose to run AI models as part of your multi-container applications.
+This lets you define and run AI-powered applications alongside your other services.
+> 
+> Compose introduces a new service type called provider that allows you to declare platform capabilities required by your application. For AI models, you can use the model type to declare model dependencies.
+> Here's an example of how to define a model provider:
+
+
+```
+services:
+  chat:
+    image: my-chat-app
+    depends_on:
+      - ai_runner
+
+  ai_runner:
+    provider:
+      type: model
+      options:
+        model: ai/smollm2
+```
+
+> Notice the dedicated provider attribute in the ai_runner service.
+> This attribute specifies that the service is a model provider and lets you define options such as the name of the model to be used.
+> There is also a depends_on attribute in the chat service.
+> This attribute specifies that the chat service depends on the ai_runner service.
+>This means that the ai_runner service will be started before the chat service to allow injection of model information to the chat service.
+
 
 ### Clone the repository
 

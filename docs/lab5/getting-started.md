@@ -1,4 +1,9 @@
 
+## Prereq
+
+Ensure that you have Docker Desktop 4.41+ installed on your system.
+
+## Using the Docker MCP CLI
 
 The `docker mcp` CLI is a powerful command-line tool that serves as the interface for managing the Docker Model Context Protocol (MCP) environment. 
 It enables developers to connect AI assistants to external tools securely, without having to manually configure each connection.
