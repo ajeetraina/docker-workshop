@@ -42,7 +42,7 @@ This capability is particularly valuable for developing and testing GenAI applic
 
 ## Architecture of Docker Model Runner
 
-![model runner architecture](./images/model-runnner-arch.png)
+![model runner architecture](images/model-runnner-arch.png)
 
 
 
