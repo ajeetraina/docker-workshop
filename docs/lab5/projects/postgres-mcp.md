@@ -124,6 +124,7 @@ Prompt:
 List out all the products in the catalog
 ```
 
+![listotables](images/listoftables.png)
 
 
 
