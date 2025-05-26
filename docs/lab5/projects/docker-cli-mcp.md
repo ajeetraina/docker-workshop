@@ -68,7 +68,34 @@ Enable Docker MCP Server
 
 ![docker cli](./images/docker-cli.png)
 
-## Step 6. Open the VS Code Extension and Configure GitHub Co-Pilot
+## Step 6. Configuring the VS Code Extension 
+
+Open `mcp.json` file under .vscode directory and configure the MCP server:
+
+```json
+{
+  "inputs": [
+    // The "inputs" section defines the inputs required for the MCP server configuration.
+    {
+      "type": "promptString"
+    }
+  ],
+  "servers": {
+    // The "servers" section defines the MCP servers you want to use.
+    "postgres": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/postgres",
+        "postgresql://postgres:postgres@host.docker.internal:5432/catalog"
+      ]
+    }
+  }
+}
+```
+
 
 ![vscode](./images/vscode_dockercli.png)
 
@@ -77,3 +104,32 @@ Enable Docker MCP Server
 Prompt: "list out all the containers running on my Docker Desktop"
 
 ![nginx](./images/nginx-dockercli.png)
+
+## Step 8. Using Docker MCP Toolkit with VS Code
+
+Open `docker-mcp-runtime.json` file under .vscode directory and configure the MCP server:
+
+```json
+{
+  "inputs": [
+    // The "inputs" section defines the inputs required for the MCP server configuration.
+    {
+      "type": "promptString"
+    }
+  ],
+  "servers": {
+    // The "servers" section defines the MCP servers you want to use.
+    "MCP_DOCKER": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "alpine/socat",
+        "STDIO",
+        "TCP:host.docker.internal:8811"
+      ]
+    }
+  }
+}
+```
