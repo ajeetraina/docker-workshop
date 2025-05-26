@@ -1,4 +1,8 @@
 
+
+![vscode-copilot](images/vscode-copiliot-docker.png)
+
+
 ## Prerequisites
 
 Before we start, make sure you have:
