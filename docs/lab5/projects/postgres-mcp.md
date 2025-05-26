@@ -112,12 +112,6 @@ Open Claude Desktop and go to the "Settings" tab. You will see the following ent
 
 ## Step 10. Restart the Claude Desktop
 
-Verify that the following tools gets highlighted in the Claude Desktop:
-
-![mcpdocker](./images/claude_mcp_docker.png)
-
-
-![mcpquery](./images/claude_postgres_query.png)
 
 ## Step 11. Start chatting with the Postgres Database
 
