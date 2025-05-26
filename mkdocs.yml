@@ -20,14 +20,12 @@ site_dir: 'site'
 # Navigation
 nav:
   - Getting Started: index.md
-  - Prerequisites: prereq/prereq.md
+  - Prerequisites: prereq/prereq
   - Docker Model Runner:
-    - Overview: lab4/overview.md
-    - Getting Started: lab4/getting-started.md
+    - Overview: lab4/overview
+    - Getting Started: lab4/getting-started
     - Projects:
-      - GenAI Chatbot: lab4/projects/genai-chatbot.md
- 
-  
+      - GenAI Chatbot: lab4/projects/genai-chatbot
   - MCP Catalog and Toolkit:
     - Overview: lab5/overview.md
     - Getting Started: lab5/getting-started.md
