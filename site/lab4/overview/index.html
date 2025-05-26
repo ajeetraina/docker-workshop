@@ -832,7 +832,7 @@ Run 'docker model COMMAND --help' for more information on a command.
 </ul>
 <p>This capability is particularly valuable for developing and testing GenAI applications locally before deployment, allowing for faster iteration cycles and reduced dependency on cloud services during development.</p>
 <h2 id="architecture-of-docker-model-runner">Architecture of Docker Model Runner</h2>
-<p><img alt="model runner architecture" src="../images/model-runnner-arch.png" /></p>
+<p><img alt="modelrunner" src="../images/model-runner-arch.png" /></p>
 <p>With Docker Model Runner, the AI model DOES NOT run in a container. Instead, Docker Model Runner uses a host-installed inference server (llama.cpp for now) that runs natively on your Mac rather than containerizing the model. We do plan to support additional inference (i.e MLX) in future releases.</p>
 <h3 id="1-host-level-process">1. Host-level process:</h3>
 <p>Docker Desktop runs llama.cpp directly on your host machine

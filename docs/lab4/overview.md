@@ -42,8 +42,8 @@ This capability is particularly valuable for developing and testing GenAI applic
 
 ## Architecture of Docker Model Runner
 
-![model runner architecture](images/model-runnner-arch.png)
 
+![modelrunner](images/model-runner-arch.png)
 
 
 With Docker Model Runner, the AI model DOES NOT run in a container. Instead, Docker Model Runner uses a host-installed inference server (llama.cpp for now) that runs natively on your Mac rather than containerizing the model. We do plan to support additional inference (i.e MLX) in future releases.
