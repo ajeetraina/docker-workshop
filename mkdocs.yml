@@ -30,6 +30,7 @@ nav:
     - Overview: lab5/overview.md
     - Getting Started: lab5/getting-started.md
     - Projects:
+      - Docker CLI MCP Server: lab5/projects/docker-cli-mcp
       - Postgres MCP Server, Claude Desktop: lab5/projects/postgres-mcp
 
 theme:
