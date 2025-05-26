@@ -1,4 +1,7 @@
 
+
+![postgres-vscode](images/postgres-vscode.png)
+
 ## Prerequisites
 
 Before we start, make sure you have:
