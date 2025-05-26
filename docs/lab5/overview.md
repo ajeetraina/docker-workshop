@@ -12,7 +12,7 @@ Think of MCP like a USB-C port for AI applications. Just as USB-C provides a sta
 - User submits a prompt (e.g., "Fetch me list of users in the Slack")
 - Users interact through various interfaces/applications connected to MCP
 
-![mcp workflow](../images/mcp-workflow.png)
+![mcp workflow](images/mcp-workflow.png)
 
 ### MCP Hosts
 - Acts as central orchestration layer for the collaboration platform
@@ -76,11 +76,11 @@ A trusted hub for discovering and accessing verified MCP servers, seamlessly int
 
 URL: [https://hub.docker.com/catalogs/mcp](https://hub.docker.com/catalogs/mcp ) 
 
-![mcp catalog](../images/mcp-catalog.png)
+![mcp catalog](images/mcp-catalog.png)
 
 ### 2. Docker MCP Toolkit: 
 
-![mcp toolkit](../images/mcp-toolkit.png)
+![mcp toolkit](images/mcp-toolkit.png)
 
 A suite of tools and services that make MCP servers secure, seamless, and instantly usable on your local machine or anywhere Docker runs.
 
@@ -93,9 +93,9 @@ Every time a new MCP server is added, a config file needs to be updated and the 
 
  
 
-![typical mcp](../images/typical-mcp.png)
+![typical mcp](images/typical-mcp.png)
 
 
 A much better approach is to simply use one MCP server: Docker. This MCP server acts as a gateway into a dynamic set of containerized tools.
 
-![docker mcp](../images/docker-mcp.png)
+![docker mcp](images/docker-mcp.png)

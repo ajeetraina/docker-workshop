@@ -20,18 +20,18 @@ site_dir: 'site'
 # Navigation
 nav:
   - Getting Started: index.md
-  - Prerequisites: prereq/prereq
+  - Prerequisites: prereq/prereq.md
   - Docker Model Runner:
-    - Overview: lab4/overview
-    - Getting Started: lab4/getting-started
+    - Overview: lab4/overview.md
+    - Getting Started: lab4/getting-started.md
     - Projects:
-      - GenAI Chatbot: lab4/projects/genai-chatbot
+      - GenAI Chatbot: lab4/projects/genai-chatbot.md
   - MCP Catalog and Toolkit:
     - Overview: lab5/overview.md
     - Getting Started: lab5/getting-started.md
     - Projects:
-      - Docker CLI MCP Server: lab5/projects/docker-cli-mcp
-      - Postgres MCP Server, Claude Desktop: lab5/projects/postgres-mcp
+      - Docker CLI MCP Server: lab5/projects/docker-cli-mcp.md
+      - Postgres MCP Server, Claude Desktop: lab5/projects/postgres-mcp.md
 
 theme:
   name: material
