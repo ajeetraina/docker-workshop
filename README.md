@@ -25,14 +25,13 @@ These hands-on labs will be a combination of theory and practical exercises.
 ## Benefits of this workshop
 
 
-- Get familiar with Inner-Loop Vs Outer-Loop Development Workflow
-- Understanding of Container-supported Development Workflow
-- SDLC - Development Phase
-- SDLC - Test
-- SDLC - Build
-- SDLC - Secure
+- Get familiar with Docker Model Runner
+- Understanding of Model Context Protocol
+   - Getting Started with Docker MCP Toolkit
+   - MCP Servers - GitHub, Postgres
+   - MCP Clients - Ask Gordon, Claude Desktop
 
- [Download the workshop slides](https://github.com/ajeetraina/docker-workshop/blob/main/Shell_Docker_Workshop.pdf)
+
 
 ## Contribution Guidelines
 
