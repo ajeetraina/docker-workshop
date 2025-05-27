@@ -32,11 +32,11 @@ When you first run an MCP command, it will check if the extension is installed o
 
 The Docker MCP CLI provides several key capabilities:
 
-- Catalog Management: Browse, search, and manage MCP tools directly from the command line
-- Client Management: Connect and disconnect MCP clients like Claude, VS Code, and Cursor
-- Secret Management: Securely store and manage credentials for MCP tools
-- Policy Management: Create and enforce access policies for MCP secrets
-- Gateway Server: Provides a single connection point for all enabled MCP tools
+- **Catalog Management**: Browse, search, and manage MCP tools directly from the command line
+- **Client Management**: Connect and disconnect MCP clients like Claude, VS Code, and Cursor
+- **Secret Management**: Securely store and manage credentials for MCP tools
+- **Policy Management**: Create and enforce access policies for MCP secrets
+- **Gateway Server**: Provides a single connection point for all enabled MCP tools
 
 
 ## Getting Started
@@ -105,12 +105,12 @@ Check which clients are configured:
 
 ```shell
 docker mcp client ls -g
-```
+
 
 === Project-wide MCP Configurations (/Users/<username>/git-repo) ===
 ● cursor: no mcp configured
 ● vscode: no mcp configured
-
+```
 
 
 The "no mcp configured" status means that while these clients are detected, they haven't been connected to Docker MCP yet. Neither client will have access to any MCP tools you enable in Docker.
@@ -123,18 +123,19 @@ The "no mcp configured" status means that while these clients are detected, they
 
 Currently, the supported clients are:
 
+- gordon 
 - claude-desktop
 - continue
 - cursor
-- gordon
-- vscode
+
+
 
 In order to connect the clients to Docker, you use the following command:
 
 ```
 docker mcp client connect --help
 This Docker CLI plugin adds experimental features.
-```
+
 Usage: docker mcp client connect [OPTIONS] <mcp-client>
 
 Supported clients: claude-desktop continue cursor gordon vscode

@@ -636,27 +636,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-configuring-the-vs-code-extension" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 6. Configuring the VS Code Extension
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#step-7-start-chatting-with-your-docker-desktop" class="md-nav__link">
     <span class="md-ellipsis">
       Step 7. Start chatting with your Docker Desktop
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-8-using-docker-mcp-toolkit-with-vs-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 8. Using Docker MCP Toolkit with VS Code
     </span>
   </a>
   
@@ -795,27 +777,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-6-configuring-the-vs-code-extension" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 6. Configuring the VS Code Extension
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
   <a href="#step-7-start-chatting-with-your-docker-desktop" class="md-nav__link">
     <span class="md-ellipsis">
       Step 7. Start chatting with your Docker Desktop
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-8-using-docker-mcp-toolkit-with-vs-code" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 8. Using Docker MCP Toolkit with VS Code
     </span>
   </a>
   
@@ -841,13 +805,12 @@
 
   <h1>Docker CLI MCP Server</h1>
 
-<p><img alt="vscode-copilot" src="../images/vscode-copiliot-docker.png" /></p>
+<p><img alt="vscode-copilot" src="../images/dockermcp-askgordon.png" /></p>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Before we start, make sure you have:</p>
 <ul>
 <li>Docker Desktop 4.41.0+ with the MCP Toolkit Extension installed</li>
 <li>Node.js (v18 or later) for running the frontend</li>
-<li>VS Code (or any IDE of your choice)</li>
 </ul>
 <h2 id="setting-up-the-sample-database">Setting Up the Sample Database</h2>
 <p>Instead of using an empty Postgres database, let's use a real example with actual data.
@@ -880,59 +843,8 @@ This gives you a visual understanding of the data structure we'll be querying wi
 <p>Open Docker Desktop and navigate to the MCP Toolkit extension.</p>
 <p>Enable Docker MCP Server</p>
 <p><img alt="docker cli" src="../images/docker-cli.png" /></p>
-<h2 id="step-6-configuring-the-vs-code-extension">Step 6. Configuring the VS Code Extension</h2>
-<p>Open <code>mcp.json</code> file under .vscode directory and configure the MCP server:</p>
-<pre><code class="language-json">{
-  &quot;inputs&quot;: [
-    // The &quot;inputs&quot; section defines the inputs required for the MCP server configuration.
-    {
-      &quot;type&quot;: &quot;promptString&quot;
-    }
-  ],
-  &quot;servers&quot;: {
-    // The &quot;servers&quot; section defines the MCP servers you want to use.
-    &quot;postgres&quot;: {
-      &quot;command&quot;: &quot;docker&quot;,
-      &quot;args&quot;: [
-        &quot;run&quot;,
-        &quot;-i&quot;,
-        &quot;--rm&quot;,
-        &quot;mcp/postgres&quot;,
-        &quot;postgresql://postgres:postgres@host.docker.internal:5432/catalog&quot;
-      ]
-    }
-  }
-}
-</code></pre>
-<p><img alt="vscode" src="../images/vscode_dockercli.png" /></p>
 <h2 id="step-7-start-chatting-with-your-docker-desktop">Step 7. Start chatting with your Docker Desktop</h2>
 <p>Prompt: "list out all the containers running on my Docker Desktop"</p>
-<p><img alt="nginx" src="../images/nginx-dockercli.png" /></p>
-<h2 id="step-8-using-docker-mcp-toolkit-with-vs-code">Step 8. Using Docker MCP Toolkit with VS Code</h2>
-<p>Open <code>docker-mcp-runtime.json</code> file under .vscode directory and configure the MCP server:</p>
-<pre><code class="language-json">{
-  &quot;inputs&quot;: [
-    // The &quot;inputs&quot; section defines the inputs required for the MCP server configuration.
-    {
-      &quot;type&quot;: &quot;promptString&quot;
-    }
-  ],
-  &quot;servers&quot;: {
-    // The &quot;servers&quot; section defines the MCP servers you want to use.
-    &quot;MCP_DOCKER&quot;: {
-      &quot;command&quot;: &quot;docker&quot;,
-      &quot;args&quot;: [
-        &quot;run&quot;,
-        &quot;-i&quot;,
-        &quot;--rm&quot;,
-        &quot;alpine/socat&quot;,
-        &quot;STDIO&quot;,
-        &quot;TCP:host.docker.internal:8811&quot;
-      ]
-    }
-  }
-}
-</code></pre>
 
 
 

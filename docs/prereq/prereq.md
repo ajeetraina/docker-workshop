@@ -10,7 +10,6 @@
 
 ### 2. Download your preferred IDEs (optional)
 
-- Visual Studio Code
 - IntelliJ IDEA
 
 ### 3. Access to the repositories
@@ -45,8 +44,8 @@ docker pull prom/prometheus:v2.45.0
 ### 6. Install and configure your preferred MCP Client
 
 ```
-Claude Desktop
-Cursor
 Ask Gordon
-Continue.dev
+Claude Desktop (optional)
+Cursor (optional)
+Continue.dev (optional)
 ```

@@ -1,6 +1,6 @@
 
 
-![vscode-copilot](images/dockermcp-askgordon.png)
+![vscode-copilot](images/vscode-copiliot-docker.png)
 
 
 ## Prerequisites
@@ -9,7 +9,7 @@ Before we start, make sure you have:
 
 - Docker Desktop 4.41.0+ with the MCP Toolkit Extension installed
 - Node.js (v18 or later) for running the frontend
-
+- VS Code (or any IDE of your choice)
 
 ## Setting Up the Sample Database
 
@@ -68,10 +68,68 @@ Enable Docker MCP Server
 
 ![docker cli](./images/docker-cli.png)
 
+## Step 6. Configuring the VS Code Extension 
 
+Open `mcp.json` file under .vscode directory and configure the MCP server:
+
+```json
+{
+  "inputs": [
+    // The "inputs" section defines the inputs required for the MCP server configuration.
+    {
+      "type": "promptString"
+    }
+  ],
+  "servers": {
+    // The "servers" section defines the MCP servers you want to use.
+    "postgres": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "mcp/postgres",
+        "postgresql://postgres:postgres@host.docker.internal:5432/catalog"
+      ]
+    }
+  }
+}
+```
+
+
+![vscode](./images/vscode_dockercli.png)
 
 ## Step 7. Start chatting with your Docker Desktop
 
 Prompt: "list out all the containers running on my Docker Desktop"
 
+![nginx](./images/nginx-dockercli.png)
 
+## Step 8. Using Docker MCP Toolkit with VS Code
+
+Open `docker-mcp-runtime.json` file under .vscode directory and configure the MCP server:
+
+```json
+{
+  "inputs": [
+    // The "inputs" section defines the inputs required for the MCP server configuration.
+    {
+      "type": "promptString"
+    }
+  ],
+  "servers": {
+    // The "servers" section defines the MCP servers you want to use.
+    "MCP_DOCKER": {
+      "command": "docker",
+      "args": [
+        "run",
+        "-i",
+        "--rm",
+        "alpine/socat",
+        "STDIO",
+        "TCP:host.docker.internal:8811"
+      ]
+    }
+  }
+}
+```
