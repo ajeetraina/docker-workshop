@@ -927,7 +927,7 @@ Select “Apply and restart”</p>
 <pre><code>docker model pull ai/llama3.2:1B-Q8_0
 </code></pre>
 <h2 id="verify-the-backendenv">Verify the backend.env</h2>
-<pre><code>BASE_URL=http://host.docker.internal:12434/engines/llama.cpp/v1/
+<pre><code>BASE_URL=http://localhost:12434/engines/llama.cpp/v1/
 MODEL=ai/llama3.2:1B-Q8_0
 API_KEY=${API_KEY:-dockermodelrunner}
 

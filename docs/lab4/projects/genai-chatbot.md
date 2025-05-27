@@ -88,7 +88,7 @@ docker model pull ai/llama3.2:1B-Q8_0
 ## Verify the backend.env 
 
 ```
-BASE_URL=http://host.docker.internal:12434/engines/llama.cpp/v1/
+BASE_URL=http://localhost:12434/engines/llama.cpp/v1/
 MODEL=ai/llama3.2:1B-Q8_0
 API_KEY=${API_KEY:-dockermodelrunner}
 
