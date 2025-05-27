@@ -117,3 +117,52 @@ Water appears blue because ...
 ```
 docker model rm ai/llama3.2:1B-Q8_0
 ```
+
+## Packaging your own AI Model
+
+### Step 1. Pull the model from Hugging Face
+
+
+```
+docker model pull hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF
+Downloaded: 769.73 MB
+Model pulled successfully
+```
+### Step 2. Setup a local Docker registry
+
+
+```
+docker run -d -p 5000:5000 --name registry registry:2
+```
+### Step 3. Tag the model for your local registry
+
+```
+docker model tag hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF localhost:5000/foobar
+Model "hf.co/bartowski/llama-3.2-1b-instruct-gguf" tagged successfully with "localhost:5000/foobar:latest"
+```
+
+### Step 4. Push the model to your local registry
+
+```
+docker model push localhost:5000/foobar
+Uploaded: 770.00 MB
+Model pushed successfully
+```     
+### Step 5. Push the model to your local registry
+
+```
+docker model push localhost:5000/foobar
+Uploaded: 770.00 MB
+Model pushed successfully
+```
+   
+### Step 6. List the available models         
+
+```
+docker model ls
+MODEL NAME                                  PARAMETERS  QUANTIZATION  ARCHITECTURE  MODEL ID      CREATED       SIZE
+ai/llama3.2:1B-Q8_0                         1.24 B      Q8_0          llama         a15c3117eeeb  2 months ago  1.22 GiB
+hf.co/bartowski/llama-3.2-1b-instruct-gguf  1.24B                     llama         7ca6390d8288  8 months ago  808M
+localhost:5000/foobar:latest  
+```
+

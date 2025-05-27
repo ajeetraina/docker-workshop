@@ -462,6 +462,75 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#packaging-your-own-ai-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging your own AI Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Packaging your own AI Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-pull-the-model-from-hugging-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Pull the model from Hugging Face
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-setup-a-local-docker-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Setup a local Docker registry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-tag-the-model-for-your-local-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Tag the model for your local registry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-push-the-model-to-your-local-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. Push the model to your local registry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-push-the-model-to-your-local-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5. Push the model to your local registry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-list-the-available-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6. List the available models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -831,6 +900,75 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#packaging-your-own-ai-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Packaging your own AI Model
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Packaging your own AI Model">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#step-1-pull-the-model-from-hugging-face" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Pull the model from Hugging Face
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-2-setup-a-local-docker-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Setup a local Docker registry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-3-tag-the-model-for-your-local-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Tag the model for your local registry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-4-push-the-model-to-your-local-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. Push the model to your local registry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-5-push-the-model-to-your-local-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5. Push the model to your local registry
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#step-6-list-the-available-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6. List the available models
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -927,6 +1065,36 @@ Water appears blue because ...
 </code></pre>
 <h2 id="remove-the-model">Remove the model</h2>
 <pre><code>docker model rm ai/llama3.2:1B-Q8_0
+</code></pre>
+<h2 id="packaging-your-own-ai-model">Packaging your own AI Model</h2>
+<h3 id="step-1-pull-the-model-from-hugging-face">Step 1. Pull the model from Hugging Face</h3>
+<pre><code>docker model pull hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF
+Downloaded: 769.73 MB
+Model pulled successfully
+</code></pre>
+<h3 id="step-2-setup-a-local-docker-registry">Step 2. Setup a local Docker registry</h3>
+<pre><code>docker run -d -p 5000:5000 --name registry registry:2
+</code></pre>
+<h3 id="step-3-tag-the-model-for-your-local-registry">Step 3. Tag the model for your local registry</h3>
+<pre><code>docker model tag hf.co/bartowski/Llama-3.2-1B-Instruct-GGUF localhost:5000/foobar
+Model &quot;hf.co/bartowski/llama-3.2-1b-instruct-gguf&quot; tagged successfully with &quot;localhost:5000/foobar:latest&quot;
+</code></pre>
+<h3 id="step-4-push-the-model-to-your-local-registry">Step 4. Push the model to your local registry</h3>
+<pre><code>docker model push localhost:5000/foobar
+Uploaded: 770.00 MB
+Model pushed successfully
+</code></pre>
+<h3 id="step-5-push-the-model-to-your-local-registry">Step 5. Push the model to your local registry</h3>
+<pre><code>docker model push localhost:5000/foobar
+Uploaded: 770.00 MB
+Model pushed successfully
+</code></pre>
+<h3 id="step-6-list-the-available-models">Step 6. List the available models</h3>
+<pre><code>docker model ls
+MODEL NAME                                  PARAMETERS  QUANTIZATION  ARCHITECTURE  MODEL ID      CREATED       SIZE
+ai/llama3.2:1B-Q8_0                         1.24 B      Q8_0          llama         a15c3117eeeb  2 months ago  1.22 GiB
+hf.co/bartowski/llama-3.2-1b-instruct-gguf  1.24B                     llama         7ca6390d8288  8 months ago  808M
+localhost:5000/foobar:latest  
 </code></pre>
 
 

@@ -1,6 +1,6 @@
 
 
-![vscode-copilot](images/dockermcp-askgordon.png)
+![vscode-copilot](images/gordon-dockercli.png)
 
 
 ## Prerequisites
@@ -72,6 +72,15 @@ Enable Docker MCP Server
 
 ## Step 7. Start chatting with your Docker Desktop
 
-Prompt: "list out all the containers running on my Docker Desktop"
+## Prompt 1: 
+
+"List out all the containers running on my Docker Desktop"
+
+![gordoncli](./images/gordon-cli.png)
+
+## Prompt 2:
+
+"Create a new nginx container with the name 'my-nginx' and run it on port 87"
 
 
+![gordoncli2](./images//gordon-cli2.png)
