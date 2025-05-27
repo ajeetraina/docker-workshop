@@ -84,3 +84,17 @@ Enable Docker MCP Server
 
 
 ![gordoncli2](./images//gordon-cli2.png)
+
+## Containerising the application
+
+```
+git clone https://github.com/dockersamples/docker-init-demos
+cd docker-init-demos/python
+```
+
+## Prompt 3:
+
+
+```
+docker ai "can you containerise this application for me"
+```
