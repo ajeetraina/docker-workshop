@@ -60,8 +60,4 @@ The repository "modelorbital" has been created on your GitHub account. You can a
 Let me know if you need help with anything else!
 ```
 
-
-                                                                                                                       👍 Helpful 👎 Not helpful
-
-
 This looks great! We've successfully used Docker AI to create a new GitHub repository called "modelorbital" on your GitHub account.
