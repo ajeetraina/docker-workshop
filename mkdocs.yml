@@ -30,6 +30,9 @@ nav:
     - Overview: lab5/overview.md
     - Getting Started: lab5/getting-started.md
     - Projects:
+      - Visual Chatbot:
+        - Getting Started: lab5/projects/visual-chatbot/visual-chatbot.md
+        - Running your First MCP Server: lab5/projects/visual-chatbot/mcp.md
       - Docker CLI, Ask Gordon: lab5/projects/docker-cli-mcp.md
       - GitHub MCP Server, Ask Gordon: lab5/projects/github-mcp.md
 
