@@ -42,7 +42,7 @@ Click "Save" to apply the settings.
 
 > Enter a prompt asking "Hello! What can you do for me today?"
 
-![first-prompt](./images/first-prompt.png)
+![first-prompt](./images/first-chat.png)
 
 Note that the app does not stream the responses, so it may take a little while to get the response. 
 So, try to stall for time a bit (without revealing it's all running locally).
