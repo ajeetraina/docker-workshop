@@ -46,10 +46,17 @@ The Docker MCP CLI provides several key capabilities:
 
 ![Enable MCP Toolkit](./images/enable-mcptoolkit.png)
 
-If you run docker mcp client -g  and the extension isn't installed, you'll be prompted to install it:
 
 ```
 docker mcp client ls -g
+```
+
+```
+docker mcp client ls
+=== Project-wide MCP Configurations (/Users/ajeetsraina/tesco/docker-workshop) ===
+ ● cursor: no mcp configured
+ ● vscode: no mcp configured
+
 ```
 
 
@@ -59,7 +66,8 @@ docker mcp client ls -g
 ```
 docker mcp -v
 Docker MCP Plugin
-dev, commit 2cfe91cb9b714036b840a13aa245754e3453ca9d
+dev, commit cb67dfd17ba46115f13869a87d5449e6a78110b1
+
 ```
 
 ### 3. Client Management 
@@ -78,16 +86,16 @@ This unified approach to client management simplifies what was previously a comp
 
 ### 4. Using the Client Management CLI
 
-```
+``` 
 docker mcp client --help
-This Docker CLI plugin adds experimental features.
+Docker MCP Toolkit's CLI - Manage your MCP servers and clients.
 
-Usage: docker mcp client
+Usage: docker mcp client (Supported: claude-desktop, continue, cursor, gordon, vscode)
 
 Available Commands:
-  connect     Connect the Docker MCP Catalog to a client.
-  disconnect  Disconnect the Docker MCP Catalog from a client.
-  ls          List MCP configurations.
+  connect             Connect the Docker MCP Toolkit to a client
+  disconnect          Disconnect the Docker MCP Toolkit from a client
+  ls                  List client configurations
 ```
 
 ### 5. Listing Clients
@@ -97,16 +105,17 @@ Check which clients are configured:
 ```shell
 docker mcp client ls -g
 
-
-=== Project-wide MCP Configurations (/Users/<username>/git-repo) ===
-● cursor: no mcp configured
-● vscode: no mcp configured
+=== System-wide MCP Configurations ===
+ ● claude-desktop: no mcp configured
+ ● continue: no mcp configured
+ ● cursor: no mcp configured
+ ● gordon: no mcp configured
+ ● vscode: no mcp configured
 ```
-
 
 The "no mcp configured" status means that while these clients are detected, they haven't been connected to Docker MCP yet. Neither client will have access to any MCP tools you enable in Docker.
 
-### 6. Accessing the MCP Toolkit Extension
+### 6. Accessing the MCP Toolkit 
 
 
 ### 7. Connecting Clients
