@@ -61,3 +61,13 @@ Let me know if you need help with anything else!
 ```
 
 This looks great! We've successfully used Docker AI to create a new GitHub repository called "modelorbital" on your GitHub account.
+
+## Step 3. Use Gordon to interact with GitHub
+
+Now, let's use Gordon to interact with GitHub. You can ask Gordon to perform various tasks related to your GitHub repositories.
+
+- Prompt: Can you created a README file in the modelorbital repository? Add Top 5 IDEs 
+- Prompt: Create an issue in the modelorbital repository to add a tabular format for the IDEs
+
+Now you can ask Gordon to perform various tasks related to your GitHub repositories, such as creating issues, adding files, or managing pull requests.
+
