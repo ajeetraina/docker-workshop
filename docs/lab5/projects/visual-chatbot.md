@@ -2,7 +2,7 @@
 
 ## Prerequisites
 
-- Install Docker Desktop 4.41.0 or later
+- Install Docker Desktop 4.42.0 or later
 - Enable Docker Model Runner in Docker Dashboard
 - Enable the TCP host socket for DMR (use the default port of 12434)
 - Download a model
