@@ -19,7 +19,7 @@ We'll use a sample product catalog service:
 ## Step 1. Clone the sample catalog service
 
 ```
-git clone https://github.com/ajeetraina/catalog-service-node
+git clone https://github.com/dockersamples/catalog-service-node
 cd catalog-service-node
 ```
 
