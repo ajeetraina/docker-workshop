@@ -610,6 +610,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mcp-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      MCP Gateway
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      MCP Catalog
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      MCP Config
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -916,6 +943,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#mcp-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      MCP Gateway
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp-catalog" class="md-nav__link">
+    <span class="md-ellipsis">
+      MCP Catalog
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mcp-config" class="md-nav__link">
+    <span class="md-ellipsis">
+      MCP Config
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -942,7 +996,9 @@
 <p>The <code>docker mcp</code> CLI is a powerful command-line tool that serves as the interface for managing the Docker Model Context Protocol (MCP) environment. 
 It enables developers to connect AI assistants to external tools securely, without having to manually configure each connection.</p>
 <p>As part of the Docker MCP Toolkit, this CLI brings the legendary Docker simplicity to the world of AI agent tooling.</p>
-<pre><code>$ docker mcp
+<pre><code>docker mcp
+Docker MCP Toolkit's CLI - Manage your MCP servers and clients.
+
 Usage: docker mcp [OPTIONS]
 
 Flags:
@@ -951,9 +1007,12 @@ Flags:
 Available Commands:
   catalog     Manage the catalog
   client      Manage MCP clients
+  config      Manage the configuration
   gateway     Manage the MCP Server gateway
   policy      Manage secret policies
   secret      Manage secrets
+  server      Manage servers
+  tools       List/count/call MCP tools
 </code></pre>
 <p>The Docker MCP CLI is currently a plugin for Docker Desktop. 
 When you first run an MCP command, it will check if the extension is installed or not.</p>
@@ -969,8 +1028,7 @@ When you first run an MCP command, it will check if the extension is installed o
 <h2 id="getting-started">Getting Started</h2>
 <h3 id="1-ensure-that-mcp-toolkit-is-enabled-on-docker-desktop">1.  Ensure that MCP Toolkit is enabled on Docker Desktop</h3>
 <p><img alt="Enable MCP Toolkit" src="../images/enable-mcptoolkit.png" /></p>
-<pre><code>docker mcp client ls -g
-</code></pre>
+<p>To enable the MCP Toolkit, open Docker Desktop and navigate to the "Experimental Features" section.</p>
 <pre><code>docker mcp client ls
 === Project-wide MCP Configurations (/Users/ajeetsraina/tesco/docker-workshop) ===
  ● cursor: no mcp configured
@@ -1025,6 +1083,8 @@ Available Commands:
 <li>continue</li>
 <li>cursor</li>
 </ul>
+<h2 id="mcp-gateway">MCP Gateway</h2>
+<p>The MCP Gateway is a central component of the Docker MCP Toolkit that allows you to run and manage MCP servers. It acts as a bridge between your AI clients and the tools available in the Docker MCP Catalog, enabling secure and efficient communication.</p>
 <p>In order to connect the clients to Docker, you use the following command:</p>
 <pre><code>docker mcp gateway run --help
 </code></pre>
@@ -1045,6 +1105,32 @@ Flags:
       --verbose             Verbose output
       --verify-signatures   Verify signatures of the server images
 
+</code></pre>
+<h2 id="mcp-catalog">MCP Catalog</h2>
+<p>The MCP Catalog is a collection of tools that can be used with the Docker MCP Toolkit. It provides a standardized way to discover, manage, and use these tools within your AI applications.</p>
+<pre><code>docker mcp catalog 
+Docker MCP Toolkit's CLI - Manage your MCP servers and clients.
+
+Usage: docker mcp catalog
+
+Available Commands:
+  init        Initialize the catalog
+  ls          List configured catalogs
+  reset       Empty the catalog
+  show        Show a catalog
+  update      Update a specific catalog or all catalogs if no name is provided
+</code></pre>
+<h2 id="mcp-config">MCP Config</h2>
+<p>The MCP Config is a configuration file that defines how the Docker MCP Toolkit should behave. It includes settings for the catalog, registry, and other components of the MCP environment.</p>
+<pre><code>docker mcp config
+Docker MCP Toolkit's CLI - Manage your MCP servers and clients.
+
+Usage: docker mcp config
+
+Available Commands:
+  read        Read the configuration
+  reset       Reset the configuration
+  write       Write the configuration
 </code></pre>
 
 
