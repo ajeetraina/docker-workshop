@@ -1,7 +1,7 @@
 
 ## Prereq
 
-Ensure that you have Docker Desktop 4.41+ installed on your system.
+Ensure that you have Docker Desktop 4.42+ installed on your system.
 
 ## Using the Docker MCP CLI
 
@@ -42,7 +42,9 @@ The Docker MCP CLI provides several key capabilities:
 ## Getting Started
 
 
-### 1.  Install the MCP Toolkit Extension
+### 1.  Ensure that MCP Toolkit is enabled on Docker Desktop
+
+![Enable MCP Toolkit](./images/enable-mcptoolkit.png)
 
 If you run docker mcp client -g  and the extension isn't installed, you'll be prompted to install it:
 
@@ -50,17 +52,6 @@ If you run docker mcp client -g  and the extension isn't installed, you'll be pr
 docker mcp client ls -g
 ```
 
-Result:
-
-```
-The Docker Desktop Extension to run the MCP Catalog is not installed. 
-Do you want to install the extension now? (Y/n): Y 
-Checking for latest version of MCP Catalog extension... Ok (0.2.51) 
-Installing MCP Catalog extension, this might take a bit... Ok
-=== Project-wide MCP Configurations (/Users/../..) ===
-● cursor: no mcp configured
-● vscode: no mcp configured
-```
 
 ### 2. Check the version
 

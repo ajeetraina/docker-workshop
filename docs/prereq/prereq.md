@@ -1,6 +1,6 @@
 ### 1. Docker Desktop
 
-[Download and Install Docker Desktop 4.41+](https://www.docker.com/products/docker-desktop/) on your system. 
+[Download and Install Docker Desktop 4.42.0+](https://www.docker.com/products/docker-desktop/) on your system. 
 
  - [Apple Chip](https://desktop.docker.com/mac/main/arm64/Docker.dmg)
  - [Intel Chip](https://desktop.docker.com/mac/main/amd64/Docker.dmg)
@@ -11,6 +11,7 @@
 ### 2. Download your preferred IDEs (optional)
 
 - IntelliJ IDEA
+- VS Code
 
 ### 3. Access to the repositories
 
@@ -31,6 +32,7 @@ Ensure that you have sufficient space to download these models on your Macbook.
 ```
 docker model pull ai/llama3.2:1B-Q8_0
 docker model pull ai/qwen3
+docker model pull ai/gemma3
 ```
 
 ### 5. Download the following images from the Docker Hub

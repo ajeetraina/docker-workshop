@@ -1,8 +1,8 @@
 
 ## Prereq
 
-- Install the latest version of [Docker Desktop 4.40+](https://docs.docker.com/get-started/introduction/get-docker-desktop/)
-- Ensure that “Docker Model Runner” is enabled (it should by default in 4.40) 
+- Install the latest version of [Docker Desktop 4.42+](https://docs.docker.com/get-started/introduction/get-docker-desktop/)
+- Ensure that “Docker Model Runner” is enabled.
 
 There are two ways to enable Model Runner - either using CLI or using Docker Dashboard.
 
@@ -14,7 +14,7 @@ docker desktop enable model-runner
 
 ### Using Docker Dashboard
 
-![enable runner](./images/enable-runner.png)
+![enable runner](./images/enable-dmr.png)
 
 
 > The "Enable host-side TCP support" feature allows Docker Model Runner to  additionally accept connections on the host OS on the specified TCP port (default: 12434) rather than only through the host Docker socket (/var/run/docker.sock). You can change this to another port if needed, particularly if 12434 is already in use by another application. We will see its usage later in the docs.

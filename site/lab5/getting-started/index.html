@@ -552,9 +552,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-install-the-mcp-toolkit-extension" class="md-nav__link">
+  <a href="#1-ensure-that-mcp-toolkit-is-enabled-on-docker-desktop" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Install the MCP Toolkit Extension
+      1. Ensure that MCP Toolkit is enabled on Docker Desktop
     </span>
   </a>
   
@@ -867,9 +867,9 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-install-the-mcp-toolkit-extension" class="md-nav__link">
+  <a href="#1-ensure-that-mcp-toolkit-is-enabled-on-docker-desktop" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Install the MCP Toolkit Extension
+      1. Ensure that MCP Toolkit is enabled on Docker Desktop
     </span>
   </a>
   
@@ -955,7 +955,7 @@
   <h1>Getting Started</h1>
 
 <h2 id="prereq">Prereq</h2>
-<p>Ensure that you have Docker Desktop 4.41+ installed on your system.</p>
+<p>Ensure that you have Docker Desktop 4.42+ installed on your system.</p>
 <h2 id="using-the-docker-mcp-cli">Using the Docker MCP CLI</h2>
 <p>The <code>docker mcp</code> CLI is a powerful command-line tool that serves as the interface for managing the Docker Model Context Protocol (MCP) environment. 
 It enables developers to connect AI assistants to external tools securely, without having to manually configure each connection.</p>
@@ -985,18 +985,10 @@ When you first run an MCP command, it will check if the extension is installed o
 <li><strong>Gateway Server</strong>: Provides a single connection point for all enabled MCP tools</li>
 </ul>
 <h2 id="getting-started">Getting Started</h2>
-<h3 id="1-install-the-mcp-toolkit-extension">1.  Install the MCP Toolkit Extension</h3>
+<h3 id="1-ensure-that-mcp-toolkit-is-enabled-on-docker-desktop">1.  Ensure that MCP Toolkit is enabled on Docker Desktop</h3>
+<p><img alt="Enable MCP Toolkit" src="../images/enable-mcptoolkit.png" /></p>
 <p>If you run docker mcp client -g  and the extension isn't installed, you'll be prompted to install it:</p>
 <pre><code>docker mcp client ls -g
-</code></pre>
-<p>Result:</p>
-<pre><code>The Docker Desktop Extension to run the MCP Catalog is not installed. 
-Do you want to install the extension now? (Y/n): Y 
-Checking for latest version of MCP Catalog extension... Ok (0.2.51) 
-Installing MCP Catalog extension, this might take a bit... Ok
-=== Project-wide MCP Configurations (/Users/../..) ===
-● cursor: no mcp configured
-● vscode: no mcp configured
 </code></pre>
 <h3 id="2-check-the-version">2. Check the version</h3>
 <pre><code>docker mcp -v
