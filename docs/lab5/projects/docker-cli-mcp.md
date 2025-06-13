@@ -7,94 +7,33 @@
 
 Before we start, make sure you have:
 
-- Docker Desktop 4.41.0+ with the MCP Toolkit Extension installed
-- Node.js (v18 or later) for running the frontend
+- Docker Desktop 4.42.0+ with the MCP Toolkit Extension installed
+- Ensure that Docker AI is enabled under Docker Dashboard
 
 
-## Setting Up the Sample Database
+## Step 1. Select Docker CLI under MCP Server
 
-Instead of using an empty Postgres database, let's use a real example with actual data.
-We'll use a sample product catalog service:
+![gordoncli](./images/mcp-dockercli.png)
 
-## Step 1. Clone the sample catalog service
+## Step 2. Select Gordon under MCP Client
 
-```
-git clone https://github.com/dockersamples/catalog-service-node
-cd catalog-service-node
-```
+![gordoncl](./images/mcp-gordon.png)
 
-## Step 2. Start the backend services (includes Postgres with sample data)
+## Step 3. Ensure that Docker CLI is enabled under Ask Gordon
 
-```
-docker compose up -d --build
-```
+![cligordon](./images/cligordon.png)
 
-This will spin up:
-
-
-- A Postgres database on port 5432 with sample catalog data
-- A Node.js backend service
-- Sample data including products, categories, and inventory
-
-Now let's bring up the frontend to see what data we're working with:
-
-
-## Step 3. Install frontend dependencies
-
-```
-npm install
-```
-
-## Step 4. Start the development server
-
-```
-npm run dev
-```
-
-Open your browser to `http://localhost:5173 to see the catalog application.
-This gives you a visual understanding of the data structure we'll be querying with Claude.
-
-
-Hit "Create Product" button and start adding the new items to your Product catalog system.
-
-Perfect! Now we have a realistic database to work with instead of an empty one.
-
-
-## Step 5. Setting up MCP Toolkit
-
-Open Docker Desktop and navigate to the MCP Toolkit extension.
-
-Enable Docker MCP Server
-
-![docker cli](./images/docker-cli.png)
-
-
-
-## Step 7. Start chatting with your Docker Desktop
 
 ## Prompt 1: 
 
-"List out all the containers running on my Docker Desktop"
+"List out all the containers running on my system"
 
-![gordoncli](./images/gordon-cli.png)
+![gordoncli](./images/listofcontainers.png)
 
 ## Prompt 2:
 
-"Create a new nginx container with the name 'my-nginx' and run it on port 87"
+"Create a new redis container with the name 'myredis' and run it on port 6379"
 
 
-![gordoncli2](./images//gordon-cli2.png)
+![gordoncli2](./images/redis-gordon.png)
 
-## Containerising the application
-
-```
-git clone https://github.com/dockersamples/docker-init-demos
-cd docker-init-demos/python
-```
-
-## Prompt 3:
-
-
-```
-docker ai "can you containerise this application for me"
-```
