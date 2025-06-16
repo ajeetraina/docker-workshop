@@ -8,7 +8,7 @@
 - Download a model
 
 ```json
-doocker model pull ai/llama3.2:1B-Q8_0 
+docker model pull ai/llama3.2:1B-Q8_0 
 ```
 
 ## Step 1. Start the visual chatbot container
