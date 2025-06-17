@@ -751,18 +751,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-start-chatting-with-your-docker-desktop" class="md-nav__link">
+  <a href="#step-7-add-mcp-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 7. Start chatting with your Docker Desktop
+      Step 7. Add MCP Server
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-using-docker-mcp-toolkit-with-vs-code" class="md-nav__link">
+  <a href="#step-8-using-github-co-pilot" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 8. Using Docker MCP Toolkit with VS Code
+      Step 8. Using GitHub Co-Pilot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-chatting-with-github-co-pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 8. Chatting with GitHub Co-Pilot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting:
     </span>
   </a>
   
@@ -931,18 +949,36 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-7-start-chatting-with-your-docker-desktop" class="md-nav__link">
+  <a href="#step-7-add-mcp-server" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 7. Start chatting with your Docker Desktop
+      Step 7. Add MCP Server
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-8-using-docker-mcp-toolkit-with-vs-code" class="md-nav__link">
+  <a href="#step-8-using-github-co-pilot" class="md-nav__link">
     <span class="md-ellipsis">
-      Step 8. Using Docker MCP Toolkit with VS Code
+      Step 8. Using GitHub Co-Pilot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-chatting-with-github-co-pilot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 8. Chatting with GitHub Co-Pilot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting:
     </span>
   </a>
   
@@ -1004,62 +1040,31 @@ This gives you a visual understanding of the data structure we'll be querying wi
 <p>Hit "Create Product" button and start adding the new items to your Product catalog system.</p>
 <p>Perfect! Now we have a realistic database to work with instead of an empty one.</p>
 <h2 id="step-5-setting-up-mcp-toolkit">Step 5. Setting up MCP Toolkit</h2>
-<p>Open Docker Desktop and navigate to the MCP Toolkit extension.</p>
+<p>Open Docker Desktop and navigate to the MCP Toolkit section in the sidebar.</p>
 <p>Enable Docker MCP Server</p>
 <p><img alt="docker cli" src="../images/docker-cli.png" /></p>
 <h2 id="step-6-configuring-the-vs-code">Step 6. Configuring the VS Code</h2>
-<p>Open <code>mcp.json</code> file under .vscode directory and configure the MCP server:</p>
-<pre><code class="language-json">{
-  &quot;inputs&quot;: [
-    // The &quot;inputs&quot; section defines the inputs required for the MCP server configuration.
-    {
-      &quot;type&quot;: &quot;promptString&quot;
-    }
-  ],
-  &quot;servers&quot;: {
-    // The &quot;servers&quot; section defines the MCP servers you want to use.
-    &quot;postgres&quot;: {
-      &quot;command&quot;: &quot;docker&quot;,
-      &quot;args&quot;: [
-        &quot;run&quot;,
-        &quot;-i&quot;,
-        &quot;--rm&quot;,
-        &quot;mcp/postgres&quot;,
-        &quot;postgresql://postgres:postgres@host.docker.internal:5432/catalog&quot;
-      ]
-    }
-  }
-}
-</code></pre>
-<p><img alt="vscode" src="../images/vscode_dockercli.png" /></p>
-<h2 id="step-7-start-chatting-with-your-docker-desktop">Step 7. Start chatting with your Docker Desktop</h2>
+<p>Open your VS Code and install the MCP Toolkit extension if you haven't already.</p>
+<h2 id="step-7-add-mcp-server">Step 7. Add MCP Server</h2>
+<p><img alt="vscode1" src="../images/vscode1.png" />
+<img alt="vscode1" src="../images/vscode2.png" />
+<img alt="vscode1" src="../images/vscode3.png" />
+<img alt="vscode1" src="../images/vscode4.png" />
+<img alt="vscode1" src="../images/vscode5.png" />
+<img alt="vscode1" src="../images/vscode6.png" /></p>
+<h2 id="step-8-using-github-co-pilot">Step 8. Using GitHub Co-Pilot</h2>
+<p>It's time to use GitHub Co-Pilot to interact with the Docker CLI MCP server.
+Select Agent under Co-Pilot and select tools that are available to chat.</p>
+<p><img alt="copilot" src="../images/copilot1.png" /></p>
+<h2 id="step-8-chatting-with-github-co-pilot">Step 8. Chatting with GitHub Co-Pilot</h2>
 <p>Prompt: "list out all the containers running on my Docker Desktop"</p>
-<p><img alt="nginx" src="../images/nginx-dockercli.png" /></p>
-<h2 id="step-8-using-docker-mcp-toolkit-with-vs-code">Step 8. Using Docker MCP Toolkit with VS Code</h2>
-<p>Open <code>docker-mcp-runtime.json</code> file under .vscode directory and configure the MCP server:</p>
-<pre><code class="language-json">{
-  &quot;inputs&quot;: [
-    // The &quot;inputs&quot; section defines the inputs required for the MCP server configuration.
-    {
-      &quot;type&quot;: &quot;promptString&quot;
-    }
-  ],
-  &quot;servers&quot;: {
-    // The &quot;servers&quot; section defines the MCP servers you want to use.
-    &quot;MCP_DOCKER&quot;: {
-      &quot;command&quot;: &quot;docker&quot;,
-      &quot;args&quot;: [
-        &quot;run&quot;,
-        &quot;-i&quot;,
-        &quot;--rm&quot;,
-        &quot;alpine/socat&quot;,
-        &quot;STDIO&quot;,
-        &quot;TCP:host.docker.internal:8811&quot;
-      ]
-    }
-  }
-}
+<p><img alt="docker-k8s" src="../images/docker-vscode.png" /></p>
+<h2 id="troubleshooting">Troubleshooting:</h2>
+<p>In case you face the following issuse:</p>
+<pre><code class="language-json">Reason: You may not include more than 128 tools in your request.
 </code></pre>
+<p>The fix is to reduce the number of tools in your request to 128 or fewer. 
+You can do this by selecting only the necessary tools you want to use with GitHub Co-Pilot.</p>
 
 
 

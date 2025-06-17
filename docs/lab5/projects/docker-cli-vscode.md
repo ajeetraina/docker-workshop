@@ -62,7 +62,7 @@ Perfect! Now we have a realistic database to work with instead of an empty one.
 
 ## Step 5. Setting up MCP Toolkit
 
-Open Docker Desktop and navigate to the MCP Toolkit extension.
+Open Docker Desktop and navigate to the MCP Toolkit section in the sidebar.
 
 Enable Docker MCP Server
 
@@ -70,66 +70,40 @@ Enable Docker MCP Server
 
 ## Step 6. Configuring the VS Code 
 
-Open `mcp.json` file under .vscode directory and configure the MCP server:
+Open your VS Code and install the MCP Toolkit extension if you haven't already.
 
-```json
-{
-  "inputs": [
-    // The "inputs" section defines the inputs required for the MCP server configuration.
-    {
-      "type": "promptString"
-    }
-  ],
-  "servers": {
-    // The "servers" section defines the MCP servers you want to use.
-    "postgres": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "mcp/postgres",
-        "postgresql://postgres:postgres@host.docker.internal:5432/catalog"
-      ]
-    }
-  }
-}
-```
+## Step 7. Add MCP Server
+
+![vscode1](./images/vscode1.png)
+![vscode1](./images/vscode2.png)
+![vscode1](./images/vscode3.png)
+![vscode1](./images/vscode4.png)
+![vscode1](./images/vscode5.png)
+![vscode1](./images/vscode6.png)
 
 
-![vscode](./images/vscode_dockercli.png)
 
-## Step 7. Start chatting with your Docker Desktop
+## Step 8. Using GitHub Co-Pilot
+
+It's time to use GitHub Co-Pilot to interact with the Docker CLI MCP server.
+Select Agent under Co-Pilot and select tools that are available to chat.
+
+![copilot](./images/copilot1.png)
+
+
+## Step 8. Chatting with GitHub Co-Pilot
 
 Prompt: "list out all the containers running on my Docker Desktop"
 
-![nginx](./images/nginx-dockercli.png)
+![docker-k8s](./images/docker-vscode.png)
 
-## Step 8. Using Docker MCP Toolkit with VS Code
+## Troubleshooting:
 
-Open `docker-mcp-runtime.json` file under .vscode directory and configure the MCP server:
+In case you face the following issuse:
 
 ```json
-{
-  "inputs": [
-    // The "inputs" section defines the inputs required for the MCP server configuration.
-    {
-      "type": "promptString"
-    }
-  ],
-  "servers": {
-    // The "servers" section defines the MCP servers you want to use.
-    "MCP_DOCKER": {
-      "command": "docker",
-      "args": [
-        "run",
-        "-i",
-        "--rm",
-        "alpine/socat",
-        "STDIO",
-        "TCP:host.docker.internal:8811"
-      ]
-    }
-  }
-}
+Reason: You may not include more than 128 tools in your request.
 ```
+
+The fix is to reduce the number of tools in your request to 128 or fewer. 
+You can do this by selecting only the necessary tools you want to use with GitHub Co-Pilot.
