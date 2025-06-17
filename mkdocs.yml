@@ -35,7 +35,7 @@ nav:
         - Running your First MCP Server: lab5/projects/visual-chatbot/mcp.md
       - Docker CLI, Ask Gordon: lab5/projects/Docker-CLI-With-Gordon.md
       - Docker CLI, VS Code: lab5/projects/Docker-CLI-With-VSCode.md
-      - GitHub MCP Server, Ask Gordon: lab5/projects/GitHub-MCP.md
+      - GitHub MCP Server, Ask Gordon: lab5/projects/GitHub-MCP-Gordon.md
       - Kubernetes MCP Server, Claude Desktop: lab5/projects/Kubernetes-MCP.md
 
 theme:
