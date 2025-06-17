@@ -1,6 +1,6 @@
 
 
-![vscode-copilot](images/vscode-copiliot-docker.png)
+![vscode-copilot](images/copilot-gordon.png)
 
 
 ## Prerequisites
