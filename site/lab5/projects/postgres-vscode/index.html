@@ -18,7 +18,7 @@
     
     
       
-        <title>K8s mcp - Docker workshop</title>
+        <title>Postgres vscode - Docker workshop</title>
       
     
     
@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -102,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              K8s mcp
+              Postgres vscode
             
           </span>
         </div>
@@ -671,6 +676,131 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-sample-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up the Sample Database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-clone-the-sample-catalog-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Clone the sample catalog service
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-start-the-backend-services-includes-postgres-with-sample-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Start the backend services (includes Postgres with sample data)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-install-frontend-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Install frontend dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-start-the-development-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. Start the development server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-setting-up-mcp-toolkit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5. Setting up MCP Toolkit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-configure-the-postgres-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6. Configure the Postgres MCP Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-activate-the-postgres-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 7. Activate the Postgres MCP Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-configure-the-claude-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 8. Configure the Claude Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-9-configure-mcp_docker-in-claude-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 9. Configure MCP_DOCKER in Claude Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-10-restart-the-claude-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 10. Restart the Claude Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-11-start-chatting-with-the-postgres-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 11. Start chatting with the Postgres Database
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -687,9 +817,88 @@
   
 
 
-  <h1>K8s mcp</h1>
+  <h1>Postgres vscode</h1>
 
-<p><img alt="kubernetesmcp" src="k8s.png" /></p>
+<p><img alt="postgres-vscode" src="../images/postgres-vscode.png" /></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we start, make sure you have:</p>
+<ul>
+<li>Docker Desktop 4.41.0+ with the MCP Toolkit Extension installed</li>
+<li>Node.js (v18 or later) for running the frontend</li>
+<li>Claude Desktop installed</li>
+<li>Basic familiarity with Docker and JavaScript/TypeScript</li>
+<li>Basic SQL knowledge</li>
+</ul>
+<h2 id="setting-up-the-sample-database">Setting Up the Sample Database</h2>
+<p>Instead of using an empty Postgres database, let's use a real example with actual data. 
+We'll use a sample product catalog service:</p>
+<h2 id="step-1-clone-the-sample-catalog-service">Step 1. Clone the sample catalog service</h2>
+<pre><code>git clone https://github.com/ajeetraina/catalog-service-node
+cd catalog-service-node
+</code></pre>
+<h2 id="step-2-start-the-backend-services-includes-postgres-with-sample-data">Step 2. Start the backend services (includes Postgres with sample data)</h2>
+<pre><code>docker compose up -d --build
+</code></pre>
+<p>This will spin up:</p>
+<ul>
+<li>A Postgres database on port 5432 with sample catalog data</li>
+<li>A Node.js backend service</li>
+<li>Sample data including products, categories, and inventory</li>
+</ul>
+<p>Now let's bring up the frontend to see what data we're working with:</p>
+<h2 id="step-3-install-frontend-dependencies">Step 3. Install frontend dependencies</h2>
+<pre><code>npm install
+</code></pre>
+<h2 id="step-4-start-the-development-server">Step 4. Start the development server</h2>
+<pre><code>npm run dev
+</code></pre>
+<p>Open your browser to `http://localhost:5173 to see the catalog application. 
+This gives you a visual understanding of the data structure we'll be querying with Claude.</p>
+<p>Hit "Create Product" button and start adding the new items to your Product catalog system.</p>
+<p>Perfect! Now we have a realistic database to work with instead of an empty one.</p>
+<h2 id="step-5-setting-up-mcp-toolkit">Step 5. Setting up MCP Toolkit</h2>
+<p>Open Docker Desktop and navigate to the MCP Toolkit extension.
+Under "MCP Server", search for "Postgres" and select the Postgres MCP Server</p>
+<p><img alt="postgresmcp" src="../../images/postgres-mcp.png" /></p>
+<h2 id="step-6-configure-the-postgres-mcp-server">Step 6. Configure the Postgres MCP Server</h2>
+<p>Click "Configuration" and add the right URL for your Postgres database:</p>
+<pre><code>postgresql://postgres:postgres@host.docker.internal:5432/catalog
+</code></pre>
+<p><img alt="postgresmcp" src="../../images/postgres-config.png" /></p>
+<h2 id="step-7-activate-the-postgres-mcp-server">Step 7. Activate the Postgres MCP Server</h2>
+<p>Toggle the "Enable" switch to activate the Postgres MCP Server.</p>
+<h2 id="step-8-configure-the-claude-desktop">Step 8. Configure the Claude Desktop</h2>
+<p><img alt="claude-config" src="../images/claude-config.png" /></p>
+<h2 id="step-9-configure-mcp_docker-in-claude-desktop">Step 9. Configure MCP_DOCKER in Claude Desktop</h2>
+<p>Open Claude Desktop and go to the "Settings" tab. You will see the following entry:</p>
+<ul>
+<li>Select Claude Settings</li>
+<li>Click on the Developer tab</li>
+<li>Click on the Edit Config button</li>
+<li>Add MCP_DOCKER to mcpServers section:</li>
+</ul>
+<pre><code>{
+  &quot;mcpServers&quot;: {
+    &quot;MCP_DOCKER&quot;: {
+      &quot;command&quot;: &quot;docker&quot;,
+      &quot;args&quot;: [
+        &quot;run&quot;,
+        &quot;-i&quot;,
+        &quot;--rm&quot;,
+        &quot;alpine/socat&quot;,
+        &quot;STDIO&quot;,
+        &quot;TCP:host.docker.internal:8811&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<h2 id="step-10-restart-the-claude-desktop">Step 10. Restart the Claude Desktop</h2>
+<h2 id="step-11-start-chatting-with-the-postgres-database">Step 11. Start chatting with the Postgres Database</h2>
+<p>Prompt: </p>
+<pre><code>List out all the products in the catalog
+</code></pre>
+<p><img alt="listotables" src="../images/listoftables.png" /></p>
 
 
 

@@ -18,7 +18,7 @@
     
     
       
-        <title>K8s mcp - Docker workshop</title>
+        <title>Docker cli vscode - Docker workshop</title>
       
     
     
@@ -71,6 +71,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -102,7 +107,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              K8s mcp
+              Docker cli vscode
             
           </span>
         </div>
@@ -671,6 +676,104 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setting-up-the-sample-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setting Up the Sample Database
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-clone-the-sample-catalog-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Clone the sample catalog service
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-start-the-backend-services-includes-postgres-with-sample-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Start the backend services (includes Postgres with sample data)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-install-frontend-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Install frontend dependencies
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-start-the-development-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. Start the development server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-setting-up-mcp-toolkit" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5. Setting up MCP Toolkit
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-configuring-the-vs-code-extension" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6. Configuring the VS Code Extension
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-start-chatting-with-your-docker-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 7. Start chatting with your Docker Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-8-using-docker-mcp-toolkit-with-vs-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 8. Using Docker MCP Toolkit with VS Code
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -687,9 +790,100 @@
   
 
 
-  <h1>K8s mcp</h1>
+  <h1>Docker cli vscode</h1>
 
-<p><img alt="kubernetesmcp" src="k8s.png" /></p>
+<p><img alt="vscode-copilot" src="../images/vscode-copiliot-docker.png" /></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we start, make sure you have:</p>
+<ul>
+<li>Docker Desktop 4.41.0+ with the MCP Toolkit Extension installed</li>
+<li>Node.js (v18 or later) for running the frontend</li>
+<li>VS Code (or any IDE of your choice)</li>
+</ul>
+<h2 id="setting-up-the-sample-database">Setting Up the Sample Database</h2>
+<p>Instead of using an empty Postgres database, let's use a real example with actual data.
+We'll use a sample product catalog service:</p>
+<h2 id="step-1-clone-the-sample-catalog-service">Step 1. Clone the sample catalog service</h2>
+<pre><code>git clone https://github.com/ajeetraina/catalog-service-node
+cd catalog-service-node
+</code></pre>
+<h2 id="step-2-start-the-backend-services-includes-postgres-with-sample-data">Step 2. Start the backend services (includes Postgres with sample data)</h2>
+<pre><code>docker compose up -d --build
+</code></pre>
+<p>This will spin up:</p>
+<ul>
+<li>A Postgres database on port 5432 with sample catalog data</li>
+<li>A Node.js backend service</li>
+<li>Sample data including products, categories, and inventory</li>
+</ul>
+<p>Now let's bring up the frontend to see what data we're working with:</p>
+<h2 id="step-3-install-frontend-dependencies">Step 3. Install frontend dependencies</h2>
+<pre><code>npm install
+</code></pre>
+<h2 id="step-4-start-the-development-server">Step 4. Start the development server</h2>
+<pre><code>npm run dev
+</code></pre>
+<p>Open your browser to `http://localhost:5173 to see the catalog application.
+This gives you a visual understanding of the data structure we'll be querying with Claude.</p>
+<p>Hit "Create Product" button and start adding the new items to your Product catalog system.</p>
+<p>Perfect! Now we have a realistic database to work with instead of an empty one.</p>
+<h2 id="step-5-setting-up-mcp-toolkit">Step 5. Setting up MCP Toolkit</h2>
+<p>Open Docker Desktop and navigate to the MCP Toolkit extension.</p>
+<p>Enable Docker MCP Server</p>
+<p><img alt="docker cli" src="../images/docker-cli.png" /></p>
+<h2 id="step-6-configuring-the-vs-code-extension">Step 6. Configuring the VS Code Extension</h2>
+<p>Open <code>mcp.json</code> file under .vscode directory and configure the MCP server:</p>
+<pre><code class="language-json">{
+  &quot;inputs&quot;: [
+    // The &quot;inputs&quot; section defines the inputs required for the MCP server configuration.
+    {
+      &quot;type&quot;: &quot;promptString&quot;
+    }
+  ],
+  &quot;servers&quot;: {
+    // The &quot;servers&quot; section defines the MCP servers you want to use.
+    &quot;postgres&quot;: {
+      &quot;command&quot;: &quot;docker&quot;,
+      &quot;args&quot;: [
+        &quot;run&quot;,
+        &quot;-i&quot;,
+        &quot;--rm&quot;,
+        &quot;mcp/postgres&quot;,
+        &quot;postgresql://postgres:postgres@host.docker.internal:5432/catalog&quot;
+      ]
+    }
+  }
+}
+</code></pre>
+<p><img alt="vscode" src="../images/vscode_dockercli.png" /></p>
+<h2 id="step-7-start-chatting-with-your-docker-desktop">Step 7. Start chatting with your Docker Desktop</h2>
+<p>Prompt: "list out all the containers running on my Docker Desktop"</p>
+<p><img alt="nginx" src="../images/nginx-dockercli.png" /></p>
+<h2 id="step-8-using-docker-mcp-toolkit-with-vs-code">Step 8. Using Docker MCP Toolkit with VS Code</h2>
+<p>Open <code>docker-mcp-runtime.json</code> file under .vscode directory and configure the MCP server:</p>
+<pre><code class="language-json">{
+  &quot;inputs&quot;: [
+    // The &quot;inputs&quot; section defines the inputs required for the MCP server configuration.
+    {
+      &quot;type&quot;: &quot;promptString&quot;
+    }
+  ],
+  &quot;servers&quot;: {
+    // The &quot;servers&quot; section defines the MCP servers you want to use.
+    &quot;MCP_DOCKER&quot;: {
+      &quot;command&quot;: &quot;docker&quot;,
+      &quot;args&quot;: [
+        &quot;run&quot;,
+        &quot;-i&quot;,
+        &quot;--rm&quot;,
+        &quot;alpine/socat&quot;,
+        &quot;STDIO&quot;,
+        &quot;TCP:host.docker.internal:8811&quot;
+      ]
+    }
+  }
+}
+</code></pre>
 
 
 
