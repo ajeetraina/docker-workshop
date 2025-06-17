@@ -37,7 +37,7 @@ nav:
       - Docker MCP Server and VS Code: lab5/projects/Docker-CLI-With-VSCode.md
       - GitHub MCP Server and Gordon: lab5/projects/GitHub-MCP-Gordon.md
       - Kubernetes MCP Server and Claude: lab5/projects/Kubernetes-MCP.md
-
+      - Slack MCP Server and Claude: lab5/projects/Slack-MCP-With-Claude.md
 theme:
   name: material
   language: en
