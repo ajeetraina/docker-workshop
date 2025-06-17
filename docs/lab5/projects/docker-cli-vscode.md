@@ -68,7 +68,7 @@ Enable Docker MCP Server
 
 ![docker cli](./images/docker-cli.png)
 
-## Step 6. Configuring the VS Code Extension 
+## Step 6. Configuring the VS Code 
 
 Open `mcp.json` file under .vscode directory and configure the MCP server:
 

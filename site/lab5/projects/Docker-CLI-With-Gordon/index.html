@@ -11,6 +11,10 @@
       
       
       
+        <link rel="prev" href="../visual-chatbot/mcp/">
+      
+      
+        <link rel="next" href="../Docker-CLI-VSCode/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -18,7 +22,7 @@
     
     
       
-        <title>K8s mcp - Docker workshop</title>
+        <title>Docker CLI, Ask Gordon - Docker workshop</title>
       
     
     
@@ -71,6 +75,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -102,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              K8s mcp
+              Docker CLI, Ask Gordon
             
           </span>
         </div>
@@ -403,17 +412,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
@@ -427,7 +438,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             MCP Catalog and Toolkit
@@ -480,17 +491,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
@@ -504,7 +517,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             Projects
@@ -600,14 +613,125 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../docker-cli-mcp/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Docker CLI, Ask Gordon
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
     Docker CLI, Ask Gordon
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-select-docker-cli-under-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Select Docker CLI under MCP Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-select-gordon-under-mcp-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Select Gordon under MCP Client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-ensure-that-docker-cli-is-enabled-under-ask-gordon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Ensure that Docker CLI is enabled under Ask Gordon
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt 1:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt 2:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Docker-CLI-VSCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker CLI, VS Code
   </span>
   
 
@@ -624,11 +748,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../github-mcp/" class="md-nav__link">
+      <a href="../Github-MCP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     GitHub MCP Server, Ask Gordon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes-MCP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes MCP Server, Claude Desktop
   </span>
   
 
@@ -671,6 +816,68 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-select-docker-cli-under-mcp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1. Select Docker CLI under MCP Server
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-select-gordon-under-mcp-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2. Select Gordon under MCP Client
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-ensure-that-docker-cli-is-enabled-under-ask-gordon" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Ensure that Docker CLI is enabled under Ask Gordon
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt 1:
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prompt-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prompt 2:
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -687,9 +894,27 @@
   
 
 
-  <h1>K8s mcp</h1>
+  <h1>Docker CLI, Ask Gordon</h1>
 
-<p><img alt="kubernetesmcp" src="k8s.png" /></p>
+<p><img alt="vscode-copilot" src="../images/gordon-dockercli.png" /></p>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Before we start, make sure you have:</p>
+<ul>
+<li>Docker Desktop 4.42.0+ with the MCP Toolkit Extension installed</li>
+<li>Ensure that Docker AI is enabled under Docker Dashboard</li>
+</ul>
+<h2 id="step-1-select-docker-cli-under-mcp-server">Step 1. Select Docker CLI under MCP Server</h2>
+<p><img alt="gordoncli" src="../images/mcp-dockercli.png" /></p>
+<h2 id="step-2-select-gordon-under-mcp-client">Step 2. Select Gordon under MCP Client</h2>
+<p><img alt="gordoncl" src="../images/mcp-gordon.png" /></p>
+<h2 id="step-3-ensure-that-docker-cli-is-enabled-under-ask-gordon">Step 3. Ensure that Docker CLI is enabled under Ask Gordon</h2>
+<p><img alt="cligordon" src="../images/cligordon.png" /></p>
+<h2 id="prompt-1">Prompt 1:</h2>
+<p>"List out all the containers running on my system"</p>
+<p><img alt="gordoncli" src="../images/listofcontainers.png" /></p>
+<h2 id="prompt-2">Prompt 2:</h2>
+<p>"Create a new redis container with the name 'myredis' and run it on port 6379"</p>
+<p><img alt="gordoncli2" src="../images/redis-gordon.png" /></p>
 
 
 

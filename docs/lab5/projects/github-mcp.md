@@ -25,9 +25,20 @@ Let’s see how to use GitHub MCP Server using Gordon as well as Claude Desktop 
 - Navigate to the MCP Server
 - Find the GitHub tool (official) card and click on it to expand details.
 
-- Click on "Configuration" and enter your GitHub Personal Access Token (PAT) in the `github.personal_access_token` field.
+![githubrefernece](./images/github-reference.png)
 
-![githubofficial](./images/githubofficial.png)
+In your terminal, set up the GitHub token as a secret:
+
+```
+docker mcp secret set GITHUB.PERSONAL_ACCESS_TOKEN=github_pat_YOUR_TOKEN_HERE
+```
+
+For example:
+
+```
+docker mcp secret set GITHUB.PERSONAL_ACCESS_TOKEN=github_pat_11AACMRCAXXXXXXxEp_QRZW43Wo1k6KYWwDXXXXXXXXGPXLZ7EGEnse82YM
+Info: No policy specified, using default policy
+```
 
 
 If you have enabled Ask Gordon and enabled MCP Catalog (as shown in the following screenshot), then you can use docker ai command to play around with your GitHub repository.
@@ -35,15 +46,18 @@ If you have enabled Ask Gordon and enabled MCP Catalog (as shown in the followin
 ![askgordon](./images/askgordon.png)
 
 
-## Step 3: Use Docker AI to create a new GitHub repository
 
-![createrepo](./images/orbital.png)
+Run the following docker ai command to create a new repository on your GitHub repo directly.
 
+
+```
+docker ai "create a repo called modelorbital on my github repo"
+
+    • Calling create_repository...
+
+The repository "modelorbital" has been created on your GitHub account. You can access it here: https://github.com/username/modelorbital
+
+Let me know if you need help with anything else!
+```
 
 This looks great! We've successfully used Docker AI to create a new GitHub repository called "modelorbital" on your GitHub account.
-
-## Step 4. Continue using Gordon to interact with GitHub
-
-Now, let's use Gordon to interact with GitHub. You can ask Gordon to perform various tasks related to your GitHub repositories.
-
-![allowedtools](./images/allowedtools.png)

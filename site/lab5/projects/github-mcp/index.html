@@ -11,8 +11,10 @@
       
       
       
-        <link rel="prev" href="../docker-cli-mcp/">
+        <link rel="prev" href="../Docker-CLI-VSCode/">
       
+      
+        <link rel="next" href="../Kubernetes-MCP/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -614,11 +616,32 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-cli-mcp/" class="md-nav__link">
+      <a href="../Docker-CLI-With-Gordon/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     Docker CLI, Ask Gordon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Docker-CLI-VSCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker CLI, VS Code
   </span>
   
 
@@ -694,28 +717,31 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#step-3-use-docker-ai-to-create-a-new-github-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Use Docker AI to create a new GitHub repository
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-continue-using-gordon-to-interact-with-github" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4. Continue using Gordon to interact with GitHub
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Kubernetes-MCP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes MCP Server, Claude Desktop
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -778,24 +804,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#step-3-use-docker-ai-to-create-a-new-github-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 3: Use Docker AI to create a new GitHub repository
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-4-continue-using-gordon-to-interact-with-github" class="md-nav__link">
-    <span class="md-ellipsis">
-      Step 4. Continue using Gordon to interact with GitHub
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -837,22 +845,28 @@
 <ul>
 <li>Open Docker Desktop</li>
 <li>Navigate to the MCP Server</li>
-<li>
-<p>Find the GitHub tool (official) card and click on it to expand details.</p>
-</li>
-<li>
-<p>Click on "Configuration" and enter your GitHub Personal Access Token (PAT) in the <code>github.personal_access_token</code> field.</p>
-</li>
+<li>Find the GitHub tool (official) card and click on it to expand details.</li>
 </ul>
-<p><img alt="githubofficial" src="../images/githubofficial.png" /></p>
+<p><img alt="githubrefernece" src="../images/github-reference.png" /></p>
+<p>In your terminal, set up the GitHub token as a secret:</p>
+<pre><code>docker mcp secret set GITHUB.PERSONAL_ACCESS_TOKEN=github_pat_YOUR_TOKEN_HERE
+</code></pre>
+<p>For example:</p>
+<pre><code>docker mcp secret set GITHUB.PERSONAL_ACCESS_TOKEN=github_pat_11AACMRCAXXXXXXxEp_QRZW43Wo1k6KYWwDXXXXXXXXGPXLZ7EGEnse82YM
+Info: No policy specified, using default policy
+</code></pre>
 <p>If you have enabled Ask Gordon and enabled MCP Catalog (as shown in the following screenshot), then you can use docker ai command to play around with your GitHub repository.</p>
 <p><img alt="askgordon" src="../images/askgordon.png" /></p>
-<h2 id="step-3-use-docker-ai-to-create-a-new-github-repository">Step 3: Use Docker AI to create a new GitHub repository</h2>
-<p><img alt="createrepo" src="../images/orbital.png" /></p>
+<p>Run the following docker ai command to create a new repository on your GitHub repo directly.</p>
+<pre><code>docker ai &quot;create a repo called modelorbital on my github repo&quot;
+
+    • Calling create_repository...
+
+The repository &quot;modelorbital&quot; has been created on your GitHub account. You can access it here: https://github.com/username/modelorbital
+
+Let me know if you need help with anything else!
+</code></pre>
 <p>This looks great! We've successfully used Docker AI to create a new GitHub repository called "modelorbital" on your GitHub account.</p>
-<h2 id="step-4-continue-using-gordon-to-interact-with-github">Step 4. Continue using Gordon to interact with GitHub</h2>
-<p>Now, let's use Gordon to interact with GitHub. You can ask Gordon to perform various tasks related to your GitHub repositories.</p>
-<p><img alt="allowedtools" src="../images/allowedtools.png" /></p>
 
 
 
