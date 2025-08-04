@@ -1,0 +1,1496 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Ajeet Singh Raina">
+      
+      
+      
+        <link rel="prev" href="../../lab5/projects/Slack-MCP-With-Claude/">
+      
+      
+        <link rel="next" href="../getting-started/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Overview - Docker workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/styles.css">
+    
+      <link rel="stylesheet" href="../../css/dark-mode.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#why-deploying-agentic-genai-apps-is-harder-than-it-should-be" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+      
+  <img src="../../images/docker-logo-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docker workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Overview
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ajeetraina/docker-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docker-workshop
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+      
+  <img src="../../images/docker-logo-white.svg" alt="logo">
+
+    </a>
+    Docker workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ajeetraina/docker-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docker-workshop
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../prereq/prereq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Docker Model Runner
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Docker Model Runner
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab4/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab4/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab4/projects/genai-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GenAI Chatbot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MCP Catalog and Toolkit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            MCP Catalog and Toolkit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_4_3_1" id="__nav_4_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Visual Chatbot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Visual Chatbot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running your First MCP Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker MCP Server and Gordon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker MCP Server and VS Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub MCP Server and Gordon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes MCP Server and Claude
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slack MCP Server and Claude
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Agentic Compose
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Agentic Compose
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-deploying-agentic-genai-apps-is-harder-than-it-should-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Deploying agentic GenAI apps is Harder Than It Should Be
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducing-agentic-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducing Agentic Compose
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-new-in-agentic-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      What’s New in Agentic Compose
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What’s New in Agentic Compose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-the-old-vs-new-model-definition-and-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. The Old Vs New Model Definition and Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. The Old Vs New Model Definition and Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-old-model-definition-and-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Old Model Definition and Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-the-new-model-definition-and-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. The New Model Definition and Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mcp-gateway-a-new-standardized-tool-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. MCP Gateway: A New Standardized Tool Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-app-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. App Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/hackathon-recommender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hackathon Recommender
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/a2a-multi-agent-fact-checker.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A2A Multi-Agent Fact Checker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Docker Offload
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Docker Offload
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab7/overview.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab7/getting-started.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-deploying-agentic-genai-apps-is-harder-than-it-should-be" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Deploying agentic GenAI apps is Harder Than It Should Be
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#introducing-agentic-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introducing Agentic Compose
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#whats-new-in-agentic-compose" class="md-nav__link">
+    <span class="md-ellipsis">
+      What’s New in Agentic Compose
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What’s New in Agentic Compose">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-the-old-vs-new-model-definition-and-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. The Old Vs New Model Definition and Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1. The Old Vs New Model Definition and Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-old-model-definition-and-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Old Model Definition and Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-the-new-model-definition-and-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. The New Model Definition and Management
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-mcp-gateway-a-new-standardized-tool-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. MCP Gateway: A New Standardized Tool Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-app-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. App Code
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+  <h1>Overview</h1>
+
+<p>GenAI applications have evolved beyond simple text generation into sophisticated systems that actively reason, strategize, and execute complex workflows autonomously. We call it "agentic GenAI"—a shift from AI systems that primarily generate content to systems that can actively engage in the world, solve problems, and achieve goals autonomously. These agentic GenAI applications don't just process requests—they understand goals, decompose problems, and orchestrate solutions across multiple systems and services.</p>
+<p>Whether you're building a customer service agent, a research assistant, or a multi-agent workflow system, all agentic GenAI applications share a consistent architectural foundation built on three essential layers:</p>
+<p><img alt="agentic compose" src="../images/agentic-compose-1.png" /></p>
+<ul>
+<li>Models serve as the brains of the operation, generating output and determining how to achieve desired outcomes. </li>
+<li>
+<p>Tools provide the ability to fetch additional context or perform functions—it's important to note that models can't actually do anything on their own, as tools provide these critical capabilities. </p>
+</li>
+<li>
+<p>Custom app code connects and orchestrates everything, giving the model the list of available tools, performing execution of requested tools, managing state, and building prompts. </p>
+</li>
+</ul>
+<p>While this architecture appears straightforward, deploying these interconnected layers in production creates a cascade of complex challenges that traditional containerization approaches struggle to address.</p>
+<h2 id="why-deploying-agentic-genai-apps-is-harder-than-it-should-be">Why Deploying agentic GenAI apps is Harder Than It Should Be</h2>
+<p>Building agentic GenAI applications is exciting—getting them to work together in production is a nightmare. 
+Most organizations start by running individual agentic components manually: one agent does research, another analyzes data, third handles conversations. Each component runs separately, needs its own setup, and requires constant babysitting. What begins as a simple demo quickly becomes an unmanageable collection of processes that break frequently and are impossible to monitor effectively.</p>
+<p>When these agentic systems need to work together, the complexity explodes. Imagine trying to coordinate a team where everyone speaks a different language, uses different tools, and has no shared calendar. That's essentially what happens with agentic GenAI applications—they need to pass information between each other, handle failures gracefully, and adapt when things go wrong. Without proper coordination, you end up spending more time managing the infrastructure than benefiting from the intelligence.
+The resource challenge makes everything worse. Agentic GenAI applications are hungry for computing power, especially GPU resources. While tools like Docker Model Runner help run models locally, most development machines can't handle multiple agentic systems simultaneously. A single modern AI model might need 3.5GB of video memory just to start, and production systems need much more. Teams often find themselves choosing between running applications locally with toy models or jumping straight to expensive cloud infrastructure with no middle ground.</p>
+<p>Without standards, every pair of agentic systems that need to communicate invents its own communication method. Some use web requests, others use message queues, and some use entirely different protocols. Debugging becomes impossible because there's no single place to see what's happening across your agentic network. Security, monitoring, and troubleshooting all become exponentially harder as you add more agentic components to the mix.</p>
+<h2 id="introducing-agentic-compose">Introducing Agentic Compose</h2>
+<p>Agentic Compose solves these production deployment challenges by providing a comprehensive Docker Compose framework specifically designed for orchestrating agentic GenAI applications. This approach transforms chaotic infrastructure management into elegant, declarative patterns that scale from development to enterprise production.</p>
+<p>Agentic Compose is a comprehensive Docker Compose framework specifically designed for orchestrating agentic GenAI applications in production. It provides declarative infrastructure management for the three essential layers of agentic AI systems—Models, Tools (via MCP Gateway), and App Code—enabling teams to deploy complex multi-agent workflows with the same simplicity as traditional containerized applications. </p>
+<p>While Docker Model Runner enables developers to run LLMs locally with simple commands and OpenAI-compatible APIs, the reality of GPU-intensive AI workloads creates unique orchestration challenges. Even with local model serving capabilities, most development environments lack the substantial GPU resources required for multi-agent systems (often needing 3.5GB+ VRAM per model, with production systems requiring significantly more). </p>
+<p>This creates a critical need for seamless workflows that work consistently from local development using Docker Model Runner to cloud-based GPU infrastructure using solutions like Docker Offload for production workloads.</p>
+<h2 id="whats-new-in-agentic-compose">What’s New in Agentic Compose</h2>
+<h3 id="1-the-old-vs-new-model-definition-and-management">1. The Old Vs New Model Definition and Management</h3>
+<h4 id="the-old-model-definition-and-management">The Old Model Definition and Management</h4>
+<p>Previously, models were defined as services using a provider mechanism. </p>
+<pre><code>services:
+  llm:
+    provider:
+      type: model
+      options:
+        model: ai/gemma3
+</code></pre>
+<p>While this approach worked, it created unnecessary complexity and didn't align with how developers naturally think about models as shared resources. To help the ecosystem evolve and provide a more intuitive experience, we've decided to define models more concretely by giving them a top-level field in the Compose specification.</p>
+<h4 id="2-the-new-model-definition-and-management">2. The New Model Definition and Management</h4>
+<p>In Agentic Compose, you can define one or more models for your GenAI app to use through a straightforward, declarative approach. </p>
+<p>The top-level models field in your Compose file defines the available models, making them easily discoverable and reusable across your entire application stack.</p>
+<pre><code>services:
+  agent-app:
+    ...
+    models:
+      gemma3:
+        endpoint_var: OPENAI_BASE_URL
+        model_var: OPENAI_MODEL
+models:
+  gemma3:
+    model: ai/gemma3
+</code></pre>
+<p>Each service can specify the model it needs and the environment variables that should be injected to establish the connection. This approach provides clean separation between model configuration and service logic—services simply declare their model requirements, while the infrastructure handles the complexity of making those models available.</p>
+<p>When you launch your Compose file, the Docker Model Runner automatically figures out how to ensure the model is accessible, regardless of whether you're running in Docker Desktop or deploying to production infrastructure.</p>
+<p>The Model Runner intelligently handles the underlying complexity:
+- Docker Desktop users benefit from seamless integration with local GPU resources and model caching
+- Production environments automatically provision appropriate model containers or connect to external model services
+- Environment variables are automatically injected based on your model configuration, eliminating manual setup steps</p>
+<p>This abstraction means developers can focus on building their agentic logic rather than wrestling with model deployment intricacies. Whether you're using a lightweight local model for development or connecting to enterprise-grade model services in production, the same Compose configuration works consistently across all environments.</p>
+<p>The result is a unified approach where model dependencies are as easy to manage as any other service dependency in your Docker Compose stack.</p>
+<h3 id="2-mcp-gateway-a-new-standardized-tool-integration">2. MCP Gateway: A New Standardized Tool Integration</h3>
+<p>To support the definitions of tooling in GenAI applications, we're open-sourcing and making the MCP Gateway available as a standalone container. This represents a major advancement in how tools are managed and integrated across agentic systems. With Agentic Compose, you can start an MCP gateway that will launch containerized MCP servers, handle credentials securely, and provide a standardized interface for tool interactions.</p>
+<pre><code>services:
+  agent-app:
+    ...
+    environment:
+      - MCPGATEWAY_ENDPOINT=http://mcp-gateway:8811/sse
+    depends_on:
+      - mcp-gateway
+
+  mcp-gateway:
+    image: docker/mcp-gateway:latest
+    use_api_socket: true
+    command:
+      - --transport=sse
+      - --servers=duckduckgo
+      - --tools=search,fetch_content
+</code></pre>
+<ul>
+<li>Simplified Tool Configuration</li>
+</ul>
+<p>Use the MCP Gateway container directly in your Compose stack by specifying the servers and tools your agents need to use. The configuration is straightforward—you define which MCP servers to launch and which specific tools to make available. The gateway handles all the complexity of server lifecycle management, tool discovery, and secure communication protocols. There are lots of other flags and options available for advanced configurations—check the docs and content kit for more details on customizing your tool setup.</p>
+<ul>
+<li>Enhanced Security and Access Control</li>
+</ul>
+<p>The new use_api_socket field provides a powerful capability by injecting both the Docker socket and registry credentials into the MCP Gateway. This enables private registry pulls and works seamlessly in enforced login environments, solving common deployment challenges in enterprise settings. The gateway can securely access private tool containers and handle authentication automatically, eliminating manual credential management.</p>
+<ul>
+<li>Multi-Agent Tool Isolation</li>
+</ul>
+<p>For applications with multiple agents, you can launch multiple MCP Gateway containers and networks to isolate tools appropriately. This ensures agents have access only to the tools they need, following the principle of least privilege. Each gateway can be configured with different tool sets, access permissions, and security policies, enabling fine-grained control over what capabilities each agent can access.</p>
+<ul>
+<li>Containerized Tool Ecosystem</li>
+</ul>
+<p>The MCP Gateway transforms tool management from a configuration nightmare into a declarative infrastructure pattern. Tools become as easy to deploy and manage as any other containerized service, with benefits including automatic dependency resolution, version management, security isolation, and standardized communication protocols. This approach enables teams to build robust tool ecosystems that scale from development to production while maintaining security and reliability standards.</p>
+<h3 id="3-app-code">3. App Code</h3>
+<p>The app code layer in Agentic Compose represents the most familiar part of the stack—these are "normal" containerized applications that developers already know how to build, deploy, and manage. There's nothing fundamentally new here from a Compose perspective, as this follows the same patterns and practices used for any containerized application. The power comes from how these applications integrate with the models and tools layers to create intelligent, autonomous systems.</p>
+<ul>
+<li>Framework-Driven Development</li>
+</ul>
+<p>Many agentic apps will use a framework to manage the complex orchestration of flow, memory, and state that characterizes intelligent applications. These frameworks handle the intricate details of prompt management, conversation history, tool selection, and execution coordination that would otherwise require significant custom development. Rather than building these capabilities from scratch, developers can leverage proven frameworks that provide robust foundations for agentic behavior.</p>
+<ul>
+<li>Rich Ecosystem Support</li>
+</ul>
+<p>Our samples repository includes examples using several popular frameworks, demonstrating the flexibility and compatibility of Agentic Compose across the ecosystem:</p>
+<ul>
+<li>A2A - Agent-to-Agent communication patterns</li>
+<li>ADK - Agent Development Kit for rapid prototyping</li>
+<li>Agno - Lightweight agentic framework</li>
+<li>Crew AI - Multi-agent collaboration systems</li>
+<li>Embabel - Embedding and semantic search integration</li>
+<li>Langgraph - Graph-based agent workflows</li>
+<li>Spring AI - Enterprise Java integration</li>
+<li>
+<p>Vercel - Modern web application deployment</p>
+</li>
+<li>
+<p>Seamless Integration</p>
+</li>
+</ul>
+<p>The beauty of this approach is that your existing containerization knowledge directly applies to agentic applications. Your app code simply needs to connect to the models and tools defined in your Compose file through standard environment variables and network connections. The frameworks handle the complexity of agentic behavior, while Compose handles the infrastructure complexity, allowing developers to focus on building the unique business logic and user experiences that define their applications.
+This familiar development model dramatically reduces the learning curve for teams adopting agentic technologies, making it possible to leverage existing Docker expertise while building cutting-edge intelligent applications.</p>
+<p>Here’s how a typical Compose file would look like </p>
+<p>File: compose.yaml</p>
+<pre><code class="language-json"># Docker Compose configuration for Simple Node.js MCP Agent
+services:
+  app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - &quot;3000:3000&quot;
+    environment:
+      - PORT=3000
+      - MCP_GATEWAY_URL=http://mcp-gateway:8811
+    depends_on:
+      - mcp-gateway
+    models:
+      gemma:
+        endpoint_var: MODEL_RUNNER_URL
+        model_var: MODEL_RUNNER_MODEL
+
+  mcp-gateway:
+    # Standard MCP Gateway configuration
+    image: docker/mcp-gateway:latest
+    use_api_socket: true
+    ports:
+      - &quot;8811:8811&quot;
+    command:
+      - --transport=sse
+      # Add any MCP servers you want to use
+      - --servers=duckduckgo
+      - --tools=search,fetch_content
+
+# Model configuration
+models:
+  gemma:
+    model: ai/gemma3-qat
+</code></pre>
+<p>File: compose-offload.yaml</p>
+<pre><code class="language-json"># Override for using Docker Offload with larger models
+# Usage: docker compose -f compose.yaml -f compose.offload.yaml up --build
+
+services:
+  app:
+    # Override with larger model configuration
+    models:
+      gemma-large:
+        endpoint_var: MODEL_RUNNER_URL
+        model_var: MODEL_RUNNER_MODEL
+
+models:
+  gemma-large:
+    # Larger model for enhanced reasoning (requires 16+ GB VRAM)
+    model: ai/gemma3:27B-Q4_K_M
+    context_size: 8192
+</code></pre>
+<p>File: compose-openai.yaml</p>
+<pre><code class="language-json">services:
+  agents:
+    environment:
+      - OPENAI_MODEL_NAME=gpt-4.1-mini
+    secrets:
+      - openai-api-key
+
+secrets:
+  openai-api-key:
+    file: secret.openai-api-key
+</code></pre>
+<table>
+<thead>
+<tr>
+<th><strong>Use Case</strong></th>
+<th><strong>Command</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Local Development (Docker Desktop)</td>
+<td><code>docker compose up -d --build</code></td>
+</tr>
+<tr>
+<td>Docker Offload with GPU Support</td>
+<td><code>docker compose -f compose.yaml -f compose.offload.yaml up --build</code></td>
+</tr>
+<tr>
+<td>Using OpenAI Integration</td>
+<td><code>docker compose -f compose.yaml -f compose.openai.yaml up --build</code></td>
+</tr>
+</tbody>
+</table>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Docker
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

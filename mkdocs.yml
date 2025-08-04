@@ -38,6 +38,17 @@ nav:
       - GitHub MCP Server and Gordon: lab5/projects/GitHub-MCP-Gordon.md
       - Kubernetes MCP Server and Claude: lab5/projects/Kubernetes-MCP.md
       - Slack MCP Server and Claude: lab5/projects/Slack-MCP-With-Claude.md
+  - Agentic Compose:
+    - Overview: lab6/overview.md
+    - Getting Started: lab6/getting-started.md
+    - Projects:
+      - Hackathon Recommender: lab6/projects/hackathon-recommender.md
+      - A2A Multi-Agent Fact Checker: lab6/projects/a2a-multi-agent-fact-checker.md
+  - Docker Offload:
+    - Overview: lab7/overview.md
+    - Getting Started: lab7/getting-started.md
+
+
 theme:
   name: material
   language: en
