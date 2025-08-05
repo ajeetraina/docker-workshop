@@ -57,7 +57,7 @@ nav:
     - Projects:
       - Hackathon Recommender: lab6/projects/hackathon-recommender.md
       - A2A Multi-Agent Fact Checker: lab6/projects/a2a-multi-agent-fact-checker.md
-  - Docker Offload:
+  - Docker Offload (WIP):
     - Overview: lab7/overview.md
     - Getting Started: lab7/getting-started.md
 
