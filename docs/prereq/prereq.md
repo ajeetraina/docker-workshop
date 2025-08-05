@@ -13,19 +13,59 @@
 - IntelliJ IDEA
 - VS Code
 
-### 3. Access to the repositories
+### Enabling WSL 2 based engine on Docker Desktop for Windows
+
+
+In case you're using Windows 11, you will need to enable WSL 2 by opening Docker Desktop > Settings > Resources > WSL Integration
+
+![wsl2](images/wsl2.png)
+
+### 3. Install Nodejs
+
+To demonstrate the container-first development workflow, you will require Nodejs installed on your system.
+
+
+> Note: You must download and install the Node pre-built installer on your local system to get the npm install command to work seamlessly. [Click here to download](https://nodejs.org/en/download/)
+
+### 4. Access to the repositories
 
 - [https://github.com/dockersamples/genai-model-runner-metrics](https://github.com/dockersamples/genai-model-runner-metrics)
-- [https://github.com/ajeetraina/docker-workshop](https://github.com/ajeetraina/docker-workshop)
+- [https://github.com/ajeetraina/docker-workshop](https://github.com/dockersamples/genai-model-runner-metrics)
 
 
-### 4. Enable Docker Model Runner
+
+### 5. Access to the list of Packages
+
+If you're behind the firewall, these are the list of packages required for this workshop:
+
+### Docker Init Demo
+
+```
+alpine-baselayout-3.6.5-r0
+alpine-baselayout-data-3.6.5-r0
+alpine-keys-2.4-r1
+apk-tools-2.14.4-r0
+busybox-1.36.1-r29
+busybox-binsh-1.36.1-r29
+ca-certificates-bundle-20240705-r0
+libcrypto3-3.3.2-r0
+libgcc-13.2.1_git20240309-r0
+libssl3-3.3.2-r0
+libstdc++-13.2.1_git20240309-r0
+musl-1.2.5-r0
+musl-utils-1.2.5-r0
+scanelf-1.3.7-r2
+ssl_client-1.36.1-r29
+zlib-1.3.1-r1
+```
+
+### 6. Enable Docker Model Runner (For Docker AI workshop)
 
 ```
 docker desktop enable model-runner
 ```
 
-### 5. Download the models
+### 7. Download the models (For Docker AI workshop)
 
 Ensure that you have sufficient space to download these models on your Macbook.
 
@@ -35,7 +75,7 @@ docker model pull ai/qwen3
 docker model pull ai/gemma3
 ```
 
-### 5. Download the following images from the Docker Hub
+### 8. Download the following images from the Docker Hub (For Docker AI workshop)
 
 ```
 docker pull grafana/grafana:10.1.0
@@ -43,7 +83,7 @@ docker pull jaegertracing/all-in-one:1.46
 docker pull prom/prometheus:v2.45.0
 ```
 
-### 6. Install and configure your preferred MCP Client
+### 9. Install and configure your preferred MCP Client (For Docker AI workshop)
 
 ```
 Ask Gordon
