@@ -21,6 +21,7 @@ site_dir: 'site'
 nav:
   - Getting Started: index.md
   - Prerequisites: prereq/prereq.md
+
   - Docker Model Runner:
     - Overview: lab4/overview.md
     - Getting Started: lab4/getting-started.md
