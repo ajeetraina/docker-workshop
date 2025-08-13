@@ -1,4 +1,3 @@
-## Getting Started with Docker Offload CLI
 
 - Install Docker Desktop 4.43.0+
 - Open the terminal and run the following command:
