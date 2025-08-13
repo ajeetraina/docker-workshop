@@ -1463,9 +1463,10 @@ Run 'docker offload COMMAND --help' for more information on a command.
 </code></pre>
 <p>Please choose your Hub account and proceed further.</p>
 <h2 id="enable-or-disable-gpu-support-based-on-your-preference">Enable or disable GPU support based on your preference.</h2>
-<p>!Tip: If you choose to enable GPU support, Docker Offload will run in an instance with an NVIDIA L4 GPU, which is useful for machine learning or compute-intensive workloads.</p>
-<p><img alt="offload1" src="images/offload1.png" /></p>
+<p>!Tip: If you choose to enable GPU support, Docker Offload will run in an instance with an NVIDIA L4 GPU, which is useful for machine learning or compute-intensive workloads.
+<img alt="offload1" src="../images/offload1.png" /></p>
 <p>It starts Docker Offload session through the <code>docker</code> account.</p>
+<p><img alt="offload2" src="../images/offload2.png" /></p>
 <p>Verify if a new <code>docker-cloud</code> context is created or not.</p>
 <pre><code class="language-json">docker context ls
 NAME             DESCRIPTION                                      DOCKER ENDPOINT                                             ERROR
@@ -1511,24 +1512,26 @@ tcd              Testcontainers Desktop                           tcp://127.0.0.
 Docker Offload v0.4.2 build at 2025-06-30
 </code></pre>
 <h2 id="stop-the-docker-offload">Stop the Docker Offload</h2>
-<p><img alt="stop offload" src="images/stop-offload.png" /></p>
+<p><img alt="stop offload3" src="../images/offload3.png" /></p>
 <p>This command removes <code>docker-cloud</code> instance from your system.</p>
 <h2 id="using-docker-offload-using-docker-dashboard">Using Docker Offload using Docker Dashboard</h2>
 <ol>
-<li>
-<p>Navigate to Settings &gt; Beta Features to enable Docker Offload.</p>
-</li>
-<li>
-<p>Once enabled, you will need to hit the toggle button to start Docker Offload.</p>
-</li>
-<li>
-<p>You can check the status by running the following command:</p>
-</li>
-<li>
-<p>You’ll notice that Docker Offload appears in multiple places
+<li>Navigate to Settings &gt; Beta Features to enable Docker Offload.</li>
+</ol>
+<p><img alt="offload4" src="../images/offload4.png" />
+2. Once enabled, you will need to hit the toggle button to start Docker Offload.</p>
+<p><img alt="offload5" src="../images/offload5.png" /></p>
+<ol>
+<li>You can check the status by running the following command:</li>
+</ol>
+<p><img alt="offload6" src="../images/offload6.png" /></p>
+<ol>
+<li>You’ll notice that Docker Offload appears in multiple places
    Under Models
-   On the left sidebar of the Docker Dashboard</p>
-</li>
+   On the left sidebar of the Docker Dashboard</li>
+</ol>
+<p><img alt="offload6" src="images/offload7.png" /></p>
+<ol>
 <li>
 <p>Verify if you’re using Cloud instance through Docker Offload.</p>
 </li>

@@ -1,3 +1,23 @@
+Docker Offload is a fully managed service that lets you offload building and running containers to the cloud using the Docker tools you already know. It provides cloud infrastructure for fast, consistent builds and compute-heavy workloads like running LLMs or machine learning pipelines.
+
+## Key Capabilities:
+
+Here are the key capabilities:
+- One-click access to GPU: Access NVIDIA L4 GPUs for AI/ML workloads and data processing
+- Cloud Builds: Execute docker build commands on powerful cloud infrastructure
+- Container Execution: Run containers with cloud compute and GPU acceleration
+- Seamless Integration: Same Docker commands, cloud execution
+
+## Who's This For?
+
+- Docker Offload is ideal for developers and teams who need:
+- High-velocity development workflows that require cloud scale without complexity
+- Resource-intensive builds that exceed local machine capabilities
+- GPU acceleration for AI/ML development and testing
+- Consistent performance across different development environments
+- Legacy hardware support including virtual desktops and machines without nested virtualization
+
+
 ## How It Works?
 
 ### Architecture Overview

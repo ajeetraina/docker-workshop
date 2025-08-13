@@ -31,10 +31,11 @@ Please choose your Hub account and proceed further.
 ## Enable or disable GPU support based on your preference.
 
 !Tip: If you choose to enable GPU support, Docker Offload will run in an instance with an NVIDIA L4 GPU, which is useful for machine learning or compute-intensive workloads.
-
 ![offload1](images/offload1.png)
 
 It starts Docker Offload session through the `docker` account.
+
+![offload2](images/offload2.png)
 
 Verify if a new `docker-cloud` context is created or not.
 
@@ -94,26 +95,42 @@ Docker Offload v0.4.2 build at 2025-06-30
 
 ## Stop the Docker Offload
 
-![stop offload](images/stop-offload.png)
+![stop offload3](images/offload3.png)
 
 This command removes `docker-cloud` instance from your system.
 
 ## Using Docker Offload using Docker Dashboard
 
-1. Navigate to Settings > Beta Features to enable Docker Offload.
+- Navigate to Settings > Beta Features to enable Docker Offload.
 
-2. Once enabled, you will need to hit the toggle button to start Docker Offload.
+![offload4](images/offload4.png)
+- Once enabled, you will need to hit the toggle button to start Docker Offload.
 
-3. You can check the status by running the following command:
+![offload5](images/offload5.png)
 
-4. You’ll notice that Docker Offload appears in multiple places
+- You can check the status by running the following command:
+
+```json
+docker offload status
+```
+
+
+- You’ll notice that Docker Offload appears in multiple places
    Under Models
    On the left sidebar of the Docker Dashboard
 
+![offload6](images/offload6.png)
 
-5. Verify if you’re using Cloud instance through Docker Offload.
+- Verify if you’re using Cloud instance through Docker Offload.
 
-6. You can verify the type of GPU that your remote instance is leveraging.
+```json
+docker info | grep -E "(Server Version|Operating System)"
+ Server Version: 28.0.2
+ Operating System: Ubuntu 22.04.5 LTS
+ajeetsraina  ~  ♥ 16:54
+```
+
+- You can verify the type of GPU that your remote instance is leveraging.
 
 ```json
 docker run --rm --gpus all nvidia/cuda:12.4.0-runtime-ubuntu22.04 nvidia-smi
