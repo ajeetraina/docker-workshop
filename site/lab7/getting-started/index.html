@@ -1515,30 +1515,34 @@ Docker Offload v0.4.2 build at 2025-06-30
 <p><img alt="stop offload3" src="../images/offload3.png" /></p>
 <p>This command removes <code>docker-cloud</code> instance from your system.</p>
 <h2 id="using-docker-offload-using-docker-dashboard">Using Docker Offload using Docker Dashboard</h2>
-<ol>
+<ul>
 <li>Navigate to Settings &gt; Beta Features to enable Docker Offload.</li>
-</ol>
+</ul>
 <p><img alt="offload4" src="../images/offload4.png" />
-2. Once enabled, you will need to hit the toggle button to start Docker Offload.</p>
+- Once enabled, you will need to hit the toggle button to start Docker Offload.</p>
 <p><img alt="offload5" src="../images/offload5.png" /></p>
-<ol>
+<ul>
 <li>You can check the status by running the following command:</li>
-</ol>
-<p><img alt="offload6" src="../images/offload6.png" /></p>
-<ol>
+</ul>
+<pre><code class="language-json">docker offload status
+</code></pre>
+<ul>
 <li>You’ll notice that Docker Offload appears in multiple places
    Under Models
    On the left sidebar of the Docker Dashboard</li>
-</ol>
-<p><img alt="offload6" src="images/offload7.png" /></p>
-<ol>
-<li>
-<p>Verify if you’re using Cloud instance through Docker Offload.</p>
-</li>
-<li>
-<p>You can verify the type of GPU that your remote instance is leveraging.</p>
-</li>
-</ol>
+</ul>
+<p><img alt="offload6" src="../images/offload6.png" /></p>
+<ul>
+<li>Verify if you’re using Cloud instance through Docker Offload.</li>
+</ul>
+<pre><code class="language-json">docker info | grep -E &quot;(Server Version|Operating System)&quot;
+ Server Version: 28.0.2
+ Operating System: Ubuntu 22.04.5 LTS
+ajeetsraina  ~  ♥ 16:54
+</code></pre>
+<ul>
+<li>You can verify the type of GPU that your remote instance is leveraging.</li>
+</ul>
 <pre><code class="language-json">docker run --rm --gpus all nvidia/cuda:12.4.0-runtime-ubuntu22.04 nvidia-smi
 </code></pre>
 <p>Results:</p>
@@ -1578,11 +1582,13 @@ Fri Jul  4 11:26:11 2025
 
 
 </code></pre>
-<p>It shows NVIDIA L4 GPU with 23GB of memory. You can find further details:
-- GPU: NVIDIA L4 (great for AI/ML workloads)
-- Memory: 23GB total, ~20GB already allocated
-- Driver: 535.247.01 with CUDA 12.4 support
-- Current Usage: 0% (idle)</p>
+<p>It shows NVIDIA L4 GPU with 23GB of memory. You can find further details:</p>
+<ul>
+<li>GPU: NVIDIA L4 (great for AI/ML workloads)</li>
+<li>Memory: 23GB total, ~20GB already allocated</li>
+<li>Driver: 535.247.01 with CUDA 12.4 support</li>
+<li>Current Usage: 0% (idle)</li>
+</ul>
 
 
 

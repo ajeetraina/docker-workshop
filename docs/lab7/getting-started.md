@@ -178,6 +178,7 @@ Fri Jul  4 11:26:11 2025
 ```
 
 It shows NVIDIA L4 GPU with 23GB of memory. You can find further details:
+
 - GPU: NVIDIA L4 (great for AI/ML workloads)
 - Memory: 23GB total, ~20GB already allocated
 - Driver: 535.247.01 with CUDA 12.4 support
