@@ -101,11 +101,6 @@ name | client_port |         backend_start         |          xact_start        
 ```
 
 
-## Method 2: Using "Ask Gordon"
-
-```
-Run a multiple version of postgres with the standard port and POSTGRES_PASSWORD set to dev
-```
 
 ## Remove the container
 

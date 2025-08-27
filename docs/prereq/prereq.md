@@ -1,6 +1,6 @@
 ### 1. Docker Desktop
 
-[Download and Install Docker Desktop 4.42.0+](https://www.docker.com/products/docker-desktop/) on your system. 
+[Download and Install Docker Desktop 4.44.0+](https://www.docker.com/products/docker-desktop/) on your system. 
 
  - [Apple Chip](https://desktop.docker.com/mac/main/arm64/Docker.dmg)
  - [Intel Chip](https://desktop.docker.com/mac/main/amd64/Docker.dmg)
@@ -29,35 +29,10 @@ To demonstrate the container-first development workflow, you will require Nodejs
 
 ### 4. Access to the repositories
 
+
+- [https://github.com/dockersamples/catalog-service-node](https://github.com/dockersamples/catalog-service-node)
 - [https://github.com/dockersamples/genai-model-runner-metrics](https://github.com/dockersamples/genai-model-runner-metrics)
-- [https://github.com/ajeetraina/docker-workshop](https://github.com/dockersamples/genai-model-runner-metrics)
 
-
-
-### 5. Access to the list of Packages
-
-If you're behind the firewall, these are the list of packages required for this workshop:
-
-### Docker Init Demo
-
-```
-alpine-baselayout-3.6.5-r0
-alpine-baselayout-data-3.6.5-r0
-alpine-keys-2.4-r1
-apk-tools-2.14.4-r0
-busybox-1.36.1-r29
-busybox-binsh-1.36.1-r29
-ca-certificates-bundle-20240705-r0
-libcrypto3-3.3.2-r0
-libgcc-13.2.1_git20240309-r0
-libssl3-3.3.2-r0
-libstdc++-13.2.1_git20240309-r0
-musl-1.2.5-r0
-musl-utils-1.2.5-r0
-scanelf-1.3.7-r2
-ssl_client-1.36.1-r29
-zlib-1.3.1-r1
-```
 
 ### 6. Enable Docker Model Runner (For Docker AI workshop)
 
