@@ -564,15 +564,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#apply-the-patches" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apply the patches
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1340,15 +1331,6 @@
   
 </li>
       
-        <li class="md-nav__item">
-  <a href="#apply-the-patches" class="md-nav__link">
-    <span class="md-ellipsis">
-      Apply the patches
-    </span>
-  </a>
-  
-</li>
-      
     </ul>
   
 </nav>
@@ -1370,13 +1352,18 @@
   <h1>Secure</h1>
 
 <h2 id="using-docker-scout">Using Docker Scout</h2>
-<pre><code>docker build -t newcatalog .
+<p>For a Scout demo, the following patch will adjust the Dockerfile to use an older base image and install an older version of Express, allowing you to demo out-of-date base images and vunlerable dependencies.</p>
+<pre><code>git apply --whitespace=fix demo/scout.patch
 </code></pre>
-<p><img width="1128" alt="image" src="https://github.com/user-attachments/assets/bd5a0dfd-8580-4b39-951f-7f7d920887c8" /></p>
-<h2 id="apply-the-patches">Apply the patches</h2>
-<pre><code>patch -p1 &lt; /demo/scout.patch
+<p>Let's build the Docker image.</p>
+<pre><code>docker build -t scout:v1.0 .
 </code></pre>
-<p><img width="1141" alt="image" src="https://github.com/user-attachments/assets/d95fe357-aad2-45ba-ae0d-b81fe743a898" /></p>
+<p>Search "Express" package and it will instruct that you can fix it by using express 4.17.3+.</p>
+<p>Open up <code>package.json</code> file and change express version from 4.17.3 to 4.19.2.</p>
+<p>Next, run <code>npm install</code> before running the following command</p>
+<pre><code>docker build -t scout:v2.0 .
+</code></pre>
+<p>You'll notice that all the H and C vulnerabilities are all gone.</p>
 
 
 

@@ -1,18 +1,26 @@
 ## Using Docker Scout
 
-```
-docker build -t newcatalog .
-```
-
-<img width="1128" alt="image" src="https://github.com/user-attachments/assets/bd5a0dfd-8580-4b39-951f-7f7d920887c8" />
-
-
-## Apply the patches
+For a Scout demo, the following patch will adjust the Dockerfile to use an older base image and install an older version of Express, allowing you to demo out-of-date base images and vunlerable dependencies.
 
 ```
-patch -p1 < /demo/scout.patch
+git apply --whitespace=fix demo/scout.patch
 ```
 
-<img width="1141" alt="image" src="https://github.com/user-attachments/assets/d95fe357-aad2-45ba-ae0d-b81fe743a898" />
+Let's build the Docker image.
 
 
+```
+docker build -t scout:v1.0 .
+```
+
+Search "Express" package and it will instruct that you can fix it by using express 4.17.3+.
+
+Open up `package.json` file and change express version from 4.17.3 to 4.19.2.
+
+Next, run `npm install` before running the following command
+
+```
+docker build -t scout:v2.0 .
+```
+
+You'll notice that all the H and C vulnerabilities are all gone.
