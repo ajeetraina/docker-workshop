@@ -96,15 +96,16 @@ npm run dev
 
 ### Accessing the Web Client
 
-Open the web client (http://localhost:5173) and create a few products.
+- Open the web client (http://localhost:5173) and create a few products.
 
 ### Accessing the database visualizer 
 
-Open [http://localhost:5050](http://localhost:5050) and validate the products exist in the database. 
+- Open [http://localhost:5050](http://localhost:5050) and validate the products exist in the database. 
 "Good! We see the UPCs are persisted in the database"
 
+- Use "postgres" as password to enter into the visualizer.
 
-Use the following Postgres CLI to check if the products are added or not.
+- Use the following Postgres CLI to check if the products are added or not.
 
 ```
 # psql -U postgres
