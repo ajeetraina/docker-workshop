@@ -32,6 +32,8 @@ To demonstrate the container-first development workflow, you will require Nodejs
 
 - [https://github.com/dockersamples/catalog-service-node](https://github.com/dockersamples/catalog-service-node)
 - [https://github.com/dockersamples/genai-model-runner-metrics](https://github.com/dockersamples/genai-model-runner-metrics)
+- [https://github.com/ajeetraina/catalog-service-ai-enhanced](https://github.com/ajeetraina/catalog-service-ai-enhanced)
+- [https://github.com/dockersamples/visual-chatbot](https://github.com/dockersamples/visual-chatbot)
 
 
 ### 6. Enable Docker Model Runner (For Docker AI workshop)
@@ -46,8 +48,6 @@ Ensure that you have sufficient space to download these models on your Macbook.
 
 ```
 docker model pull ai/llama3.2:1B-Q8_0
-docker model pull ai/qwen3
-docker model pull ai/gemma3
 ```
 
 ### 8. Download the following images from the Docker Hub (For Docker AI workshop)
@@ -63,6 +63,4 @@ docker pull prom/prometheus:v2.45.0
 ```
 Ask Gordon
 Claude Desktop (optional)
-Cursor (optional)
-Continue.dev (optional)
 ```
