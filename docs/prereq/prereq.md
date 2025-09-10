@@ -61,6 +61,6 @@ docker pull prom/prometheus:v2.45.0
 ### 9. Install and configure your preferred MCP Client (For Docker AI workshop)
 
 ```
-Ask Gordon
+Ask Gordon  (optional)
 Claude Desktop (optional)
 ```
