@@ -80,3 +80,6 @@ Open MCP Client > Click "Connect"
 
 ## Step 6. Start chatting with your GitHub repository
 
+<img width="767" height="550" alt="image" src="https://github.com/user-attachments/assets/ca63daf9-a0b5-4844-a082-128556cbdd39" />
+
+
