@@ -32,6 +32,7 @@ To demonstrate the container-first development workflow, you will require Nodejs
 
 - [https://github.com/dockersamples/catalog-service-node](https://github.com/dockersamples/catalog-service-node)
 - [https://github.com/dockersamples/genai-model-runner-metrics](https://github.com/dockersamples/genai-model-runner-metrics)
+- [https://github.com/ajeetraina/catalog-service-node-chatbot](https://github.com/ajeetraina/catalog-service-node-chatbot)
 - [https://github.com/ajeetraina/catalog-service-ai-enhanced](https://github.com/ajeetraina/catalog-service-ai-enhanced)
 - [https://github.com/dockersamples/visual-chatbot](https://github.com/dockersamples/visual-chatbot)
 - [https://github.com/ajeetraina/pen-shop-demo](https://github.com/ajeetraina/pen-shop-demo)
