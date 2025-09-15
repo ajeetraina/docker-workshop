@@ -57,9 +57,10 @@ nav:
     - Overview: lab6/overview.md
     - Getting Started: lab6/getting-started.md
     - Projects:
+      - Agentic Product Catalog: lab6/projects/agentic-catalog.md
       - Hackathon Recommender: lab6/projects/hackathon-recommender.md
       - A2A Multi-Agent Fact Checker: lab6/projects/a2a-multi-agent-fact-checker.md
-  - Docker Offload (WIP):
+  - Docker Offload:
     - Overview: lab7/overview.md
     - Getting Started: lab7/getting-started.md
 

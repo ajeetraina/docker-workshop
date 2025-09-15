@@ -1,0 +1,2977 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Ajeet Singh Raina">
+      
+      
+      
+        <link rel="prev" href="../../getting-started/">
+      
+      
+        <link rel="next" href="../hackathon-recommender/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Agentic Product Catalog - Docker workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/styles.css">
+    
+      <link rel="stylesheet" href="../../../css/dark-mode.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#product-catalog-chatbot-with-ai-enhanced-management-system" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+      
+  <img src="../../../images/docker-logo-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docker workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Agentic Product Catalog
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ajeetraina/docker-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docker-workshop
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+      
+  <img src="../../../images/docker-logo-white.svg" alt="logo">
+
+    </a>
+    Docker workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ajeetraina/docker-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docker-workshop
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../prereq/prereq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Inner-Loop Development workflow
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Inner-Loop Development workflow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab1/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inner Vs Outer Loop Development workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab1/what-is-a-container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is a container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab1/postgres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Postgres Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Product catalog - A Sample Demo App
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Product catalog - A Sample Demo App
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product-catalog/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product-catalog/tech-stack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech stack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product-catalog/develop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Develop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product-catalog/test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product-catalog/build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../product-catalog/secure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Docker Model Runner
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Docker Model Runner
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab4/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab4/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab4/projects/catalog-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Product Catalog Chatbot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab4/projects/genai-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GenAI Chatbot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MCP Catalog and Toolkit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            MCP Catalog and Toolkit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab5/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab5/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Visual Chatbot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Visual Chatbot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running your First MCP Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker MCP Server and Gordon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker MCP Server and VS Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub MCP Server and Gordon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes MCP Server and Claude
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slack MCP Server and Claude
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Agentic Compose
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Agentic Compose
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Agentic Product Catalog
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Agentic Product Catalog
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 System Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 System Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-ai-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤖 Core AI Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ Complete Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-pull-required-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pull Required Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-start-all-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Start All Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-access-the-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Access the Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chatbot-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      💬 Chatbot Capabilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💬 Chatbot Capabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#natural-language-product-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Natural Language Product Search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intelligent-category-browsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intelligent Category Browsing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catalog-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catalog Analytics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-agent-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤖 AI Agent System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🤖 AI Agent System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vendor-intake-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Vendor Intake Agent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#market-research-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Market Research Agent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customer-match-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Customer Match Agent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catalog-management-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Catalog Management Agent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-runner-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Model Runner Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Model Runner Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-services-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Core Services Deep Dive
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Core Services Deep Dive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chatbot-backend-chatbot-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chatbot Backend (chatbot-backend)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-service-agent-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Service (agent-service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp-gateway-mcp-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      MCP Gateway (mcp-gateway)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-api-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend API (backend)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-driven-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Event-Driven Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Event-Driven Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kafka-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kafka Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗄️ Database Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗄️ Database Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-primary-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      PostgreSQL (Primary Database)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-agent-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      MongoDB (Agent History)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ API Endpoints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ API Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chatbot-api-localhost8082" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chatbot API (localhost:8082)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-service-api-localhost7777" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Service API (localhost:7777)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-backend-api-localhost3000" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Backend API (localhost:3000)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Development &amp; Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 Development & Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-development-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Development Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-the-chatbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing the Chatbot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Monitoring &amp; Observability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Monitoring & Observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-products-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Adding Products &amp; Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Adding Products & Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-product-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Product Import
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-with-sample-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing with Sample Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 Production Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔒 Production Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Quick Start Checklist
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../hackathon-recommender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hackathon Recommender
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../a2a-multi-agent-fact-checker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A2A Multi-Agent Fact Checker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Docker Offload
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Docker Offload
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab7/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab7/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#system-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 System Overview
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 System Overview">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#core-ai-components" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤖 Core AI Components
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#complete-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏗️ Complete Architecture
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Quick Start
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Quick Start">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-pull-required-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Pull Required Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-start-all-services" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Start All Services
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-access-the-applications" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Access the Applications
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#chatbot-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      💬 Chatbot Capabilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="💬 Chatbot Capabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#natural-language-product-search" class="md-nav__link">
+    <span class="md-ellipsis">
+      Natural Language Product Search
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#intelligent-category-browsing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Intelligent Category Browsing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catalog-analytics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Catalog Analytics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ai-agent-system" class="md-nav__link">
+    <span class="md-ellipsis">
+      🤖 AI Agent System
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🤖 AI Agent System">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#vendor-intake-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Vendor Intake Agent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#market-research-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Market Research Agent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#customer-match-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Customer Match Agent
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#catalog-management-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      📋 Catalog Management Agent
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#model-runner-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚙️ Model Runner Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="⚙️ Model Runner Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#supported-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Supported Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#environment-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Environment Configuration
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#core-services-deep-dive" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Core Services Deep Dive
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Core Services Deep Dive">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chatbot-backend-chatbot-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chatbot Backend (chatbot-backend)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-service-agent-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Service (agent-service)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mcp-gateway-mcp-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      MCP Gateway (mcp-gateway)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#backend-api-backend" class="md-nav__link">
+    <span class="md-ellipsis">
+      Backend API (backend)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#event-driven-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Event-Driven Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Event-Driven Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#kafka-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Kafka Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#event-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      Event Types
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#database-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      🗄️ Database Architecture
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🗄️ Database Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#postgresql-primary-database" class="md-nav__link">
+    <span class="md-ellipsis">
+      PostgreSQL (Primary Database)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mongodb-agent-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      MongoDB (Agent History)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#api-endpoints" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ API Endpoints
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ API Endpoints">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#chatbot-api-localhost8082" class="md-nav__link">
+    <span class="md-ellipsis">
+      Chatbot API (localhost:8082)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-service-api-localhost7777" class="md-nav__link">
+    <span class="md-ellipsis">
+      Agent Service API (localhost:7777)
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#main-backend-api-localhost3000" class="md-nav__link">
+    <span class="md-ellipsis">
+      Main Backend API (localhost:3000)
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#development-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Development &amp; Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 Development & Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-development-setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Development Setup
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#health-checks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Health Checks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-the-chatbot" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing the Chatbot
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#monitoring-observability" class="md-nav__link">
+    <span class="md-ellipsis">
+      📈 Monitoring &amp; Observability
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📈 Monitoring & Observability">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#service-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Metrics
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#adding-products-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Adding Products &amp; Data
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Adding Products & Data">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#automated-product-import" class="md-nav__link">
+    <span class="md-ellipsis">
+      Automated Product Import
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-with-sample-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing with Sample Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#production-considerations" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔒 Production Considerations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔒 Production Considerations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#security" class="md-nav__link">
+    <span class="md-ellipsis">
+      Security
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Scaling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deployment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deployment
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Quick Start Checklist
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="product-catalog-chatbot-with-ai-enhanced-management-system">Product Catalog Chatbot with AI-Enhanced Management System</h1>
+<p>An intelligent product catalog management platform powered by <strong>Docker Model Runner</strong>, <strong>AI Agents</strong>, and <strong>Event-Driven Architecture</strong>. This system combines conversational AI, intelligent agents, and real-time processing for comprehensive catalog management.</p>
+<h2 id="system-overview">🎯 System Overview</h2>
+<p>This is a complete AI-enhanced catalog management system featuring:</p>
+<h3 id="core-ai-components">🤖 <strong>Core AI Components</strong></h3>
+<ul>
+<li><strong>Chatbot Interface</strong> - Natural language product queries and conversations</li>
+<li><strong>AI Agent Service</strong> - Automated vendor evaluation, market research, and customer matching</li>
+<li><strong>MCP Gateway</strong> - Model Context Protocol for AI tool orchestration</li>
+<li><strong>Model Runner Integration</strong> - Local AI model execution with Llama 3.2</li>
+</ul>
+<h3 id="complete-architecture">🏗️ <strong>Complete Architecture</strong></h3>
+<pre><code>┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+│   Frontend      │  │  Agent Portal   │  │  Chatbot UI     │
+│   Port: 5173    │  │   Port: 3001    │  │   Port: 5174    │
+└─────────────────┘  └─────────────────┘  └─────────────────┘
+        │                     │                     │
+        └──────────┬──────────┴─────────┬───────────┘
+                   │                    │
+        ┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+        │   Backend API   │  │ Agent Service   │  │ Chatbot API     │
+        │   Port: 3000    │  │  Port: 7777     │  │  Port: 8082     │
+        └─────────────────┘  └─────────────────┘  └─────────────────┘
+                   │                    │                    │
+                   └──────────┬─────────┴─────────┬──────────┘
+                              │                   │
+                    ┌─────────────────┐  ┌─────────────────┐
+                    │  MCP Gateway    │  │  Model Runner   │
+                    │  Port: 8811     │  │  (Local AI)     │
+                    └─────────────────┘  └─────────────────┘
+                              │
+              ┌───────────────┼───────────────┐
+              │               │               │
+    ┌─────────────────┐ ┌─────────────────┐ ┌─────────────────┐
+    │   PostgreSQL    │ │     MongoDB     │ │     Kafka       │
+    │   Port: 5432    │ │   Port: 27017   │ │  Port: 9092     │
+    │ (Products DB)   │ │ (Agent History) │ │ (Event Stream)  │
+    └─────────────────┘ └─────────────────┘ └─────────────────┘
+</code></pre>
+<h2 id="quick-start">🚀 Quick Start</h2>
+<h3 id="prerequisites">Prerequisites</h3>
+<ul>
+<li>Docker Desktop with Model Runner enabled</li>
+<li>At least 8GB RAM (4GB+ for AI models)</li>
+<li>Docker Compose v2.0+</li>
+</ul>
+<h3 id="1-pull-required-models">1. Pull Required Models</h3>
+<pre><code class="language-bash"># Pull the AI model for chatbot and agents
+docker model pull ai/llama3.2:1B-Q8_0
+</code></pre>
+<h3 id="2-start-all-services">2. Start All Services</h3>
+<pre><code class="language-bash"># Clone the repository
+git clone https://github.com/ajeetraina/catalog-service-node-chatbot.git
+cd catalog-service-node-chatbot
+
+# Start the complete system
+docker compose up -d --build
+</code></pre>
+<h3 id="3-access-the-applications">3. Access the Applications</h3>
+<table>
+<thead>
+<tr>
+<th>Service</th>
+<th>URL</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>🤖 Chatbot Interface</strong></td>
+<td>http://localhost:5174</td>
+<td><strong>Main chatbot for product queries</strong></td>
+</tr>
+<tr>
+<td><strong>🏠 Main Frontend</strong></td>
+<td>http://localhost:5173</td>
+<td>Product catalog management</td>
+</tr>
+<tr>
+<td><strong>🔧 Agent Portal</strong></td>
+<td>http://localhost:3001</td>
+<td>AI agent management interface</td>
+</tr>
+<tr>
+<td><strong>📊 Kafka UI</strong></td>
+<td>http://localhost:8080</td>
+<td>Event streaming monitoring</td>
+</tr>
+<tr>
+<td><strong>🗄️ pgAdmin</strong></td>
+<td>http://localhost:5050</td>
+<td>Database administration</td>
+</tr>
+</tbody>
+</table>
+<h2 id="chatbot-capabilities">💬 Chatbot Capabilities</h2>
+<blockquote>
+<p><strong>Note</strong>: After running <code>sh add-products.sh</code>, your chatbot will have access to 50+ sample products for testing these capabilities.</p>
+</blockquote>
+<h3 id="natural-language-product-search">Natural Language Product Search</h3>
+<pre><code>User: &quot;Show me all electronics under $500&quot;
+Chatbot: &quot;I found 8 electronics products under $500:
+
+📱 iPhone SE - $399.00
+   Compact smartphone with A15 Bionic chip
+
+🎧 Sony WH-1000XM5 - $399.00  
+   Industry-leading noise canceling headphones
+
+⌚ Apple Watch - $249.00
+   Advanced health and fitness tracking
+
+[Additional products...]
+
+Would you like details about any specific product?&quot;
+</code></pre>
+<h3 id="intelligent-category-browsing">Intelligent Category Browsing</h3>
+<pre><code>User: &quot;What's popular in home electronics?&quot;
+Chatbot: &quot;Based on our catalog data:
+
+🏠 Smart Home Category (12 products):
+• Smart speakers: 4 products ($49-199)
+• Security cameras: 3 products ($89-299) 
+• Smart thermostats: 2 products ($149-249)
+• Home automation hubs: 3 products ($99-349)
+
+The Amazon Echo Dot and Ring Doorbell are our top sellers.
+Which type of smart home device interests you?&quot;
+</code></pre>
+<h3 id="catalog-analytics">Catalog Analytics</h3>
+<pre><code>User: &quot;Give me a summary of the catalog&quot;
+Chatbot: &quot;Here's your catalog overview:
+
+📊 **Catalog Statistics:**
+• Total Products: 127
+• Active Categories: 8
+• Price Range: $9.99 - $2,499.00
+• Average Price: $186.45
+• New This Week: 5 products
+
+🔥 **Top Categories:**
+1. Electronics (34 products)
+2. Clothing (28 products)  
+3. Home &amp; Garden (21 products)
+
+Is there a specific category you'd like to explore?&quot;
+</code></pre>
+<h2 id="ai-agent-system">🤖 AI Agent System</h2>
+<p>The system includes intelligent agents powered by Model Runner:</p>
+<h3 id="vendor-intake-agent">🔍 <strong>Vendor Intake Agent</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Evaluates new product submissions</li>
+<li><strong>Scoring</strong>: 0-100 AI-powered evaluation</li>
+<li><strong>Criteria</strong>: Product quality, market fit, pricing analysis</li>
+<li><strong>Integration</strong>: Kafka events trigger automatic evaluation</li>
+</ul>
+<h3 id="market-research-agent">📈 <strong>Market Research Agent</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Automated competitor analysis</li>
+<li><strong>Features</strong>: Price comparison, feature analysis, market positioning</li>
+<li><strong>Data Sources</strong>: Web scraping, API integrations via MCP Gateway</li>
+<li><strong>Output</strong>: Comprehensive market reports</li>
+</ul>
+<h3 id="customer-match-agent">🎯 <strong>Customer Match Agent</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Analyzes customer preferences and buying patterns</li>
+<li><strong>Intelligence</strong>: ML-based recommendation engine</li>
+<li><strong>Personalization</strong>: Tailored product suggestions</li>
+<li><strong>History</strong>: Stored in MongoDB for continuous learning</li>
+</ul>
+<h3 id="catalog-management-agent">📋 <strong>Catalog Management Agent</strong></h3>
+<ul>
+<li><strong>Purpose</strong>: Maintains and optimizes product catalog</li>
+<li><strong>Automation</strong>: Auto-categorization, price updates, inventory sync</li>
+<li><strong>Quality Control</strong>: Duplicate detection, data validation</li>
+<li><strong>Optimization</strong>: SEO improvements, description enhancement</li>
+</ul>
+<h2 id="model-runner-configuration">⚙️ Model Runner Configuration</h2>
+<h3 id="supported-models">Supported Models</h3>
+<table>
+<thead>
+<tr>
+<th>Model</th>
+<th>Size</th>
+<th>Performance</th>
+<th>Use Case</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>ai/llama3.2:1B-Q4_0</code></td>
+<td>1GB</td>
+<td>Fast</td>
+<td>Chatbot, basic agents</td>
+</tr>
+<tr>
+<td><code>ai/llama3.2:1B-Q8_0</code></td>
+<td>1.5GB</td>
+<td>Balanced</td>
+<td><strong>Recommended</strong></td>
+</tr>
+<tr>
+<td><code>ai/llama3.2:3B-Q4_0</code></td>
+<td>2GB</td>
+<td>High Quality</td>
+<td>Complex agent tasks</td>
+</tr>
+</tbody>
+</table>
+<h3 id="environment-configuration">Environment Configuration</h3>
+<pre><code class="language-yaml"># Model Runner integration in compose.yaml
+models:
+  llama_model:
+    model: ai/llama3.2:1B-Q8_0
+
+# Services using Model Runner
+chatbot-backend:
+  models:
+    llama_model:
+      endpoint_var: MODEL_RUNNER_URL
+      model_var: MODEL_RUNNER_MODEL
+
+agent-service:
+  models:
+    llama_model:
+      endpoint_var: MODEL_RUNNER_URL  
+      model_var: MODEL_RUNNER_MODEL
+
+mcp-gateway:
+  models:
+    llama_model:
+      endpoint_var: MODEL_RUNNER_URL
+      model_var: MODEL_RUNNER_MODEL
+</code></pre>
+<h2 id="core-services-deep-dive">🔧 Core Services Deep Dive</h2>
+<h3 id="chatbot-backend-chatbot-backend"><strong>Chatbot Backend</strong> (<code>chatbot-backend</code>)</h3>
+<ul>
+<li><strong>Port</strong>: 8082</li>
+<li><strong>Purpose</strong>: Natural language processing for product queries</li>
+<li><strong>AI Integration</strong>: Direct Model Runner connection</li>
+<li><strong>Database</strong>: PostgreSQL for product data</li>
+<li><strong>Features</strong>: Intent recognition, smart search, conversation context</li>
+</ul>
+<h3 id="agent-service-agent-service"><strong>Agent Service</strong> (<code>agent-service</code>)</h3>
+<ul>
+<li><strong>Port</strong>: 7777</li>
+<li><strong>Purpose</strong>: AI agents for automation and intelligence</li>
+<li><strong>Event Processing</strong>: Kafka-based event handling</li>
+<li><strong>Databases</strong>: PostgreSQL (catalog) + MongoDB (history)</li>
+<li><strong>Agents</strong>: Vendor evaluation, market research, customer matching</li>
+</ul>
+<h3 id="mcp-gateway-mcp-gateway"><strong>MCP Gateway</strong> (<code>mcp-gateway</code>)</h3>
+<ul>
+<li><strong>Port</strong>: 8811</li>
+<li><strong>Purpose</strong>: AI tool orchestration and integration</li>
+<li><strong>Protocols</strong>: Server-Sent Events (SSE) transport</li>
+<li><strong>Tools</strong>: fetch, brave, resend, curl, mongodb</li>
+<li><strong>Role</strong>: Enables agents to access external data sources</li>
+</ul>
+<h3 id="backend-api-backend"><strong>Backend API</strong> (<code>backend</code>)</h3>
+<ul>
+<li><strong>Port</strong>: 3000  </li>
+<li><strong>Purpose</strong>: Core catalog management API</li>
+<li><strong>Database</strong>: PostgreSQL primary, MongoDB secondary</li>
+<li><strong>Integration</strong>: Agent service communication</li>
+<li><strong>Features</strong>: CRUD operations, vendor management, analytics</li>
+</ul>
+<h2 id="event-driven-architecture">📊 Event-Driven Architecture</h2>
+<h3 id="kafka-integration">Kafka Integration</h3>
+<pre><code class="language-yaml"># Kafka configuration for real-time processing
+kafka:
+  image: apache/kafka:latest
+  ports: [&quot;9092:9092&quot;, &quot;9093:9093&quot;]
+
+# Event flow examples:
+# 1. New product → Agent evaluation → Catalog update
+# 2. User query → Agent research → Enhanced response  
+# 3. Price change → Market analysis → Competitive insights
+</code></pre>
+<h3 id="event-types">Event Types</h3>
+<ul>
+<li><strong>Product Events</strong>: Creation, updates, deletions</li>
+<li><strong>Agent Events</strong>: Evaluation results, research findings</li>
+<li><strong>User Events</strong>: Interactions, preferences, feedback</li>
+<li><strong>System Events</strong>: Health checks, performance metrics</li>
+</ul>
+<h2 id="database-architecture">🗄️ Database Architecture</h2>
+<h3 id="postgresql-primary-database"><strong>PostgreSQL</strong> (Primary Database)</h3>
+<pre><code class="language-sql">-- Core product catalog
+CREATE TABLE products (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    description TEXT,
+    category VARCHAR(100),
+    price DECIMAL(10, 2),
+    vendor_id VARCHAR(100),
+    ai_score INTEGER, -- AI evaluation score
+    status VARCHAR(20) DEFAULT 'active',
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
+
+-- Vendor management
+CREATE TABLE vendors (
+    id VARCHAR(100) PRIMARY KEY,
+    name VARCHAR(255),
+    evaluation_score INTEGER,
+    status VARCHAR(20)
+);
+</code></pre>
+<h3 id="mongodb-agent-history"><strong>MongoDB</strong> (Agent History)</h3>
+<pre><code class="language-javascript">// Agent interaction history
+{
+  agentType: &quot;vendor_evaluation&quot;,
+  productId: &quot;12345&quot;,
+  evaluation: {
+    score: 85,
+    reasoning: &quot;High quality, competitive pricing&quot;,
+    criteria: [&quot;quality&quot;, &quot;price&quot;, &quot;market_fit&quot;]
+  },
+  timestamp: &quot;2025-01-15T10:30:00Z&quot;
+}
+
+// Customer interaction patterns
+{
+  sessionId: &quot;abc123&quot;,
+  interactions: [
+    { query: &quot;electronics under $200&quot;, results: 5 },
+    { action: &quot;view_product&quot;, productId: &quot;67890&quot; }
+  ],
+  preferences: [&quot;electronics&quot;, &quot;budget_conscious&quot;]
+}
+</code></pre>
+<h2 id="api-endpoints">🛠️ API Endpoints</h2>
+<h3 id="chatbot-api-localhost8082">Chatbot API (<code>localhost:8082</code>)</h3>
+<pre><code class="language-http"># Natural language chat
+POST /api/chat
+{
+  &quot;message&quot;: &quot;Show me laptops for programming&quot;
+}
+
+# Product search with filters
+GET /api/products/search?q=laptop&amp;category=electronics&amp;maxPrice=1500
+
+# Get conversation context
+GET /api/context/{sessionId}
+</code></pre>
+<h3 id="agent-service-api-localhost7777">Agent Service API (<code>localhost:7777</code>)</h3>
+<pre><code class="language-http"># Trigger vendor evaluation
+POST /api/agents/evaluate-vendor
+{
+  &quot;vendorId&quot;: &quot;tech_corp_001&quot;,
+  &quot;products&quot;: [&quot;product_123&quot;, &quot;product_456&quot;]
+}
+
+# Get market research report
+GET /api/agents/market-research/{productId}
+
+# Customer preference analysis
+POST /api/agents/analyze-customer
+{
+  &quot;customerId&quot;: &quot;user_789&quot;,
+  &quot;interactionHistory&quot;: [...]
+}
+</code></pre>
+<h3 id="main-backend-api-localhost3000">Main Backend API (<code>localhost:3000</code>)</h3>
+<pre><code class="language-http"># Product management
+GET /api/products
+POST /api/products
+PUT /api/products/{id}
+DELETE /api/products/{id}
+
+# Vendor management  
+GET /api/vendors
+POST /api/vendors
+GET /api/vendors/{id}/evaluation
+
+# Analytics
+GET /api/analytics/summary
+GET /api/analytics/trends
+</code></pre>
+<h2 id="development-testing">🔍 Development &amp; Testing</h2>
+<h3 id="local-development-setup">Local Development Setup</h3>
+<pre><code class="language-bash"># Start infrastructure only
+docker compose up postgres mongodb kafka -d
+
+# Run services locally for development
+cd chatbot-backend &amp;&amp; npm run dev  # Port 8082
+cd agent-service &amp;&amp; npm run dev    # Port 7777  
+cd backend &amp;&amp; npm run dev          # Port 3000
+</code></pre>
+<h3 id="health-checks">Health Checks</h3>
+<pre><code class="language-bash"># Check all service health
+curl http://localhost:3000/health   # Backend
+curl http://localhost:8082/health   # Chatbot
+curl http://localhost:7777/health   # Agents
+curl http://localhost:8811/health   # MCP Gateway
+
+# Check Model Runner status
+docker model ls
+docker model info ai/llama3.2:1B-Q8_0
+</code></pre>
+<h3 id="testing-the-chatbot">Testing the Chatbot</h3>
+<pre><code class="language-bash"># Test natural language queries
+curl -X POST http://localhost:8082/api/chat \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;message&quot;: &quot;What are your most expensive electronics?&quot;}'
+
+# Test product search
+curl &quot;http://localhost:8082/api/products/search?q=smartphone&amp;maxPrice=800&quot;
+
+# Test category lookup
+curl http://localhost:8082/api/categories
+</code></pre>
+<h2 id="monitoring-observability">📈 Monitoring &amp; Observability</h2>
+<h3 id="service-monitoring">Service Monitoring</h3>
+<ul>
+<li><strong>Kafka UI</strong>: http://localhost:8080 - Event stream monitoring</li>
+<li><strong>pgAdmin</strong>: http://localhost:5050 - Database monitoring  </li>
+<li><strong>Docker Logs</strong>: <code>docker compose logs [service-name]</code></li>
+<li><strong>Health Endpoints</strong>: Built-in health checks for all services</li>
+</ul>
+<h3 id="performance-metrics">Performance Metrics</h3>
+<pre><code class="language-bash"># Check resource usage
+docker stats
+
+# Monitor model performance
+docker model stats ai/llama3.2:1B-Q8_0
+
+# View service logs
+docker compose logs -f chatbot-backend
+docker compose logs -f agent-service
+</code></pre>
+<h2 id="adding-products-data">🚀 Adding Products &amp; Data</h2>
+<h3 id="automated-product-import">Automated Product Import</h3>
+<pre><code class="language-bash"># Use the provided import script
+./add-products.sh
+
+# Or use the Node.js automation script
+npm run import-products
+</code></pre>
+<h3 id="testing-with-sample-data">Testing with Sample Data</h3>
+<p>The system includes comprehensive sample data:
+- <strong>50+ Products</strong> across multiple categories
+- <strong>Vendor Information</strong> with AI evaluations
+- <strong>Mock Market Data</strong> for agent testing
+- <strong>Customer Interaction Patterns</strong> for recommendation testing</p>
+<h2 id="production-considerations">🔒 Production Considerations</h2>
+<h3 id="security">Security</h3>
+<ul>
+<li><strong>Environment Variables</strong>: Use Docker secrets for production</li>
+<li><strong>Network Security</strong>: Configure proper firewall rules</li>
+<li><strong>Database Security</strong>: Enable PostgreSQL/MongoDB authentication</li>
+<li><strong>API Security</strong>: Implement rate limiting and authentication</li>
+</ul>
+<h3 id="scaling">Scaling</h3>
+<ul>
+<li><strong>Horizontal Scaling</strong>: Multiple instances of each service</li>
+<li><strong>Database Sharding</strong>: Partition large datasets</li>
+<li><strong>Model Optimization</strong>: Use quantized models for performance</li>
+<li><strong>Caching</strong>: Redis for frequently accessed data</li>
+</ul>
+<h3 id="deployment">Deployment</h3>
+<pre><code class="language-yaml"># Production environment variables
+environment:
+  - NODE_ENV=production
+  - MODEL_RUNNER_URL=${MODEL_RUNNER_URL}
+  - POSTGRES_HOST=${POSTGRES_HOST}
+  - KAFKA_BROKERS=${KAFKA_BROKERS}
+  - MONGODB_URI=${MONGODB_URI}
+</code></pre>
+<h2 id="quick-start-checklist">🎯 Quick Start Checklist</h2>
+<ul>
+<li>[ ] <strong>Pull AI Model</strong>: <code>docker model pull ai/llama3.2:1B-Q8_0</code></li>
+<li>[ ] <strong>Start Services</strong>: <code>docker compose up -d --build</code></li>
+<li>[ ] <strong>Import Products</strong>: <code>./add-products.sh</code></li>
+<li>[ ] <strong>Test Chatbot</strong>: Visit http://localhost:5174</li>
+<li>[ ] <strong>Check Agents</strong>: Visit http://localhost:3001  </li>
+<li>[ ] <strong>Monitor System</strong>: Visit http://localhost:8080</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Docker
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>
