@@ -48,6 +48,7 @@ nav:
       - Visual Chatbot:
         - Getting Started: lab5/projects/visual-chatbot/visual-chatbot.md
         - Running your First MCP Server: lab5/projects/visual-chatbot/mcp.md
+      - GitHub MCP Server and Claude Desktop: lab5/projects/GitHub-Claude.md
       - Docker MCP Server and Gordon: lab5/projects/Docker-CLI-With-Gordon.md
       - Docker MCP Server and VS Code: lab5/projects/Docker-CLI-With-VSCode.md
       - GitHub MCP Server and Gordon: lab5/projects/GitHub-MCP-Gordon.md

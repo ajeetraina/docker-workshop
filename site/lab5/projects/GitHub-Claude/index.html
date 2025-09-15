@@ -11,21 +11,25 @@
       
       
       
+        <link rel="prev" href="../visual-chatbot/mcp/">
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+        <link rel="next" href="../Docker-CLI-With-Gordon/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
-        <title>Docker init - Docker workshop</title>
+        <title>GitHub MCP Server and Claude Desktop - Docker workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.6f8fc17f.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -44,11 +48,11 @@
       
     
     
-      <link rel="stylesheet" href="../../css/styles.css">
+      <link rel="stylesheet" href="../../../css/styles.css">
     
-      <link rel="stylesheet" href="../../css/dark-mode.css">
+      <link rel="stylesheet" href="../../../css/dark-mode.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -72,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#whos-this-for" class="md-skip">
+        <a href="#step-1-create-a-github-personal-access-token-pat" class="md-skip">
           Skip to content
         </a>
       
@@ -88,9 +92,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -107,7 +111,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Docker init
+              GitHub MCP Server and Claude Desktop
             
           </span>
         </div>
@@ -194,9 +198,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     Docker workshop
@@ -223,7 +227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -243,7 +247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../prereq/prereq/" class="md-nav__link">
+      <a href="../../../prereq/prereq/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -298,7 +302,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../../lab1/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -319,7 +323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../what-is-a-container/" class="md-nav__link">
+      <a href="../../../lab1/what-is-a-container/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -340,7 +344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../postgres/" class="md-nav__link">
+      <a href="../../../lab1/postgres/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -403,7 +407,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/overview/" class="md-nav__link">
+      <a href="../../../product-catalog/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -424,7 +428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/tech-stack/" class="md-nav__link">
+      <a href="../../../product-catalog/tech-stack/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -445,7 +449,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/develop/" class="md-nav__link">
+      <a href="../../../product-catalog/develop/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -466,7 +470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/test/" class="md-nav__link">
+      <a href="../../../product-catalog/test/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -487,7 +491,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/build/" class="md-nav__link">
+      <a href="../../../product-catalog/build/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -508,7 +512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/secure/" class="md-nav__link">
+      <a href="../../../product-catalog/secure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -571,7 +575,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/overview/" class="md-nav__link">
+      <a href="../../../lab4/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -592,7 +596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/getting-started/" class="md-nav__link">
+      <a href="../../../lab4/getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -648,7 +652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/projects/catalog-chatbot/" class="md-nav__link">
+      <a href="../../../lab4/projects/catalog-chatbot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -669,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/projects/genai-chatbot/" class="md-nav__link">
+      <a href="../../../lab4/projects/genai-chatbot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -702,17 +706,19 @@
       
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -726,7 +732,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             MCP Catalog and Toolkit
@@ -740,7 +746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/overview/" class="md-nav__link">
+      <a href="../../overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -761,7 +767,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/getting-started/" class="md-nav__link">
+      <a href="../../getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -779,17 +785,19 @@
                 
   
   
+    
   
   
+  
     
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" checked>
         
           
           <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
@@ -803,7 +811,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6_3">
             <span class="md-nav__icon md-icon"></span>
             Projects
@@ -852,7 +860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
+      <a href="../visual-chatbot/visual-chatbot/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -873,7 +881,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
+      <a href="../visual-chatbot/mcp/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -899,10 +907,28 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../lab5/projects/GitHub-Claude/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    GitHub MCP Server and Claude Desktop
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -911,6 +937,42 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-create-a-github-personal-access-token-pat" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 1: Create a GitHub Personal Access Token (PAT)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-configure-the-github-mcp-server-in-docker" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 2: Configure the GitHub MCP Server in Docker
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -923,7 +985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
+      <a href="../Docker-CLI-With-Gordon/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -944,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
+      <a href="../Docker-CLI-With-VSCode/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -965,7 +1027,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
+      <a href="../GitHub-MCP-Gordon/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -986,7 +1048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
+      <a href="../Kubernetes-MCP/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1007,7 +1069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
+      <a href="../Slack-MCP-With-Claude/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1078,7 +1140,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/overview/" class="md-nav__link">
+      <a href="../../../lab6/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1099,7 +1161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/getting-started/" class="md-nav__link">
+      <a href="../../../lab6/getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1155,7 +1217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/agentic-catalog/" class="md-nav__link">
+      <a href="../../../lab6/projects/agentic-catalog/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1176,7 +1238,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/hackathon-recommender/" class="md-nav__link">
+      <a href="../../../lab6/projects/hackathon-recommender/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1197,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
+      <a href="../../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1268,7 +1330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab7/overview/" class="md-nav__link">
+      <a href="../../../lab7/overview/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1289,7 +1351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab7/getting-started/" class="md-nav__link">
+      <a href="../../../lab7/getting-started/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1335,71 +1397,20 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#whos-this-for" class="md-nav__link">
+  <a href="#step-1-create-a-github-personal-access-token-pat" class="md-nav__link">
     <span class="md-ellipsis">
-      Who’s this for?
+      Step 1: Create a GitHub Personal Access Token (PAT)
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#benefits-of-docker-init" class="md-nav__link">
+  <a href="#step-2-configure-the-github-mcp-server-in-docker" class="md-nav__link">
     <span class="md-ellipsis">
-      Benefits of Docker Init
+      Step 2: Configure the GitHub MCP Server in Docker
     </span>
   </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#getting-started" class="md-nav__link">
-    <span class="md-ellipsis">
-      Getting Started
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Getting Started">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#clone-the-repository" class="md-nav__link">
-    <span class="md-ellipsis">
-      Clone the repository
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#run-the-following-command" class="md-nav__link">
-    <span class="md-ellipsis">
-      Run the following command:
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#running-the-container-service" class="md-nav__link">
-    <span class="md-ellipsis">
-      Running the container service
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#accessing-the-node-app" class="md-nav__link">
-    <span class="md-ellipsis">
-      Accessing the Node app
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
   
 </li>
       
@@ -1421,75 +1432,37 @@
   
 
 
-  <h1>Docker init</h1>
+  <h1>GitHub MCP Server and Claude Desktop</h1>
 
-<p><img alt="docker init" src="../images/dockerinit.png" /></p>
-<p>Introduced for the first time in Docker Desktop 4.18, the new docker init CLI generates Docker assets for projects, making it easier to create Docker images and containers. When you run the docker init command in your project directory, it will guide you through the creation of the necessary files for your project with sensible defaults. These files include:</p>
-<pre><code>.dockerignore
-Dockerfile
-docker-compose.yaml
-</code></pre>
-<p>The docker init command also allows you to choose the application platform that your project uses and the relative directory of your main package. </p>
-<h2 id="whos-this-for">Who’s this for?</h2>
-<p>This feature is targeted at developers who want to quickly create and manage Docker assets without having to manually configure everything. </p>
-<h2 id="benefits-of-docker-init">Benefits of Docker Init</h2>
-<p>The advantages of using the docker init command include:</p>
+<p>Let’s see how to use GitHub MCP Server using Claude Desktop in the following steps:</p>
+<h2 id="step-1-create-a-github-personal-access-token-pat">Step 1: Create a GitHub Personal Access Token (PAT)</h2>
 <ul>
-<li>Simplified Docker asset creation: The command streamlines the creation of necessary Docker files, reducing the chances of errors and ensuring that best practices are followed.</li>
-<li>Saves time and effort: With the default settings and guided prompts, users can quickly create Docker assets without the need for extensive knowledge of Docker or its syntax.</li>
-<li>Better project organization: The generated files provide a standardized and organized structure for the project, making it easier for developers to maintain and update the project over time.</li>
-<li>Enhanced portability: By using Docker assets, projects become more portable across different environments, making it easier to move the project from development to production.</li>
+<li>Go to GitHub.com and sign in to your account</li>
+<li>Click your profile picture in the top-right corner</li>
+<li>Select "Settings"</li>
+<li>Scroll down to "Developer settings" in the left sidebar</li>
+<li>Click on "Personal access tokens" → "Tokens (classic)"</li>
+<li>Click "Generate new token" → "Generate new token (classic)"</li>
+<li>Give your token a descriptive name like "Docker MCP GitHub Access"</li>
+<li>Select the following scopes (permissions):</li>
+<li>repo (Full control of private repositories)</li>
+<li>workflow (if you need workflow actions)</li>
+<li>read:org (if you need organization access)</li>
+<li>Click "Generate token"</li>
 </ul>
-<p><img alt="docker init intro" src="../images/dockerinit-intro.png" /></p>
-<h2 id="getting-started">Getting Started</h2>
+<h2 id="step-2-configure-the-github-mcp-server-in-docker">Step 2: Configure the GitHub MCP Server in Docker</h2>
 <ul>
-<li>Install the latest version of Docker Desktop</li>
-<li>Install Nodejs on your local system</li>
+<li>Open Docker Desktop</li>
+<li>Navigate to the MCP Server</li>
+<li>Find the GitHub tool (official) card and click on it to expand details.</li>
 </ul>
-<blockquote>
-<p>Note:
-You must download and install the Node pre-built installer on your local system to get the <code>npm install</code> command to work seamlessly. <a href="https://nodejs.org/en/download/">Click here to download</a></p>
-</blockquote>
-<h3 id="clone-the-repository">Clone the repository</h3>
-<pre><code>git clone https://github.com/dockersamples/docker-init-demos
-cd docker-init-demos/node
+<p><img alt="githubrefernece" src="../images/github-reference.png" /></p>
+<p>In your terminal, set up the GitHub token as a secret:</p>
+<pre><code>docker mcp secret set GITHUB.PERSONAL_ACCESS_TOKEN=github_pat_YOUR_TOKEN_HERE
 </code></pre>
-<p>The usual way to bring up this node application is to follow the steps:</p>
-<pre><code>npm install
-node app.js
-</code></pre>
-<p>You can verify the output by accessing the URL:</p>
-<pre><code>curl localhost:8080
-</code></pre>
-<p>Now let's see how to containerise this project using the <code>docker init</code> CLI.</p>
-<h3 id="run-the-following-command">Run the following command:</h3>
-<pre><code class="language-bash"> docker init
-</code></pre>
-<p>This utility will walk you through creating the following files with sensible defaults for your project:</p>
-<ul>
-<li>Select Node as your application platform</li>
-<li>Type "22.2.0" as Node version, if it doesn't provide you any default option</li>
-<li>Select npm as package manager</li>
-<li>Select "node app.js" as the command</li>
-<li>Type "8080" as a port that server listens on</li>
-</ul>
-<p>The tool creates the following Docker assets for you:</p>
-<pre><code>  - .dockerignore
-  - Dockerfile
-  - docker-compose.yaml
-</code></pre>
-<h3 id="running-the-container-service">Running the container service</h3>
-<p><code>docker compose up -d --build</code></p>
-<h3 id="accessing-the-node-app">Accessing the Node app</h3>
-<pre><code> curl localhost:8080      .
-/&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;\___/ ===
-{                       /  ===-
-\______ O           __/
- \    \         __/
-  \____\_______/
-
-
-Hello from Docker
+<p>For example:</p>
+<pre><code>docker mcp secret set GITHUB.PERSONAL_ACCESS_TOKEN=github_pat_11AACMRCAXXXXXXxEp_QRZW43Wo1k6KYWwDXXXXXXXXGPXLZ7EGEnse82YM
+Info: No policy specified, using default policy
 </code></pre>
 
 
@@ -1541,10 +1514,10 @@ Hello from Docker
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": [], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": [], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
     
   </body>
