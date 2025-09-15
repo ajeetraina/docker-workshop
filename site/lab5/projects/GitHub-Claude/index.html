@@ -76,7 +76,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#step-1-create-a-github-personal-access-token-pat" class="md-skip">
+        <a href="#prerequisite" class="md-skip">
           Skip to content
         </a>
       
@@ -952,6 +952,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#prerequisite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisite
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-1-create-a-github-personal-access-token-pat" class="md-nav__link">
     <span class="md-ellipsis">
       Step 1: Create a GitHub Personal Access Token (PAT)
@@ -964,6 +973,42 @@
   <a href="#step-2-configure-the-github-mcp-server-in-docker" class="md-nav__link">
     <span class="md-ellipsis">
       Step 2: Configure the GitHub MCP Server in Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-configure-claude-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Configure Claude Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-restart-the-claude-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. Restart the Claude Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-verify-if-mcp_docker-gets-added-to-the-claude-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5. Verify if MCP_DOCKER gets added to the Claude Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-start-chatting-with-your-github-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6. Start chatting with your GitHub repository
     </span>
   </a>
   
@@ -1397,6 +1442,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#prerequisite" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisite
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#step-1-create-a-github-personal-access-token-pat" class="md-nav__link">
     <span class="md-ellipsis">
       Step 1: Create a GitHub Personal Access Token (PAT)
@@ -1409,6 +1463,42 @@
   <a href="#step-2-configure-the-github-mcp-server-in-docker" class="md-nav__link">
     <span class="md-ellipsis">
       Step 2: Configure the GitHub MCP Server in Docker
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-configure-claude-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 3. Configure Claude Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-restart-the-claude-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 4. Restart the Claude Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-verify-if-mcp_docker-gets-added-to-the-claude-desktop" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 5. Verify if MCP_DOCKER gets added to the Claude Desktop
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-start-chatting-with-your-github-repository" class="md-nav__link">
+    <span class="md-ellipsis">
+      Step 6. Start chatting with your GitHub repository
     </span>
   </a>
   
@@ -1435,6 +1525,13 @@
   <h1>GitHub MCP Server and Claude Desktop</h1>
 
 <p>Let’s see how to use GitHub MCP Server using Claude Desktop in the following steps:</p>
+<h2 id="prerequisite">Prerequisite</h2>
+<ul>
+<li>Docker Desktop</li>
+<li>MCP Toolkit Enabled</li>
+<li>GitHub Account</li>
+<li>Claude Desktop installed on your system</li>
+</ul>
 <h2 id="step-1-create-a-github-personal-access-token-pat">Step 1: Create a GitHub Personal Access Token (PAT)</h2>
 <ul>
 <li>Go to GitHub.com and sign in to your account</li>
@@ -1454,16 +1551,37 @@
 <ul>
 <li>Open Docker Desktop</li>
 <li>Navigate to the MCP Server</li>
-<li>Find the GitHub tool (official) card and click on it to expand details.</li>
+<li>Find the GitHub (official) card and click on it to expand details.</li>
 </ul>
-<p><img alt="githubrefernece" src="../images/github-reference.png" /></p>
+<p><img width="1164" height="594" alt="image" src="https://github.com/user-attachments/assets/116b32c8-ceae-40e4-a19a-448555e24142" /></p>
+<p>Alternatively, you can even set it up using <code>docker mcp</code> CLI as shown below: </p>
 <p>In your terminal, set up the GitHub token as a secret:</p>
 <pre><code>docker mcp secret set GITHUB.PERSONAL_ACCESS_TOKEN=github_pat_YOUR_TOKEN_HERE
 </code></pre>
 <p>For example:</p>
-<pre><code>docker mcp secret set GITHUB.PERSONAL_ACCESS_TOKEN=github_pat_11AACMRCAXXXXXXxEp_QRZW43Wo1k6KYWwDXXXXXXXXGPXLZ7EGEnse82YM
+<pre><code>docker mcp secret set GITHUB.PERSONAL_ACCESS_TOKEN=github_pat_XXXXMRCAXXXXXXxEp_QRZW43Wo1k6KYWwDXXXXXXXXGPXLZ7EGEnse82YM
 Info: No policy specified, using default policy
 </code></pre>
+<h2 id="step-3-configure-claude-desktop">Step 3. Configure Claude Desktop</h2>
+<p>Open MCP Client &gt; Click "Connect"</p>
+<p><img width="1006" height="471" alt="image" src="https://github.com/user-attachments/assets/671e31df-f207-4fb8-99b1-491a0ada0410" /></p>
+<h2 id="step-4-restart-the-claude-desktop">Step 4. Restart the Claude Desktop</h2>
+<p><img width="1201" height="678" alt="image" src="https://github.com/user-attachments/assets/73e4fad6-5e37-46e2-b39b-ed589feb588a" /></p>
+<pre><code>{
+  &quot;mcpServers&quot;:{
+       &quot;MCP_DOCKER&quot;:
+          {
+            &quot;command&quot;:
+                &quot;docker&quot;,
+                     &quot;args&quot;:[&quot;mcp&quot;,&quot;gateway&quot;,&quot;run&quot;]
+       }
+   }
+}
+</code></pre>
+<h2 id="step-5-verify-if-mcp_docker-gets-added-to-the-claude-desktop">Step 5. Verify if MCP_DOCKER gets added to the Claude Desktop</h2>
+<p><img width="832" height="506" alt="image" src="https://github.com/user-attachments/assets/38a11cf0-e531-44fc-b0ae-c3d7156c7af0" /></p>
+<h2 id="step-6-start-chatting-with-your-github-repository">Step 6. Start chatting with your GitHub repository</h2>
+<p><img width="767" height="550" alt="image" src="https://github.com/user-attachments/assets/ca63daf9-a0b5-4844-a082-128556cbdd39" /></p>
 
 
 
