@@ -34,6 +34,22 @@ Before we begin, make sure you have:
 
 > ## Docker Compose Support for Model Runner
 > 
+> Compose allows you to use `models` as a top-level element in the following way:
+
+```
+services:
+  chat-app:
+    image: my-chat-app
+    models:
+      - llm
+
+models:
+  llm:
+    model: ai/smollm2
+```
+
+
+
 > Docker Model Runner can be integrated with Docker Compose to run AI models as part of your multi-container applications.
 This lets you define and run AI-powered applications alongside your other services.
 > 
@@ -60,6 +76,7 @@ services:
 > There is also a depends_on attribute in the chat service.
 > This attribute specifies that the chat service depends on the ai_runner service.
 >This means that the ai_runner service will be started before the chat service to allow injection of model information to the chat service.
+
 
 
 ### Clone the repository

@@ -11,7 +11,7 @@
       
       
       
-        <link rel="prev" href="../../getting-started/">
+        <link rel="prev" href="../catalog-chatbot/">
       
       
         <link rel="next" href="../../../lab5/overview/">
@@ -648,6 +648,27 @@
             Projects
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../catalog-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Product Catalog Chatbot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1564,6 +1585,19 @@
 </ul>
 <blockquote>
 <h2 id="docker-compose-support-for-model-runner">Docker Compose Support for Model Runner</h2>
+<p>Compose allows you to use <code>models</code> as a top-level element in the following way:</p>
+</blockquote>
+<pre><code>services:
+  chat-app:
+    image: my-chat-app
+    models:
+      - llm
+
+models:
+  llm:
+    model: ai/smollm2
+</code></pre>
+<blockquote>
 <p>Docker Model Runner can be integrated with Docker Compose to run AI models as part of your multi-container applications.
 This lets you define and run AI-powered applications alongside your other services.</p>
 <p>Compose introduces a new service type called provider that allows you to declare platform capabilities required by your application. For AI models, you can use the model type to declare model dependencies.

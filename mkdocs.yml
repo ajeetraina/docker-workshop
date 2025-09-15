@@ -38,7 +38,9 @@ nav:
     - Overview: lab4/overview.md
     - Getting Started: lab4/getting-started.md
     - Projects:
+      - Product Catalog Chatbot: lab4/projects/catalog-chatbot.md
       - GenAI Chatbot: lab4/projects/genai-chatbot.md
+
   - MCP Catalog and Toolkit:
     - Overview: lab5/overview.md
     - Getting Started: lab5/getting-started.md
