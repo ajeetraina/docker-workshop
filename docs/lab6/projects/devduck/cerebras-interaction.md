@@ -26,6 +26,22 @@ Available models through the API:
 | **Llama 3.1 70B** | 70 billion | Complex reasoning, detailed analysis |
 | **Llama 3.1 405B** | 405 billion | Advanced research, complex problem solving |
 
+
+
+## Quick Test
+
+```
+Prompt 1: Can I talk to Cerebras?
+```
+
+``` 
+Prompt 2: Search documentation for Express Routing
+```
+
+```
+Prompt 3: Create a function that adds two numbers and test it in the sandbox
+```
+
 ## Hands-On Cerebras Agent Exploration
 
 ### 🎯 Exercise 1: Complex Analysis Tasks

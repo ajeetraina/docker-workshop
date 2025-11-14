@@ -31,6 +31,24 @@ The Local Agent operates within your Docker container using:
 - Less sophisticated reasoning
 - Smaller training data scope
 
+
+## Quick Test
+
+```
+Prompt 1: How many agents are available in this system?
+```
+
+```
+Prompt 2: Can I talk to Local Agent?
+```
+
+```
+Prompt 3: Show me code for todo list app
+```
+
+
+
+
 ## Hands-On Local Agent Exploration
 
 ### 🧪 Exercise 1: Direct Local Agent Testing
