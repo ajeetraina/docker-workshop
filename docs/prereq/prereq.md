@@ -66,4 +66,7 @@ docker pull prom/prometheus:v2.45.0
 ```
 Ask Gordon  (optional)
 Claude Desktop (optional)
+Claude Code
+Gemini CLI
+Visual Studio Code
 ```
