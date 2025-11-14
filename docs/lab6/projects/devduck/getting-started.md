@@ -34,7 +34,7 @@ The system consists of three main agents orchestrated by Docker Compose, which p
 ### 🧠 Cerebras Agent
 
 - **Role**: Advanced computational tasks and complex problem-solving
-- **Model**: Llama-4 Scout (`llama-4-scout-17b-16e-instruct`)
+- **Model**: qwen-3-235b-a22b-instruct-2507
 - **Provider**: Cerebras API
 - **Specialization**: Node.js programming expert for complex problem-solving scenarios
 
@@ -122,7 +122,7 @@ You'll need to configure these environment variables:
 # Cerebras Configuration
 CEREBRAS_API_KEY=your_cerebras_api_key
 CEREBRAS_BASE_URL=https://api.cerebras.ai/v1
-CEREBRAS_CHAT_MODEL=llama-4-scout-17b-16e-instruct
+CEREBRAS_CHAT_MODEL=qwen-3-235b-a22b-instruct-2507
 ```
 
 
