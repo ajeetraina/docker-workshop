@@ -62,7 +62,7 @@ nav:
         - Overview: lab6/projects/devduck/overview.md
         - Prerequisite: lab6/projects/devduck/prereq.md
         - Getting Started: lab6/projects/devduck/getting-started.md
-        - Local Agent Interaction: lab6/projects/devduck/local-agents.md
+        - Local Agent Interaction: lab6/projects/devduck/local-agent.md
         - Cerebras Interaction: lab6/projects/devduck/cerebras-interaction.md  
       - Agentic Product Catalog: lab6/projects/agentic-catalog.md
       - Hackathon Recommender: lab6/projects/hackathon-recommender.md
