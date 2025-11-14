@@ -1,0 +1,2707 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+        <meta name="author" content="Ajeet Singh Raina">
+      
+      
+      
+      
+      
+      <link rel="icon" href="../../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+    
+    
+      
+        <title>Local Agent Tasks - Docker workshop</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.6f8fc17f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../../css/styles.css">
+    
+      <link rel="stylesheet" href="../../../../css/dark-mode.css">
+    
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="blue" data-md-color-accent="blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#local-agent-tasks" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+      
+  <img src="../../../../images/docker-logo-white.svg" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Docker workshop
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Local Agent Tasks
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/ajeetraina/docker-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docker-workshop
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+      
+  <img src="../../../../images/docker-logo-white.svg" alt="logo">
+
+    </a>
+    Docker workshop
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/ajeetraina/docker-workshop" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    docker-workshop
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../prereq/prereq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisites
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3" id="__nav_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Inner-Loop Development workflow
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Inner-Loop Development workflow
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab1/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Inner Vs Outer Loop Development workflow
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab1/what-is-a-container/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    What is a container
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab1/postgres/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running Postgres Containers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Product catalog - A Sample Demo App
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Product catalog - A Sample Demo App
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../product-catalog/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../product-catalog/tech-stack/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tech stack
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../product-catalog/develop/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Develop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../product-catalog/test/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../product-catalog/build/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Build
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../product-catalog/secure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Secure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Docker Model Runner
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Docker Model Runner
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab4/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab4/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab4/projects/catalog-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Product Catalog Chatbot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab4/projects/genai-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GenAI Chatbot
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    MCP Catalog and Toolkit
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            MCP Catalog and Toolkit
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab5/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab5/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3" id="__nav_6_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_6_3_1" id="__nav_6_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Visual Chatbot
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_6_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Visual Chatbot
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Running your First MCP Server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab5/projects/GitHub-Claude/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub MCP Server and Claude Desktop
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker MCP Server and Gordon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker MCP Server and VS Code
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    GitHub MCP Server and Gordon
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes MCP Server and Claude
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Slack MCP Server and Claude
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Agentic Compose
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            Agentic Compose
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Projects
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Projects
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3_1" id="__nav_7_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    DevDuck
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_7_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            DevDuck
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../prereq/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prerequisite
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../local-agents.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Local Agent Interaction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cerebras-interaction.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cerebras Interaction
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../agentic-catalog/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Agentic Product Catalog
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../hackathon-recommender/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Hackathon Recommender
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../a2a-multi-agent-fact-checker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    A2A Multi-Agent Fact Checker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        
+          
+          <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Docker Offload
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_8_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_8">
+            <span class="md-nav__icon md-icon"></span>
+            Docker Offload
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab7/overview/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Overview
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../lab7/getting-started/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Getting Started
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-local-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understanding the Local Agent
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the Local Agent">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#local-agent-architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      🏠 Local Agent Architecture
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#key-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Capabilities
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key Capabilities">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#strengths" class="md-nav__link">
+    <span class="md-ellipsis">
+      ✅ Strengths
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limitations" class="md-nav__link">
+    <span class="md-ellipsis">
+      ⚠️ Limitations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hands-on-local-agent-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hands-On Local Agent Exploration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hands-On Local Agent Exploration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-direct-local-agent-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      🧪 Exercise 1: Direct Local Agent Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🧪 Exercise 1: Direct Local Agent Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#force-local-agent-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Force Local Agent Routing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#method-2-simulate-offline-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      Method 2: Simulate Offline Mode
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-local-agent-performance-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔍 Exercise 2: Local Agent Performance Analysis
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 Exercise 2: Local Agent Performance Analysis">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#response-time-comparison" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response Time Comparison
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-local-agent-specialization" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Exercise 3: Local Agent Specialization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Exercise 3: Local Agent Specialization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#code-generation-tasks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Code Generation Tasks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-and-explanations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Documentation and Explanations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-model-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Model Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Model Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      📦 Model Configuration
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📦 Model Configuration">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#viewing-current-model" class="md-nav__link">
+    <span class="md-ellipsis">
+      Viewing Current Model
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-switching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Switching
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      🔧 Performance Tuning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔧 Performance Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#memory-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Memory Optimization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cpu-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      CPU Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#advanced-local-agent-use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Advanced Local Agent Use Cases
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Advanced Local Agent Use Cases">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#real-time-code-assistance" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Real-time Code Assistance
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Real-time Code Assistance">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-4-interactive-development-helper" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 4: Interactive Development Helper
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#template-and-boilerplate-generation" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎯 Template and Boilerplate Generation
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎯 Template and Boilerplate Generation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-5-rapid-prototyping" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 5: Rapid Prototyping
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#documentation-and-learning-aid" class="md-nav__link">
+    <span class="md-ellipsis">
+      📚 Documentation and Learning Aid
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📚 Documentation and Learning Aid">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#exercise-6-learning-assistant" class="md-nav__link">
+    <span class="md-ellipsis">
+      Exercise 6: Learning Assistant
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#local-agent-customization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Local Agent Customization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Local Agent Customization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#custom-prompts-and-templates" class="md-nav__link">
+    <span class="md-ellipsis">
+      🛠️ Custom Prompts and Templates
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🛠️ Custom Prompts and Templates">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-specialized-prompts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Specialized Prompts
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      📊 Performance Monitoring
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="📊 Performance Monitoring">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-local-agent-dashboard" class="md-nav__link">
+    <span class="md-ellipsis">
+      Create Local Agent Dashboard
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimization-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimization Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Optimization Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#configuration-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      🎛️ Configuration Tuning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🎛️ Configuration Tuning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#model-selection-guidelines" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Selection Guidelines
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-optimization-checklist" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization Checklist
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching-strategies" class="md-nav__link">
+    <span class="md-ellipsis">
+      🚀 Caching Strategies
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🚀 Caching Strategies">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#implement-response-caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implement Response Caching
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting-local-agent-issues" class="md-nav__link">
+    <span class="md-ellipsis">
+      Troubleshooting Local Agent Issues
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting Local Agent Issues">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-problems" class="md-nav__link">
+    <span class="md-ellipsis">
+      🐛 Common Problems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🐛 Common Problems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#issue-1-model-loading-failures" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue 1: Model Loading Failures
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#issue-2-slow-response-times" class="md-nav__link">
+    <span class="md-ellipsis">
+      Issue 2: Slow Response Times
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Next Steps
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+  
+
+
+<h1 id="local-agent-tasks">Local Agent Tasks</h1>
+<p>The Local Agent is your system's fast-response specialist, designed for quick processing tasks, code completion, and immediate assistance. In this lab, you'll explore its capabilities, learn optimization techniques, and understand when to leverage local processing versus cloud-based AI.</p>
+<p>!!! info "Learning Focus"
+    Master local agent capabilities, model management, and performance optimization for immediate response scenarios.</p>
+<h2 id="understanding-the-local-agent">Understanding the Local Agent</h2>
+<h3 id="local-agent-architecture">🏠 Local Agent Architecture</h3>
+<p>The Local Agent operates within your Docker container using:</p>
+<ul>
+<li><strong>Local Models</strong>: Cached language models (1-7B parameters)</li>
+<li><strong>Fast Processing</strong>: Sub-second response times for common tasks</li>
+<li><strong>Offline Capability</strong>: Works without internet connectivity</li>
+<li><strong>Resource Efficient</strong>: Optimized for container environments</li>
+</ul>
+<h3 id="key-capabilities">Key Capabilities</h3>
+<h4 id="strengths">✅ <strong>Strengths</strong></h4>
+<ul>
+<li>Code completion and simple explanations</li>
+<li>Quick syntax help and debugging</li>
+<li>Basic conversation and Q&amp;A</li>
+<li>Template generation and boilerplate code</li>
+<li>Fast pattern matching and simple analysis</li>
+</ul>
+<h4 id="limitations">⚠️ <strong>Limitations</strong></h4>
+<ul>
+<li>Limited context window (compared to cloud models)</li>
+<li>Reduced knowledge depth</li>
+<li>Less sophisticated reasoning</li>
+<li>Smaller training data scope</li>
+</ul>
+<h2 id="hands-on-local-agent-exploration">Hands-On Local Agent Exploration</h2>
+<h3 id="exercise-1-direct-local-agent-testing">🧪 Exercise 1: Direct Local Agent Testing</h3>
+<p>Let's interact directly with the Local Agent to understand its capabilities:</p>
+<h4 id="force-local-agent-routing">Force Local Agent Routing</h4>
+<p><strong>Method 1: Using Query Patterns</strong></p>
+<p>The Local Agent typically handles these types of queries:</p>
+<pre><code>You: Quick JavaScript syntax question - how do I create an arrow function?
+</code></pre>
+<pre><code>You: Simple Python loop example please
+</code></pre>
+<pre><code>You: Basic HTML template for a webpage
+</code></pre>
+<h4 id="method-2-simulate-offline-mode"><strong>Method 2: Simulate Offline Mode</strong></h4>
+<p>Temporarily disable internet to force local processing:</p>
+<pre><code class="language-bash"># Block external API access (temporary)
+docker compose exec devduck-agent sh -c &quot;echo '127.0.0.1 api.cerebras.ai' &gt;&gt; /etc/hosts&quot;
+
+# Now test with complex queries
+# They should fallback to Local Agent
+</code></pre>
+<p><strong>Test Query:</strong></p>
+<pre><code>You: Explain object-oriented programming concepts
+</code></pre>
+<p><strong>Restore connectivity:</strong></p>
+<pre><code class="language-bash">docker compose exec devduck-agent sh -c &quot;sed -i '/api.cerebras.ai/d' /etc/hosts&quot;
+</code></pre>
+<h3 id="exercise-2-local-agent-performance-analysis">🔍 Exercise 2: Local Agent Performance Analysis</h3>
+<h4 id="response-time-comparison">Response Time Comparison</h4>
+<pre><code class="language-python"># Create local_agent_benchmark.py
+import requests
+import time
+import statistics
+
+def benchmark_local_agent():
+    &quot;&quot;&quot;Benchmark Local Agent response times.&quot;&quot;&quot;
+
+    # Queries likely to route to Local Agent
+    local_queries = [
+        &quot;Hello&quot;,
+        &quot;What is a variable in Python?&quot;,
+        &quot;Show me a basic for loop&quot;,
+        &quot;Simple HTML template&quot;,
+        &quot;How to declare a JavaScript function?&quot;
+    ]
+
+    times = []
+
+    print(&quot;🏠 Benchmarking Local Agent...&quot;)
+
+    for query in local_queries:
+        print(f&quot;Testing: {query[:30]}...&quot;)
+
+        start_time = time.time()
+
+        response = requests.post(
+            'http://localhost:8000/chat',
+            json={
+                &quot;message&quot;: query,
+                &quot;conversation_id&quot;: f&quot;benchmark-{int(time.time())}&quot;,
+                &quot;force_local&quot;: True  # If supported
+            },
+            timeout=30
+        )
+
+        duration = time.time() - start_time
+        times.append(duration)
+
+        print(f&quot;  Response time: {duration:.3f}s&quot;)
+        time.sleep(0.5)
+
+    # Statistics
+    avg_time = statistics.mean(times)
+    median_time = statistics.median(times)
+    min_time = min(times)
+    max_time = max(times)
+
+    print(f&quot;\n📊 Local Agent Performance:&quot;)
+    print(f&quot;  Average: {avg_time:.3f}s&quot;)
+    print(f&quot;  Median:  {median_time:.3f}s&quot;)
+    print(f&quot;  Min:     {min_time:.3f}s&quot;)
+    print(f&quot;  Max:     {max_time:.3f}s&quot;)
+
+    return times
+
+if __name__ == '__main__':
+    benchmark_local_agent()
+</code></pre>
+<p><strong>Run the benchmark:</strong></p>
+<pre><code class="language-bash">python local_agent_benchmark.py
+</code></pre>
+<h3 id="exercise-3-local-agent-specialization">🎯 Exercise 3: Local Agent Specialization</h3>
+<h4 id="code-generation-tasks">Code Generation Tasks</h4>
+<p>Test the Local Agent's code generation capabilities:</p>
+<p><strong>Template Generation:</strong></p>
+<pre><code>You: Generate a basic Express.js server template
+</code></pre>
+<p><strong>Simple Functions:</strong></p>
+<pre><code>You: Create a function to validate an email address in JavaScript
+</code></pre>
+<p><strong>Quick Fixes:</strong></p>
+<pre><code>You: Fix this Python code: 
+print(&quot;Hello World&quot;
+</code></pre>
+<h4 id="documentation-and-explanations">Documentation and Explanations</h4>
+<p><strong>Concept Explanations:</strong></p>
+<pre><code>You: Explain what is a REST API in simple terms
+</code></pre>
+<p><strong>Quick References:</strong></p>
+<pre><code>You: List common Git commands
+</code></pre>
+<h2 id="local-model-management">Local Model Management</h2>
+<h3 id="model-configuration">📦 Model Configuration</h3>
+<h4 id="viewing-current-model">Viewing Current Model</h4>
+<pre><code class="language-bash"># Check current local model configuration
+docker compose exec devduck-agent env | grep LOCAL_MODEL
+
+# View model cache directory
+docker compose exec devduck-agent ls -la /app/models/
+
+# Check model size and usage
+docker compose exec devduck-agent du -sh /app/models/*
+</code></pre>
+<h4 id="model-switching">Model Switching</h4>
+<p>You can experiment with different local models:</p>
+<pre><code class="language-bash"># Stop the current system
+docker compose down
+
+# Edit your .env file with different model
+cat &gt; .env.local-model &lt;&lt; 'EOF'
+# Lightweight model (faster, less capable)
+LOCAL_MODEL_NAME=microsoft/DialoGPT-small
+
+# Medium model (balanced)
+LOCAL_MODEL_NAME=microsoft/DialoGPT-medium
+
+# Larger model (slower, more capable)
+LOCAL_MODEL_NAME=microsoft/DialoGPT-large
+
+# Alternative: GPT-2 based models
+LOCAL_MODEL_NAME=gpt2
+EOF
+
+# Update your main .env file
+cp .env.local-model .env
+
+# Restart with new model
+docker compose up --build
+</code></pre>
+<h3 id="performance-tuning">🔧 Performance Tuning</h3>
+<h4 id="memory-optimization">Memory Optimization</h4>
+<pre><code class="language-yaml"># Add to compose.yml for local agent optimization
+services:
+  devduck-agent:
+    environment:
+      # Model optimization settings
+      - TORCH_HOME=/app/models
+      - HF_HOME=/app/models
+      - TRANSFORMERS_CACHE=/app/models
+      - LOCAL_MODEL_DEVICE=auto
+      - LOCAL_MODEL_PRECISION=fp16  # Use half precision
+      - LOCAL_MODEL_MAX_LENGTH=512  # Limit context length
+    deploy:
+      resources:
+        limits:
+          memory: 6G  # Adjust based on model size
+        reservations:
+          memory: 2G
+</code></pre>
+<h4 id="cpu-optimization">CPU Optimization</h4>
+<pre><code class="language-bash"># Create optimization script
+cat &gt; optimize_local_agent.py &lt;&lt; 'EOF'
+#!/usr/bin/env python3
+import os
+import torch
+
+def optimize_local_performance():
+    &quot;&quot;&quot;Apply local agent performance optimizations.&quot;&quot;&quot;
+
+    # Set optimal thread count for PyTorch
+    torch.set_num_threads(min(4, os.cpu_count()))
+
+    # Enable optimized attention (if available)
+    if hasattr(torch.backends, 'cuda'):
+        torch.backends.cuda.matmul.allow_tf32 = True
+
+    # Set memory growth (if using GPU)
+    if torch.cuda.is_available():
+        torch.cuda.empty_cache()
+        print(&quot;✅ CUDA optimizations applied&quot;)
+
+    print(&quot;✅ CPU optimizations applied&quot;)
+    print(f&quot;📊 Using {torch.get_num_threads()} threads&quot;)
+
+if __name__ == '__main__':
+    optimize_local_performance()
+EOF
+
+# Run optimization
+docker compose exec devduck-agent python optimize_local_agent.py
+</code></pre>
+<h2 id="advanced-local-agent-use-cases">Advanced Local Agent Use Cases</h2>
+<h3 id="real-time-code-assistance">🚀 Real-time Code Assistance</h3>
+<h4 id="exercise-4-interactive-development-helper">Exercise 4: Interactive Development Helper</h4>
+<p>Create scenarios where the Local Agent acts as a real-time coding assistant:</p>
+<p><strong>Scenario 1: Syntax Checking</strong></p>
+<pre><code>You: Is this JavaScript code syntactically correct?
+
+function calculateTotal(items) {
+  let total = 0;
+  for (item of items) {
+    total += item.price
+  }
+  return total;
+}
+</code></pre>
+<p><strong>Scenario 2: Quick Refactoring</strong></p>
+<pre><code>You: Convert this to arrow function syntax:
+
+function greet(name) {
+  return &quot;Hello, &quot; + name;
+}
+</code></pre>
+<p><strong>Scenario 3: Error Explanation</strong></p>
+<pre><code>You: What's wrong with this Python code?
+
+def process_list(items):
+    for i in range(len(items))
+        print(items[i])
+</code></pre>
+<h3 id="template-and-boilerplate-generation">🎯 Template and Boilerplate Generation</h3>
+<h4 id="exercise-5-rapid-prototyping">Exercise 5: Rapid Prototyping</h4>
+<p><strong>API Endpoint Template:</strong></p>
+<pre><code>You: Create a basic Express.js API endpoint for user registration
+</code></pre>
+<p><strong>Database Schema:</strong></p>
+<pre><code>You: Generate a MongoDB schema for a blog post
+</code></pre>
+<p><strong>Configuration Files:</strong></p>
+<pre><code>You: Create a package.json for a Node.js REST API project
+</code></pre>
+<h3 id="documentation-and-learning-aid">📚 Documentation and Learning Aid</h3>
+<h4 id="exercise-6-learning-assistant">Exercise 6: Learning Assistant</h4>
+<p><strong>Concept Clarification:</strong></p>
+<pre><code>You: Explain the difference between let, const, and var in JavaScript
+</code></pre>
+<p><strong>Quick References:</strong></p>
+<pre><code>You: Show me common array methods in JavaScript with examples
+</code></pre>
+<p><strong>Best Practices:</strong></p>
+<pre><code>You: What are Python naming conventions for variables and functions?
+</code></pre>
+<h2 id="local-agent-customization">Local Agent Customization</h2>
+<h3 id="custom-prompts-and-templates">🛠️ Custom Prompts and Templates</h3>
+<h4 id="create-specialized-prompts">Create Specialized Prompts</h4>
+<pre><code class="language-python"># Create local_agent_templates.py
+class LocalAgentTemplates:
+    &quot;&quot;&quot;Custom templates for Local Agent specialization.&quot;&quot;&quot;
+
+    CODE_REVIEW_PROMPT = &quot;&quot;&quot;
+    You are a code review assistant. For the given code:
+    1. Check for syntax errors
+    2. Suggest improvements
+    3. Identify potential bugs
+    4. Keep responses concise and actionable
+    &quot;&quot;&quot;
+
+    QUICK_HELP_PROMPT = &quot;&quot;&quot;
+    Provide quick, practical help. Include:
+    1. Direct answer to the question
+    2. Simple code example if applicable
+    3. One-line explanation
+    No lengthy explanations needed.
+    &quot;&quot;&quot;
+
+    TEMPLATE_GENERATOR_PROMPT = &quot;&quot;&quot;
+    Generate clean, minimal code templates.
+    Include:
+    1. Essential structure only
+    2. Clear placeholder comments
+    3. Basic error handling
+    4. Standard naming conventions
+    &quot;&quot;&quot;
+
+# Usage example
+def use_specialized_prompt(query, template_type=&quot;quick_help&quot;):
+    templates = LocalAgentTemplates()
+    prompt = getattr(templates, f&quot;{template_type.upper()}_PROMPT&quot;)
+
+    return f&quot;{prompt}\n\nQuery: {query}&quot;
+</code></pre>
+<h3 id="performance-monitoring">📊 Performance Monitoring</h3>
+<h4 id="create-local-agent-dashboard">Create Local Agent Dashboard</h4>
+<pre><code class="language-python"># Create local_agent_monitor.py
+import psutil
+import time
+import json
+
+class LocalAgentMonitor:
+    def __init__(self):
+        self.start_time = time.time()
+        self.request_count = 0
+        self.response_times = []
+
+    def log_request(self, duration):
+        self.request_count += 1
+        self.response_times.append(duration)
+
+    def get_stats(self):
+        uptime = time.time() - self.start_time
+
+        return {
+            &quot;uptime_seconds&quot;: uptime,
+            &quot;total_requests&quot;: self.request_count,
+            &quot;avg_response_time&quot;: sum(self.response_times) / len(self.response_times) if self.response_times else 0,
+            &quot;requests_per_minute&quot;: (self.request_count / uptime) * 60 if uptime &gt; 0 else 0,
+            &quot;memory_usage_mb&quot;: psutil.Process().memory_info().rss / 1024 / 1024,
+            &quot;cpu_percent&quot;: psutil.cpu_percent()
+        }
+
+    def print_stats(self):
+        stats = self.get_stats()
+        print(&quot;🏠 Local Agent Statistics:&quot;)
+        print(f&quot;   Uptime: {stats['uptime_seconds']:.0f}s&quot;)
+        print(f&quot;   Requests: {stats['total_requests']}&quot;)
+        print(f&quot;   Avg Response: {stats['avg_response_time']:.3f}s&quot;)
+        print(f&quot;   Rate: {stats['requests_per_minute']:.1f} req/min&quot;)
+        print(f&quot;   Memory: {stats['memory_usage_mb']:.1f} MB&quot;)
+        print(f&quot;   CPU: {stats['cpu_percent']:.1f}%&quot;)
+
+# Usage
+monitor = LocalAgentMonitor()
+
+# Simulate monitoring
+for _ in range(10):
+    start = time.time()
+    # Simulate request processing
+    time.sleep(0.1)
+    monitor.log_request(time.time() - start)
+
+monitor.print_stats()
+</code></pre>
+<h2 id="optimization-strategies">Optimization Strategies</h2>
+<h3 id="configuration-tuning">🎛️ Configuration Tuning</h3>
+<h4 id="model-selection-guidelines">Model Selection Guidelines</h4>
+<table>
+<thead>
+<tr>
+<th>Use Case</th>
+<th>Recommended Model</th>
+<th>Response Time</th>
+<th>Memory Usage</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>Quick Help</strong></td>
+<td>DialoGPT-small</td>
+<td>&lt;0.5s</td>
+<td>1-2 GB</td>
+</tr>
+<tr>
+<td><strong>Code Completion</strong></td>
+<td>DialoGPT-medium</td>
+<td>1-2s</td>
+<td>2-4 GB</td>
+</tr>
+<tr>
+<td><strong>Detailed Explanations</strong></td>
+<td>DialoGPT-large</td>
+<td>2-5s</td>
+<td>4-6 GB</td>
+</tr>
+<tr>
+<td><strong>Specialized Tasks</strong></td>
+<td>Custom fine-tuned</td>
+<td>Variable</td>
+<td>Variable</td>
+</tr>
+</tbody>
+</table>
+<h4 id="performance-optimization-checklist">Performance Optimization Checklist</h4>
+<pre><code class="language-bash"># Create optimization checklist script
+cat &gt; local_agent_optimization.sh &lt;&lt; 'EOF'
+#!/bin/bash
+
+echo &quot;🔧 Local Agent Optimization Checklist&quot;
+echo &quot;=====================================&quot;
+
+# Check 1: Memory availability
+MEM_TOTAL=$(free -m | awk 'NR==2{print $2}')
+MEM_AVAILABLE=$(free -m | awk 'NR==2{print $7}')
+echo &quot;Memory: ${MEM_AVAILABLE}MB / ${MEM_TOTAL}MB available&quot;
+
+if [ $MEM_AVAILABLE -lt 4000 ]; then
+    echo &quot;⚠️  Consider using smaller model (DialoGPT-small)&quot;
+else
+    echo &quot;✅ Memory sufficient for medium/large models&quot;
+fi
+
+# Check 2: CPU cores
+CPU_CORES=$(nproc)
+echo &quot;CPU Cores: $CPU_CORES&quot;
+
+if [ $CPU_CORES -lt 4 ]; then
+    echo &quot;⚠️  Limited CPU - optimize thread count&quot;
+else
+    echo &quot;✅ CPU suitable for multi-threading&quot;
+fi
+
+# Check 3: Disk space for models
+DISK_SPACE=$(df -BG /app/models 2&gt;/dev/null | awk 'NR==2{print $4}' | sed 's/G//')
+echo &quot;Disk Space: ${DISK_SPACE}GB available for models&quot;
+
+if [ &quot;$DISK_SPACE&quot; -lt 5 ]; then
+    echo &quot;⚠️  Limited disk space - clean old models&quot;
+else
+    echo &quot;✅ Sufficient disk space&quot;
+fi
+
+# Check 4: Model loading time
+echo &quot;Testing model loading time...&quot;
+START_TIME=$(date +%s)
+docker compose exec devduck-agent python -c &quot;import torch; print('Model check complete')&quot; 2&gt;/dev/null
+END_TIME=$(date +%s)
+LOAD_TIME=$((END_TIME - START_TIME))
+
+echo &quot;Model load test: ${LOAD_TIME}s&quot;
+
+if [ $LOAD_TIME -gt 30 ]; then
+    echo &quot;⚠️  Slow model loading - consider smaller model&quot;
+else
+    echo &quot;✅ Model loading performance acceptable&quot;
+fi
+
+EOF
+
+chmod +x local_agent_optimization.sh
+./local_agent_optimization.sh
+</code></pre>
+<h3 id="caching-strategies">🚀 Caching Strategies</h3>
+<h4 id="implement-response-caching">Implement Response Caching</h4>
+<pre><code class="language-python"># Create local_cache_manager.py
+import hashlib
+import json
+import time
+from typing import Optional, Dict, Any
+
+class LocalResponseCache:
+    def __init__(self, max_size: int = 1000, ttl: int = 300):
+        self.cache: Dict[str, Dict[str, Any]] = {}
+        self.max_size = max_size
+        self.ttl = ttl
+
+    def _generate_key(self, query: str) -&gt; str:
+        &quot;&quot;&quot;Generate cache key from query.&quot;&quot;&quot;
+        return hashlib.md5(query.lower().strip().encode()).hexdigest()
+
+    def get(self, query: str) -&gt; Optional[str]:
+        &quot;&quot;&quot;Get cached response if available and valid.&quot;&quot;&quot;
+        key = self._generate_key(query)
+
+        if key not in self.cache:
+            return None
+
+        entry = self.cache[key]
+
+        # Check TTL
+        if time.time() - entry['timestamp'] &gt; self.ttl:
+            del self.cache[key]
+            return None
+
+        entry['hits'] += 1
+        return entry['response']
+
+    def set(self, query: str, response: str) -&gt; None:
+        &quot;&quot;&quot;Cache a response.&quot;&quot;&quot;
+        # Evict oldest entries if cache is full
+        if len(self.cache) &gt;= self.max_size:
+            oldest_key = min(self.cache.keys(), 
+                           key=lambda k: self.cache[k]['timestamp'])
+            del self.cache[oldest_key]
+
+        key = self._generate_key(query)
+        self.cache[key] = {
+            'response': response,
+            'timestamp': time.time(),
+            'hits': 0
+        }
+
+    def stats(self) -&gt; Dict[str, Any]:
+        &quot;&quot;&quot;Get cache statistics.&quot;&quot;&quot;
+        total_hits = sum(entry['hits'] for entry in self.cache.values())
+
+        return {
+            'size': len(self.cache),
+            'max_size': self.max_size,
+            'total_hits': total_hits,
+            'hit_rate': total_hits / max(1, len(self.cache)),
+            'ttl': self.ttl
+        }
+
+# Example usage
+cache = LocalResponseCache()
+
+# Simulate caching
+test_queries = [
+    &quot;What is Python?&quot;,
+    &quot;Hello&quot;,
+    &quot;Basic for loop example&quot;
+]
+
+for query in test_queries:
+    # Check cache first
+    cached_response = cache.get(query)
+
+    if cached_response:
+        print(f&quot;💾 Cache hit for: {query[:30]}...&quot;)
+    else:
+        print(f&quot;🔍 Cache miss for: {query[:30]}...&quot;)
+        # Simulate response generation
+        response = f&quot;Generated response for: {query}&quot;
+        cache.set(query, response)
+
+print(f&quot;\n📊 Cache stats: {cache.stats()}&quot;)
+</code></pre>
+<h2 id="troubleshooting-local-agent-issues">Troubleshooting Local Agent Issues</h2>
+<h3 id="common-problems">🐛 Common Problems</h3>
+<h4 id="issue-1-model-loading-failures">Issue 1: Model Loading Failures</h4>
+<p><strong>Symptoms:</strong>
+- Container crashes during startup
+- "Model not found" errors
+- Memory allocation errors</p>
+<p><strong>Diagnosis:</strong></p>
+<pre><code class="language-bash"># Check model download status
+docker compose logs devduck-agent | grep -i &quot;model&quot;
+
+# Check disk space
+docker compose exec devduck-agent df -h /app/models
+
+# Check memory usage during startup
+docker stats devduck-agent
+</code></pre>
+<p><strong>Solutions:</strong></p>
+<pre><code class="language-bash"># Use smaller model
+export LOCAL_MODEL_NAME=microsoft/DialoGPT-small
+
+# Increase memory limit
+# Edit compose.yml:
+# deploy:
+#   resources:
+#     limits:
+#       memory: 8G
+
+# Pre-download model
+docker compose exec devduck-agent python -c &quot;from transformers import AutoTokenizer, AutoModelForCausalLM; AutoTokenizer.from_pretrained('microsoft/DialoGPT-small'); AutoModelForCausalLM.from_pretrained('microsoft/DialoGPT-small')&quot;
+</code></pre>
+<h4 id="issue-2-slow-response-times">Issue 2: Slow Response Times</h4>
+<p><strong>Diagnosis:</strong></p>
+<pre><code class="language-bash"># Profile response times
+curl -w &quot;@curl-format.txt&quot; -s -o /dev/null -X POST \
+  -H &quot;Content-Type: application/json&quot; \
+  -d '{&quot;message&quot;:&quot;Hello&quot;,&quot;conversation_id&quot;:&quot;test&quot;}' \
+  http://localhost:8000/chat
+
+# Create curl-format.txt
+cat &gt; curl-format.txt &lt;&lt; 'EOF'
+time_namelookup:  %{time_namelookup}s
+time_connect:     %{time_connect}s
+time_appconnect:  %{time_appconnect}s
+time_pretransfer: %{time_pretransfer}s
+time_redirect:    %{time_redirect}s
+time_starttransfer: %{time_starttransfer}s
+time_total:       %{time_total}s
+EOF
+</code></pre>
+<p><strong>Solutions:</strong>
+- Switch to smaller, faster model
+- Implement response caching
+- Optimize container resources
+- Use GPU acceleration if available</p>
+<h2 id="next-steps">Next Steps</h2>
+<p>Excellent progress! You've mastered:</p>
+<ul>
+<li>✅ Local Agent capabilities and limitations</li>
+<li>✅ Model management and optimization</li>
+<li>✅ Performance monitoring and tuning</li>
+<li>✅ Caching strategies for improved response times</li>
+<li>✅ Troubleshooting common issues</li>
+</ul>
+<p>In the next section, you'll explore the Cerebras Agent and learn how to leverage cloud-based AI for complex analysis and advanced reasoning tasks.</p>
+<p>Ready to dive into cloud AI capabilities? Let's explore Cerebras! 🧠🚀</p>
+<hr />
+<p>!!! success "Local Agent Mastery"
+    You now understand how to optimize and utilize the Local Agent for fast, efficient processing. The combination of local and cloud agents gives you the best of both worlds - speed and sophistication!</p>
+
+
+
+
+
+
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Docker
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../../..", "features": [], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      
+    
+  </body>
+</html>

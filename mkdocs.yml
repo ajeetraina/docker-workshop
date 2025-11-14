@@ -58,6 +58,12 @@ nav:
     - Overview: lab6/overview.md
     - Getting Started: lab6/getting-started.md
     - Projects:
+      - DevDuck: 
+        - Overview: lab6/projects/devduck/overview.md
+        - Prerequisite: lab6/projects/devduck/prereq.md
+        - Getting Started: lab6/projects/devduck/getting-started.md
+        - Local Agent Interaction: lab6/projects/devduck/local-agents.md
+        - Cerebras Interaction: lab6/projects/devduck/cerebras-interaction.md  
       - Agentic Product Catalog: lab6/projects/agentic-catalog.md
       - Hackathon Recommender: lab6/projects/hackathon-recommender.md
       - A2A Multi-Agent Fact Checker: lab6/projects/a2a-multi-agent-fact-checker.md
