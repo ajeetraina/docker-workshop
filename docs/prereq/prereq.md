@@ -49,6 +49,8 @@ Ensure that you have sufficient space to download these models on your Macbook.
 
 ```
 docker model pull ai/llama3.2:1B-Q8_0
+docker model pull hf.co/menlo/jan-nano-gguf:q4_k_m
+docker model pull hf.co/menlo/lucy-gguf:q8_0
 ```
 
 ### 8. Download the following images from the Docker Hub (For Docker AI workshop)
