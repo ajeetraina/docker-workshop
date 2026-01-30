@@ -33,8 +33,11 @@ nav:
       - Secure: product-catalog/secure.md
   - Docker and AI:
     - cagent:
-      - overview: lab8/overview.md
-      - getting-started: lab8/getting-started.md
+      - Overview: lab10/overview.md
+      - Getting-started: lab10/getting-started.md
+      - Projects:
+        - cagent with Docker Model Runner: lab10/projects/dmr.md
+        - cagent with RAG: lab10/projects/rag.md
     - Docker Model Runner:
       - Overview: lab4/overview.md
       - Getting Started: lab4/getting-started.md
