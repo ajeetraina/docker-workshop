@@ -9,6 +9,8 @@
 
 ```
 brew install go-task/tap/go-task
+brew upgrade go-task/tap/go-task
+brew install cagent
 ```
 
 ### Using Git
