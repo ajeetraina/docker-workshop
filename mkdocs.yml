@@ -1,8 +1,7 @@
 # Project information
-site_name: Docker workshop 
-site_url: 
+site_name: Docker workshop
+site_url: https://dockerworkshop.vercel.app
 site_author: Ajeet Singh Raina
-
 
 # Repository
 repo_name: docker-workshop
@@ -10,67 +9,79 @@ repo_url: https://github.com/ajeetraina/docker-workshop
 edit_uri: edit/master/docs
 
 # Copyright
-copyright: 'Copyright &copy; 2025 Docker'
+copyright: 'Copyright © 2026 Docker'
 
 # Settings
 docs_dir: 'docs'
 site_dir: 'site'
 
-
 # Navigation
 nav:
   - Getting Started: index.md
   - Prerequisites: prereq/prereq.md
-  - Inner-Loop Development workflow:
+  - Docker 101:
+    - Inner-Loop Development workflow:
       - Inner Vs Outer Loop Development workflow: lab1/overview.md
       - What is a container: lab1/what-is-a-container.md
       - Running Postgres Containers: lab1/postgres.md
-
-
-  - Product catalog - A Sample Demo App:
-       - Overview: product-catalog/overview.md
-       - Tech stack: product-catalog/tech-stack.md
-       - Develop: product-catalog/develop.md
-       - Test: product-catalog/test.md
-       - Build: product-catalog/build.md
-       - Secure: product-catalog/secure.md
-  - Docker Model Runner:
-    - Overview: lab4/overview.md
-    - Getting Started: lab4/getting-started.md
-    - Projects:
-      - Product Catalog Chatbot: lab4/projects/catalog-chatbot.md
-      - GenAI Chatbot: lab4/projects/genai-chatbot.md
-
-  - MCP Catalog and Toolkit:
-    - Overview: lab5/overview.md
-    - Getting Started: lab5/getting-started.md
-    - Projects:
-      - Visual Chatbot:
-        - Getting Started: lab5/projects/visual-chatbot/visual-chatbot.md
-        - Running your First MCP Server: lab5/projects/visual-chatbot/mcp.md
-      - GitHub MCP Server and Claude Desktop: lab5/projects/GitHub-Claude.md
-      - Docker MCP Server and Gordon: lab5/projects/Docker-CLI-With-Gordon.md
-      - Docker MCP Server and VS Code: lab5/projects/Docker-CLI-With-VSCode.md
-      - GitHub MCP Server and Gordon: lab5/projects/GitHub-MCP-Gordon.md
-      - Kubernetes MCP Server and Claude: lab5/projects/Kubernetes-MCP.md
-      - Slack MCP Server and Claude: lab5/projects/Slack-MCP-With-Claude.md
-  - Agentic Compose:
-    - Overview: lab6/overview.md
-    - Getting Started: lab6/getting-started.md
-    - Projects:
-      - DevDuck: 
-        - Overview: lab6/projects/devduck/overview.md
-        - Prerequisite: lab6/projects/devduck/prereq.md
-        - Getting Started: lab6/projects/devduck/getting-started.md
-        - Local Agent Interaction: lab6/projects/devduck/local-agent.md
-        - Cerebras Interaction: lab6/projects/devduck/cerebras-interaction.md  
-      - Agentic Product Catalog: lab6/projects/agentic-catalog.md
-      - Hackathon Recommender: lab6/projects/hackathon-recommender.md
-      - A2A Multi-Agent Fact Checker: lab6/projects/a2a-multi-agent-fact-checker.md
+    - Product catalog - A Sample Demo App:
+      - Overview: product-catalog/overview.md
+      - Tech stack: product-catalog/tech-stack.md
+      - Develop: product-catalog/develop.md
+      - Test: product-catalog/test.md
+      - Build: product-catalog/build.md
+      - Secure: product-catalog/secure.md
+  - Docker and AI:
+    - cagent:
+      - overview: lab8/overview.md
+      - getting-started: lab8/getting-started.md
+    - Docker Model Runner:
+      - Overview: lab4/overview.md
+      - Getting Started: lab4/getting-started.md
+      - Projects:
+        - Product Catalog Chatbot: lab4/projects/catalog-chatbot.md
+        - GenAI Chatbot: lab4/projects/genai-chatbot.md
+    - MCP Catalog and Toolkit:
+      - Overview: lab5/overview.md
+      - Getting Started: lab5/getting-started.md
+      - Projects:
+        - Visual Chatbot:
+          - Getting Started: lab5/projects/visual-chatbot/visual-chatbot.md
+          - Running your First MCP Server: lab5/projects/visual-chatbot/mcp.md
+          - GitHub MCP Server and Claude Desktop: lab5/projects/GitHub-Claude.md
+          - Docker MCP Server and Gordon: lab5/projects/Docker-CLI-With-Gordon.md
+          - Docker MCP Server and VS Code: lab5/projects/Docker-CLI-With-VSCode.md
+          - GitHub MCP Server and Gordon: lab5/projects/GitHub-MCP-Gordon.md
+          - Kubernetes MCP Server and Claude: lab5/projects/Kubernetes-MCP.md
+          - Slack MCP Server and Claude: lab5/projects/Slack-MCP-With-Claude.md
+    - Agentic Compose:
+      - Overview: lab6/overview.md
+      - Getting Started: lab6/getting-started.md
+      - Projects:
+        - DevDuck:
+          - Overview: lab6/projects/devduck/overview.md
+          - Prerequisite: lab6/projects/devduck/prereq.md
+          - Getting Started: lab6/projects/devduck/getting-started.md
+          - Local Agent Interaction: lab6/projects/devduck/local-agent.md
+          - Cerebras Interaction: lab6/projects/devduck/cerebras-interaction.md
+        - Agentic Product Catalog: lab6/projects/agentic-catalog.md
+        - Hackathon Recommender: lab6/projects/hackathon-recommender.md
+        - A2A Multi-Agent Fact Checker: lab6/projects/a2a-multi-agent-fact-checker.md
+    - Docker Sandboxes:
+      - Overview: lab8/overview.md
+      - Getting Started: lab8/getting-started.md
+      - Projects:
+        - Playwrite Browser Testing: lab8/projects/playwright-browser-testing.md
+  - Docker and Security:
+    - Docker Hardened Images:
+      - Overview: lab9/dhi/overview.md
+      - Getting Started: lab9/dhi/getting-started.md
+    - Docker Scout:
+      - Overview: lab9/scout/overview.md
+      - Getting Started: lab9/scout/getting-started.md
   - Docker Offload:
     - Overview: lab7/overview.md
     - Getting Started: lab7/getting-started.md
-
 
 theme:
   name: material
@@ -87,4 +98,3 @@ theme:
 extra_css:
   - css/styles.css
   - css/dark-mode.css
-
