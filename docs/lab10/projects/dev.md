@@ -17,6 +17,7 @@ agents:
       - type: think
       - type: todo
       - type: memory
+        path: dev_memory.db
 
   designer:
     model: model
@@ -25,6 +26,7 @@ agents:
       - type: filesystem
       - type: think
       - type: memory
+        path: dev_memory.db
 
   awesome_engineer:
     model: model
@@ -34,6 +36,7 @@ agents:
       - type: shell
       - type: think
       - type: memory
+        path: dev_memory.db
 
 models:
   model:
