@@ -16,6 +16,7 @@ agents:
       - type: filesystem
       - type: think
       - type: memory
+        path: docker_memory.db
 
   containerize:
     model: openai/gpt-4o
@@ -26,6 +27,8 @@ agents:
     toolsets:
       - type: filesystem
       - type: think
+      - type: memory
+        path: docker_memory.db
 
   optimize_dockerfile:
     model: openai/gpt-4o
@@ -36,6 +39,8 @@ agents:
     toolsets:
       - type: filesystem
       - type: think
+      - type: memory
+        path: docker_memory.db
 
   pirate:
     model: openai/gpt-4o
@@ -148,4 +153,5 @@ Now even if yer container walks the plank, yer data be safe on shore! Savvy? üè
 - Complex agent teams can combine serious specialists with personality agents
 - Each sub-agent has focused expertise and instructions
 - The root agent intelligently routes based on query context
+- The `memory` toolset requires a `path` parameter for the SQLite database
 - This pattern creates engaging, capable AI assistants
