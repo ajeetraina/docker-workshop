@@ -41,11 +41,15 @@
          <lastmod>2026-01-30</lastmod>
     </url>
     <url>
-         <loc>https://dockerworkshop.vercel.app/lab10/projects/dmr/</loc>
+         <loc>https://dockerworkshop.vercel.app/lab10/integration/dmr/</loc>
          <lastmod>2026-01-30</lastmod>
     </url>
     <url>
-         <loc>https://dockerworkshop.vercel.app/lab10/projects/rag/</loc>
+         <loc>https://dockerworkshop.vercel.app/lab10/integration/rag/</loc>
+         <lastmod>2026-01-30</lastmod>
+    </url>
+    <url>
+         <loc>https://dockerworkshop.vercel.app/lab10/projects/alloy/</loc>
          <lastmod>2026-01-30</lastmod>
     </url>
     <url>

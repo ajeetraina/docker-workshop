@@ -35,9 +35,12 @@ nav:
     - cagent:
       - Overview: lab10/overview.md
       - Getting-started: lab10/getting-started.md
+      - Integration:
+        - cagent with Docker Model Runner: lab10/integration/dmr.md
+        - cagent with RAG: lab10/integration/rag.md
       - Projects:
-        - cagent with Docker Model Runner: lab10/projects/dmr.md
-        - cagent with RAG: lab10/projects/rag.md
+        - A Simple Pirate Agent: lab10/projects/pirate.md
+        - Learning Agent with Alloy Models: lab10/projects/alloy.md
     - Docker Model Runner:
       - Overview: lab4/overview.md
       - Getting Started: lab4/getting-started.md
