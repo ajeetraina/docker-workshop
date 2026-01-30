@@ -44,6 +44,7 @@ nav:
         - Developer Agent with Tools: lab10/projects/dev.md
         - Financial Analysis Team: lab10/projects/financial.md
         - Docker Expert Team: lab10/projects/docker.md
+      - How It Works: lab10/projects/how-it-works.md
     - Docker Model Runner:
       - Overview: lab4/overview.md
       - Getting Started: lab4/getting-started.md
@@ -81,13 +82,6 @@ nav:
       - Getting Started: lab8/getting-started.md
       - Projects:
         - Playwrite Browser Testing: lab8/projects/playwright-browser-testing.md
-  - Docker and Security:
-    - Docker Hardened Images:
-      - Overview: lab9/dhi/overview.md
-      - Getting Started: lab9/dhi/getting-started.md
-    - Docker Scout:
-      - Overview: lab9/scout/overview.md
-      - Getting Started: lab9/scout/getting-started.md
   - Docker Offload:
     - Overview: lab7/overview.md
     - Getting Started: lab7/getting-started.md
