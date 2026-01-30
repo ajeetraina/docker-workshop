@@ -35,16 +35,15 @@ nav:
     - cagent:
       - Overview: lab10/overview.md
       - Getting-started: lab10/getting-started.md
+      - Integration:
+        - cagent with Docker Model Runner: lab10/integration/dmr.md
+        - cagent with RAG: lab10/integration/rag.md
       - Projects:
-        - cagent with Docker Model Runner: lab10/projects/dmr.md
-        - cagent with RAG: lab10/projects/rag.md
-        - Pirate Agent: lab10/projects/pirate-agent.md
-        - Alloy Models: lab10/projects/alloy-models.md
-        - Developer Tools: lab10/projects/developer-tools.md
-        - Complete Development Team: lab10/projects/dev-team.md
-        - Financial Analysis Team: lab10/projects/financial-team.md
-        - Docker Expert Team: lab10/projects/docker-expert.md
-      - How It Works: lab10/projects/how-it-works.md
+        - A Simple Pirate Agent: lab10/projects/pirate.md
+        - Learning Agent with Alloy Models: lab10/projects/alloy.md
+        - Developer Agent with Tools: lab10/projects/dev.md
+        - Financial Analysis Team: lab10/projects/financial.md
+        - Docker Expert Team: lab10/projects/docker.md
     - Docker Model Runner:
       - Overview: lab4/overview.md
       - Getting Started: lab4/getting-started.md
