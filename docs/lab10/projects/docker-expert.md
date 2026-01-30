@@ -15,7 +15,6 @@ agents:
     toolsets:
       - type: filesystem
       - type: think
-      - type: memory
 
   containerize:
     model: openai/gpt-4o
