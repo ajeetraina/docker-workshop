@@ -41,6 +41,9 @@ nav:
       - Projects:
         - A Simple Pirate Agent: lab10/projects/pirate.md
         - Learning Agent with Alloy Models: lab10/projects/alloy.md
+        - Developer Agent with Tools: lab10/projects/dev.md
+        - Financial Analysis Team: lab10/projects/financial.md
+        - Docker Expert Team: lab10/projects/docker.md
     - Docker Model Runner:
       - Overview: lab4/overview.md
       - Getting Started: lab4/getting-started.md

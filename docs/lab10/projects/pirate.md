@@ -1,4 +1,4 @@
-# Demo 1: Simple Pirate Agent
+# A Simple Pirate Agent
 
 The simplest possible agent configuration - an agent that responds in pirate speak.
 

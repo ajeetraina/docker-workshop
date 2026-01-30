@@ -13,10 +13,10 @@
         <link rel="canonical" href="https://dockerworkshop.vercel.app/lab10/projects/alloy/">
       
       
-        <link rel="prev" href="../../integration/rag/">
+        <link rel="prev" href="../pirate/">
       
       
-        <link rel="next" href="../../../lab4/overview/">
+        <link rel="next" href="../dev/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -76,6 +76,11 @@
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
+      
+        
+        <a href="#a-learning-agent-with-alloy-models" class="md-skip">
+          Skip to content
+        </a>
       
     </div>
     <div data-md-component="announce">
@@ -819,7 +824,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../pirate.md" class="md-nav__link">
+      <a href="../pirate/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -846,6 +851,19 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Learning Agent with Alloy Models
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -857,6 +875,142 @@
 
       </a>
       
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the Agent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-alloy-models-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Alloy Models Work
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../dev/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Developer Agent with Tools
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../financial/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Financial Analysis Team
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Docker Expert Team
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -2195,6 +2349,70 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      Prerequisites
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running the Agent
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#how-alloy-models-work" class="md-nav__link">
+    <span class="md-ellipsis">
+      How Alloy Models Work
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#use-cases" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Cases
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -2212,9 +2430,55 @@
   
 
 
-  <h1>Learning Agent with Alloy Models</h1>
+<h1 id="a-learning-agent-with-alloy-models">A Learning Agent with Alloy Models</h1>
+<p>This demo showcases cagent's "alloy models" feature - the ability to use multiple AI models within a single agent.</p>
+<h2 id="configuration">Configuration</h2>
+<p>Create a file named <code>alloy.yaml</code>:</p>
+<pre><code class="language-yaml">agents:
+  root:
+    model: claude,gpt-4o  # Multiple models!
+    description: An agent that helps you learn new things
+    instruction: |
+      You are an expert learning companion.
+      Help users learn effectively and enjoyably.
 
-
+models:
+  claude:
+    provider: anthropic
+    model: claude-3-5-sonnet-latest
+  gpt-4o:
+    provider: openai 
+    model: gpt-4o
+</code></pre>
+<h2 id="prerequisites">Prerequisites</h2>
+<p>Set up API keys for both providers:</p>
+<pre><code class="language-bash">export OPENAI_API_KEY=your_openai_key
+export ANTHROPIC_API_KEY=your_anthropic_key
+</code></pre>
+<h2 id="running-the-agent">Running the Agent</h2>
+<pre><code class="language-bash">./bin/cagent run alloy.yaml
+</code></pre>
+<h2 id="how-alloy-models-work">How Alloy Models Work</h2>
+<p>When you specify multiple models separated by commas (<code>model: claude,gpt-4o</code>), cagent:</p>
+<ol>
+<li>Routes requests intelligently between models</li>
+<li>Can switch between Claude and GPT-4 automatically for best responses</li>
+<li>Leverages each model's strengths for different types of queries</li>
+</ol>
+<h2 id="use-cases">Use Cases</h2>
+<ul>
+<li><strong>Learning applications</strong>: Get explanations from different perspectives</li>
+<li><strong>Research tasks</strong>: Cross-validate information across models</li>
+<li><strong>Creative work</strong>: Combine different AI "voices" and styles</li>
+<li><strong>Reliability</strong>: Fallback to another model if one is unavailable</li>
+</ul>
+<h2 id="key-takeaways">Key Takeaways</h2>
+<ul>
+<li>Alloy models let you combine multiple AI providers in one agent</li>
+<li>Define models separately in the <code>models</code> section</li>
+<li>Reference them by name in the agent's <code>model</code> field</li>
+<li>Great for applications requiring diverse AI capabilities</li>
+</ul>
 
 
 
