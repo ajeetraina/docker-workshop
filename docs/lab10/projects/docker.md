@@ -16,6 +16,7 @@ agents:
       - type: filesystem
       - type: think
       - type: memory
+        path: docker_memory.db
 
   containerize:
     model: openai/gpt-4o
@@ -26,6 +27,8 @@ agents:
     toolsets:
       - type: filesystem
       - type: think
+      - type: memory
+        path: docker_memory.db
 
   optimize_dockerfile:
     model: openai/gpt-4o
@@ -36,6 +39,8 @@ agents:
     toolsets:
       - type: filesystem
       - type: think
+      - type: memory
+        path: docker_memory.db
 
   pirate:
     model: openai/gpt-4o
