@@ -2257,22 +2257,24 @@
 
 
 <h2 id="what-is-cagent">What is cagent?</h2>
-<p>Docker cagent is an open-source, multi-agent runtime designed to simplify the development and deployment of autonomous AI systems. Unlike traditional chatbots, this tool allows developers to orchestrate specialized teams of agents that can plan, reason, and execute complex tasks through a declarative YAML configuration. </p>
+<p><a href="https://github.com/docker/cagent">Docker cagent</a> is an open-source, multi-agent runtime designed to simplify the development and deployment of autonomous AI systems. Unlike traditional chatbots, this tool allows developers to orchestrate specialized teams of agents that can plan, reason, and execute complex tasks through a declarative YAML configuration. </p>
 <h2 id="what-problem-it-solves">What problem it solves?</h2>
 <p>AI agents today work alone. They can't collaborate or specialize. This creates several challenges:</p>
 <ul>
-<li>Single Point of Failure: One agent handles everything. No specialization means lower quality results.</li>
-<li>No Task Delegation: Complex projects need different expertise. Current agents can't hand off work to specialists.</li>
-<li>Tool Access Chaos: Each agent manages its own tools separately. No unified tool ecosystem across agents.</li>
-<li>Configuration Complexity: Setting up multiple AI systems requires separate configurations. Each client needs different setup.</li>
-<li>Security Gaps: Running AI tools with full system access. No container isolation or proper secret management.</li>
-<li>Scaling Problems: Can't distribute workload across multiple specialized agents. Everything bottlenecks through one system.</li>
+<li><strong>Single Point of Failure</strong>: One agent handles everything. No specialization means lower quality results.</li>
+<li><strong>No Task Delegation</strong>: Complex projects need different expertise. Current agents can't hand off work to specialists.</li>
+<li><strong>Tool Access Chaos</strong>: Each agent manages its own tools separately. No unified tool ecosystem across agents.</li>
+<li><strong>Configuration Complexity</strong>: Setting up multiple AI systems requires separate configurations. Each client needs different setup.</li>
+<li><strong>Security Gaps</strong>: Running AI tools with full system access. No container isolation or proper secret management.</li>
+<li><strong>Scaling Problems</strong>: Can't distribute workload across multiple specialized agents. Everything bottlenecks through one system.</li>
 </ul>
 <h2 id="the-solution">The Solution</h2>
-<p>Docker introduces cagent - a multi-agent orchestration platform that solves these problems through:
-- Hierarchical Agent Teams: Root agents coordinate with specialized sub-agents. Each agent has specific expertise and tools.
-- Unified Tool Ecosystem: All agents share the same secure tool infrastructure. Built-in tools plus MCP server integration.
-- Enterprise Security: Container isolation for tool execution. Proper secret management and multi-tenant support.</p>
+<p>Docker introduces cagent - a multi-agent orchestration platform that solves these problems through:</p>
+<ul>
+<li><strong>Hierarchical Agent Teams</strong>: Root agents coordinate with specialized sub-agents. Each agent has specific expertise and tools.</li>
+<li><strong>Unified Tool Ecosystem</strong>: All agents share the same secure tool infrastructure. Built-in tools plus MCP server integration.</li>
+<li><strong>Enterprise Security</strong>: Container isolation for tool execution. Proper secret management and multi-tenant support.</li>
+</ul>
 <p>cagent enables you to create intelligent agent teams where each agent has specialized knowledge, tools, and capabilities. Think of it as building a virtual team of AI experts that collaborate to solve complex problems.</p>
 <p>Built in Go by Docker, cagent brings enterprise-grade security and scalability to multi-agent AI systems.</p>
 <h2 id="key-features">Key Features</h2>
