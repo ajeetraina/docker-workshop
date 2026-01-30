@@ -38,6 +38,13 @@ nav:
       - Projects:
         - cagent with Docker Model Runner: lab10/projects/dmr.md
         - cagent with RAG: lab10/projects/rag.md
+        - Pirate Agent: lab10/projects/pirate-agent.md
+        - Alloy Models: lab10/projects/alloy-models.md
+        - Developer Tools: lab10/projects/developer-tools.md
+        - Complete Development Team: lab10/projects/dev-team.md
+        - Financial Analysis Team: lab10/projects/financial-team.md
+        - Docker Expert Team: lab10/projects/docker-expert.md
+      - How It Works: lab10/projects/how-it-works.md
     - Docker Model Runner:
       - Overview: lab4/overview.md
       - Getting Started: lab4/getting-started.md
