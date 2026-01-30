@@ -61,17 +61,6 @@ $ cagent run my-first-agent.yaml
 
 ```
 
-### Result:
-
-```
-For any feedback, please visit: https://docker.qualtrics.com/jfe/form/SV_cNsCIg92nQemlfw
-
-
-Welcome to cagent! (Ctrl+C to exit)
-
-```
-
-
 ### Prompt 1: 
 
 ```
