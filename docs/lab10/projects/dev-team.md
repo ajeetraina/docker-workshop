@@ -17,6 +17,7 @@ agents:
       - type: think
       - type: todo
       - type: memory
+        path: dev_memory.db
 
   designer:
     model: model
@@ -25,6 +26,7 @@ agents:
       - type: filesystem
       - type: think
       - type: memory
+        path: dev_memory.db
 
   awesome_engineer:
     model: model
@@ -34,6 +36,7 @@ agents:
       - type: shell
       - type: think
       - type: memory
+        path: dev_memory.db
 
 models:
   model:
@@ -105,4 +108,5 @@ Done! Created LoginPage.jsx with Tailwind CSS styling.
 - `sub_agents` defines which agents the root can delegate to
 - Each agent has specialized tools for their role
 - The root agent coordinates and routes tasks intelligently
+- The `memory` toolset requires a `path` parameter pointing to a SQLite database file
 - This pattern scales to complex, real-world development workflows
