@@ -17,11 +17,9 @@ AI agents today work alone. They can't collaborate or specialize. This creates s
 ## The Solution
 
 Docker introduces cagent - a multi-agent orchestration platform that solves these problems through:
-Hierarchical Agent Teams: Root agents coordinate with specialized sub-agents. Each agent has specific expertise and tools.
-Unified Tool Ecosystem: All agents share the same secure tool infrastructure. Built-in tools plus MCP server integration.
-Enterprise Security: Container isolation for tool execution. Proper secret management and multi-tenant support.
-
-## Introducing cagent
+- Hierarchical Agent Teams: Root agents coordinate with specialized sub-agents. Each agent has specific expertise and tools.
+- Unified Tool Ecosystem: All agents share the same secure tool infrastructure. Built-in tools plus MCP server integration.
+- Enterprise Security: Container isolation for tool execution. Proper secret management and multi-tenant support.
 
 cagent enables you to create intelligent agent teams where each agent has specialized knowledge, tools, and capabilities. Think of it as building a virtual team of AI experts that collaborate to solve complex problems.
 
@@ -35,8 +33,7 @@ Built in Go by Docker, cagent brings enterprise-grade security and scalability t
 - Flexible Interfaces: CLI, Web UI, TUI, and MCP Server modes. Same agent configs work across all interfaces.
 - YAML Configuration: Simple, declarative setup for agents, models, and tools. Version control friendly configurations.
 - Docker Integration: Push and pull agent configs like container images. Share agents through Docker Hub.
-
-Built-in Security: Container isolation, secret management, and multi-tenant support. Production-ready from day one.
+- Built-in Security: Container isolation, secret management, and multi-tenant support. Production-ready from day one.
 
 # Who's This For
 
