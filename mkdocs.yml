@@ -35,6 +35,10 @@ nav:
     - cagent:
       - Overview: lab10/overview.md
       - Getting-started: lab10/getting-started.md
+      - Tools:
+        - memory: lab10/tools/memory.md
+        - think: lab10/tools/think.md
+        - todo: lab10/tools/todo.md
       - Integration:
         - cagent with Docker Model Runner: lab10/integration/dmr.md
         - cagent with RAG: lab10/integration/rag.md
