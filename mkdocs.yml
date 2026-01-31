@@ -39,15 +39,24 @@ nav:
         - memory: lab10/tools/memory.md
         - think: lab10/tools/think.md
         - todo: lab10/tools/todo.md
+        - shell: lab10/tools/shell.md
+        - filesystem: lab10/tools/filesystem.md
+        - environment: lab10/tools/environment.md
       - Integration:
+        - cagent with Model Context Protocol: lab10/integration/mcp.md
         - cagent with Docker Model Runner: lab10/integration/dmr.md
         - cagent with RAG: lab10/integration/rag.md
       - Projects:
-        - A Simple Pirate Agent: lab10/projects/pirate.md
-        - Learning Agent with Alloy Models: lab10/projects/alloy.md
-        - Developer Agent with Tools: lab10/projects/dev.md
-        - Financial Analysis Team: lab10/projects/financial.md
-        - Docker Expert Team: lab10/projects/docker-expert.md
+        - Single Agent Systems:
+           - A Simple Pirate Agent: lab10/projects/pirate.md
+        - Multi-agent Systems:
+           - Learning Agent with Alloy Models: lab10/projects/alloy.md
+           - Developer Agent with Tools: lab10/projects/dev.md
+           - Financial Analysis Team: lab10/projects/financial.md
+           - Docker Expert Team: lab10/projects/docker-expert.md
+           - Bug Investigator: 
+             - Overview: lab10/projects/bug-investigator/bug-investigator.md
+      - Sharing Agents: lab10/sharing.md
     - Docker Model Runner:
       - Overview: lab4/overview.md
       - Getting Started: lab4/getting-started.md
