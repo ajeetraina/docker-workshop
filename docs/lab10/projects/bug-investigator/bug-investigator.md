@@ -47,37 +47,28 @@ A production-ready multi-agent system built with Docker cagent that helps develo
 
 ### Step 1: Clone and Run Locally
 
-```bash
-# Clone the labspace
-git clone https://github.com/ajeetraina/docker-workshop
-cd docker-workshop/docs/lab10/projects/bug-investigator/
+# Clone the repo
+
+```
+git clone https://github.com/ajeetraina/bug-investigator
+cd bug-investigator/
+```
 
 # Set your API key
+
+```
 export ANTHROPIC_API_KEY=your_key_here
 # OR
 export OPENAI_API_KEY=your_key_here
-
-# Run the agent
-cagent run ./cagent.yaml
 ```
 
-### Step 2: Try It Out
-
-Paste an error and watch the agents collaborate:
+# Run the agent (if using OpenAI)
 
 ```
-You: I'm getting this error in my Python code:
+cagent run ./cagent-openai.yaml "Read app.py and find all bugs"
 
-TypeError: 'NoneType' object is not subscriptable
-  File "app.py", line 42, in process_data
-    result = data['items'][0]['name']
-
-Here's my code:
-def process_data(response):
-    data = response.json()
-    result = data['items'][0]['name']
-    return result
 ```
+
 
 ## 📦 Deploy to Production
 

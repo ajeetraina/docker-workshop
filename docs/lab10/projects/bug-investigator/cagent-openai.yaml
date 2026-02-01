@@ -2,28 +2,19 @@
 version: "2"
 
 # =============================================================================
-# Bug Investigator Multi-Agent System
+# Bug Investigator Multi-Agent System (OpenAI Version)
 # =============================================================================
-# A production-ready agent team that helps developers debug and fix issues.
-# 
-# Workflow:
-#   1. Developer pastes error/stack trace
-#   2. Investigator analyzes and identifies root cause
-#   3. Researcher finds relevant docs/solutions online
-#   4. Fixer implements the solution
-#   5. Tester validates the fix
+# Uses OpenAI models only - requires OPENAI_API_KEY
 #
 # Usage:
+#   export OPENAI_API_KEY=your_key_here
 #   cagent run ./cagent.yaml
-#
-# Deploy to production:
-#   cagent push ./cagent.yaml docker.io/YOUR_USERNAME/bug-investigator:latest
 # =============================================================================
 
 models:
-  claude-sonnet:
-    provider: anthropic
-    model: claude-sonnet-4-0
+  gpt4o:
+    provider: openai
+    model: gpt-4o
     max_tokens: 8192
     
   gpt-mini:
@@ -36,7 +27,7 @@ agents:
   # ROOT AGENT: Bug Investigator (Coordinator)
   # ---------------------------------------------------------------------------
   root:
-    model: claude-sonnet
+    model: gpt4o
     description: Senior debugging expert that coordinates bug investigation and fixes
     instruction: |
       You are a senior software engineer and debugging expert. Your role is to help 
@@ -110,11 +101,6 @@ agents:
          - Highlight the most promising solutions
          - Flag any conflicting information
 
-      ## Search Strategy
-      - Start with official documentation
-      - Include version numbers in searches
-      - Look for recent solutions (bugs get fixed, APIs change)
-
     toolsets:
       - type: mcp
         ref: docker:duckduckgo
@@ -124,7 +110,7 @@ agents:
   # FIXER AGENT: Implements bug fixes
   # ---------------------------------------------------------------------------
   fixer:
-    model: claude-sonnet
+    model: gpt4o
     description: Code fix specialist that implements solutions
     instruction: |
       You are a code fix specialist. Your job is to implement clean, working solutions.
@@ -153,12 +139,6 @@ agents:
          - Note any dependencies that need updating
          - Suggest related fixes if you spot them
 
-      ## Code Quality Standards
-      - Add error handling where appropriate
-      - Include helpful comments for complex logic
-      - Follow language-specific best practices
-      - Keep fixes focused and minimal
-
     toolsets:
       - type: filesystem
       - type: think
@@ -186,21 +166,10 @@ agents:
          - Integration tests if relevant
          - Regression tests to prevent recurrence
 
-      3. **Validate Logic**:
-         - Walk through the fix step by step
-         - Verify the logic is sound
-         - Check boundary conditions
-
-      4. **Provide Test Code**:
+      3. **Provide Test Code**:
          - Write test cases in the appropriate framework
          - Include both positive and negative tests
          - Add comments explaining what each test verifies
-
-      ## Testing Best Practices
-      - Test the exact scenario that caused the bug
-      - Test boundary conditions
-      - Test with invalid/unexpected inputs
-      - Consider concurrency issues if relevant
 
     toolsets:
       - type: filesystem
