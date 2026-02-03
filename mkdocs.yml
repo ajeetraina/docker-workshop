@@ -56,6 +56,8 @@ nav:
            - Docker Expert Team: lab10/projects/docker-expert.md
            - Bug Investigator: 
              - Overview: lab10/projects/bug-investigator/bug-investigator.md
+           - Auto-Curator Agent:
+             - Overview: lab10/projects/auto-curator-agent/auto-curator-agent.md
       - Sharing Agents: lab10/sharing.md
     - Docker Model Runner:
       - Overview: lab4/overview.md
