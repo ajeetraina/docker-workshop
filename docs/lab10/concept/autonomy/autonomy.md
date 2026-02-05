@@ -1,6 +1,6 @@
 # Autonomy in cagent — The Agentic Loop
 
-The agent loops independently — deciding, acting, observing — up to N iterations with zero human intervention.
+The agent **loops independently** — deciding, acting, observing — up to N iterations with zero human intervention.
 
 ## Step 1: Create a directory structure and add buggy Python file
 
@@ -70,6 +70,14 @@ agents:
       - type: shell
 ```
 
+> Did you notice?
+> We've defined the built-in tools:
+>
+> - filesystem — to Read and Edit app.py
+> - shell — to run pytest -q
+
+> If you remove type: shell from the YAML, the agent might be able to read and edit files but won't run tests — it would be like a developer who can write code but has no terminal. 
+
 ## Step 4: Run cagent
 
 ```bash
@@ -110,6 +118,7 @@ With `cagent run`, the autonomy boundary is defined by:
 - **Ctrl+C** to manually stop
 
 No human told it what to do between steps — that's **autonomy** in action.
+
 
 ## Step 5: Quick test for cagent new with --max-iterations
 

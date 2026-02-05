@@ -3086,7 +3086,7 @@ agents:
 <pre><code class="language-bash">cagent run ./autonomy.yaml
 </code></pre>
 <p>Then type:</p>
-<pre><code>There's a bug in app.py. Find it and fix it. Run tests to confirm.
+<pre><code>Start
 </code></pre>
 <h2 id="what-you-should-see">What you should see</h2>
 <p>The agent will autonomously:</p>
@@ -3112,6 +3112,14 @@ Agent stops ✅
 <li><strong>Ctrl+C</strong> to manually stop</li>
 </ul>
 <p>No human told it what to do between steps — that's <strong>autonomy</strong> in action.</p>
+<blockquote>
+<p>The agent did use both:</p>
+<ul>
+<li>filesystem — to Read and Edit app.py</li>
+<li>shell — to run pytest -q</li>
+</ul>
+<p>If you removed type: shell from the YAML, the agent could read and edit files but couldn't run tests — it would be like a developer who can write code but has no terminal. That's actually another great perception demo: remove shell, and watch the agent struggle.</p>
+</blockquote>
 <h2 id="step-5-quick-test-for-cagent-new-with-max-iterations">Step 5: Quick test for cagent new with --max-iterations</h2>
 <pre><code class="language-bash"># This one lets you set the guardrail explicitly
 cagent new --model openai/gpt-5-mini --max-iterations 10
