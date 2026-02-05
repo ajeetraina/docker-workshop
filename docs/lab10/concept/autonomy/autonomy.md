@@ -79,7 +79,7 @@ cagent run ./autonomy.yaml
 Then type:
 
 ```
-There's a bug in app.py. Find it and fix it. Run tests to confirm.
+Start
 ```
 
 ## What you should see
