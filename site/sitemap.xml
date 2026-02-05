@@ -2,358 +2,362 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://dockerworkshop.vercel.app/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab1/best-practices/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab1/compose-watch/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab1/docker-init/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab1/docker-workflow/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab1/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab1/postgres/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab1/what-is-a-container/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/getting-started/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/sharing/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
+    </url>
+    <url>
+         <loc>https://dockerworkshop.vercel.app/lab10/concept/autonomy/autonomy/</loc>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/integration/dmr/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/integration/mcp/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/integration/rag/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/alloy-models/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/alloy/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/bug-investigation/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/dev-team/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/dev/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/developer-tools/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/docker-expert/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/docker/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/financial-team/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/financial/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/how-it-works/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/pirate-agent/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/pirate/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/auto-curator-agent/auto-curator-agent/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/projects/bug-investigator/bug-investigator/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/tools/environment/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/tools/filesystem/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/tools/memory/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/tools/shell/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/tools/think/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab10/tools/todo/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab2/aws-s3-setup/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab2/getting-started/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab2/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab2/services/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab2/tech-stack/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab3/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab3/services/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab3/tech-stack/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab4/architecture/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab4/getting-started/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab4/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab4/projects/catalog-chatbot/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab4/projects/genai-chatbot/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab4/projects/goose-hose-demo/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab4/projects/visual-chatbot/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/getting-started/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/Docker-CLI-With-Gordon/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/Docker-CLI-With-VSCode/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/GitHub-Claude/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/GitHub-MCP-Gordon/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/Kubernetes-MCP/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/Slack-MCP-With-Claude/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/gordon-time-mcp/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/postgres-mcp/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/postgres-vscode/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/visual-chatbot/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/visual-chatbot/mcp/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab5/projects/visual-chatbot/visual-chatbot/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/getting-started/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/projects/a2a-multi-agent-fact-checker/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/projects/agentic-catalog/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/projects/agno/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/projects/hackathon-recommender/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/projects/devduck/basic-interaction/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/projects/devduck/cerebras-interaction/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/projects/devduck/getting-started/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/projects/devduck/local-agent/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/projects/devduck/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab6/projects/devduck/prereq/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab7/getting-started/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab7/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab8/getting-started/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab8/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab8/projects/playwright-browser-testing/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/prereq/prereq/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/product-catalog/build/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/product-catalog/develop/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/product-catalog/overview/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/product-catalog/prereq/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/product-catalog/secure/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/product-catalog/tech-stack/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/product-catalog/test/</loc>
-         <lastmod>2026-02-03</lastmod>
+         <lastmod>2026-02-05</lastmod>
     </url>
 </urlset>

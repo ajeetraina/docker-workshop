@@ -35,6 +35,12 @@ nav:
     - cagent:
       - Overview: lab10/overview.md
       - Getting-started: lab10/getting-started.md
+      - Concept:
+        - Autonomy: lab10/concept/autonomy/autonomy.md
+        - Perception: lab10/concept/perception/perception.md
+        - Reasoning: lab10/concept/reasoning/reasoning.md
+        - Action: lab10/concept/action/action.md
+        - Goal-oriented: lab10/concept/goal/goal.md
       - Tools:
         - memory: lab10/tools/memory.md
         - think: lab10/tools/think.md
