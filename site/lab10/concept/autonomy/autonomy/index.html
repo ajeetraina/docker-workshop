@@ -3022,7 +3022,7 @@
 
 
 <h1 id="autonomy-in-cagent-the-agentic-loop">Autonomy in cagent — The Agentic Loop</h1>
-<p>The agent loops independently — deciding, acting, observing — up to N iterations with zero human intervention.</p>
+<p>The agent <strong>loops independently</strong> — deciding, acting, observing — up to N iterations with zero human intervention.</p>
 <h2 id="step-1-create-a-directory-structure-and-add-buggy-python-file">Step 1: Create a directory structure and add buggy Python file</h2>
 <pre><code class="language-bash">mkdir ~/autonomy-test &amp;&amp; cd ~/autonomy-test
 
@@ -3082,6 +3082,15 @@ agents:
       - type: filesystem
       - type: shell
 </code></pre>
+<blockquote>
+<p>Did you notice?
+We've defined the built-in tools:</p>
+<ul>
+<li>filesystem — to Read and Edit app.py</li>
+<li>shell — to run pytest -q</li>
+</ul>
+<p>If you remove type: shell from the YAML, the agent might be able to read and edit files but won't run tests — it would be like a developer who can write code but has no terminal. </p>
+</blockquote>
 <h2 id="step-4-run-cagent">Step 4: Run cagent</h2>
 <pre><code class="language-bash">cagent run ./autonomy.yaml
 </code></pre>
@@ -3112,14 +3121,6 @@ Agent stops ✅
 <li><strong>Ctrl+C</strong> to manually stop</li>
 </ul>
 <p>No human told it what to do between steps — that's <strong>autonomy</strong> in action.</p>
-<blockquote>
-<p>The agent did use both:</p>
-<ul>
-<li>filesystem — to Read and Edit app.py</li>
-<li>shell — to run pytest -q</li>
-</ul>
-<p>If you removed type: shell from the YAML, the agent could read and edit files but couldn't run tests — it would be like a developer who can write code but has no terminal. That's actually another great perception demo: remove shell, and watch the agent struggle.</p>
-</blockquote>
 <h2 id="step-5-quick-test-for-cagent-new-with-max-iterations">Step 5: Quick test for cagent new with --max-iterations</h2>
 <pre><code class="language-bash"># This one lets you set the guardrail explicitly
 cagent new --model openai/gpt-5-mini --max-iterations 10
