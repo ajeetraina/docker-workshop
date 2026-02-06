@@ -1,4 +1,3 @@
-## cagent with Docker Model Runner
 
 Docker Model Runner lets you run AI models locally on your machine. No API keys, no recurring costs, and your data stays private.
 
