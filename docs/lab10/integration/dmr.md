@@ -68,3 +68,85 @@ When you first run your agent, cagent prompts you to pull the model if it's not 
 
 When you configure an agent to use DMR, cagent automatically connects to your local Docker Model Runner and routes inference requests to it. 
 If a model isn't available locally, cagent prompts you to pull it on first use. No API keys or authentication are required.
+
+## Advanced configuration
+
+For more control over model behavior, define a model configuration:
+
+```
+models:
+  local-llama:
+    provider: dmr
+    model: ai/llama3.2:1B-Q8_0
+    temperature: 0.7
+    max_tokens: 8192
+
+agents:
+  root:
+    model: local-llama
+    instruction: You are a helpful coding assistant
+```
+
+> Note: since Llama 3.2 1B is a small model, you need to pick prompts that play to its strengths and avoid ones that expose its limitations.
+> Avoid for 1B models: complex multi-step reasoning, large code generation, multi-file refactoring — it'll hallucinate or get stuck.
+
+```
+Good Prompts:
+- "Hello. What can you do for me?" — your current one, works fine
+- "Explain Docker in 3 sentences"
+- "What is a Dockerfile? Give me a simple example"
+- "Write a haiku about containers"
+
+What happens when you add the following prompt: "List out all the files in the current directory?"
+It will just give you a generic answer that shows typical Linux command.
+
+In order to get the file listing, you need toolsets to be added. For example,
+
+```
+models:
+  local-llama:
+    provider: dmr
+    model: ai/llama3.2:1B-Q8_0
+    temperature: 0.7
+    max_tokens: 8192
+
+agents:
+  root:
+    model: local-llama
+    instruction: You are a helpful coding assistant
+    toolsets:
+      - type: filesystem
+```
+
+But still it won't list out the files but show the following result:
+
+```
+root
+
+{ "type": "function", "function": { "name": "list_directory", "parameters": { "properties": { "path":
+{ "description": "The directory path to list", "type": "string" } }, "required": [ "path" ], "type":
+"object" } } }
+```
+
+What could be the reason?
+
+This isn't a shell vs filesystem issue — the filesystem toolset does include list_directory.
+The problem is Llama 3.2 1B is too small to handle tool calling properly. It's dumping the raw tool schema instead of actually invoking it.
+
+Small models (1B) struggle with structured function calling — they see the tool definition but don't know how to format a proper tool call response.
+
+Fix: use a larger model. Try one of these:
+
+```
+# Option 1: Llama 3.2 3B (still small, much better at tool use)
+model: dmr/ai/llama3.2:3B
+
+# Option 2: Qwen3 (recommended in docs, great at tool calling)
+model: dmr/ai/qwen3
+
+# Option 3: Qwen3 specific size
+model: dmr/ai/qwen3:8B
+```
+
+
+
