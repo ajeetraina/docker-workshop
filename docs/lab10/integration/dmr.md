@@ -135,18 +135,26 @@ The problem is Llama 3.2 1B is too small to handle tool calling properly. It's d
 
 Small models (1B) struggle with structured function calling — they see the tool definition but don't know how to format a proper tool call response.
 
-Fix: use a larger model. Try one of these:
+Fix: use a larger model. Try this now:
 
 ```
-# Option 1: Llama 3.2 3B (still small, much better at tool use)
-model: dmr/ai/llama3.2:3B
+models:
+  local-llama:
+    provider: dmr
+    model: ai/llama3.2:3B-Q4_K_M
+    temperature: 0.7
+    max_tokens: 8192
 
-# Option 2: Qwen3 (recommended in docs, great at tool calling)
-model: dmr/ai/qwen3
-
-# Option 3: Qwen3 specific size
-model: dmr/ai/qwen3:8B
+agents:
+  root:
+    model: local-llama
+    instruction: You are a helpful coding assistant
+    toolsets:
+      - type: filesystem
 ```
+
+This time it will list out the current files in your system. 
+
 
 
 
