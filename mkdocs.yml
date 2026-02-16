@@ -109,9 +109,6 @@ nav:
       - Image Scanning: lab9/dhi/image-scanning.md
       - Switch to DHI: lab9/dhi/switch-to-dhi.md
       - Compliance & Attestations: lab9/dhi/compliance.md
-    - Docker Scout:
-      - Overview: lab9/scout/overview.md
-      - Getting Started: lab9/scout/getting-started.md
   - Docker Offload:
     - Overview: lab7/overview.md
     - Getting Started: lab7/getting-started.md
