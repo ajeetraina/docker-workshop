@@ -106,6 +106,9 @@ nav:
     - Docker Hardened Images:
       - Overview: lab9/dhi/overview.md
       - Getting Started: lab9/dhi/getting-started.md
+      - Image Scanning: lab9/dhi/image-scanning.md
+      - Switch to DHI: lab9/dhi/switch-to-dhi.md
+      - Compliance & Attestations: lab9/dhi/compliance.md
     - Docker Scout:
       - Overview: lab9/scout/overview.md
       - Getting Started: lab9/scout/getting-started.md
