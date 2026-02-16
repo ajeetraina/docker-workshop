@@ -1,25 +1,19 @@
-# Docker Hardened Images
+## Docker Hardened Images
 
-👋 Welcome to the **Docker Hardened Images (DHI)** workshop! This lab outlines the benefits of Docker Hardened Images and walks you through the migration process for a Node.js application.
+Docker Hardened Images are Secure, Minimal, Production-Ready Images with near-zero CVEs and enterprise-grade SLA for rapid remediation. 
 
-> **Source:** This workshop is based on the [labspace-dhi-node](https://github.com/dockersamples/labspace-dhi-node) labspace.
-
-## What are Docker Hardened Images?
-
-Docker Hardened Images are **Secure, Minimal, Production-Ready Images** with near-zero CVEs and enterprise-grade SLA for rapid remediation.
-
-These images follow a distroless philosophy, removing unnecessary components to significantly reduce the attack surface. The result? Smaller images that pull faster, run leaner, and provide a secure-by-default foundation for production workloads.
-
-### Key Benefits
+These images follow a distroless philosophy, removing unnecessary components to significantly reduce the attack surface. The result? Smaller images that pull faster, run leaner, and provide a secure-by-default foundation for production workloads:
 
 - **Near-zero exploitable CVEs:** Continuously updated, vulnerability-scanned, and published with signed attestations to minimize patch fatigue and eliminate false positives.
 - **Seamless migration:** Drop-in replacements for popular base images, with `-dev` variants available for multi-stage builds.
 - **Up to 95% smaller attack surface:** Unlike traditional base images that include full OS stacks with shells and package managers, distroless images retain only the essentials needed to run your app.
 - **Built-in supply chain security:** Each image includes signed SBOMs, VEX documents, and SLSA provenance for audit-ready pipelines.
 
+[Docker Hardened Images](https://www.docker.com/products/hardened-images/) lists the enterprise-ready, secure container images with built-in compliance and minimal vulnerabilities.
+
 ## Workshop Structure
 
-This workshop is organized into the following sections:
+This workshop walks you through the end-to-end migration of a Node.js application from a standard community base image to Docker Hardened Images. You'll learn how to mirror DHI images, scan and compare images using Docker Scout, and leverage built-in attestations for compliance.
 
 | Section | Description |
 |---------|-------------|
@@ -28,9 +22,11 @@ This workshop is organized into the following sections:
 | [Switch to DHI](switch-to-dhi.md) | Migrate from community images to Docker Hardened Images |
 | [Compliance & Attestations](compliance.md) | Explore DHI attestations, FIPS compliance, and scanner integration |
 
-## Sample Application
+> This workshop is based on the [labspace-dhi-node](https://github.com/dockersamples/labspace-dhi-node) labspace.
 
-The demo application used in this workshop is a simple Hello World Node.js server built with the `http` module. The source code is available in the [labspace-dhi-node](https://github.com/dockersamples/labspace-dhi-node) repository.
+## The Sample Application
+
+The demo application used in this workshop is a simple Hello World Node.js server. The source code is available in the [labspace-dhi-node](https://github.com/dockersamples/labspace-dhi-node) repository.
 
 **app.js:**
 
@@ -92,7 +88,4 @@ CMD ["app.js"]
 EXPOSE 3000
 ```
 
-## Learn More
-
-- [Docker Hardened Images](https://www.docker.com/products/hardened-images/) — Enterprise-ready, secure container images with built-in compliance and minimal vulnerabilities.
-- [Docker Scout](https://www.docker.com/products/docker-scout/) — Software supply chain security for container images.
+The Dockerfile takes a multi-stage build approach and is based on the `node:24-trixie-slim` image. As you'll see in the next sections, this base image comes with CVEs and fails several Docker Scout policies — which is exactly where DHI comes into play.

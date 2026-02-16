@@ -1,21 +1,19 @@
-# DHI Attestations and Scanner Integration
-
 ## Attestations
 
 In addition to providing a minimal and secure base image, Docker Hardened Images include a comprehensive set of attestations.
 
-Run the following command to see the full list of attestations for `dhi-node:24-debian13`:
+You can run the following command to see the full list of attestations for `dhi-node:24-debian13`:
 
-```bash
+```
 docker scout attest list <YOUR_ORG_NAME>/dhi-node:24-debian13
 ```
 
-In the output you will see the list of available attestations:
+In the output you will see the list of available attestations, such as:
 
 - **CycloneDX SBOM** — A software bill of materials in CycloneDX format, listing components, libraries, and versions.
 - **In-toto vulnerabilities** — A list of known vulnerabilities (CVEs) affecting the image's components.
 - **OpenVEX** — A document that identifies vulnerabilities that do not apply to the image and explains why.
-- **Scout health** — A signed attestation from Docker Scout summarizing the overall security and quality posture of the image.
+- **Scout health** — A signed attestation from Docker Scout that summarizes the overall security and quality posture of the image.
 - **Scout provenance** — Provenance metadata including the source Git commit, build parameters, and environment details.
 - **Scout SBOM** — An SBOM generated and signed by Docker Scout.
 - **Scout secret scan** — Results of a scan for accidentally included secrets.
@@ -27,9 +25,9 @@ In the output you will see the list of available attestations:
 
 ## View SBOMs in Docker Hardened Images
 
-DHI provides SBOMs in the CycloneDX, SPDX, or Scout formats. To view a specific SBOM file, such as the SPDX SBOM that is widely adopted in open-source ecosystems, use the `docker scout attest get` command:
+DHI provides SBOMs in the CycloneDX, SPDX, or Scout formats. To view a specific SBOM file, such as the SPDX SBOM that is widely adopted in open-source ecosystems, you can use the `docker scout attest get` command:
 
-```bash
+```
 docker scout attest get <YOUR_ORG_NAME>/dhi-node:24-debian13 \
   --predicate-type https://spdx.dev/Document
 ```
@@ -42,7 +40,7 @@ DHIs include variants that use cryptographic modules validated under FIPS 140.
 
 You can retrieve and inspect the FIPS attestation for the FIPS variant using the Docker Scout CLI:
 
-```bash
+```
 docker scout attest get \
   --predicate-type https://docker.com/dhi/fips/v0.1 \
   --predicate \
@@ -70,7 +68,7 @@ Docker also provides a signed STIG scan attestation for each STIG-hardened image
 
 You can retrieve and inspect a STIG scan attestation using the Docker Scout CLI:
 
-```bash
+```
 docker scout attest get \
   --predicate-type https://docker.com/dhi/stig/v0.1 \
   --predicate \
@@ -81,21 +79,20 @@ docker scout attest get \
 
 To verify the security posture using an external scanning tool you already use, such as Grype or Trivy, you will need to pass the vulnerability information in a compatible format, which Docker Scout can generate for you.
 
-First, view the list of available attestations for the DHI-based image:
+First, you can view the list of available attestations for the DHI-based image using the `docker scout attest` command:
 
-```bash
+```
 docker scout attest list <YOUR_ORG_NAME>/demo-node-dhi:v1
 ```
 
-You'll see two OpenVEX files: one for the DHI base image and another for any custom exceptions specific to your image.
+You'll see two OpenVEX files: one for the DHI base image and another for any custom exceptions (like no-dsa) specific to your image.
 
-Then, export the VEX data into a `vex.json` file. Starting with Docker Scout v1.18.3, you can use the `docker scout vex get` command to get the merged VEX document from all VEX attestations:
+Then, to integrate this information with external tools, you can export the VEX data into a `vex.json` file. Starting with Docker Scout v1.18.3, you can use the `docker scout vex get` command to get the merged VEX document from all VEX attestations:
 
-```bash
+```
 docker scout vex get <YOUR_ORG_NAME>/demo-node-dhi:v1 --output vex.json
 ```
 
 This generates a `vex.json` file containing all VEX statements for the specified image. Tools that support VEX can then use this file to suppress known non-exploitable CVEs.
 
-!!! success "Congratulations!"
-    You have successfully completed the Docker Hardened Images workshop! You've learned how to mirror DHI images, scan and compare images using Docker Scout, migrate from community base images to DHI, and leverage built-in attestations for compliance and supply chain security.
+> Congratulations! You have successfully completed the Docker Hardened Images workshop. You've learned how to mirror DHI images, scan and compare images using Docker Scout, migrate from community base images to DHI, and leverage built-in attestations for compliance and supply chain security.
