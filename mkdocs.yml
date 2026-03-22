@@ -32,7 +32,7 @@ nav:
       - Build: product-catalog/build.md
       - Secure: product-catalog/secure.md
   - Docker and AI:
-    - cagent:
+    - Docker Agent:
       - Overview: lab10/overview.md
       - Getting-started: lab10/getting-started.md
       - Concept:
@@ -49,9 +49,9 @@ nav:
         - filesystem: lab10/tools/filesystem.md
         - environment: lab10/tools/environment.md
       - Integration:
-        - cagent with Model Context Protocol: lab10/integration/mcp.md
-        - cagent with Docker Model Runner: lab10/integration/dmr.md
-        - cagent with RAG: lab10/integration/rag.md
+        - Docker Agent with Model Context Protocol: lab10/integration/mcp.md
+        - Docker Agent with Docker Model Runner: lab10/integration/dmr.md
+        - Docker Agent with RAG: lab10/integration/rag.md
       - Projects:
         - Single Agent Systems:
            - A Simple Pirate Agent: lab10/projects/pirate.md
