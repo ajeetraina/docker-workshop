@@ -1,11 +1,7 @@
 # Welcome to Docker Workshop
 
-A hands-on, 3-hour workshop covering the full Docker developer experience — from inner-loop workflows and containerization basics all the way to AI agents, MCP servers, security hardening, and GPU offloading.
+A hands-on, workshop covering the full Docker developer experience from inner-loop workflows and containerization basics all the way to AI agents, MCP servers, security hardening, and GPU offloading.
 
-**Presented by [Ajeet Singh Raina](https://www.linkedin.com/in/ajeetsraina/)** — Docker Captain & DevRel @ [Docker](https://docker.com)
-· [GitHub Source](https://github.com/ajeetraina/docker-workshop)
-
----
 
 ## 🗺️ What's Covered
 
