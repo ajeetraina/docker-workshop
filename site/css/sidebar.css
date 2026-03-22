@@ -1,11 +1,20 @@
 /* ============================================================
-   Sidebar Beautification — Docker Workshop
+   Sidebar & Global Beautification — Docker Workshop
    ============================================================ */
 
-/* ── Top-level plain links (Getting Started, Prerequisites) ── */
+/* ── 1. LOGO — make it bigger ── */
+.md-header__button.md-logo img,
+.md-logo img {
+  height: 36px !important;
+  width: auto !important;
+}
+
+/* ── 2. FONT NORMALISATION — all sidebar items at 0.8rem ── */
+
+/* Top-level plain links (Getting Started, Prerequisites) */
 .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link {
-  font-size: 0.8rem;
-  font-weight: 400;
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
   color: rgba(0, 0, 0, 0.75) !important;
   padding: 0.3rem 0.5rem;
   border-radius: 4px;
@@ -17,13 +26,13 @@
   background: rgba(0, 145, 230, 0.06);
 }
 
-/* ── Level-1 section headings (DOCKER 101, DOCKER AND AI, etc.) ── */
+/* ── 3. LEVEL-1 section headings (DOCKER 101, DOCKER AND AI, etc.) ── */
 .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link,
 .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
   background: linear-gradient(135deg, #0091e6 0%, #086dd7 100%);
   color: #ffffff !important;
-  font-size: 0.8rem;
-  font-weight: 700;
+  font-size: 0.8rem !important;
+  font-weight: 700 !important;
   letter-spacing: 0.06em;
   text-transform: uppercase;
   border-radius: 6px;
@@ -50,12 +59,12 @@
   fill: rgba(255, 255, 255, 0.85) !important;
 }
 
-/* ── Level-2 items (Docker Agent, Docker Model Runner, etc.) ── */
+/* ── 4. LEVEL-2 items (Docker Agent, Docker Model Runner, etc.) ── */
 .md-nav--primary .md-nav__item--section .md-nav__item > .md-nav__link,
 .md-nav--primary .md-nav__item--section .md-nav__item--nested > .md-nav__link {
   color: #0369a1 !important;
-  font-weight: 600;
-  font-size: 0.8rem;
+  font-weight: 600 !important;
+  font-size: 0.8rem !important;
   border-left: 3px solid #0091e6;
   padding: 0.3rem 0.5rem 0.3rem 0.65rem;
   margin: 0.1rem 0;
@@ -81,11 +90,11 @@
   fill: #0091e6 !important;
 }
 
-/* ── Level-3 items (Overview, Tech stack, Develop, etc.) ── */
+/* ── 5. LEVEL-3 items (Overview, Tech stack, Develop, etc.) ── */
 .md-nav--primary .md-nav__item--section .md-nav__item .md-nav .md-nav__item > .md-nav__link {
   color: #475569 !important;
-  font-size: 0.8rem;
-  font-weight: 400;
+  font-size: 0.8rem !important;
+  font-weight: 400 !important;
   padding: 0.22rem 0.5rem 0.22rem 1.1rem;
   border-left: none;
   background: transparent;
@@ -98,7 +107,7 @@
   background: rgba(0, 145, 230, 0.06);
 }
 
-/* ── Active / current page ── */
+/* ── 6. ACTIVE / current page ── */
 .md-nav__link--active {
   color: #0091e6 !important;
   font-weight: 600 !important;
@@ -106,17 +115,31 @@
   border-radius: 4px;
 }
 
-/* ── Sidebar background — subtle off-white ── */
+/* ── 7. RIGHT TOC — match sidebar font size ── */
+.md-nav--secondary .md-nav__link {
+  font-size: 0.8rem !important;
+  color: rgba(0, 0, 0, 0.7) !important;
+}
+
+.md-nav--secondary .md-nav__link:hover {
+  color: #0091e6 !important;
+}
+
+.md-nav--secondary .md-nav__link--active {
+  color: #0091e6 !important;
+  font-weight: 600 !important;
+}
+
+/* ── 8. SIDEBAR background — subtle off-white ── */
 .md-sidebar--primary .md-sidebar__scrollwrap {
   background: #f8fafc;
 }
 
-/* ── Spacing between top-level sections ── */
+/* ── 9. Spacing and divider ── */
 .md-nav--primary > .md-nav__list > .md-nav__item--section {
   margin-bottom: 0.2rem;
 }
 
-/* ── Thin divider above the first section ── */
 .md-nav--primary > .md-nav__list > .md-nav__item--section:first-of-type {
   margin-top: 0.4rem;
   padding-top: 0.4rem;
