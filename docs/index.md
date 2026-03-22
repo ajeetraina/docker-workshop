@@ -1,6 +1,6 @@
 # Welcome to Docker Workshop
 
-A hands-on, workshop covering the full Docker developer experience from inner-loop workflows and containerization basics all the way to AI agents, MCP servers, security hardening, and GPU offloading.
+A hands-on, workshop covering the full Docker developer experience — from inner-loop workflows and containerization basics all the way to AI agents, MCP servers, security hardening, and GPU offloading.
 
 
 ## 🗺️ What's Covered
@@ -10,7 +10,7 @@ A hands-on, workshop covering the full Docker developer experience from inner-lo
 Get comfortable with core Docker concepts and a real-world sample app.
 
 | Topic | Link |
-|-------|------|
+| --- | --- |
 | Inner vs Outer Loop Development | [Start →](lab1/overview/) |
 | What is a Container | [Start →](lab1/what-is-a-container/) |
 | Running Postgres Containers | [Start →](lab1/postgres/) |
@@ -23,12 +23,16 @@ Get comfortable with core Docker concepts and a real-world sample app.
 
 ---
 
-### 🤖 Docker Agent
+### 🧠 Docker & AI
+
+Run AI models locally, connect them to tools via MCP, build agents, and safely sandbox AI-generated actions — all inside Docker.
+
+#### 🤖 Docker Agent
 
 Build, run, and share AI agents using Docker's declarative multi-agent runtime.
 
 | Topic | Link |
-|-------|------|
+| --- | --- |
 | Overview | [Start →](lab10/overview/) |
 | Getting Started | [Start →](lab10/getting-started/) |
 | **Concepts** | |
@@ -58,37 +62,43 @@ Build, run, and share AI agents using Docker's declarative multi-agent runtime.
 | Auto Curator Agent | [Start →](lab10/projects/auto-curator-agent/auto-curator-agent/) |
 | Sharing Agents | [Start →](lab10/sharing/) |
 
----
+#### 🚀 Docker Model Runner
 
-### 🧠 Docker Model Runner
-
-Run AI models locally inside Docker — no cloud required.
+Run LLMs locally inside Docker — no cloud required, GPU-accelerated inference out of the box.
 
 | Topic | Link |
-|-------|------|
+| --- | --- |
 | Overview | [Start →](lab4/overview/) |
 | Getting Started | [Start →](lab4/getting-started/) |
 | Product Catalog Chatbot | [Start →](lab4/projects/catalog-chatbot/) |
 | GenAI Chatbot | [Start →](lab4/projects/genai-chatbot/) |
 
----
+#### 🔌 Docker MCP Catalog and Toolkit
 
-### 🔌 MCP Catalog and Toolkit
-
-Connect AI models to real tools via the Model Context Protocol.
+Connect AI models to real tools and services via the Model Context Protocol, managed securely through Docker.
 
 | Topic | Link |
-|-------|------|
+| --- | --- |
 | Overview | [Start →](lab5/overview/) |
 | Getting Started | [Start →](lab5/getting-started/) |
 | Visual Chatbot | [Start →](lab5/projects/visual-chatbot/visual-chatbot/) |
 | Running your First MCP Server | [Start →](lab5/projects/visual-chatbot/mcp/) |
 | GitHub MCP Server and Claude Desktop | [Start →](lab5/projects/GitHub-Claude/) |
 | Docker MCP Server and Gordon | [Start →](lab5/projects/Docker-CLI-With-Gordon/) |
-| Docker MCP Server and VS Code | [Start →](lab5/projects/Docker-MCP-With-VSCode/) |
+| Docker MCP Server and VS Code | [Start →](lab5/projects/Docker-CLI-With-VSCode/) |
 | GitHub MCP Server and Gordon | [Start →](lab5/projects/GitHub-MCP-Gordon/) |
 | Kubernetes MCP Server and Claude | [Start →](lab5/projects/Kubernetes-MCP/) |
 | Slack MCP Server and Claude | [Start →](lab5/projects/Slack-MCP-With-Claude/) |
+
+#### 🧪 Sandboxing with Docker
+
+Safely execute AI-generated code and agent actions in isolated containers to prevent unintended side effects.
+
+| Topic | Link |
+| --- | --- |
+| Overview | [Start →](lab8/overview/) |
+| Getting Started | [Start →](lab8/getting-started/) |
+| Playwright Browser Testing | [Start →](lab8/projects/playwright-browser-testing/) |
 
 ---
 
@@ -97,7 +107,7 @@ Connect AI models to real tools via the Model Context Protocol.
 Multi-agent workflows orchestrated with Docker Compose.
 
 | Topic | Link |
-|-------|------|
+| --- | --- |
 | Overview | [Start →](lab6/overview/) |
 | Getting Started | [Start →](lab6/getting-started/) |
 | DevDuck — Overview | [Start →](lab6/projects/devduck/overview/) |
@@ -116,7 +126,7 @@ Multi-agent workflows orchestrated with Docker Compose.
 Harden your images and meet compliance requirements with Docker Hardened Images.
 
 | Topic | Link |
-|-------|------|
+| --- | --- |
 | Overview | [Start →](lab9/dhi/overview/) |
 | Getting Started | [Start →](lab9/dhi/getting-started/) |
 | Image Scanning | [Start →](lab9/dhi/image-scanning/) |
@@ -125,38 +135,26 @@ Harden your images and meet compliance requirements with Docker Hardened Images.
 
 ---
 
-### 🧪 Docker Sandboxes
-
-AI-powered browser testing with Playwright inside Docker.
-
-| Topic | Link |
-|-------|------|
-| Overview | [Start →](lab8/overview/) |
-| Getting Started | [Start →](lab8/getting-started/) |
-| Playwright Browser Testing | [Start →](lab8/projects/playwright-browser-testing/) |
-
----
-
 ### ⚡ Docker Offload
 
 Offload GPU-intensive workloads to the cloud seamlessly.
 
 | Topic | Link |
-|-------|------|
+| --- | --- |
 | Overview | [Start →](lab7/overview/) |
 | Getting Started | [Start →](lab7/getting-started/) |
 
 ---
 
-## ⏱️ Workshop Structure
+## 🗓️ Suggested Learning Paths
 
-This is a 3-hour hands-on workshop. Here's the recommended flow:
+This workshop is **self-paced and modular** — pick any topic and go. Here are a few suggested paths based on your goals:
 
-| Time | Section |
-|------|---------|
-| 0:00 – 0:30 | Docker 101 — Containers, inner loop, Postgres |
-| 0:30 – 1:00 | Docker Model Runner — Run AI locally |
-| 1:00 – 1:30 | MCP Catalog — Connect models to tools |
-| 1:30 – 2:00 | Docker Agent — Build multi-agent systems |
-| 2:00 – 2:30 | Agentic Compose — Orchestrate agent teams |
-| 2:30 – 3:00 | Security (DHI) + Docker Offload |
+| Goal | Suggested Topics |
+| --- | --- |
+| 🐣 New to Docker | Docker 101 → Product Catalog |
+| 🤖 Build AI Apps | Docker Model Runner → Docker MCP → Docker Agent → Agentic Compose |
+| 🔐 Focus on Security | Docker 101 → Docker and Security (DHI) |
+| 🧠 Multi-Agent Systems | Docker Agent → Agentic Compose → Docker MCP |
+| ⚡ GPU & Cloud Offload | Docker Model Runner → Docker Offload |
+| 🔒 Safe AI Execution | Docker Model Runner → Sandboxing with Docker |
