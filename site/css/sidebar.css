@@ -1,85 +1,124 @@
 /* ============================================================
-   Sidebar Section Heading Beautification
-   Targets top-level section labels in the left nav
+   Sidebar Beautification — Docker Workshop
    ============================================================ */
 
-/* Top-level section headings (Docker 101, Docker and AI, etc.) */
+/* ── Top-level plain links (Getting Started, Prerequisites) ── */
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link {
+  font-size: 0.8rem;
+  font-weight: 400;
+  color: rgba(0, 0, 0, 0.75) !important;
+  padding: 0.3rem 0.5rem;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link:hover {
+  color: #0091e6 !important;
+  background: rgba(0, 145, 230, 0.06);
+}
+
+/* ── Level-1 section headings (DOCKER 101, DOCKER AND AI, etc.) ── */
 .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link,
 .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link {
-  /* Docker blue pill background */
   background: linear-gradient(135deg, #0091e6 0%, #086dd7 100%);
   color: #ffffff !important;
-  font-size: 0.72rem;
+  font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.06em;
   text-transform: uppercase;
-
-  /* Pill shape */
   border-radius: 6px;
   padding: 0.45rem 0.75rem;
-  margin: 0.5rem 0 0.25rem 0;
-
-  /* Subtle shadow for depth */
-  box-shadow: 0 2px 6px rgba(0, 145, 230, 0.25);
-
-  /* Smooth hover transition */
+  margin: 0.6rem 0 0.3rem 0;
+  box-shadow: 0 2px 6px rgba(0, 145, 230, 0.3);
   transition: background 0.2s ease, box-shadow 0.2s ease;
   display: flex;
   align-items: center;
   justify-content: space-between;
 }
 
-/* Hover state */
 .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link:hover,
 .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link:hover {
   background: linear-gradient(135deg, #007acc 0%, #0057b8 100%);
-  box-shadow: 0 3px 10px rgba(0, 145, 230, 0.35);
+  box-shadow: 0 3px 10px rgba(0, 145, 230, 0.4);
   color: #ffffff !important;
 }
 
-/* Arrow/chevron icon colour inside the heading */
+/* Arrow icon inside level-1 headings */
 .md-nav--primary > .md-nav__list > .md-nav__item--section > .md-nav__link .md-nav__icon,
 .md-nav--primary > .md-nav__list > .md-nav__item--nested > .md-nav__link .md-nav__icon {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.85) !important;
+  fill: rgba(255, 255, 255, 0.85) !important;
 }
 
-/* ── Level-2 sub-section headings (e.g. Docker Agent, Docker Model Runner) ── */
-.md-nav--primary .md-nav__item--section .md-nav__item--section > .md-nav__link,
+/* ── Level-2 items (Docker Agent, Docker Model Runner, etc.) ── */
+.md-nav--primary .md-nav__item--section .md-nav__item > .md-nav__link,
 .md-nav--primary .md-nav__item--section .md-nav__item--nested > .md-nav__link {
-  color: #0091e6 !important;
+  color: #0369a1 !important;
   font-weight: 600;
-  font-size: 0.75rem;
-  letter-spacing: 0.02em;
+  font-size: 0.8rem;
   border-left: 3px solid #0091e6;
-  padding-left: 0.6rem;
-  margin: 0.2rem 0;
+  padding: 0.3rem 0.5rem 0.3rem 0.65rem;
+  margin: 0.1rem 0;
   background: transparent;
   box-shadow: none;
-  border-radius: 0;
-  text-transform: none;
-  transition: color 0.15s ease, border-color 0.15s ease;
-}
-
-.md-nav--primary .md-nav__item--section .md-nav__item--section > .md-nav__link:hover,
-.md-nav--primary .md-nav__item--section .md-nav__item--nested > .md-nav__link:hover {
-  color: #007acc !important;
-  border-left-color: #007acc;
-  background: rgba(0, 145, 230, 0.06);
   border-radius: 0 4px 4px 0;
+  text-transform: none;
+  letter-spacing: 0;
+  transition: all 0.15s ease;
 }
 
-/* ── Active / current page link ── */
+.md-nav--primary .md-nav__item--section .md-nav__item > .md-nav__link:hover,
+.md-nav--primary .md-nav__item--section .md-nav__item--nested > .md-nav__link:hover {
+  color: #0057b8 !important;
+  border-left-color: #0057b8;
+  background: rgba(0, 145, 230, 0.07);
+}
+
+/* Arrow icon on level-2 items */
+.md-nav--primary .md-nav__item--section .md-nav__item > .md-nav__link .md-nav__icon,
+.md-nav--primary .md-nav__item--section .md-nav__item--nested > .md-nav__link .md-nav__icon {
+  color: #0091e6 !important;
+  fill: #0091e6 !important;
+}
+
+/* ── Level-3 items (Overview, Tech stack, Develop, etc.) ── */
+.md-nav--primary .md-nav__item--section .md-nav__item .md-nav .md-nav__item > .md-nav__link {
+  color: #475569 !important;
+  font-size: 0.8rem;
+  font-weight: 400;
+  padding: 0.22rem 0.5rem 0.22rem 1.1rem;
+  border-left: none;
+  background: transparent;
+  border-radius: 4px;
+  transition: all 0.15s ease;
+}
+
+.md-nav--primary .md-nav__item--section .md-nav__item .md-nav .md-nav__item > .md-nav__link:hover {
+  color: #0091e6 !important;
+  background: rgba(0, 145, 230, 0.06);
+}
+
+/* ── Active / current page ── */
 .md-nav__link--active {
   color: #0091e6 !important;
-  font-weight: 600;
+  font-weight: 600 !important;
+  background: rgba(0, 145, 230, 0.08) !important;
+  border-radius: 4px;
 }
 
-/* ── Sidebar background — very subtle blue tint ── */
+/* ── Sidebar background — subtle off-white ── */
 .md-sidebar--primary .md-sidebar__scrollwrap {
-  background: #f7fbff;
+  background: #f8fafc;
 }
 
-/* ── Separator spacing between top-level sections ── */
+/* ── Spacing between top-level sections ── */
 .md-nav--primary > .md-nav__list > .md-nav__item--section {
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.2rem;
+}
+
+/* ── Thin divider above the first section ── */
+.md-nav--primary > .md-nav__list > .md-nav__item--section:first-of-type {
+  margin-top: 0.4rem;
+  padding-top: 0.4rem;
+  border-top: 1px solid #e2e8f0;
 }
