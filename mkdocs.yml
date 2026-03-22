@@ -54,16 +54,16 @@ nav:
         - Docker Agent with RAG: lab10/integration/rag.md
       - Projects:
         - Single Agent Systems:
-           - A Simple Pirate Agent: lab10/projects/pirate.md
+          - A Simple Pirate Agent: lab10/projects/pirate.md
         - Multi-agent Systems:
-           - Learning Agent with Alloy Models: lab10/projects/alloy.md
-           - Developer Agent with Tools: lab10/projects/dev.md
-           - Financial Analysis Team: lab10/projects/financial.md
-           - Docker Expert Team: lab10/projects/docker-expert.md
-           - Bug Investigator: 
-             - Overview: lab10/projects/bug-investigator/bug-investigator.md
-           - Auto-Curator Agent:
-             - Overview: lab10/projects/auto-curator-agent/auto-curator-agent.md
+          - Learning Agent with Alloy Models: lab10/projects/alloy.md
+          - Developer Agent with Tools: lab10/projects/dev.md
+          - Financial Analysis Team: lab10/projects/financial.md
+          - Docker Expert Team: lab10/projects/docker-expert.md
+          - Bug Investigator:
+            - Overview: lab10/projects/bug-investigator/bug-investigator.md
+          - Auto-Curator Agent:
+            - Overview: lab10/projects/auto-curator-agent/auto-curator-agent.md
       - Sharing Agents: lab10/sharing.md
     - Docker Model Runner:
       - Overview: lab4/overview.md
@@ -116,6 +116,12 @@ nav:
 theme:
   name: material
   language: en
+  features:
+    - navigation.sections
+    - navigation.instant
+    - navigation.top
+    - search.highlight
+    - search.share
   palette:
     primary: blue
     accent: blue
