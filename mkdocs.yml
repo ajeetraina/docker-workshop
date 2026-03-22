@@ -134,3 +134,4 @@ theme:
 extra_css:
   - css/styles.css
   - css/dark-mode.css
+  - css/sidebar.css
