@@ -1,6 +1,6 @@
 # Welcome to Docker Workshop
 
-A hands-on, workshop covering the full Docker developer experience — from inner-loop workflows and containerization basics all the way to AI agents, MCP servers, security hardening, and GPU offloading.
+A hands-on, workshop covering the full Docker developer experience — from inner-loop workflows and containerization basics all the way to AI agents, MCP servers, security hardening, and Sandboxing.
 
 
 ## 🗺️ What's Covered
