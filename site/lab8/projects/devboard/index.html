@@ -10,7 +10,7 @@
         <meta name="author" content="Ajeet Singh Raina">
       
       
-        <link rel="canonical" href="https://dockerworkshop.vercel.app/lab8/projects/playwright-browser-testing/">
+        <link rel="canonical" href="https://dockerworkshop.vercel.app/lab8/projects/devboard/">
       
       
         <link rel="prev" href="../governance-summary/">
@@ -27,7 +27,7 @@
     
     
       
-        <title>Playwright Browser Testing - Docker workshop</title>
+        <title>DevBoard - Docker workshop</title>
       
     
     
@@ -81,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#devboard-fix-a-real-bug-inside-a-sandbox" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -112,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Playwright Browser Testing
+              DevBoard
             
           </span>
         </div>
@@ -3640,6 +3645,26 @@
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
       
       
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevBoard
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
       
       <a href="./" class="md-nav__link md-nav__link--active">
         
@@ -3648,7 +3673,7 @@
   <span class="md-ellipsis">
     
   
-    Playwright Browser Testing
+    DevBoard
   
 
     
@@ -3657,6 +3682,157 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you'll build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-codebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The codebase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The bugs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-boot-devboard-on-your-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Boot DevBoard on your host
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-confirm-the-bug-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Confirm the bug exists
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-run-the-agent-on-the-codebase-in-branch-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Run the agent on the codebase in branch mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-brief-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Brief the agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-verify-what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Verify what just happened
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-review-and-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Review and merge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-tear-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7 — Tear down
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pick-another-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pick another bug
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Checkpoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
       
     </li>
   
@@ -4074,6 +4250,148 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#what-youll-build" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you'll build
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-codebase" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The codebase
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-bugs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The bugs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-boot-devboard-on-your-host" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Boot DevBoard on your host
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-confirm-the-bug-exists" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Confirm the bug exists
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-run-the-agent-on-the-codebase-in-branch-mode" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Run the agent on the codebase in branch mode
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-brief-the-agent" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Brief the agent
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-verify-what-just-happened" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — Verify what just happened
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-review-and-merge" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Review and merge
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-7-tear-down" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 7 — Tear down
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pick-another-bug" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Pick another bug
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#checkpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ✅ Checkpoint
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -4093,9 +4411,235 @@
   
 
 
-  <h1>Playwright Browser Testing</h1>
+<h1 id="devboard-fix-a-real-bug-inside-a-sandbox">DevBoard — Fix a Real Bug Inside a Sandbox</h1>
+<p>So far each module of this lab has focused on <em>one</em> primitive — isolation,
+secret injection, network policy, branch mode. This project ties them all
+together against a real codebase: <strong>DevBoard</strong>, a FastAPI + Next.js issue
+tracker with five documented intentional bugs.</p>
+<p>You'll pick one of them, point an agent at it inside <code>sbxlab</code>, watch it
+investigate and fix, then review and merge — without the agent ever touching
+your host credentials or making a network call you didn't allow.</p>
+<hr />
+<h2 id="what-youll-build">What you'll build</h2>
+<p>By the end of this project you'll have:</p>
+<ul>
+<li>A running DevBoard stack (Postgres + FastAPI + Next.js) on your host</li>
+<li>A running agent inside <code>sbxlab</code> with read/write access to the DevBoard repo</li>
+<li>A fix for one of the known bugs, landed on its own Git branch</li>
+<li>A passing <code>pytest</code> run inside the sandbox proving the fix</li>
+<li>A clean diff you reviewed before merging</li>
+</ul>
+<hr />
+<h2 id="the-codebase">The codebase</h2>
+<p>DevBoard is a small but realistic project tracker. It's the same repo the
+labspace clones into <code>~/sbx-lab</code> — if you've worked through Module 2, you
+already have it.</p>
+<pre><code>devboard/
+├── backend/                    # FastAPI + SQLAlchemy + PostgreSQL
+│   ├── app/
+│   │   ├── main.py
+│   │   ├── models.py
+│   │   ├── routers/
+│   │   │   ├── auth.py
+│   │   │   ├── projects.py
+│   │   │   ├── issues.py       # most of the bugs live here
+│   │   │   └── comments.py
+│   │   └── services/
+│   │       └── notifications.py
+│   └── tests/
+│       └── test_issues.py      # tests that expose the known bugs
+├── frontend/                   # Next.js 14 App Router + Tailwind
+└── docker-compose.yml
+</code></pre>
+<p>If you don't have it cloned yet:</p>
+<pre><code class="language-bash">git clone https://github.com/dockersamples/sbx-quickstart ~/sbx-lab
+cd ~/sbx-lab
+</code></pre>
+<hr />
+<h2 id="the-bugs">The bugs</h2>
+<p>DevBoard ships with five intentional issues, ordered roughly easiest to hardest:</p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>Bug</th>
+<th>File</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Pagination off-by-one</strong> — <code>list_issues</code> uses <code>page * page_size</code> instead of <code>(page - 1) * page_size</code>, so page 1 always skips items.</td>
+<td><code>backend/app/routers/issues.py</code></td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong><code>updated_at</code> never updates</strong> — SQLAlchemy <code>updated_at</code> columns are missing <code>onupdate=datetime.utcnow</code>.</td>
+<td><code>backend/app/models.py</code></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>Missing authorization on issue update</strong> — any project member can edit any issue.</td>
+<td><code>backend/app/routers/issues.py</code></td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>Search not implemented</strong> — <code>GET /projects/{id}/issues/search</code> returns <code>501</code>.</td>
+<td><code>backend/app/routers/issues.py</code></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>Email notifications are stubs</strong> — <code>services/notifications.py</code> logs but doesn't send.</td>
+<td><code>backend/app/services/notifications.py</code></td>
+</tr>
+</tbody>
+</table>
+<p>The walkthrough below uses <strong>bug #1 (pagination)</strong> because it's the cleanest
+demonstration — single function, clear root cause, existing test coverage.
+The same workflow works for any of them.</p>
+<hr />
+<h2 id="step-1-boot-devboard-on-your-host">Step 1 — Boot DevBoard on your host</h2>
+<p>In a host terminal, from <code>~/sbx-lab</code>:</p>
+<pre><code class="language-bash">docker compose up --build -d
+</code></pre>
+<p>Wait for all three services to be healthy:</p>
+<pre><code class="language-bash">docker compose ps
+</code></pre>
+<p>Expected output: <code>db</code>, <code>backend</code>, and <code>frontend</code> all <code>running</code>. The API is at
+<code>http://localhost:8000/docs</code> and the UI at <code>http://localhost:3000</code>.</p>
+<blockquote>
+<p><strong>Why on the host and not in the sandbox?</strong> DevBoard is the <em>application</em>.
+The agent's job is to read and modify its source files — not to run it.
+Running the stack on the host means you can poke at <code>localhost:3000</code> while
+the agent works.</p>
+</blockquote>
+<hr />
+<h2 id="step-2-confirm-the-bug-exists">Step 2 — Confirm the bug exists</h2>
+<p>Hit the issues endpoint with <code>page=1</code> and a small page size:</p>
+<pre><code class="language-bash">curl -s &quot;http://localhost:8000/projects/1/issues?page=1&amp;page_size=2&quot; | jq '.[] | .id'
+</code></pre>
+<p>You'll see issues <code>3</code> and <code>4</code> — <em>not</em> <code>1</code> and <code>2</code>. That's the bug.</p>
+<p>The test suite already has a case that fails because of this:</p>
+<pre><code class="language-bash">docker compose exec backend pytest tests/test_issues.py::test_pagination_first_page -v
+</code></pre>
+<p>Expected: <code>FAILED</code>. Good — that's a failing test the agent will turn green.</p>
+<hr />
+<h2 id="step-3-run-the-agent-on-the-codebase-in-branch-mode">Step 3 — Run the agent on the codebase in branch mode</h2>
+<p>You've used <strong>direct mode</strong> so far (Module 6). For this exercise, use
+<strong>branch mode</strong> instead — the agent works on its own Git worktree and you
+review the diff before merging.</p>
+<p>From the host, in <code>~/sbx-lab</code>:</p>
+<pre><code class="language-bash">sbx run sbxlab --branch fix/pagination
+</code></pre>
+<p>The sandbox starts up, creates a worktree at <code>~/sbx-lab-sbxlab-fix-pagination</code>,
+and drops you into the agent prompt. The trust prompt appears once — choose
+<strong>1. Yes, continue</strong>.</p>
+<hr />
+<h2 id="step-4-brief-the-agent">Step 4 — Brief the agent</h2>
+<p>Paste this prompt:</p>
+<pre><code>Read backend/app/routers/issues.py and backend/tests/test_issues.py.
+There's a known pagination bug in list_issues: it skips page * page_size
+items instead of (page - 1) * page_size, so page 1 returns the wrong
+results.
 
-
+1. Locate the bug.
+2. Fix it.
+3. Run the test that exercises it: pytest tests/test_issues.py::test_pagination_first_page -v
+4. Run the full issues test file once it passes.
+5. Summarise the change.
+</code></pre>
+<p>The agent will:</p>
+<ul>
+<li>Read the two files using its <code>filesystem</code> tool</li>
+<li>Edit <code>list_issues</code> (typically replacing <code>skip = page * page_size</code> with <code>skip = (page - 1) * page_size</code>)</li>
+<li>Run pytest inside the sandbox via the <code>shell</code> tool</li>
+</ul>
+<p>Watch the output. Inside <code>sbxlab</code>, <code>pytest</code> has access to <code>pypi.org</code> and
+<code>files.pythonhosted.org</code> (default network policy) but cannot reach your host
+filesystem.</p>
+<hr />
+<h2 id="step-5-verify-what-just-happened">Step 5 — Verify what just happened</h2>
+<p>In a separate host terminal, while the agent is still running:</p>
+<pre><code class="language-bash">sbx ls
+</code></pre>
+<p>You'll see <code>sbxlab</code> with status <code>running</code> and the worktree path. Now look at
+the worktree from the host:</p>
+<pre><code class="language-bash">cd ~/sbx-lab-sbxlab-fix-pagination
+git diff
+</code></pre>
+<p>You should see the one-line fix to <code>list_issues</code>. The host's main worktree at
+<code>~/sbx-lab</code> is untouched — <code>git status</code> there is still clean.</p>
+<pre><code class="language-bash">cd ~/sbx-lab
+git status   # clean
+</code></pre>
+<p>Open the network panel of the dashboard while you're at it:</p>
+<pre><code class="language-bash">sbx
+# press Tab to switch to Network
+</code></pre>
+<p>You'll see allowed connections to <code>pypi.org</code> (the agent installing test deps)
+and nothing to <code>~/.aws</code>, <code>~/.ssh</code>, or any host service. The proof remains the
+same as in Module 3 — only now you're running it on a real codebase change.</p>
+<hr />
+<h2 id="step-6-review-and-merge">Step 6 — Review and merge</h2>
+<p>Back in <code>~/sbx-lab-sbxlab-fix-pagination</code>:</p>
+<pre><code class="language-bash"># Re-run the test on the host to double-check
+docker compose exec backend pytest tests/test_issues.py -v
+</code></pre>
+<p>If it's green, merge:</p>
+<pre><code class="language-bash">cd ~/sbx-lab
+git merge sbxlab/fix-pagination
+git branch -d sbxlab/fix-pagination
+</code></pre>
+<p>The agent's branch is gone, the fix is on <code>main</code>, and your working tree
+matches what you reviewed.</p>
+<hr />
+<h2 id="step-7-tear-down">Step 7 — Tear down</h2>
+<pre><code class="language-bash">sbx stop sbxlab
+docker compose down
+</code></pre>
+<p><code>sbx stop</code> halts the VM; the worktree on your host stays so you can re-enter
+it later. <code>docker compose down</code> stops DevBoard.</p>
+<hr />
+<h2 id="pick-another-bug">Pick another bug</h2>
+<p>Same flow, different brief. A few suggestions for prompts:</p>
+<p><strong>Bug #2 — <code>updated_at</code> never updates:</strong></p>
+<pre><code>backend/app/models.py defines updated_at columns that never change after
+creation. They're missing the onupdate parameter on the Column definition.
+Find every affected model, add onupdate=datetime.utcnow, and write a test
+that updates an issue and asserts updated_at changed.
+</code></pre>
+<p><strong>Bug #4 — implement search</strong> (the labspace ships a prompt for this in
+<code>prompts/implement-search.txt</code>):</p>
+<pre><code>Implement the issue search endpoint in backend/app/routers/issues.py.
+GET /issues/search?q= currently returns 501. It should search title and
+description case-insensitively (use Issue.title.ilike(f&quot;%{q}%&quot;)) and return
+the same schema as list_issues. Make the existing search tests pass.
+</code></pre>
+<p><strong>Bug #5 — implement email notifications</strong> (a more open-ended task — needs
+SMTP config and gracefully handling its absence):</p>
+<pre><code>services/notifications.py has a stub send_status_change_notification.
+Implement it using smtplib (no new dependencies). Read SMTP config from
+SMTP_HOST/PORT/USER/PASS env vars and warn-and-return when missing.
+Include the issue title, old status, new status, and a URL in the body.
+Add a test that mocks smtplib.SMTP and asserts send_message was called.
+</code></pre>
+<p>For #5, notice the agent will need to make outbound SMTP connections to
+verify behaviour — but the default <code>Balanced</code> policy doesn't allow arbitrary
+SMTP. This is a good moment to revisit Module 5: either add an <code>allow</code> rule
+for your test SMTP host, or have the agent rely entirely on mocked transport
+and never actually open a socket.</p>
+<hr />
+<h2 id="checkpoint">✅ Checkpoint</h2>
+<p>You've now run the full sandbox workflow end-to-end:</p>
+<ul>
+<li>[x] Real codebase (DevBoard) running on the host</li>
+<li>[x] Real agent inside the sandbox, reading and modifying source</li>
+<li>[x] Real fix landed on a branch, with a passing test</li>
+<li>[x] Reviewed the diff before it touched main</li>
+<li>[x] Verified — via <code>sbx ls</code> and the network panel — that the agent only
+      reached what the policy allowed</li>
+</ul>
+<p>That's the complete loop the rest of this lab was building toward.</p>
 
 
 

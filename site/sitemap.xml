@@ -345,6 +345,10 @@
          <lastmod>2026-04-26</lastmod>
     </url>
     <url>
+         <loc>https://dockerworkshop.vercel.app/lab8/projects/devboard/</loc>
+         <lastmod>2026-04-26</lastmod>
+    </url>
+    <url>
          <loc>https://dockerworkshop.vercel.app/lab8/projects/first-sandbox/</loc>
          <lastmod>2026-04-26</lastmod>
     </url>
@@ -366,10 +370,6 @@
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/lab8/projects/parallel-agents/</loc>
-         <lastmod>2026-04-26</lastmod>
-    </url>
-    <url>
-         <loc>https://dockerworkshop.vercel.app/lab8/projects/playwright-browser-testing/</loc>
          <lastmod>2026-04-26</lastmod>
     </url>
     <url>
