@@ -100,8 +100,20 @@ nav:
     - Docker Sandboxes:
       - Overview: lab8/overview.md
       - Getting Started: lab8/getting-started.md
+      - Concepts:
+        - Why Agents Need Governance: lab8/projects/why-governance.md
+      - Hands-on Modules:
+        - Your First Sandbox: lab8/projects/first-sandbox.md
+        - The Isolation Proof: lab8/projects/isolation-proof.md
+        - Reviewing Agent Changes: lab8/projects/reviewing-agent-changes.md
+        - Secrets Without Exposure: lab8/projects/secrets.md
+        - Network Policy: lab8/projects/network-policy.md
+        - Branch Mode: lab8/projects/branch-mode.md
+        - Parallel Agents: lab8/projects/parallel-agents.md
+        - Running Open-Source Models: lab8/projects/local-models.md
+        - AI Governance at Scale: lab8/projects/governance-summary.md
       - Projects:
-        - Playwrite Browser Testing: lab8/projects/playwright-browser-testing.md
+        - Playwright Browser Testing: lab8/projects/playwright-browser-testing.md
   - Docker and Security:
     - Docker Hardened Images:
       - Overview: lab9/dhi/overview.md
