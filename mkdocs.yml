@@ -113,7 +113,7 @@ nav:
         - Running Open-Source Models: lab8/projects/local-models.md
         - AI Governance at Scale: lab8/projects/governance-summary.md
       - Projects:
-        - Playwright Browser Testing: lab8/projects/playwright-browser-testing.md
+        - DevBoard: lab8/projects/devboard.md
   - Docker and Security:
     - Docker Hardened Images:
       - Overview: lab9/dhi/overview.md
