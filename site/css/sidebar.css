@@ -145,3 +145,39 @@
   padding-top: 0.4rem;
   border-top: 1px solid #e2e8f0;
 }
+
+/* ============================================================
+   SCROLL FIX — ensure long sidebars are always scrollable
+   ============================================================
+   With navigation.sections + navigation.instant, the sidebar
+   scrollwrap can occasionally end up clipped without scroll.
+   Force overflow-y:auto so it always works.
+   ============================================================ */
+
+.md-sidebar--primary .md-sidebar__scrollwrap {
+  overflow-y: auto !important;
+  /* Header is ~2.4rem; leave a little breathing room */
+  max-height: calc(100vh - 2.4rem);
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
+
+/* Subtle scrollbar styling on WebKit browsers */
+.md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar {
+  width: 6px;
+}
+.md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+.md-sidebar--primary .md-sidebar__scrollwrap::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Same for the right-hand TOC */
+.md-sidebar--secondary .md-sidebar__scrollwrap {
+  overflow-y: auto !important;
+  max-height: calc(100vh - 2.4rem);
+  scrollbar-width: thin;
+  scrollbar-color: #cbd5e1 transparent;
+}
