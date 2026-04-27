@@ -115,7 +115,25 @@ nav:
       - Projects:
         - DevBoard: lab8/projects/devboard.md
   - Docker and Security:
-    - Docker Hardened Images:
+    - Container Security:
+      - Overview: security/container-security/overview.md
+      - Setup: security/container-security/setup.md
+      - Surface the Problem: security/container-security/surface-the-problem.md
+      - "BP#1: Minimal Base Images": security/container-security/minimal-base-images.md
+      - "BP#2: Multi-Stage Builds": security/container-security/multi-stage-builds.md
+      - "BP#3: Non-Root User": security/container-security/non-root-user.md
+      - "BP#4: Read-Only + Drop Capabilities": security/container-security/readonly-capabilities.md
+      - "BP#6, #7, #8: Secrets and Limiting Tools": security/container-security/secrets-and-tools.md
+    - Docker Scout (Reactive Approach):
+      - Overview: security/scout-reactive/overview.md
+      - Continuous Scanning: security/scout-reactive/continuous-scanning.md
+      - CI Integration: security/scout-reactive/ci-integration.md
+      - Recommendations & Comparisons: security/scout-reactive/recommendations.md
+    - DHI (Pro-active Approach):
+      - Overview: security/dhi-proactive/overview.md
+      - Migrate to DHI: security/dhi-proactive/migration.md
+      - Attestations & Scanner Integration: security/dhi-proactive/attestations.md
+    - Docker Hardened Images (Reference):
       - Overview: lab9/dhi/overview.md
       - Getting Started: lab9/dhi/getting-started.md
       - Image Scanning: lab9/dhi/image-scanning.md

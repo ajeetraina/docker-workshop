@@ -1,0 +1,149 @@
+# Project information
+site_name: Docker workshop
+site_url: https://dockerworkshop.vercel.app
+site_author: Ajeet Singh Raina
+
+# Repository
+repo_name: docker-workshop
+repo_url: https://github.com/ajeetraina/docker-workshop
+edit_uri: edit/master/docs
+
+# Copyright
+copyright: 'Copyright © 2026 Docker'
+
+# Settings
+docs_dir: 'docs'
+site_dir: 'site'
+
+# Navigation
+nav:
+  - Getting Started: index.md
+  - Prerequisites: prereq/prereq.md
+  - Docker 101:
+    - Inner-Loop Development workflow:
+      - Inner Vs Outer Loop Development workflow: lab1/overview.md
+      - What is a container: lab1/what-is-a-container.md
+      - Running Postgres Containers: lab1/postgres.md
+    - Product catalog - A Sample Demo App:
+      - Overview: product-catalog/overview.md
+      - Tech stack: product-catalog/tech-stack.md
+      - Develop: product-catalog/develop.md
+      - Test: product-catalog/test.md
+      - Build: product-catalog/build.md
+      - Secure: product-catalog/secure.md
+  - Docker and AI:
+    - Docker Agent:
+      - Overview: lab10/overview.md
+      - Getting-started: lab10/getting-started.md
+      - Concept:
+        - Autonomy: lab10/concept/autonomy/autonomy.md
+        - Perception: lab10/concept/perception/perception.md
+        - Reasoning: lab10/concept/reasoning/reasoning.md
+        - Action: lab10/concept/action/action.md
+        - Goal-oriented: lab10/concept/goal/goal.md
+      - Tools:
+        - memory: lab10/tools/memory.md
+        - think: lab10/tools/think.md
+        - todo: lab10/tools/todo.md
+        - shell: lab10/tools/shell.md
+        - filesystem: lab10/tools/filesystem.md
+        - environment: lab10/tools/environment.md
+      - Integration:
+        - Docker Agent with Model Context Protocol: lab10/integration/mcp.md
+        - Docker Agent with Docker Model Runner: lab10/integration/dmr.md
+        - Docker Agent with RAG: lab10/integration/rag.md
+      - Projects:
+        - Single Agent Systems:
+          - A Simple Pirate Agent: lab10/projects/pirate.md
+        - Multi-agent Systems:
+          - Learning Agent with Alloy Models: lab10/projects/alloy.md
+          - Developer Agent with Tools: lab10/projects/dev.md
+          - Financial Analysis Team: lab10/projects/financial.md
+          - Docker Expert Team: lab10/projects/docker-expert.md
+          - Bug Investigator:
+            - Overview: lab10/projects/bug-investigator/bug-investigator.md
+          - Auto-Curator Agent:
+            - Overview: lab10/projects/auto-curator-agent/auto-curator-agent.md
+      - Sharing Agents: lab10/sharing.md
+    - Docker Model Runner:
+      - Overview: lab4/overview.md
+      - Getting Started: lab4/getting-started.md
+      - Projects:
+        - Product Catalog Chatbot: lab4/projects/catalog-chatbot.md
+        - GenAI Chatbot: lab4/projects/genai-chatbot.md
+    - MCP Catalog and Toolkit:
+      - Overview: lab5/overview.md
+      - Getting Started: lab5/getting-started.md
+      - Projects:
+        - Visual Chatbot:
+          - Getting Started: lab5/projects/visual-chatbot/visual-chatbot.md
+          - Running your First MCP Server: lab5/projects/visual-chatbot/mcp.md
+          - GitHub MCP Server and Claude Desktop: lab5/projects/GitHub-Claude.md
+          - Docker MCP Server and Gordon: lab5/projects/Docker-CLI-With-Gordon.md
+          - Docker MCP Server and VS Code: lab5/projects/Docker-CLI-With-VSCode.md
+          - GitHub MCP Server and Gordon: lab5/projects/GitHub-MCP-Gordon.md
+          - Kubernetes MCP Server and Claude: lab5/projects/Kubernetes-MCP.md
+          - Slack MCP Server and Claude: lab5/projects/Slack-MCP-With-Claude.md
+    - Agentic Compose:
+      - Overview: lab6/overview.md
+      - Getting Started: lab6/getting-started.md
+      - Projects:
+        - DevDuck:
+          - Overview: lab6/projects/devduck/overview.md
+          - Prerequisite: lab6/projects/devduck/prereq.md
+          - Getting Started: lab6/projects/devduck/getting-started.md
+          - Local Agent Interaction: lab6/projects/devduck/local-agent.md
+          - Cerebras Interaction: lab6/projects/devduck/cerebras-interaction.md
+        - Agentic Product Catalog: lab6/projects/agentic-catalog.md
+        - Hackathon Recommender: lab6/projects/hackathon-recommender.md
+        - A2A Multi-Agent Fact Checker: lab6/projects/a2a-multi-agent-fact-checker.md
+    - Docker Sandboxes:
+      - Overview: lab8/overview.md
+      - Getting Started: lab8/getting-started.md
+      - Concepts:
+        - Why Agents Need Governance: lab8/projects/why-governance.md
+      - Hands-on Modules:
+        - Your First Sandbox: lab8/projects/first-sandbox.md
+        - The Isolation Proof: lab8/projects/isolation-proof.md
+        - Reviewing Agent Changes: lab8/projects/reviewing-agent-changes.md
+        - Secrets Without Exposure: lab8/projects/secrets.md
+        - Network Policy: lab8/projects/network-policy.md
+        - Branch Mode: lab8/projects/branch-mode.md
+        - Parallel Agents: lab8/projects/parallel-agents.md
+        - Running Open-Source Models: lab8/projects/local-models.md
+        - AI Governance at Scale: lab8/projects/governance-summary.md
+      - Projects:
+        - DevBoard: lab8/projects/devboard.md
+  - Docker and Security:
+    - Docker Hardened Images:
+      - Overview: lab9/dhi/overview.md
+      - Getting Started: lab9/dhi/getting-started.md
+      - Image Scanning: lab9/dhi/image-scanning.md
+      - Switch to DHI: lab9/dhi/switch-to-dhi.md
+      - Compliance & Attestations: lab9/dhi/compliance.md
+  - Docker Offload:
+    - Overview: lab7/overview.md
+    - Getting Started: lab7/getting-started.md
+
+theme:
+  name: material
+  language: en
+  features:
+    - navigation.sections
+    - navigation.instant
+    - navigation.top
+    - search.highlight
+    - search.share
+  palette:
+    primary: blue
+    accent: blue
+  font:
+    text: Roboto
+    code: Roboto Mono
+  favicon: assets/images/favicon.png
+  logo: 'images/docker-logo-white.svg'
+
+extra_css:
+  - css/styles.css
+  - css/dark-mode.css
+  - css/sidebar.css
