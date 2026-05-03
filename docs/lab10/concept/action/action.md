@@ -1,4 +1,4 @@
-# Action in cagent — Tool Execution + Sub-Agent Delegation
+# Action in Docker Agent — Tool Execution + Sub-Agent Delegation
 
 Action is **how the agent changes its environment**. In cagent, action has two forms: calling tools directly (filesystem, shell, MCP) and delegating tasks to specialized sub-agents.
 
