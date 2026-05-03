@@ -1,7 +1,7 @@
 
-## What is cagent?
+## What is Docker Agent?
 
-[Docker cagent](https://github.com/docker/cagent) is an open-source, multi-agent runtime designed to simplify the development and deployment of autonomous AI systems. Unlike traditional chatbots, this tool allows developers to orchestrate specialized teams of agents that can plan, reason, and execute complex tasks through a declarative YAML configuration. 
+[Docker Agent](https://github.com/docker/docker-agent) is an open-source, multi-agent runtime designed to simplify the development and deployment of autonomous AI systems. Unlike traditional chatbots, this tool allows developers to orchestrate specialized teams of agents that can plan, reason, and execute complex tasks through a declarative YAML configuration. 
 
 ## What problem it solves?
 
@@ -16,15 +16,15 @@ AI agents today work alone. They can't collaborate or specialize. This creates s
 
 ## The Solution
 
-Docker introduces cagent - a multi-agent orchestration platform that solves these problems through:
+Docker introduces Docker Agent - a multi-agent orchestration platform that solves these problems through:
 
 - **Hierarchical Agent Teams**: Root agents coordinate with specialized sub-agents. Each agent has specific expertise and tools.
 - **Unified Tool Ecosystem**: All agents share the same secure tool infrastructure. Built-in tools plus MCP server integration.
 - **Enterprise Security**: Container isolation for tool execution. Proper secret management and multi-tenant support.
 
-cagent enables you to create intelligent agent teams where each agent has specialized knowledge, tools, and capabilities. Think of it as building a virtual team of AI experts that collaborate to solve complex problems.
+Docker Agent enables you to create intelligent agent teams where each agent has specialized knowledge, tools, and capabilities. Think of it as building a virtual team of AI experts that collaborate to solve complex problems.
 
-Built in Go by Docker, cagent brings enterprise-grade security and scalability to multi-agent AI systems.
+Built in Go by Docker, Docker Agent brings enterprise-grade security and scalability to multi-agent AI systems.
 
 ## Key Features
 
@@ -38,7 +38,7 @@ Built in Go by Docker, cagent brings enterprise-grade security and scalability t
 
 # Who's This For
 
-- AI Application Developers: Build sophisticated AI applications with specialized agent teams. Focus on business logic while cagent handles coordination.
+- AI Application Developers: Build sophisticated AI applications with specialized agent teams. Focus on business logic while Docker Agent handles coordination.
 - Enterprise Development Teams: Deploy secure, scalable AI agent systems. Centralized management with proper access controls.
 - DevOps Engineers: Container-native AI agent platform. Integrates with existing Docker workflows and Kubernetes deployments.
 - AI Researchers: Experiment with multi-agent architectures. Easy configuration and tool integration for research projects.
