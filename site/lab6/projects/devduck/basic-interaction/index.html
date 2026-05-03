@@ -10,31 +10,27 @@
         <meta name="author" content="Ajeet Singh Raina">
       
       
-        <link rel="canonical" href="https://dockerworkshop.vercel.app/lab10/sharing/">
+        <link rel="canonical" href="https://dockerworkshop.vercel.app/lab6/projects/devduck/basic-interaction/">
       
       
-        <link rel="prev" href="../projects/auto-curator-agent/auto-curator-agent/">
-      
-      
-        <link rel="next" href="../../lab4/overview/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Sharing Agents - Docker workshop</title>
+        <title>Basic Multi-Agent Interaction - Docker workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,13 +49,13 @@
       
     
     
-      <link rel="stylesheet" href="../../css/styles.css">
+      <link rel="stylesheet" href="../../../../css/styles.css">
     
-      <link rel="stylesheet" href="../../css/dark-mode.css">
+      <link rel="stylesheet" href="../../../../css/dark-mode.css">
     
-      <link rel="stylesheet" href="../../css/sidebar.css">
+      <link rel="stylesheet" href="../../../../css/sidebar.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -81,6 +77,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#basic-multi-agent-interaction" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -93,9 +94,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../../../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -112,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sharing Agents
+              Basic Multi-Agent Interaction
             
           </span>
         </div>
@@ -207,9 +208,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../../../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     Docker workshop
@@ -236,7 +237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -263,7 +264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../prereq/prereq/" class="md-nav__link">
+      <a href="../../../../prereq/prereq/" class="md-nav__link">
         
   
   
@@ -391,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/overview/" class="md-nav__link">
+      <a href="../../../../lab1/overview/" class="md-nav__link">
         
   
   
@@ -419,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/what-is-a-container/" class="md-nav__link">
+      <a href="../../../../lab1/what-is-a-container/" class="md-nav__link">
         
   
   
@@ -447,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/postgres/" class="md-nav__link">
+      <a href="../../../../lab1/postgres/" class="md-nav__link">
         
   
   
@@ -532,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/overview/" class="md-nav__link">
+      <a href="../../../../product-catalog/overview/" class="md-nav__link">
         
   
   
@@ -560,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/tech-stack/" class="md-nav__link">
+      <a href="../../../../product-catalog/tech-stack/" class="md-nav__link">
         
   
   
@@ -588,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/develop/" class="md-nav__link">
+      <a href="../../../../product-catalog/develop/" class="md-nav__link">
         
   
   
@@ -616,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/test/" class="md-nav__link">
+      <a href="../../../../product-catalog/test/" class="md-nav__link">
         
   
   
@@ -644,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/build/" class="md-nav__link">
+      <a href="../../../../product-catalog/build/" class="md-nav__link">
         
   
   
@@ -672,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/secure/" class="md-nav__link">
+      <a href="../../../../product-catalog/secure/" class="md-nav__link">
         
   
   
@@ -712,8 +713,6 @@
       
   
   
-    
-  
   
   
     
@@ -726,11 +725,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -751,7 +750,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -766,8 +765,6 @@
                 
   
   
-    
-  
   
   
     
@@ -777,11 +774,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
@@ -802,7 +799,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -820,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../../../lab10/overview/" class="md-nav__link">
         
   
   
@@ -848,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
+      <a href="../../../../lab10/getting-started/" class="md-nav__link">
         
   
   
@@ -925,7 +922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/autonomy/autonomy/" class="md-nav__link">
+      <a href="../../../../lab10/concept/autonomy/autonomy/" class="md-nav__link">
         
   
   
@@ -953,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/perception/perception/" class="md-nav__link">
+      <a href="../../../../lab10/concept/perception/perception/" class="md-nav__link">
         
   
   
@@ -981,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/reasoning/reasoning/" class="md-nav__link">
+      <a href="../../../../lab10/concept/reasoning/reasoning/" class="md-nav__link">
         
   
   
@@ -1009,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/action/action/" class="md-nav__link">
+      <a href="../../../../lab10/concept/action/action/" class="md-nav__link">
         
   
   
@@ -1037,7 +1034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/goal/goal/" class="md-nav__link">
+      <a href="../../../../lab10/concept/goal/goal/" class="md-nav__link">
         
   
   
@@ -1122,7 +1119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/memory/" class="md-nav__link">
+      <a href="../../../../lab10/tools/memory/" class="md-nav__link">
         
   
   
@@ -1150,7 +1147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/think/" class="md-nav__link">
+      <a href="../../../../lab10/tools/think/" class="md-nav__link">
         
   
   
@@ -1178,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/todo/" class="md-nav__link">
+      <a href="../../../../lab10/tools/todo/" class="md-nav__link">
         
   
   
@@ -1206,7 +1203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/shell/" class="md-nav__link">
+      <a href="../../../../lab10/tools/shell/" class="md-nav__link">
         
   
   
@@ -1234,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/filesystem/" class="md-nav__link">
+      <a href="../../../../lab10/tools/filesystem/" class="md-nav__link">
         
   
   
@@ -1262,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/environment/" class="md-nav__link">
+      <a href="../../../../lab10/tools/environment/" class="md-nav__link">
         
   
   
@@ -1347,7 +1344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/mcp/" class="md-nav__link">
+      <a href="../../../../lab10/integration/mcp/" class="md-nav__link">
         
   
   
@@ -1375,7 +1372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/dmr/" class="md-nav__link">
+      <a href="../../../../lab10/integration/dmr/" class="md-nav__link">
         
   
   
@@ -1403,7 +1400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/rag/" class="md-nav__link">
+      <a href="../../../../lab10/integration/rag/" class="md-nav__link">
         
   
   
@@ -1537,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/pirate/" class="md-nav__link">
+      <a href="../../../../lab10/projects/pirate/" class="md-nav__link">
         
   
   
@@ -1622,7 +1619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/alloy/" class="md-nav__link">
+      <a href="../../../../lab10/projects/alloy/" class="md-nav__link">
         
   
   
@@ -1650,7 +1647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/dev/" class="md-nav__link">
+      <a href="../../../../lab10/projects/dev/" class="md-nav__link">
         
   
   
@@ -1678,7 +1675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/financial/" class="md-nav__link">
+      <a href="../../../../lab10/projects/financial/" class="md-nav__link">
         
   
   
@@ -1706,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/docker-expert/" class="md-nav__link">
+      <a href="../../../../lab10/projects/docker-expert/" class="md-nav__link">
         
   
   
@@ -1783,7 +1780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/bug-investigator/bug-investigator/" class="md-nav__link">
+      <a href="../../../../lab10/projects/bug-investigator/bug-investigator/" class="md-nav__link">
         
   
   
@@ -1868,7 +1865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/auto-curator-agent/auto-curator-agent/" class="md-nav__link">
+      <a href="../../../../lab10/projects/auto-curator-agent/auto-curator-agent/" class="md-nav__link">
         
   
   
@@ -1917,17 +1914,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../lab10/sharing/" class="md-nav__link">
         
   
   
@@ -1943,7 +1933,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2013,7 +2002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/overview/" class="md-nav__link">
+      <a href="../../../../lab4/overview/" class="md-nav__link">
         
   
   
@@ -2041,7 +2030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/getting-started/" class="md-nav__link">
+      <a href="../../../../lab4/getting-started/" class="md-nav__link">
         
   
   
@@ -2118,7 +2107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/projects/catalog-chatbot/" class="md-nav__link">
+      <a href="../../../../lab4/projects/catalog-chatbot/" class="md-nav__link">
         
   
   
@@ -2146,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/projects/genai-chatbot/" class="md-nav__link">
+      <a href="../../../../lab4/projects/genai-chatbot/" class="md-nav__link">
         
   
   
@@ -2239,7 +2228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/overview/" class="md-nav__link">
+      <a href="../../../../lab5/overview/" class="md-nav__link">
         
   
   
@@ -2267,7 +2256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/getting-started/" class="md-nav__link">
+      <a href="../../../../lab5/getting-started/" class="md-nav__link">
         
   
   
@@ -2393,7 +2382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
+      <a href="../../../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
         
   
   
@@ -2421,7 +2410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
+      <a href="../../../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
         
   
   
@@ -2449,7 +2438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/GitHub-Claude/" class="md-nav__link">
+      <a href="../../../../lab5/projects/GitHub-Claude/" class="md-nav__link">
         
   
   
@@ -2477,7 +2466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
+      <a href="../../../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
         
   
   
@@ -2505,7 +2494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
+      <a href="../../../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
         
   
   
@@ -2533,7 +2522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
+      <a href="../../../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
         
   
   
@@ -2561,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
+      <a href="../../../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
         
   
   
@@ -2589,7 +2578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
+      <a href="../../../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
         
   
   
@@ -2690,7 +2679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/overview/" class="md-nav__link">
+      <a href="../../../overview/" class="md-nav__link">
         
   
   
@@ -2718,7 +2707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/getting-started/" class="md-nav__link">
+      <a href="../../../getting-started/" class="md-nav__link">
         
   
   
@@ -2844,7 +2833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -2872,7 +2861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/prereq/" class="md-nav__link">
+      <a href="../prereq/" class="md-nav__link">
         
   
   
@@ -2900,7 +2889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/getting-started/" class="md-nav__link">
+      <a href="../getting-started/" class="md-nav__link">
         
   
   
@@ -2928,7 +2917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/local-agent/" class="md-nav__link">
+      <a href="../local-agent/" class="md-nav__link">
         
   
   
@@ -2956,7 +2945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/cerebras-interaction/" class="md-nav__link">
+      <a href="../cerebras-interaction/" class="md-nav__link">
         
   
   
@@ -2992,7 +2981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/agentic-catalog/" class="md-nav__link">
+      <a href="../../agentic-catalog/" class="md-nav__link">
         
   
   
@@ -3020,7 +3009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/hackathon-recommender/" class="md-nav__link">
+      <a href="../../hackathon-recommender/" class="md-nav__link">
         
   
   
@@ -3048,7 +3037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
+      <a href="../../a2a-multi-agent-fact-checker/" class="md-nav__link">
         
   
   
@@ -3141,7 +3130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/overview/" class="md-nav__link">
+      <a href="../../../../lab8/overview/" class="md-nav__link">
         
   
   
@@ -3169,7 +3158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/getting-started/" class="md-nav__link">
+      <a href="../../../../lab8/getting-started/" class="md-nav__link">
         
   
   
@@ -3246,7 +3235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/why-governance/" class="md-nav__link">
+      <a href="../../../../lab8/projects/why-governance/" class="md-nav__link">
         
   
   
@@ -3331,7 +3320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/first-sandbox/" class="md-nav__link">
+      <a href="../../../../lab8/projects/first-sandbox/" class="md-nav__link">
         
   
   
@@ -3359,7 +3348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/isolation-proof/" class="md-nav__link">
+      <a href="../../../../lab8/projects/isolation-proof/" class="md-nav__link">
         
   
   
@@ -3387,7 +3376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/reviewing-agent-changes/" class="md-nav__link">
+      <a href="../../../../lab8/projects/reviewing-agent-changes/" class="md-nav__link">
         
   
   
@@ -3415,7 +3404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/secrets/" class="md-nav__link">
+      <a href="../../../../lab8/projects/secrets/" class="md-nav__link">
         
   
   
@@ -3443,7 +3432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/network-policy/" class="md-nav__link">
+      <a href="../../../../lab8/projects/network-policy/" class="md-nav__link">
         
   
   
@@ -3471,7 +3460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/branch-mode/" class="md-nav__link">
+      <a href="../../../../lab8/projects/branch-mode/" class="md-nav__link">
         
   
   
@@ -3499,7 +3488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/parallel-agents/" class="md-nav__link">
+      <a href="../../../../lab8/projects/parallel-agents/" class="md-nav__link">
         
   
   
@@ -3527,7 +3516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/local-models/" class="md-nav__link">
+      <a href="../../../../lab8/projects/local-models/" class="md-nav__link">
         
   
   
@@ -3555,7 +3544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/governance-summary/" class="md-nav__link">
+      <a href="../../../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
   
@@ -3640,7 +3629,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/devboard/" class="md-nav__link">
+      <a href="../../../../lab8/projects/devboard/" class="md-nav__link">
         
   
   
@@ -3792,7 +3781,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/overview/" class="md-nav__link">
+      <a href="../../../../security/container-security/overview/" class="md-nav__link">
         
   
   
@@ -3820,7 +3809,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/setup/" class="md-nav__link">
+      <a href="../../../../security/container-security/setup/" class="md-nav__link">
         
   
   
@@ -3848,7 +3837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/surface-the-problem/" class="md-nav__link">
+      <a href="../../../../security/container-security/surface-the-problem/" class="md-nav__link">
         
   
   
@@ -3876,7 +3865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/minimal-base-images/" class="md-nav__link">
+      <a href="../../../../security/container-security/minimal-base-images/" class="md-nav__link">
         
   
   
@@ -3904,7 +3893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/multi-stage-builds/" class="md-nav__link">
+      <a href="../../../../security/container-security/multi-stage-builds/" class="md-nav__link">
         
   
   
@@ -3932,7 +3921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/non-root-user/" class="md-nav__link">
+      <a href="../../../../security/container-security/non-root-user/" class="md-nav__link">
         
   
   
@@ -3960,7 +3949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/readonly-capabilities/" class="md-nav__link">
+      <a href="../../../../security/container-security/readonly-capabilities/" class="md-nav__link">
         
   
   
@@ -3988,7 +3977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/secrets-and-tools/" class="md-nav__link">
+      <a href="../../../../security/container-security/secrets-and-tools/" class="md-nav__link">
         
   
   
@@ -4073,7 +4062,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/overview/" class="md-nav__link">
+      <a href="../../../../security/scout-reactive/overview/" class="md-nav__link">
         
   
   
@@ -4101,7 +4090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/continuous-scanning/" class="md-nav__link">
+      <a href="../../../../security/scout-reactive/continuous-scanning/" class="md-nav__link">
         
   
   
@@ -4129,7 +4118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/ci-integration/" class="md-nav__link">
+      <a href="../../../../security/scout-reactive/ci-integration/" class="md-nav__link">
         
   
   
@@ -4157,7 +4146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/recommendations/" class="md-nav__link">
+      <a href="../../../../security/scout-reactive/recommendations/" class="md-nav__link">
         
   
   
@@ -4242,7 +4231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/overview/" class="md-nav__link">
+      <a href="../../../../security/dhi-proactive/overview/" class="md-nav__link">
         
   
   
@@ -4270,7 +4259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/migration/" class="md-nav__link">
+      <a href="../../../../security/dhi-proactive/migration/" class="md-nav__link">
         
   
   
@@ -4298,7 +4287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/attestations/" class="md-nav__link">
+      <a href="../../../../security/dhi-proactive/attestations/" class="md-nav__link">
         
   
   
@@ -4383,7 +4372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/overview/" class="md-nav__link">
+      <a href="../../../../lab9/dhi/overview/" class="md-nav__link">
         
   
   
@@ -4411,7 +4400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/getting-started/" class="md-nav__link">
+      <a href="../../../../lab9/dhi/getting-started/" class="md-nav__link">
         
   
   
@@ -4439,7 +4428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/image-scanning/" class="md-nav__link">
+      <a href="../../../../lab9/dhi/image-scanning/" class="md-nav__link">
         
   
   
@@ -4467,7 +4456,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/switch-to-dhi/" class="md-nav__link">
+      <a href="../../../../lab9/dhi/switch-to-dhi/" class="md-nav__link">
         
   
   
@@ -4495,7 +4484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/compliance/" class="md-nav__link">
+      <a href="../../../../lab9/dhi/compliance/" class="md-nav__link">
         
   
   
@@ -4590,7 +4579,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab7/overview/" class="md-nav__link">
+      <a href="../../../../lab7/overview/" class="md-nav__link">
         
   
   
@@ -4618,7 +4607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab7/getting-started/" class="md-nav__link">
+      <a href="../../../../lab7/getting-started/" class="md-nav__link">
         
   
   
@@ -4663,6 +4652,200 @@
   
   
   
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#understanding-the-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Understanding the Interface
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Understanding the Interface">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#web-interface-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🌐 Web Interface Overview
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interface-features" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🔍 Interface Features
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="🔍 Interface Features">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#message-types" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Message Types
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#agent-status-indicators" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Agent Status Indicators
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#first-interactions" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        First Interactions
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="First Interactions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#basic-conversation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🤖 Basic Conversation
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-1-introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 1: Introduction
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 1: Introduction">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-2-agent-awareness" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 2: Agent Awareness
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Exercise 2: Agent Awareness">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#observation_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Observation
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understanding-agent-routing" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        🧠 Understanding Agent Routing
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#exercise-3-simple-vs-complex-queries" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Exercise 3: Simple vs Complex Queries
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#next-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Next Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
   
 </nav>
                   </div>
@@ -4682,20 +4865,101 @@
   
 
 
-  <h1>Sharing Agents</h1>
+<h1 id="basic-multi-agent-interaction">Basic Multi-Agent Interaction</h1>
+<p>Now that your system is properly deployed and configured, it's time to explore how the multi-agent system works in practice. You'll learn to interact with DevDuck and understand how it coordinates between different agents to provide intelligent responses.</p>
+<h2 id="understanding-the-interface">Understanding the Interface</h2>
+<h3 id="web-interface-overview">🌐 Web Interface Overview</h3>
+<p>Let's start by familiarizing yourself with the DevDuck interface:</p>
+<ol>
+<li>
+<p><strong>Open the Interface</strong>: Navigate to <a href="http://localhost:8000/dev-ui/?app=devduck">http://localhost:8000/dev-ui/?app=devduck</a></p>
+</li>
+<li>
+<p><strong>Interface Components</strong>:</p>
+</li>
+<li><strong>Chat Area</strong>: Main conversation interface</li>
+<li><strong>Input Field</strong>: Where you type your messages</li>
+<li><strong>Agent Indicator</strong>: Shows which agents are active</li>
+<li><strong>System Status</strong>: Connection and health indicators</li>
+</ol>
+<h3 id="interface-features">🔍 Interface Features</h3>
+<p>Explore these key features:</p>
+<h4 id="message-types">Message Types</h4>
+<p>The interface supports various message formats:
+- <strong>Text Messages</strong>: Standard conversation
+- <strong>Code Blocks</strong>: Formatted code snippets
+- <strong>System Messages</strong>: Agent status updates
+- <strong>Error Messages</strong>: Troubleshooting information</p>
+<h4 id="agent-status-indicators">Agent Status Indicators</h4>
+<p>Look for these visual cues:
+- 🟢 <strong>Green</strong>: Agent is online and responding
+- 🟡 <strong>Yellow</strong>: Agent is processing
+- 🔴 <strong>Red</strong>: Agent is unavailable or erroring
+- 🔵 <strong>Blue</strong>: Agent is initializing</p>
+<h2 id="first-interactions">First Interactions</h2>
+<h3 id="basic-conversation">🤖 Basic Conversation</h3>
+<p>Let's start with simple interactions to test the system:</p>
+<h3 id="exercise-1-introduction">Exercise 1: Introduction</h3>
+<p><strong>Try this conversation:</strong></p>
+<pre><code>You: Hello DevDuck! Can you introduce yourself?
+</code></pre>
+<p><strong>Expected Response Pattern:</strong>
+- DevDuck will introduce itself as a multi-agent system
+- It should mention its capabilities and available agents
+- The response might route to the Local Agent for a quick reply</p>
+<h4 id="observation">Observation</h4>
+<p>Notice the tabs available - Trace, Events, State, Artifacts, Sessions, Eval - this gives developers comprehensive insight into agent behavior. 
+You can track not just what the agent did, but how long each step took, what state changes occurred, and what artifacts were created. </p>
+<p>The Session ID at the top shows this is running in an isolated session, and the dropdown showing "devduck" indicates you can switch between different agent configurations.</p>
+<p>This interface transforms AI agent development from a "black box" experience into transparent, debuggable system. Wonder "Why did the agent make that decision?" or "What's taking so long?", they can use this exact interface to trace through every step, measure performance bottlenecks, and understand the agent's reasoning process. This is what makes DevDuck not just a demo, but a serious development platform for building production AI agents.</p>
+<h3 id="exercise-2-agent-awareness">Exercise 2: Agent Awareness</h3>
+<p><strong>Ask about the agents:</strong></p>
+<pre><code>You: What agents are available in this system?
+</code></pre>
+<p><strong>Expected Response:</strong>
+DevDuck should explain:
+- Local Agent for quick processing
+- Cerebras Agent for complex analysis
+- Its own role as orchestrator
+- How it decides which agent to use</p>
+<h4 id="observation_1">Observation</h4>
+<ul>
+<li>Notice how the devduck_agent is acting as the orchestrator - it can describe the other agents and route tasks appropriately.</li>
+<li>This confirms the architecture where the Local Agent  makes routing decisions about when to delegate to the high-performance Cerebras Agent for complex tasks.</li>
+<li>Tracing the Decision Process: The left panel shows this simple question took ~12.3 seconds to process, with most time spent in agent_run [devduck_agent] and the call_llm.</li>
+<li>This demonstrates the intelligent routing logic - even answering "what agents are available" requires the main agent to think through the system architecture and provide contextual information about each agent's capabilities.
+-It's fascinating to see how they can trace every decision and understand exactly how the multi-agent system coordinates to provide responses.</li>
+<li>This is the "agentic loop" with full transparency that makes DevDuck so powerful for development!Retry</li>
+</ul>
+<h3 id="understanding-agent-routing">🧠 Understanding Agent Routing</h3>
+<p>DevDuck makes intelligent decisions about which agent should handle each request. Let's explore this:</p>
+<h3 id="exercise-3-simple-vs-complex-queries">Exercise 3: Simple vs Complex Queries</h3>
+<p><strong>Simple Query (likely routed to Local Agent):</strong></p>
+<pre><code>You: What is Python?
+</code></pre>
+<p><strong>Complex Query (likely routed to Cerebras Agent):</strong></p>
+<pre><code>You: Can you analyze this algorithm and suggest optimizations?
 
-<p>By now you should have a couple of uselesss agents, and maybe one that already does something useful. Wouldn't it be nice if we could share agents with others?</p>
-<p>Sharing agents with Docker Agent should be extermely simple, you can push and pull agents to any OCI registry.</p>
-<p>Exercice: push your developer agent, ask your neighour to pull and run it. Play around</p>
-<p>Here's how to push an agent:</p>
-<pre><code>$ docker agent push developer.yaml your-account/cagent-developer
+def fibonacci(n):
+    if n &lt;= 1:
+        return n
+    return fibonacci(n-1) + fibonacci(n-2)
 </code></pre>
-<p>You can then pull that agent:</p>
-<pre><code>$ docker agent pull your-account/cagent-developer
-</code></pre>
-<p>Or you might want to directly run it:</p>
-<pre><code>$ docker agent run your-account/cagent-developer
-</code></pre>
+<p><strong>Observation Points:</strong>
+- Notice response time differences
+- Check which agent handles each request in the logs
+- Compare the depth and quality of responses</p>
+<p><strong>Controlling the agents</strong></p>
+<p>You: Cerebras, can you analyze this algorithm and suggest optimizations?</p>
+<p><strong>Observation Points:</strong></p>
+<ul>
+<li>Try to see if explicit agent targeting changes the routing behavior!</li>
+<li>By prefixing with "Cerebras," you overrode the automatic routing logic and forced the system to use the high-performance agent.</li>
+<li>This is exactly what you need to understand - they can control which agent handles their requests.</li>
+</ul>
+<h2 id="next-steps">Next Steps</h2>
+<p>In the next section, you'll dive deeper into local agent capabilities and learn how to optimize local processing for specific tasks.</p>
+<p>Ready to explore local agent specialization? Let's continue! 🚀</p>
 
 
 
@@ -4755,10 +5019,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.instant", "navigation.top", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.instant", "navigation.top", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

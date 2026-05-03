@@ -5017,12 +5017,12 @@
 <h3 id="using-homebrew-on-mac">Using Homebrew on Mac</h3>
 <pre><code>brew install go-task/tap/go-task
 brew upgrade go-task/tap/go-task
-brew install cagent
+brew install docker-agent
 </code></pre>
 <h3 id="using-git">Using Git</h3>
 <pre><code># Clone and build
-git clone https://github.com/docker/cagent.git
-cd cagent
+git clone https://github.com/docker/docker-agent.git
+cd docker-agent
 task build-web  # Build React frontend first
 task build      # Build Go binary
 task link       # Optional: create symlink to ~/bin
@@ -5049,7 +5049,7 @@ export GOOGLE_API_KEY=your_api_key_here
 </code></pre>
 <p>Ensure that you have already export OPENAI_API_KEY.</p>
 <p>Run it.</p>
-<pre><code>$ cagent run my-first-agent.yaml
+<pre><code>$ docker agent run my-first-agent.yaml
 
 </code></pre>
 <h3 id="prompt-1">Prompt 1:</h3>
@@ -5060,7 +5060,7 @@ export GOOGLE_API_KEY=your_api_key_here
 
 Hello! How can I assist you today?
 </code></pre>
-<p>🎉 Your cagent is now running successfully! </p>
+<p>🎉 Your Docker Agent is now running successfully! </p>
 <ul>
 <li>✅ Connected to OpenAI API</li>
 <li>✅ Loaded the root agent from my-agent.yaml</li>

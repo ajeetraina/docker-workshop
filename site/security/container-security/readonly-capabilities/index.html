@@ -10,31 +10,31 @@
         <meta name="author" content="Ajeet Singh Raina">
       
       
-        <link rel="canonical" href="https://dockerworkshop.vercel.app/lab10/sharing/">
+        <link rel="canonical" href="https://dockerworkshop.vercel.app/security/container-security/readonly-capabilities/">
       
       
-        <link rel="prev" href="../projects/auto-curator-agent/auto-curator-agent/">
+        <link rel="prev" href="../non-root-user/">
       
       
-        <link rel="next" href="../../lab4/overview/">
+        <link rel="next" href="../secrets-and-tools/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Sharing Agents - Docker workshop</title>
+        <title>BP#4: Read-Only + Drop Capabilities - Docker workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,13 +53,13 @@
       
     
     
-      <link rel="stylesheet" href="../../css/styles.css">
+      <link rel="stylesheet" href="../../../css/styles.css">
     
-      <link rel="stylesheet" href="../../css/dark-mode.css">
+      <link rel="stylesheet" href="../../../css/dark-mode.css">
     
-      <link rel="stylesheet" href="../../css/sidebar.css">
+      <link rel="stylesheet" href="../../../css/sidebar.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -81,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#best-practice-4-read-only-filesystem-drop-capabilities" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -93,9 +98,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -112,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sharing Agents
+              BP#4: Read-Only + Drop Capabilities
             
           </span>
         </div>
@@ -207,9 +212,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     Docker workshop
@@ -236,7 +241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -263,7 +268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../prereq/prereq/" class="md-nav__link">
+      <a href="../../../prereq/prereq/" class="md-nav__link">
         
   
   
@@ -391,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/overview/" class="md-nav__link">
+      <a href="../../../lab1/overview/" class="md-nav__link">
         
   
   
@@ -419,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/what-is-a-container/" class="md-nav__link">
+      <a href="../../../lab1/what-is-a-container/" class="md-nav__link">
         
   
   
@@ -447,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/postgres/" class="md-nav__link">
+      <a href="../../../lab1/postgres/" class="md-nav__link">
         
   
   
@@ -532,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/overview/" class="md-nav__link">
+      <a href="../../../product-catalog/overview/" class="md-nav__link">
         
   
   
@@ -560,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/tech-stack/" class="md-nav__link">
+      <a href="../../../product-catalog/tech-stack/" class="md-nav__link">
         
   
   
@@ -588,7 +593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/develop/" class="md-nav__link">
+      <a href="../../../product-catalog/develop/" class="md-nav__link">
         
   
   
@@ -616,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/test/" class="md-nav__link">
+      <a href="../../../product-catalog/test/" class="md-nav__link">
         
   
   
@@ -644,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/build/" class="md-nav__link">
+      <a href="../../../product-catalog/build/" class="md-nav__link">
         
   
   
@@ -672,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/secure/" class="md-nav__link">
+      <a href="../../../product-catalog/secure/" class="md-nav__link">
         
   
   
@@ -712,8 +717,6 @@
       
   
   
-    
-  
   
   
     
@@ -726,11 +729,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -751,7 +754,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -766,8 +769,6 @@
                 
   
   
-    
-  
   
   
     
@@ -777,11 +778,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
@@ -802,7 +803,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -820,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../../lab10/overview/" class="md-nav__link">
         
   
   
@@ -848,7 +849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
+      <a href="../../../lab10/getting-started/" class="md-nav__link">
         
   
   
@@ -925,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/autonomy/autonomy/" class="md-nav__link">
+      <a href="../../../lab10/concept/autonomy/autonomy/" class="md-nav__link">
         
   
   
@@ -953,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/perception/perception/" class="md-nav__link">
+      <a href="../../../lab10/concept/perception/perception/" class="md-nav__link">
         
   
   
@@ -981,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/reasoning/reasoning/" class="md-nav__link">
+      <a href="../../../lab10/concept/reasoning/reasoning/" class="md-nav__link">
         
   
   
@@ -1009,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/action/action/" class="md-nav__link">
+      <a href="../../../lab10/concept/action/action/" class="md-nav__link">
         
   
   
@@ -1037,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/goal/goal/" class="md-nav__link">
+      <a href="../../../lab10/concept/goal/goal/" class="md-nav__link">
         
   
   
@@ -1122,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/memory/" class="md-nav__link">
+      <a href="../../../lab10/tools/memory/" class="md-nav__link">
         
   
   
@@ -1150,7 +1151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/think/" class="md-nav__link">
+      <a href="../../../lab10/tools/think/" class="md-nav__link">
         
   
   
@@ -1178,7 +1179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/todo/" class="md-nav__link">
+      <a href="../../../lab10/tools/todo/" class="md-nav__link">
         
   
   
@@ -1206,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/shell/" class="md-nav__link">
+      <a href="../../../lab10/tools/shell/" class="md-nav__link">
         
   
   
@@ -1234,7 +1235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/filesystem/" class="md-nav__link">
+      <a href="../../../lab10/tools/filesystem/" class="md-nav__link">
         
   
   
@@ -1262,7 +1263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/environment/" class="md-nav__link">
+      <a href="../../../lab10/tools/environment/" class="md-nav__link">
         
   
   
@@ -1347,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/mcp/" class="md-nav__link">
+      <a href="../../../lab10/integration/mcp/" class="md-nav__link">
         
   
   
@@ -1375,7 +1376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/dmr/" class="md-nav__link">
+      <a href="../../../lab10/integration/dmr/" class="md-nav__link">
         
   
   
@@ -1403,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/rag/" class="md-nav__link">
+      <a href="../../../lab10/integration/rag/" class="md-nav__link">
         
   
   
@@ -1537,7 +1538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/pirate/" class="md-nav__link">
+      <a href="../../../lab10/projects/pirate/" class="md-nav__link">
         
   
   
@@ -1622,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/alloy/" class="md-nav__link">
+      <a href="../../../lab10/projects/alloy/" class="md-nav__link">
         
   
   
@@ -1650,7 +1651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/dev/" class="md-nav__link">
+      <a href="../../../lab10/projects/dev/" class="md-nav__link">
         
   
   
@@ -1678,7 +1679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/financial/" class="md-nav__link">
+      <a href="../../../lab10/projects/financial/" class="md-nav__link">
         
   
   
@@ -1706,7 +1707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/docker-expert/" class="md-nav__link">
+      <a href="../../../lab10/projects/docker-expert/" class="md-nav__link">
         
   
   
@@ -1783,7 +1784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/bug-investigator/bug-investigator/" class="md-nav__link">
+      <a href="../../../lab10/projects/bug-investigator/bug-investigator/" class="md-nav__link">
         
   
   
@@ -1868,7 +1869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/auto-curator-agent/auto-curator-agent/" class="md-nav__link">
+      <a href="../../../lab10/projects/auto-curator-agent/auto-curator-agent/" class="md-nav__link">
         
   
   
@@ -1917,17 +1918,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../lab10/sharing/" class="md-nav__link">
         
   
   
@@ -1943,7 +1937,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2013,7 +2006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/overview/" class="md-nav__link">
+      <a href="../../../lab4/overview/" class="md-nav__link">
         
   
   
@@ -2041,7 +2034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/getting-started/" class="md-nav__link">
+      <a href="../../../lab4/getting-started/" class="md-nav__link">
         
   
   
@@ -2118,7 +2111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/projects/catalog-chatbot/" class="md-nav__link">
+      <a href="../../../lab4/projects/catalog-chatbot/" class="md-nav__link">
         
   
   
@@ -2146,7 +2139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/projects/genai-chatbot/" class="md-nav__link">
+      <a href="../../../lab4/projects/genai-chatbot/" class="md-nav__link">
         
   
   
@@ -2239,7 +2232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/overview/" class="md-nav__link">
+      <a href="../../../lab5/overview/" class="md-nav__link">
         
   
   
@@ -2267,7 +2260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/getting-started/" class="md-nav__link">
+      <a href="../../../lab5/getting-started/" class="md-nav__link">
         
   
   
@@ -2393,7 +2386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
+      <a href="../../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
         
   
   
@@ -2421,7 +2414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
+      <a href="../../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
         
   
   
@@ -2449,7 +2442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/GitHub-Claude/" class="md-nav__link">
+      <a href="../../../lab5/projects/GitHub-Claude/" class="md-nav__link">
         
   
   
@@ -2477,7 +2470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
+      <a href="../../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
         
   
   
@@ -2505,7 +2498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
+      <a href="../../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
         
   
   
@@ -2533,7 +2526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
+      <a href="../../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
         
   
   
@@ -2561,7 +2554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
+      <a href="../../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
         
   
   
@@ -2589,7 +2582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
+      <a href="../../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
         
   
   
@@ -2690,7 +2683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/overview/" class="md-nav__link">
+      <a href="../../../lab6/overview/" class="md-nav__link">
         
   
   
@@ -2718,7 +2711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/getting-started/" class="md-nav__link">
+      <a href="../../../lab6/getting-started/" class="md-nav__link">
         
   
   
@@ -2844,7 +2837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/overview/" class="md-nav__link">
+      <a href="../../../lab6/projects/devduck/overview/" class="md-nav__link">
         
   
   
@@ -2872,7 +2865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/prereq/" class="md-nav__link">
+      <a href="../../../lab6/projects/devduck/prereq/" class="md-nav__link">
         
   
   
@@ -2900,7 +2893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/getting-started/" class="md-nav__link">
+      <a href="../../../lab6/projects/devduck/getting-started/" class="md-nav__link">
         
   
   
@@ -2928,7 +2921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/local-agent/" class="md-nav__link">
+      <a href="../../../lab6/projects/devduck/local-agent/" class="md-nav__link">
         
   
   
@@ -2956,7 +2949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/cerebras-interaction/" class="md-nav__link">
+      <a href="../../../lab6/projects/devduck/cerebras-interaction/" class="md-nav__link">
         
   
   
@@ -2992,7 +2985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/agentic-catalog/" class="md-nav__link">
+      <a href="../../../lab6/projects/agentic-catalog/" class="md-nav__link">
         
   
   
@@ -3020,7 +3013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/hackathon-recommender/" class="md-nav__link">
+      <a href="../../../lab6/projects/hackathon-recommender/" class="md-nav__link">
         
   
   
@@ -3048,7 +3041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
+      <a href="../../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
         
   
   
@@ -3141,7 +3134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/overview/" class="md-nav__link">
+      <a href="../../../lab8/overview/" class="md-nav__link">
         
   
   
@@ -3169,7 +3162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/getting-started/" class="md-nav__link">
+      <a href="../../../lab8/getting-started/" class="md-nav__link">
         
   
   
@@ -3246,7 +3239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/why-governance/" class="md-nav__link">
+      <a href="../../../lab8/projects/why-governance/" class="md-nav__link">
         
   
   
@@ -3331,7 +3324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/first-sandbox/" class="md-nav__link">
+      <a href="../../../lab8/projects/first-sandbox/" class="md-nav__link">
         
   
   
@@ -3359,7 +3352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/isolation-proof/" class="md-nav__link">
+      <a href="../../../lab8/projects/isolation-proof/" class="md-nav__link">
         
   
   
@@ -3387,7 +3380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/reviewing-agent-changes/" class="md-nav__link">
+      <a href="../../../lab8/projects/reviewing-agent-changes/" class="md-nav__link">
         
   
   
@@ -3415,7 +3408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/secrets/" class="md-nav__link">
+      <a href="../../../lab8/projects/secrets/" class="md-nav__link">
         
   
   
@@ -3443,7 +3436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/network-policy/" class="md-nav__link">
+      <a href="../../../lab8/projects/network-policy/" class="md-nav__link">
         
   
   
@@ -3471,7 +3464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/branch-mode/" class="md-nav__link">
+      <a href="../../../lab8/projects/branch-mode/" class="md-nav__link">
         
   
   
@@ -3499,7 +3492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/parallel-agents/" class="md-nav__link">
+      <a href="../../../lab8/projects/parallel-agents/" class="md-nav__link">
         
   
   
@@ -3527,7 +3520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/local-models/" class="md-nav__link">
+      <a href="../../../lab8/projects/local-models/" class="md-nav__link">
         
   
   
@@ -3555,7 +3548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/governance-summary/" class="md-nav__link">
+      <a href="../../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
   
@@ -3640,7 +3633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/devboard/" class="md-nav__link">
+      <a href="../../../lab8/projects/devboard/" class="md-nav__link">
         
   
   
@@ -3688,8 +3681,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -3700,11 +3695,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -3725,7 +3720,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3740,6 +3735,8 @@
                 
   
   
+    
+  
   
   
     
@@ -3749,11 +3746,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_1" checked>
         
           
           <label class="md-nav__link" for="__nav_5_1" id="__nav_5_1_label" tabindex="0">
@@ -3774,7 +3771,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3792,7 +3789,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -3820,7 +3817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/setup/" class="md-nav__link">
+      <a href="../setup/" class="md-nav__link">
         
   
   
@@ -3848,7 +3845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/surface-the-problem/" class="md-nav__link">
+      <a href="../surface-the-problem/" class="md-nav__link">
         
   
   
@@ -3876,7 +3873,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/minimal-base-images/" class="md-nav__link">
+      <a href="../minimal-base-images/" class="md-nav__link">
         
   
   
@@ -3904,7 +3901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/multi-stage-builds/" class="md-nav__link">
+      <a href="../multi-stage-builds/" class="md-nav__link">
         
   
   
@@ -3932,7 +3929,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/non-root-user/" class="md-nav__link">
+      <a href="../non-root-user/" class="md-nav__link">
         
   
   
@@ -3957,10 +3954,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../security/container-security/readonly-capabilities/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    BP#4: Read-Only + Drop Capabilities
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -3976,6 +3998,112 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#best-practice-4-read-only-filesystem-drop-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practice #4: Read-Only Filesystem + Drop Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-capabilities-what-gets-dropped-with-cap-dropall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux capabilities — what gets dropped with --cap-drop=ALL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-clean-up-any-leftover-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Clean up any leftover containers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-run-with-hardened-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Run with hardened flags
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-verify-the-filesystem-is-read-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Verify the filesystem is read-only
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-prove-the-capability-drop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Prove the capability drop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-when-your-app-needs-a-writable-area-use-tmpfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — When your app needs a writable area: use tmpfs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-clean-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Clean up
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3988,7 +4116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/secrets-and-tools/" class="md-nav__link">
+      <a href="../secrets-and-tools/" class="md-nav__link">
         
   
   
@@ -4073,7 +4201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/overview/" class="md-nav__link">
+      <a href="../../scout-reactive/overview/" class="md-nav__link">
         
   
   
@@ -4101,7 +4229,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/continuous-scanning/" class="md-nav__link">
+      <a href="../../scout-reactive/continuous-scanning/" class="md-nav__link">
         
   
   
@@ -4129,7 +4257,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/ci-integration/" class="md-nav__link">
+      <a href="../../scout-reactive/ci-integration/" class="md-nav__link">
         
   
   
@@ -4157,7 +4285,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/recommendations/" class="md-nav__link">
+      <a href="../../scout-reactive/recommendations/" class="md-nav__link">
         
   
   
@@ -4242,7 +4370,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/overview/" class="md-nav__link">
+      <a href="../../dhi-proactive/overview/" class="md-nav__link">
         
   
   
@@ -4270,7 +4398,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/migration/" class="md-nav__link">
+      <a href="../../dhi-proactive/migration/" class="md-nav__link">
         
   
   
@@ -4298,7 +4426,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/attestations/" class="md-nav__link">
+      <a href="../../dhi-proactive/attestations/" class="md-nav__link">
         
   
   
@@ -4383,7 +4511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/overview/" class="md-nav__link">
+      <a href="../../../lab9/dhi/overview/" class="md-nav__link">
         
   
   
@@ -4411,7 +4539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/getting-started/" class="md-nav__link">
+      <a href="../../../lab9/dhi/getting-started/" class="md-nav__link">
         
   
   
@@ -4439,7 +4567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/image-scanning/" class="md-nav__link">
+      <a href="../../../lab9/dhi/image-scanning/" class="md-nav__link">
         
   
   
@@ -4467,7 +4595,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/switch-to-dhi/" class="md-nav__link">
+      <a href="../../../lab9/dhi/switch-to-dhi/" class="md-nav__link">
         
   
   
@@ -4495,7 +4623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/compliance/" class="md-nav__link">
+      <a href="../../../lab9/dhi/compliance/" class="md-nav__link">
         
   
   
@@ -4590,7 +4718,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab7/overview/" class="md-nav__link">
+      <a href="../../../lab7/overview/" class="md-nav__link">
         
   
   
@@ -4618,7 +4746,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab7/getting-started/" class="md-nav__link">
+      <a href="../../../lab7/getting-started/" class="md-nav__link">
         
   
   
@@ -4664,6 +4792,102 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#best-practice-4-read-only-filesystem-drop-capabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Best Practice #4: Read-Only Filesystem + Drop Capabilities
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux-capabilities-what-gets-dropped-with-cap-dropall" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Linux capabilities — what gets dropped with --cap-drop=ALL
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-1-clean-up-any-leftover-containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 1 — Clean up any leftover containers
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-2-run-with-hardened-flags" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 2 — Run with hardened flags
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-3-verify-the-filesystem-is-read-only" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 3 — Verify the filesystem is read-only
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-4-prove-the-capability-drop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 4 — Prove the capability drop
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-when-your-app-needs-a-writable-area-use-tmpfs" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 — When your app needs a writable area: use tmpfs
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-6-clean-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 6 — Clean up
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4682,20 +4906,113 @@
   
 
 
-  <h1>Sharing Agents</h1>
+  <h1>BP#4: Read-Only + Drop Capabilities</h1>
 
-<p>By now you should have a couple of uselesss agents, and maybe one that already does something useful. Wouldn't it be nice if we could share agents with others?</p>
-<p>Sharing agents with Docker Agent should be extermely simple, you can push and pull agents to any OCI registry.</p>
-<p>Exercice: push your developer agent, ask your neighour to pull and run it. Play around</p>
-<p>Here's how to push an agent:</p>
-<pre><code>$ docker agent push developer.yaml your-account/cagent-developer
+<h2 id="best-practice-4-read-only-filesystem-drop-capabilities">Best Practice #4: Read-Only Filesystem + Drop Capabilities</h2>
+<blockquote>
+<p><strong>Defence in depth:</strong> Even if an attacker gains code execution, a read-only container with dropped Linux capabilities severely limits what they can do next.</p>
+</blockquote>
+<p>This is the "even if everything else fails" layer. Assume your app has a vulnerability. Assume the attacker gets code execution. What can they do?</p>
+<p>If the filesystem is writable and capabilities are intact: drop a payload, modify config, install a backdoor, escalate.</p>
+<p>If the filesystem is read-only and capabilities are dropped: almost nothing.</p>
+<h2 id="linux-capabilities-what-gets-dropped-with-cap-dropall">Linux capabilities — what gets dropped with <code>--cap-drop=ALL</code></h2>
+<p>Linux capabilities split root's privileges into discrete chunks. Most apps need none of them. Dropping them all closes huge attack paths:</p>
+<table>
+<thead>
+<tr>
+<th>Capability</th>
+<th>What it allows</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>CHOWN</code></td>
+<td>Change file UIDs/GIDs</td>
+</tr>
+<tr>
+<td><code>DAC_OVERRIDE</code></td>
+<td>Bypass file read/write/execute permission checks</td>
+</tr>
+<tr>
+<td><code>NET_RAW</code></td>
+<td>Raw and packet sockets (used in some network attacks)</td>
+</tr>
+<tr>
+<td><code>SETUID</code> / <code>SETGID</code></td>
+<td>Change process UID/GID</td>
+</tr>
+<tr>
+<td><code>SYS_CHROOT</code></td>
+<td><code>chroot()</code> — change root directory</td>
+</tr>
+<tr>
+<td><code>KILL</code></td>
+<td>Send signals to other processes</td>
+</tr>
+<tr>
+<td><code>MKNOD</code></td>
+<td>Create special files</td>
+</tr>
+</tbody>
+</table>
+<h2 id="step-1-clean-up-any-leftover-containers">Step 1 — Clean up any leftover containers</h2>
+<p>Run this first every time. It removes any containers from a previous attempt so names and ports are free.</p>
+<pre><code class="language-bash">docker rm -f catalog-hardened catalog-hardened-tmpfs 2&gt;/dev/null
 </code></pre>
-<p>You can then pull that agent:</p>
-<pre><code>$ docker agent pull your-account/cagent-developer
+<h2 id="step-2-run-with-hardened-flags">Step 2 — Run with hardened flags</h2>
+<pre><code class="language-bash">docker run \
+    -d \
+    -p 3100:3000 \
+    --read-only \
+    --cap-drop=ALL \
+    --user=65532 \
+    --name catalog-hardened \
+    catalog-service:slim
 </code></pre>
-<p>Or you might want to directly run it:</p>
-<pre><code>$ docker agent run your-account/cagent-developer
+<p>Verify the container is up:</p>
+<pre><code class="language-bash">docker ps --filter name=catalog-hardened
 </code></pre>
+<p>Confirm the app responds:</p>
+<pre><code class="language-bash">curl http://localhost:3100
+</code></pre>
+<h2 id="step-3-verify-the-filesystem-is-read-only">Step 3 — Verify the filesystem is read-only</h2>
+<p>Try to write a file inside the container:</p>
+<pre><code class="language-bash">docker exec catalog-hardened sh -c &quot;echo test &gt; /tmp/test.txt&quot;
+</code></pre>
+<p>Expected output: <code>sh: /tmp/test.txt: Read-only file system</code></p>
+<p>The attacker gained code execution but <strong>cannot write anywhere</strong> — no dropping payloads, no modifying config files, no creating SUID binaries.</p>
+<h2 id="step-4-prove-the-capability-drop">Step 4 — Prove the capability drop</h2>
+<pre><code class="language-bash">docker inspect catalog-hardened \
+    --format 'ReadonlyRootfs={{.HostConfig.ReadonlyRootfs}} CapDrop={{.HostConfig.CapDrop}}'
+</code></pre>
+<p>Expected output:</p>
+<pre><code class="language-text">ReadonlyRootfs=true CapDrop=[ALL]
+</code></pre>
+<h2 id="step-5-when-your-app-needs-a-writable-area-use-tmpfs">Step 5 — When your app needs a writable area: use <code>tmpfs</code></h2>
+<p>Some apps genuinely need scratch space — caches, temp files, sessions. <code>tmpfs</code> is in-memory only — writable, but never persisted to disk and gone when the container stops:</p>
+<pre><code class="language-bash">docker run \
+    -d \
+    -p 3101:3000 \
+    --read-only \
+    --tmpfs /tmp:noexec,nosuid,size=64m \
+    --cap-drop=ALL \
+    --user=65532 \
+    --name catalog-hardened-tmpfs \
+    catalog-service:slim
+</code></pre>
+<p>Verify <code>/tmp</code> is writable but everything else is still read-only:</p>
+<pre><code class="language-bash">docker exec catalog-hardened-tmpfs sh -c &quot;echo test &gt; /tmp/test.txt &amp;&amp; cat /tmp/test.txt&quot;
+</code></pre>
+<p>Note the extra <code>tmpfs</code> flags:</p>
+<ul>
+<li><code>noexec</code> — files in <code>/tmp</code> cannot be executed (blocks payload drop-and-run)</li>
+<li><code>nosuid</code> — SUID bits on files in <code>/tmp</code> are ignored (blocks privilege escalation via dropped binaries)</li>
+<li><code>size=64m</code> — caps memory usage to 64 MB (prevents tmpfs DoS)</li>
+</ul>
+<h2 id="step-6-clean-up">Step 6 — Clean up</h2>
+<pre><code class="language-bash">docker rm -f catalog-hardened catalog-hardened-tmpfs
+</code></pre>
+<p>Continue to <a href="../secrets-and-tools/">BP#6, #7, #8: Secrets and Limiting Tools</a>.</p>
 
 
 
@@ -4755,10 +5072,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.instant", "navigation.top", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.instant", "navigation.top", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

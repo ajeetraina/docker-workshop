@@ -10,31 +10,31 @@
         <meta name="author" content="Ajeet Singh Raina">
       
       
-        <link rel="canonical" href="https://dockerworkshop.vercel.app/lab10/sharing/">
+        <link rel="canonical" href="https://dockerworkshop.vercel.app/lab5/projects/visual-chatbot/mcp/">
       
       
-        <link rel="prev" href="../projects/auto-curator-agent/auto-curator-agent/">
+        <link rel="prev" href="../visual-chatbot/">
       
       
-        <link rel="next" href="../../lab4/overview/">
+        <link rel="next" href="../../GitHub-Claude/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Sharing Agents - Docker workshop</title>
+        <title>Running your First MCP Server - Docker workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,13 +53,13 @@
       
     
     
-      <link rel="stylesheet" href="../../css/styles.css">
+      <link rel="stylesheet" href="../../../../css/styles.css">
     
-      <link rel="stylesheet" href="../../css/dark-mode.css">
+      <link rel="stylesheet" href="../../../../css/dark-mode.css">
     
-      <link rel="stylesheet" href="../../css/sidebar.css">
+      <link rel="stylesheet" href="../../../../css/sidebar.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -81,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#prerequisites" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -93,9 +98,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../../../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -112,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sharing Agents
+              Running your First MCP Server
             
           </span>
         </div>
@@ -207,9 +212,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../../../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     Docker workshop
@@ -236,7 +241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../../.." class="md-nav__link">
         
   
   
@@ -263,7 +268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../prereq/prereq/" class="md-nav__link">
+      <a href="../../../../prereq/prereq/" class="md-nav__link">
         
   
   
@@ -391,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/overview/" class="md-nav__link">
+      <a href="../../../../lab1/overview/" class="md-nav__link">
         
   
   
@@ -419,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/what-is-a-container/" class="md-nav__link">
+      <a href="../../../../lab1/what-is-a-container/" class="md-nav__link">
         
   
   
@@ -447,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/postgres/" class="md-nav__link">
+      <a href="../../../../lab1/postgres/" class="md-nav__link">
         
   
   
@@ -532,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/overview/" class="md-nav__link">
+      <a href="../../../../product-catalog/overview/" class="md-nav__link">
         
   
   
@@ -560,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/tech-stack/" class="md-nav__link">
+      <a href="../../../../product-catalog/tech-stack/" class="md-nav__link">
         
   
   
@@ -588,7 +593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/develop/" class="md-nav__link">
+      <a href="../../../../product-catalog/develop/" class="md-nav__link">
         
   
   
@@ -616,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/test/" class="md-nav__link">
+      <a href="../../../../product-catalog/test/" class="md-nav__link">
         
   
   
@@ -644,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/build/" class="md-nav__link">
+      <a href="../../../../product-catalog/build/" class="md-nav__link">
         
   
   
@@ -672,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/secure/" class="md-nav__link">
+      <a href="../../../../product-catalog/secure/" class="md-nav__link">
         
   
   
@@ -766,8 +771,6 @@
                 
   
   
-    
-  
   
   
     
@@ -777,11 +780,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
@@ -802,7 +805,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -820,7 +823,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../../../lab10/overview/" class="md-nav__link">
         
   
   
@@ -848,7 +851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
+      <a href="../../../../lab10/getting-started/" class="md-nav__link">
         
   
   
@@ -925,7 +928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/autonomy/autonomy/" class="md-nav__link">
+      <a href="../../../../lab10/concept/autonomy/autonomy/" class="md-nav__link">
         
   
   
@@ -953,7 +956,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/perception/perception/" class="md-nav__link">
+      <a href="../../../../lab10/concept/perception/perception/" class="md-nav__link">
         
   
   
@@ -981,7 +984,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/reasoning/reasoning/" class="md-nav__link">
+      <a href="../../../../lab10/concept/reasoning/reasoning/" class="md-nav__link">
         
   
   
@@ -1009,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/action/action/" class="md-nav__link">
+      <a href="../../../../lab10/concept/action/action/" class="md-nav__link">
         
   
   
@@ -1037,7 +1040,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/goal/goal/" class="md-nav__link">
+      <a href="../../../../lab10/concept/goal/goal/" class="md-nav__link">
         
   
   
@@ -1122,7 +1125,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/memory/" class="md-nav__link">
+      <a href="../../../../lab10/tools/memory/" class="md-nav__link">
         
   
   
@@ -1150,7 +1153,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/think/" class="md-nav__link">
+      <a href="../../../../lab10/tools/think/" class="md-nav__link">
         
   
   
@@ -1178,7 +1181,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/todo/" class="md-nav__link">
+      <a href="../../../../lab10/tools/todo/" class="md-nav__link">
         
   
   
@@ -1206,7 +1209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/shell/" class="md-nav__link">
+      <a href="../../../../lab10/tools/shell/" class="md-nav__link">
         
   
   
@@ -1234,7 +1237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/filesystem/" class="md-nav__link">
+      <a href="../../../../lab10/tools/filesystem/" class="md-nav__link">
         
   
   
@@ -1262,7 +1265,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/environment/" class="md-nav__link">
+      <a href="../../../../lab10/tools/environment/" class="md-nav__link">
         
   
   
@@ -1347,7 +1350,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/mcp/" class="md-nav__link">
+      <a href="../../../../lab10/integration/mcp/" class="md-nav__link">
         
   
   
@@ -1375,7 +1378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/dmr/" class="md-nav__link">
+      <a href="../../../../lab10/integration/dmr/" class="md-nav__link">
         
   
   
@@ -1403,7 +1406,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/rag/" class="md-nav__link">
+      <a href="../../../../lab10/integration/rag/" class="md-nav__link">
         
   
   
@@ -1537,7 +1540,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/pirate/" class="md-nav__link">
+      <a href="../../../../lab10/projects/pirate/" class="md-nav__link">
         
   
   
@@ -1622,7 +1625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/alloy/" class="md-nav__link">
+      <a href="../../../../lab10/projects/alloy/" class="md-nav__link">
         
   
   
@@ -1650,7 +1653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/dev/" class="md-nav__link">
+      <a href="../../../../lab10/projects/dev/" class="md-nav__link">
         
   
   
@@ -1678,7 +1681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/financial/" class="md-nav__link">
+      <a href="../../../../lab10/projects/financial/" class="md-nav__link">
         
   
   
@@ -1706,7 +1709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/docker-expert/" class="md-nav__link">
+      <a href="../../../../lab10/projects/docker-expert/" class="md-nav__link">
         
   
   
@@ -1783,7 +1786,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/bug-investigator/bug-investigator/" class="md-nav__link">
+      <a href="../../../../lab10/projects/bug-investigator/bug-investigator/" class="md-nav__link">
         
   
   
@@ -1868,7 +1871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/auto-curator-agent/auto-curator-agent/" class="md-nav__link">
+      <a href="../../../../lab10/projects/auto-curator-agent/auto-curator-agent/" class="md-nav__link">
         
   
   
@@ -1917,17 +1920,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../../lab10/sharing/" class="md-nav__link">
         
   
   
@@ -1943,7 +1939,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2013,7 +2008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/overview/" class="md-nav__link">
+      <a href="../../../../lab4/overview/" class="md-nav__link">
         
   
   
@@ -2041,7 +2036,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/getting-started/" class="md-nav__link">
+      <a href="../../../../lab4/getting-started/" class="md-nav__link">
         
   
   
@@ -2118,7 +2113,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/projects/catalog-chatbot/" class="md-nav__link">
+      <a href="../../../../lab4/projects/catalog-chatbot/" class="md-nav__link">
         
   
   
@@ -2146,7 +2141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/projects/genai-chatbot/" class="md-nav__link">
+      <a href="../../../../lab4/projects/genai-chatbot/" class="md-nav__link">
         
   
   
@@ -2187,6 +2182,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2196,11 +2193,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3" checked>
         
           
           <label class="md-nav__link" for="__nav_4_3" id="__nav_4_3_label" tabindex="0">
@@ -2221,7 +2218,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2239,7 +2236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/overview/" class="md-nav__link">
+      <a href="../../../overview/" class="md-nav__link">
         
   
   
@@ -2267,7 +2264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/getting-started/" class="md-nav__link">
+      <a href="../../../getting-started/" class="md-nav__link">
         
   
   
@@ -2292,6 +2289,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2301,11 +2300,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3" checked>
         
           
           <label class="md-nav__link" for="__nav_4_3_3" id="__nav_4_3_3_label" tabindex="0">
@@ -2326,7 +2325,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_3_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_3_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2341,6 +2340,8 @@
                 
   
   
+    
+  
   
   
     
@@ -2350,11 +2351,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_3_3_1" checked>
         
           
           <label class="md-nav__link" for="__nav_4_3_3_1" id="__nav_4_3_3_1_label" tabindex="0">
@@ -2375,7 +2376,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_3_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_4_3_3_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_4_3_3_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -2393,7 +2394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
+      <a href="../visual-chatbot/" class="md-nav__link">
         
   
   
@@ -2418,10 +2419,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Running your First MCP Server
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -2437,6 +2463,134 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a directory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-depdendencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Depdendencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the server:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-server-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this server does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing the server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-1-test-with-a-simple-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method 1: Test with a simple message
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Result
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-2-test-the-time-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method 2: Test the time tool
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2449,7 +2603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/GitHub-Claude/" class="md-nav__link">
+      <a href="../../GitHub-Claude/" class="md-nav__link">
         
   
   
@@ -2477,7 +2631,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
+      <a href="../../Docker-CLI-With-Gordon/" class="md-nav__link">
         
   
   
@@ -2505,7 +2659,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
+      <a href="../../Docker-CLI-With-VSCode/" class="md-nav__link">
         
   
   
@@ -2533,7 +2687,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
+      <a href="../../GitHub-MCP-Gordon/" class="md-nav__link">
         
   
   
@@ -2561,7 +2715,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
+      <a href="../../Kubernetes-MCP/" class="md-nav__link">
         
   
   
@@ -2589,7 +2743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
+      <a href="../../Slack-MCP-With-Claude/" class="md-nav__link">
         
   
   
@@ -2690,7 +2844,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/overview/" class="md-nav__link">
+      <a href="../../../../lab6/overview/" class="md-nav__link">
         
   
   
@@ -2718,7 +2872,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/getting-started/" class="md-nav__link">
+      <a href="../../../../lab6/getting-started/" class="md-nav__link">
         
   
   
@@ -2844,7 +2998,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/overview/" class="md-nav__link">
+      <a href="../../../../lab6/projects/devduck/overview/" class="md-nav__link">
         
   
   
@@ -2872,7 +3026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/prereq/" class="md-nav__link">
+      <a href="../../../../lab6/projects/devduck/prereq/" class="md-nav__link">
         
   
   
@@ -2900,7 +3054,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/getting-started/" class="md-nav__link">
+      <a href="../../../../lab6/projects/devduck/getting-started/" class="md-nav__link">
         
   
   
@@ -2928,7 +3082,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/local-agent/" class="md-nav__link">
+      <a href="../../../../lab6/projects/devduck/local-agent/" class="md-nav__link">
         
   
   
@@ -2956,7 +3110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/cerebras-interaction/" class="md-nav__link">
+      <a href="../../../../lab6/projects/devduck/cerebras-interaction/" class="md-nav__link">
         
   
   
@@ -2992,7 +3146,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/agentic-catalog/" class="md-nav__link">
+      <a href="../../../../lab6/projects/agentic-catalog/" class="md-nav__link">
         
   
   
@@ -3020,7 +3174,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/hackathon-recommender/" class="md-nav__link">
+      <a href="../../../../lab6/projects/hackathon-recommender/" class="md-nav__link">
         
   
   
@@ -3048,7 +3202,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
+      <a href="../../../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
         
   
   
@@ -3141,7 +3295,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/overview/" class="md-nav__link">
+      <a href="../../../../lab8/overview/" class="md-nav__link">
         
   
   
@@ -3169,7 +3323,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/getting-started/" class="md-nav__link">
+      <a href="../../../../lab8/getting-started/" class="md-nav__link">
         
   
   
@@ -3246,7 +3400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/why-governance/" class="md-nav__link">
+      <a href="../../../../lab8/projects/why-governance/" class="md-nav__link">
         
   
   
@@ -3331,7 +3485,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/first-sandbox/" class="md-nav__link">
+      <a href="../../../../lab8/projects/first-sandbox/" class="md-nav__link">
         
   
   
@@ -3359,7 +3513,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/isolation-proof/" class="md-nav__link">
+      <a href="../../../../lab8/projects/isolation-proof/" class="md-nav__link">
         
   
   
@@ -3387,7 +3541,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/reviewing-agent-changes/" class="md-nav__link">
+      <a href="../../../../lab8/projects/reviewing-agent-changes/" class="md-nav__link">
         
   
   
@@ -3415,7 +3569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/secrets/" class="md-nav__link">
+      <a href="../../../../lab8/projects/secrets/" class="md-nav__link">
         
   
   
@@ -3443,7 +3597,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/network-policy/" class="md-nav__link">
+      <a href="../../../../lab8/projects/network-policy/" class="md-nav__link">
         
   
   
@@ -3471,7 +3625,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/branch-mode/" class="md-nav__link">
+      <a href="../../../../lab8/projects/branch-mode/" class="md-nav__link">
         
   
   
@@ -3499,7 +3653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/parallel-agents/" class="md-nav__link">
+      <a href="../../../../lab8/projects/parallel-agents/" class="md-nav__link">
         
   
   
@@ -3527,7 +3681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/local-models/" class="md-nav__link">
+      <a href="../../../../lab8/projects/local-models/" class="md-nav__link">
         
   
   
@@ -3555,7 +3709,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/governance-summary/" class="md-nav__link">
+      <a href="../../../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
   
@@ -3640,7 +3794,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/devboard/" class="md-nav__link">
+      <a href="../../../../lab8/projects/devboard/" class="md-nav__link">
         
   
   
@@ -3792,7 +3946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/overview/" class="md-nav__link">
+      <a href="../../../../security/container-security/overview/" class="md-nav__link">
         
   
   
@@ -3820,7 +3974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/setup/" class="md-nav__link">
+      <a href="../../../../security/container-security/setup/" class="md-nav__link">
         
   
   
@@ -3848,7 +4002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/surface-the-problem/" class="md-nav__link">
+      <a href="../../../../security/container-security/surface-the-problem/" class="md-nav__link">
         
   
   
@@ -3876,7 +4030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/minimal-base-images/" class="md-nav__link">
+      <a href="../../../../security/container-security/minimal-base-images/" class="md-nav__link">
         
   
   
@@ -3904,7 +4058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/multi-stage-builds/" class="md-nav__link">
+      <a href="../../../../security/container-security/multi-stage-builds/" class="md-nav__link">
         
   
   
@@ -3932,7 +4086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/non-root-user/" class="md-nav__link">
+      <a href="../../../../security/container-security/non-root-user/" class="md-nav__link">
         
   
   
@@ -3960,7 +4114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/readonly-capabilities/" class="md-nav__link">
+      <a href="../../../../security/container-security/readonly-capabilities/" class="md-nav__link">
         
   
   
@@ -3988,7 +4142,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/secrets-and-tools/" class="md-nav__link">
+      <a href="../../../../security/container-security/secrets-and-tools/" class="md-nav__link">
         
   
   
@@ -4073,7 +4227,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/overview/" class="md-nav__link">
+      <a href="../../../../security/scout-reactive/overview/" class="md-nav__link">
         
   
   
@@ -4101,7 +4255,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/continuous-scanning/" class="md-nav__link">
+      <a href="../../../../security/scout-reactive/continuous-scanning/" class="md-nav__link">
         
   
   
@@ -4129,7 +4283,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/ci-integration/" class="md-nav__link">
+      <a href="../../../../security/scout-reactive/ci-integration/" class="md-nav__link">
         
   
   
@@ -4157,7 +4311,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/recommendations/" class="md-nav__link">
+      <a href="../../../../security/scout-reactive/recommendations/" class="md-nav__link">
         
   
   
@@ -4242,7 +4396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/overview/" class="md-nav__link">
+      <a href="../../../../security/dhi-proactive/overview/" class="md-nav__link">
         
   
   
@@ -4270,7 +4424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/migration/" class="md-nav__link">
+      <a href="../../../../security/dhi-proactive/migration/" class="md-nav__link">
         
   
   
@@ -4298,7 +4452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/attestations/" class="md-nav__link">
+      <a href="../../../../security/dhi-proactive/attestations/" class="md-nav__link">
         
   
   
@@ -4383,7 +4537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/overview/" class="md-nav__link">
+      <a href="../../../../lab9/dhi/overview/" class="md-nav__link">
         
   
   
@@ -4411,7 +4565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/getting-started/" class="md-nav__link">
+      <a href="../../../../lab9/dhi/getting-started/" class="md-nav__link">
         
   
   
@@ -4439,7 +4593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/image-scanning/" class="md-nav__link">
+      <a href="../../../../lab9/dhi/image-scanning/" class="md-nav__link">
         
   
   
@@ -4467,7 +4621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/switch-to-dhi/" class="md-nav__link">
+      <a href="../../../../lab9/dhi/switch-to-dhi/" class="md-nav__link">
         
   
   
@@ -4495,7 +4649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/compliance/" class="md-nav__link">
+      <a href="../../../../lab9/dhi/compliance/" class="md-nav__link">
         
   
   
@@ -4590,7 +4744,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab7/overview/" class="md-nav__link">
+      <a href="../../../../lab7/overview/" class="md-nav__link">
         
   
   
@@ -4618,7 +4772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab7/getting-started/" class="md-nav__link">
+      <a href="../../../../lab7/getting-started/" class="md-nav__link">
         
   
   
@@ -4664,6 +4818,124 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#prerequisites" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Prerequisites
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-a-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Create a directory
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#package-depdendencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Package Depdendencies
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#execution-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Execution Steps
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#run-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Run the server:
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-this-server-does" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What this server does
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#testing-the-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Testing the server
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-1-test-with-a-simple-message" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method 1: Test with a simple message
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#result" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Result
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#method-2-test-the-time-tool" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Method 2: Test the time tool
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4682,19 +4954,87 @@
   
 
 
-  <h1>Sharing Agents</h1>
+  <h1>Running your First MCP Server</h1>
 
-<p>By now you should have a couple of uselesss agents, and maybe one that already does something useful. Wouldn't it be nice if we could share agents with others?</p>
-<p>Sharing agents with Docker Agent should be extermely simple, you can push and pull agents to any OCI registry.</p>
-<p>Exercice: push your developer agent, ask your neighour to pull and run it. Play around</p>
-<p>Here's how to push an agent:</p>
-<pre><code>$ docker agent push developer.yaml your-account/cagent-developer
+<h2 id="prerequisites">Prerequisites</h2>
+<ul>
+<li>Node.js installed (version 18 or higher recommended)</li>
+<li>npm or yarn package manager</li>
+</ul>
+<h2 id="create-a-directory">Create a directory</h2>
+<p>Create a new directory called mcptooling</p>
+<pre><code>mkdir mcptooling
 </code></pre>
-<p>You can then pull that agent:</p>
-<pre><code>$ docker agent pull your-account/cagent-developer
+<h2 id="package-depdendencies">Package Depdendencies</h2>
+<p>Install the required packages:</p>
+<pre><code>npm install @modelcontextprotocol/sdk zod
 </code></pre>
-<p>Or you might want to directly run it:</p>
-<pre><code>$ docker agent run your-account/cagent-developer
+<h2 id="execution-steps">Execution Steps</h2>
+<p>Save the code to a file (e.g., time-server.js)</p>
+<pre><code>import { McpServer } from &quot;@modelcontextprotocol/sdk/server/mcp.js&quot;;
+import { StdioServerTransport } from &quot;@modelcontextprotocol/sdk/server/stdio.js&quot;;
+import { z } from &quot;zod&quot;;
+
+const server = new McpServer({ name: &quot;Time&quot;, version: &quot;1.0.0&quot; });
+
+server.tool(
+  &quot;get-current-time&quot;,
+  &quot;Get the current time for a requested timezone&quot;,
+  { 
+    timezone: z.string().describe(&quot;The requested timezone in IANA format&quot;),
+  },
+  async ({ timezone }) =&gt; {
+    const time = new Date().toLocaleString(&quot;en-US&quot;, { timeZone: timezone });
+
+    return {
+      content: [{
+        type: &quot;text&quot;,
+        text: time,
+      }]
+    };
+  }
+);
+
+const transport = new StdioServerTransport();
+await server.connect(transport);
+</code></pre>
+<p>Save the code above to a file named <code>time-server.js</code> in the <code>mcptooling</code> directory.</p>
+<h2 id="run-the-server">Run the server:</h2>
+<p>Then, run the server using Node.js:</p>
+<pre><code>node time-server.js
+</code></pre>
+<h2 id="what-this-server-does">What this server does</h2>
+<p>This MCP server:</p>
+<ul>
+<li>Creates a tool called "get-current-time"</li>
+<li>Accepts a timezone parameter (in IANA format like "America/New_York")</li>
+<li>Returns the current time in that timezone</li>
+<li>Uses stdio transport (communicates via standard input/output)</li>
+</ul>
+<h2 id="testing-the-server">Testing the server</h2>
+<p>Since this uses stdio transport, you can test it by:</p>
+<ul>
+<li>Running it and sending JSON-RPC messages via stdin</li>
+<li>Or connecting it to an MCP client that supports stdio transport</li>
+<li>Or using it with applications that integrate MCP servers (like Claude Desktop, if configured)</li>
+</ul>
+<pre><code>node time-server.js
+</code></pre>
+<p>Great! Your MCP server is now running successfully.
+Since there's no output shown, that means it's working correctly and waiting for MCP protocol messages on stdin.</p>
+<h2 id="method-1-test-with-a-simple-message">Method 1: Test with a simple message</h2>
+<p>You can type this JSON-RPC message (press Enter after pasting):</p>
+<pre><code>{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;tools/list&quot;}
+</code></pre>
+<h2 id="result">Result</h2>
+<pre><code>{&quot;result&quot;:{&quot;tools&quot;:[{&quot;name&quot;:&quot;get-current-time&quot;,&quot;description&quot;:&quot;Get the current time for a requested timezone&quot;,&quot;inputSchema&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;timezone&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;description&quot;:&quot;The requested timezone in IANA format&quot;}},&quot;required&quot;:[&quot;timezone&quot;],&quot;additionalProperties&quot;:false,&quot;$schema&quot;:&quot;http://json-schema.org/draft-07/schema#&quot;}}]},&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1}
+</code></pre>
+<h2 id="method-2-test-the-time-tool">Method 2: Test the time tool</h2>
+<p>You can test the "get-current-time" tool by sending a JSON-RPC message like this:</p>
+<pre><code>{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 2, &quot;method&quot;: &quot;tools/call&quot;, &quot;params&quot;: {&quot;name&quot;: &quot;get-current-time&quot;, &quot;arguments&quot;: {&quot;timezone&quot;: &quot;America/New_York&quot;}}}
+</code></pre>
+<p>You will receive a response with the current time in the specified timezone.</p>
+<pre><code>{&quot;result&quot;:{&quot;content&quot;:[{&quot;type&quot;:&quot;text&quot;,&quot;text&quot;:&quot;5/31/2025, 10:29:05 PM&quot;}]},&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:2}
 </code></pre>
 
 
@@ -4755,10 +5095,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.instant", "navigation.top", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../../..", "features": ["navigation.sections", "navigation.instant", "navigation.top", "search.highlight", "search.share"], "search": "../../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>

@@ -10,31 +10,31 @@
         <meta name="author" content="Ajeet Singh Raina">
       
       
-        <link rel="canonical" href="https://dockerworkshop.vercel.app/lab10/sharing/">
+        <link rel="canonical" href="https://dockerworkshop.vercel.app/security/dhi-proactive/attestations/">
       
       
-        <link rel="prev" href="../projects/auto-curator-agent/auto-curator-agent/">
+        <link rel="prev" href="../migration/">
       
       
-        <link rel="next" href="../../lab4/overview/">
+        <link rel="next" href="../../../lab9/dhi/overview/">
       
       
         
       
       
-      <link rel="icon" href="../../assets/images/favicon.png">
+      <link rel="icon" href="../../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Sharing Agents - Docker workshop</title>
+        <title>Attestations & Scanner Integration - Docker workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,13 +53,13 @@
       
     
     
-      <link rel="stylesheet" href="../../css/styles.css">
+      <link rel="stylesheet" href="../../../css/styles.css">
     
-      <link rel="stylesheet" href="../../css/dark-mode.css">
+      <link rel="stylesheet" href="../../../css/dark-mode.css">
     
-      <link rel="stylesheet" href="../../css/sidebar.css">
+      <link rel="stylesheet" href="../../../css/sidebar.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -81,6 +81,11 @@
     <label class="md-overlay" for="__drawer"></label>
     <div data-md-component="skip">
       
+        
+        <a href="#attestations-scanner-integration" class="md-skip">
+          Skip to content
+        </a>
+      
     </div>
     <div data-md-component="announce">
       
@@ -93,9 +98,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -112,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Sharing Agents
+              Attestations & Scanner Integration
             
           </span>
         </div>
@@ -207,9 +212,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     Docker workshop
@@ -236,7 +241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   
@@ -263,7 +268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../prereq/prereq/" class="md-nav__link">
+      <a href="../../../prereq/prereq/" class="md-nav__link">
         
   
   
@@ -391,7 +396,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/overview/" class="md-nav__link">
+      <a href="../../../lab1/overview/" class="md-nav__link">
         
   
   
@@ -419,7 +424,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/what-is-a-container/" class="md-nav__link">
+      <a href="../../../lab1/what-is-a-container/" class="md-nav__link">
         
   
   
@@ -447,7 +452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab1/postgres/" class="md-nav__link">
+      <a href="../../../lab1/postgres/" class="md-nav__link">
         
   
   
@@ -532,7 +537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/overview/" class="md-nav__link">
+      <a href="../../../product-catalog/overview/" class="md-nav__link">
         
   
   
@@ -560,7 +565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/tech-stack/" class="md-nav__link">
+      <a href="../../../product-catalog/tech-stack/" class="md-nav__link">
         
   
   
@@ -588,7 +593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/develop/" class="md-nav__link">
+      <a href="../../../product-catalog/develop/" class="md-nav__link">
         
   
   
@@ -616,7 +621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/test/" class="md-nav__link">
+      <a href="../../../product-catalog/test/" class="md-nav__link">
         
   
   
@@ -644,7 +649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/build/" class="md-nav__link">
+      <a href="../../../product-catalog/build/" class="md-nav__link">
         
   
   
@@ -672,7 +677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../product-catalog/secure/" class="md-nav__link">
+      <a href="../../../product-catalog/secure/" class="md-nav__link">
         
   
   
@@ -712,8 +717,6 @@
       
   
   
-    
-  
   
   
     
@@ -726,11 +729,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -751,7 +754,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -766,8 +769,6 @@
                 
   
   
-    
-  
   
   
     
@@ -777,11 +778,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_1" >
         
           
           <label class="md-nav__link" for="__nav_4_1" id="__nav_4_1_label" tabindex="0">
@@ -802,7 +803,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_1_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_1">
             <span class="md-nav__icon md-icon"></span>
             
@@ -820,7 +821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../overview/" class="md-nav__link">
+      <a href="../../../lab10/overview/" class="md-nav__link">
         
   
   
@@ -848,7 +849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../getting-started/" class="md-nav__link">
+      <a href="../../../lab10/getting-started/" class="md-nav__link">
         
   
   
@@ -925,7 +926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/autonomy/autonomy/" class="md-nav__link">
+      <a href="../../../lab10/concept/autonomy/autonomy/" class="md-nav__link">
         
   
   
@@ -953,7 +954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/perception/perception/" class="md-nav__link">
+      <a href="../../../lab10/concept/perception/perception/" class="md-nav__link">
         
   
   
@@ -981,7 +982,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/reasoning/reasoning/" class="md-nav__link">
+      <a href="../../../lab10/concept/reasoning/reasoning/" class="md-nav__link">
         
   
   
@@ -1009,7 +1010,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/action/action/" class="md-nav__link">
+      <a href="../../../lab10/concept/action/action/" class="md-nav__link">
         
   
   
@@ -1037,7 +1038,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../concept/goal/goal/" class="md-nav__link">
+      <a href="../../../lab10/concept/goal/goal/" class="md-nav__link">
         
   
   
@@ -1122,7 +1123,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/memory/" class="md-nav__link">
+      <a href="../../../lab10/tools/memory/" class="md-nav__link">
         
   
   
@@ -1150,7 +1151,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/think/" class="md-nav__link">
+      <a href="../../../lab10/tools/think/" class="md-nav__link">
         
   
   
@@ -1178,7 +1179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/todo/" class="md-nav__link">
+      <a href="../../../lab10/tools/todo/" class="md-nav__link">
         
   
   
@@ -1206,7 +1207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/shell/" class="md-nav__link">
+      <a href="../../../lab10/tools/shell/" class="md-nav__link">
         
   
   
@@ -1234,7 +1235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/filesystem/" class="md-nav__link">
+      <a href="../../../lab10/tools/filesystem/" class="md-nav__link">
         
   
   
@@ -1262,7 +1263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../tools/environment/" class="md-nav__link">
+      <a href="../../../lab10/tools/environment/" class="md-nav__link">
         
   
   
@@ -1347,7 +1348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/mcp/" class="md-nav__link">
+      <a href="../../../lab10/integration/mcp/" class="md-nav__link">
         
   
   
@@ -1375,7 +1376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/dmr/" class="md-nav__link">
+      <a href="../../../lab10/integration/dmr/" class="md-nav__link">
         
   
   
@@ -1403,7 +1404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../integration/rag/" class="md-nav__link">
+      <a href="../../../lab10/integration/rag/" class="md-nav__link">
         
   
   
@@ -1537,7 +1538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/pirate/" class="md-nav__link">
+      <a href="../../../lab10/projects/pirate/" class="md-nav__link">
         
   
   
@@ -1622,7 +1623,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/alloy/" class="md-nav__link">
+      <a href="../../../lab10/projects/alloy/" class="md-nav__link">
         
   
   
@@ -1650,7 +1651,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/dev/" class="md-nav__link">
+      <a href="../../../lab10/projects/dev/" class="md-nav__link">
         
   
   
@@ -1678,7 +1679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/financial/" class="md-nav__link">
+      <a href="../../../lab10/projects/financial/" class="md-nav__link">
         
   
   
@@ -1706,7 +1707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/docker-expert/" class="md-nav__link">
+      <a href="../../../lab10/projects/docker-expert/" class="md-nav__link">
         
   
   
@@ -1783,7 +1784,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/bug-investigator/bug-investigator/" class="md-nav__link">
+      <a href="../../../lab10/projects/bug-investigator/bug-investigator/" class="md-nav__link">
         
   
   
@@ -1868,7 +1869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../projects/auto-curator-agent/auto-curator-agent/" class="md-nav__link">
+      <a href="../../../lab10/projects/auto-curator-agent/auto-curator-agent/" class="md-nav__link">
         
   
   
@@ -1917,17 +1918,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../lab10/sharing/" class="md-nav__link">
         
   
   
@@ -1943,7 +1937,6 @@
   
 
       </a>
-      
     </li>
   
 
@@ -2013,7 +2006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/overview/" class="md-nav__link">
+      <a href="../../../lab4/overview/" class="md-nav__link">
         
   
   
@@ -2041,7 +2034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/getting-started/" class="md-nav__link">
+      <a href="../../../lab4/getting-started/" class="md-nav__link">
         
   
   
@@ -2118,7 +2111,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/projects/catalog-chatbot/" class="md-nav__link">
+      <a href="../../../lab4/projects/catalog-chatbot/" class="md-nav__link">
         
   
   
@@ -2146,7 +2139,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab4/projects/genai-chatbot/" class="md-nav__link">
+      <a href="../../../lab4/projects/genai-chatbot/" class="md-nav__link">
         
   
   
@@ -2239,7 +2232,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/overview/" class="md-nav__link">
+      <a href="../../../lab5/overview/" class="md-nav__link">
         
   
   
@@ -2267,7 +2260,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/getting-started/" class="md-nav__link">
+      <a href="../../../lab5/getting-started/" class="md-nav__link">
         
   
   
@@ -2393,7 +2386,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
+      <a href="../../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
         
   
   
@@ -2421,7 +2414,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
+      <a href="../../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
         
   
   
@@ -2449,7 +2442,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/GitHub-Claude/" class="md-nav__link">
+      <a href="../../../lab5/projects/GitHub-Claude/" class="md-nav__link">
         
   
   
@@ -2477,7 +2470,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
+      <a href="../../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
         
   
   
@@ -2505,7 +2498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
+      <a href="../../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
         
   
   
@@ -2533,7 +2526,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
+      <a href="../../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
         
   
   
@@ -2561,7 +2554,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
+      <a href="../../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
         
   
   
@@ -2589,7 +2582,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
+      <a href="../../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
         
   
   
@@ -2690,7 +2683,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/overview/" class="md-nav__link">
+      <a href="../../../lab6/overview/" class="md-nav__link">
         
   
   
@@ -2718,7 +2711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/getting-started/" class="md-nav__link">
+      <a href="../../../lab6/getting-started/" class="md-nav__link">
         
   
   
@@ -2844,7 +2837,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/overview/" class="md-nav__link">
+      <a href="../../../lab6/projects/devduck/overview/" class="md-nav__link">
         
   
   
@@ -2872,7 +2865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/prereq/" class="md-nav__link">
+      <a href="../../../lab6/projects/devduck/prereq/" class="md-nav__link">
         
   
   
@@ -2900,7 +2893,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/getting-started/" class="md-nav__link">
+      <a href="../../../lab6/projects/devduck/getting-started/" class="md-nav__link">
         
   
   
@@ -2928,7 +2921,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/local-agent/" class="md-nav__link">
+      <a href="../../../lab6/projects/devduck/local-agent/" class="md-nav__link">
         
   
   
@@ -2956,7 +2949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/devduck/cerebras-interaction/" class="md-nav__link">
+      <a href="../../../lab6/projects/devduck/cerebras-interaction/" class="md-nav__link">
         
   
   
@@ -2992,7 +2985,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/agentic-catalog/" class="md-nav__link">
+      <a href="../../../lab6/projects/agentic-catalog/" class="md-nav__link">
         
   
   
@@ -3020,7 +3013,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/hackathon-recommender/" class="md-nav__link">
+      <a href="../../../lab6/projects/hackathon-recommender/" class="md-nav__link">
         
   
   
@@ -3048,7 +3041,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
+      <a href="../../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
         
   
   
@@ -3141,7 +3134,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/overview/" class="md-nav__link">
+      <a href="../../../lab8/overview/" class="md-nav__link">
         
   
   
@@ -3169,7 +3162,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/getting-started/" class="md-nav__link">
+      <a href="../../../lab8/getting-started/" class="md-nav__link">
         
   
   
@@ -3246,7 +3239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/why-governance/" class="md-nav__link">
+      <a href="../../../lab8/projects/why-governance/" class="md-nav__link">
         
   
   
@@ -3331,7 +3324,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/first-sandbox/" class="md-nav__link">
+      <a href="../../../lab8/projects/first-sandbox/" class="md-nav__link">
         
   
   
@@ -3359,7 +3352,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/isolation-proof/" class="md-nav__link">
+      <a href="../../../lab8/projects/isolation-proof/" class="md-nav__link">
         
   
   
@@ -3387,7 +3380,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/reviewing-agent-changes/" class="md-nav__link">
+      <a href="../../../lab8/projects/reviewing-agent-changes/" class="md-nav__link">
         
   
   
@@ -3415,7 +3408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/secrets/" class="md-nav__link">
+      <a href="../../../lab8/projects/secrets/" class="md-nav__link">
         
   
   
@@ -3443,7 +3436,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/network-policy/" class="md-nav__link">
+      <a href="../../../lab8/projects/network-policy/" class="md-nav__link">
         
   
   
@@ -3471,7 +3464,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/branch-mode/" class="md-nav__link">
+      <a href="../../../lab8/projects/branch-mode/" class="md-nav__link">
         
   
   
@@ -3499,7 +3492,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/parallel-agents/" class="md-nav__link">
+      <a href="../../../lab8/projects/parallel-agents/" class="md-nav__link">
         
   
   
@@ -3527,7 +3520,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/local-models/" class="md-nav__link">
+      <a href="../../../lab8/projects/local-models/" class="md-nav__link">
         
   
   
@@ -3555,7 +3548,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/governance-summary/" class="md-nav__link">
+      <a href="../../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
   
@@ -3640,7 +3633,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab8/projects/devboard/" class="md-nav__link">
+      <a href="../../../lab8/projects/devboard/" class="md-nav__link">
         
   
   
@@ -3688,8 +3681,10 @@
       
   
   
+    
   
   
+  
     
     
     
@@ -3700,11 +3695,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
@@ -3725,7 +3720,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3792,7 +3787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/overview/" class="md-nav__link">
+      <a href="../../container-security/overview/" class="md-nav__link">
         
   
   
@@ -3820,7 +3815,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/setup/" class="md-nav__link">
+      <a href="../../container-security/setup/" class="md-nav__link">
         
   
   
@@ -3848,7 +3843,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/surface-the-problem/" class="md-nav__link">
+      <a href="../../container-security/surface-the-problem/" class="md-nav__link">
         
   
   
@@ -3876,7 +3871,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/minimal-base-images/" class="md-nav__link">
+      <a href="../../container-security/minimal-base-images/" class="md-nav__link">
         
   
   
@@ -3904,7 +3899,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/multi-stage-builds/" class="md-nav__link">
+      <a href="../../container-security/multi-stage-builds/" class="md-nav__link">
         
   
   
@@ -3932,7 +3927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/non-root-user/" class="md-nav__link">
+      <a href="../../container-security/non-root-user/" class="md-nav__link">
         
   
   
@@ -3960,7 +3955,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/readonly-capabilities/" class="md-nav__link">
+      <a href="../../container-security/readonly-capabilities/" class="md-nav__link">
         
   
   
@@ -3988,7 +3983,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/container-security/secrets-and-tools/" class="md-nav__link">
+      <a href="../../container-security/secrets-and-tools/" class="md-nav__link">
         
   
   
@@ -4073,7 +4068,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/overview/" class="md-nav__link">
+      <a href="../../scout-reactive/overview/" class="md-nav__link">
         
   
   
@@ -4101,7 +4096,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/continuous-scanning/" class="md-nav__link">
+      <a href="../../scout-reactive/continuous-scanning/" class="md-nav__link">
         
   
   
@@ -4129,7 +4124,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/ci-integration/" class="md-nav__link">
+      <a href="../../scout-reactive/ci-integration/" class="md-nav__link">
         
   
   
@@ -4157,7 +4152,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/scout-reactive/recommendations/" class="md-nav__link">
+      <a href="../../scout-reactive/recommendations/" class="md-nav__link">
         
   
   
@@ -4190,6 +4185,8 @@
                 
   
   
+    
+  
   
   
     
@@ -4199,11 +4196,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5_3" checked>
         
           
           <label class="md-nav__link" for="__nav_5_3" id="__nav_5_3_label" tabindex="0">
@@ -4224,7 +4221,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_5_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5_3">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4242,7 +4239,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/overview/" class="md-nav__link">
+      <a href="../overview/" class="md-nav__link">
         
   
   
@@ -4270,7 +4267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/migration/" class="md-nav__link">
+      <a href="../migration/" class="md-nav__link">
         
   
   
@@ -4295,10 +4292,35 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../security/dhi-proactive/attestations/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Attestations & Scanner Integration
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -4314,6 +4336,134 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#attestations-scanner-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attestations &amp; Scanner Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-all-attestations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List all attestations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-the-spdx-sbom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View the SPDX SBOM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspect-the-slsa-provenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspect the SLSA provenance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-the-image-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify the image signature
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fips-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FIPS compliance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stig-attestation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STIG attestation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vex-export-eliminate-false-positives-in-external-scanners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VEX export — eliminate false positives in external scanners
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-complete-supply-chain-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The complete supply chain story
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key takeaway
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -4383,7 +4533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/overview/" class="md-nav__link">
+      <a href="../../../lab9/dhi/overview/" class="md-nav__link">
         
   
   
@@ -4411,7 +4561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/getting-started/" class="md-nav__link">
+      <a href="../../../lab9/dhi/getting-started/" class="md-nav__link">
         
   
   
@@ -4439,7 +4589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/image-scanning/" class="md-nav__link">
+      <a href="../../../lab9/dhi/image-scanning/" class="md-nav__link">
         
   
   
@@ -4467,7 +4617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/switch-to-dhi/" class="md-nav__link">
+      <a href="../../../lab9/dhi/switch-to-dhi/" class="md-nav__link">
         
   
   
@@ -4495,7 +4645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab9/dhi/compliance/" class="md-nav__link">
+      <a href="../../../lab9/dhi/compliance/" class="md-nav__link">
         
   
   
@@ -4590,7 +4740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab7/overview/" class="md-nav__link">
+      <a href="../../../lab7/overview/" class="md-nav__link">
         
   
   
@@ -4618,7 +4768,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab7/getting-started/" class="md-nav__link">
+      <a href="../../../lab7/getting-started/" class="md-nav__link">
         
   
   
@@ -4664,6 +4814,124 @@
   
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#attestations-scanner-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Attestations &amp; Scanner Integration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#list-all-attestations" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        List all attestations
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#view-the-spdx-sbom" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        View the SPDX SBOM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#inspect-the-slsa-provenance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Inspect the SLSA provenance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#verify-the-image-signature" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Verify the image signature
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#fips-compliance" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        FIPS compliance
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#stig-attestation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        STIG attestation
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vex-export-eliminate-false-positives-in-external-scanners" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        VEX export — eliminate false positives in external scanners
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-complete-supply-chain-story" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The complete supply chain story
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-takeaway" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key takeaway
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -4682,20 +4950,175 @@
   
 
 
-  <h1>Sharing Agents</h1>
+  <h1>Attestations & Scanner Integration</h1>
 
-<p>By now you should have a couple of uselesss agents, and maybe one that already does something useful. Wouldn't it be nice if we could share agents with others?</p>
-<p>Sharing agents with Docker Agent should be extermely simple, you can push and pull agents to any OCI registry.</p>
-<p>Exercice: push your developer agent, ask your neighour to pull and run it. Play around</p>
-<p>Here's how to push an agent:</p>
-<pre><code>$ docker agent push developer.yaml your-account/cagent-developer
+<h2 id="attestations-scanner-integration">Attestations &amp; Scanner Integration</h2>
+<blockquote>
+<p><strong>Built-in supply chain security:</strong> Every DHI ships with signed SBOMs, VEX documents, and SLSA provenance for audit-ready pipelines.</p>
+</blockquote>
+<p>This is what most teams don't realise about DHI: it's not just a smaller image with fewer CVEs. It's a fully-attested artifact. Every image carries cryptographic evidence of what's in it, where it came from, and what risks have been assessed.</p>
+<h2 id="list-all-attestations">List all attestations</h2>
+<pre><code class="language-bash">docker scout attest list &lt;DHI_PREFIX&gt;node:24-debian13
 </code></pre>
-<p>You can then pull that agent:</p>
-<pre><code>$ docker agent pull your-account/cagent-developer
+<p>A single DHI image typically ships with all of the following:</p>
+<table>
+<thead>
+<tr>
+<th>Attestation</th>
+<th>What it is</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>CycloneDX SBOM</td>
+<td>Bill of materials — components, libraries, versions</td>
+</tr>
+<tr>
+<td>SPDX SBOM</td>
+<td>SBOM in SPDX format (widely adopted in open-source)</td>
+</tr>
+<tr>
+<td>Scout SBOM</td>
+<td>SBOM generated and signed by Docker Scout</td>
+</tr>
+<tr>
+<td>OpenVEX</td>
+<td>Identifies non-applicable CVEs and explains why</td>
+</tr>
+<tr>
+<td>in-toto vulnerabilities</td>
+<td>Known CVEs affecting the image's components</td>
+</tr>
+<tr>
+<td>SLSA provenance</td>
+<td>Source, build params, and environment details</td>
+</tr>
+<tr>
+<td>SLSA verification summary</td>
+<td>Image's compliance with SLSA requirements</td>
+</tr>
+<tr>
+<td>Scout health</td>
+<td>Signed summary of security and quality posture</td>
+</tr>
+<tr>
+<td>Scout secret scan</td>
+<td>Results of a secrets scan</td>
+</tr>
+<tr>
+<td>Scout test report</td>
+<td>Record of automated tests run against the image</td>
+</tr>
+</tbody>
+</table>
+<p>That's <em>evidence-grade</em> supply-chain documentation, available out of the box.</p>
+<h2 id="view-the-spdx-sbom">View the SPDX SBOM</h2>
+<pre><code class="language-bash">docker scout attest get &lt;DHI_PREFIX&gt;node:24-debian13 \
+    --predicate-type https://spdx.dev/Document
 </code></pre>
-<p>Or you might want to directly run it:</p>
-<pre><code>$ docker agent run your-account/cagent-developer
+<p>The SPDX SBOM lists every package, version, license, and supplier. This is the document a compliance team will ask for during an audit.</p>
+<h2 id="inspect-the-slsa-provenance">Inspect the SLSA provenance</h2>
+<pre><code class="language-bash">docker buildx imagetools inspect &lt;DHI_PREFIX&gt;node:24-debian13 \
+    --format '{{json .Provenance}}' | head -80
 </code></pre>
+<p>SLSA provenance answers "where did this image come from?" — source repository, commit, build parameters, builder identity. Combined with a signature, it becomes verifiable proof of origin.</p>
+<h2 id="verify-the-image-signature">Verify the image signature</h2>
+<pre><code class="language-bash">docker trust inspect --pretty &lt;DHI_PREFIX&gt;node:24-debian13
+</code></pre>
+<p>The signature ties the image bytes to a verified publisher. A modified image won't verify; an attacker can't substitute a tampered version without breaking the chain.</p>
+<h2 id="fips-compliance">FIPS compliance</h2>
+<p>DHI includes FIPS 140-validated cryptographic modules for regulated environments — government, healthcare, finance, defence.</p>
+<pre><code class="language-bash">docker scout attest get \
+    --predicate-type https://docker.com/dhi/fips/v0.1 \
+    --predicate \
+    &lt;DHI_PREFIX&gt;node:24-debian13-fips
+</code></pre>
+<p>Sample output:</p>
+<pre><code class="language-text">&quot;certification&quot;: &quot;CMVP #4985&quot;,
+&quot;certificationUrl&quot;: &quot;https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4985&quot;,
+&quot;name&quot;: &quot;OpenSSL FIPS Provider&quot;,
+&quot;standard&quot;: &quot;FIPS 140-3&quot;,
+&quot;status&quot;: &quot;active&quot;,
+&quot;sunsetDate&quot;: &quot;2030-03-10&quot;
+</code></pre>
+<p>That's a real CMVP certificate number, queryable on NIST's site, attached as a signed predicate to the image. For regulated workloads, that's the difference between "we think we're compliant" and "here's the certificate".</p>
+<h2 id="stig-attestation">STIG attestation</h2>
+<pre><code class="language-bash">docker scout attest get \
+    --predicate-type https://docker.com/dhi/stig/v0.1 \
+    --predicate \
+    &lt;DHI_PREFIX&gt;node:24-debian13-fips
+</code></pre>
+<p>STIG (Security Technical Implementation Guide) attestations cover compliance with US DoD security baselines — required for many government deployments.</p>
+<h2 id="vex-export-eliminate-false-positives-in-external-scanners">VEX export — eliminate false positives in external scanners</h2>
+<p>VEX (Vulnerability Exploitability eXchange) documents tell external scanners (Grype, Trivy, Wiz) which CVEs have already been <strong>assessed as non-exploitable</strong> — eliminating false positives automatically.</p>
+<p>This is the killer feature for teams already running third-party scanners. Instead of triaging the same CVE every week, the VEX document tells the scanner "this one's been reviewed, it doesn't apply to this image, move on."</p>
+<p>View attestations on your migrated app image:</p>
+<pre><code class="language-bash">docker scout attest list catalog-service:dhi
+</code></pre>
+<p>Export the merged VEX document:</p>
+<pre><code class="language-bash">docker scout vex get catalog-service:dhi --output vex.json
+</code></pre>
+<p>Pass it to Grype:</p>
+<pre><code class="language-bash">grype catalog-service:dhi --vex vex.json
+</code></pre>
+<p>Pass it to Trivy:</p>
+<pre><code class="language-bash">trivy image --vex vex.json catalog-service:dhi
+</code></pre>
+<p>The same image, scanned with VEX, reports far fewer CVEs — because the noise has been pre-filtered out by people who actually understand whether a given CVE applies in this build.</p>
+<h2 id="the-complete-supply-chain-story">The complete supply chain story</h2>
+<table>
+<thead>
+<tr>
+<th>Question a security team will ask</th>
+<th>DHI's answer</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>What's in this image?</td>
+<td>Signed SBOM (CycloneDX + SPDX)</td>
+</tr>
+<tr>
+<td>Where did it come from?</td>
+<td>SLSA provenance</td>
+</tr>
+<tr>
+<td>Who built it?</td>
+<td>Image signature + provenance</td>
+</tr>
+<tr>
+<td>Has it been tampered with?</td>
+<td><code>docker trust inspect</code> verifies the signature</td>
+</tr>
+<tr>
+<td>Which CVEs apply?</td>
+<td>Scout CVE scan + OpenVEX (filters non-applicable ones)</td>
+</tr>
+<tr>
+<td>Is it FIPS-compliant?</td>
+<td>FIPS attestation with CMVP certificate</td>
+</tr>
+<tr>
+<td>Is it STIG-compliant?</td>
+<td>STIG attestation</td>
+</tr>
+<tr>
+<td>When are CVEs fixed?</td>
+<td>7-day SLA on critical/high</td>
+</tr>
+</tbody>
+</table>
+<h2 id="key-takeaway">Key takeaway</h2>
+<blockquote>
+<p>Securing your containers is step one.
+Securing your <strong>supply chain</strong> is the rest.</p>
+<ol>
+<li><strong>Know what software you are running</strong> — SBOMs, dependency trees, base image provenance</li>
+<li><strong>Know what risks that software has</strong> — continuous vulnerability scanning, VEX-aware</li>
+<li><strong>Fix those risks quickly</strong> — DHI gives you a <strong>7-day SLA</strong> on critical/high CVEs</li>
+</ol>
+</blockquote>
+<p><a href="https://docs.docker.com/dhi/get-started/">Get started with DHI →</a></p>
 
 
 
@@ -4755,10 +5178,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.instant", "navigation.top", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.instant", "navigation.top", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
