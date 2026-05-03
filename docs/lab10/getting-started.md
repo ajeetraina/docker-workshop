@@ -10,15 +10,15 @@
 ```
 brew install go-task/tap/go-task
 brew upgrade go-task/tap/go-task
-brew install cagent
+brew install docker-agent
 ```
 
 ### Using Git
 
 ```
 # Clone and build
-git clone https://github.com/docker/cagent.git
-cd cagent
+git clone https://github.com/docker/docker-agent.git
+cd docker-agent
 task build-web  # Build React frontend first
 task build      # Build Go binary
 task link       # Optional: create symlink to ~/bin
@@ -57,7 +57,7 @@ Ensure that you have already export OPENAI_API_KEY.
 Run it.
 
 ```
-$ cagent run my-first-agent.yaml
+$ docker agent run my-first-agent.yaml
 
 ```
 
@@ -75,7 +75,7 @@ Hello! How can I assist you today?
 ```
 
 
-🎉 Your cagent is now running successfully! 
+🎉 Your Docker Agent is now running successfully! 
 
 - ✅ Connected to OpenAI API
 - ✅ Loaded the root agent from my-agent.yaml
