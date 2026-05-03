@@ -1,4 +1,4 @@
-# Autonomy in cagent — The Agentic Loop
+# Autonomy in Docker Agent — The Agentic Loop
 
 The agent **loops independently** — deciding, acting, observing — up to N iterations with zero human intervention.
 
@@ -45,7 +45,7 @@ EOF
 export OPENAI_API_KEY=<your_key>
 ```
 
-## Step 3: Create a cagent file
+## Step 3: Create a Docker Agent file
 
 ```yaml
 # autonomy.yaml
@@ -78,10 +78,10 @@ agents:
 
 > If you remove type: shell from the YAML, the agent might be able to read and edit files but won't run tests — it would be like a developer who can write code but has no terminal. 
 
-## Step 4: Run cagent
+## Step 4: Run Docker Agent
 
 ```bash
-cagent run ./autonomy.yaml
+docker agent run ./autonomy.yaml
 ```
 
 Then type:
@@ -111,7 +111,7 @@ Iteration 5 → shell: python test_app.py
 Agent stops ✅
 ```
 
-With `cagent run`, the autonomy boundary is defined by:
+With `docker agent run`, the autonomy boundary is defined by:
 
 - The **instruction** itself (telling the agent when to stop)
 - The **model's built-in tool-calling loop** (the runtime keeps looping as long as the model makes tool calls)
@@ -124,7 +124,7 @@ No human told it what to do between steps — that's **autonomy** in action.
 
 ```bash
 # This one lets you set the guardrail explicitly
-cagent new --model openai/gpt-5-mini --max-iterations 10
+docker agent new --model openai/gpt-5-mini --max-iterations 10
 ```
 
 Then give it the same task. Watch it stop after 10 loops max even if it hasn't finished — that's the autonomy boundary at work.
