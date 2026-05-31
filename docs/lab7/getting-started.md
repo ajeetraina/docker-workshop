@@ -1,5 +1,13 @@
 
 - Install Docker Desktop 4.43.0+
+- Enable Docker Offload under Desktop > Settings
+
+
+<img width="1266" height="819" alt="image" src="https://github.com/user-attachments/assets/a5ccc6b2-9726-4058-b293-042e78c4fc1e" />
+
+- Enable Docker Offload option
+- Select Enable GPU Support
+- Restart the Docker Desktop
 - Open the terminal and run the following command:
 
 ```json
@@ -24,6 +32,9 @@ Run 'docker offload COMMAND --help' for more information on a command.
 ```json
 docker offload start
 ```
+
+<img width="672" height="375" alt="image" src="https://github.com/user-attachments/assets/5e82e990-cc67-4f95-862c-86c770d89bcd" />
+
 
 
 Please choose your Hub account and proceed further.
@@ -86,18 +97,16 @@ docker offload accounts
 docker offload status
 ```
 
-## Check the version
+Result:
 
 ```json
-docker offload version
-Docker Offload v0.4.2 build at 2025-06-30
+  Account: docker                                                       
+  State: Started (Idle)                                                 
+  Session started: N/A                                                  
+  Time until idle: N/A                                                  
+  GPU: yes       
 ```
 
-## Stop the Docker Offload
-
-![stop offload3](images/offload3.png)
-
-This command removes `docker-cloud` instance from your system.
 
 ## Using Docker Offload using Docker Dashboard
 
