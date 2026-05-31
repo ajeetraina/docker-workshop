@@ -1,4 +1,4 @@
-# Running Open-Source Models Inside sbx
+# Running Open-Source Models with sbx
 
 So far you've governed agents that call cloud LLMs. This module closes the last
 gap: running agents inside sbx against **local open-source models** on your Mac
