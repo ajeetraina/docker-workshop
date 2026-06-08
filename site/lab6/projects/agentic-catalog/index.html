@@ -6512,7 +6512,7 @@
 <li><strong>Model Runner Integration</strong> - Local AI model execution with Llama 3.2</li>
 </ul>
 <h3 id="complete-architecture">🏗️ <strong>Complete Architecture</strong></h3>
-<pre><code>┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+<div class="highlight"><pre><span></span><code>┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
 │   Frontend      │  │  Agent Portal   │  │  Chatbot UI     │
 │   Port: 5173    │  │   Port: 3001    │  │   Port: 5174    │
 └─────────────────┘  └─────────────────┘  └─────────────────┘
@@ -6538,7 +6538,7 @@
     │   Port: 5432    │ │   Port: 27017   │ │  Port: 9092     │
     │ (Products DB)   │ │ (Agent History) │ │ (Event Stream)  │
     └─────────────────┘ └─────────────────┘ └─────────────────┘
-</code></pre>
+</code></pre></div>
 <h2 id="quick-start">🚀 Quick Start</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
@@ -6547,17 +6547,17 @@
 <li>Docker Compose v2.0+</li>
 </ul>
 <h3 id="1-pull-required-models">1. Pull Required Models</h3>
-<pre><code class="language-bash"># Pull the AI model for chatbot and agents
-docker model pull ai/llama3.2:1B-Q8_0
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pull the AI model for chatbot and agents</span>
+docker<span class="w"> </span>model<span class="w"> </span>pull<span class="w"> </span>ai/llama3.2:1B-Q8_0
+</code></pre></div>
 <h3 id="2-start-all-services">2. Start All Services</h3>
-<pre><code class="language-bash"># Clone the repository
-git clone https://github.com/ajeetraina/catalog-service-node-chatbot.git
-cd catalog-service-node-chatbot
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ajeetraina/catalog-service-node-chatbot.git
+<span class="nb">cd</span><span class="w"> </span>catalog-service-node-chatbot
 
-# Start the complete system
-docker compose up -d --build
-</code></pre>
+<span class="c1"># Start the complete system</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
+</code></pre></div>
 <h3 id="3-access-the-applications">3. Access the Applications</h3>
 <table>
 <thead>
@@ -6600,7 +6600,7 @@ docker compose up -d --build
 <p><strong>Note</strong>: After running <code>sh add-products.sh</code>, your chatbot will have access to 50+ sample products for testing these capabilities.</p>
 </blockquote>
 <h3 id="natural-language-product-search">Natural Language Product Search</h3>
-<pre><code>User: &quot;Show me all electronics under $500&quot;
+<div class="highlight"><pre><span></span><code>User: &quot;Show me all electronics under $500&quot;
 Chatbot: &quot;I found 8 electronics products under $500:
 
 📱 iPhone SE - $399.00
@@ -6615,9 +6615,9 @@ Chatbot: &quot;I found 8 electronics products under $500:
 [Additional products...]
 
 Would you like details about any specific product?&quot;
-</code></pre>
+</code></pre></div>
 <h3 id="intelligent-category-browsing">Intelligent Category Browsing</h3>
-<pre><code>User: &quot;What's popular in home electronics?&quot;
+<div class="highlight"><pre><span></span><code>User: &quot;What&#39;s popular in home electronics?&quot;
 Chatbot: &quot;Based on our catalog data:
 
 🏠 Smart Home Category (12 products):
@@ -6628,10 +6628,10 @@ Chatbot: &quot;Based on our catalog data:
 
 The Amazon Echo Dot and Ring Doorbell are our top sellers.
 Which type of smart home device interests you?&quot;
-</code></pre>
+</code></pre></div>
 <h3 id="catalog-analytics">Catalog Analytics</h3>
-<pre><code>User: &quot;Give me a summary of the catalog&quot;
-Chatbot: &quot;Here's your catalog overview:
+<div class="highlight"><pre><span></span><code>User: &quot;Give me a summary of the catalog&quot;
+Chatbot: &quot;Here&#39;s your catalog overview:
 
 📊 **Catalog Statistics:**
 • Total Products: 127
@@ -6645,8 +6645,8 @@ Chatbot: &quot;Here's your catalog overview:
 2. Clothing (28 products)  
 3. Home &amp; Garden (21 products)
 
-Is there a specific category you'd like to explore?&quot;
-</code></pre>
+Is there a specific category you&#39;d like to explore?&quot;
+</code></pre></div>
 <h2 id="ai-agent-system">🤖 AI Agent System</h2>
 <p>The system includes intelligent agents powered by Model Runner:</p>
 <h3 id="vendor-intake-agent">🔍 <strong>Vendor Intake Agent</strong></h3>
@@ -6710,30 +6710,30 @@ Is there a specific category you'd like to explore?&quot;
 </tbody>
 </table>
 <h3 id="environment-configuration">Environment Configuration</h3>
-<pre><code class="language-yaml"># Model Runner integration in compose.yaml
-models:
-  llama_model:
-    model: ai/llama3.2:1B-Q8_0
+<div class="highlight"><pre><span></span><code><span class="c1"># Model Runner integration in compose.yaml</span>
+<span class="nt">models</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">llama_model</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ai/llama3.2:1B-Q8_0</span>
 
-# Services using Model Runner
-chatbot-backend:
-  models:
-    llama_model:
-      endpoint_var: MODEL_RUNNER_URL
-      model_var: MODEL_RUNNER_MODEL
+<span class="c1"># Services using Model Runner</span>
+<span class="nt">chatbot-backend</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">models</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">llama_model</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">endpoint_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_RUNNER_URL</span>
+<span class="w">      </span><span class="nt">model_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_RUNNER_MODEL</span>
 
-agent-service:
-  models:
-    llama_model:
-      endpoint_var: MODEL_RUNNER_URL  
-      model_var: MODEL_RUNNER_MODEL
+<span class="nt">agent-service</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">models</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">llama_model</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">endpoint_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_RUNNER_URL</span><span class="w">  </span>
+<span class="w">      </span><span class="nt">model_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_RUNNER_MODEL</span>
 
-mcp-gateway:
-  models:
-    llama_model:
-      endpoint_var: MODEL_RUNNER_URL
-      model_var: MODEL_RUNNER_MODEL
-</code></pre>
+<span class="nt">mcp-gateway</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">models</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">llama_model</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">endpoint_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_RUNNER_URL</span>
+<span class="w">      </span><span class="nt">model_var</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_RUNNER_MODEL</span>
+</code></pre></div>
 <h2 id="core-services-deep-dive">🔧 Core Services Deep Dive</h2>
 <h3 id="chatbot-backend-chatbot-backend"><strong>Chatbot Backend</strong> (<code>chatbot-backend</code>)</h3>
 <ul>
@@ -6769,16 +6769,16 @@ mcp-gateway:
 </ul>
 <h2 id="event-driven-architecture">📊 Event-Driven Architecture</h2>
 <h3 id="kafka-integration">Kafka Integration</h3>
-<pre><code class="language-yaml"># Kafka configuration for real-time processing
-kafka:
-  image: apache/kafka:latest
-  ports: [&quot;9092:9092&quot;, &quot;9093:9093&quot;]
+<div class="highlight"><pre><span></span><code><span class="c1"># Kafka configuration for real-time processing</span>
+<span class="nt">kafka</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apache/kafka:latest</span>
+<span class="w">  </span><span class="nt">ports</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;9092:9092&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;9093:9093&quot;</span><span class="p p-Indicator">]</span>
 
-# Event flow examples:
-# 1. New product → Agent evaluation → Catalog update
-# 2. User query → Agent research → Enhanced response  
-# 3. Price change → Market analysis → Competitive insights
-</code></pre>
+<span class="c1"># Event flow examples:</span>
+<span class="c1"># 1. New product → Agent evaluation → Catalog update</span>
+<span class="c1"># 2. User query → Agent research → Enhanced response  </span>
+<span class="c1"># 3. Price change → Market analysis → Competitive insights</span>
+</code></pre></div>
 <h3 id="event-types">Event Types</h3>
 <ul>
 <li><strong>Product Events</strong>: Creation, updates, deletions</li>
@@ -6788,132 +6788,132 @@ kafka:
 </ul>
 <h2 id="database-architecture">🗄️ Database Architecture</h2>
 <h3 id="postgresql-primary-database"><strong>PostgreSQL</strong> (Primary Database)</h3>
-<pre><code class="language-sql">-- Core product catalog
-CREATE TABLE products (
-    id SERIAL PRIMARY KEY,
-    name VARCHAR(255) NOT NULL,
-    description TEXT,
-    category VARCHAR(100),
-    price DECIMAL(10, 2),
-    vendor_id VARCHAR(100),
-    ai_score INTEGER, -- AI evaluation score
-    status VARCHAR(20) DEFAULT 'active',
-    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-    updated_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-);
+<div class="highlight"><pre><span></span><code><span class="c1">-- Core product catalog</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">products</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">SERIAL</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">)</span><span class="w"> </span><span class="k">NOT</span><span class="w"> </span><span class="k">NULL</span><span class="p">,</span>
+<span class="w">    </span><span class="n">description</span><span class="w"> </span><span class="nb">TEXT</span><span class="p">,</span>
+<span class="w">    </span><span class="n">category</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">    </span><span class="n">price</span><span class="w"> </span><span class="nb">DECIMAL</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="w"> </span><span class="mi">2</span><span class="p">),</span>
+<span class="w">    </span><span class="n">vendor_id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">),</span>
+<span class="w">    </span><span class="n">ai_score</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span><span class="w"> </span><span class="c1">-- AI evaluation score</span>
+<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="s1">&#39;active&#39;</span><span class="p">,</span>
+<span class="w">    </span><span class="n">created_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span><span class="p">,</span>
+<span class="w">    </span><span class="n">updated_at</span><span class="w"> </span><span class="k">TIMESTAMP</span><span class="w"> </span><span class="k">DEFAULT</span><span class="w"> </span><span class="k">CURRENT_TIMESTAMP</span>
+<span class="p">);</span>
 
--- Vendor management
-CREATE TABLE vendors (
-    id VARCHAR(100) PRIMARY KEY,
-    name VARCHAR(255),
-    evaluation_score INTEGER,
-    status VARCHAR(20)
-);
-</code></pre>
+<span class="c1">-- Vendor management</span>
+<span class="k">CREATE</span><span class="w"> </span><span class="k">TABLE</span><span class="w"> </span><span class="n">vendors</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="n">id</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span><span class="w"> </span><span class="k">PRIMARY</span><span class="w"> </span><span class="k">KEY</span><span class="p">,</span>
+<span class="w">    </span><span class="n">name</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">255</span><span class="p">),</span>
+<span class="w">    </span><span class="n">evaluation_score</span><span class="w"> </span><span class="nb">INTEGER</span><span class="p">,</span>
+<span class="w">    </span><span class="n">status</span><span class="w"> </span><span class="nb">VARCHAR</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="p">);</span>
+</code></pre></div>
 <h3 id="mongodb-agent-history"><strong>MongoDB</strong> (Agent History)</h3>
-<pre><code class="language-javascript">// Agent interaction history
-{
-  agentType: &quot;vendor_evaluation&quot;,
-  productId: &quot;12345&quot;,
-  evaluation: {
-    score: 85,
-    reasoning: &quot;High quality, competitive pricing&quot;,
-    criteria: [&quot;quality&quot;, &quot;price&quot;, &quot;market_fit&quot;]
-  },
-  timestamp: &quot;2025-01-15T10:30:00Z&quot;
-}
+<div class="highlight"><pre><span></span><code><span class="c1">// Agent interaction history</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nx">agentType</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;vendor_evaluation&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">productId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;12345&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">evaluation</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">score</span><span class="o">:</span><span class="w"> </span><span class="mf">85</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">reasoning</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;High quality, competitive pricing&quot;</span><span class="p">,</span>
+<span class="w">    </span><span class="nx">criteria</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;quality&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;price&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;market_fit&quot;</span><span class="p">]</span>
+<span class="w">  </span><span class="p">},</span>
+<span class="w">  </span><span class="nx">timestamp</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;2025-01-15T10:30:00Z&quot;</span>
+<span class="p">}</span>
 
-// Customer interaction patterns
-{
-  sessionId: &quot;abc123&quot;,
-  interactions: [
-    { query: &quot;electronics under $200&quot;, results: 5 },
-    { action: &quot;view_product&quot;, productId: &quot;67890&quot; }
-  ],
-  preferences: [&quot;electronics&quot;, &quot;budget_conscious&quot;]
-}
-</code></pre>
+<span class="c1">// Customer interaction patterns</span>
+<span class="p">{</span>
+<span class="w">  </span><span class="nx">sessionId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nx">interactions</span><span class="o">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">query</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;electronics under $200&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">results</span><span class="o">:</span><span class="w"> </span><span class="mf">5</span><span class="w"> </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span><span class="w"> </span><span class="nx">action</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;view_product&quot;</span><span class="p">,</span><span class="w"> </span><span class="nx">productId</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;67890&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nx">preferences</span><span class="o">:</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;electronics&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;budget_conscious&quot;</span><span class="p">]</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="api-endpoints">🛠️ API Endpoints</h2>
 <h3 id="chatbot-api-localhost8082">Chatbot API (<code>localhost:8082</code>)</h3>
-<pre><code class="language-http"># Natural language chat
-POST /api/chat
-{
-  &quot;message&quot;: &quot;Show me laptops for programming&quot;
-}
+<div class="highlight"><pre><span></span><code><span class="err"># Natural language chat</span>
+<span class="err">POST /api/chat</span>
+<span class="err">{</span>
+<span class="err">  &quot;message&quot;: &quot;Show me laptops for programming&quot;</span>
+<span class="err">}</span>
 
-# Product search with filters
-GET /api/products/search?q=laptop&amp;category=electronics&amp;maxPrice=1500
+<span class="err"># Product search with filters</span>
+<span class="err">GET /api/products/search?q=laptop&amp;category=electronics&amp;maxPrice=1500</span>
 
-# Get conversation context
-GET /api/context/{sessionId}
-</code></pre>
+<span class="err"># Get conversation context</span>
+<span class="err">GET /api/context/{sessionId}</span>
+</code></pre></div>
 <h3 id="agent-service-api-localhost7777">Agent Service API (<code>localhost:7777</code>)</h3>
-<pre><code class="language-http"># Trigger vendor evaluation
-POST /api/agents/evaluate-vendor
-{
-  &quot;vendorId&quot;: &quot;tech_corp_001&quot;,
-  &quot;products&quot;: [&quot;product_123&quot;, &quot;product_456&quot;]
-}
+<div class="highlight"><pre><span></span><code><span class="err"># Trigger vendor evaluation</span>
+<span class="err">POST /api/agents/evaluate-vendor</span>
+<span class="err">{</span>
+<span class="err">  &quot;vendorId&quot;: &quot;tech_corp_001&quot;,</span>
+<span class="err">  &quot;products&quot;: [&quot;product_123&quot;, &quot;product_456&quot;]</span>
+<span class="err">}</span>
 
-# Get market research report
-GET /api/agents/market-research/{productId}
+<span class="err"># Get market research report</span>
+<span class="err">GET /api/agents/market-research/{productId}</span>
 
-# Customer preference analysis
-POST /api/agents/analyze-customer
-{
-  &quot;customerId&quot;: &quot;user_789&quot;,
-  &quot;interactionHistory&quot;: [...]
-}
-</code></pre>
+<span class="err"># Customer preference analysis</span>
+<span class="err">POST /api/agents/analyze-customer</span>
+<span class="err">{</span>
+<span class="err">  &quot;customerId&quot;: &quot;user_789&quot;,</span>
+<span class="err">  &quot;interactionHistory&quot;: [...]</span>
+<span class="err">}</span>
+</code></pre></div>
 <h3 id="main-backend-api-localhost3000">Main Backend API (<code>localhost:3000</code>)</h3>
-<pre><code class="language-http"># Product management
-GET /api/products
-POST /api/products
-PUT /api/products/{id}
-DELETE /api/products/{id}
+<div class="highlight"><pre><span></span><code><span class="err"># Product management</span>
+<span class="err">GET /api/products</span>
+<span class="err">POST /api/products</span>
+<span class="err">PUT /api/products/{id}</span>
+<span class="err">DELETE /api/products/{id}</span>
 
-# Vendor management  
-GET /api/vendors
-POST /api/vendors
-GET /api/vendors/{id}/evaluation
+<span class="err"># Vendor management  </span>
+<span class="err">GET /api/vendors</span>
+<span class="err">POST /api/vendors</span>
+<span class="err">GET /api/vendors/{id}/evaluation</span>
 
-# Analytics
-GET /api/analytics/summary
-GET /api/analytics/trends
-</code></pre>
+<span class="err"># Analytics</span>
+<span class="err">GET /api/analytics/summary</span>
+<span class="err">GET /api/analytics/trends</span>
+</code></pre></div>
 <h2 id="development-testing">🔍 Development &amp; Testing</h2>
 <h3 id="local-development-setup">Local Development Setup</h3>
-<pre><code class="language-bash"># Start infrastructure only
-docker compose up postgres mongodb kafka -d
+<div class="highlight"><pre><span></span><code><span class="c1"># Start infrastructure only</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>postgres<span class="w"> </span>mongodb<span class="w"> </span>kafka<span class="w"> </span>-d
 
-# Run services locally for development
-cd chatbot-backend &amp;&amp; npm run dev  # Port 8082
-cd agent-service &amp;&amp; npm run dev    # Port 7777  
-cd backend &amp;&amp; npm run dev          # Port 3000
-</code></pre>
+<span class="c1"># Run services locally for development</span>
+<span class="nb">cd</span><span class="w"> </span>chatbot-backend<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>dev<span class="w">  </span><span class="c1"># Port 8082</span>
+<span class="nb">cd</span><span class="w"> </span>agent-service<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>dev<span class="w">    </span><span class="c1"># Port 7777  </span>
+<span class="nb">cd</span><span class="w"> </span>backend<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>run<span class="w"> </span>dev<span class="w">          </span><span class="c1"># Port 3000</span>
+</code></pre></div>
 <h3 id="health-checks">Health Checks</h3>
-<pre><code class="language-bash"># Check all service health
-curl http://localhost:3000/health   # Backend
-curl http://localhost:8082/health   # Chatbot
-curl http://localhost:7777/health   # Agents
-curl http://localhost:8811/health   # MCP Gateway
+<div class="highlight"><pre><span></span><code><span class="c1"># Check all service health</span>
+curl<span class="w"> </span>http://localhost:3000/health<span class="w">   </span><span class="c1"># Backend</span>
+curl<span class="w"> </span>http://localhost:8082/health<span class="w">   </span><span class="c1"># Chatbot</span>
+curl<span class="w"> </span>http://localhost:7777/health<span class="w">   </span><span class="c1"># Agents</span>
+curl<span class="w"> </span>http://localhost:8811/health<span class="w">   </span><span class="c1"># MCP Gateway</span>
 
-# Check Model Runner status
-docker model ls
-docker model info ai/llama3.2:1B-Q8_0
-</code></pre>
+<span class="c1"># Check Model Runner status</span>
+docker<span class="w"> </span>model<span class="w"> </span>ls
+docker<span class="w"> </span>model<span class="w"> </span>info<span class="w"> </span>ai/llama3.2:1B-Q8_0
+</code></pre></div>
 <h3 id="testing-the-chatbot">Testing the Chatbot</h3>
-<pre><code class="language-bash"># Test natural language queries
-curl -X POST http://localhost:8082/api/chat \
-  -H &quot;Content-Type: application/json&quot; \
-  -d '{&quot;message&quot;: &quot;What are your most expensive electronics?&quot;}'
+<div class="highlight"><pre><span></span><code><span class="c1"># Test natural language queries</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8082/api/chat<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;message&quot;: &quot;What are your most expensive electronics?&quot;}&#39;</span>
 
-# Test product search
-curl &quot;http://localhost:8082/api/products/search?q=smartphone&amp;maxPrice=800&quot;
+<span class="c1"># Test product search</span>
+curl<span class="w"> </span><span class="s2">&quot;http://localhost:8082/api/products/search?q=smartphone&amp;maxPrice=800&quot;</span>
 
-# Test category lookup
-curl http://localhost:8082/api/categories
-</code></pre>
+<span class="c1"># Test category lookup</span>
+curl<span class="w"> </span>http://localhost:8082/api/categories
+</code></pre></div>
 <h2 id="monitoring-observability">📈 Monitoring &amp; Observability</h2>
 <h3 id="service-monitoring">Service Monitoring</h3>
 <ul>
@@ -6923,24 +6923,24 @@ curl http://localhost:8082/api/categories
 <li><strong>Health Endpoints</strong>: Built-in health checks for all services</li>
 </ul>
 <h3 id="performance-metrics">Performance Metrics</h3>
-<pre><code class="language-bash"># Check resource usage
-docker stats
+<div class="highlight"><pre><span></span><code><span class="c1"># Check resource usage</span>
+docker<span class="w"> </span>stats
 
-# Monitor model performance
-docker model stats ai/llama3.2:1B-Q8_0
+<span class="c1"># Monitor model performance</span>
+docker<span class="w"> </span>model<span class="w"> </span>stats<span class="w"> </span>ai/llama3.2:1B-Q8_0
 
-# View service logs
-docker compose logs -f chatbot-backend
-docker compose logs -f agent-service
-</code></pre>
+<span class="c1"># View service logs</span>
+docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>chatbot-backend
+docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>agent-service
+</code></pre></div>
 <h2 id="adding-products-data">🚀 Adding Products &amp; Data</h2>
 <h3 id="automated-product-import">Automated Product Import</h3>
-<pre><code class="language-bash"># Use the provided import script
+<div class="highlight"><pre><span></span><code><span class="c1"># Use the provided import script</span>
 ./add-products.sh
 
-# Or use the Node.js automation script
-npm run import-products
-</code></pre>
+<span class="c1"># Or use the Node.js automation script</span>
+npm<span class="w"> </span>run<span class="w"> </span>import-products
+</code></pre></div>
 <h3 id="testing-with-sample-data">Testing with Sample Data</h3>
 <p>The system includes comprehensive sample data:
 - <strong>50+ Products</strong> across multiple categories
@@ -6963,14 +6963,14 @@ npm run import-products
 <li><strong>Caching</strong>: Redis for frequently accessed data</li>
 </ul>
 <h3 id="deployment">Deployment</h3>
-<pre><code class="language-yaml"># Production environment variables
-environment:
-  - NODE_ENV=production
-  - MODEL_RUNNER_URL=${MODEL_RUNNER_URL}
-  - POSTGRES_HOST=${POSTGRES_HOST}
-  - KAFKA_BROKERS=${KAFKA_BROKERS}
-  - MONGODB_URI=${MONGODB_URI}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Production environment variables</span>
+<span class="nt">environment</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">NODE_ENV=production</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MODEL_RUNNER_URL=${MODEL_RUNNER_URL}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">POSTGRES_HOST=${POSTGRES_HOST}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">KAFKA_BROKERS=${KAFKA_BROKERS}</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MONGODB_URI=${MONGODB_URI}</span>
+</code></pre></div>
 <h2 id="quick-start-checklist">🎯 Quick Start Checklist</h2>
 <ul>
 <li>[ ] <strong>Pull AI Model</strong>: <code>docker model pull ai/llama3.2:1B-Q8_0</code></li>

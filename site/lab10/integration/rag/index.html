@@ -5330,15 +5330,15 @@
 
 <p>Enabling RAG in cagent is as simple as adding a rag section to your config. Here's a basic example.</p>
 <h2 id="step-1-clone-the-repo">Step 1. Clone the repo</h2>
-<pre><code>git clone https://github.com/ajeetraina/cagent-rag-demo/
+<div class="highlight"><pre><span></span><code>git clone https://github.com/ajeetraina/cagent-rag-demo/
 cd cagent-rag-demo
-</code></pre>
+</code></pre></div>
 <h2 id="step-2-get-openai-api-key">Step 2. Get OpenAI API Key</h2>
-<pre><code># Set your OpenAI API key
+<div class="highlight"><pre><span></span><code># Set your OpenAI API key
 export OPENAI_API_KEY=your-key-here
-</code></pre>
+</code></pre></div>
 <h2 id="step-3-verify-the-yaml-file">Step 3. Verify the YAML file</h2>
-<pre><code>rag:
+<div class="highlight"><pre><span></span><code>rag:
   codebase:
     docs: [./src, ./pkg]
     strategies:
@@ -5367,9 +5367,9 @@ agents:
       You are a Go developer. Search the codebase before answering.
       Reference specific files and functions.
     rag: [codebase]
-</code></pre>
-<pre><code>cagent run cagent-config.yaml
-</code></pre>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>cagent run cagent-config.yaml
+</code></pre></div>
 <p>This config indexes ./src and ./pkg using two strategies: </p>
 <ul>
 <li>chunked-embeddings converts code into vectors for semantic search (finding "authentication" when you search "login"), while bm25 does keyword matching (finding exact function names like HandleRequest).</li>
@@ -5377,9 +5377,9 @@ agents:
 <p>Chunks are 1500 characters with 150-character overlap to preserve context at boundaries. Both strategies run in parallel-embeddings returns up to 20 results, bm25 up to 15. RRF fusion merges them by rank (not score), deduplicates, and returns the top 5. The agent gets a search tool linked to this index and is instructed to search before answering.</p>
 <h2 id="how-it-works">How it works?</h2>
 <p>This is a RAG (Retrieval-Augmented Generation) config for cagent. Here's what each section does:</p>
-<pre><code>rag: - The knowledge base
+<div class="highlight"><pre><span></span><code>rag: - The knowledge base
 yamldocs: [./src, ./pkg]          # Index these 2 directories (your Go source code)
-</code></pre>
+</code></pre></div>
 <p>Two retrieval strategies running in parallel:</p>
 <table>
 <thead>
@@ -5400,13 +5400,13 @@ yamldocs: [./src, ./pkg]          # Index these 2 directories (your Go source co
 </tbody>
 </table>
 <p>results: - How results are merged</p>
-<pre><code>fusion:
+<p><div class="highlight"><pre><span></span><code>fusion:
   strategy: rrf    # Reciprocal Rank Fusion - combines both rankings
   k: 60           # Smoothing factor (higher = more equal weighting)
 deduplicate: true  # Remove duplicate chunks
 limit: 5          # Feed only the best 5 chunks to the LLM
-</code></pre>
-<p>So: 20 embedding results + 15 BM25 results → fused → deduped → top 5 sent to GPT-4.</p>
+</code></pre></div>
+So: 20 embedding results + 15 BM25 results → fused → deduped → top 5 sent to GPT-4.</p>
 
 
 

@@ -5362,13 +5362,13 @@
 <hr />
 <h2 id="how-policies-reach-developers">How policies reach developers</h2>
 <p>When a developer runs <code>docker login</code> with org credentials, the Docker client fetches the org's AI governance policies as part of authentication. The local <code>sbx</code> daemon caches them and applies them to every sandbox launched on that machine.</p>
-<pre><code>Admin Console  ──auth flow──▶  Developer Docker Desktop  ──cache──▶  Every sandbox
+<div class="highlight"><pre><span></span><code>Admin Console  ──auth flow──▶  Developer Docker Desktop  ──cache──▶  Every sandbox
 (one source
  of truth)
-</code></pre>
+</code></pre></div>
 <p>When the admin changes a policy, developers pick up the change on next sync. To force an immediate refresh:</p>
-<pre><code class="language-bash">sbx policy reset
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>reset
+</code></pre></div>
 <p>(You'll be prompted to choose a default baseline. Pick <strong>Balanced</strong>.)</p>
 <hr />
 <h2 id="how-rules-evaluate">How rules evaluate</h2>
@@ -5387,8 +5387,8 @@
 <hr />
 <h2 id="local-vs-remote-policies">Local vs remote policies</h2>
 <p>Run this to see what's currently active:</p>
-<pre><code class="language-bash">sbx policy ls
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>ls
+</code></pre></div>
 <p>You'll see two kinds of policies:</p>
 <table>
 <thead>
@@ -5413,9 +5413,9 @@
 <hr />
 <h2 id="confirm-governance-is-active">Confirm governance is active</h2>
 <p>Look at the top of the <code>sbx policy ls</code> output. You should see:</p>
-<pre><code>Governance: managed by &lt;your-org&gt;
+<div class="highlight"><pre><span></span><code>Governance: managed by &lt;your-org&gt;
 [OK] last synced HH:MM:SS
-</code></pre>
+</code></pre></div>
 <p>If <code>Governance</code> says anything other than your org, check that you're logged in with the right account (<code>docker login</code>) and that the account is a member of your org.</p>
 <p>That's the model. Now let's prove it works end-to-end.</p>
 

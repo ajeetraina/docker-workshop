@@ -5500,69 +5500,69 @@
 <p>Press <strong>Ctrl-C twice</strong> to exit the agent session and return to your host terminal.</p>
 <hr />
 <h2 id="start-a-branch-mode-session">Start a branch mode session</h2>
-<pre><code class="language-bash">sbx run sbxlab --branch=fix-bugs
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>sbxlab<span class="w"> </span>--branch<span class="o">=</span>fix-bugs
+</code></pre></div>
 <p>sbx creates a Git worktree at <code>.sbx/sbxlab-worktrees/fix-bugs</code> in your repo root. The agent works on its own branch and directory without touching your main working tree.</p>
 <hr />
 <h2 id="give-the-agent-a-real-task">Give the agent a real task</h2>
 <p>Inside the sandbox, give it this prompt:</p>
-<pre><code>Run the test suite for the FastAPI backend. Find the failing tests.
+<div class="highlight"><pre><span></span><code>Run the test suite for the FastAPI backend. Find the failing tests.
 Fix the pagination bug in backend/app/main.py. Commit with a descriptive message.
 
 Use: cd backend &amp;&amp; pytest tests/ -v
-</code></pre>
+</code></pre></div>
 <p>The agent will take 3–5 minutes to run tests, diagnose failures, fix the bug, and commit.</p>
 <hr />
 <h2 id="monitor-without-interrupting">Monitor without interrupting</h2>
 <p>While the agent works, open a <strong>second host terminal</strong> and watch the worktree:</p>
-<pre><code class="language-bash">cd ~/sbx-lab
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/sbx-lab
 
-# See the worktree
-ls .sbx/
+<span class="c1"># See the worktree</span>
+ls<span class="w"> </span>.sbx/
 
-# See all worktrees
-git worktree list
+<span class="c1"># See all worktrees</span>
+git<span class="w"> </span>worktree<span class="w"> </span>list
 
-# Watch commits appear in real time
-git log --oneline fix-bugs
-</code></pre>
+<span class="c1"># Watch commits appear in real time</span>
+git<span class="w"> </span>log<span class="w"> </span>--oneline<span class="w"> </span>fix-bugs
+</code></pre></div>
 <p>You can see exactly what the agent is doing without interrupting the session.</p>
 <hr />
 <h2 id="review-the-changes">Review the changes</h2>
 <p>When the agent is done, exit the session (Ctrl-C twice) and review:</p>
-<pre><code class="language-bash"># See the full diff
-git diff main..fix-bugs
+<div class="highlight"><pre><span></span><code><span class="c1"># See the full diff</span>
+git<span class="w"> </span>diff<span class="w"> </span>main..fix-bugs
 
-# Or just the changed files
-git diff main..fix-bugs --name-only
-</code></pre>
+<span class="c1"># Or just the changed files</span>
+git<span class="w"> </span>diff<span class="w"> </span>main..fix-bugs<span class="w"> </span>--name-only
+</code></pre></div>
 <p>The diff is clean. The agent worked on its branch. Your <code>main</code> is untouched.</p>
 <hr />
 <h2 id="push-and-open-a-pr">Push and open a PR</h2>
 <p>If you're happy with the changes:</p>
-<pre><code class="language-bash">git push origin fix-bugs
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>fix-bugs
 
-gh pr create \
-  --head fix-bugs \
-  --title &quot;Fix: pagination offset bug&quot; \
-  --body &quot;Fixes off-by-one error in list_issues() pagination&quot;
-</code></pre>
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--head<span class="w"> </span>fix-bugs<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--title<span class="w"> </span><span class="s2">&quot;Fix: pagination offset bug&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--body<span class="w"> </span><span class="s2">&quot;Fixes off-by-one error in list_issues() pagination&quot;</span>
+</code></pre></div>
 <p>This is the same PR workflow your team already uses - just with the agent as the author.</p>
 <hr />
 <h2 id="auto-naming-branches">Auto-naming branches</h2>
 <p>You don't have to name the branch yourself:</p>
-<pre><code class="language-bash">sbx run sbxlab --branch auto
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>sbxlab<span class="w"> </span>--branch<span class="w"> </span>auto
+</code></pre></div>
 <p>sbx generates a name. Useful when you just want isolation without thinking about naming.</p>
 <hr />
 <h2 id="the-worktree-directory">The worktree directory</h2>
-<pre><code class="language-bash">ls .sbx/
-# sbxlab-worktrees/
-#   fix-bugs/    ← the agent worked here
-</code></pre>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>.sbx/
+<span class="c1"># sbxlab-worktrees/</span>
+<span class="c1">#   fix-bugs/    ← the agent worked here</span>
+</code></pre></div>
 <p>The worktree is a real Git worktree. It has the full repo history. It shares objects with your main clone (no duplication). When you delete the sandbox:</p>
-<pre><code class="language-bash">sbx rm sbxlab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>rm<span class="w"> </span>sbxlab
+</code></pre></div>
 <p>The VM is deleted along with all its worktrees under <code>.sbx/</code>. Your source files in <code>~/sbx-lab</code> are untouched.</p>
 <hr />
 <h2 id="checkpoint">✅ Checkpoint</h2>

@@ -5382,50 +5382,50 @@
 <p>This demo showcases cagent's multi-agent architecture with a complete development team including a Product Manager, Designer, and Engineer.</p>
 <h2 id="configuration">Configuration</h2>
 <p>Create a file named <code>dev-team.yaml</code>:</p>
-<pre><code class="language-yaml">agents:
-  root:
-    model: model
-    description: Product Manager - Leads the development team
-    sub_agents: [designer, awesome_engineer]
-    toolsets:
-      - type: filesystem
-      - type: think
-      - type: todo
-      - type: memory
-        path: dev_memory.db
+<div class="highlight"><pre><span></span><code><span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">model</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Product Manager - Leads the development team</span>
+<span class="w">    </span><span class="nt">sub_agents</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">designer</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">awesome_engineer</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">think</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">todo</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev_memory.db</span>
 
-  designer:
-    model: model
-    description: UI/UX Designer - Creates user interface designs
-    toolsets:
-      - type: filesystem
-      - type: think
-      - type: memory
-        path: dev_memory.db
+<span class="w">  </span><span class="nt">designer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">model</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">UI/UX Designer - Creates user interface designs</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">think</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev_memory.db</span>
 
-  awesome_engineer:
-    model: model
-    description: Full Stack Engineer - Frontend and backend development
-    toolsets:
-      - type: filesystem
-      - type: shell
-      - type: think
-      - type: memory
-        path: dev_memory.db
+<span class="w">  </span><span class="nt">awesome_engineer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">model</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Full Stack Engineer - Frontend and backend development</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shell</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">think</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dev_memory.db</span>
 
-models:
-  model:
-    provider: openai
-    model: gpt-4o
-</code></pre>
+<span class="nt">models</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">model</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpt-4o</span>
+</code></pre></div>
 <h2 id="running-the-agent">Running the Agent</h2>
-<pre><code class="language-bash">./bin/cagent run dev-team.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>./bin/cagent<span class="w"> </span>run<span class="w"> </span>dev-team.yaml
+</code></pre></div>
 <h2 id="agent-hierarchy">Agent Hierarchy</h2>
-<pre><code>Root Agent (Product Manager)
+<div class="highlight"><pre><span></span><code>Root Agent (Product Manager)
 ├── Designer (UI/UX Specialist)
 └── Engineer (Full Stack Developer)
-</code></pre>
+</code></pre></div>
 <h2 id="how-task-delegation-works">How Task Delegation Works</h2>
 <ol>
 <li><strong>User sends request</strong> to the root agent (Product Manager)</li>
@@ -5437,17 +5437,17 @@ models:
 <li><strong>Results flow back</strong> through the Product Manager to the user</li>
 </ol>
 <h2 id="example-interaction">Example Interaction</h2>
-<pre><code>&gt; Build a user login page with modern styling
+<div class="highlight"><pre><span></span><code>&gt; Build a user login page with modern styling
 
 --- Agent: root (Product Manager) ---
 
-I'll coordinate the team to build this feature.
+I&#39;ll coordinate the team to build this feature.
 
 [Delegating design work to designer]
 
 --- Agent: designer ---
 
-I'll create a modern login page design with:
+I&#39;ll create a modern login page design with:
 - Clean, minimalist layout
 - Email and password fields
 - &quot;Remember me&quot; checkbox
@@ -5462,12 +5462,12 @@ I'll create a modern login page design with:
 
 --- Agent: awesome_engineer ---
 
-I'll implement the login page based on the design:
+I&#39;ll implement the login page based on the design:
 
 [Using shell and filesystem tools to create React component...]
 
 Done! Created LoginPage.jsx with Tailwind CSS styling.
-</code></pre>
+</code></pre></div>
 <h2 id="key-takeaways">Key Takeaways</h2>
 <ul>
 <li><code>sub_agents</code> defines which agents the root can delegate to</li>

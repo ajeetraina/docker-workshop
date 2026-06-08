@@ -5365,13 +5365,13 @@
 <p>Multi-stage builds let you cleanly separate the build environment from the runtime environment.</p>
 <h2 id="examine-the-dockerfile-structure">Examine the Dockerfile structure</h2>
 <p>Look at the <code>Dockerfile</code> you saved in the previous step. Three stages:</p>
-<pre><code class="language-text">FROM node:25-slim AS base     &lt;-- shared foundation
+<div class="highlight"><pre><span></span><code>FROM node:25-slim AS base     &lt;-- shared foundation
   └─ FROM base AS dev          &lt;-- installs ALL deps + dev tools
   └─ FROM base AS final        &lt;-- npm ci --production only
-</code></pre>
+</code></pre></div>
 <p>The critical production line:</p>
-<pre><code class="language-dockerfile">RUN npm ci --production --ignore-scripts &amp;&amp; npm cache clean --force
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>ci<span class="w"> </span>--production<span class="w"> </span>--ignore-scripts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force
+</code></pre></div>
 <p>Each flag matters:</p>
 <ul>
 <li><code>--production</code> - only production dependencies, <code>devDependencies</code> excluded</li>
@@ -5381,20 +5381,20 @@
 <h2 id="build-specific-stages">Build specific stages</h2>
 <p>You can build any stage by name with <code>--target</code>. This is useful in CI: run unit tests against the dev stage, ship the final stage to production.</p>
 <p>Build the dev stage:</p>
-<pre><code class="language-bash">docker build -t catalog-service:dev --target dev .
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>catalog-service:dev<span class="w"> </span>--target<span class="w"> </span>dev<span class="w"> </span>.
+</code></pre></div>
 <p>Build the production stage:</p>
-<pre><code class="language-bash">docker build -t catalog-service:prod --target final .
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>catalog-service:prod<span class="w"> </span>--target<span class="w"> </span>final<span class="w"> </span>.
+</code></pre></div>
 <p>Compare the two:</p>
-<pre><code class="language-bash">docker images catalog-service
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>images<span class="w"> </span>catalog-service
+</code></pre></div>
 <p>The <code>dev</code> image is significantly larger - it contains all <code>devDependencies</code>. The <code>prod</code> image is lean: smaller attack surface, faster pulls, less risk.</p>
 <h2 id="why-ignore-scripts-matters">Why <code>--ignore-scripts</code> matters</h2>
 <p>Post-install scripts are a well-known supply chain attack vector. The 2022 <a href="https://snyk.io/blog/peacenotwar-malicious-npm-node-ipc-package-vulnerability/"><code>node-ipc</code> incident</a> used a post-install script to wipe files on disks in specific countries. <code>--ignore-scripts</code> prevents <code>npm</code> from running these scripts during <code>ci</code> or <code>install</code>, blocking that entire class of attack at build time.</p>
 <p>You can verify your prod image stayed clean of critical/high CVEs with Scout:</p>
-<pre><code class="language-bash">docker scout cves catalog-service:prod --only-severity critical,high --org &lt;YOUR_ORG&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>cves<span class="w"> </span>catalog-service:prod<span class="w"> </span>--only-severity<span class="w"> </span>critical,high<span class="w"> </span>--org<span class="w"> </span>&lt;YOUR_ORG&gt;
+</code></pre></div>
 <p>Continue to <a href="../non-root-user/">BP#3: Non-Root User</a>.</p>
 
 

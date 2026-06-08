@@ -5357,7 +5357,7 @@
 <h2 id="mcp-toolkit">MCP Toolkit</h2>
 <p>Naturally, cagent makes it easy to use an MCP server from the MCP Toolkit.</p>
 <p>Here is an example agent that uses the fetch MCP server from the toolkit.</p>
-<pre><code>version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code>version: &quot;2&quot;
 
 agents:
   root:
@@ -5366,13 +5366,13 @@ agents:
     toolsets:
       - type: mcp
         ref: docker:fetch
-</code></pre>
+</code></pre></div>
 <p>Run this agent and ask it "fetch docker.com", you will see the agent calling the fetch tool form the fetch MCP server.</p>
 <p>This is the simplest way to use an MCP server with cagent, but you can also run any MCP server, local or remote.</p>
 <h2 id="custom-local-mcp-server">Custom local MCP server</h2>
 <p>To run the above example you will need the uvx command line, which is often needed when running local mcp server outside of docker containers.</p>
 <p>yfmcp is the yahoo finance mcp server.</p>
-<pre><code>version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code>version: &quot;2&quot;
 agents:
   root:
     model: opeani/gpt-4o
@@ -5384,56 +5384,55 @@ agents:
       - type: mcp
       command: uvx
       args: [&quot;yfmcp&quot;]
-</code></pre>
+</code></pre></div>
 <h2 id="remote-mcp-server">Remote MCP server</h2>
-<pre><code>version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code>version: &quot;2&quot;
 
 agents:
   root:
     model: anthropic/claude-3-5-sonnet-latest
     description: Moby Project Expert
-    instruction: You are an AI assistant with expertise in the moby/moby project's documentation.
+    instruction: You are an AI assistant with expertise in the moby/moby project&#39;s documentation.
     toolsets:
       - type: mcp
         remote:
           url: https://gitmcp.io/moby/moby
           transport_type: streamable
-</code></pre>
+</code></pre></div>
 <h2 id="your-own-mcp-server">Your own MCP server</h2>
 <p>In this exercice we will take an existing (very simple) MCP server, build it, and then use it in our agent.</p>
 <p>First clone:</p>
-<pre><code>git clone https://github.com/rumpl/mcp-strawberry
-</code></pre>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/rumpl/mcp-strawberry
+</code></pre></div>
 <p>You can then build the docker image of this server:</p>
-<pre><code>$ cd mcp-strawberry
+<div class="highlight"><pre><span></span><code>$ cd mcp-strawberry
 $ docker build -t mcp-strawberry .
-</code></pre>
+</code></pre></div>
 <p>Now create an agent that will use this MCP server.</p>
 <p>Hint 1:</p>
 <p>To run any server, use</p>
-<pre><code>toolsets:
+<div class="highlight"><pre><span></span><code>toolsets:
   - type: mcp
     command: ...
     args: [..., ...]
-</code></pre>
+</code></pre></div>
 <p>Hint 2:</p>
 <p>Make sure to add the -i and --rm flags when running your server</p>
-<pre><code>version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code>version: &quot;2&quot;
 
 agents:
   root:
     model: openai/gpt-4o
-    instruction: Count the number of 'r' in a word
+    instruction: Count the number of &#39;r&#39; in a word
     toolsets:
       - type: mcp
         command: docker
         args: [run, &quot;-i&quot;, &quot;--rm&quot;, &quot;mcp-strawberry&quot;] # or djordjelukic1639080/mcp-strawberry
-
-</code></pre>
+</code></pre></div>
 <h2 id="our-developer-agent">Our developer agent</h2>
 <p>Let's use the power of MCP servers to make our agent even more powerful.</p>
 <p>A good developer always reads the documentation (right?, right?). So let's give our developer the capability to fetch up-to-date documentation for pretty much any library out there. For this we will use the context7 MCP server. Luckily for us, this server is already present in Dockers' MCP Toolkit.</p>
-<pre><code>version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code>version: &quot;2&quot;
 
 agents:
   root:
@@ -5447,10 +5446,10 @@ agents:
       - type: filesystem
 +      - type: mcp
 +        ref: docker:context7
-</code></pre>
+</code></pre></div>
 <p>Run this agent and ask this:</p>
-<pre><code>Create a directory &quot;server&quot; and in there write a server in node and typescirpt, the server should be a key-value store, use context7 to get the documentation you need for the server library you will use
-</code></pre>
+<div class="highlight"><pre><span></span><code>Create a directory &quot;server&quot; and in there write a server in node and typescirpt, the server should be a key-value store, use context7 to get the documentation you need for the server library you will use
+</code></pre></div>
 <p>Running this, the agent should use the context7 tools to find the appropriate documentation for the library it chose to use to write this server.</p>
 <p>Look around the MCP Toolkit, play with some more MCP servers, what other servers do you think could be useful for a developer agent?</p>
 

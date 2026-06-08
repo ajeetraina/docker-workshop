@@ -5433,13 +5433,13 @@
 <h2 id="launch-two-agents-simultaneously">Launch two agents simultaneously</h2>
 <p>Open <strong>two host terminal windows</strong>. Run each command in its own window at the same time.</p>
 <p><strong>Terminal 1 - Search feature:</strong></p>
-<pre><code class="language-bash">cd ~/sbx-lab
-sbx run sbxlab --branch=add-search -- &quot;$(cat prompts/implement-search.txt)&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/sbx-lab
+sbx<span class="w"> </span>run<span class="w"> </span>sbxlab<span class="w"> </span>--branch<span class="o">=</span>add-search<span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cat<span class="w"> </span>prompts/implement-search.txt<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
 <p><strong>Terminal 2 - Notifications feature:</strong></p>
-<pre><code class="language-bash">cd ~/sbx-lab
-sbx run sbxlab --branch=add-notif -- &quot;$(cat prompts/implement-notifications.txt)&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/sbx-lab
+sbx<span class="w"> </span>run<span class="w"> </span>sbxlab<span class="w"> </span>--branch<span class="o">=</span>add-notif<span class="w"> </span>--<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cat<span class="w"> </span>prompts/implement-notifications.txt<span class="k">)</span><span class="s2">&quot;</span>
+</code></pre></div>
 <blockquote>
 <p><strong>Note:</strong> The <code>"$(cat ...)"</code> must be quoted or the prompt won't pass correctly.</p>
 </blockquote>
@@ -5447,40 +5447,40 @@ sbx run sbxlab --branch=add-notif -- &quot;$(cat prompts/implement-notifications
 <hr />
 <h2 id="watch-both-agents-work">Watch both agents work</h2>
 <p>In a <strong>third terminal</strong>, watch the worktrees update in real time:</p>
-<pre><code class="language-bash">cd ~/sbx-lab
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/sbx-lab
 
-# Watch commits appear on each branch
-watch -n 2 'git log --oneline add-search | head -5; echo &quot;---&quot;; git log --oneline add-notif | head -5'
-</code></pre>
+<span class="c1"># Watch commits appear on each branch</span>
+watch<span class="w"> </span>-n<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="s1">&#39;git log --oneline add-search | head -5; echo &quot;---&quot;; git log --oneline add-notif | head -5&#39;</span>
+</code></pre></div>
 <p>Two agents. Two branches. Completely independent progress.</p>
 <hr />
 <h2 id="monitor-the-network-policy-log">Monitor the network policy log</h2>
 <p>In a <strong>fourth terminal</strong>:</p>
-<pre><code class="language-bash">sbx policy log sbxlab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>log<span class="w"> </span>sbxlab
+</code></pre></div>
 <p>You'll see both agents making API calls - all routed through the same proxy, all logged, all governed by the same policy.</p>
 <hr />
 <h2 id="review-and-open-prs">Review and open PRs</h2>
 <p>When both agents have finished (you'll see them exit or hit prompts):</p>
-<pre><code class="language-bash"># Review search implementation
-git diff main..add-search
-git diff main..add-search --stat
+<div class="highlight"><pre><span></span><code><span class="c1"># Review search implementation</span>
+git<span class="w"> </span>diff<span class="w"> </span>main..add-search
+git<span class="w"> </span>diff<span class="w"> </span>main..add-search<span class="w"> </span>--stat
 
-# Review notifications implementation
-git diff main..add-notif
-git diff main..add-notif --stat
-</code></pre>
+<span class="c1"># Review notifications implementation</span>
+git<span class="w"> </span>diff<span class="w"> </span>main..add-notif
+git<span class="w"> </span>diff<span class="w"> </span>main..add-notif<span class="w"> </span>--stat
+</code></pre></div>
 <p>Push and create PRs:</p>
-<pre><code class="language-bash">git push origin add-search
-gh pr create --head add-search \
-  --title &quot;Implement issue search&quot; \
-  --body &quot;Implements GET /issues/search endpoint&quot;
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>add-search
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--head<span class="w"> </span>add-search<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--title<span class="w"> </span><span class="s2">&quot;Implement issue search&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--body<span class="w"> </span><span class="s2">&quot;Implements GET /issues/search endpoint&quot;</span>
 
-git push origin add-notif
-gh pr create --head add-notif \
-  --title &quot;Implement status change notifications&quot; \
-  --body &quot;Implements email notifications on status changes&quot;
-</code></pre>
+git<span class="w"> </span>push<span class="w"> </span>origin<span class="w"> </span>add-notif
+gh<span class="w"> </span>pr<span class="w"> </span>create<span class="w"> </span>--head<span class="w"> </span>add-notif<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--title<span class="w"> </span><span class="s2">&quot;Implement status change notifications&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--body<span class="w"> </span><span class="s2">&quot;Implements email notifications on status changes&quot;</span>
+</code></pre></div>
 <hr />
 <h2 id="what-this-means-at-scale">What this means at scale</h2>
 <p>You just ran two autonomous agents on the same repo simultaneously. Each had governance:
@@ -5494,10 +5494,10 @@ gh pr create --head add-notif \
 <hr />
 <h2 id="clean-up-worktrees">Clean up worktrees</h2>
 <p>After reviewing and merging:</p>
-<pre><code class="language-bash">git worktree remove .sbx/sbxlab-worktrees/add-search
-git worktree remove .sbx/sbxlab-worktrees/add-notif
-git branch -d add-search add-notif
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>worktree<span class="w"> </span>remove<span class="w"> </span>.sbx/sbxlab-worktrees/add-search
+git<span class="w"> </span>worktree<span class="w"> </span>remove<span class="w"> </span>.sbx/sbxlab-worktrees/add-notif
+git<span class="w"> </span>branch<span class="w"> </span>-d<span class="w"> </span>add-search<span class="w"> </span>add-notif
+</code></pre></div>
 <p>Or when you <code>sbx rm sbxlab</code>, all worktrees are cleaned up automatically.</p>
 <hr />
 <h2 id="checkpoint">✅ Checkpoint</h2>

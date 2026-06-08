@@ -6166,8 +6166,10 @@
 
 <h1 id="cerebras-analysis-intelligence">Cerebras Analysis &amp; Intelligence</h1>
 <p>The Cerebras Agent represents the "brain" of your multi-agent system, leveraging powerful cloud-based AI models for complex analysis, advanced reasoning, and sophisticated problem-solving. In this lab, you'll explore its capabilities and learn to harness its full potential.</p>
-<p>!!! info "Learning Focus"
-    Master Cerebras cloud AI integration, advanced analysis capabilities, and intelligent request handling for complex scenarios.</p>
+<div class="admonition info">
+<p class="admonition-title">Learning Focus</p>
+<p>Master Cerebras cloud AI integration, advanced analysis capabilities, and intelligent request handling for complex scenarios.</p>
+</div>
 <h2 id="understanding-cerebras-technology">Understanding Cerebras Technology</h2>
 <h3 id="what-makes-cerebras-special">🧠 What Makes Cerebras Special</h3>
 <p>Cerebras Systems creates the world's largest computer chips specifically designed for AI:</p>
@@ -6206,18 +6208,18 @@
 </tbody>
 </table>
 <h2 id="quick-test">Quick Test</h2>
-<pre><code>Prompt 1: Can I talk to Cerebras?
-</code></pre>
-<pre><code>Prompt 2: Search documentation for Express Routing
-</code></pre>
-<pre><code>Prompt 3: Create a function that adds two numbers and test it in the sandbox
-</code></pre>
+<div class="highlight"><pre><span></span><code>Prompt 1: Can I talk to Cerebras?
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Prompt 2: Search documentation for Express Routing
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Prompt 3: Create a function that adds two numbers and test it in the sandbox
+</code></pre></div>
 <h2 id="hands-on-cerebras-agent-exploration">Hands-On Cerebras Agent Exploration</h2>
 <h3 id="exercise-1-complex-analysis-tasks">🎯 Exercise 1: Complex Analysis Tasks</h3>
 <p>Let's test scenarios that specifically benefit from Cerebras' advanced capabilities:</p>
 <h4 id="advanced-code-analysis">Advanced Code Analysis</h4>
-<p><strong>Complex Algorithm Analysis:</strong></p>
-<pre><code>You: Analyze this sorting algorithm for time/space complexity and suggest optimizations:
+<p><strong>Complex Algorithm Analysis:</strong>
+<div class="highlight"><pre><span></span><code>You: Analyze this sorting algorithm for time/space complexity and suggest optimizations:
 
 def complex_sort(arr, key_func=None, reverse=False):
     if not arr:
@@ -6261,24 +6263,24 @@ def complex_sort(arr, key_func=None, reverse=False):
 
     sorted_decorated = merge_sort(decorated)
     return [item for key, original_index, item in sorted_decorated]
-</code></pre>
+</code></pre></div></p>
 <p><strong>Expected Cerebras Response:</strong>
 - Detailed complexity analysis (O(n log n) time, O(n) space)
 - Identification of the Schwartzian transform pattern
 - Suggestions for optimization and edge case handling
 - Comparison with built-in sorting methods</p>
 <h4 id="architecture-design">Architecture Design</h4>
-<p><strong>System Architecture Challenge:</strong></p>
-<pre><code>You: Design a microservices architecture for a real-time collaborative document editing platform like Google Docs. Consider scalability, consistency, conflict resolution, and real-time synchronization. Include specific technologies, data flow, and handling of 100,000+ concurrent users.
-</code></pre>
-<p><strong>Monitor the Processing:</strong></p>
-<pre><code class="language-bash"># Watch for Cerebras API calls in logs
-docker compose logs -f devduck-agent | grep -i &quot;cerebras\|api\|routing&quot;
-</code></pre>
+<p><strong>System Architecture Challenge:</strong>
+<div class="highlight"><pre><span></span><code>You: Design a microservices architecture for a real-time collaborative document editing platform like Google Docs. Consider scalability, consistency, conflict resolution, and real-time synchronization. Include specific technologies, data flow, and handling of 100,000+ concurrent users.
+</code></pre></div></p>
+<p><strong>Monitor the Processing:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Watch for Cerebras API calls in logs</span>
+docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>devduck-agent<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;cerebras\|api\|routing&quot;</span>
+</code></pre></div></p>
 <h3 id="exercise-2-multi-step-reasoning">🚀 Exercise 2: Multi-Step Reasoning</h3>
 <h4 id="complex-problem-solving">Complex Problem Solving</h4>
-<p><strong>Business Analysis Scenario:</strong></p>
-<pre><code>You: A startup has the following metrics:
+<p><strong>Business Analysis Scenario:</strong>
+<div class="highlight"><pre><span></span><code>You: A startup has the following metrics:
 - Monthly users: 50,000 (growing 15% monthly)
 - Conversion rate: 2.5%
 - Average revenue per user: $25/month
@@ -6286,234 +6288,234 @@ docker compose logs -f devduck-agent | grep -i &quot;cerebras\|api\|routing&quot
 - Customer acquisition cost: $30
 
 Analyze the business model viability, calculate key metrics like LTV:CAC ratio, identify potential issues, and recommend strategies for improvement. Project the business trajectory over 24 months.
-</code></pre>
-<p><strong>Technical Deep Dive:</strong></p>
-<pre><code>You: Explain how blockchain consensus mechanisms work, compare Proof of Work vs Proof of Stake vs Delegated Proof of Stake, analyze their trade-offs in terms of security, scalability, and energy efficiency, and suggest which would be best for a new cryptocurrency focused on micropayments.
-</code></pre>
+</code></pre></div></p>
+<p><strong>Technical Deep Dive:</strong>
+<div class="highlight"><pre><span></span><code>You: Explain how blockchain consensus mechanisms work, compare Proof of Work vs Proof of Stake vs Delegated Proof of Stake, analyze their trade-offs in terms of security, scalability, and energy efficiency, and suggest which would be best for a new cryptocurrency focused on micropayments.
+</code></pre></div></p>
 <h3 id="exercise-3-cerebras-performance-analysis">📊 Exercise 3: Cerebras Performance Analysis</h3>
 <h4 id="response-quality-comparison">Response Quality Comparison</h4>
 <p>Create a systematic comparison between Local Agent and Cerebras Agent:</p>
-<pre><code class="language-python"># Create cerebras_comparison.py
-import requests
-import time
-import json
+<div class="highlight"><pre><span></span><code><span class="c1"># Create cerebras_comparison.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-def compare_agents():
-    &quot;&quot;&quot;Compare Local vs Cerebras Agent responses.&quot;&quot;&quot;
+<span class="k">def</span><span class="w"> </span><span class="nf">compare_agents</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Compare Local vs Cerebras Agent responses.&quot;&quot;&quot;</span>
 
-    test_scenarios = [
-        {
-            &quot;query&quot;: &quot;Explain recursion in programming&quot;,
-            &quot;complexity&quot;: &quot;medium&quot;,
-            &quot;expected_cerebras&quot;: &quot;detailed_explanation&quot;
-        },
-        {
-            &quot;query&quot;: &quot;Design a distributed caching system for a global application&quot;,
-            &quot;complexity&quot;: &quot;high&quot;, 
-            &quot;expected_cerebras&quot;: &quot;architectural_analysis&quot;
-        },
-        {
-            &quot;query&quot;: &quot;Analyze the time complexity of this nested loop algorithm&quot;,
-            &quot;complexity&quot;: &quot;high&quot;,
-            &quot;expected_cerebras&quot;: &quot;mathematical_analysis&quot;
-        }
-    ]
+    <span class="n">test_scenarios</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;Explain recursion in programming&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;complexity&quot;</span><span class="p">:</span> <span class="s2">&quot;medium&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;expected_cerebras&quot;</span><span class="p">:</span> <span class="s2">&quot;detailed_explanation&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;Design a distributed caching system for a global application&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;complexity&quot;</span><span class="p">:</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span> 
+            <span class="s2">&quot;expected_cerebras&quot;</span><span class="p">:</span> <span class="s2">&quot;architectural_analysis&quot;</span>
+        <span class="p">},</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="s2">&quot;Analyze the time complexity of this nested loop algorithm&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;complexity&quot;</span><span class="p">:</span> <span class="s2">&quot;high&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;expected_cerebras&quot;</span><span class="p">:</span> <span class="s2">&quot;mathematical_analysis&quot;</span>
+        <span class="p">}</span>
+    <span class="p">]</span>
 
-    results = []
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
 
-    for scenario in test_scenarios:
-        print(f&quot;\n🧪 Testing: {scenario['query'][:50]}...&quot;)
+    <span class="k">for</span> <span class="n">scenario</span> <span class="ow">in</span> <span class="n">test_scenarios</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">🧪 Testing: </span><span class="si">{</span><span class="n">scenario</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">][:</span><span class="mi">50</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 
-        # Test with system (should route to appropriate agent)
-        start_time = time.time()
+        <span class="c1"># Test with system (should route to appropriate agent)</span>
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-        response = requests.post(
-            'http://localhost:8000/chat',
-            json={
-                &quot;message&quot;: scenario['query'],
-                &quot;conversation_id&quot;: f&quot;compare-{int(time.time())}&quot;
-            },
-            timeout=60
-        )
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;http://localhost:8000/chat&#39;</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">scenario</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">],</span>
+                <span class="s2">&quot;conversation_id&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;compare-</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">},</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="mi">60</span>
+        <span class="p">)</span>
 
-        duration = time.time() - start_time
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
 
-        if response.status_code == 200:
-            response_data = response.json()
-            response_length = len(response_data.get('response', ''))
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">response_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">response_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">response_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
 
-            results.append({
-                &quot;query&quot;: scenario['query'][:50],
-                &quot;complexity&quot;: scenario['complexity'],
-                &quot;duration&quot;: duration,
-                &quot;response_length&quot;: response_length,
-                &quot;success&quot;: True
-            })
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="n">scenario</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">][:</span><span class="mi">50</span><span class="p">],</span>
+                <span class="s2">&quot;complexity&quot;</span><span class="p">:</span> <span class="n">scenario</span><span class="p">[</span><span class="s1">&#39;complexity&#39;</span><span class="p">],</span>
+                <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="n">duration</span><span class="p">,</span>
+                <span class="s2">&quot;response_length&quot;</span><span class="p">:</span> <span class="n">response_length</span><span class="p">,</span>
+                <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">True</span>
+            <span class="p">})</span>
 
-            print(f&quot;  ✅ Duration: {duration:.2f}s&quot;)
-            print(f&quot;  📝 Response length: {response_length} chars&quot;)
-        else:
-            print(f&quot;  ❌ Failed: {response.status_code}&quot;)
-            results.append({
-                &quot;query&quot;: scenario['query'][:50],
-                &quot;complexity&quot;: scenario['complexity'],
-                &quot;duration&quot;: duration,
-                &quot;success&quot;: False
-            })
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ✅ Duration: </span><span class="si">{</span><span class="n">duration</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  📝 Response length: </span><span class="si">{</span><span class="n">response_length</span><span class="si">}</span><span class="s2"> chars&quot;</span><span class="p">)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  ❌ Failed: </span><span class="si">{</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+                <span class="s2">&quot;query&quot;</span><span class="p">:</span> <span class="n">scenario</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">][:</span><span class="mi">50</span><span class="p">],</span>
+                <span class="s2">&quot;complexity&quot;</span><span class="p">:</span> <span class="n">scenario</span><span class="p">[</span><span class="s1">&#39;complexity&#39;</span><span class="p">],</span>
+                <span class="s2">&quot;duration&quot;</span><span class="p">:</span> <span class="n">duration</span><span class="p">,</span>
+                <span class="s2">&quot;success&quot;</span><span class="p">:</span> <span class="kc">False</span>
+            <span class="p">})</span>
 
-    # Analysis
-    print(&quot;\n📊 Comparison Results:&quot;)
-    for result in results:
-        if result['success']:
-            print(f&quot;  {result['complexity']:6} | {result['duration']:6.2f}s | {result['response_length']:4d} chars | {result['query']}&quot;)
+    <span class="c1"># Analysis</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📊 Comparison Results:&quot;</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">result</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">result</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;complexity&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">6</span><span class="si">}</span><span class="s2"> | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;duration&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">6.2f</span><span class="si">}</span><span class="s2">s | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;response_length&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">4d</span><span class="si">}</span><span class="s2"> chars | </span><span class="si">{</span><span class="n">result</span><span class="p">[</span><span class="s1">&#39;query&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-    return results
+    <span class="k">return</span> <span class="n">results</span>
 
-if __name__ == '__main__':
-    compare_agents()
-</code></pre>
-<p><strong>Run the comparison:</strong></p>
-<pre><code class="language-bash">python cerebras_comparison.py
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">compare_agents</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Run the comparison:</strong>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>cerebras_comparison.py
+</code></pre></div></p>
 <h2 id="advanced-cerebras-features">Advanced Cerebras Features</h2>
 <h3 id="model-selection-and-optimization">🎛️ Model Selection and Optimization</h3>
 <h4 id="dynamic-model-selection">Dynamic Model Selection</h4>
 <p>Configure different models for different scenarios:</p>
-<pre><code class="language-bash"># Create model configuration
-cat &gt; cerebras_config.py &lt;&lt; 'EOF'
-class CerebrasModelConfig:
-    &quot;&quot;&quot;Configuration for different Cerebras models.&quot;&quot;&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># Create model configuration</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>cerebras_config.py<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">class CerebrasModelConfig:</span>
+<span class="s">    &quot;&quot;&quot;Configuration for different Cerebras models.&quot;&quot;&quot;</span>
 
-    MODELS = {
-        &quot;fast&quot;: {
-            &quot;name&quot;: &quot;llama3.1-8b&quot;,
-            &quot;max_tokens&quot;: 1000,
-            &quot;temperature&quot;: 0.7,
-            &quot;use_case&quot;: &quot;Quick analysis, code generation&quot;
-        },
-        &quot;balanced&quot;: {
-            &quot;name&quot;: &quot;llama3.1-70b&quot;, 
-            &quot;max_tokens&quot;: 2000,
-            &quot;temperature&quot;: 0.5,
-            &quot;use_case&quot;: &quot;Complex reasoning, detailed analysis&quot;
-        },
-        &quot;advanced&quot;: {
-            &quot;name&quot;: &quot;llama3.1-405b&quot;,
-            &quot;max_tokens&quot;: 4000,
-            &quot;temperature&quot;: 0.3,
-            &quot;use_case&quot;: &quot;Research, complex problem solving&quot;
-        }
-    }
+<span class="s">    MODELS = {</span>
+<span class="s">        &quot;fast&quot;: {</span>
+<span class="s">            &quot;name&quot;: &quot;llama3.1-8b&quot;,</span>
+<span class="s">            &quot;max_tokens&quot;: 1000,</span>
+<span class="s">            &quot;temperature&quot;: 0.7,</span>
+<span class="s">            &quot;use_case&quot;: &quot;Quick analysis, code generation&quot;</span>
+<span class="s">        },</span>
+<span class="s">        &quot;balanced&quot;: {</span>
+<span class="s">            &quot;name&quot;: &quot;llama3.1-70b&quot;, </span>
+<span class="s">            &quot;max_tokens&quot;: 2000,</span>
+<span class="s">            &quot;temperature&quot;: 0.5,</span>
+<span class="s">            &quot;use_case&quot;: &quot;Complex reasoning, detailed analysis&quot;</span>
+<span class="s">        },</span>
+<span class="s">        &quot;advanced&quot;: {</span>
+<span class="s">            &quot;name&quot;: &quot;llama3.1-405b&quot;,</span>
+<span class="s">            &quot;max_tokens&quot;: 4000,</span>
+<span class="s">            &quot;temperature&quot;: 0.3,</span>
+<span class="s">            &quot;use_case&quot;: &quot;Research, complex problem solving&quot;</span>
+<span class="s">        }</span>
+<span class="s">    }</span>
 
-    @classmethod
-    def get_model_for_complexity(cls, complexity_score):
-        &quot;&quot;&quot;Select model based on query complexity.&quot;&quot;&quot;
-        if complexity_score &lt; 0.3:
-            return cls.MODELS[&quot;fast&quot;]
-        elif complexity_score &lt; 0.7:
-            return cls.MODELS[&quot;balanced&quot;]
-        else:
-            return cls.MODELS[&quot;advanced&quot;]
+<span class="s">    @classmethod</span>
+<span class="s">    def get_model_for_complexity(cls, complexity_score):</span>
+<span class="s">        &quot;&quot;&quot;Select model based on query complexity.&quot;&quot;&quot;</span>
+<span class="s">        if complexity_score &lt; 0.3:</span>
+<span class="s">            return cls.MODELS[&quot;fast&quot;]</span>
+<span class="s">        elif complexity_score &lt; 0.7:</span>
+<span class="s">            return cls.MODELS[&quot;balanced&quot;]</span>
+<span class="s">        else:</span>
+<span class="s">            return cls.MODELS[&quot;advanced&quot;]</span>
 
-    @classmethod
-    def estimate_complexity(cls, query):
-        &quot;&quot;&quot;Estimate query complexity (simplified heuristic).&quot;&quot;&quot;
-        complexity_indicators = [
-            'analyze', 'design', 'architecture', 'optimize',
-            'compare', 'evaluate', 'research', 'complex',
-            'algorithm', 'system', 'scalable', 'distributed'
-        ]
+<span class="s">    @classmethod</span>
+<span class="s">    def estimate_complexity(cls, query):</span>
+<span class="s">        &quot;&quot;&quot;Estimate query complexity (simplified heuristic).&quot;&quot;&quot;</span>
+<span class="s">        complexity_indicators = [</span>
+<span class="s">            &#39;analyze&#39;, &#39;design&#39;, &#39;architecture&#39;, &#39;optimize&#39;,</span>
+<span class="s">            &#39;compare&#39;, &#39;evaluate&#39;, &#39;research&#39;, &#39;complex&#39;,</span>
+<span class="s">            &#39;algorithm&#39;, &#39;system&#39;, &#39;scalable&#39;, &#39;distributed&#39;</span>
+<span class="s">        ]</span>
 
-        query_lower = query.lower()
-        matches = sum(1 for indicator in complexity_indicators 
-                     if indicator in query_lower)
+<span class="s">        query_lower = query.lower()</span>
+<span class="s">        matches = sum(1 for indicator in complexity_indicators </span>
+<span class="s">                     if indicator in query_lower)</span>
 
-        base_complexity = len(query) / 1000  # Length factor
-        keyword_complexity = matches * 0.2   # Keyword factor
+<span class="s">        base_complexity = len(query) / 1000  # Length factor</span>
+<span class="s">        keyword_complexity = matches * 0.2   # Keyword factor</span>
 
-        return min(base_complexity + keyword_complexity, 1.0)
+<span class="s">        return min(base_complexity + keyword_complexity, 1.0)</span>
 
-# Example usage
-query = &quot;Design a distributed microservices architecture for real-time data processing&quot;
-complexity = CerebrasModelConfig.estimate_complexity(query)
-model = CerebrasModelConfig.get_model_for_complexity(complexity)
+<span class="s"># Example usage</span>
+<span class="s">query = &quot;Design a distributed microservices architecture for real-time data processing&quot;</span>
+<span class="s">complexity = CerebrasModelConfig.estimate_complexity(query)</span>
+<span class="s">model = CerebrasModelConfig.get_model_for_complexity(complexity)</span>
 
-print(f&quot;Query complexity: {complexity:.2f}&quot;)
-print(f&quot;Recommended model: {model['name']}&quot;)
-print(f&quot;Use case: {model['use_case']}&quot;)
-EOF
+<span class="s">print(f&quot;Query complexity: {complexity:.2f}&quot;)</span>
+<span class="s">print(f&quot;Recommended model: {model[&#39;name&#39;]}&quot;)</span>
+<span class="s">print(f&quot;Use case: {model[&#39;use_case&#39;]}&quot;)</span>
+<span class="s">EOF</span>
 
-python cerebras_config.py
-</code></pre>
+python<span class="w"> </span>cerebras_config.py
+</code></pre></div>
 <h3 id="advanced-configuration">🔧 Advanced Configuration</h3>
 <h4 id="temperature-and-parameter-tuning">Temperature and Parameter Tuning</h4>
-<pre><code class="language-python"># Create cerebras_tuning.py
-import requests
-import json
+<div class="highlight"><pre><span></span><code><span class="c1"># Create cerebras_tuning.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-def test_temperature_effects():
-    &quot;&quot;&quot;Test how temperature affects Cerebras responses.&quot;&quot;&quot;
+<span class="k">def</span><span class="w"> </span><span class="nf">test_temperature_effects</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test how temperature affects Cerebras responses.&quot;&quot;&quot;</span>
 
-    query = &quot;Explain the concept of machine learning in one paragraph.&quot;
-    temperatures = [0.1, 0.5, 0.9]
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;Explain the concept of machine learning in one paragraph.&quot;</span>
+    <span class="n">temperatures</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mf">0.5</span><span class="p">,</span> <span class="mf">0.9</span><span class="p">]</span>
 
-    print(&quot;🌡️ Testing Temperature Effects on Cerebras:&quot;)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🌡️ Testing Temperature Effects on Cerebras:&quot;</span><span class="p">)</span>
 
-    for temp in temperatures:
-        print(f&quot;\nTesting temperature: {temp}&quot;)
+    <span class="k">for</span> <span class="n">temp</span> <span class="ow">in</span> <span class="n">temperatures</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Testing temperature: </span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        # Note: This is a conceptual example
-        # Actual temperature control would be implemented in the agent
-        response = requests.post(
-            'http://localhost:8000/chat',
-            json={
-                &quot;message&quot;: f&quot;[TEMPERATURE={temp}] {query}&quot;,
-                &quot;conversation_id&quot;: f&quot;temp-test-{temp}&quot;
-            }
-        )
+        <span class="c1"># Note: This is a conceptual example</span>
+        <span class="c1"># Actual temperature control would be implemented in the agent</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;http://localhost:8000/chat&#39;</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;[TEMPERATURE=</span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;conversation_id&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;temp-test-</span><span class="si">{</span><span class="n">temp</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
 
-        if response.status_code == 200:
-            resp_data = response.json()
-            resp_text = resp_data.get('response', '')[:200]
-            print(f&quot;Response preview: {resp_text}...&quot;)
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">resp_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">resp_text</span> <span class="o">=</span> <span class="n">resp_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">)[:</span><span class="mi">200</span><span class="p">]</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Response preview: </span><span class="si">{</span><span class="n">resp_text</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 
-        time.sleep(2)  # Rate limiting
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>  <span class="c1"># Rate limiting</span>
 
-def test_max_tokens_impact():
-    &quot;&quot;&quot;Test how max_tokens affects response completeness.&quot;&quot;&quot;
+<span class="k">def</span><span class="w"> </span><span class="nf">test_max_tokens_impact</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Test how max_tokens affects response completeness.&quot;&quot;&quot;</span>
 
-    query = &quot;Provide a comprehensive guide to setting up a CI/CD pipeline with Docker, including best practices and security considerations.&quot;
+    <span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;Provide a comprehensive guide to setting up a CI/CD pipeline with Docker, including best practices and security considerations.&quot;</span>
 
-    print(&quot;\n📏 Testing Max Tokens Impact:&quot;)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📏 Testing Max Tokens Impact:&quot;</span><span class="p">)</span>
 
-    # This would be configured in the agent settings
-    max_tokens_settings = [500, 1500, 3000]
+    <span class="c1"># This would be configured in the agent settings</span>
+    <span class="n">max_tokens_settings</span> <span class="o">=</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span> <span class="mi">1500</span><span class="p">,</span> <span class="mi">3000</span><span class="p">]</span>
 
-    for max_tokens in max_tokens_settings:
-        print(f&quot;\nTesting max_tokens: {max_tokens}&quot;)
+    <span class="k">for</span> <span class="n">max_tokens</span> <span class="ow">in</span> <span class="n">max_tokens_settings</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Testing max_tokens: </span><span class="si">{</span><span class="n">max_tokens</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
-        response = requests.post(
-            'http://localhost:8000/chat', 
-            json={
-                &quot;message&quot;: f&quot;[MAX_TOKENS={max_tokens}] {query}&quot;,
-                &quot;conversation_id&quot;: f&quot;tokens-test-{max_tokens}&quot;
-            }
-        )
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;http://localhost:8000/chat&#39;</span><span class="p">,</span> 
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;[MAX_TOKENS=</span><span class="si">{</span><span class="n">max_tokens</span><span class="si">}</span><span class="s2">] </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;conversation_id&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;tokens-test-</span><span class="si">{</span><span class="n">max_tokens</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">}</span>
+        <span class="p">)</span>
 
-        if response.status_code == 200:
-            resp_data = response.json()
-            response_length = len(resp_data.get('response', ''))
-            print(f&quot;Response length: {response_length} characters&quot;)
+        <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span><span class="p">:</span>
+            <span class="n">resp_data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+            <span class="n">response_length</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">resp_data</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;response&#39;</span><span class="p">,</span> <span class="s1">&#39;&#39;</span><span class="p">))</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Response length: </span><span class="si">{</span><span class="n">response_length</span><span class="si">}</span><span class="s2"> characters&quot;</span><span class="p">)</span>
 
-if __name__ == '__main__':
-    test_temperature_effects()
-    test_max_tokens_impact()
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">test_temperature_effects</span><span class="p">()</span>
+    <span class="n">test_max_tokens_impact</span><span class="p">()</span>
+</code></pre></div>
 <h2 id="specialized-use-cases">Specialized Use Cases</h2>
 <h3 id="business-intelligence-and-analysis">📈 Business Intelligence and Analysis</h3>
 <h4 id="exercise-4-market-analysis">Exercise 4: Market Analysis</h4>
-<p><strong>Complex Business Scenario:</strong></p>
-<pre><code>You: A SaaS company is considering expanding to the European market. They currently serve 10,000 customers in North America with $2M ARR. Analyze the key factors they should consider for European expansion:
+<p><strong>Complex Business Scenario:</strong>
+<div class="highlight"><pre><span></span><code>You: A SaaS company is considering expanding to the European market. They currently serve 10,000 customers in North America with $2M ARR. Analyze the key factors they should consider for European expansion:
 
 1. Market analysis and sizing
 2. Regulatory considerations (GDPR, data localization)
@@ -6524,11 +6526,11 @@ if __name__ == '__main__':
 7. Risk assessment and mitigation strategies
 
 Provide a comprehensive expansion plan with timeline and milestones.
-</code></pre>
+</code></pre></div></p>
 <h3 id="technical-architecture-and-design">🏗️ Technical Architecture and Design</h3>
 <h4 id="exercise-5-system-design-challenge">Exercise 5: System Design Challenge</h4>
-<p><strong>Scalability Challenge:</strong></p>
-<pre><code>You: Design a chat system like Discord that can handle:
+<p><strong>Scalability Challenge:</strong>
+<div class="highlight"><pre><span></span><code>You: Design a chat system like Discord that can handle:
 - 10 million concurrent users
 - Real-time messaging with &lt;100ms latency
 - File sharing up to 100MB
@@ -6545,11 +6547,11 @@ Include:
 - Scalability and reliability considerations
 - Security and privacy measures
 - Deployment and monitoring strategy
-</code></pre>
+</code></pre></div></p>
 <h3 id="research-and-analysis">🔬 Research and Analysis</h3>
 <h4 id="exercise-6-technical-research">Exercise 6: Technical Research</h4>
-<p><strong>Emerging Technology Analysis:</strong></p>
-<pre><code>You: Compare quantum computing approaches for solving optimization problems:
+<p><strong>Emerging Technology Analysis:</strong>
+<div class="highlight"><pre><span></span><code>You: Compare quantum computing approaches for solving optimization problems:
 
 1. Gate-based quantum computers (IBM, Google)
 2. Quantum annealing (D-Wave)
@@ -6565,214 +6567,214 @@ Analyze:
 - Future development roadmaps
 
 Provide recommendations for a logistics company considering quantum optimization for route planning.
-</code></pre>
+</code></pre></div></p>
 <h2 id="monitoring-and-optimization">Monitoring and Optimization</h2>
 <h3 id="cerebras-performance-monitoring">📊 Cerebras Performance Monitoring</h3>
 <h4 id="create-monitoring-dashboard">Create Monitoring Dashboard</h4>
-<pre><code class="language-python"># Create cerebras_monitor.py
-import requests
-import time
-import statistics
-from datetime import datetime
+<div class="highlight"><pre><span></span><code><span class="c1"># Create cerebras_monitor.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 
-class CerebrasMonitor:
-    def __init__(self):
-        self.api_calls = []
-        self.response_times = []
-        self.token_usage = []
+<span class="k">class</span><span class="w"> </span><span class="nc">CerebrasMonitor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response_times</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">token_usage</span> <span class="o">=</span> <span class="p">[]</span>
 
-    def log_api_call(self, duration, tokens_used, success=True):
-        &quot;&quot;&quot;Log an API call for monitoring.&quot;&quot;&quot;
-        self.api_calls.append({
-            'timestamp': datetime.now(),
-            'duration': duration,
-            'tokens_used': tokens_used,
-            'success': success
-        })
+    <span class="k">def</span><span class="w"> </span><span class="nf">log_api_call</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">,</span> <span class="n">tokens_used</span><span class="p">,</span> <span class="n">success</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Log an API call for monitoring.&quot;&quot;&quot;</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span><span class="o">.</span><span class="n">append</span><span class="p">({</span>
+            <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">(),</span>
+            <span class="s1">&#39;duration&#39;</span><span class="p">:</span> <span class="n">duration</span><span class="p">,</span>
+            <span class="s1">&#39;tokens_used&#39;</span><span class="p">:</span> <span class="n">tokens_used</span><span class="p">,</span>
+            <span class="s1">&#39;success&#39;</span><span class="p">:</span> <span class="n">success</span>
+        <span class="p">})</span>
 
-        if success:
-            self.response_times.append(duration)
-            self.token_usage.append(tokens_used)
+        <span class="k">if</span> <span class="n">success</span><span class="p">:</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">response_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
+            <span class="bp">self</span><span class="o">.</span><span class="n">token_usage</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tokens_used</span><span class="p">)</span>
 
-    def get_stats(self):
-        &quot;&quot;&quot;Get comprehensive statistics.&quot;&quot;&quot;
-        if not self.api_calls:
-            return {&quot;message&quot;: &quot;No API calls recorded&quot;}
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get comprehensive statistics.&quot;&quot;&quot;</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span><span class="p">:</span>
+            <span class="k">return</span> <span class="p">{</span><span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="s2">&quot;No API calls recorded&quot;</span><span class="p">}</span>
 
-        successful_calls = [call for call in self.api_calls if call['success']]
+        <span class="n">successful_calls</span> <span class="o">=</span> <span class="p">[</span><span class="n">call</span> <span class="k">for</span> <span class="n">call</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span> <span class="k">if</span> <span class="n">call</span><span class="p">[</span><span class="s1">&#39;success&#39;</span><span class="p">]]</span>
 
-        return {
-            'total_calls': len(self.api_calls),
-            'successful_calls': len(successful_calls),
-            'success_rate': len(successful_calls) / len(self.api_calls),
-            'avg_response_time': statistics.mean(self.response_times) if self.response_times else 0,
-            'median_response_time': statistics.median(self.response_times) if self.response_times else 0,
-            'avg_tokens_used': statistics.mean(self.token_usage) if self.token_usage else 0,
-            'total_tokens_used': sum(self.token_usage),
-            'calls_per_minute': self._calculate_rate(),
-            'uptime_minutes': self._calculate_uptime()
-        }
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;total_calls&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span><span class="p">),</span>
+            <span class="s1">&#39;successful_calls&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">successful_calls</span><span class="p">),</span>
+            <span class="s1">&#39;success_rate&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">successful_calls</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span><span class="p">),</span>
+            <span class="s1">&#39;avg_response_time&#39;</span><span class="p">:</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_times</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_times</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;median_response_time&#39;</span><span class="p">:</span> <span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_times</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_times</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;avg_tokens_used&#39;</span><span class="p">:</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token_usage</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">token_usage</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s1">&#39;total_tokens_used&#39;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">token_usage</span><span class="p">),</span>
+            <span class="s1">&#39;calls_per_minute&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_rate</span><span class="p">(),</span>
+            <span class="s1">&#39;uptime_minutes&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">_calculate_uptime</span><span class="p">()</span>
+        <span class="p">}</span>
 
-    def _calculate_rate(self):
-        if len(self.api_calls) &lt; 2:
-            return 0
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_rate</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">2</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
 
-        first_call = self.api_calls[0]['timestamp']
-        last_call = self.api_calls[-1]['timestamp']
-        duration_minutes = (last_call - first_call).total_seconds() / 60
+        <span class="n">first_call</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span>
+        <span class="n">last_call</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span>
+        <span class="n">duration_minutes</span> <span class="o">=</span> <span class="p">(</span><span class="n">last_call</span> <span class="o">-</span> <span class="n">first_call</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">/</span> <span class="mi">60</span>
 
-        return len(self.api_calls) / max(duration_minutes, 1)
+        <span class="k">return</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span><span class="p">)</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="n">duration_minutes</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
 
-    def _calculate_uptime(self):
-        if not self.api_calls:
-            return 0
+    <span class="k">def</span><span class="w"> </span><span class="nf">_calculate_uptime</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span><span class="p">:</span>
+            <span class="k">return</span> <span class="mi">0</span>
 
-        first_call = self.api_calls[0]['timestamp']
-        return (datetime.now() - first_call).total_seconds() / 60
+        <span class="n">first_call</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">api_calls</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span>
+        <span class="k">return</span> <span class="p">(</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span> <span class="o">-</span> <span class="n">first_call</span><span class="p">)</span><span class="o">.</span><span class="n">total_seconds</span><span class="p">()</span> <span class="o">/</span> <span class="mi">60</span>
 
-    def print_dashboard(self):
-        &quot;&quot;&quot;Print a monitoring dashboard.&quot;&quot;&quot;
-        stats = self.get_stats()
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_dashboard</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Print a monitoring dashboard.&quot;&quot;&quot;</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_stats</span><span class="p">()</span>
 
-        if 'message' in stats:
-            print(stats['message'])
-            return
+        <span class="k">if</span> <span class="s1">&#39;message&#39;</span> <span class="ow">in</span> <span class="n">stats</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;message&#39;</span><span class="p">])</span>
+            <span class="k">return</span>
 
-        print(&quot;🧠 Cerebras Agent Dashboard&quot;)
-        print(&quot;============================&quot;)
-        print(f&quot;Total Calls: {stats['total_calls']}&quot;)
-        print(f&quot;Success Rate: {stats['success_rate']:.1%}&quot;)
-        print(f&quot;Avg Response Time: {stats['avg_response_time']:.2f}s&quot;)
-        print(f&quot;Median Response Time: {stats['median_response_time']:.2f}s&quot;)
-        print(f&quot;Avg Tokens/Call: {stats['avg_tokens_used']:.0f}&quot;)
-        print(f&quot;Total Tokens Used: {stats['total_tokens_used']}&quot;)
-        print(f&quot;Rate: {stats['calls_per_minute']:.1f} calls/min&quot;)
-        print(f&quot;Uptime: {stats['uptime_minutes']:.1f} minutes&quot;)
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🧠 Cerebras Agent Dashboard&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;============================&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Calls: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;total_calls&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Success Rate: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;success_rate&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1%</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Avg Response Time: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;avg_response_time&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Median Response Time: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;median_response_time&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Avg Tokens/Call: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;avg_tokens_used&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Total Tokens Used: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;total_tokens_used&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Rate: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;calls_per_minute&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> calls/min&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Uptime: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;uptime_minutes&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> minutes&quot;</span><span class="p">)</span>
 
-# Usage example
-monitor = CerebrasMonitor()
+<span class="c1"># Usage example</span>
+<span class="n">monitor</span> <span class="o">=</span> <span class="n">CerebrasMonitor</span><span class="p">()</span>
 
-# Simulate monitoring
-test_queries = [
-    &quot;Simple explanation of Docker&quot;,
-    &quot;Complex microservices architecture design&quot;, 
-    &quot;Algorithm analysis and optimization&quot;
-]
+<span class="c1"># Simulate monitoring</span>
+<span class="n">test_queries</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;Simple explanation of Docker&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Complex microservices architecture design&quot;</span><span class="p">,</span> 
+    <span class="s2">&quot;Algorithm analysis and optimization&quot;</span>
+<span class="p">]</span>
 
-for query in test_queries:
-    start_time = time.time()
+<span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">test_queries</span><span class="p">:</span>
+    <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-    # Simulate API call
-    try:
-        response = requests.post(
-            'http://localhost:8000/chat',
-            json={
-                &quot;message&quot;: query,
-                &quot;conversation_id&quot;: f&quot;monitor-{int(time.time())}&quot;
-            },
-            timeout=30
-        )
+    <span class="c1"># Simulate API call</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;http://localhost:8000/chat&#39;</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span>
+                <span class="s2">&quot;conversation_id&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;monitor-</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span>
+            <span class="p">},</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span>
+        <span class="p">)</span>
 
-        duration = time.time() - start_time
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
 
-        # Estimate token usage (simplified)
-        tokens_used = len(query.split()) + 100  # Rough estimate
+        <span class="c1"># Estimate token usage (simplified)</span>
+        <span class="n">tokens_used</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">+</span> <span class="mi">100</span>  <span class="c1"># Rough estimate</span>
 
-        success = response.status_code == 200
-        monitor.log_api_call(duration, tokens_used, success)
+        <span class="n">success</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">==</span> <span class="mi">200</span>
+        <span class="n">monitor</span><span class="o">.</span><span class="n">log_api_call</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="n">tokens_used</span><span class="p">,</span> <span class="n">success</span><span class="p">)</span>
 
-        print(f&quot;✅ Processed: {query[:40]}... ({duration:.2f}s)&quot;)
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;✅ Processed: </span><span class="si">{</span><span class="n">query</span><span class="p">[:</span><span class="mi">40</span><span class="p">]</span><span class="si">}</span><span class="s2">... (</span><span class="si">{</span><span class="n">duration</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">s)&quot;</span><span class="p">)</span>
 
-    except Exception as e:
-        duration = time.time() - start_time
-        monitor.log_api_call(duration, 0, False)
-        print(f&quot;❌ Failed: {query[:40]}... ({e})&quot;)
+    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="n">monitor</span><span class="o">.</span><span class="n">log_api_call</span><span class="p">(</span><span class="n">duration</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;❌ Failed: </span><span class="si">{</span><span class="n">query</span><span class="p">[:</span><span class="mi">40</span><span class="p">]</span><span class="si">}</span><span class="s2">... (</span><span class="si">{</span><span class="n">e</span><span class="si">}</span><span class="s2">)&quot;</span><span class="p">)</span>
 
-    time.sleep(1)
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
 
-monitor.print_dashboard()
-</code></pre>
-<p><strong>Run the monitor:</strong></p>
-<pre><code class="language-bash">python cerebras_monitor.py
-</code></pre>
+<span class="n">monitor</span><span class="o">.</span><span class="n">print_dashboard</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Run the monitor:</strong>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>cerebras_monitor.py
+</code></pre></div></p>
 <h3 id="cost-optimization">💰 Cost Optimization</h3>
 <h4 id="token-usage-optimization">Token Usage Optimization</h4>
-<pre><code class="language-python"># Create cost_optimizer.py
-class CebrasCostOptimizer:
-    # Approximate pricing (check current Cerebras pricing)
-    TOKEN_COSTS = {
-        &quot;llama3.1-8b&quot;: 0.00002,    # $0.02 per 1K tokens
-        &quot;llama3.1-70b&quot;: 0.00008,   # $0.08 per 1K tokens  
-        &quot;llama3.1-405b&quot;: 0.0002,   # $0.20 per 1K tokens
-    }
+<div class="highlight"><pre><span></span><code><span class="c1"># Create cost_optimizer.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">CebrasCostOptimizer</span><span class="p">:</span>
+    <span class="c1"># Approximate pricing (check current Cerebras pricing)</span>
+    <span class="n">TOKEN_COSTS</span> <span class="o">=</span> <span class="p">{</span>
+        <span class="s2">&quot;llama3.1-8b&quot;</span><span class="p">:</span> <span class="mf">0.00002</span><span class="p">,</span>    <span class="c1"># $0.02 per 1K tokens</span>
+        <span class="s2">&quot;llama3.1-70b&quot;</span><span class="p">:</span> <span class="mf">0.00008</span><span class="p">,</span>   <span class="c1"># $0.08 per 1K tokens  </span>
+        <span class="s2">&quot;llama3.1-405b&quot;</span><span class="p">:</span> <span class="mf">0.0002</span><span class="p">,</span>   <span class="c1"># $0.20 per 1K tokens</span>
+    <span class="p">}</span>
 
-    def __init__(self):
-        self.usage_history = []
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">usage_history</span> <span class="o">=</span> <span class="p">[]</span>
 
-    def estimate_cost(self, model, input_tokens, output_tokens):
-        &quot;&quot;&quot;Estimate cost for a request.&quot;&quot;&quot;
-        total_tokens = input_tokens + output_tokens
-        cost_per_token = self.TOKEN_COSTS.get(model, 0.0001)
-        return total_tokens * cost_per_token
+    <span class="k">def</span><span class="w"> </span><span class="nf">estimate_cost</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">model</span><span class="p">,</span> <span class="n">input_tokens</span><span class="p">,</span> <span class="n">output_tokens</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Estimate cost for a request.&quot;&quot;&quot;</span>
+        <span class="n">total_tokens</span> <span class="o">=</span> <span class="n">input_tokens</span> <span class="o">+</span> <span class="n">output_tokens</span>
+        <span class="n">cost_per_token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TOKEN_COSTS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">total_tokens</span> <span class="o">*</span> <span class="n">cost_per_token</span>
 
-    def suggest_optimization(self, query):
-        &quot;&quot;&quot;Suggest cost optimization strategies.&quot;&quot;&quot;
-        suggestions = []
+    <span class="k">def</span><span class="w"> </span><span class="nf">suggest_optimization</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Suggest cost optimization strategies.&quot;&quot;&quot;</span>
+        <span class="n">suggestions</span> <span class="o">=</span> <span class="p">[]</span>
 
-        # Check query length
-        if len(query.split()) &gt; 500:
-            suggestions.append(&quot;Consider breaking long queries into smaller parts&quot;)
+        <span class="c1"># Check query length</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">())</span> <span class="o">&gt;</span> <span class="mi">500</span><span class="p">:</span>
+            <span class="n">suggestions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Consider breaking long queries into smaller parts&quot;</span><span class="p">)</span>
 
-        # Check complexity
-        if any(word in query.lower() for word in ['comprehensive', 'detailed', 'complete', 'thorough']):
-            suggestions.append(&quot;Consider using a smaller model for initial analysis&quot;)
+        <span class="c1"># Check complexity</span>
+        <span class="k">if</span> <span class="nb">any</span><span class="p">(</span><span class="n">word</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;comprehensive&#39;</span><span class="p">,</span> <span class="s1">&#39;detailed&#39;</span><span class="p">,</span> <span class="s1">&#39;complete&#39;</span><span class="p">,</span> <span class="s1">&#39;thorough&#39;</span><span class="p">]):</span>
+            <span class="n">suggestions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Consider using a smaller model for initial analysis&quot;</span><span class="p">)</span>
 
-        # Check for code analysis
-        if 'analyze' in query.lower() and len(query) &gt; 1000:
-            suggestions.append(&quot;Pre-process code analysis with Local Agent first&quot;)
+        <span class="c1"># Check for code analysis</span>
+        <span class="k">if</span> <span class="s1">&#39;analyze&#39;</span> <span class="ow">in</span> <span class="n">query</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">query</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1000</span><span class="p">:</span>
+            <span class="n">suggestions</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s2">&quot;Pre-process code analysis with Local Agent first&quot;</span><span class="p">)</span>
 
-        return suggestions
+        <span class="k">return</span> <span class="n">suggestions</span>
 
-    def daily_cost_estimate(self, daily_queries, avg_tokens_per_query, model=&quot;llama3.1-70b&quot;):
-        &quot;&quot;&quot;Estimate daily costs.&quot;&quot;&quot;
-        daily_tokens = daily_queries * avg_tokens_per_query
-        cost_per_token = self.TOKEN_COSTS.get(model, 0.0001)
+    <span class="k">def</span><span class="w"> </span><span class="nf">daily_cost_estimate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">daily_queries</span><span class="p">,</span> <span class="n">avg_tokens_per_query</span><span class="p">,</span> <span class="n">model</span><span class="o">=</span><span class="s2">&quot;llama3.1-70b&quot;</span><span class="p">):</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Estimate daily costs.&quot;&quot;&quot;</span>
+        <span class="n">daily_tokens</span> <span class="o">=</span> <span class="n">daily_queries</span> <span class="o">*</span> <span class="n">avg_tokens_per_query</span>
+        <span class="n">cost_per_token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">TOKEN_COSTS</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="mf">0.0001</span><span class="p">)</span>
 
-        daily_cost = daily_tokens * cost_per_token
-        monthly_cost = daily_cost * 30
-        annual_cost = daily_cost * 365
+        <span class="n">daily_cost</span> <span class="o">=</span> <span class="n">daily_tokens</span> <span class="o">*</span> <span class="n">cost_per_token</span>
+        <span class="n">monthly_cost</span> <span class="o">=</span> <span class="n">daily_cost</span> <span class="o">*</span> <span class="mi">30</span>
+        <span class="n">annual_cost</span> <span class="o">=</span> <span class="n">daily_cost</span> <span class="o">*</span> <span class="mi">365</span>
 
-        return {
-            'daily_cost': daily_cost,
-            'monthly_cost': monthly_cost,
-            'annual_cost': annual_cost,
-            'tokens_per_day': daily_tokens
-        }
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;daily_cost&#39;</span><span class="p">:</span> <span class="n">daily_cost</span><span class="p">,</span>
+            <span class="s1">&#39;monthly_cost&#39;</span><span class="p">:</span> <span class="n">monthly_cost</span><span class="p">,</span>
+            <span class="s1">&#39;annual_cost&#39;</span><span class="p">:</span> <span class="n">annual_cost</span><span class="p">,</span>
+            <span class="s1">&#39;tokens_per_day&#39;</span><span class="p">:</span> <span class="n">daily_tokens</span>
+        <span class="p">}</span>
 
-# Usage
-optimizer = CebrasCostOptimizer()
+<span class="c1"># Usage</span>
+<span class="n">optimizer</span> <span class="o">=</span> <span class="n">CebrasCostOptimizer</span><span class="p">()</span>
 
-# Estimate costs for different usage patterns
-scenarios = [
-    {&quot;name&quot;: &quot;Light Usage&quot;, &quot;queries&quot;: 50, &quot;tokens&quot;: 500},
-    {&quot;name&quot;: &quot;Medium Usage&quot;, &quot;queries&quot;: 200, &quot;tokens&quot;: 1000},
-    {&quot;name&quot;: &quot;Heavy Usage&quot;, &quot;queries&quot;: 1000, &quot;tokens&quot;: 2000}
-]
+<span class="c1"># Estimate costs for different usage patterns</span>
+<span class="n">scenarios</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Light Usage&quot;</span><span class="p">,</span> <span class="s2">&quot;queries&quot;</span><span class="p">:</span> <span class="mi">50</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">:</span> <span class="mi">500</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Medium Usage&quot;</span><span class="p">,</span> <span class="s2">&quot;queries&quot;</span><span class="p">:</span> <span class="mi">200</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Heavy Usage&quot;</span><span class="p">,</span> <span class="s2">&quot;queries&quot;</span><span class="p">:</span> <span class="mi">1000</span><span class="p">,</span> <span class="s2">&quot;tokens&quot;</span><span class="p">:</span> <span class="mi">2000</span><span class="p">}</span>
+<span class="p">]</span>
 
-print(&quot;💰 Cerebras Cost Analysis&quot;)
-print(&quot;==========================&quot;)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;💰 Cerebras Cost Analysis&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;==========================&quot;</span><span class="p">)</span>
 
-for scenario in scenarios:
-    costs = optimizer.daily_cost_estimate(
-        scenario['queries'], 
-        scenario['tokens']
-    )
+<span class="k">for</span> <span class="n">scenario</span> <span class="ow">in</span> <span class="n">scenarios</span><span class="p">:</span>
+    <span class="n">costs</span> <span class="o">=</span> <span class="n">optimizer</span><span class="o">.</span><span class="n">daily_cost_estimate</span><span class="p">(</span>
+        <span class="n">scenario</span><span class="p">[</span><span class="s1">&#39;queries&#39;</span><span class="p">],</span> 
+        <span class="n">scenario</span><span class="p">[</span><span class="s1">&#39;tokens&#39;</span><span class="p">]</span>
+    <span class="p">)</span>
 
-    print(f&quot;\n{scenario['name']}:&quot;)
-    print(f&quot;  Daily: ${costs['daily_cost']:.2f}&quot;)
-    print(f&quot;  Monthly: ${costs['monthly_cost']:.2f}&quot;)
-    print(f&quot;  Annual: ${costs['annual_cost']:.2f}&quot;)
-</code></pre>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">scenario</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Daily: $</span><span class="si">{</span><span class="n">costs</span><span class="p">[</span><span class="s1">&#39;daily_cost&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Monthly: $</span><span class="si">{</span><span class="n">costs</span><span class="p">[</span><span class="s1">&#39;monthly_cost&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Annual: $</span><span class="si">{</span><span class="n">costs</span><span class="p">[</span><span class="s1">&#39;annual_cost&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.2f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="best-practices-and-tips">Best Practices and Tips</h2>
 <h3 id="optimization-strategies">🎯 Optimization Strategies</h3>
 <ol>

@@ -5357,113 +5357,113 @@
 <h1 id="reasoning-in-cagent-think-todo-memory">Reasoning in cagent - think, todo, memory</h1>
 <p>Reasoning is <strong>how the agent thinks through problems</strong>. cagent has three built-in reasoning tools - <code>think</code> (scratchpad), <code>todo</code> (planning), and <code>memory</code> (context retention).</p>
 <h2 id="step-1-create-a-complex-project-that-requires-planning">Step 1: Create a complex project that requires planning</h2>
-<pre><code class="language-bash">mkdir ~/reasoning-test &amp;&amp; cd ~/reasoning-test
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>~/reasoning-test<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/reasoning-test
 
-# Create multiple files with interconnected issues
-cat &gt; user.py &lt;&lt; 'EOF'
-class User:
-    def __init__(self, name, email, age):
-        self.name = name
-        self.email = email
-        self.age = age
+<span class="c1"># Create multiple files with interconnected issues</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>user.py<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">class User:</span>
+<span class="s">    def __init__(self, name, email, age):</span>
+<span class="s">        self.name = name</span>
+<span class="s">        self.email = email</span>
+<span class="s">        self.age = age</span>
 
-    def is_adult(self):
-        return self.age &gt;= 18
+<span class="s">    def is_adult(self):</span>
+<span class="s">        return self.age &gt;= 18</span>
 
-    def get_display_name(self):
-        return self.name.upper()  # BUG 1: Should not force uppercase
+<span class="s">    def get_display_name(self):</span>
+<span class="s">        return self.name.upper()  # BUG 1: Should not force uppercase</span>
 
-    def validate_email(self):
-        return &quot;@&quot; in self.email  # BUG 2: Too simple, no domain check
-EOF
+<span class="s">    def validate_email(self):</span>
+<span class="s">        return &quot;@&quot; in self.email  # BUG 2: Too simple, no domain check</span>
+<span class="s">EOF</span>
 
-cat &gt; order.py &lt;&lt; 'EOF'
-from user import User
+cat<span class="w"> </span>&gt;<span class="w"> </span>order.py<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">from user import User</span>
 
-class Order:
-    def __init__(self, user, items):
-        self.user = user
-        self.items = items
+<span class="s">class Order:</span>
+<span class="s">    def __init__(self, user, items):</span>
+<span class="s">        self.user = user</span>
+<span class="s">        self.items = items</span>
 
-    def total(self):
-        total = 0
-        for item in self.items:
-            total += item[&quot;price&quot;]  # BUG 3: Doesn't handle quantity
-        return total
+<span class="s">    def total(self):</span>
+<span class="s">        total = 0</span>
+<span class="s">        for item in self.items:</span>
+<span class="s">            total += item[&quot;price&quot;]  # BUG 3: Doesn&#39;t handle quantity</span>
+<span class="s">        return total</span>
 
-    def apply_discount(self, percent):
-        return self.total() * percent  # BUG 4: Should be total * (1 - percent/100)
+<span class="s">    def apply_discount(self, percent):</span>
+<span class="s">        return self.total() * percent  # BUG 4: Should be total * (1 - percent/100)</span>
 
-    def summary(self):
-        return f&quot;Order for {self.user.get_display_name()}: ${self.total()}&quot;
-EOF
+<span class="s">    def summary(self):</span>
+<span class="s">        return f&quot;Order for {self.user.get_display_name()}: ${self.total()}&quot;</span>
+<span class="s">EOF</span>
 
-cat &gt; test_app.py &lt;&lt; 'EOF'
-from user import User
-from order import Order
+cat<span class="w"> </span>&gt;<span class="w"> </span>test_app.py<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">from user import User</span>
+<span class="s">from order import Order</span>
 
-def test_display_name():
-    u = User(&quot;Alice&quot;, &quot;alice@example.com&quot;, 25)
-    assert u.get_display_name() == &quot;Alice&quot;, f&quot;Got {u.get_display_name()}&quot;
+<span class="s">def test_display_name():</span>
+<span class="s">    u = User(&quot;Alice&quot;, &quot;alice@example.com&quot;, 25)</span>
+<span class="s">    assert u.get_display_name() == &quot;Alice&quot;, f&quot;Got {u.get_display_name()}&quot;</span>
 
-def test_email_validation():
-    u = User(&quot;Bob&quot;, &quot;bob@&quot;, 30)
-    assert u.validate_email() == False, &quot;bob@ should be invalid&quot;
+<span class="s">def test_email_validation():</span>
+<span class="s">    u = User(&quot;Bob&quot;, &quot;bob@&quot;, 30)</span>
+<span class="s">    assert u.validate_email() == False, &quot;bob@ should be invalid&quot;</span>
 
-def test_order_total():
-    u = User(&quot;Alice&quot;, &quot;alice@example.com&quot;, 25)
-    items = [{&quot;name&quot;: &quot;Book&quot;, &quot;price&quot;: 10, &quot;qty&quot;: 2}, {&quot;name&quot;: &quot;Pen&quot;, &quot;price&quot;: 5, &quot;qty&quot;: 3}]
-    o = Order(u, items)
-    assert o.total() == 35, f&quot;Expected 35, got {o.total()}&quot;
+<span class="s">def test_order_total():</span>
+<span class="s">    u = User(&quot;Alice&quot;, &quot;alice@example.com&quot;, 25)</span>
+<span class="s">    items = [{&quot;name&quot;: &quot;Book&quot;, &quot;price&quot;: 10, &quot;qty&quot;: 2}, {&quot;name&quot;: &quot;Pen&quot;, &quot;price&quot;: 5, &quot;qty&quot;: 3}]</span>
+<span class="s">    o = Order(u, items)</span>
+<span class="s">    assert o.total() == 35, f&quot;Expected 35, got {o.total()}&quot;</span>
 
-def test_discount():
-    u = User(&quot;Alice&quot;, &quot;alice@example.com&quot;, 25)
-    items = [{&quot;name&quot;: &quot;Book&quot;, &quot;price&quot;: 100, &quot;qty&quot;: 1}]
-    o = Order(u, items)
-    assert o.apply_discount(20) == 80, f&quot;Expected 80, got {o.apply_discount(20)}&quot;
+<span class="s">def test_discount():</span>
+<span class="s">    u = User(&quot;Alice&quot;, &quot;alice@example.com&quot;, 25)</span>
+<span class="s">    items = [{&quot;name&quot;: &quot;Book&quot;, &quot;price&quot;: 100, &quot;qty&quot;: 1}]</span>
+<span class="s">    o = Order(u, items)</span>
+<span class="s">    assert o.apply_discount(20) == 80, f&quot;Expected 80, got {o.apply_discount(20)}&quot;</span>
 
-if __name__ == &quot;__main__&quot;:
-    tests = [test_display_name, test_email_validation, test_order_total, test_discount]
-    for t in tests:
-        try:
-            t()
-            print(f&quot;✓ {t.__name__}&quot;)
-        except AssertionError as e:
-            print(f&quot;✗ {t.__name__}: {e}&quot;)
-EOF
-</code></pre>
+<span class="s">if __name__ == &quot;__main__&quot;:</span>
+<span class="s">    tests = [test_display_name, test_email_validation, test_order_total, test_discount]</span>
+<span class="s">    for t in tests:</span>
+<span class="s">        try:</span>
+<span class="s">            t()</span>
+<span class="s">            print(f&quot;✓ {t.__name__}&quot;)</span>
+<span class="s">        except AssertionError as e:</span>
+<span class="s">            print(f&quot;✗ {t.__name__}: {e}&quot;)</span>
+<span class="s">EOF</span>
+</code></pre></div>
 <h2 id="step-2-create-the-reasoning-agent">Step 2: Create the reasoning agent</h2>
-<pre><code class="language-yaml"># reasoning.yaml
-version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># reasoning.yaml</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
 
-agents:
-  root:
-    model: openai/gpt-5-mini
-    description: Methodical debugger that plans before acting
-    instruction: |
-      You are a methodical debugging agent. You MUST reason carefully:
+<span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Methodical debugger that plans before acting</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You are a methodical debugging agent. You MUST reason carefully:</span>
 
-      1. First, use your TODO tool to create a plan of all steps needed
-      2. Use your THINK tool before each fix to reason about the root cause
-      3. Use your MEMORY tool to track what you've fixed so far
-      4. Fix bugs ONE at a time, running tests after each fix
-      5. Update your TODO after each step
+<span class="w">      </span><span class="no">1. First, use your TODO tool to create a plan of all steps needed</span>
+<span class="w">      </span><span class="no">2. Use your THINK tool before each fix to reason about the root cause</span>
+<span class="w">      </span><span class="no">3. Use your MEMORY tool to track what you&#39;ve fixed so far</span>
+<span class="w">      </span><span class="no">4. Fix bugs ONE at a time, running tests after each fix</span>
+<span class="w">      </span><span class="no">5. Update your TODO after each step</span>
 
-      There are 4 bugs across 2 files. Find and fix ALL of them.
-      Do NOT rush. Plan first, think through each bug, then act.
-    toolsets:
-      - type: filesystem
-      - type: shell
-</code></pre>
+<span class="w">      </span><span class="no">There are 4 bugs across 2 files. Find and fix ALL of them.</span>
+<span class="w">      </span><span class="no">Do NOT rush. Plan first, think through each bug, then act.</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shell</span>
+</code></pre></div>
 <h2 id="step-3-run-it">Step 3: Run it</h2>
-<pre><code class="language-bash">export OPENAI_API_KEY=&lt;your_key&gt;
-cagent run ./reasoning.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>&lt;your_key&gt;
+cagent<span class="w"> </span>run<span class="w"> </span>./reasoning.yaml
+</code></pre></div>
 <p>Then type:</p>
-<pre><code>There are 4 bugs across user.py and order.py. Run tests, plan your approach, and fix them one by one.
-</code></pre>
+<div class="highlight"><pre><span></span><code>There are 4 bugs across user.py and order.py. Run tests, plan your approach, and fix them one by one.
+</code></pre></div>
 <h2 id="what-you-should-see">What you should see</h2>
-<pre><code>✓ Shell    python test_app.py         ← Perceives: 4 failing tests
+<div class="highlight"><pre><span></span><code>✓ Shell    python test_app.py         ← Perceives: 4 failing tests
 ✓ Todo     Create plan:               ← REASONING: Plans the approach
              [ ] Fix get_display_name
              [ ] Fix validate_email  
@@ -5487,7 +5487,7 @@ cagent run ./reasoning.yaml
             Need to check for text after @&quot;
 ✓ Edit     user.py                    ← Acts: fixes bug 2
 ...continues until all 4 fixed...
-</code></pre>
+</code></pre></div>
 <h2 id="key-teaching-point">Key Teaching Point</h2>
 <table>
 <thead>

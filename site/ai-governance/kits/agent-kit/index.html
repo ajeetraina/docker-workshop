@@ -5338,46 +5338,46 @@
 <hr />
 <h2 id="create-the-agent-kit">Create the agent kit</h2>
 <p>Create <code>kits/claude-safe/spec.yaml</code>:</p>
-<pre><code class="language-yaml">schemaVersion: &quot;1&quot;
-kind: agent
-name: claude-safe
-displayName: Claude Code (with approval prompts)
-description: Claude Code without --dangerously-skip-permissions - every tool call requires approval
+<div class="highlight"><pre><span></span><code><span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">claude-safe</span>
+<span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Claude Code (with approval prompts)</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Claude Code without --dangerously-skip-permissions - every tool call requires approval</span>
 
-agent:
-  image: &quot;docker/sandbox-templates:claude-code-docker&quot;
-  aiFilename: CLAUDE.md
-  persistence: persistent
-  entrypoint:
-    run: [claude]   # no --dangerously-skip-permissions
+<span class="nt">agent</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;docker/sandbox-templates:claude-code-docker&quot;</span>
+<span class="w">  </span><span class="nt">aiFilename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CLAUDE.md</span>
+<span class="w">  </span><span class="nt">persistence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">persistent</span>
+<span class="w">  </span><span class="nt">entrypoint</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">claude</span><span class="p p-Indicator">]</span><span class="w">   </span><span class="c1"># no --dangerously-skip-permissions</span>
 
-network:
-  serviceDomains:
-    api.anthropic.com: anthropic
-    console.anthropic.com: anthropic
-  serviceAuth:
-    anthropic:
-      headerName: x-api-key
-      valueFormat: &quot;%s&quot;
-  allowedDomains:
-    - &quot;claude.com:443&quot;
+<span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">serviceDomains</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">api.anthropic.com</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropic</span>
+<span class="w">    </span><span class="nt">console.anthropic.com</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropic</span>
+<span class="w">  </span><span class="nt">serviceAuth</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">anthropic</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">headerName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x-api-key</span>
+<span class="w">      </span><span class="nt">valueFormat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;%s&quot;</span>
+<span class="w">  </span><span class="nt">allowedDomains</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;claude.com:443&quot;</span>
 
-credentials:
-  sources:
-    anthropic:
-      env:
-        - ANTHROPIC_API_KEY
-</code></pre>
+<span class="nt">credentials</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">anthropic</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANTHROPIC_API_KEY</span>
+</code></pre></div>
 <hr />
 <h2 id="run-it">Run it</h2>
-<pre><code class="language-bash">sbx run claude-safe --kit ./kits/claude-safe/
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>claude-safe<span class="w"> </span>--kit<span class="w"> </span>./kits/claude-safe/
+</code></pre></div>
 <p>The agent argument to <code>sbx run</code> matches the <code>name:</code> field in the spec - not the directory name.</p>
 <hr />
 <h2 id="stack-it-with-the-docker-review-mixin">Stack it with the docker-review mixin</h2>
 <p>Agent kits and mixin kits compose. Run the <code>claude-safe</code> agent with the <code>docker-review</code> skill loaded on top:</p>
-<pre><code class="language-bash">sbx run claude-safe --kit ./kits/claude-safe/ --kit ./kits/docker-review/
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>claude-safe<span class="w"> </span>--kit<span class="w"> </span>./kits/claude-safe/<span class="w"> </span>--kit<span class="w"> </span>./kits/docker-review/
+</code></pre></div>
 <p>You now have:</p>
 <ul>
 <li>Approval prompts on every tool call (from the agent kit)</li>
@@ -5421,8 +5421,10 @@ credentials:
 </tr>
 </tbody>
 </table>
-<p>!!! note
-    Agent kits require the image to expose a non-root <code>agent</code> user at UID 1000. Build on <code>docker/sandbox-templates:shell-docker</code> to get this for free if you're building a custom image.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Agent kits require the image to expose a non-root <code>agent</code> user at UID 1000. Build on <code>docker/sandbox-templates:shell-docker</code> to get this for free if you're building a custom image.</p>
+</div>
 
 
 

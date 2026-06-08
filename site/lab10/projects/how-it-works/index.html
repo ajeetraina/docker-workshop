@@ -5340,14 +5340,14 @@
 <p>Understanding the internal architecture and mechanisms that power cagent's multi-agent orchestration.</p>
 <h2 id="1-agent-hierarchy">1. Agent Hierarchy</h2>
 <p>cagent uses a hierarchical structure where root agents coordinate with specialized sub-agents:</p>
-<pre><code>Root Agent (Coordinator)
+<div class="highlight"><pre><span></span><code>Root Agent (Coordinator)
 ├── Sub-Agent 1 (Specialist)
 ├── Sub-Agent 2 (Specialist)
 └── Sub-Agent 3 (Specialist)
-</code></pre>
+</code></pre></div>
 <p>The root agent receives all user requests and intelligently delegates to appropriate specialists.</p>
 <h2 id="2-task-delegation-flow">2. Task Delegation Flow</h2>
-<pre><code class="language-mermaid">graph TD
+<div class="highlight"><pre><span></span><code>graph TD
     A[User Request] --&gt; B[Root Agent]
     B --&gt; C{Analyze Task}
     C --&gt;|Design Task| D[Designer Agent]
@@ -5358,7 +5358,7 @@
     F --&gt; G
     G --&gt; H[Results to Root]
     H --&gt; I[Response to User]
-</code></pre>
+</code></pre></div>
 <p><strong>Step-by-step process:</strong></p>
 <ol>
 <li>User sends request to root agent</li>
@@ -5411,15 +5411,15 @@
 </table>
 <h2 id="4-mcp-tool-integration">4. MCP Tool Integration</h2>
 <p>External tools run in isolated containers through MCP (Model Context Protocol):</p>
-<pre><code class="language-yaml">toolsets:
-  - type: mcp
-    command: &quot;docker&quot;
-    args: [&quot;mcp&quot;, &quot;gateway&quot;, &quot;run&quot;, &quot;--servers=duckduckgo&quot;]
+<div class="highlight"><pre><span></span><code><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;docker&quot;</span>
+<span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;mcp&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;gateway&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;run&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;--servers=duckduckgo&quot;</span><span class="p p-Indicator">]</span>
 
-  - type: mcp
-    command: &quot;uvx&quot;
-    args: [&quot;mcp-server-postgresql&quot;]
-</code></pre>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;uvx&quot;</span>
+<span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;mcp-server-postgresql&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
 <p><strong>Benefits of MCP integration:</strong></p>
 <ul>
 <li>Access to hundreds of pre-built tool servers</li>
@@ -5430,23 +5430,23 @@
 <h2 id="5-multiple-interfaces">5. Multiple Interfaces</h2>
 <p>cagent supports multiple ways to interact:</p>
 <h3 id="cli-mode">CLI Mode</h3>
-<pre><code class="language-bash">./bin/cagent run config.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>./bin/cagent<span class="w"> </span>run<span class="w"> </span>config.yaml
+</code></pre></div>
 <h3 id="web-interface">Web Interface</h3>
-<pre><code class="language-bash">./bin/cagent web -d ./configs ./sessions.db
-</code></pre>
+<div class="highlight"><pre><span></span><code>./bin/cagent<span class="w"> </span>web<span class="w"> </span>-d<span class="w"> </span>./configs<span class="w"> </span>./sessions.db
+</code></pre></div>
 <h3 id="mcp-server-mode">MCP Server Mode</h3>
-<pre><code class="language-bash">./bin/cagent mcp server --port 8080 --agents-dir ./configs
-</code></pre>
+<div class="highlight"><pre><span></span><code>./bin/cagent<span class="w"> </span>mcp<span class="w"> </span>server<span class="w"> </span>--port<span class="w"> </span><span class="m">8080</span><span class="w"> </span>--agents-dir<span class="w"> </span>./configs
+</code></pre></div>
 <p>The same agent configurations work across all interfaces.</p>
 <h2 id="6-docker-integration">6. Docker Integration</h2>
 <p>Share agents like container images:</p>
-<pre><code class="language-bash"># Push agent to Docker Hub
-./bin/cagent push ./agent.yaml namespace/agent-name
+<div class="highlight"><pre><span></span><code><span class="c1"># Push agent to Docker Hub</span>
+./bin/cagent<span class="w"> </span>push<span class="w"> </span>./agent.yaml<span class="w"> </span>namespace/agent-name
 
-# Pull shared agent
-./bin/cagent pull namespace/agent-name
-</code></pre>
+<span class="c1"># Pull shared agent</span>
+./bin/cagent<span class="w"> </span>pull<span class="w"> </span>namespace/agent-name
+</code></pre></div>
 <p>This enables:</p>
 <ul>
 <li>Version-controlled agent configurations</li>
@@ -5480,12 +5480,12 @@
 </table>
 <h2 id="8-agent-generation">8. Agent Generation</h2>
 <p>Create agents from natural language descriptions:</p>
-<pre><code class="language-bash">./bin/cagent new
-</code></pre>
+<div class="highlight"><pre><span></span><code>./bin/cagent<span class="w"> </span>new
+</code></pre></div>
 <p>This interactive prompt generates agent configurations based on your requirements.</p>
 <h2 id="architecture-overview">Architecture Overview</h2>
 <p>cagent uses a layered architecture:</p>
-<pre><code>┌─────────────────────────────────────────────┐
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────┐
 │         Command Layer                        │
 │    (CLI, Web, TUI, MCP Server interfaces)   │
 ├─────────────────────────────────────────────┤
@@ -5504,7 +5504,7 @@
 │         Model Providers                      │
 │  (OpenAI, Anthropic, Gemini, DMR)           │
 └─────────────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
 <p>All layers work together to provide secure, scalable multi-agent orchestration.</p>
 <h2 id="key-architectural-benefits">Key Architectural Benefits</h2>
 <ul>

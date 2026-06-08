@@ -5335,47 +5335,46 @@
 <h1 id="stacking-kits-and-the-community-repo">Stacking Kits and the Community Repo</h1>
 <h2 id="stacking-with-kit-kit">Stacking with --kit --kit</h2>
 <p>Pass <code>--kit</code> more than once to stack kits on the same sandbox. Rules from all kits are merged: <code>allowedDomains</code> are unioned, files from all kits are injected, install commands from all kits run in order.</p>
-<pre><code class="language-bash"># two local kits
-sbx run claude --kit ./kits/claude-safe/ --kit ./kits/docker-review/
+<div class="highlight"><pre><span></span><code><span class="c1"># two local kits</span>
+sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span>./kits/claude-safe/<span class="w"> </span>--kit<span class="w"> </span>./kits/docker-review/
 
-# local kit + community kit from Git
-sbx run claude \
-  --kit ./kits/docker-review/ \
-  --kit &quot;git+https://github.com/docker/sbx-kits-contrib.git#dir=code-server&quot;
-</code></pre>
-<p>!!! warning "--kit only applies at creation"
-    <code>--kit</code> only applies when creating a new sandbox. To add a kit to a running sandbox use <code>sbx kit add</code>:</p>
-<pre><code>```bash
-sbx kit add kits-lab ./kits/docker-review/
-```
-
-This re-runs install commands and re-copies files. Kits can't be removed from a running sandbox - `sbx rm` and recreate to start clean.
-</code></pre>
+<span class="c1"># local kit + community kit from Git</span>
+sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--kit<span class="w"> </span>./kits/docker-review/<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/docker/sbx-kits-contrib.git#dir=code-server&quot;</span>
+</code></pre></div>
+<div class="admonition warning">
+<p class="admonition-title">--kit only applies at creation</p>
+<p><code>--kit</code> only applies when creating a new sandbox. To add a kit to a running sandbox use <code>sbx kit add</code>:</p>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>kit<span class="w"> </span>add<span class="w"> </span>kits-lab<span class="w"> </span>./kits/docker-review/
+</code></pre></div>
+<p>This re-runs install commands and re-copies files. Kits can't be removed from a running sandbox - <code>sbx rm</code> and recreate to start clean.</p>
+</div>
 <hr />
 <h2 id="loading-from-the-community-repo">Loading from the community repo</h2>
 <p><code>docker/sbx-kits-contrib</code> is the official community kits repository. Every kit in it has TCK tests running in CI. Load any kit directly without cloning:</p>
-<pre><code class="language-bash"># VS Code in the browser with Claude Code extension
-sbx run claude --kit &quot;git+https://github.com/docker/sbx-kits-contrib.git#dir=code-server&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># VS Code in the browser with Claude Code extension</span>
+sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/docker/sbx-kits-contrib.git#dir=code-server&quot;</span>
 
-# Pin to a specific tag for reproducibility
-sbx run claude --kit &quot;git+https://github.com/docker/sbx-kits-contrib.git#ref=v0.2.0&amp;dir=code-server&quot;
-</code></pre>
+<span class="c1"># Pin to a specific tag for reproducibility</span>
+sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/docker/sbx-kits-contrib.git#ref=v0.2.0&amp;dir=code-server&quot;</span>
+</code></pre></div>
 <p>Available kits in the repo: <code>code-server</code>, <code>amp</code>, <code>openclaw</code>, <code>nanoclaw</code>, <code>nanobot</code>, <code>pi</code>.</p>
 <hr />
 <h2 id="packaging-and-distributing-your-own-kit">Packaging and distributing your own kit</h2>
 <p>Once your kit works locally, share it three ways:</p>
 <p><strong>ZIP file:</strong></p>
-<pre><code class="language-bash">sbx kit pack ./kits/docker-review/ -o docker-review-1.0.zip
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>kit<span class="w"> </span>pack<span class="w"> </span>./kits/docker-review/<span class="w"> </span>-o<span class="w"> </span>docker-review-1.0.zip
+</code></pre></div>
 <p><strong>OCI registry:</strong></p>
-<pre><code class="language-bash">sbx kit push ./kits/docker-review/ ghcr.io/yourorg/docker-review:1.0
-# teammates run:
-sbx run claude --kit ghcr.io/yourorg/docker-review:1.0
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>kit<span class="w"> </span>push<span class="w"> </span>./kits/docker-review/<span class="w"> </span>ghcr.io/yourorg/docker-review:1.0
+<span class="c1"># teammates run:</span>
+sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span>ghcr.io/yourorg/docker-review:1.0
+</code></pre></div>
 <p><strong>Git URL</strong> (simplest for teams):</p>
-<pre><code class="language-bash"># just commit the kit directory to your repo, then:
-sbx run claude --kit &quot;git+https://github.com/yourorg/yourrepo.git#dir=kits/docker-review&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># just commit the kit directory to your repo, then:</span>
+sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/yourorg/yourrepo.git#dir=kits/docker-review&quot;</span>
+</code></pre></div>
 <hr />
 <h2 id="debugging-kit-issues">Debugging kit issues</h2>
 <table>

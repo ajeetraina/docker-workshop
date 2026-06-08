@@ -5442,10 +5442,10 @@
 <li>Docker Engine (Linux) - Install with <code>sudo apt-get install docker-model-plugin</code> or <code>sudo dnf install docker-model-plugin</code>.</li>
 </ul>
 <h3 id="1-pull-ai-model-using-dmr">1. Pull AI Model using DMR</h3>
-<pre><code>docker model pull ai/llama3.2:1B-Q8_0
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker model pull ai/llama3.2:1B-Q8_0
+</code></pre></div>
 <h3 id="2-to-see-models-available-to-the-local-docker-catalog-run">2. To see models available to the local Docker catalog, run:</h3>
-<pre><code>docker model list --openai
+<div class="highlight"><pre><span></span><code>docker model list --openai
 {
     &quot;object&quot;: &quot;list&quot;,
     &quot;data&quot;: [
@@ -5457,19 +5457,19 @@
         }
     ]
 }
-</code></pre>
+</code></pre></div>
 <p>To use a model, reference it in your configuration. DMR automatically pulls models on first use if they're not already local.</p>
 <h3 id="3-configure-your-agent-to-use-docker-model-runner-with-the-dmr-provider">3. Configure your agent to use Docker Model Runner with the dmr provider</h3>
-<pre><code>agents:
+<div class="highlight"><pre><span></span><code>agents:
   root:
     model: dmr/ai/llama3.2:1B-Q8_0
     instruction: You are a helpful assistant
     toolsets:
       - type: filesystem
-</code></pre>
+</code></pre></div>
 <h3 id="4-run-the-agent">4. Run the agent</h3>
-<pre><code>cagent run dmr.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>cagent run dmr.yaml
+</code></pre></div>
 <p>Type a prompt stating "Hello. What you can do for me?"</p>
 <p>When you first run your agent, cagent prompts you to pull the model if it's not already available locally.</p>
 <h3 id="5-verify-if-requests-are-logged-in-using-docker-dashboard">5. verify if requests are logged in using Docker Dashboard</h3>
@@ -5479,7 +5479,7 @@
 If a model isn't available locally, cagent prompts you to pull it on first use. No API keys or authentication are required.</p>
 <h2 id="advanced-configuration">Advanced configuration</h2>
 <p>For more control over model behavior, define a model configuration:</p>
-<pre><code>models:
+<div class="highlight"><pre><span></span><code>models:
   local-llama:
     provider: dmr
     model: ai/llama3.2:1B-Q8_0
@@ -5490,12 +5490,12 @@ agents:
   root:
     model: local-llama
     instruction: You are a helpful coding assistant
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Note: since Llama 3.2 1B is a small model, you need to pick prompts that play to its strengths and avoid ones that expose its limitations.
 Avoid for 1B models: complex multi-step reasoning, large code generation, multi-file refactoring - it'll hallucinate or get stuck.</p>
 </blockquote>
-<pre><code>Good Prompts:
+<p><div class="highlight"><pre><span></span><code>Good Prompts:
 - &quot;Hello. What can you do for me?&quot; - your current one, works fine
 - &quot;Explain Docker in 3 sentences&quot;
 - &quot;What is a Dockerfile? Give me a simple example&quot;
@@ -5505,9 +5505,8 @@ What happens when you add the following prompt: &quot;List out all the files in 
 It will just give you a generic answer that shows typical Linux command.
 
 In order to get the file listing, you need toolsets to be added. For example,
-
-</code></pre>
-<p>models:
+</code></pre></div>
+models:
   local-llama:
     provider: dmr
     model: ai/llama3.2:1B-Q8_0
@@ -5518,27 +5517,23 @@ In order to get the file listing, you need toolsets to be added. For example,
     model: local-llama
     instruction: You are a helpful coding assistant
     toolsets:
-      - type: filesystem</p>
-<pre><code>
-But still it won't list out the files but show the following result:
-
-</code></pre>
-<p>root</p>
+      - type: filesystem
+<div class="highlight"><pre><span></span><code>But still it won&#39;t list out the files but show the following result:
+</code></pre></div>
+root</p>
 <p>{ "type": "function", "function": { "name": "list_directory", "parameters": { "properties": { "path":
 { "description": "The directory path to list", "type": "string" } }, "required": [ "path" ], "type":
-"object" } } }</p>
-<pre><code>
-What could be the reason?
+"object" } } }
+<div class="highlight"><pre><span></span><code>What could be the reason?
 
-This isn't a shell vs filesystem issue - the filesystem toolset does include list_directory.
-The problem is Llama 3.2 1B is too small to handle tool calling properly. It's dumping the raw tool schema instead of actually invoking it.
+This isn&#39;t a shell vs filesystem issue - the filesystem toolset does include list_directory.
+The problem is Llama 3.2 1B is too small to handle tool calling properly. It&#39;s dumping the raw tool schema instead of actually invoking it.
 
-Small models (1B) struggle with structured function calling - they see the tool definition but don't know how to format a proper tool call response.
+Small models (1B) struggle with structured function calling - they see the tool definition but don&#39;t know how to format a proper tool call response.
 
 Fix: use a larger model. Try this now:
-
-</code></pre>
-<p>models:
+</code></pre></div>
+models:
   local-llama:
     provider: dmr
     model: ai/llama3.2:3B-Q4_K_M

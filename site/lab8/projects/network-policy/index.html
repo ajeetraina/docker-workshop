@@ -5529,8 +5529,8 @@ the agent attempts.</p>
 <p>sbx ships with <strong>5 default allow policies</strong> covering everything a developer
 typically needs. You don't need to configure anything for standard workflows.</p>
 <p>Check what's allowed right now:</p>
-<pre><code class="language-bash">sbx policy ls
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>ls
+</code></pre></div>
 <p>You'll see five policy groups:</p>
 <table>
 <thead>
@@ -5567,20 +5567,20 @@ allowed. No setup required.</p>
 <hr />
 <h2 id="prove-it-install-a-package">Prove it: install a package</h2>
 <p>Start your sandbox and ask the agent to install <code>httpx</code>:</p>
-<pre><code class="language-bash">sbx run sbxlab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>sbxlab
+</code></pre></div>
 <p>Then prompt:</p>
 <blockquote>
 <p>Install httpx and tell me the version</p>
 </blockquote>
 <p>The agent will work through PEP 668 on its own and successfully install:</p>
-<pre><code class="language-plaintext">• Ran python3 -m pip install httpx
+<div class="highlight"><pre><span></span><code>• Ran python3 -m pip install httpx
   └ error: externally-managed-environment ...
 
 • Ran python3 -m pip install --break-system-packages httpx
   └ Successfully installed httpx-0.28.1
     0.28.1
-</code></pre>
+</code></pre></div>
 <p>The agent self-corrected and got the answer - all inside the microVM, your Mac
 untouched.</p>
 <hr />
@@ -5589,26 +5589,26 @@ untouched.</p>
 can reach - blocking specific domains at the network layer, regardless of what
 the agent tries.</p>
 <h3 id="step-1-block-pypi">Step 1 - Block PyPI</h3>
-<pre><code class="language-bash">sbx policy deny network pypi.org
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>deny<span class="w"> </span>network<span class="w"> </span>pypi.org
+</code></pre></div>
 <p>Verify it's active:</p>
-<pre><code class="language-bash">sbx policy ls
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>ls
+</code></pre></div>
 <p>You'll see a new local entry at the bottom:</p>
-<pre><code class="language-plaintext">local:9701dc6e-...   network   deny   pypi.org
-</code></pre>
+<div class="highlight"><pre><span></span><code>local:9701dc6e-...   network   deny   pypi.org
+</code></pre></div>
 <h3 id="step-2-restart-the-sandbox">Step 2 - Restart the sandbox</h3>
 <p>Policy changes require a sandbox restart to take effect:</p>
-<pre><code class="language-bash">sbx stop sbxlab
-sbx run sbxlab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>stop<span class="w"> </span>sbxlab
+sbx<span class="w"> </span>run<span class="w"> </span>sbxlab
+</code></pre></div>
 <h3 id="step-3-watch-the-agent-fail">Step 3 - Watch the agent fail</h3>
 <p>Ask the agent to install a package:</p>
 <blockquote>
 <p>Install requests and tell me the version</p>
 </blockquote>
 <p>The agent is persistent - it will try multiple approaches, all of which fail:</p>
-<pre><code class="language-plaintext">• Ran pip install requests
+<div class="highlight"><pre><span></span><code>• Ran pip install requests
   └ error: externally-managed-environment
 
 • Ran pip install --break-system-packages requests
@@ -5617,7 +5617,7 @@ sbx run sbxlab
 
 • Ran curl -I https://pypi.org/simple/requests/
   └ HTTP/2 403
-</code></pre>
+</code></pre></div>
 <p>The agent tried everything it knew. It still failed. Not because of a system
 prompt instruction - because the proxy blocked the TCP connection at the network
 layer.</p>
@@ -5627,24 +5627,24 @@ Agent capability and network policy are completely independent layers.</p>
 </blockquote>
 <h3 id="step-4-find-and-remove-the-deny-rule">Step 4 - Find and remove the deny rule</h3>
 <p>List policies to get the rule ID:</p>
-<pre><code class="language-bash">sbx policy ls
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>ls
+</code></pre></div>
 <p>Look for the local deny entry at the bottom. Copy its UUID (the part after
 <code>local:</code>), then remove it:</p>
-<pre><code class="language-bash">sbx policy rm network --id &lt;uuid-from-policy-ls&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>rm<span class="w"> </span>network<span class="w"> </span>--id<span class="w"> </span>&lt;uuid-from-policy-ls&gt;
+</code></pre></div>
 <blockquote>
 <p><strong>Important:</strong> Use <code>--id</code> with just the UUID - drop the <code>local:</code> prefix.</p>
 </blockquote>
 <p>Verify it's gone:</p>
-<pre><code class="language-bash">sbx policy ls
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>ls
+</code></pre></div>
 <p>No local entries should remain.</p>
 <h3 id="step-5-confirm-the-agent-works-again">Step 5 - Confirm the agent works again</h3>
 <p>Restart the sandbox:</p>
-<pre><code class="language-bash">sbx stop sbxlab
-sbx run sbxlab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>stop<span class="w"> </span>sbxlab
+sbx<span class="w"> </span>run<span class="w"> </span>sbxlab
+</code></pre></div>
 <p>Ask the agent to install requests again - it works immediately.</p>
 <hr />
 <h2 id="key-rules-about-policy-precedence">Key rules about policy precedence</h2>
@@ -5657,23 +5657,23 @@ sbx run sbxlab
 <hr />
 <h2 id="watch-live-connections">Watch live connections</h2>
 <p>In a separate terminal, watch every outbound connection in real time:</p>
-<pre><code class="language-bash">sbx policy log sbxlab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>log<span class="w"> </span>sbxlab
+</code></pre></div>
 <p>You'll see each connection as it happens:</p>
-<pre><code class="language-plaintext">ALLOWED   pypi.org                 200
+<div class="highlight"><pre><span></span><code>ALLOWED   pypi.org                 200
 ALLOWED   files.pythonhosted.org   200
-</code></pre>
+</code></pre></div>
 <p>Add a deny rule and repeat - you'll see:</p>
-<pre><code class="language-plaintext">BLOCKED   pypi.org   -
-</code></pre>
+<div class="highlight"><pre><span></span><code>BLOCKED   pypi.org   -
+</code></pre></div>
 <p>This log is your <strong>audit trail</strong>. For regulated enterprises it answers:
 <em>"What did the agent do on the network, and when?"</em></p>
 <hr />
 <h2 id="reach-host-services-from-inside-the-sandbox">Reach host services from inside the sandbox</h2>
 <p>If you have a local service running on your Mac (like Ollama on port 11434),
 use <code>host.docker.internal</code> - not <code>localhost</code>, which resolves to the VM itself:</p>
-<pre><code class="language-bash">sbx policy allow network localhost:11434
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>allow<span class="w"> </span>network<span class="w"> </span>localhost:11434
+</code></pre></div>
 <p>Then inside the sandbox, connect to <code>host.docker.internal:11434</code>.</p>
 <hr />
 <h2 id="checkpoint">✅ Checkpoint</h2>

@@ -5654,7 +5654,7 @@
 <li><strong>Model Runner Integration</strong> - Local AI model execution with Llama 3.2</li>
 </ul>
 <h3 id="complete-architecture">🏗️ <strong>Complete Architecture</strong></h3>
-<pre><code>┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
+<div class="highlight"><pre><span></span><code>┌─────────────────┐  ┌─────────────────┐  ┌─────────────────┐
 │   Frontend      │  │  Agent Portal   │  │  Chatbot UI     │
 │   Port: 5173    │  │   Port: 3001    │  │   Port: 5174    │
 └─────────────────┘  └─────────────────┘  └─────────────────┘
@@ -5680,7 +5680,7 @@
     │   Port: 5432    │ │   Port: 27017   │ │  Port: 9092     │
     │ (Products DB)   │ │ (Agent History) │ │ (Event Stream)  │
     └─────────────────┘ └─────────────────┘ └─────────────────┘
-</code></pre>
+</code></pre></div>
 <h2 id="quick-start">🚀 Quick Start</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
@@ -5689,17 +5689,17 @@
 <li>The latest version of Docker Compose</li>
 </ul>
 <h3 id="1-pull-required-models">1. Pull Required Models</h3>
-<pre><code class="language-bash"># Pull the AI model for chatbot and agents
-docker model pull ai/llama3.2:1B-Q8_0
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Pull the AI model for chatbot and agents</span>
+docker<span class="w"> </span>model<span class="w"> </span>pull<span class="w"> </span>ai/llama3.2:1B-Q8_0
+</code></pre></div>
 <h3 id="2-start-all-services">2. Start All Services</h3>
-<pre><code class="language-bash"># Clone the repository
-git clone https://github.com/ajeetraina/catalog-service-node-chatbot.git
-cd catalog-service-node-chatbot
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone the repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ajeetraina/catalog-service-node-chatbot.git
+<span class="nb">cd</span><span class="w"> </span>catalog-service-node-chatbot
 
-# Start the complete system
-docker compose up -d --build
-</code></pre>
+<span class="c1"># Start the complete system</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
+</code></pre></div>
 <h3 id="3-access-the-applications">3. Access the Applications</h3>
 <table>
 <thead>
@@ -5737,7 +5737,7 @@ docker compose up -d --build
 <p><strong>Note</strong>: After running <code>sh add-products.sh</code>, your chatbot will have access to 50+ sample products for testing these capabilities.</p>
 </blockquote>
 <h3 id="natural-language-product-search">Natural Language Product Search</h3>
-<pre><code>User: &quot;Show me all electronics under $500&quot;
+<div class="highlight"><pre><span></span><code>User: &quot;Show me all electronics under $500&quot;
 Chatbot: &quot;I found 8 electronics products under $500:
 
 📱 iPhone SE - $399.00
@@ -5752,9 +5752,9 @@ Chatbot: &quot;I found 8 electronics products under $500:
 [Additional products...]
 
 Would you like details about any specific product?&quot;
-</code></pre>
+</code></pre></div>
 <h3 id="intelligent-category-browsing">Intelligent Category Browsing</h3>
-<pre><code>User: &quot;What's popular in home electronics?&quot;
+<div class="highlight"><pre><span></span><code>User: &quot;What&#39;s popular in home electronics?&quot;
 Chatbot: &quot;Based on our catalog data:
 
 🏠 Smart Home Category (12 products):
@@ -5765,10 +5765,10 @@ Chatbot: &quot;Based on our catalog data:
 
 The Amazon Echo Dot and Ring Doorbell are our top sellers.
 Which type of smart home device interests you?&quot;
-</code></pre>
+</code></pre></div>
 <h3 id="catalog-analytics">Catalog Analytics</h3>
-<pre><code>User: &quot;Give me a summary of the catalog&quot;
-Chatbot: &quot;Here's your catalog overview:
+<div class="highlight"><pre><span></span><code>User: &quot;Give me a summary of the catalog&quot;
+Chatbot: &quot;Here&#39;s your catalog overview:
 
 📊 **Catalog Statistics:**
 • Total Products: 127
@@ -5782,26 +5782,26 @@ Chatbot: &quot;Here's your catalog overview:
 2. Clothing (28 products)  
 3. Home &amp; Garden (21 products)
 
-Is there a specific category you'd like to explore?&quot;
-</code></pre>
+Is there a specific category you&#39;d like to explore?&quot;
+</code></pre></div>
 <h3 id="testing-the-chatbot">Testing the Chatbot</h3>
-<pre><code class="language-bash"># Test natural language queries
-curl -X POST http://localhost:8082/api/chat \
-  -H &quot;Content-Type: application/json&quot; \
-  -d '{&quot;message&quot;: &quot;What are your most expensive electronics?&quot;}'
+<div class="highlight"><pre><span></span><code><span class="c1"># Test natural language queries</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8082/api/chat<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;message&quot;: &quot;What are your most expensive electronics?&quot;}&#39;</span>
 
 
-# Test category lookup
-curl http://localhost:8082/api/categories
-</code></pre>
+<span class="c1"># Test category lookup</span>
+curl<span class="w"> </span>http://localhost:8082/api/categories
+</code></pre></div>
 <h2 id="adding-products-data">🚀 Adding Products &amp; Data</h2>
 <h3 id="automated-product-import">Automated Product Import</h3>
-<pre><code class="language-bash"># Use the provided import script
+<div class="highlight"><pre><span></span><code><span class="c1"># Use the provided import script</span>
 ./add-products.sh
 
-# Or use the Node.js automation script
-npm run import-products
-</code></pre>
+<span class="c1"># Or use the Node.js automation script</span>
+npm<span class="w"> </span>run<span class="w"> </span>import-products
+</code></pre></div>
 <h3 id="testing-with-sample-data">Testing with Sample Data</h3>
 <p>The system includes comprehensive sample data:</p>
 <ul>

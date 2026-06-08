@@ -6490,8 +6490,10 @@
 
 <h1 id="local-agent-tasks">Local Agent Tasks</h1>
 <p>The Local Agent is your system's fast-response specialist, designed for quick processing tasks, code completion, and immediate assistance. In this lab, you'll explore its capabilities, learn optimization techniques, and understand when to leverage local processing versus cloud-based AI.</p>
-<p>!!! info "Learning Focus"
-    Master local agent capabilities, model management, and performance optimization for immediate response scenarios.</p>
+<div class="admonition info">
+<p class="admonition-title">Learning Focus</p>
+<p>Master local agent capabilities, model management, and performance optimization for immediate response scenarios.</p>
+</div>
 <h2 id="understanding-the-local-agent">Understanding the Local Agent</h2>
 <h3 id="local-agent-architecture">🏠 Local Agent Architecture</h3>
 <p>The Local Agent operates within your Docker container using:</p>
@@ -6518,218 +6520,218 @@
 <li>Smaller training data scope</li>
 </ul>
 <h2 id="quick-test">Quick Test</h2>
-<pre><code>Prompt 1: How many agents are available in this system?
-</code></pre>
-<pre><code>Prompt 2: Can I talk to Local Agent?
-</code></pre>
-<pre><code>Prompt 3: Show me code for todo list app
-</code></pre>
+<div class="highlight"><pre><span></span><code>Prompt 1: How many agents are available in this system?
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Prompt 2: Can I talk to Local Agent?
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Prompt 3: Show me code for todo list app
+</code></pre></div>
 <h2 id="hands-on-local-agent-exploration">Hands-On Local Agent Exploration</h2>
 <h3 id="exercise-1-direct-local-agent-testing">🧪 Exercise 1: Direct Local Agent Testing</h3>
 <p>Let's interact directly with the Local Agent to understand its capabilities:</p>
 <h4 id="force-local-agent-routing">Force Local Agent Routing</h4>
 <p><strong>Method 1: Using Query Patterns</strong></p>
 <p>The Local Agent typically handles these types of queries:</p>
-<pre><code>You: Quick JavaScript syntax question - how do I create an arrow function?
-</code></pre>
-<pre><code>You: Simple Python loop example please
-</code></pre>
-<pre><code>You: Basic HTML template for a webpage
-</code></pre>
+<div class="highlight"><pre><span></span><code>You: Quick JavaScript syntax question - how do I create an arrow function?
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>You: Simple Python loop example please
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>You: Basic HTML template for a webpage
+</code></pre></div>
 <h4 id="method-2-simulate-offline-mode"><strong>Method 2: Simulate Offline Mode</strong></h4>
 <p>Temporarily disable internet to force local processing:</p>
-<pre><code class="language-bash"># Block external API access (temporary)
-docker compose exec devduck-agent sh -c &quot;echo '127.0.0.1 api.cerebras.ai' &gt;&gt; /etc/hosts&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># Block external API access (temporary)</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>devduck-agent<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo &#39;127.0.0.1 api.cerebras.ai&#39; &gt;&gt; /etc/hosts&quot;</span>
 
-# Now test with complex queries
-# They should fallback to Local Agent
-</code></pre>
-<p><strong>Test Query:</strong></p>
-<pre><code>You: Explain object-oriented programming concepts
-</code></pre>
-<p><strong>Restore connectivity:</strong></p>
-<pre><code class="language-bash">docker compose exec devduck-agent sh -c &quot;sed -i '/api.cerebras.ai/d' /etc/hosts&quot;
-</code></pre>
+<span class="c1"># Now test with complex queries</span>
+<span class="c1"># They should fallback to Local Agent</span>
+</code></pre></div>
+<p><strong>Test Query:</strong>
+<div class="highlight"><pre><span></span><code>You: Explain object-oriented programming concepts
+</code></pre></div></p>
+<p><strong>Restore connectivity:</strong>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>devduck-agent<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;sed -i &#39;/api.cerebras.ai/d&#39; /etc/hosts&quot;</span>
+</code></pre></div></p>
 <h3 id="exercise-2-local-agent-performance-analysis">🔍 Exercise 2: Local Agent Performance Analysis</h3>
 <h4 id="response-time-comparison">Response Time Comparison</h4>
-<pre><code class="language-python"># Create local_agent_benchmark.py
-import requests
-import time
-import statistics
+<div class="highlight"><pre><span></span><code><span class="c1"># Create local_agent_benchmark.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">statistics</span>
 
-def benchmark_local_agent():
-    &quot;&quot;&quot;Benchmark Local Agent response times.&quot;&quot;&quot;
+<span class="k">def</span><span class="w"> </span><span class="nf">benchmark_local_agent</span><span class="p">():</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Benchmark Local Agent response times.&quot;&quot;&quot;</span>
 
-    # Queries likely to route to Local Agent
-    local_queries = [
-        &quot;Hello&quot;,
-        &quot;What is a variable in Python?&quot;,
-        &quot;Show me a basic for loop&quot;,
-        &quot;Simple HTML template&quot;,
-        &quot;How to declare a JavaScript function?&quot;
-    ]
+    <span class="c1"># Queries likely to route to Local Agent</span>
+    <span class="n">local_queries</span> <span class="o">=</span> <span class="p">[</span>
+        <span class="s2">&quot;Hello&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;What is a variable in Python?&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Show me a basic for loop&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;Simple HTML template&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;How to declare a JavaScript function?&quot;</span>
+    <span class="p">]</span>
 
-    times = []
+    <span class="n">times</span> <span class="o">=</span> <span class="p">[]</span>
 
-    print(&quot;🏠 Benchmarking Local Agent...&quot;)
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🏠 Benchmarking Local Agent...&quot;</span><span class="p">)</span>
 
-    for query in local_queries:
-        print(f&quot;Testing: {query[:30]}...&quot;)
+    <span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">local_queries</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Testing: </span><span class="si">{</span><span class="n">query</span><span class="p">[:</span><span class="mi">30</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
 
-        start_time = time.time()
+        <span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
 
-        response = requests.post(
-            'http://localhost:8000/chat',
-            json={
-                &quot;message&quot;: query,
-                &quot;conversation_id&quot;: f&quot;benchmark-{int(time.time())}&quot;,
-                &quot;force_local&quot;: True  # If supported
-            },
-            timeout=30
-        )
+        <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span>
+            <span class="s1">&#39;http://localhost:8000/chat&#39;</span><span class="p">,</span>
+            <span class="n">json</span><span class="o">=</span><span class="p">{</span>
+                <span class="s2">&quot;message&quot;</span><span class="p">:</span> <span class="n">query</span><span class="p">,</span>
+                <span class="s2">&quot;conversation_id&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;benchmark-</span><span class="si">{</span><span class="nb">int</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">())</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;force_local&quot;</span><span class="p">:</span> <span class="kc">True</span>  <span class="c1"># If supported</span>
+            <span class="p">},</span>
+            <span class="n">timeout</span><span class="o">=</span><span class="mi">30</span>
+        <span class="p">)</span>
 
-        duration = time.time() - start_time
-        times.append(duration)
+        <span class="n">duration</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start_time</span>
+        <span class="n">times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
 
-        print(f&quot;  Response time: {duration:.3f}s&quot;)
-        time.sleep(0.5)
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Response time: </span><span class="si">{</span><span class="n">duration</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+        <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.5</span><span class="p">)</span>
 
-    # Statistics
-    avg_time = statistics.mean(times)
-    median_time = statistics.median(times)
-    min_time = min(times)
-    max_time = max(times)
+    <span class="c1"># Statistics</span>
+    <span class="n">avg_time</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+    <span class="n">median_time</span> <span class="o">=</span> <span class="n">statistics</span><span class="o">.</span><span class="n">median</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+    <span class="n">min_time</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
+    <span class="n">max_time</span> <span class="o">=</span> <span class="nb">max</span><span class="p">(</span><span class="n">times</span><span class="p">)</span>
 
-    print(f&quot;\n📊 Local Agent Performance:&quot;)
-    print(f&quot;  Average: {avg_time:.3f}s&quot;)
-    print(f&quot;  Median:  {median_time:.3f}s&quot;)
-    print(f&quot;  Min:     {min_time:.3f}s&quot;)
-    print(f&quot;  Max:     {max_time:.3f}s&quot;)
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📊 Local Agent Performance:&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Average: </span><span class="si">{</span><span class="n">avg_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Median:  </span><span class="si">{</span><span class="n">median_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Min:     </span><span class="si">{</span><span class="n">min_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;  Max:     </span><span class="si">{</span><span class="n">max_time</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
 
-    return times
+    <span class="k">return</span> <span class="n">times</span>
 
-if __name__ == '__main__':
-    benchmark_local_agent()
-</code></pre>
-<p><strong>Run the benchmark:</strong></p>
-<pre><code class="language-bash">python local_agent_benchmark.py
-</code></pre>
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+    <span class="n">benchmark_local_agent</span><span class="p">()</span>
+</code></pre></div>
+<p><strong>Run the benchmark:</strong>
+<div class="highlight"><pre><span></span><code>python<span class="w"> </span>local_agent_benchmark.py
+</code></pre></div></p>
 <h3 id="exercise-3-local-agent-specialization">🎯 Exercise 3: Local Agent Specialization</h3>
 <h4 id="code-generation-tasks">Code Generation Tasks</h4>
 <p>Test the Local Agent's code generation capabilities:</p>
-<p><strong>Template Generation:</strong></p>
-<pre><code>You: Generate a basic Express.js server template
-</code></pre>
-<p><strong>Simple Functions:</strong></p>
-<pre><code>You: Create a function to validate an email address in JavaScript
-</code></pre>
-<p><strong>Quick Fixes:</strong></p>
-<pre><code>You: Fix this Python code: 
+<p><strong>Template Generation:</strong>
+<div class="highlight"><pre><span></span><code>You: Generate a basic Express.js server template
+</code></pre></div></p>
+<p><strong>Simple Functions:</strong>
+<div class="highlight"><pre><span></span><code>You: Create a function to validate an email address in JavaScript
+</code></pre></div></p>
+<p><strong>Quick Fixes:</strong>
+<div class="highlight"><pre><span></span><code>You: Fix this Python code: 
 print(&quot;Hello World&quot;
-</code></pre>
+</code></pre></div></p>
 <h4 id="documentation-and-explanations">Documentation and Explanations</h4>
-<p><strong>Concept Explanations:</strong></p>
-<pre><code>You: Explain what is a REST API in simple terms
-</code></pre>
-<p><strong>Quick References:</strong></p>
-<pre><code>You: List common Git commands
-</code></pre>
+<p><strong>Concept Explanations:</strong>
+<div class="highlight"><pre><span></span><code>You: Explain what is a REST API in simple terms
+</code></pre></div></p>
+<p><strong>Quick References:</strong>
+<div class="highlight"><pre><span></span><code>You: List common Git commands
+</code></pre></div></p>
 <h2 id="local-model-management">Local Model Management</h2>
 <h3 id="model-configuration">📦 Model Configuration</h3>
 <h4 id="viewing-current-model">Viewing Current Model</h4>
-<pre><code class="language-bash"># Check current local model configuration
-docker compose exec devduck-agent env | grep LOCAL_MODEL
+<div class="highlight"><pre><span></span><code><span class="c1"># Check current local model configuration</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>devduck-agent<span class="w"> </span>env<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>LOCAL_MODEL
 
-# View model cache directory
-docker compose exec devduck-agent ls -la /app/models/
+<span class="c1"># View model cache directory</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>devduck-agent<span class="w"> </span>ls<span class="w"> </span>-la<span class="w"> </span>/app/models/
 
-# Check model size and usage
-docker compose exec devduck-agent du -sh /app/models/*
-</code></pre>
+<span class="c1"># Check model size and usage</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>devduck-agent<span class="w"> </span>du<span class="w"> </span>-sh<span class="w"> </span>/app/models/*
+</code></pre></div>
 <h4 id="model-switching">Model Switching</h4>
 <p>You can experiment with different local models:</p>
-<pre><code class="language-bash"># Stop the current system
-docker compose down
+<div class="highlight"><pre><span></span><code><span class="c1"># Stop the current system</span>
+docker<span class="w"> </span>compose<span class="w"> </span>down
 
-# Edit your .env file with different model
-cat &gt; .env.local-model &lt;&lt; 'EOF'
-# Lightweight model (faster, less capable)
-LOCAL_MODEL_NAME=microsoft/DialoGPT-small
+<span class="c1"># Edit your .env file with different model</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>.env.local-model<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s"># Lightweight model (faster, less capable)</span>
+<span class="s">LOCAL_MODEL_NAME=microsoft/DialoGPT-small</span>
 
-# Medium model (balanced)
-LOCAL_MODEL_NAME=microsoft/DialoGPT-medium
+<span class="s"># Medium model (balanced)</span>
+<span class="s">LOCAL_MODEL_NAME=microsoft/DialoGPT-medium</span>
 
-# Larger model (slower, more capable)
-LOCAL_MODEL_NAME=microsoft/DialoGPT-large
+<span class="s"># Larger model (slower, more capable)</span>
+<span class="s">LOCAL_MODEL_NAME=microsoft/DialoGPT-large</span>
 
-# Alternative: GPT-2 based models
-LOCAL_MODEL_NAME=gpt2
-EOF
+<span class="s"># Alternative: GPT-2 based models</span>
+<span class="s">LOCAL_MODEL_NAME=gpt2</span>
+<span class="s">EOF</span>
 
-# Update your main .env file
-cp .env.local-model .env
+<span class="c1"># Update your main .env file</span>
+cp<span class="w"> </span>.env.local-model<span class="w"> </span>.env
 
-# Restart with new model
-docker compose up --build
-</code></pre>
+<span class="c1"># Restart with new model</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build
+</code></pre></div>
 <h3 id="performance-tuning">🔧 Performance Tuning</h3>
 <h4 id="memory-optimization">Memory Optimization</h4>
-<pre><code class="language-yaml"># Add to compose.yml for local agent optimization
-services:
-  devduck-agent:
-    environment:
-      # Model optimization settings
-      - TORCH_HOME=/app/models
-      - HF_HOME=/app/models
-      - TRANSFORMERS_CACHE=/app/models
-      - LOCAL_MODEL_DEVICE=auto
-      - LOCAL_MODEL_PRECISION=fp16  # Use half precision
-      - LOCAL_MODEL_MAX_LENGTH=512  # Limit context length
-    deploy:
-      resources:
-        limits:
-          memory: 6G  # Adjust based on model size
-        reservations:
-          memory: 2G
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add to compose.yml for local agent optimization</span>
+<span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">devduck-agent</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">environment</span><span class="p">:</span>
+<span class="w">      </span><span class="c1"># Model optimization settings</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TORCH_HOME=/app/models</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">HF_HOME=/app/models</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">TRANSFORMERS_CACHE=/app/models</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOCAL_MODEL_DEVICE=auto</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOCAL_MODEL_PRECISION=fp16</span><span class="w">  </span><span class="c1"># Use half precision</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LOCAL_MODEL_MAX_LENGTH=512</span><span class="w">  </span><span class="c1"># Limit context length</span>
+<span class="w">    </span><span class="nt">deploy</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">resources</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">limits</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">6G</span><span class="w">  </span><span class="c1"># Adjust based on model size</span>
+<span class="w">        </span><span class="nt">reservations</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">memory</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2G</span>
+</code></pre></div>
 <h4 id="cpu-optimization">CPU Optimization</h4>
-<pre><code class="language-bash"># Create optimization script
-cat &gt; optimize_local_agent.py &lt;&lt; 'EOF'
-#!/usr/bin/env python3
-import os
-import torch
+<div class="highlight"><pre><span></span><code><span class="c1"># Create optimization script</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>optimize_local_agent.py<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">#!/usr/bin/env python3</span>
+<span class="s">import os</span>
+<span class="s">import torch</span>
 
-def optimize_local_performance():
-    &quot;&quot;&quot;Apply local agent performance optimizations.&quot;&quot;&quot;
+<span class="s">def optimize_local_performance():</span>
+<span class="s">    &quot;&quot;&quot;Apply local agent performance optimizations.&quot;&quot;&quot;</span>
 
-    # Set optimal thread count for PyTorch
-    torch.set_num_threads(min(4, os.cpu_count()))
+<span class="s">    # Set optimal thread count for PyTorch</span>
+<span class="s">    torch.set_num_threads(min(4, os.cpu_count()))</span>
 
-    # Enable optimized attention (if available)
-    if hasattr(torch.backends, 'cuda'):
-        torch.backends.cuda.matmul.allow_tf32 = True
+<span class="s">    # Enable optimized attention (if available)</span>
+<span class="s">    if hasattr(torch.backends, &#39;cuda&#39;):</span>
+<span class="s">        torch.backends.cuda.matmul.allow_tf32 = True</span>
 
-    # Set memory growth (if using GPU)
-    if torch.cuda.is_available():
-        torch.cuda.empty_cache()
-        print(&quot;✅ CUDA optimizations applied&quot;)
+<span class="s">    # Set memory growth (if using GPU)</span>
+<span class="s">    if torch.cuda.is_available():</span>
+<span class="s">        torch.cuda.empty_cache()</span>
+<span class="s">        print(&quot;✅ CUDA optimizations applied&quot;)</span>
 
-    print(&quot;✅ CPU optimizations applied&quot;)
-    print(f&quot;📊 Using {torch.get_num_threads()} threads&quot;)
+<span class="s">    print(&quot;✅ CPU optimizations applied&quot;)</span>
+<span class="s">    print(f&quot;📊 Using {torch.get_num_threads()} threads&quot;)</span>
 
-if __name__ == '__main__':
-    optimize_local_performance()
-EOF
+<span class="s">if __name__ == &#39;__main__&#39;:</span>
+<span class="s">    optimize_local_performance()</span>
+<span class="s">EOF</span>
 
-# Run optimization
-docker compose exec devduck-agent python optimize_local_agent.py
-</code></pre>
+<span class="c1"># Run optimization</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>devduck-agent<span class="w"> </span>python<span class="w"> </span>optimize_local_agent.py
+</code></pre></div>
 <h2 id="advanced-local-agent-use-cases">Advanced Local Agent Use Cases</h2>
 <h3 id="real-time-code-assistance">🚀 Real-time Code Assistance</h3>
 <h4 id="exercise-4-interactive-development-helper">Exercise 4: Interactive Development Helper</h4>
 <p>Create scenarios where the Local Agent acts as a real-time coding assistant:</p>
-<p><strong>Scenario 1: Syntax Checking</strong></p>
-<pre><code>You: Is this JavaScript code syntactically correct?
+<p><strong>Scenario 1: Syntax Checking</strong>
+<div class="highlight"><pre><span></span><code>You: Is this JavaScript code syntactically correct?
 
 function calculateTotal(items) {
   let total = 0;
@@ -6738,133 +6740,133 @@ function calculateTotal(items) {
   }
   return total;
 }
-</code></pre>
-<p><strong>Scenario 2: Quick Refactoring</strong></p>
-<pre><code>You: Convert this to arrow function syntax:
+</code></pre></div></p>
+<p><strong>Scenario 2: Quick Refactoring</strong>
+<div class="highlight"><pre><span></span><code>You: Convert this to arrow function syntax:
 
 function greet(name) {
   return &quot;Hello, &quot; + name;
 }
-</code></pre>
-<p><strong>Scenario 3: Error Explanation</strong></p>
-<pre><code>You: What's wrong with this Python code?
+</code></pre></div></p>
+<p><strong>Scenario 3: Error Explanation</strong>
+<div class="highlight"><pre><span></span><code>You: What&#39;s wrong with this Python code?
 
 def process_list(items):
     for i in range(len(items))
         print(items[i])
-</code></pre>
+</code></pre></div></p>
 <h3 id="template-and-boilerplate-generation">🎯 Template and Boilerplate Generation</h3>
 <h4 id="exercise-5-rapid-prototyping">Exercise 5: Rapid Prototyping</h4>
-<p><strong>API Endpoint Template:</strong></p>
-<pre><code>You: Create a basic Express.js API endpoint for user registration
-</code></pre>
-<p><strong>Database Schema:</strong></p>
-<pre><code>You: Generate a MongoDB schema for a blog post
-</code></pre>
-<p><strong>Configuration Files:</strong></p>
-<pre><code>You: Create a package.json for a Node.js REST API project
-</code></pre>
+<p><strong>API Endpoint Template:</strong>
+<div class="highlight"><pre><span></span><code>You: Create a basic Express.js API endpoint for user registration
+</code></pre></div></p>
+<p><strong>Database Schema:</strong>
+<div class="highlight"><pre><span></span><code>You: Generate a MongoDB schema for a blog post
+</code></pre></div></p>
+<p><strong>Configuration Files:</strong>
+<div class="highlight"><pre><span></span><code>You: Create a package.json for a Node.js REST API project
+</code></pre></div></p>
 <h3 id="documentation-and-learning-aid">📚 Documentation and Learning Aid</h3>
 <h4 id="exercise-6-learning-assistant">Exercise 6: Learning Assistant</h4>
-<p><strong>Concept Clarification:</strong></p>
-<pre><code>You: Explain the difference between let, const, and var in JavaScript
-</code></pre>
-<p><strong>Quick References:</strong></p>
-<pre><code>You: Show me common array methods in JavaScript with examples
-</code></pre>
-<p><strong>Best Practices:</strong></p>
-<pre><code>You: What are Python naming conventions for variables and functions?
-</code></pre>
+<p><strong>Concept Clarification:</strong>
+<div class="highlight"><pre><span></span><code>You: Explain the difference between let, const, and var in JavaScript
+</code></pre></div></p>
+<p><strong>Quick References:</strong>
+<div class="highlight"><pre><span></span><code>You: Show me common array methods in JavaScript with examples
+</code></pre></div></p>
+<p><strong>Best Practices:</strong>
+<div class="highlight"><pre><span></span><code>You: What are Python naming conventions for variables and functions?
+</code></pre></div></p>
 <h2 id="local-agent-customization">Local Agent Customization</h2>
 <h3 id="custom-prompts-and-templates">🛠️ Custom Prompts and Templates</h3>
 <h4 id="create-specialized-prompts">Create Specialized Prompts</h4>
-<pre><code class="language-python"># Create local_agent_templates.py
-class LocalAgentTemplates:
-    &quot;&quot;&quot;Custom templates for Local Agent specialization.&quot;&quot;&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># Create local_agent_templates.py</span>
+<span class="k">class</span><span class="w"> </span><span class="nc">LocalAgentTemplates</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Custom templates for Local Agent specialization.&quot;&quot;&quot;</span>
 
-    CODE_REVIEW_PROMPT = &quot;&quot;&quot;
-    You are a code review assistant. For the given code:
-    1. Check for syntax errors
-    2. Suggest improvements
-    3. Identify potential bugs
-    4. Keep responses concise and actionable
-    &quot;&quot;&quot;
+    <span class="n">CODE_REVIEW_PROMPT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    You are a code review assistant. For the given code:</span>
+<span class="s2">    1. Check for syntax errors</span>
+<span class="s2">    2. Suggest improvements</span>
+<span class="s2">    3. Identify potential bugs</span>
+<span class="s2">    4. Keep responses concise and actionable</span>
+<span class="s2">    &quot;&quot;&quot;</span>
 
-    QUICK_HELP_PROMPT = &quot;&quot;&quot;
-    Provide quick, practical help. Include:
-    1. Direct answer to the question
-    2. Simple code example if applicable
-    3. One-line explanation
-    No lengthy explanations needed.
-    &quot;&quot;&quot;
+    <span class="n">QUICK_HELP_PROMPT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    Provide quick, practical help. Include:</span>
+<span class="s2">    1. Direct answer to the question</span>
+<span class="s2">    2. Simple code example if applicable</span>
+<span class="s2">    3. One-line explanation</span>
+<span class="s2">    No lengthy explanations needed.</span>
+<span class="s2">    &quot;&quot;&quot;</span>
 
-    TEMPLATE_GENERATOR_PROMPT = &quot;&quot;&quot;
-    Generate clean, minimal code templates.
-    Include:
-    1. Essential structure only
-    2. Clear placeholder comments
-    3. Basic error handling
-    4. Standard naming conventions
-    &quot;&quot;&quot;
+    <span class="n">TEMPLATE_GENERATOR_PROMPT</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">    Generate clean, minimal code templates.</span>
+<span class="s2">    Include:</span>
+<span class="s2">    1. Essential structure only</span>
+<span class="s2">    2. Clear placeholder comments</span>
+<span class="s2">    3. Basic error handling</span>
+<span class="s2">    4. Standard naming conventions</span>
+<span class="s2">    &quot;&quot;&quot;</span>
 
-# Usage example
-def use_specialized_prompt(query, template_type=&quot;quick_help&quot;):
-    templates = LocalAgentTemplates()
-    prompt = getattr(templates, f&quot;{template_type.upper()}_PROMPT&quot;)
+<span class="c1"># Usage example</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">use_specialized_prompt</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">template_type</span><span class="o">=</span><span class="s2">&quot;quick_help&quot;</span><span class="p">):</span>
+    <span class="n">templates</span> <span class="o">=</span> <span class="n">LocalAgentTemplates</span><span class="p">()</span>
+    <span class="n">prompt</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">templates</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">template_type</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="si">}</span><span class="s2">_PROMPT&quot;</span><span class="p">)</span>
 
-    return f&quot;{prompt}\n\nQuery: {query}&quot;
-</code></pre>
+    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">prompt</span><span class="si">}</span><span class="se">\n\n</span><span class="s2">Query: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span>
+</code></pre></div>
 <h3 id="performance-monitoring">📊 Performance Monitoring</h3>
 <h4 id="create-local-agent-dashboard">Create Local Agent Dashboard</h4>
-<pre><code class="language-python"># Create local_agent_monitor.py
-import psutil
-import time
-import json
+<div class="highlight"><pre><span></span><code><span class="c1"># Create local_agent_monitor.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">psutil</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
 
-class LocalAgentMonitor:
-    def __init__(self):
-        self.start_time = time.time()
-        self.request_count = 0
-        self.response_times = []
+<span class="k">class</span><span class="w"> </span><span class="nc">LocalAgentMonitor</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">request_count</span> <span class="o">=</span> <span class="mi">0</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response_times</span> <span class="o">=</span> <span class="p">[]</span>
 
-    def log_request(self, duration):
-        self.request_count += 1
-        self.response_times.append(duration)
+    <span class="k">def</span><span class="w"> </span><span class="nf">log_request</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">duration</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">request_count</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">response_times</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">duration</span><span class="p">)</span>
 
-    def get_stats(self):
-        uptime = time.time() - self.start_time
+    <span class="k">def</span><span class="w"> </span><span class="nf">get_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">uptime</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="bp">self</span><span class="o">.</span><span class="n">start_time</span>
 
-        return {
-            &quot;uptime_seconds&quot;: uptime,
-            &quot;total_requests&quot;: self.request_count,
-            &quot;avg_response_time&quot;: sum(self.response_times) / len(self.response_times) if self.response_times else 0,
-            &quot;requests_per_minute&quot;: (self.request_count / uptime) * 60 if uptime &gt; 0 else 0,
-            &quot;memory_usage_mb&quot;: psutil.Process().memory_info().rss / 1024 / 1024,
-            &quot;cpu_percent&quot;: psutil.cpu_percent()
-        }
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s2">&quot;uptime_seconds&quot;</span><span class="p">:</span> <span class="n">uptime</span><span class="p">,</span>
+            <span class="s2">&quot;total_requests&quot;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">request_count</span><span class="p">,</span>
+            <span class="s2">&quot;avg_response_time&quot;</span><span class="p">:</span> <span class="nb">sum</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_times</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">response_times</span><span class="p">)</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">response_times</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;requests_per_minute&quot;</span><span class="p">:</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">request_count</span> <span class="o">/</span> <span class="n">uptime</span><span class="p">)</span> <span class="o">*</span> <span class="mi">60</span> <span class="k">if</span> <span class="n">uptime</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">0</span><span class="p">,</span>
+            <span class="s2">&quot;memory_usage_mb&quot;</span><span class="p">:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">Process</span><span class="p">()</span><span class="o">.</span><span class="n">memory_info</span><span class="p">()</span><span class="o">.</span><span class="n">rss</span> <span class="o">/</span> <span class="mi">1024</span> <span class="o">/</span> <span class="mi">1024</span><span class="p">,</span>
+            <span class="s2">&quot;cpu_percent&quot;</span><span class="p">:</span> <span class="n">psutil</span><span class="o">.</span><span class="n">cpu_percent</span><span class="p">()</span>
+        <span class="p">}</span>
 
-    def print_stats(self):
-        stats = self.get_stats()
-        print(&quot;🏠 Local Agent Statistics:&quot;)
-        print(f&quot;   Uptime: {stats['uptime_seconds']:.0f}s&quot;)
-        print(f&quot;   Requests: {stats['total_requests']}&quot;)
-        print(f&quot;   Avg Response: {stats['avg_response_time']:.3f}s&quot;)
-        print(f&quot;   Rate: {stats['requests_per_minute']:.1f} req/min&quot;)
-        print(f&quot;   Memory: {stats['memory_usage_mb']:.1f} MB&quot;)
-        print(f&quot;   CPU: {stats['cpu_percent']:.1f}%&quot;)
+    <span class="k">def</span><span class="w"> </span><span class="nf">print_stats</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="n">stats</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">get_stats</span><span class="p">()</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🏠 Local Agent Statistics:&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Uptime: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;uptime_seconds&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.0f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Requests: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;total_requests&#39;</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Avg Response: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;avg_response_time&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.3f</span><span class="si">}</span><span class="s2">s&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Rate: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;requests_per_minute&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> req/min&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   Memory: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;memory_usage_mb&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2"> MB&quot;</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;   CPU: </span><span class="si">{</span><span class="n">stats</span><span class="p">[</span><span class="s1">&#39;cpu_percent&#39;</span><span class="p">]</span><span class="si">:</span><span class="s2">.1f</span><span class="si">}</span><span class="s2">%&quot;</span><span class="p">)</span>
 
-# Usage
-monitor = LocalAgentMonitor()
+<span class="c1"># Usage</span>
+<span class="n">monitor</span> <span class="o">=</span> <span class="n">LocalAgentMonitor</span><span class="p">()</span>
 
-# Simulate monitoring
-for _ in range(10):
-    start = time.time()
-    # Simulate request processing
-    time.sleep(0.1)
-    monitor.log_request(time.time() - start)
+<span class="c1"># Simulate monitoring</span>
+<span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">start</span> <span class="o">=</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span>
+    <span class="c1"># Simulate request processing</span>
+    <span class="n">time</span><span class="o">.</span><span class="n">sleep</span><span class="p">(</span><span class="mf">0.1</span><span class="p">)</span>
+    <span class="n">monitor</span><span class="o">.</span><span class="n">log_request</span><span class="p">(</span><span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span><span class="p">)</span>
 
-monitor.print_stats()
-</code></pre>
+<span class="n">monitor</span><span class="o">.</span><span class="n">print_stats</span><span class="p">()</span>
+</code></pre></div>
 <h2 id="optimization-strategies">Optimization Strategies</h2>
 <h3 id="configuration-tuning">🎛️ Configuration Tuning</h3>
 <h4 id="model-selection-guidelines">Model Selection Guidelines</h4>
@@ -6905,150 +6907,150 @@ monitor.print_stats()
 </tbody>
 </table>
 <h4 id="performance-optimization-checklist">Performance Optimization Checklist</h4>
-<pre><code class="language-bash"># Create optimization checklist script
-cat &gt; local_agent_optimization.sh &lt;&lt; 'EOF'
-#!/bin/bash
+<div class="highlight"><pre><span></span><code><span class="c1"># Create optimization checklist script</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>local_agent_optimization.sh<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">#!/bin/bash</span>
 
-echo &quot;🔧 Local Agent Optimization Checklist&quot;
-echo &quot;=====================================&quot;
+<span class="s">echo &quot;🔧 Local Agent Optimization Checklist&quot;</span>
+<span class="s">echo &quot;=====================================&quot;</span>
 
-# Check 1: Memory availability
-MEM_TOTAL=$(free -m | awk 'NR==2{print $2}')
-MEM_AVAILABLE=$(free -m | awk 'NR==2{print $7}')
-echo &quot;Memory: ${MEM_AVAILABLE}MB / ${MEM_TOTAL}MB available&quot;
+<span class="s"># Check 1: Memory availability</span>
+<span class="s">MEM_TOTAL=$(free -m | awk &#39;NR==2{print $2}&#39;)</span>
+<span class="s">MEM_AVAILABLE=$(free -m | awk &#39;NR==2{print $7}&#39;)</span>
+<span class="s">echo &quot;Memory: ${MEM_AVAILABLE}MB / ${MEM_TOTAL}MB available&quot;</span>
 
-if [ $MEM_AVAILABLE -lt 4000 ]; then
-    echo &quot;⚠️  Consider using smaller model (DialoGPT-small)&quot;
-else
-    echo &quot;✅ Memory sufficient for medium/large models&quot;
-fi
+<span class="s">if [ $MEM_AVAILABLE -lt 4000 ]; then</span>
+<span class="s">    echo &quot;⚠️  Consider using smaller model (DialoGPT-small)&quot;</span>
+<span class="s">else</span>
+<span class="s">    echo &quot;✅ Memory sufficient for medium/large models&quot;</span>
+<span class="s">fi</span>
 
-# Check 2: CPU cores
-CPU_CORES=$(nproc)
-echo &quot;CPU Cores: $CPU_CORES&quot;
+<span class="s"># Check 2: CPU cores</span>
+<span class="s">CPU_CORES=$(nproc)</span>
+<span class="s">echo &quot;CPU Cores: $CPU_CORES&quot;</span>
 
-if [ $CPU_CORES -lt 4 ]; then
-    echo &quot;⚠️  Limited CPU - optimize thread count&quot;
-else
-    echo &quot;✅ CPU suitable for multi-threading&quot;
-fi
+<span class="s">if [ $CPU_CORES -lt 4 ]; then</span>
+<span class="s">    echo &quot;⚠️  Limited CPU - optimize thread count&quot;</span>
+<span class="s">else</span>
+<span class="s">    echo &quot;✅ CPU suitable for multi-threading&quot;</span>
+<span class="s">fi</span>
 
-# Check 3: Disk space for models
-DISK_SPACE=$(df -BG /app/models 2&gt;/dev/null | awk 'NR==2{print $4}' | sed 's/G//')
-echo &quot;Disk Space: ${DISK_SPACE}GB available for models&quot;
+<span class="s"># Check 3: Disk space for models</span>
+<span class="s">DISK_SPACE=$(df -BG /app/models 2&gt;/dev/null | awk &#39;NR==2{print $4}&#39; | sed &#39;s/G//&#39;)</span>
+<span class="s">echo &quot;Disk Space: ${DISK_SPACE}GB available for models&quot;</span>
 
-if [ &quot;$DISK_SPACE&quot; -lt 5 ]; then
-    echo &quot;⚠️  Limited disk space - clean old models&quot;
-else
-    echo &quot;✅ Sufficient disk space&quot;
-fi
+<span class="s">if [ &quot;$DISK_SPACE&quot; -lt 5 ]; then</span>
+<span class="s">    echo &quot;⚠️  Limited disk space - clean old models&quot;</span>
+<span class="s">else</span>
+<span class="s">    echo &quot;✅ Sufficient disk space&quot;</span>
+<span class="s">fi</span>
 
-# Check 4: Model loading time
-echo &quot;Testing model loading time...&quot;
-START_TIME=$(date +%s)
-docker compose exec devduck-agent python -c &quot;import torch; print('Model check complete')&quot; 2&gt;/dev/null
-END_TIME=$(date +%s)
-LOAD_TIME=$((END_TIME - START_TIME))
+<span class="s"># Check 4: Model loading time</span>
+<span class="s">echo &quot;Testing model loading time...&quot;</span>
+<span class="s">START_TIME=$(date +%s)</span>
+<span class="s">docker compose exec devduck-agent python -c &quot;import torch; print(&#39;Model check complete&#39;)&quot; 2&gt;/dev/null</span>
+<span class="s">END_TIME=$(date +%s)</span>
+<span class="s">LOAD_TIME=$((END_TIME - START_TIME))</span>
 
-echo &quot;Model load test: ${LOAD_TIME}s&quot;
+<span class="s">echo &quot;Model load test: ${LOAD_TIME}s&quot;</span>
 
-if [ $LOAD_TIME -gt 30 ]; then
-    echo &quot;⚠️  Slow model loading - consider smaller model&quot;
-else
-    echo &quot;✅ Model loading performance acceptable&quot;
-fi
+<span class="s">if [ $LOAD_TIME -gt 30 ]; then</span>
+<span class="s">    echo &quot;⚠️  Slow model loading - consider smaller model&quot;</span>
+<span class="s">else</span>
+<span class="s">    echo &quot;✅ Model loading performance acceptable&quot;</span>
+<span class="s">fi</span>
 
-EOF
+<span class="s">EOF</span>
 
-chmod +x local_agent_optimization.sh
+chmod<span class="w"> </span>+x<span class="w"> </span>local_agent_optimization.sh
 ./local_agent_optimization.sh
-</code></pre>
+</code></pre></div>
 <h3 id="caching-strategies">🚀 Caching Strategies</h3>
 <h4 id="implement-response-caching">Implement Response Caching</h4>
-<pre><code class="language-python"># Create local_cache_manager.py
-import hashlib
-import json
-import time
-from typing import Optional, Dict, Any
+<div class="highlight"><pre><span></span><code><span class="c1"># Create local_cache_manager.py</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">hashlib</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">json</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">time</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Optional</span><span class="p">,</span> <span class="n">Dict</span><span class="p">,</span> <span class="n">Any</span>
 
-class LocalResponseCache:
-    def __init__(self, max_size: int = 1000, ttl: int = 300):
-        self.cache: Dict[str, Dict[str, Any]] = {}
-        self.max_size = max_size
-        self.ttl = ttl
+<span class="k">class</span><span class="w"> </span><span class="nc">LocalResponseCache</span><span class="p">:</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">max_size</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">1000</span><span class="p">,</span> <span class="n">ttl</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span> <span class="mi">300</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">max_size</span> <span class="o">=</span> <span class="n">max_size</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">ttl</span> <span class="o">=</span> <span class="n">ttl</span>
 
-    def _generate_key(self, query: str) -&gt; str:
-        &quot;&quot;&quot;Generate cache key from query.&quot;&quot;&quot;
-        return hashlib.md5(query.lower().strip().encode()).hexdigest()
+    <span class="k">def</span><span class="w"> </span><span class="nf">_generate_key</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generate cache key from query.&quot;&quot;&quot;</span>
+        <span class="k">return</span> <span class="n">hashlib</span><span class="o">.</span><span class="n">md5</span><span class="p">(</span><span class="n">query</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span><span class="o">.</span><span class="n">strip</span><span class="p">()</span><span class="o">.</span><span class="n">encode</span><span class="p">())</span><span class="o">.</span><span class="n">hexdigest</span><span class="p">()</span>
 
-    def get(self, query: str) -&gt; Optional[str]:
-        &quot;&quot;&quot;Get cached response if available and valid.&quot;&quot;&quot;
-        key = self._generate_key(query)
+    <span class="k">def</span><span class="w"> </span><span class="nf">get</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Optional</span><span class="p">[</span><span class="nb">str</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get cached response if available and valid.&quot;&quot;&quot;</span>
+        <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_key</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 
-        if key not in self.cache:
-            return None
+        <span class="k">if</span> <span class="n">key</span> <span class="ow">not</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
-        entry = self.cache[key]
+        <span class="n">entry</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 
-        # Check TTL
-        if time.time() - entry['timestamp'] &gt; self.ttl:
-            del self.cache[key]
-            return None
+        <span class="c1"># Check TTL</span>
+        <span class="k">if</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">()</span> <span class="o">-</span> <span class="n">entry</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttl</span><span class="p">:</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+            <span class="k">return</span> <span class="kc">None</span>
 
-        entry['hits'] += 1
-        return entry['response']
+        <span class="n">entry</span><span class="p">[</span><span class="s1">&#39;hits&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="k">return</span> <span class="n">entry</span><span class="p">[</span><span class="s1">&#39;response&#39;</span><span class="p">]</span>
 
-    def set(self, query: str, response: str) -&gt; None:
-        &quot;&quot;&quot;Cache a response.&quot;&quot;&quot;
-        # Evict oldest entries if cache is full
-        if len(self.cache) &gt;= self.max_size:
-            oldest_key = min(self.cache.keys(), 
-                           key=lambda k: self.cache[k]['timestamp'])
-            del self.cache[oldest_key]
+    <span class="k">def</span><span class="w"> </span><span class="nf">set</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">query</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">response</span><span class="p">:</span> <span class="nb">str</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Cache a response.&quot;&quot;&quot;</span>
+        <span class="c1"># Evict oldest entries if cache is full</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">)</span> <span class="o">&gt;=</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_size</span><span class="p">:</span>
+            <span class="n">oldest_key</span> <span class="o">=</span> <span class="nb">min</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span> 
+                           <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">k</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">k</span><span class="p">][</span><span class="s1">&#39;timestamp&#39;</span><span class="p">])</span>
+            <span class="k">del</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">oldest_key</span><span class="p">]</span>
 
-        key = self._generate_key(query)
-        self.cache[key] = {
-            'response': response,
-            'timestamp': time.time(),
-            'hits': 0
-        }
+        <span class="n">key</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_generate_key</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="p">{</span>
+            <span class="s1">&#39;response&#39;</span><span class="p">:</span> <span class="n">response</span><span class="p">,</span>
+            <span class="s1">&#39;timestamp&#39;</span><span class="p">:</span> <span class="n">time</span><span class="o">.</span><span class="n">time</span><span class="p">(),</span>
+            <span class="s1">&#39;hits&#39;</span><span class="p">:</span> <span class="mi">0</span>
+        <span class="p">}</span>
 
-    def stats(self) -&gt; Dict[str, Any]:
-        &quot;&quot;&quot;Get cache statistics.&quot;&quot;&quot;
-        total_hits = sum(entry['hits'] for entry in self.cache.values())
+    <span class="k">def</span><span class="w"> </span><span class="nf">stats</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Dict</span><span class="p">[</span><span class="nb">str</span><span class="p">,</span> <span class="n">Any</span><span class="p">]:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Get cache statistics.&quot;&quot;&quot;</span>
+        <span class="n">total_hits</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">entry</span><span class="p">[</span><span class="s1">&#39;hits&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">entry</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
-        return {
-            'size': len(self.cache),
-            'max_size': self.max_size,
-            'total_hits': total_hits,
-            'hit_rate': total_hits / max(1, len(self.cache)),
-            'ttl': self.ttl
-        }
+        <span class="k">return</span> <span class="p">{</span>
+            <span class="s1">&#39;size&#39;</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">),</span>
+            <span class="s1">&#39;max_size&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">max_size</span><span class="p">,</span>
+            <span class="s1">&#39;total_hits&#39;</span><span class="p">:</span> <span class="n">total_hits</span><span class="p">,</span>
+            <span class="s1">&#39;hit_rate&#39;</span><span class="p">:</span> <span class="n">total_hits</span> <span class="o">/</span> <span class="nb">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">cache</span><span class="p">)),</span>
+            <span class="s1">&#39;ttl&#39;</span><span class="p">:</span> <span class="bp">self</span><span class="o">.</span><span class="n">ttl</span>
+        <span class="p">}</span>
 
-# Example usage
-cache = LocalResponseCache()
+<span class="c1"># Example usage</span>
+<span class="n">cache</span> <span class="o">=</span> <span class="n">LocalResponseCache</span><span class="p">()</span>
 
-# Simulate caching
-test_queries = [
-    &quot;What is Python?&quot;,
-    &quot;Hello&quot;,
-    &quot;Basic for loop example&quot;
-]
+<span class="c1"># Simulate caching</span>
+<span class="n">test_queries</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s2">&quot;What is Python?&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Hello&quot;</span><span class="p">,</span>
+    <span class="s2">&quot;Basic for loop example&quot;</span>
+<span class="p">]</span>
 
-for query in test_queries:
-    # Check cache first
-    cached_response = cache.get(query)
+<span class="k">for</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">test_queries</span><span class="p">:</span>
+    <span class="c1"># Check cache first</span>
+    <span class="n">cached_response</span> <span class="o">=</span> <span class="n">cache</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">query</span><span class="p">)</span>
 
-    if cached_response:
-        print(f&quot;💾 Cache hit for: {query[:30]}...&quot;)
-    else:
-        print(f&quot;🔍 Cache miss for: {query[:30]}...&quot;)
-        # Simulate response generation
-        response = f&quot;Generated response for: {query}&quot;
-        cache.set(query, response)
+    <span class="k">if</span> <span class="n">cached_response</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;💾 Cache hit for: </span><span class="si">{</span><span class="n">query</span><span class="p">[:</span><span class="mi">30</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;🔍 Cache miss for: </span><span class="si">{</span><span class="n">query</span><span class="p">[:</span><span class="mi">30</span><span class="p">]</span><span class="si">}</span><span class="s2">...&quot;</span><span class="p">)</span>
+        <span class="c1"># Simulate response generation</span>
+        <span class="n">response</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Generated response for: </span><span class="si">{</span><span class="n">query</span><span class="si">}</span><span class="s2">&quot;</span>
+        <span class="n">cache</span><span class="o">.</span><span class="n">set</span><span class="p">(</span><span class="n">query</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
 
-print(f&quot;\n📊 Cache stats: {cache.stats()}&quot;)
-</code></pre>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">📊 Cache stats: </span><span class="si">{</span><span class="n">cache</span><span class="o">.</span><span class="n">stats</span><span class="p">()</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</code></pre></div>
 <h2 id="troubleshooting-local-agent-issues">Troubleshooting Local Agent Issues</h2>
 <h3 id="common-problems">🐛 Common Problems</h3>
 <h4 id="issue-1-model-loading-failures">Issue 1: Model Loading Failures</h4>
@@ -7056,49 +7058,49 @@ print(f&quot;\n📊 Cache stats: {cache.stats()}&quot;)
 - Container crashes during startup
 - "Model not found" errors
 - Memory allocation errors</p>
-<p><strong>Diagnosis:</strong></p>
-<pre><code class="language-bash"># Check model download status
-docker compose logs devduck-agent | grep -i &quot;model&quot;
+<p><strong>Diagnosis:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Check model download status</span>
+docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>devduck-agent<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;model&quot;</span>
 
-# Check disk space
-docker compose exec devduck-agent df -h /app/models
+<span class="c1"># Check disk space</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>devduck-agent<span class="w"> </span>df<span class="w"> </span>-h<span class="w"> </span>/app/models
 
-# Check memory usage during startup
-docker stats devduck-agent
-</code></pre>
-<p><strong>Solutions:</strong></p>
-<pre><code class="language-bash"># Use smaller model
-export LOCAL_MODEL_NAME=microsoft/DialoGPT-small
+<span class="c1"># Check memory usage during startup</span>
+docker<span class="w"> </span>stats<span class="w"> </span>devduck-agent
+</code></pre></div></p>
+<p><strong>Solutions:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Use smaller model</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">LOCAL_MODEL_NAME</span><span class="o">=</span>microsoft/DialoGPT-small
 
-# Increase memory limit
-# Edit compose.yml:
-# deploy:
-#   resources:
-#     limits:
-#       memory: 8G
+<span class="c1"># Increase memory limit</span>
+<span class="c1"># Edit compose.yml:</span>
+<span class="c1"># deploy:</span>
+<span class="c1">#   resources:</span>
+<span class="c1">#     limits:</span>
+<span class="c1">#       memory: 8G</span>
 
-# Pre-download model
-docker compose exec devduck-agent python -c &quot;from transformers import AutoTokenizer, AutoModelForCausalLM; AutoTokenizer.from_pretrained('microsoft/DialoGPT-small'); AutoModelForCausalLM.from_pretrained('microsoft/DialoGPT-small')&quot;
-</code></pre>
+<span class="c1"># Pre-download model</span>
+docker<span class="w"> </span>compose<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>devduck-agent<span class="w"> </span>python<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;from transformers import AutoTokenizer, AutoModelForCausalLM; AutoTokenizer.from_pretrained(&#39;microsoft/DialoGPT-small&#39;); AutoModelForCausalLM.from_pretrained(&#39;microsoft/DialoGPT-small&#39;)&quot;</span>
+</code></pre></div></p>
 <h4 id="issue-2-slow-response-times">Issue 2: Slow Response Times</h4>
-<p><strong>Diagnosis:</strong></p>
-<pre><code class="language-bash"># Profile response times
-curl -w &quot;@curl-format.txt&quot; -s -o /dev/null -X POST \
-  -H &quot;Content-Type: application/json&quot; \
-  -d '{&quot;message&quot;:&quot;Hello&quot;,&quot;conversation_id&quot;:&quot;test&quot;}' \
-  http://localhost:8000/chat
+<p><strong>Diagnosis:</strong>
+<div class="highlight"><pre><span></span><code><span class="c1"># Profile response times</span>
+curl<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;@curl-format.txt&quot;</span><span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;message&quot;:&quot;Hello&quot;,&quot;conversation_id&quot;:&quot;test&quot;}&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>http://localhost:8000/chat
 
-# Create curl-format.txt
-cat &gt; curl-format.txt &lt;&lt; 'EOF'
-time_namelookup:  %{time_namelookup}s
-time_connect:     %{time_connect}s
-time_appconnect:  %{time_appconnect}s
-time_pretransfer: %{time_pretransfer}s
-time_redirect:    %{time_redirect}s
-time_starttransfer: %{time_starttransfer}s
-time_total:       %{time_total}s
-EOF
-</code></pre>
+<span class="c1"># Create curl-format.txt</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>curl-format.txt<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">time_namelookup:  %{time_namelookup}s</span>
+<span class="s">time_connect:     %{time_connect}s</span>
+<span class="s">time_appconnect:  %{time_appconnect}s</span>
+<span class="s">time_pretransfer: %{time_pretransfer}s</span>
+<span class="s">time_redirect:    %{time_redirect}s</span>
+<span class="s">time_starttransfer: %{time_starttransfer}s</span>
+<span class="s">time_total:       %{time_total}s</span>
+<span class="s">EOF</span>
+</code></pre></div></p>
 <p><strong>Solutions:</strong>
 - Switch to smaller, faster model
 - Implement response caching
@@ -7116,8 +7118,10 @@ EOF
 <p>In the next section, you'll explore the Cerebras Agent and learn how to leverage cloud-based AI for complex analysis and advanced reasoning tasks.</p>
 <p>Ready to dive into cloud AI capabilities? Let's explore Cerebras! 🧠🚀</p>
 <hr />
-<p>!!! success "Local Agent Mastery"
-    You now understand how to optimize and utilize the Local Agent for fast, efficient processing. The combination of local and cloud agents gives you the best of both worlds - speed and sophistication!</p>
+<div class="admonition success">
+<p class="admonition-title">Local Agent Mastery</p>
+<p>You now understand how to optimize and utilize the Local Agent for fast, efficient processing. The combination of local and cloud agents gives you the best of both worlds - speed and sophistication!</p>
+</div>
 
 
 

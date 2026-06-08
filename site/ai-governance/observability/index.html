@@ -5542,8 +5542,10 @@
 
 <h1 id="observability-audit-dashboard">Observability - Audit + Dashboard</h1>
 <p><strong>Pillar 3 (Audit + Visibility)</strong> is rolling out. The good news: the foundation is already shipping. Every policy decision sbx makes is written to a structured JSONL log on disk today - and the lab ships a live dashboard you can run alongside it.</p>
-<p>!!! info "At a glance"
-    <strong>Time:</strong> ~10 minutes &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Prerequisites:</strong> You completed the Network demo and (optionally) MCP Hands-On.</p>
+<div class="admonition info">
+<p class="admonition-title">At a glance</p>
+<p><strong>Time:</strong> ~10 minutes &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Prerequisites:</strong> You completed the Network demo and (optionally) MCP Hands-On.</p>
+</div>
 <p>This section gives you two things:</p>
 <ol>
 <li>A way to read the underlying audit log directly with <code>jq</code></li>
@@ -5552,28 +5554,28 @@
 <hr />
 <h2 id="step-1-locate-the-daemon-log">Step 1 - Locate the daemon log</h2>
 <p>The sbx daemon writes JSONL audit records here:</p>
-<pre><code class="language-bash">ls -lh &quot;$HOME/Library/Application Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-lh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Library/Application Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log&quot;</span>
+</code></pre></div>
 <p>On Linux it's typically <code>~/.local/share/com.docker.sandboxes/sandboxes/sandboxd/daemon.log</code>.</p>
 <hr />
 <h2 id="step-2-read-it-with-jq">Step 2 - Read it with <code>jq</code></h2>
 <p>Each policy decision is one JSON line. The <code>msg</code> field is <code>"governance policy evaluation"</code>, and useful fields include <code>resource_value</code>, <code>allowed</code>, <code>policy_matched_rule</code>, <code>policy_deny_reason</code>, <code>policy_source</code>.</p>
-<pre><code class="language-bash">LOG=&quot;$HOME/Library/Application Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log&quot;
+<div class="highlight"><pre><span></span><code><span class="nv">LOG</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Library/Application Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log&quot;</span>
 
-# Last 20 policy decisions
-jq -c 'select(.msg == &quot;governance policy evaluation&quot;)' &quot;$LOG&quot; | tail -20
+<span class="c1"># Last 20 policy decisions</span>
+jq<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;select(.msg == &quot;governance policy evaluation&quot;)&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOG</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
 
-# Only denies
-jq -c 'select(.msg == &quot;governance policy evaluation&quot; and .allowed == false)' &quot;$LOG&quot; | tail -20
+<span class="c1"># Only denies</span>
+jq<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;select(.msg == &quot;governance policy evaluation&quot; and .allowed == false)&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOG</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
 
-# Count denies per rule
-jq -r 'select(.msg == &quot;governance policy evaluation&quot; and .allowed == false) | .policy_matched_rule // &quot;(default-deny)&quot;' &quot;$LOG&quot; \
-  | sort | uniq -c | sort -rn
+<span class="c1"># Count denies per rule</span>
+jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;select(.msg == &quot;governance policy evaluation&quot; and .allowed == false) | .policy_matched_rule // &quot;(default-deny)&quot;&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOG</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn
 
-# Explicit (rule matched) vs implicit (default-deny)
-jq -r 'select(.msg == &quot;governance policy evaluation&quot; and .allowed == false) | .policy_deny_reason' &quot;$LOG&quot; \
-  | sort | uniq -c
-</code></pre>
+<span class="c1"># Explicit (rule matched) vs implicit (default-deny)</span>
+jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;select(.msg == &quot;governance policy evaluation&quot; and .allowed == false) | .policy_deny_reason&#39;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$LOG</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
+</code></pre></div>
 <p>This is your SIEM-ready surface. Forward this file to Splunk/Datadog/Sentinel and you have an org-grade audit trail for sandbox policy decisions.</p>
 <hr />
 <h2 id="whats-captured-and-what-isnt">What's captured and what isn't</h2>
@@ -5615,26 +5617,28 @@ jq -r 'select(.msg == &quot;governance policy evaluation&quot; and .allowed == f
 <hr />
 <h2 id="step-3-run-the-dashboard">Step 3 - Run the dashboard</h2>
 <p>The lab repo ships a small dashboard built on top of the daemon log. Clone the lab repo if you haven't, then start it from the observability kit:</p>
-<pre><code class="language-bash">git clone https://github.com/ajeetraina/labspace-ai-governance
-cd labspace-ai-governance/labspace/kits/observability
-docker compose --profile with-gateway up -d --build
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ajeetraina/labspace-ai-governance
+<span class="nb">cd</span><span class="w"> </span>labspace-ai-governance/labspace/kits/observability
+docker<span class="w"> </span>compose<span class="w"> </span>--profile<span class="w"> </span>with-gateway<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
+</code></pre></div>
 <p>Then open it in a fresh browser tab:</p>
-<pre><code class="language-bash">open http://localhost:8090
-</code></pre>
-<p>!!! tip
-    If the dashboard is empty, trigger a few events with the commands in Step 4 - it populates live.</p>
+<div class="highlight"><pre><span></span><code>open<span class="w"> </span>http://localhost:8090
+</code></pre></div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>If the dashboard is empty, trigger a few events with the commands in Step 4 - it populates live.</p>
+</div>
 <hr />
 <h2 id="step-4-generate-some-events-to-watch">Step 4 - Generate some events to watch</h2>
 <p>In another terminal, enter a sandbox and trigger denies:</p>
-<pre><code class="language-bash">mkdir -p ~/scratch &amp;&amp; cd ~/scratch
-sbx run shell .
-</code></pre>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/scratch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/scratch
+sbx<span class="w"> </span>run<span class="w"> </span>shell<span class="w"> </span>.
+</code></pre></div>
 <p>Inside the sandbox prompt:</p>
-<pre><code class="language-bash">curl -sS https://collabnix.com -o /dev/null -w &quot;%{http_code}\n&quot;
-curl -sS https://example.com -o /dev/null -w &quot;%{http_code}\n&quot;
-curl -sS https://api.anthropic.com -o /dev/null -w &quot;%{http_code}\n&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>https://collabnix.com<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span>
+curl<span class="w"> </span>-sS<span class="w"> </span>https://example.com<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span>
+curl<span class="w"> </span>-sS<span class="w"> </span>https://api.anthropic.com<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span>
+</code></pre></div>
 <p>Switch to the dashboard. You'll see three new rows appear in real time:</p>
 <ul>
 <li><code>paste.ee</code> or <code>collabnix.com</code> → <code>deny</code> with <code>explicit</code> reason and your matched rule name</li>

@@ -5414,7 +5414,7 @@
 <p>With the Model Runner feature, Docker provides inference capabilities to developers on their laptop, and in the future in CI, allowing them to run LLM models locally. This is an important feature to help developing GenAI applications. The runner essentially provides GPU-accelerated inference engines that are accessible both through the Docker socket (<code>/var/run/docker.sock</code>) and via a TCP connection at <code>model-runner.docker.internal:80</code>.</p>
 <h2 id="new-docker-model-cli">New <code>docker model</code> CLI</h2>
 <p>Docker Desktop 4.40+ introduces <code>docker model</code> CLI as the first class-citizen. This means AI models are now treated as fundamental, well-supported objects within the Docker CLI, similar to how Docker already treats containers, images, and volumes. </p>
-<pre><code>docker model --help
+<div class="highlight"><pre><span></span><code>docker model --help
 Usage:  docker model COMMAND
 
 Docker Model Runner
@@ -5428,8 +5428,8 @@ Commands:
   status      Check if the Docker Model Runner is running
   version     Show the Docker Model Runner version
 
-Run 'docker model COMMAND --help' for more information on a command.
-</code></pre>
+Run &#39;docker model COMMAND --help&#39; for more information on a command.
+</code></pre></div>
 <p>By using this new CLI, developers can:</p>
 <ul>
 <li>Pull models from registries (e,g Docker Hub)</li>

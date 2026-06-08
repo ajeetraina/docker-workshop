@@ -5466,18 +5466,18 @@ The resource challenge makes everything worse. Agentic GenAI applications are hu
 <h3 id="1-the-old-vs-new-model-definition-and-management">1. The Old Vs New Model Definition and Management</h3>
 <h4 id="the-old-model-definition-and-management">The Old Model Definition and Management</h4>
 <p>Previously, models were defined as services using a provider mechanism. </p>
-<pre><code>services:
+<div class="highlight"><pre><span></span><code>services:
   llm:
     provider:
       type: model
       options:
         model: ai/gemma3
-</code></pre>
+</code></pre></div>
 <p>While this approach worked, it created unnecessary complexity and didn't align with how developers naturally think about models as shared resources. To help the ecosystem evolve and provide a more intuitive experience, we've decided to define models more concretely by giving them a top-level field in the Compose specification.</p>
 <h4 id="2-the-new-model-definition-and-management">2. The New Model Definition and Management</h4>
 <p>In Agentic Compose, you can define one or more models for your GenAI app to use through a straightforward, declarative approach. </p>
 <p>The top-level models field in your Compose file defines the available models, making them easily discoverable and reusable across your entire application stack.</p>
-<pre><code>services:
+<div class="highlight"><pre><span></span><code>services:
   agent-app:
     ...
     models:
@@ -5487,7 +5487,7 @@ The resource challenge makes everything worse. Agentic GenAI applications are hu
 models:
   gemma3:
     model: ai/gemma3
-</code></pre>
+</code></pre></div>
 <p>Each service can specify the model it needs and the environment variables that should be injected to establish the connection. This approach provides clean separation between model configuration and service logic-services simply declare their model requirements, while the infrastructure handles the complexity of making those models available.</p>
 <p>When you launch your Compose file, the Docker Model Runner automatically figures out how to ensure the model is accessible, regardless of whether you're running in Docker Desktop or deploying to production infrastructure.</p>
 <p>The Model Runner intelligently handles the underlying complexity:
@@ -5498,7 +5498,7 @@ models:
 <p>The result is a unified approach where model dependencies are as easy to manage as any other service dependency in your Docker Compose stack.</p>
 <h3 id="2-mcp-gateway-a-new-standardized-tool-integration">2. MCP Gateway: A New Standardized Tool Integration</h3>
 <p>To support the definitions of tooling in GenAI applications, we're open-sourcing and making the MCP Gateway available as a standalone container. This represents a major advancement in how tools are managed and integrated across agentic systems. With Agentic Compose, you can start an MCP gateway that will launch containerized MCP servers, handle credentials securely, and provide a standardized interface for tool interactions.</p>
-<pre><code>services:
+<div class="highlight"><pre><span></span><code>services:
   agent-app:
     ...
     environment:
@@ -5513,7 +5513,7 @@ models:
       - --transport=sse
       - --servers=duckduckgo
       - --tools=search,fetch_content
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Simplified Tool Configuration</li>
 </ul>
@@ -5559,71 +5559,71 @@ models:
 This familiar development model dramatically reduces the learning curve for teams adopting agentic technologies, making it possible to leverage existing Docker expertise while building cutting-edge intelligent applications.</p>
 <p>Here’s how a typical Compose file would look like </p>
 <p>File: compose.yaml</p>
-<pre><code class="language-json"># Docker Compose configuration for Simple Node.js MCP Agent
-services:
-  app:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    ports:
-      - &quot;3000:3000&quot;
-    environment:
-      - PORT=3000
-      - MCP_GATEWAY_URL=http://mcp-gateway:8811
-    depends_on:
-      - mcp-gateway
-    models:
-      gemma:
-        endpoint_var: MODEL_RUNNER_URL
-        model_var: MODEL_RUNNER_MODEL
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="err">Docker</span><span class="w"> </span><span class="err">Compose</span><span class="w"> </span><span class="err">co</span><span class="kc">nf</span><span class="err">igura</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">Simple</span><span class="w"> </span><span class="err">Node.js</span><span class="w"> </span><span class="err">MCP</span><span class="w"> </span><span class="err">Age</span><span class="kc">nt</span>
+<span class="err">services</span><span class="p">:</span>
+<span class="w">  </span><span class="err">app</span><span class="p">:</span>
+<span class="w">    </span><span class="err">build</span><span class="p">:</span>
+<span class="w">      </span><span class="err">co</span><span class="kc">nte</span><span class="err">x</span><span class="kc">t</span><span class="p">:</span><span class="w"> </span><span class="err">.</span>
+<span class="w">      </span><span class="err">docker</span><span class="kc">f</span><span class="err">ile</span><span class="p">:</span><span class="w"> </span><span class="err">Docker</span><span class="kc">f</span><span class="err">ile</span>
+<span class="w">    </span><span class="err">por</span><span class="kc">ts</span><span class="p">:</span>
+<span class="w">      </span><span class="mi">-</span><span class="w"> </span><span class="s2">&quot;3000:3000&quot;</span>
+<span class="w">    </span><span class="err">e</span><span class="kc">n</span><span class="err">viro</span><span class="kc">n</span><span class="err">me</span><span class="kc">nt</span><span class="p">:</span>
+<span class="w">      </span><span class="mi">-</span><span class="w"> </span><span class="err">PORT=</span><span class="mi">3000</span>
+<span class="w">      </span><span class="mi">-</span><span class="w"> </span><span class="err">MCP_GATEWAY_URL=h</span><span class="kc">tt</span><span class="err">p</span><span class="p">:</span><span class="c1">//mcp-gateway:8811</span>
+<span class="w">    </span><span class="err">depe</span><span class="kc">n</span><span class="err">ds_o</span><span class="kc">n</span><span class="p">:</span>
+<span class="w">      </span><span class="mi">-</span><span class="w"> </span><span class="err">mcp</span><span class="mi">-</span><span class="err">ga</span><span class="kc">te</span><span class="err">way</span>
+<span class="w">    </span><span class="err">models</span><span class="p">:</span>
+<span class="w">      </span><span class="err">gemma</span><span class="p">:</span>
+<span class="w">        </span><span class="err">e</span><span class="kc">n</span><span class="err">dpoi</span><span class="kc">nt</span><span class="err">_var</span><span class="p">:</span><span class="w"> </span><span class="err">MODEL_RUNNER_URL</span>
+<span class="w">        </span><span class="err">model_var</span><span class="p">:</span><span class="w"> </span><span class="err">MODEL_RUNNER_MODEL</span>
 
-  mcp-gateway:
-    # Standard MCP Gateway configuration
-    image: docker/mcp-gateway:latest
-    use_api_socket: true
-    ports:
-      - &quot;8811:8811&quot;
-    command:
-      - --transport=sse
-      # Add any MCP servers you want to use
-      - --servers=duckduckgo
-      - --tools=search,fetch_content
+<span class="w">  </span><span class="err">mcp</span><span class="mi">-</span><span class="err">ga</span><span class="kc">te</span><span class="err">way</span><span class="p">:</span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="err">S</span><span class="kc">tan</span><span class="err">dard</span><span class="w"> </span><span class="err">MCP</span><span class="w"> </span><span class="err">Ga</span><span class="kc">te</span><span class="err">way</span><span class="w"> </span><span class="err">co</span><span class="kc">nf</span><span class="err">igura</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span>
+<span class="w">    </span><span class="err">image</span><span class="p">:</span><span class="w"> </span><span class="err">docker/mcp</span><span class="mi">-</span><span class="err">ga</span><span class="kc">te</span><span class="err">way</span><span class="p">:</span><span class="err">la</span><span class="kc">test</span>
+<span class="w">    </span><span class="err">use_api_socke</span><span class="kc">t</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<span class="w">    </span><span class="err">por</span><span class="kc">ts</span><span class="p">:</span>
+<span class="w">      </span><span class="mi">-</span><span class="w"> </span><span class="s2">&quot;8811:8811&quot;</span>
+<span class="w">    </span><span class="err">comma</span><span class="kc">n</span><span class="err">d</span><span class="p">:</span>
+<span class="w">      </span><span class="mi">-</span><span class="w"> </span><span class="mi">--</span><span class="kc">trans</span><span class="err">por</span><span class="kc">t</span><span class="err">=sse</span>
+<span class="w">      </span><span class="err">#</span><span class="w"> </span><span class="err">Add</span><span class="w"> </span><span class="err">a</span><span class="kc">n</span><span class="err">y</span><span class="w"> </span><span class="err">MCP</span><span class="w"> </span><span class="err">servers</span><span class="w"> </span><span class="err">you</span><span class="w"> </span><span class="err">wa</span><span class="kc">nt</span><span class="w"> </span><span class="kc">t</span><span class="err">o</span><span class="w"> </span><span class="err">use</span>
+<span class="w">      </span><span class="mi">-</span><span class="w"> </span><span class="mi">--</span><span class="err">servers=duckduckgo</span>
+<span class="w">      </span><span class="mi">-</span><span class="w"> </span><span class="mi">--</span><span class="kc">t</span><span class="err">ools=search</span><span class="p">,</span><span class="kc">fet</span><span class="err">ch_co</span><span class="kc">ntent</span>
 
-# Model configuration
-models:
-  gemma:
-    model: ai/gemma3-qat
-</code></pre>
+<span class="err">#</span><span class="w"> </span><span class="err">Model</span><span class="w"> </span><span class="err">co</span><span class="kc">nf</span><span class="err">igura</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span>
+<span class="err">models</span><span class="p">:</span>
+<span class="w">  </span><span class="err">gemma</span><span class="p">:</span>
+<span class="w">    </span><span class="err">model</span><span class="p">:</span><span class="w"> </span><span class="err">ai/gemma</span><span class="mi">3-</span><span class="err">qa</span><span class="kc">t</span>
+</code></pre></div>
 <p>File: compose-offload.yaml</p>
-<pre><code class="language-json"># Override for using Docker Offload with larger models
-# Usage: docker compose -f compose.yaml -f compose.offload.yaml up --build
+<div class="highlight"><pre><span></span><code><span class="err">#</span><span class="w"> </span><span class="err">Override</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">usi</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">Docker</span><span class="w"> </span><span class="err">O</span><span class="kc">ffl</span><span class="err">oad</span><span class="w"> </span><span class="err">wi</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="err">larger</span><span class="w"> </span><span class="err">models</span>
+<span class="err">#</span><span class="w"> </span><span class="err">Usage</span><span class="p">:</span><span class="w"> </span><span class="err">docker</span><span class="w"> </span><span class="err">compose</span><span class="w"> </span><span class="mi">-</span><span class="kc">f</span><span class="w"> </span><span class="err">compose.yaml</span><span class="w"> </span><span class="mi">-</span><span class="kc">f</span><span class="w"> </span><span class="err">compose.o</span><span class="kc">ffl</span><span class="err">oad.yaml</span><span class="w"> </span><span class="err">up</span><span class="w"> </span><span class="mi">--</span><span class="err">build</span>
 
-services:
-  app:
-    # Override with larger model configuration
-    models:
-      gemma-large:
-        endpoint_var: MODEL_RUNNER_URL
-        model_var: MODEL_RUNNER_MODEL
+<span class="err">services</span><span class="p">:</span>
+<span class="w">  </span><span class="err">app</span><span class="p">:</span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="err">Override</span><span class="w"> </span><span class="err">wi</span><span class="kc">t</span><span class="err">h</span><span class="w"> </span><span class="err">larger</span><span class="w"> </span><span class="err">model</span><span class="w"> </span><span class="err">co</span><span class="kc">nf</span><span class="err">igura</span><span class="kc">t</span><span class="err">io</span><span class="kc">n</span>
+<span class="w">    </span><span class="err">models</span><span class="p">:</span>
+<span class="w">      </span><span class="err">gemma</span><span class="mi">-</span><span class="err">large</span><span class="p">:</span>
+<span class="w">        </span><span class="err">e</span><span class="kc">n</span><span class="err">dpoi</span><span class="kc">nt</span><span class="err">_var</span><span class="p">:</span><span class="w"> </span><span class="err">MODEL_RUNNER_URL</span>
+<span class="w">        </span><span class="err">model_var</span><span class="p">:</span><span class="w"> </span><span class="err">MODEL_RUNNER_MODEL</span>
 
-models:
-  gemma-large:
-    # Larger model for enhanced reasoning (requires 16+ GB VRAM)
-    model: ai/gemma3:27B-Q4_K_M
-    context_size: 8192
-</code></pre>
+<span class="err">models</span><span class="p">:</span>
+<span class="w">  </span><span class="err">gemma</span><span class="mi">-</span><span class="err">large</span><span class="p">:</span>
+<span class="w">    </span><span class="err">#</span><span class="w"> </span><span class="err">Larger</span><span class="w"> </span><span class="err">model</span><span class="w"> </span><span class="kc">f</span><span class="err">or</span><span class="w"> </span><span class="err">e</span><span class="kc">n</span><span class="err">ha</span><span class="kc">n</span><span class="err">ced</span><span class="w"> </span><span class="err">reaso</span><span class="kc">n</span><span class="err">i</span><span class="kc">n</span><span class="err">g</span><span class="w"> </span><span class="err">(requires</span><span class="w"> </span><span class="mf">16+</span><span class="w"> </span><span class="err">GB</span><span class="w"> </span><span class="err">VRAM)</span>
+<span class="w">    </span><span class="err">model</span><span class="p">:</span><span class="w"> </span><span class="err">ai/gemma</span><span class="mi">3</span><span class="p">:</span><span class="mi">27</span><span class="err">B</span><span class="mi">-</span><span class="err">Q</span><span class="mi">4</span><span class="err">_K_M</span>
+<span class="w">    </span><span class="err">co</span><span class="kc">nte</span><span class="err">x</span><span class="kc">t</span><span class="err">_size</span><span class="p">:</span><span class="w"> </span><span class="mi">8192</span>
+</code></pre></div>
 <p>File: compose-openai.yaml</p>
-<pre><code class="language-json">services:
-  agents:
-    environment:
-      - OPENAI_MODEL_NAME=gpt-4.1-mini
-    secrets:
-      - openai-api-key
+<div class="highlight"><pre><span></span><code><span class="err">services</span><span class="p">:</span>
+<span class="w">  </span><span class="err">age</span><span class="kc">nts</span><span class="p">:</span>
+<span class="w">    </span><span class="err">e</span><span class="kc">n</span><span class="err">viro</span><span class="kc">n</span><span class="err">me</span><span class="kc">nt</span><span class="p">:</span>
+<span class="w">      </span><span class="mi">-</span><span class="w"> </span><span class="err">OPENAI_MODEL_NAME=gp</span><span class="kc">t</span><span class="mf">-4.1-</span><span class="err">mi</span><span class="kc">n</span><span class="err">i</span>
+<span class="w">    </span><span class="err">secre</span><span class="kc">ts</span><span class="p">:</span>
+<span class="w">      </span><span class="mi">-</span><span class="w"> </span><span class="err">ope</span><span class="kc">na</span><span class="err">i</span><span class="mi">-</span><span class="err">api</span><span class="mi">-</span><span class="err">key</span>
 
-secrets:
-  openai-api-key:
-    file: secret.openai-api-key
-</code></pre>
+<span class="err">secre</span><span class="kc">ts</span><span class="p">:</span>
+<span class="w">  </span><span class="err">ope</span><span class="kc">na</span><span class="err">i</span><span class="mi">-</span><span class="err">api</span><span class="mi">-</span><span class="err">key</span><span class="p">:</span>
+<span class="w">    </span><span class="kc">f</span><span class="err">ile</span><span class="p">:</span><span class="w"> </span><span class="err">secre</span><span class="kc">t</span><span class="err">.ope</span><span class="kc">na</span><span class="err">i</span><span class="mi">-</span><span class="err">api</span><span class="mi">-</span><span class="err">key</span>
+</code></pre></div>
 <table>
 <thead>
 <tr>

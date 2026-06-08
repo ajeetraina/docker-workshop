@@ -5491,7 +5491,7 @@
 <li>Deploy to DigitalOcean for 24/7 availability</li>
 </ol>
 <h2 id="architecture">🏗️ Architecture</h2>
-<pre><code>┌─────────────────────────────────────────────────────────────────┐
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────┐
 │                     BUG INVESTIGATOR                            │
 │                     (Root Coordinator)                          │
 │                                                                 │
@@ -5515,7 +5515,7 @@
 │ DuckDuckGo│    │ Filesystem│  │  Think  │
 │    MCP    │    │   Tools   │  │  Tool   │
 └───────────┘    └───────────┘  └─────────┘
-</code></pre>
+</code></pre></div>
 <h2 id="quick-start">🚀 Quick Start</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
@@ -5523,43 +5523,43 @@
 <li>API key: <code>ANTHROPIC_API_KEY</code> or <code>OPENAI_API_KEY</code></li>
 </ul>
 <h3 id="step-1-clone-and-run-locally">Step 1: Clone and Run Locally</h3>
-<pre><code class="language-bash"># Clone the labspace
-git clone https://github.com/ajeetraina/labspace-cagent
-cd labspace-cagent/labs/bug-investigator
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone the labspace</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ajeetraina/labspace-cagent
+<span class="nb">cd</span><span class="w"> </span>labspace-cagent/labs/bug-investigator
 
-# Set your API key
-export ANTHROPIC_API_KEY=your_key_here
-# OR
-export OPENAI_API_KEY=your_key_here
+<span class="c1"># Set your API key</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>your_key_here
+<span class="c1"># OR</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>your_key_here
 
-# Run the agent
-cagent run ./cagent.yaml
-</code></pre>
+<span class="c1"># Run the agent</span>
+cagent<span class="w"> </span>run<span class="w"> </span>./cagent.yaml
+</code></pre></div>
 <h3 id="step-2-try-it-out">Step 2: Try It Out</h3>
 <p>Paste an error and watch the agents collaborate:</p>
-<pre><code>You: I'm getting this error in my Python code:
+<div class="highlight"><pre><span></span><code>You: I&#39;m getting this error in my Python code:
 
-TypeError: 'NoneType' object is not subscriptable
+TypeError: &#39;NoneType&#39; object is not subscriptable
   File &quot;app.py&quot;, line 42, in process_data
-    result = data['items'][0]['name']
+    result = data[&#39;items&#39;][0][&#39;name&#39;]
 
-Here's my code:
+Here&#39;s my code:
 def process_data(response):
     data = response.json()
-    result = data['items'][0]['name']
+    result = data[&#39;items&#39;][0][&#39;name&#39;]
     return result
-</code></pre>
+</code></pre></div>
 <h2 id="deploy-to-production">📦 Deploy to Production</h2>
 <h3 id="push-to-docker-hub">Push to Docker Hub</h3>
-<pre><code class="language-bash"># Login to Docker Hub
-docker login
+<div class="highlight"><pre><span></span><code><span class="c1"># Login to Docker Hub</span>
+docker<span class="w"> </span>login
 
-# Push your agent
-cagent push ./cagent.yaml docker.io/YOUR_USERNAME/bug-investigator:latest
+<span class="c1"># Push your agent</span>
+cagent<span class="w"> </span>push<span class="w"> </span>./cagent.yaml<span class="w"> </span>docker.io/YOUR_USERNAME/bug-investigator:latest
 
-# Verify it's there
-cagent pull docker.io/YOUR_USERNAME/bug-investigator:latest
-</code></pre>
+<span class="c1"># Verify it&#39;s there</span>
+cagent<span class="w"> </span>pull<span class="w"> </span>docker.io/YOUR_USERNAME/bug-investigator:latest
+</code></pre></div>
 <h3 id="deploy-to-digitalocean">Deploy to DigitalOcean</h3>
 <h4 id="option-1-one-click-marketplace">Option 1: One-Click Marketplace</h4>
 <ol>
@@ -5569,74 +5569,74 @@ cagent pull docker.io/YOUR_USERNAME/bug-investigator:latest
 <li>SSH into your droplet and run your agent</li>
 </ol>
 <h4 id="option-2-api-deployment">Option 2: API Deployment</h4>
-<pre><code class="language-bash"># Set your DigitalOcean token
-export DO_TOKEN=your_digitalocean_token
+<div class="highlight"><pre><span></span><code><span class="c1"># Set your DigitalOcean token</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">DO_TOKEN</span><span class="o">=</span>your_digitalocean_token
 
-# Create droplet with cagent pre-installed
-curl -X POST -H 'Content-Type: application/json' \
-  -H &quot;Authorization: Bearer $DO_TOKEN&quot; \
-  -d '{
-    &quot;name&quot;: &quot;bug-investigator-prod&quot;,
-    &quot;region&quot;: &quot;sfo2&quot;,
-    &quot;size&quot;: &quot;s-2vcpu-4gb&quot;,
-    &quot;image&quot;: &quot;cagent&quot;
-  }' \
-  &quot;https://api.digitalocean.com/v2/droplets&quot;
-</code></pre>
+<span class="c1"># Create droplet with cagent pre-installed</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer </span><span class="nv">$DO_TOKEN</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;name&quot;: &quot;bug-investigator-prod&quot;,</span>
+<span class="s1">    &quot;region&quot;: &quot;sfo2&quot;,</span>
+<span class="s1">    &quot;size&quot;: &quot;s-2vcpu-4gb&quot;,</span>
+<span class="s1">    &quot;image&quot;: &quot;cagent&quot;</span>
+<span class="s1">  }&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="s2">&quot;https://api.digitalocean.com/v2/droplets&quot;</span>
+</code></pre></div>
 <h3 id="run-in-production">Run in Production</h3>
-<pre><code class="language-bash"># SSH into your droplet
-ssh root@YOUR_DROPLET_IP
+<div class="highlight"><pre><span></span><code><span class="c1"># SSH into your droplet</span>
+ssh<span class="w"> </span>root@YOUR_DROPLET_IP
 
-# Set API keys
-export ANTHROPIC_API_KEY=your_key
+<span class="c1"># Set API keys</span>
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>your_key
 
-# Pull and run your agent
-cagent run docker.io/YOUR_USERNAME/bug-investigator:latest
-</code></pre>
+<span class="c1"># Pull and run your agent</span>
+cagent<span class="w"> </span>run<span class="w"> </span>docker.io/YOUR_USERNAME/bug-investigator:latest
+</code></pre></div>
 <h2 id="example-bugs-to-try">🧪 Example Bugs to Try</h2>
 <h3 id="python-nonetype-error">Python: NoneType Error</h3>
-<pre><code>TypeError: 'NoneType' object is not subscriptable
-</code></pre>
+<div class="highlight"><pre><span></span><code>TypeError: &#39;NoneType&#39; object is not subscriptable
+</code></pre></div>
 <h3 id="javascript-asyncawait-issue">JavaScript: Async/Await Issue</h3>
-<pre><code>UnhandledPromiseRejectionWarning: TypeError: Cannot read property 'map' of undefined
-</code></pre>
+<div class="highlight"><pre><span></span><code>UnhandledPromiseRejectionWarning: TypeError: Cannot read property &#39;map&#39; of undefined
+</code></pre></div>
 <h3 id="go-nil-pointer">Go: Nil Pointer</h3>
-<pre><code>panic: runtime error: invalid memory address or nil pointer dereference
-</code></pre>
+<div class="highlight"><pre><span></span><code>panic: runtime error: invalid memory address or nil pointer dereference
+</code></pre></div>
 <h3 id="docker-build-failure">Docker: Build Failure</h3>
-<pre><code>ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref
-</code></pre>
+<div class="highlight"><pre><span></span><code>ERROR: failed to solve: failed to compute cache key: failed to calculate checksum of ref
+</code></pre></div>
 <h3 id="kubernetes-crashloopbackoff">Kubernetes: CrashLoopBackOff</h3>
-<pre><code>kubectl logs my-pod
-Error: EACCES: permission denied, open '/app/data/config.json'
-</code></pre>
+<div class="highlight"><pre><span></span><code>kubectl logs my-pod
+Error: EACCES: permission denied, open &#39;/app/data/config.json&#39;
+</code></pre></div>
 <h2 id="customization">🔧 Customization</h2>
 <h3 id="add-github-integration">Add GitHub Integration</h3>
-<pre><code class="language-yaml"># Add to researcher agent toolsets
-toolsets:
-  - type: mcp
-    ref: docker:github
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add to researcher agent toolsets</span>
+<span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp</span>
+<span class="w">    </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:github</span>
+</code></pre></div>
 <h3 id="add-slack-notifications">Add Slack Notifications</h3>
-<pre><code class="language-yaml"># Add to root agent toolsets
-toolsets:
-  - type: mcp
-    ref: docker:slack
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Add to root agent toolsets</span>
+<span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp</span>
+<span class="w">    </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:slack</span>
+</code></pre></div>
 <h3 id="use-local-models-no-api-key">Use Local Models (No API Key)</h3>
-<pre><code class="language-yaml">models:
-  local:
-    provider: dmr
-    model: ai/gemma3:2B-Q4_0
-    max_tokens: 4096
+<div class="highlight"><pre><span></span><code><span class="nt">models</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">local</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dmr</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ai/gemma3:2B-Q4_0</span>
+<span class="w">    </span><span class="nt">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4096</span>
 
-agents:
-  root:
-    model: local
-    # ... rest of config
-</code></pre>
+<span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">local</span>
+<span class="w">    </span><span class="c1"># ... rest of config</span>
+</code></pre></div>
 <h2 id="workshop-flow">📊 Workshop Flow</h2>
-<pre><code>┌──────────────────────────────────────────────────────────────────┐
+<div class="highlight"><pre><span></span><code>┌──────────────────────────────────────────────────────────────────┐
 │                    DEVELOPMENT TO PRODUCTION                      │
 ├──────────────────────────────────────────────────────────────────┤
 │                                                                  │
@@ -5655,7 +5655,7 @@ agents:
 │                     user/agent:tag                               │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
 <h2 id="key-concepts-covered">🎓 Key Concepts Covered</h2>
 <table>
 <thead>

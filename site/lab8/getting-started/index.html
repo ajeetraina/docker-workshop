@@ -3284,6 +3284,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Step 3 - Choose your agent and provider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openai-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenAI configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anthropic-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anthropic configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gemini-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gemini configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5386,6 +5425,45 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Step 3 - Choose your agent and provider">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#openai-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        OpenAI configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#anthropic-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Anthropic configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#gemini-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Gemini configuration
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5485,25 +5563,25 @@
 <hr />
 <h2 id="step-1-verify-sbx-is-installed">Step 1 - Verify sbx is installed</h2>
 <p>Open a terminal on your host machine and run:</p>
-<pre><code class="language-bash">sbx version
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>version
+</code></pre></div>
 <p>Expected output: a version string like <code>sbx 0.21.0</code> or similar.</p>
 <p>If you see <code>command not found</code>, install sbx first:</p>
-<pre><code class="language-bash"># macOS
-brew install docker/tap/sbx
+<div class="highlight"><pre><span></span><code><span class="c1"># macOS</span>
+brew<span class="w"> </span>install<span class="w"> </span>docker/tap/sbx
 
-# Linux
-curl -fsSL https://get.docker.com | sudo REPO_ONLY=1 sh
-sudo apt-get install docker-sbx
-sudo usermod -aG kvm $USER
-newgrp kvm
-</code></pre>
+<span class="c1"># Linux</span>
+curl<span class="w"> </span>-fsSL<span class="w"> </span>https://get.docker.com<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span><span class="nv">REPO_ONLY</span><span class="o">=</span><span class="m">1</span><span class="w"> </span>sh
+sudo<span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>docker-sbx
+sudo<span class="w"> </span>usermod<span class="w"> </span>-aG<span class="w"> </span>kvm<span class="w"> </span><span class="nv">$USER</span>
+newgrp<span class="w"> </span>kvm
+</code></pre></div>
 <hr />
 <h2 id="step-2-log-in-to-docker">Step 2 - Log in to Docker</h2>
-<pre><code class="language-bash">sbx login
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>login
+</code></pre></div>
 <p>The CLI prints a one-time device confirmation code and a URL:</p>
-<pre><code>Your one-time device confirmation code: XXXX-XXXX
+<div class="highlight"><pre><span></span><code>Your one-time device confirmation code: XXXX-XXXX
 Open this URL to sign in: https://login.docker.com/activate?user_code=XXXX-XXXX
 
 By logging in, you agree to our Subscription Service Agreement.
@@ -5513,10 +5591,10 @@ Waiting for authentication...
 Signed in as &lt;your-docker-username&gt;.
 Daemon started (PID: XXXXX, socket: ~/Library/Application Support/com.docker.sandboxes/sandboxd/sandboxd.sock)
 Logs: ~/Library/Application Support/com.docker.sandboxes/sandboxd/daemon.log
-</code></pre>
+</code></pre></div>
 <p>Open the URL in your browser - the CLI confirms sign-in automatically.</p>
 <h3 id="choose-a-network-policy">Choose a network policy</h3>
-<pre><code>Select a default network policy for your sandboxes:
+<div class="highlight"><pre><span></span><code>Select a default network policy for your sandboxes:
 
      1. Open         - All network traffic allowed, no restrictions.
   ❯  2. Balanced     - Default deny, with common dev sites allowed.
@@ -5525,7 +5603,7 @@ Logs: ~/Library/Application Support/com.docker.sandboxes/sandboxd/daemon.log
   Use ↑/↓ or 1–3 to navigate, Enter to confirm, Esc to cancel.
 
 Network policy set to &quot;Balanced&quot;. Default deny, with common dev sites allowed.
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -5554,70 +5632,55 @@ Network policy set to &quot;Balanced&quot;. Default deny, with common dev sites 
 <hr />
 <h2 id="step-3-choose-your-agent-and-provider">Step 3 - Choose your agent and provider</h2>
 <p>This lab works with any mainstream coding agent. Pick the provider whose API key you have - the rest of the lab will adapt.</p>
-<p>!!! tip "Pick a provider for the rest of this lab"
-    Each option below assumes you've chosen one of these:</p>
-<pre><code>- **Use OpenAI + Codex**
-- **Use Anthropic + Claude**
-- **Use Google + Gemini**
-</code></pre>
+<div class="admonition tip">
+<p class="admonition-title">Pick a provider for the rest of this lab</p>
+<p>Each option below assumes you've chosen one of these:</p>
+<ul>
+<li><strong>Use OpenAI + Codex</strong></li>
+<li><strong>Use Anthropic + Claude</strong></li>
+<li><strong>Use Google + Gemini</strong></li>
+</ul>
+</div>
 <p>&nbsp;</p>
-<p>!!! note "If you chose OpenAI + Codex"</p>
-<pre><code>### OpenAI configuration
-
-You'll run **Codex** inside the sandbox, authenticated to OpenAI.
-
-**First, export your API key in your host terminal** (don't paste it into this page):
-
-```bash
-export OPENAI_API_KEY=sk-proj-...    # your real key, set in your own shell
-```
-
-Then store it as a global sbx secret. The command below reads `$OPENAI_API_KEY` from your shell - your key never leaves the terminal and is not displayed anywhere:
-
-```bash
-echo "$OPENAI_API_KEY" | sbx secret set -g openai
-```
-</code></pre>
-<p>!!! note "If you chose Anthropic + Claude"</p>
-<pre><code>### Anthropic configuration
-
-You'll run **Claude Code** inside the sandbox, authenticated to Anthropic.
-
-**First, export your API key in your host terminal** (don't paste it into this page):
-
-```bash
-export ANTHROPIC_API_KEY=sk-ant-...    # your real key, set in your own shell
-```
-
-Then store it as a global sbx secret. The command below reads `$ANTHROPIC_API_KEY` from your shell - your key never leaves the terminal and is not displayed anywhere:
-
-```bash
-echo "$ANTHROPIC_API_KEY" | sbx secret set -g anthropic
-```
-</code></pre>
-<p>!!! note "If you chose Google + Gemini"</p>
-<pre><code>### Gemini configuration
-
-You'll run **Gemini CLI** inside the sandbox, authenticated to Google.
-
-**First, export your API key in your host terminal** (don't paste it into this page):
-
-```bash
-export GOOGLE_API_KEY=AIza...    # your real key, set in your own shell
-```
-
-Then store it as a global sbx secret. The command below reads `$GOOGLE_API_KEY` from your shell - your key never leaves the terminal and is not displayed anywhere:
-
-```bash
-echo "$GOOGLE_API_KEY" | sbx secret set -g google
-```
-</code></pre>
+<div class="admonition note">
+<p class="admonition-title">If you chose OpenAI + Codex</p>
+<h3 id="openai-configuration">OpenAI configuration</h3>
+<p>You'll run <strong>Codex</strong> inside the sandbox, authenticated to OpenAI.</p>
+<p><strong>First, export your API key in your host terminal</strong> (don't paste it into this page):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>sk-proj-...<span class="w">    </span><span class="c1"># your real key, set in your own shell</span>
+</code></pre></div>
+<p>Then store it as a global sbx secret. The command below reads <code>$OPENAI_API_KEY</code> from your shell - your key never leaves the terminal and is not displayed anywhere:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OPENAI_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sbx<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>openai
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">If you chose Anthropic + Claude</p>
+<h3 id="anthropic-configuration">Anthropic configuration</h3>
+<p>You'll run <strong>Claude Code</strong> inside the sandbox, authenticated to Anthropic.</p>
+<p><strong>First, export your API key in your host terminal</strong> (don't paste it into this page):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>sk-ant-...<span class="w">    </span><span class="c1"># your real key, set in your own shell</span>
+</code></pre></div>
+<p>Then store it as a global sbx secret. The command below reads <code>$ANTHROPIC_API_KEY</code> from your shell - your key never leaves the terminal and is not displayed anywhere:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ANTHROPIC_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sbx<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>anthropic
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">If you chose Google + Gemini</p>
+<h3 id="gemini-configuration">Gemini configuration</h3>
+<p>You'll run <strong>Gemini CLI</strong> inside the sandbox, authenticated to Google.</p>
+<p><strong>First, export your API key in your host terminal</strong> (don't paste it into this page):</p>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GOOGLE_API_KEY</span><span class="o">=</span>AIza...<span class="w">    </span><span class="c1"># your real key, set in your own shell</span>
+</code></pre></div>
+<p>Then store it as a global sbx secret. The command below reads <code>$GOOGLE_API_KEY</code> from your shell - your key never leaves the terminal and is not displayed anywhere:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GOOGLE_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sbx<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>google
+</code></pre></div>
+</div>
 <blockquote>
 <p><strong>Why not type the key into this page?</strong> Labspace renders anything you enter into an input field inline in the command below it - so the raw key becomes visible in the lab UI and in screenshots. Setting the env var in your own shell keeps the key off the page entirely.</p>
 </blockquote>
 <p>Verify the secret was stored:</p>
-<pre><code class="language-bash">sbx secret ls
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>secret<span class="w"> </span>ls
+</code></pre></div>
 <p>Expected output: a line matching your chosen provider (<code>openai</code>, <code>anthropic</code>, or <code>google</code>) with the value masked as <code>****...****</code>.</p>
 <blockquote>
 <p><strong>Why this matters:</strong> Secrets are stored in your OS keychain and injected at the network proxy layer. The agent never sees the raw API key. This is one of the core governance guarantees you'll explore in Module 4.</p>
@@ -5625,34 +5688,34 @@ echo "$GOOGLE_API_KEY" | sbx secret set -g google
 <hr />
 <h2 id="step-4-clone-the-lab-repository">Step 4 - Clone the lab repository</h2>
 <p>The exercises use DevBoard - a full-stack FastAPI + Next.js issue tracker with intentional bugs. It's pre-configured for this lab.</p>
-<pre><code class="language-bash">git clone https://github.com/dockersamples/sbx-quickstart ~/sbx-lab
-cd ~/sbx-lab
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dockersamples/sbx-quickstart<span class="w"> </span>~/sbx-lab
+<span class="nb">cd</span><span class="w"> </span>~/sbx-lab
+</code></pre></div>
 <hr />
 <h2 id="step-5-create-your-sandbox">Step 5 - Create your sandbox</h2>
-<pre><code class="language-bash">cd ~/sbx-lab
-sbx create --name=sbxlab &lt;agent&gt; .
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/sbx-lab
+sbx<span class="w"> </span>create<span class="w"> </span>--name<span class="o">=</span>sbxlab<span class="w"> </span>&lt;agent&gt;<span class="w"> </span>.
+</code></pre></div>
 <blockquote>
 <p><strong>First run:</strong> The agent image will pull (1–2 minutes) and the sandbox will be created with the Balanced network policy you selected at login.</p>
 </blockquote>
-<pre><code class="language-bash">sbx ls
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>ls
+</code></pre></div>
 <p>You should see <code>sbxlab</code> in the list with status <code>stopped</code>:</p>
-<pre><code>SANDBOX   AGENT    STATUS    PORTS   WORKSPACE
+<div class="highlight"><pre><span></span><code>SANDBOX   AGENT    STATUS    PORTS   WORKSPACE
 sbxlab    &lt;agent&gt;   stopped           /your/project/path
-</code></pre>
+</code></pre></div>
 <p>Once you run it (Step 6), the status changes to <code>running</code>.</p>
 <hr />
 <h2 id="step-6-run-your-sandbox">Step 6 - Run your sandbox</h2>
-<pre><code class="language-bash">sbx run sbxlab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>sbxlab
+</code></pre></div>
 <p>On first run, the agent may auto-update itself. If you see an update message, simply re-run the command:</p>
-<pre><code class="language-bash">sbx run sbxlab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>sbxlab
+</code></pre></div>
 <p>You will then see a trust prompt before the agent starts:</p>
-<pre><code>INFO: Starting Docker daemon
-Starting &lt;agent&gt; agent in sandbox 'sbxlab'...
+<div class="highlight"><pre><span></span><code>INFO: Starting Docker daemon
+Starting &lt;agent&gt; agent in sandbox &#39;sbxlab&#39;...
 Workspace: /your/project/path
 
 &gt; You are in /your/project/path
@@ -5662,7 +5725,7 @@ Workspace: /your/project/path
 
 › 1. Yes, continue
   2. No, quit
-</code></pre>
+</code></pre></div>
 <p>Select <strong>1. Yes, continue</strong> to launch the agent.</p>
 <blockquote>
 <p><strong>Why this prompt exists:</strong> sbx mounts only your project directory into the microVM. The trust check ensures you're aware of what the agent can see and act on.</p>

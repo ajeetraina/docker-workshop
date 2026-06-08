@@ -5534,29 +5534,29 @@
 <h2 id="part-1-what-the-agent-can-see">Part 1 - What the agent can see</h2>
 <p>Run these commands <strong>inside the sandbox</strong> (Terminal A):</p>
 <h3 id="1a-try-to-access-aws-credentials">1a. Try to access AWS credentials</h3>
-<pre><code class="language-bash">cat ~/.aws/credentials
-ls -la ~/.aws/
-</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>~/.aws/credentials
+ls<span class="w"> </span>-la<span class="w"> </span>~/.aws/
+</code></pre></div>
 <p>Real output:</p>
-<pre><code>cat: /home/agent/.aws/credentials: No such file or directory
+<div class="highlight"><pre><span></span><code>cat: /home/agent/.aws/credentials: No such file or directory
 
-ls: cannot access '/home/agent/.aws/': No such file or directory
-</code></pre>
+ls: cannot access &#39;/home/agent/.aws/&#39;: No such file or directory
+</code></pre></div>
 <h3 id="1b-try-to-access-ssh-keys">1b. Try to access SSH keys</h3>
-<pre><code class="language-bash">cat ~/.ssh/id_rsa
-ls -la ~/.ssh/
-</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>~/.ssh/id_rsa
+ls<span class="w"> </span>-la<span class="w"> </span>~/.ssh/
+</code></pre></div>
 <p>Real output:</p>
-<pre><code>cat: /home/agent/.ssh/id_rsa: No such file or directory
+<div class="highlight"><pre><span></span><code>cat: /home/agent/.ssh/id_rsa: No such file or directory
 
-ls: cannot access '/home/agent/.ssh/': No such file or directory
-</code></pre>
+ls: cannot access &#39;/home/agent/.ssh/&#39;: No such file or directory
+</code></pre></div>
 <h3 id="1c-inspect-the-agent-home-directory">1c. Inspect the agent home directory</h3>
-<pre><code class="language-bash">ls -la ~/
-pwd
-</code></pre>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-la<span class="w"> </span>~/
+<span class="nb">pwd</span>
+</code></pre></div>
 <p>Real output:</p>
-<pre><code>total 56
+<div class="highlight"><pre><span></span><code>total 56
 drwxr-xr-x 1 agent agent 4096 Apr 11 14:48 .
 drwxr-xr-x 1 root  root  4096 Apr 11 06:03 ..
 -rw------- 1 agent agent   61 Apr 11 14:48 .bash_history
@@ -5567,19 +5567,19 @@ drwxr-xr-x 3 agent agent   46 Apr 11 06:20 .docker
 drwxr-xr-x 1 agent agent   27 Apr 11 06:03 workspace
 
 /Users/ajeetraina/sbx-lab
-</code></pre>
+</code></pre></div>
 <p>Three things to notice:
 - Agent home is <code>/home/agent/</code> - a clean Linux environment, not your Mac home
 - <code>pwd</code> shows the exact host path <code>/Users/ajeetraina/sbx-lab</code> - preserved as the workspace mount point
 - No <code>.ssh/</code>, <code>.aws/</code>, <code>.zshrc</code>, no Mac files anywhere</p>
 <h3 id="1d-inspect-the-scaffolding-boundary">1d. Inspect the scaffolding boundary</h3>
-<pre><code class="language-bash">ls /Users/
-ls /Users/ajeetraina/
-ls /home/
-ls /var/run/
-</code></pre>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>/Users/
+ls<span class="w"> </span>/Users/ajeetraina/
+ls<span class="w"> </span>/home/
+ls<span class="w"> </span>/var/run/
+</code></pre></div>
 <p>Real output:</p>
-<pre><code>/Users/
+<div class="highlight"><pre><span></span><code>/Users/
 ajeetraina
 
 /Users/ajeetraina/
@@ -5590,7 +5590,7 @@ agent   ubuntu
 
 /var/run/
 containerd  docker  docker.pid  docker.sock  secrets
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -5623,27 +5623,27 @@ containerd  docker  docker.pid  docker.sock  secrets
 </tbody>
 </table>
 <h3 id="1e-try-to-reach-the-aws-metadata-endpoint">1e. Try to reach the AWS metadata endpoint</h3>
-<pre><code class="language-bash">curl -s --connect-timeout 3 http://169.254.169.254/latest/meta-data/
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>--connect-timeout<span class="w"> </span><span class="m">3</span><span class="w"> </span>http://169.254.169.254/latest/meta-data/
+</code></pre></div>
 <p>Real output:</p>
-<pre><code>Blocked by network policy: matched rule no applicable policies for op(action=net:connect:tcp,
+<div class="highlight"><pre><span></span><code>Blocked by network policy: matched rule no applicable policies for op(action=net:connect:tcp,
 resource=net:domain:169.254.169.254:80)
-</code></pre>
+</code></pre></div>
 <p>The Balanced network policy blocks the AWS IMDS endpoint entirely - the most dangerous target for a compromised agent running in a cloud VM.</p>
 <h3 id="1f-check-the-vm-identity">1f. Check the VM identity</h3>
-<pre><code class="language-bash">uname -r
-cat /etc/os-release
-cat /proc/1/cgroup
-</code></pre>
+<div class="highlight"><pre><span></span><code>uname<span class="w"> </span>-r
+cat<span class="w"> </span>/etc/os-release
+cat<span class="w"> </span>/proc/1/cgroup
+</code></pre></div>
 <p>Real output:</p>
-<pre><code>6.12.44
+<div class="highlight"><pre><span></span><code>6.12.44
 
 PRETTY_NAME=&quot;Ubuntu 25.10 (Questing Quokka)&quot;
 NAME=&quot;Ubuntu&quot;
 VERSION_ID=&quot;25.10&quot;
 
 0::/docker/d65f75fdecab4f730049fd5991cfb82c7a7ff539ec34828b1955021f1f42141c
-</code></pre>
+</code></pre></div>
 <ul>
 <li>Kernel <code>6.12.44</code> - Linux, not macOS. This is a real VM with its own kernel</li>
 <li>Ubuntu 25.10 - full Linux distro running inside the microVM</li>
@@ -5652,12 +5652,12 @@ VERSION_ID=&quot;25.10&quot;
 <hr />
 <h2 id="part-2-verify-the-host-is-untouched">Part 2 - Verify the host is untouched</h2>
 <p>Switch to <strong>Terminal B</strong> (host):</p>
-<pre><code class="language-bash">cat ~/.aws/credentials    # still here
-cat ~/.ssh/id_rsa         # still here
-ls -la ~/                 # unchanged
-docker ps                 # your host containers - sbxlab never appears
-sbx ls                    # sbxlab appears here instead
-</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>~/.aws/credentials<span class="w">    </span><span class="c1"># still here</span>
+cat<span class="w"> </span>~/.ssh/id_rsa<span class="w">         </span><span class="c1"># still here</span>
+ls<span class="w"> </span>-la<span class="w"> </span>~/<span class="w">                 </span><span class="c1"># unchanged</span>
+docker<span class="w"> </span>ps<span class="w">                 </span><span class="c1"># your host containers - sbxlab never appears</span>
+sbx<span class="w"> </span>ls<span class="w">                    </span><span class="c1"># sbxlab appears here instead</span>
+</code></pre></div>
 <p>Everything that doesn't exist inside the VM is alive and well on the host.</p>
 <hr />
 <h2 id="part-3-guardrails-vs-sbx-why-you-need-both">Part 3 - Guardrails vs sbx: why you need both</h2>
@@ -5711,7 +5711,7 @@ sbx ls                    # sbxlab appears here instead
 </blockquote>
 <hr />
 <h2 id="part-4-the-architecture">Part 4 - The architecture</h2>
-<pre><code>macOS host (L0)
+<div class="highlight"><pre><span></span><code>macOS host (L0)
 │
 ├── Your files, credentials, Docker daemon   ← outside the VM
 │
@@ -5724,7 +5724,7 @@ sbx ls                    # sbxlab appears here instead
         ├── Injects API key on outbound calls  ← agent never sees the key
         ├── Blocks 169.254.169.254             ← AWS IMDS unreachable
         └── Balanced policy: allows dev sites, blocks everything else
-</code></pre>
+</code></pre></div>
 <p>The key technical fact: <strong>the VM has its own kernel</strong>. A container escape would still be inside the VM. There is no path from the VM's userspace to your host's userspace - the hypervisor enforces that boundary in hardware.</p>
 <hr />
 <h2 id="checkpoint">✅ Checkpoint</h2>

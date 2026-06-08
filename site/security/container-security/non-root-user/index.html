@@ -5464,40 +5464,40 @@
 <h2 id="three-ways-to-enforce-non-root">Three ways to enforce non-root</h2>
 <h3 id="option-a-in-the-dockerfile-recommended">Option A - In the Dockerfile (recommended)</h3>
 <p>This is what we already have in our <code>Dockerfile</code>:</p>
-<pre><code class="language-dockerfile">RUN useradd -m appuser &amp;&amp; chown -R appuser /usr/local/app
-USER appuser
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">RUN</span><span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>appuser<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>appuser<span class="w"> </span>/usr/local/app
+<span class="k">USER</span><span class="w"> </span><span class="s">appuser</span>
+</code></pre></div>
 <p>Setting <code>USER</code> in the Dockerfile means <strong>every</strong> invocation of the image runs as <code>appuser</code> by default. No flag required at <code>docker run</code> time, no chance of someone forgetting.</p>
 <h3 id="option-b-at-docker-run-time">Option B - At <code>docker run</code> time</h3>
 <p>You can override the user when starting a container:</p>
-<pre><code class="language-bash">docker run --rm --user 1000:1000 catalog-service:slim \
-    node -e &quot;console.log(process.getuid())&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>--user<span class="w"> </span><span class="m">1000</span>:1000<span class="w"> </span>catalog-service:slim<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>node<span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;console.log(process.getuid())&quot;</span>
+</code></pre></div>
 <p>Expected output: <code>1000</code> - not <code>0</code>.</p>
 <h3 id="option-c-in-docker-compose">Option C - In <code>docker compose</code></h3>
-<pre><code class="language-yaml">services:
-  catalog:
-    build: .
-    user: &quot;${CURRENT_UID}&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">services</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">catalog</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">build</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">.</span>
+<span class="w">    </span><span class="nt">user</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;${CURRENT_UID}&quot;</span>
+</code></pre></div>
 <p>Use the host user's UID/GID - particularly useful for development where bind-mounted volumes need to match host file ownership.</p>
 <h2 id="verify-the-running-user">Verify the running user</h2>
-<pre><code class="language-bash">docker run --rm catalog-service:slim whoami
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>catalog-service:slim<span class="w"> </span>whoami
+</code></pre></div>
 <p>Expected output: <code>appuser</code> - not <code>root</code>.</p>
 <h2 id="the-hardened-docker-init-pattern">The hardened <code>docker init</code> pattern</h2>
 <p>When you run <code>docker init</code> in a new project, Docker scaffolds this hardened pattern automatically:</p>
-<pre><code class="language-dockerfile">ARG UID=10001
-RUN adduser \
-    --disabled-password \
-    --gecos &quot;&quot; \
-    --home &quot;/nonexistent&quot; \
-    --shell &quot;/sbin/nologin&quot; \
-    --no-create-home \
-    --uid &quot;${UID}&quot; \
-    appuser
-USER appuser
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">ARG</span><span class="w"> </span><span class="nv">UID</span><span class="o">=</span><span class="m">10001</span>
+<span class="k">RUN</span><span class="w"> </span>adduser<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--disabled-password<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--gecos<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--home<span class="w"> </span><span class="s2">&quot;/nonexistent&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--shell<span class="w"> </span><span class="s2">&quot;/sbin/nologin&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--no-create-home<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--uid<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">UID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>appuser
+<span class="k">USER</span><span class="w"> </span><span class="s">appuser</span>
+</code></pre></div>
 <p>Extra hardening in this version:</p>
 <ul>
 <li>No home directory</li>
@@ -5506,8 +5506,8 @@ USER appuser
 <li>High UID (10001) to avoid colliding with host users</li>
 </ul>
 <h2 id="confirm-scout-policy">Confirm Scout policy</h2>
-<pre><code class="language-bash">docker scout quickview catalog-service:slim --org &lt;YOUR_ORG&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>quickview<span class="w"> </span>catalog-service:slim<span class="w"> </span>--org<span class="w"> </span>&lt;YOUR_ORG&gt;
+</code></pre></div>
 <p>Look for <code>Default non-root user</code> in the policy output - it should show ✓.</p>
 <p>Continue to <a href="../readonly-capabilities/">BP#4: Read-Only Filesystem + Drop Capabilities</a>.</p>
 

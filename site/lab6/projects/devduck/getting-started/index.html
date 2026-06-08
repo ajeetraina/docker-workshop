@@ -6141,15 +6141,15 @@
 <h2 id="step-1-repository-setup">Step 1: Repository Setup</h2>
 <p>First, let's clone the repository and explore its structure:</p>
 <h3 id="clone-the-repository">Clone the Repository</h3>
-<pre><code class="language-bash"># Clone the Docker Cerebras demo repository
-git clone https://github.com/dockersamples/docker-cerebras-demo.git
+<div class="highlight"><pre><span></span><code><span class="c1"># Clone the Docker Cerebras demo repository</span>
+git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dockersamples/docker-cerebras-demo.git
 
-# Navigate to the project directory
-cd docker-cerebras-demo
+<span class="c1"># Navigate to the project directory</span>
+<span class="nb">cd</span><span class="w"> </span>docker-cerebras-demo
 
-# List the contents to familiarize yourself
-ls -la
-</code></pre>
+<span class="c1"># List the contents to familiarize yourself</span>
+ls<span class="w"> </span>-la
+</code></pre></div>
 <h3 id="component-breakdown">Component Breakdown</h3>
 <h4 id="devduck-orchestrator">🎼 <strong>DevDuck Orchestrator</strong></h4>
 <ul>
@@ -6209,28 +6209,28 @@ ls -la
 <h2 id="environment-configuration">Environment Configuration</h2>
 <h3 id="required-environment-variables">Required Environment Variables</h3>
 <p>You'll need to configure these environment variables:</p>
-<pre><code class="language-bash"># Cerebras Configuration
-CEREBRAS_API_KEY=your_cerebras_api_key
-CEREBRAS_BASE_URL=https://api.cerebras.ai/v1
-CEREBRAS_CHAT_MODEL=qwen-3-235b-a22b-instruct-2507
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Cerebras Configuration</span>
+<span class="nv">CEREBRAS_API_KEY</span><span class="o">=</span>your_cerebras_api_key
+<span class="nv">CEREBRAS_BASE_URL</span><span class="o">=</span>https://api.cerebras.ai/v1
+<span class="nv">CEREBRAS_CHAT_MODEL</span><span class="o">=</span>qwen-3-235b-a22b-instruct-2507
+</code></pre></div>
 <h3 id="examine-key-files">🔍 Examine Key Files</h3>
 <p>Let's look at the main configuration files:</p>
-<pre><code class="language-bash"># View the Docker Compose configuration
-cat compose.yml
+<div class="highlight"><pre><span></span><code><span class="c1"># View the Docker Compose configuration</span>
+cat<span class="w"> </span>compose.yml
 
-# Examine the main agent entry point
-cat agents/main.py
+<span class="c1"># Examine the main agent entry point</span>
+cat<span class="w"> </span>agents/main.py
 
-# Check the agent requirements
-cat agents/requirements.txt
-</code></pre>
+<span class="c1"># Check the agent requirements</span>
+cat<span class="w"> </span>agents/requirements.txt
+</code></pre></div>
 <h2 id="docker-image-preparation">Docker Image Preparation</h2>
 <p>Before deploying, let's understand what Docker will build:</p>
 <h3 id="examine-the-dockerfile">🐳 Examine the Dockerfile</h3>
-<pre><code class="language-bash"># View the agent Dockerfile
-cat agents/Dockerfile
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># View the agent Dockerfile</span>
+cat<span class="w"> </span>agents/Dockerfile
+</code></pre></div>
 <p><strong>Understanding the Build Process:</strong>
 - Base image with Python runtime
 - Agent dependencies installation
@@ -6239,9 +6239,9 @@ cat agents/Dockerfile
 <h2 id="step-2-system-deployment">Step 2. System Deployment</h2>
 <p>Now let's deploy the complete multi-agent system:</p>
 <h3 id="initial-deployment">🚀 Initial Deployment</h3>
-<pre><code class="language-bash"># Deploy all services
-docker compose up
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Deploy all services</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up
+</code></pre></div>
 <p><strong>What to expect during first deployment:</strong></p>
 <ol>
 <li><strong>Image Building</strong> (2-3 minutes)</li>
@@ -6267,30 +6267,30 @@ docker compose up
 </ol>
 <h3 id="development-mode-deployment">🔄 Development Mode Deployment</h3>
 <p>For active development with code changes:</p>
-<pre><code class="language-bash"># Run in detached mode (background)
-docker compose up -d
+<div class="highlight"><pre><span></span><code><span class="c1"># Run in detached mode (background)</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
 
-# Build and restart when code changes
-docker compose up --build
-</code></pre>
+<span class="c1"># Build and restart when code changes</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build
+</code></pre></div>
 <h2 id="step-3-deployment-verification">Step 3: Deployment Verification</h2>
 <h3 id="check-service-status">✅ Check Service Status</h3>
-<pre><code class="language-bash"># Verify all containers are running
-docker compose ps
-</code></pre>
-<p><strong>Expected Output:</strong></p>
-<pre><code>NAME                                   IMAGE                               COMMAND                  SERVICE         CREATED         STATUS         PORTS
-docker-cerebras-demo-devduck-agent-1   docker-cerebras-demo-devduck-agent  &quot;sh -c 'uvicorn main…&quot;   devduck-agent   2 minutes ago   Up 2 minutes   0.0.0.0:8000-&gt;8000/tcp
+<div class="highlight"><pre><span></span><code><span class="c1"># Verify all containers are running</span>
+docker<span class="w"> </span>compose<span class="w"> </span>ps
+</code></pre></div>
+<p><strong>Expected Output:</strong>
+<div class="highlight"><pre><span></span><code>NAME                                   IMAGE                               COMMAND                  SERVICE         CREATED         STATUS         PORTS
+docker-cerebras-demo-devduck-agent-1   docker-cerebras-demo-devduck-agent  &quot;sh -c &#39;uvicorn main…&quot;   devduck-agent   2 minutes ago   Up 2 minutes   0.0.0.0:8000-&gt;8000/tcp
 docker-cerebras-demo-mcp-gateway-1     docker/mcp-gateway:latest           &quot;/docker-mcp gateway…&quot;   mcp-gateway     2 minutes ago   Up 2 minutes   
-</code></pre>
+</code></pre></div></p>
 <h3 id="health-check">🩺 Health Check</h3>
 <p>Perform a comprehensive health check:</p>
-<pre><code class="language-bash"># Check container resource usage
-docker stats --no-stream
+<div class="highlight"><pre><span></span><code><span class="c1"># Check container resource usage</span>
+docker<span class="w"> </span>stats<span class="w"> </span>--no-stream
 
-# Verify agent endpoints
-curl -s http://localhost:8000/health | jq .
-</code></pre>
+<span class="c1"># Verify agent endpoints</span>
+curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8000/health<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>.
+</code></pre></div>
 <h2 id="step-4-first-access">Step 4: First Access</h2>
 <h3 id="access-the-web-interface">🌐 Access the Web Interface</h3>
 <p>Open your web browser and navigate to:</p>

@@ -5403,12 +5403,12 @@
 <hr />
 <h2 id="start-the-sandbox">Start the sandbox</h2>
 <p>From your host terminal, in <code>~/sbx-lab</code>:</p>
-<pre><code class="language-bash">sbx run sbxlab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>sbxlab
+</code></pre></div>
 <p>On first run, the agent may auto-update itself:</p>
-<p>!!! note "If you chose OpenAI + Codex"</p>
-<pre><code>```
-Starting codex agent in sandbox 'sbxlab'...
+<div class="admonition note">
+<p class="admonition-title">If you chose OpenAI + Codex</p>
+<div class="highlight"><pre><span></span><code>Starting codex agent in sandbox &#39;sbxlab&#39;...
 Workspace: /your/project/path
 
 Updating Codex via `npm install -g @openai/codex`...
@@ -5416,11 +5416,11 @@ Updating Codex via `npm install -g @openai/codex`...
 changed 2 packages in 4s
 
 🎉 Update ran successfully! Please restart Codex.
-```
-</code></pre>
-<p>!!! note "If you chose Anthropic + Claude"</p>
-<pre><code>```
-Starting claude agent in sandbox 'sbxlab'...
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">If you chose Anthropic + Claude</p>
+<div class="highlight"><pre><span></span><code>Starting claude agent in sandbox &#39;sbxlab&#39;...
 Workspace: /your/project/path
 
 Updating Claude Code via `npm install -g @anthropic-ai/claude-code`...
@@ -5428,45 +5428,45 @@ Updating Claude Code via `npm install -g @anthropic-ai/claude-code`...
 changed 2 packages in 4s
 
 🎉 Update ran successfully! Please restart Claude Code.
-```
-</code></pre>
-<p>!!! note "If you chose Google + Gemini"</p>
-<pre><code>```
-Starting gemini agent in sandbox 'sbxlab'...
+</code></pre></div>
+</div>
+<div class="admonition note">
+<p class="admonition-title">If you chose Google + Gemini</p>
+<div class="highlight"><pre><span></span><code>Starting gemini agent in sandbox &#39;sbxlab&#39;...
 Workspace: /your/project/path
 
 Updating Gemini CLI...
-```
-</code></pre>
+</code></pre></div>
+</div>
 <p>If you see an update message, re-run <code>sbx run sbxlab</code>. You will then see the trust prompt:</p>
-<pre><code>  Do you trust the contents of this directory? Working with untrusted
+<div class="highlight"><pre><span></span><code>  Do you trust the contents of this directory? Working with untrusted
   contents comes with higher risk of prompt injection.
 
 › 1. Yes, continue
   2. No, quit
-</code></pre>
+</code></pre></div>
 <p>Select <strong>1. Yes, continue</strong>.</p>
 <hr />
 <h2 id="explore-the-codebase">Explore the codebase</h2>
 <p>Once the agent is running, give it this prompt:</p>
-<pre><code>Explore this codebase and give me:
+<div class="highlight"><pre><span></span><code>Explore this codebase and give me:
 1. A summary of the architecture and tech stack
 2. How to run it locally without Docker Compose
 3. What the test suite covers
 4. Any obvious issues or areas of concern
-</code></pre>
+</code></pre></div>
 <p>The agent will read the source files and report back. Watch it work - it's reading the actual files from your <code>~/sbx-lab</code> directory.</p>
 <hr />
 <h2 id="whats-happening-under-the-hood">What's happening under the hood</h2>
 <p>While the agent is working, open a <strong>second terminal on your host</strong> and run:</p>
-<pre><code class="language-bash"># These show the sandbox is a VM, not a container
-docker ps          # sbxlab does NOT appear here
-sbx ls             # sbxlab appears HERE instead
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># These show the sandbox is a VM, not a container</span>
+docker<span class="w"> </span>ps<span class="w">          </span><span class="c1"># sbxlab does NOT appear here</span>
+sbx<span class="w"> </span>ls<span class="w">             </span><span class="c1"># sbxlab appears HERE instead</span>
+</code></pre></div>
 <p>Expected output from <code>sbx ls</code>:</p>
-<pre><code>SANDBOX   AGENT      STATUS    PORTS   WORKSPACE
+<div class="highlight"><pre><span></span><code>SANDBOX   AGENT      STATUS    PORTS   WORKSPACE
 sbxlab    &lt;agent&gt;   running           /your/project/path
-</code></pre>
+</code></pre></div>
 <p>The sandbox isn't a container on your host - it's a VM. That distinction matters, and you'll prove it hands-on in the next module.</p>
 <hr />
 <h2 id="understanding-the-workspace-mount">Understanding the workspace mount</h2>
@@ -5500,8 +5500,8 @@ sbxlab    &lt;agent&gt;   running           /your/project/path
 <hr />
 <h2 id="the-interactive-tui-dashboard">The interactive TUI dashboard</h2>
 <p>In a separate host terminal, run:</p>
-<pre><code class="language-bash">sbx
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx
+</code></pre></div>
 <p>The dashboard shows your sandboxes as cards with live CPU and memory usage. Press <code>Tab</code> to switch to the <strong>Network panel</strong> - a live log of every outbound connection the sandbox makes.</p>
 <p>Press <code>Ctrl-C</code> then <code>Y</code> to exit without stopping your sandboxes.</p>
 <hr />

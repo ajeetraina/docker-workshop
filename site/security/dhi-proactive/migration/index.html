@@ -5450,61 +5450,61 @@
 </ul>
 <h2 id="update-the-dockerfile">Update the Dockerfile</h2>
 <p>Open <code>catalog-service-node/Dockerfile</code> and replace it with this DHI-based version:</p>
-<pre><code class="language-dockerfile">###########################################################
-# Stage: base (DHI dev variant - has shell + npm for builds)
-###########################################################
-FROM &lt;DHI_PREFIX&gt;node:24-debian13-dev AS base
+<div class="highlight"><pre><span></span><code><span class="c">###########################################################</span>
+<span class="c"># Stage: base (DHI dev variant - has shell + npm for builds)</span>
+<span class="c">###########################################################</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">&lt;DHI_PREFIX&gt;node:24-debian13-dev</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">base</span>
 
-WORKDIR /usr/local/app
-COPY package.json package-lock.json ./
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/local/app</span>
+<span class="k">COPY</span><span class="w"> </span>package.json<span class="w"> </span>package-lock.json<span class="w"> </span>./
 
-###########################################################
-# Stage: dev
-###########################################################
-FROM base AS dev
-ENV NODE_ENV=development
-RUN npm install
-CMD [&quot;yarn&quot;, &quot;dev-container&quot;]
+<span class="c">###########################################################</span>
+<span class="c"># Stage: dev</span>
+<span class="c">###########################################################</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">dev</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>development
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;yarn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;dev-container&quot;</span><span class="p">]</span>
 
-###########################################################
-# Stage: production-dependencies
-###########################################################
-FROM base AS production-dependencies
-ENV NODE_ENV=production
-RUN npm ci --production --ignore-scripts &amp;&amp; npm cache clean --force
+<span class="c">###########################################################</span>
+<span class="c"># Stage: production-dependencies</span>
+<span class="c">###########################################################</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">production-dependencies</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>production
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>ci<span class="w"> </span>--production<span class="w"> </span>--ignore-scripts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force
 
-###########################################################
-# Stage: final (DHI runtime - distroless, no shell)
-###########################################################
-FROM &lt;DHI_PREFIX&gt;node:24-debian13 AS final
-ENV NODE_ENV=production
-COPY --from=production-dependencies /usr/local/app/node_modules ./node_modules
-COPY ./src ./src
-EXPOSE 3000
-CMD [&quot;node&quot;, &quot;src/index.js&quot;]
-</code></pre>
+<span class="c">###########################################################</span>
+<span class="c"># Stage: final (DHI runtime - distroless, no shell)</span>
+<span class="c">###########################################################</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">&lt;DHI_PREFIX&gt;node:24-debian13</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">final</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>production
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>production-dependencies<span class="w"> </span>/usr/local/app/node_modules<span class="w"> </span>./node_modules
+<span class="k">COPY</span><span class="w"> </span>./src<span class="w"> </span>./src
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;src/index.js&quot;</span><span class="p">]</span>
+</code></pre></div>
 <p>The two critical changes:</p>
-<pre><code class="language-diff">- FROM node:25-slim AS base
-+ FROM &lt;DHI_PREFIX&gt;node:24-debian13-dev AS base   # build stage
-+ FROM &lt;DHI_PREFIX&gt;node:24-debian13 AS final      # runtime - distroless
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="gd">- FROM node:25-slim AS base</span>
+<span class="gi">+ FROM &lt;DHI_PREFIX&gt;node:24-debian13-dev AS base   # build stage</span>
+<span class="gi">+ FROM &lt;DHI_PREFIX&gt;node:24-debian13 AS final      # runtime - distroless</span>
+</code></pre></div>
 <p>Notice the structure: the dev variant is used as the build environment (it has <code>npm</code>), but the final image is built <code>FROM</code> the <strong>distroless runtime</strong> variant. Only the compiled <code>node_modules</code> and <code>src</code> are copied in.</p>
 <h2 id="build-the-dhi-version">Build the DHI version</h2>
-<pre><code class="language-bash">docker build -t catalog-service:dhi --sbom=true --provenance=mode=max .
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>catalog-service:dhi<span class="w"> </span>--sbom<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--provenance<span class="o">=</span><span class="nv">mode</span><span class="o">=</span>max<span class="w"> </span>.
+</code></pre></div>
 <h2 id="compare-all-three-images">Compare all three images</h2>
-<pre><code class="language-bash">docker images catalog-service
-</code></pre>
-<pre><code class="language-text">IMAGE                    ID             DISK USAGE   CONTENT SIZE
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>images<span class="w"> </span>catalog-service
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>IMAGE                    ID             DISK USAGE   CONTENT SIZE
 catalog-service:dhi      ac3a0d465de4        191MB         40.3MB
 catalog-service:latest   48806e62b871       1.62GB          413MB
 catalog-service:slim     8d03cef7a79f        368MB         84.1MB
-</code></pre>
+</code></pre></div>
 <p>The DHI runtime is <strong>10× smaller than the original</strong> and <strong>half the size of the slim version</strong> - and we still haven't looked at security.</p>
 <h2 id="scout-quickview-all-7-policies-green">Scout quickview - all 7 policies green</h2>
-<pre><code class="language-bash">docker scout quickview catalog-service:dhi --org &lt;YOUR_ORG&gt;
-</code></pre>
-<pre><code class="language-text">Target     │  catalog-service:dhi  │    0C     0H     0M     0L
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>quickview<span class="w"> </span>catalog-service:dhi<span class="w"> </span>--org<span class="w"> </span>&lt;YOUR_ORG&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>Target     │  catalog-service:dhi  │    0C     0H     0M     0L
 
 Policy status  SUCCEEDED  (7/7 policies met)
 
@@ -5517,19 +5517,19 @@ Policy status  SUCCEEDED  (7/7 policies met)
   ✓      │ No unapproved base images                                        │
   ✓      │ Supply chain attestations                                        │
   ✓      │ No outdated base images                                          │
-</code></pre>
+</code></pre></div>
 <p><strong>7/7 policies met.</strong> Up from 4/7 at the start of the workshop.</p>
 <h2 id="full-beforeafter-comparison">Full before/after comparison</h2>
-<pre><code class="language-bash">docker scout compare \
-    --ignore-unchanged \
-    --to catalog-service \
-    catalog-service:dhi \
-    --org &lt;YOUR_ORG&gt;
-</code></pre>
-<pre><code class="language-text">  vulnerabilities │  0C  0H  0M  0L   │  2C  26H  25M  122L  4?
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>compare<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ignore-unchanged<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--to<span class="w"> </span>catalog-service<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>catalog-service:dhi<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--org<span class="w"> </span>&lt;YOUR_ORG&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  vulnerabilities │  0C  0H  0M  0L   │  2C  26H  25M  122L  4?
   size            │  40 MB (-358 MB)   │  398 MB
   packages        │  211 (-595)        │  806
-</code></pre>
+</code></pre></div>
 <p>The numbers:</p>
 <ul>
 <li>✅ <strong>595 packages removed</strong> - 595 fewer potential CVE vectors</li>
@@ -5538,12 +5538,12 @@ Policy status  SUCCEEDED  (7/7 policies met)
 </ul>
 <h2 id="the-no-shell-demo">The no-shell demo</h2>
 <p>Because the DHI runtime is distroless, an attacker who gains code execution <strong>cannot drop to a shell</strong>:</p>
-<pre><code class="language-bash">docker run --rm catalog-service:dhi sh
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>catalog-service:dhi<span class="w"> </span>sh
+</code></pre></div>
 <p>Expected: error - <code>sh</code> does not exist in the image.</p>
 <p>Compare to slim:</p>
-<pre><code class="language-bash">docker run --rm catalog-service:slim sh -c &quot;echo 'shell available - attack surface'&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>catalog-service:slim<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo &#39;shell available - attack surface&#39;&quot;</span>
+</code></pre></div>
 <p>The slim image still gives the attacker a shell. The DHI image does not. That's a meaningful difference in what an exploit can do once it lands.</p>
 <h2 id="dhi-vs-slim-property-comparison">DHI vs slim - property comparison</h2>
 <table>

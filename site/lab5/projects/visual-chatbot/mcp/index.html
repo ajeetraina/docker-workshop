@@ -5469,15 +5469,15 @@
 </ul>
 <h2 id="create-a-directory">Create a directory</h2>
 <p>Create a new directory called mcptooling</p>
-<pre><code>mkdir mcptooling
-</code></pre>
+<div class="highlight"><pre><span></span><code>mkdir mcptooling
+</code></pre></div>
 <h2 id="package-depdendencies">Package Depdendencies</h2>
 <p>Install the required packages:</p>
-<pre><code>npm install @modelcontextprotocol/sdk zod
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm install @modelcontextprotocol/sdk zod
+</code></pre></div>
 <h2 id="execution-steps">Execution Steps</h2>
 <p>Save the code to a file (e.g., time-server.js)</p>
-<pre><code>import { McpServer } from &quot;@modelcontextprotocol/sdk/server/mcp.js&quot;;
+<p><div class="highlight"><pre><span></span><code>import { McpServer } from &quot;@modelcontextprotocol/sdk/server/mcp.js&quot;;
 import { StdioServerTransport } from &quot;@modelcontextprotocol/sdk/server/stdio.js&quot;;
 import { z } from &quot;zod&quot;;
 
@@ -5503,12 +5503,12 @@ server.tool(
 
 const transport = new StdioServerTransport();
 await server.connect(transport);
-</code></pre>
-<p>Save the code above to a file named <code>time-server.js</code> in the <code>mcptooling</code> directory.</p>
+</code></pre></div>
+Save the code above to a file named <code>time-server.js</code> in the <code>mcptooling</code> directory.</p>
 <h2 id="run-the-server">Run the server:</h2>
 <p>Then, run the server using Node.js:</p>
-<pre><code>node time-server.js
-</code></pre>
+<div class="highlight"><pre><span></span><code>node time-server.js
+</code></pre></div>
 <h2 id="what-this-server-does">What this server does</h2>
 <p>This MCP server:</p>
 <ul>
@@ -5524,24 +5524,24 @@ await server.connect(transport);
 <li>Or connecting it to an MCP client that supports stdio transport</li>
 <li>Or using it with applications that integrate MCP servers (like Claude Desktop, if configured)</li>
 </ul>
-<pre><code>node time-server.js
-</code></pre>
+<div class="highlight"><pre><span></span><code>node time-server.js
+</code></pre></div>
 <p>Great! Your MCP server is now running successfully.
 Since there's no output shown, that means it's working correctly and waiting for MCP protocol messages on stdin.</p>
 <h2 id="method-1-test-with-a-simple-message">Method 1: Test with a simple message</h2>
 <p>You can type this JSON-RPC message (press Enter after pasting):</p>
-<pre><code>{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;tools/list&quot;}
-</code></pre>
+<div class="highlight"><pre><span></span><code>{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 1, &quot;method&quot;: &quot;tools/list&quot;}
+</code></pre></div>
 <h2 id="result">Result</h2>
-<pre><code>{&quot;result&quot;:{&quot;tools&quot;:[{&quot;name&quot;:&quot;get-current-time&quot;,&quot;description&quot;:&quot;Get the current time for a requested timezone&quot;,&quot;inputSchema&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;timezone&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;description&quot;:&quot;The requested timezone in IANA format&quot;}},&quot;required&quot;:[&quot;timezone&quot;],&quot;additionalProperties&quot;:false,&quot;$schema&quot;:&quot;http://json-schema.org/draft-07/schema#&quot;}}]},&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1}
-</code></pre>
+<div class="highlight"><pre><span></span><code>{&quot;result&quot;:{&quot;tools&quot;:[{&quot;name&quot;:&quot;get-current-time&quot;,&quot;description&quot;:&quot;Get the current time for a requested timezone&quot;,&quot;inputSchema&quot;:{&quot;type&quot;:&quot;object&quot;,&quot;properties&quot;:{&quot;timezone&quot;:{&quot;type&quot;:&quot;string&quot;,&quot;description&quot;:&quot;The requested timezone in IANA format&quot;}},&quot;required&quot;:[&quot;timezone&quot;],&quot;additionalProperties&quot;:false,&quot;$schema&quot;:&quot;http://json-schema.org/draft-07/schema#&quot;}}]},&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1}
+</code></pre></div>
 <h2 id="method-2-test-the-time-tool">Method 2: Test the time tool</h2>
 <p>You can test the "get-current-time" tool by sending a JSON-RPC message like this:</p>
-<pre><code>{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 2, &quot;method&quot;: &quot;tools/call&quot;, &quot;params&quot;: {&quot;name&quot;: &quot;get-current-time&quot;, &quot;arguments&quot;: {&quot;timezone&quot;: &quot;America/New_York&quot;}}}
-</code></pre>
+<div class="highlight"><pre><span></span><code>{&quot;jsonrpc&quot;: &quot;2.0&quot;, &quot;id&quot;: 2, &quot;method&quot;: &quot;tools/call&quot;, &quot;params&quot;: {&quot;name&quot;: &quot;get-current-time&quot;, &quot;arguments&quot;: {&quot;timezone&quot;: &quot;America/New_York&quot;}}}
+</code></pre></div>
 <p>You will receive a response with the current time in the specified timezone.</p>
-<pre><code>{&quot;result&quot;:{&quot;content&quot;:[{&quot;type&quot;:&quot;text&quot;,&quot;text&quot;:&quot;5/31/2025, 10:29:05 PM&quot;}]},&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:2}
-</code></pre>
+<div class="highlight"><pre><span></span><code>{&quot;result&quot;:{&quot;content&quot;:[{&quot;type&quot;:&quot;text&quot;,&quot;text&quot;:&quot;5/31/2025, 10:29:05 PM&quot;}]},&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:2}
+</code></pre></div>
 
 
 

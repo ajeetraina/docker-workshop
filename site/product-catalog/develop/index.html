@@ -5473,12 +5473,12 @@
   <h1>Develop</h1>
 
 <h3 id="clone-the-repo">Clone the repo</h3>
-<pre><code>git clone https://github.com/dockersamples/catalog-service-node
-</code></pre>
+<div class="highlight"><pre><span></span><code>git clone https://github.com/dockersamples/catalog-service-node
+</code></pre></div>
 <h2 id="initial-setup">Initial Setup</h2>
-<pre><code>cd demo/sdlc-e2e
+<div class="highlight"><pre><span></span><code>cd demo/sdlc-e2e
 ./setup.sh
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>The setup.sh script performs several important setup tasks to prepare the development environment for the Docker workshop. Let me explain what it does in detail:
 The script performs the following tasks:</p>
@@ -5533,13 +5533,13 @@ This enables security scanning capabilities for the workshop</p>
 <p>In summary, the setup.sh script prepares a consistent, clean environment with all necessary dependencies, tools, and configurations so that workshop participants can immediately start working on the exercises without spending time on setup. It also makes deliberate modifications to the codebase (like removing the UPC field from Kafka messages) that will be "fixed" during the workshop exercises.</p>
 </blockquote>
 <h3 id="run-the-compose">Run the Compose</h3>
-<pre><code>docker compose up -d
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker compose up -d
+</code></pre></div>
 <h2 id="setting-up-the-demo">Setting up the Demo</h2>
 <p>Bring up the API service </p>
-<pre><code>npm install
+<div class="highlight"><pre><span></span><code>npm install
 npm run dev
-</code></pre>
+</code></pre></div>
 <h3 id="accessing-the-web-client">Accessing the Web Client</h3>
 <ul>
 <li>Open the web client (http://localhost:5173) and create a few products.</li>
@@ -5557,7 +5557,7 @@ npm run dev
 <p>Use the following Postgres CLI to check if the products are added or not.</p>
 </li>
 </ul>
-<pre><code># psql -U postgres
+<div class="highlight"><pre><span></span><code># psql -U postgres
 psql (17.1 (Debian 17.1-1.pgdg120+1))
 Type &quot;help&quot; for help
 postgres=# \c catalog
@@ -5566,7 +5566,7 @@ catalog=# SELECT * FROM products;
   1 | New Product | 100000000001 | 100.00 | f
   2 | New Product | 100000000002 | 100.00 | f
   3 | New Product | 100000000003 | 100.00 | f
-</code></pre>
+</code></pre></div>
 <h3 id="access-the-kafka-visualizer">Access the Kafka Visualizer</h3>
 <p>Before we access visualizer, let's apply the patch:</p>
 <p>Open the Kafka visualizer <a href="http://localhost:8080">http://localhost:8080</a> and look at the published messages. 
@@ -5575,8 +5575,8 @@ catalog=# SELECT * FROM products;
 <h2 id="lets-fix-it">Let's fix it...</h2>
 <h3 id="configuring">Configuring</h3>
 <p>In VS Code, open the <code>src/services/ProductService.js</code> file and add the following to the publishEvent on line ~52:</p>
-<pre><code>upc: product.upc,
-</code></pre>
+<div class="highlight"><pre><span></span><code>upc: product.upc,
+</code></pre></div>
 <p>Save the file and create a new product using the web UI. </p>
 <p><img width="1191" alt="image" src="https://github.com/user-attachments/assets/32c5ba6c-60c1-403b-9962-50c501a5e996" /></p>
 <p>Validate the message has the expected contents.</p>

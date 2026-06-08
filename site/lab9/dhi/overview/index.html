@@ -5348,59 +5348,59 @@
 <h2 id="the-sample-application">The Sample Application</h2>
 <p>The demo application used in this workshop is a simple Hello World Node.js server. The source code is available in the <a href="https://github.com/dockersamples/labspace-dhi-node">labspace-dhi-node</a> repository.</p>
 <p><strong>app.js:</strong></p>
-<pre><code class="language-javascript">const http = require('http');
+<div class="highlight"><pre><span></span><code><span class="kd">const</span><span class="w"> </span><span class="nx">http</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">require</span><span class="p">(</span><span class="s1">&#39;http&#39;</span><span class="p">);</span>
 
-const port = 3000;
+<span class="kd">const</span><span class="w"> </span><span class="nx">port</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">3000</span><span class="p">;</span>
 
-const server = http.createServer((req, res) =&gt; {
-  if (req.url === '/' &amp;&amp; req.method === 'GET') {
-    res.writeHead(200, { 'Content-Type': 'text/plain' });
-    res.end('Hello World!');
-  } else {
-    res.writeHead(404);
-    res.end('Not Found');
-  }
-});
+<span class="kd">const</span><span class="w"> </span><span class="nx">server</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">http</span><span class="p">.</span><span class="nx">createServer</span><span class="p">((</span><span class="nx">req</span><span class="p">,</span><span class="w"> </span><span class="nx">res</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">req</span><span class="p">.</span><span class="nx">url</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;/&#39;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nx">req</span><span class="p">.</span><span class="nx">method</span><span class="w"> </span><span class="o">===</span><span class="w"> </span><span class="s1">&#39;GET&#39;</span><span class="p">)</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">200</span><span class="p">,</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="s1">&#39;Content-Type&#39;</span><span class="o">:</span><span class="w"> </span><span class="s1">&#39;text/plain&#39;</span><span class="w"> </span><span class="p">});</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span><span class="w"> </span><span class="k">else</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">writeHead</span><span class="p">(</span><span class="mf">404</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">res</span><span class="p">.</span><span class="nx">end</span><span class="p">(</span><span class="s1">&#39;Not Found&#39;</span><span class="p">);</span>
+<span class="w">  </span><span class="p">}</span>
+<span class="p">});</span>
 
-server.listen(port, () =&gt; {
-  console.log(`Server listening on port ${port}`);
-});
-</code></pre>
+<span class="nx">server</span><span class="p">.</span><span class="nx">listen</span><span class="p">(</span><span class="nx">port</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="sb">`Server listening on port </span><span class="si">${</span><span class="nx">port</span><span class="si">}</span><span class="sb">`</span><span class="p">);</span>
+<span class="p">});</span>
+</code></pre></div>
 <p><strong>Dockerfile (starting point):</strong></p>
-<pre><code class="language-dockerfile">FROM node:24-trixie-slim AS dev
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">node:24-trixie-slim</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">dev</span>
 
-ENV BLUEBIRD_WARNINGS=0 \
-NODE_ENV=production \
-NODE_NO_WARNINGS=1 \
-NPM_CONFIG_LOGLEVEL=warn \
-SUPPRESS_NO_CONFIG_WARNING=true
+<span class="k">ENV</span><span class="w"> </span><span class="nv">BLUEBIRD_WARNINGS</span><span class="o">=</span><span class="m">0</span><span class="w"> </span><span class="se">\</span>
+<span class="nv">NODE_ENV</span><span class="o">=</span>production<span class="w"> </span><span class="se">\</span>
+<span class="nv">NODE_NO_WARNINGS</span><span class="o">=</span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<span class="nv">NPM_CONFIG_LOGLEVEL</span><span class="o">=</span>warn<span class="w"> </span><span class="se">\</span>
+<span class="nv">SUPPRESS_NO_CONFIG_WARNING</span><span class="o">=</span><span class="nb">true</span>
 
-WORKDIR /app
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
 
-COPY package.json ./
+<span class="k">COPY</span><span class="w"> </span>package.json<span class="w"> </span>./
 
-RUN apt-get update \
- &amp;&amp; apt-get install -y --no-install-recommends npm \
- &amp;&amp; npm install --no-optional \
- &amp;&amp; npm cache clean --force \
- &amp;&amp; apt-get remove -y npm \
- &amp;&amp; apt-get autoremove -y \
- &amp;&amp; rm -rf /var/lib/apt/lists/*
+<span class="k">RUN</span><span class="w"> </span>apt-get<span class="w"> </span>update<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>--no-install-recommends<span class="w"> </span>npm<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>install<span class="w"> </span>--no-optional<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>remove<span class="w"> </span>-y<span class="w"> </span>npm<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>apt-get<span class="w"> </span>autoremove<span class="w"> </span>-y<span class="w"> </span><span class="se">\</span>
+<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span>/var/lib/apt/lists/*
 
-COPY . .
+<span class="k">COPY</span><span class="w"> </span>.<span class="w"> </span>.
 
 
-#-- Prod stage --
-FROM node:24-trixie-slim AS prod
+<span class="c">#-- Prod stage --</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">node:24-trixie-slim</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">prod</span>
 
-WORKDIR /app
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/app</span>
 
-COPY --from=dev /app /app
+<span class="k">COPY</span><span class="w"> </span>--from<span class="o">=</span>dev<span class="w"> </span>/app<span class="w"> </span>/app
 
-ENTRYPOINT [&quot;node&quot;]
-CMD [&quot;app.js&quot;]
-EXPOSE 3000
-</code></pre>
+<span class="k">ENTRYPOINT</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">]</span>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;app.js&quot;</span><span class="p">]</span>
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
+</code></pre></div>
 <p>The Dockerfile takes a multi-stage build approach and is based on the <code>node:24-trixie-slim</code> image. As you'll see in the next sections, this base image comes with CVEs and fails several Docker Scout policies - which is exactly where DHI comes into play.</p>
 
 

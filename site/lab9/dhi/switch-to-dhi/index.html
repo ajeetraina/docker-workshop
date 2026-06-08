@@ -5381,21 +5381,21 @@
 <h2 id="step-1-update-the-dockerfile">Step 1. Update the Dockerfile</h2>
 <p>Update the <code>Dockerfile</code> to use the DHI images:</p>
 <p>Change the dev stage:</p>
-<pre><code class="language-dockerfile">FROM &lt;YOUR_ORG_NAME&gt;/dhi-node:24-debian13-dev AS dev
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">&lt;YOUR_ORG_NAME&gt;/dhi-node:24-debian13-dev</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">dev</span>
+</code></pre></div>
 <p>Change the production stage:</p>
-<pre><code class="language-dockerfile">FROM &lt;YOUR_ORG_NAME&gt;/dhi-node:24-debian13 AS prod
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="k">FROM</span><span class="w"> </span><span class="s">&lt;YOUR_ORG_NAME&gt;/dhi-node:24-debian13</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">prod</span>
+</code></pre></div>
 <h2 id="step-2-non-root-user-already-built-in">Step 2. Non-root User (Already Built-in!)</h2>
 <p>Looking back at the output for the <code>scout quickview</code>, the <code>No default non-root user found</code> policy was not met. To resolve this we typically need to add a non-root user to the Dockerfile description. The good news is that the DHI comes with a <strong>nonroot user built-in</strong>, so no changes should be made.</p>
 <h2 id="step-3-rebuild-and-scan-the-new-image">Step 3. Rebuild and Scan the New Image</h2>
 <p>Now let's rebuild and scan the new image:</p>
-<pre><code>docker buildx build --provenance=true --sbom=true -t &lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1 .
-</code></pre>
-<pre><code>docker scout quickview &lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker buildx build --provenance=true --sbom=true -t &lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1 .
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker scout quickview &lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1
+</code></pre></div>
 <p>You will see similar output:</p>
-<pre><code>  Target     │  orgname/demo-node-dhi:v1          │    0C     0H     0M     0L   
+<div class="highlight"><pre><span></span><code>  Target     │  orgname/demo-node-dhi:v1          │    0C     0H     0M     0L   
     digest   │  cec31e6f0a36                      │                              
   Base image │  orgname/dhi-node:24-debian13      │                              
 
@@ -5412,14 +5412,14 @@ Policy status  SUCCESS  (9/9 policies met)
   ✓      │ No high-profile vulnerabilities             │    0C     0H     0M     0L   
   ✓      │ No unapproved base images                   │    0 deviations              
   ✓      │ Supply chain attestations                   │    0 deviations    
-</code></pre>
+</code></pre></div>
 <p>Hooray! There are zero CVEs and policy violations now!</p>
 <h2 id="step-4-compare-image-size-and-packages">Step 4. Compare Image Size and Packages</h2>
 <p>Docker Scout offers a helpful command <code>docker scout compare</code> that allows you to analyze and compare two images. We'll use it to evaluate the difference in size and package footprint between <code>node:24-trixie-slim</code> and <code>dhi-node:24-debian13</code> based images.</p>
-<pre><code>docker scout compare local://&lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1 --to local://&lt;YOUR_ORG_NAME&gt;/demo-node-doi:v1
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker scout compare local://&lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1 --to local://&lt;YOUR_ORG_NAME&gt;/demo-node-doi:v1
+</code></pre></div>
 <p>Scroll up the output and you will see a similar summary:</p>
-<pre><code>## Overview
+<div class="highlight"><pre><span></span><code>## Overview
 
                       │               Analyzed Image                │              Comparison Image                
   ────────────────────┼─────────────────────────────────────────────┼──────────────────────────────────────────────
@@ -5434,17 +5434,17 @@ Policy status  SUCCESS  (9/9 policies met)
                       │                                             │                                              
     Base image        │  orgname/dhi-node:24                        │  node:24-trixie-slim                         
       vulnerabilities │    0C     0H     0M     0L                  │    0C     1H     2M    20L                   
-</code></pre>
+</code></pre></div>
 <p>As you can see, the <code>dhi-node:24-debian13</code>–based image is <strong>40 MB (around 40%) smaller</strong>, contains <strong>214 fewer packages</strong>, and has nearly <strong>zero CVEs</strong> compared to the original <code>node:24-trixie-slim</code>–based image.</p>
 <h2 id="step-5-validate-the-application">Step 5. Validate the Application</h2>
 <p>Last but not least, after migrating to a DHI base image, we should verify that the application still functions as expected.</p>
 <p>Start the app:</p>
-<pre><code>docker run --rm -d --name demo-node -p 3005:3000 &lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker run --rm -d --name demo-node -p 3005:3000 &lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1
+</code></pre></div>
 <p>Open your browser and navigate to <a href="http://localhost:3005">http://localhost:3005</a> to validate that the app is up and running.</p>
 <p>Then stop the container:</p>
-<pre><code>docker stop demo-node
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker stop demo-node
+</code></pre></div>
 
 
 

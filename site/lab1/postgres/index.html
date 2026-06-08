@@ -5371,20 +5371,20 @@
   <h1>Running Postgres Containers</h1>
 
 <h2 id="running-multiple-postgres-containers">Running Multiple Postgres Containers</h2>
-<pre><code>docker run -d --name postgres1 -e POSTGRES_PASSWORD=dev -p 5432:5432 postgres:latest
-</code></pre>
-<pre><code>docker run -d --name postgres2 -e POSTGRES_PASSWORD=dev -p 5433:5432 postgres:13
-</code></pre>
-<pre><code>docker run -d --name postgres3 -e POSTGRES_PASSWORD=dev -p 5434:5432 postgres:12
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker run -d --name postgres1 -e POSTGRES_PASSWORD=dev -p 5432:5432 postgres:latest
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker run -d --name postgres2 -e POSTGRES_PASSWORD=dev -p 5433:5432 postgres:13
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker run -d --name postgres3 -e POSTGRES_PASSWORD=dev -p 5434:5432 postgres:12
+</code></pre></div>
 <p>Open Docker Dashboard and run the following commands:</p>
-<pre><code># psql -d postgres -U postgres -W
+<div class="highlight"><pre><span></span><code># psql -d postgres -U postgres -W
 Password: 
 psql (17.2 (Debian 17.2-1.pgdg120+1))
 Type &quot;help&quot; for help.
 
 postgres=# 
-</code></pre>
+</code></pre></div>
 <p>The above command includes three flags:</p>
 <ul>
 <li>-d - specifies the name of the database to connect to</li>
@@ -5392,8 +5392,7 @@ postgres=#
 <li>-W - forces psql to ask for the user password before connecting to the database</li>
 </ul>
 <h2 id="listing-all-the-databases-l">Listing all the databases - \l</h2>
-<pre><code>
-                                                    List of databases
+<div class="highlight"><pre><span></span><code>                                                    List of databases
    Name    |  Owner   | Encoding | Locale Provider |  Collate   |   Ctype    | Locale | ICU Rules |   Access privileges   
 -----------+----------+----------+-----------------+------------+------------+--------+-----------+-----------------------
  postgres  | postgres | UTF8     | libc            | en_US.utf8 | en_US.utf8 |        |           | 
@@ -5406,10 +5405,10 @@ stgres          +
            |          |          |                 |            |            |        |           | postg
 res=CTc/postgres
 (3 rows)
-</code></pre>
+</code></pre></div>
 <h2 id="list-all-schemas">List all schemas</h2>
 <p>The <code>\dn</code> psql command lists all the database schemas.</p>
-<pre><code>postgres=# \dn
+<div class="highlight"><pre><span></span><code>postgres=# \dn
       List of schemas
   Name  |       Owner       
 --------+-------------------
@@ -5417,12 +5416,12 @@ res=CTc/postgres
 (1 row)
 
 postgres=#
-</code></pre>
+</code></pre></div>
 <h2 id="run-the-following-command-to-show-the-database-activity">Run the following command to show the database activity:</h2>
-<pre><code>SELECT * from pg_stat_activity;  &lt;--- DONT FORGET &quot;;&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>SELECT * from pg_stat_activity;  &lt;--- DONT FORGET &quot;;&quot;
+</code></pre></div>
 <h2 id="result">Result:</h2>
-<pre><code>datid | datname  | pid | leader_pid | usesysid | usename  | application_name | client_addr | client_host
+<div class="highlight"><pre><span></span><code>datid | datname  | pid | leader_pid | usesysid | usename  | application_name | client_addr | client_host
 name | client_port |         backend_start         |          xact_start           |          query_start
           |         state_change          | wait_event_type |     wait_event      | state  | backend_xid 
 | backend_xmin | query_id |              query              |         backend_type         
@@ -5444,7 +5443,7 @@ name | client_port |         backend_start         |          xact_start        
 |              |          |                                 | autovacuum launcher
        |          |  65 |            |       10 | postgres |                  |             |            
 :
-</code></pre>
+</code></pre></div>
 <h2 id="remove-the-container">Remove the container</h2>
 <p>Open Docker Dashboard &gt; Selecting all the running Postgres containsrs and delete them in a single step.</p>
 

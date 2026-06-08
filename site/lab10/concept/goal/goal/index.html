@@ -5435,120 +5435,120 @@
 <h1 id="goal-orientation-in-cagent-instruction-description">Goal-Orientation in cagent - instruction + description</h1>
 <p>Goal-orientation is <strong>what drives the agent to keep working</strong>. In cagent, goals are defined through two fields: <code>instruction</code> (the agent's mission) and <code>description</code> (how other agents know when to delegate to it).</p>
 <h2 id="step-1-create-a-project-with-a-clear-objective">Step 1: Create a project with a clear objective</h2>
-<pre><code class="language-bash">mkdir ~/goal-test &amp;&amp; cd ~/goal-test
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>~/goal-test<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/goal-test
 
-# Create a Flask app with multiple issues
-cat &gt; app.py &lt;&lt; 'EOF'
-from flask import Flask, jsonify
+<span class="c1"># Create a Flask app with multiple issues</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>app.py<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">from flask import Flask, jsonify</span>
 
-app = Flask(__name__)
+<span class="s">app = Flask(__name__)</span>
 
-users = [
-    {&quot;id&quot;: 1, &quot;name&quot;: &quot;Alice&quot;, &quot;email&quot;: &quot;alice@test.com&quot;},
-    {&quot;id&quot;: 2, &quot;name&quot;: &quot;Bob&quot;, &quot;email&quot;: &quot;bob@test.com&quot;},
-]
+<span class="s">users = [</span>
+<span class="s">    {&quot;id&quot;: 1, &quot;name&quot;: &quot;Alice&quot;, &quot;email&quot;: &quot;alice@test.com&quot;},</span>
+<span class="s">    {&quot;id&quot;: 2, &quot;name&quot;: &quot;Bob&quot;, &quot;email&quot;: &quot;bob@test.com&quot;},</span>
+<span class="s">]</span>
 
-@app.route(&quot;/users&quot;)
-def get_users():
-    return users  # BUG: should use jsonify
+<span class="s">@app.route(&quot;/users&quot;)</span>
+<span class="s">def get_users():</span>
+<span class="s">    return users  # BUG: should use jsonify</span>
 
-@app.route(&quot;/users/&lt;id&gt;&quot;)
-def get_user(id):
-    for u in users:
-        if u[&quot;id&quot;] == id:  # BUG: id is string, not int
-            return u
-    return &quot;Not found&quot;  # BUG: should return 404 JSON
+<span class="s">@app.route(&quot;/users/&lt;id&gt;&quot;)</span>
+<span class="s">def get_user(id):</span>
+<span class="s">    for u in users:</span>
+<span class="s">        if u[&quot;id&quot;] == id:  # BUG: id is string, not int</span>
+<span class="s">            return u</span>
+<span class="s">    return &quot;Not found&quot;  # BUG: should return 404 JSON</span>
 
-@app.route(&quot;/health&quot;)
-def health():
-    return &quot;ok&quot;  # Should return JSON with status
+<span class="s">@app.route(&quot;/health&quot;)</span>
+<span class="s">def health():</span>
+<span class="s">    return &quot;ok&quot;  # Should return JSON with status</span>
 
-if __name__ == &quot;__main__&quot;:
-    app.run(debug=True)
-EOF
+<span class="s">if __name__ == &quot;__main__&quot;:</span>
+<span class="s">    app.run(debug=True)</span>
+<span class="s">EOF</span>
 
-cat &gt; requirements.txt &lt;&lt; 'EOF'
-flask
-pytest
-EOF
-</code></pre>
+cat<span class="w"> </span>&gt;<span class="w"> </span>requirements.txt<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">flask</span>
+<span class="s">pytest</span>
+<span class="s">EOF</span>
+</code></pre></div>
 <h2 id="step-2-create-two-agents-with-different-goals-for-the-same-codebase">Step 2: Create TWO agents with DIFFERENT goals for the SAME codebase</h2>
-<pre><code class="language-yaml"># goal-security.yaml
-version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># goal-security.yaml</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
 
-agents:
-  root:
-    model: openai/gpt-5-mini
-    description: Security-focused code reviewer
-    instruction: |
-      Your GOAL is security. You are a security auditor.
+<span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security-focused code reviewer</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">Your GOAL is security. You are a security auditor.</span>
 
-      Review app.py ONLY for security issues:
-      - Hardcoded credentials
-      - Missing input validation
-      - Debug mode in production
-      - Information leakage in error responses
-      - Missing CORS/auth headers
+<span class="w">      </span><span class="no">Review app.py ONLY for security issues:</span>
+<span class="w">      </span><span class="no">- Hardcoded credentials</span>
+<span class="w">      </span><span class="no">- Missing input validation</span>
+<span class="w">      </span><span class="no">- Debug mode in production</span>
+<span class="w">      </span><span class="no">- Information leakage in error responses</span>
+<span class="w">      </span><span class="no">- Missing CORS/auth headers</span>
 
-      You STOP when you have identified all security risks
-      and written a security-report.md file.
+<span class="w">      </span><span class="no">You STOP when you have identified all security risks</span>
+<span class="w">      </span><span class="no">and written a security-report.md file.</span>
 
-      You do NOT fix bugs. You do NOT add features.
-      You ONLY report security issues.
-    toolsets:
-      - type: filesystem
-      - type: shell
-</code></pre>
-<pre><code class="language-yaml"># goal-quality.yaml
-version: &quot;2&quot;
+<span class="w">      </span><span class="no">You do NOT fix bugs. You do NOT add features.</span>
+<span class="w">      </span><span class="no">You ONLY report security issues.</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shell</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><span class="c1"># goal-quality.yaml</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
 
-agents:
-  root:
-    model: openai/gpt-5-mini
-    description: Code quality engineer
-    instruction: |
-      Your GOAL is code quality. You are a code quality engineer.
+<span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Code quality engineer</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">Your GOAL is code quality. You are a code quality engineer.</span>
 
-      Review app.py ONLY for code quality issues:
-      - Proper return types (use jsonify for Flask)
-      - Type handling (string vs int comparisons)
-      - Proper HTTP status codes (404, 500)
-      - Consistent response format
-      - PEP 8 compliance
+<span class="w">      </span><span class="no">Review app.py ONLY for code quality issues:</span>
+<span class="w">      </span><span class="no">- Proper return types (use jsonify for Flask)</span>
+<span class="w">      </span><span class="no">- Type handling (string vs int comparisons)</span>
+<span class="w">      </span><span class="no">- Proper HTTP status codes (404, 500)</span>
+<span class="w">      </span><span class="no">- Consistent response format</span>
+<span class="w">      </span><span class="no">- PEP 8 compliance</span>
 
-      Fix ALL quality issues directly in app.py.
-      Run the app to verify your fixes work.
+<span class="w">      </span><span class="no">Fix ALL quality issues directly in app.py.</span>
+<span class="w">      </span><span class="no">Run the app to verify your fixes work.</span>
 
-      You STOP when the code meets quality standards.
+<span class="w">      </span><span class="no">You STOP when the code meets quality standards.</span>
 
-      You do NOT review for security. You do NOT write docs.
-      You ONLY fix code quality.
-    toolsets:
-      - type: filesystem
-      - type: shell
-</code></pre>
+<span class="w">      </span><span class="no">You do NOT review for security. You do NOT write docs.</span>
+<span class="w">      </span><span class="no">You ONLY fix code quality.</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shell</span>
+</code></pre></div>
 <h2 id="step-3-run-both-agents-on-the-same-codebase">Step 3: Run BOTH agents on the same codebase</h2>
-<pre><code class="language-bash">export OPENAI_API_KEY=&lt;your_key&gt;
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>&lt;your_key&gt;
 
-# First: security-focused goal
-cagent run ./goal-security.yaml
-</code></pre>
+<span class="c1"># First: security-focused goal</span>
+cagent<span class="w"> </span>run<span class="w"> </span>./goal-security.yaml
+</code></pre></div>
 <p>Type:</p>
-<pre><code>Review app.py for security issues.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Review app.py for security issues.
+</code></pre></div>
 <p>Then reset and run the second:</p>
-<pre><code class="language-bash"># Restore original app.py first
-git checkout app.py  # or recreate it
+<div class="highlight"><pre><span></span><code><span class="c1"># Restore original app.py first</span>
+git<span class="w"> </span>checkout<span class="w"> </span>app.py<span class="w">  </span><span class="c1"># or recreate it</span>
 
-# Second: quality-focused goal
-cagent run ./goal-quality.yaml
-</code></pre>
+<span class="c1"># Second: quality-focused goal</span>
+cagent<span class="w"> </span>run<span class="w"> </span>./goal-quality.yaml
+</code></pre></div>
 <p>Type:</p>
-<pre><code>Review app.py for code quality issues and fix them.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Review app.py for code quality issues and fix them.
+</code></pre></div>
 <h2 id="what-you-should-see">What you should see</h2>
 <h3 id="security-agent-goal-find-risks-write-report">Security agent (goal = find risks, write report)</h3>
-<pre><code>✓ Read    app.py                      ← Reads the code
+<div class="highlight"><pre><span></span><code>✓ Read    app.py                      ← Reads the code
 ✓ Think   &quot;debug=True is a security   ← Reasons about security
            risk in production&quot;
 ✓ Think   &quot;Error responses leak       ← Finds another risk
@@ -5556,9 +5556,9 @@ cagent run ./goal-quality.yaml
 ✓ Write   security-report.md          ← Delivers: a report
                                          (does NOT touch app.py)
 Agent stops ✅ (goal: report written)
-</code></pre>
+</code></pre></div>
 <h3 id="quality-agent-goal-fix-code-verify-it-works">Quality agent (goal = fix code, verify it works)</h3>
-<pre><code>✓ Read    app.py                      ← Reads the same code
+<div class="highlight"><pre><span></span><code>✓ Read    app.py                      ← Reads the same code
 ✓ Think   &quot;get_users returns list     ← Reasons about quality
            instead of jsonify response&quot;
 ✓ Edit    app.py                      ← Fixes: adds jsonify()
@@ -5566,7 +5566,7 @@ Agent stops ✅ (goal: report written)
 ✓ Edit    app.py                      ← Fixes: 404 JSON response
 ✓ Shell   python -c &quot;import app&quot;      ← Verifies: code works
 Agent stops ✅ (goal: all quality issues fixed)
-</code></pre>
+</code></pre></div>
 <h2 id="key-teaching-point">Key Teaching Point</h2>
 <p><strong>Same codebase. Same toolsets. Different goals. Completely different behavior.</strong></p>
 <table>
@@ -5608,25 +5608,25 @@ Agent stops ✅ (goal: all quality issues fixed)
 <p>The <code>instruction</code> field is the agent's <strong>mission statement</strong> - it determines what the agent does, what it ignores, and when it considers the job done. Two agents with identical toolsets but different instructions will produce completely different outcomes.</p>
 <h2 id="bonus-goal-via-description-in-multi-agent-teams">Bonus: Goal via description in multi-agent teams</h2>
 <p>In a multi-agent setup, <code>description</code> is how the root agent decides <strong>who to delegate to</strong>:</p>
-<pre><code class="language-yaml">agents:
-  root:
-    model: openai/gpt-5-mini
-    instruction: |
-      You have two specialists. Delegate appropriately.
-    sub_agents: [security_reviewer, quality_engineer]
+<div class="highlight"><pre><span></span><code><span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You have two specialists. Delegate appropriately.</span>
+<span class="w">    </span><span class="nt">sub_agents</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">security_reviewer</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">quality_engineer</span><span class="p p-Indicator">]</span>
 
-  security_reviewer:
-    model: openai/gpt-5-mini
-    description: Reviews code for security vulnerabilities  # ← root reads this
-    instruction: |
-      Your GOAL is to find security issues only...
+<span class="w">  </span><span class="nt">security_reviewer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Reviews code for security vulnerabilities</span><span class="w">  </span><span class="c1"># ← root reads this</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">Your GOAL is to find security issues only...</span>
 
-  quality_engineer:
-    model: openai/gpt-5-mini
-    description: Fixes code quality and ensures best practices  # ← root reads this
-    instruction: |
-      Your GOAL is to fix code quality only...
-</code></pre>
+<span class="w">  </span><span class="nt">quality_engineer</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Fixes code quality and ensures best practices</span><span class="w">  </span><span class="c1"># ← root reads this</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">Your GOAL is to fix code quality only...</span>
+</code></pre></div>
 <p>When a user says "check this for security," the root agent reads the <code>description</code> fields and routes to <code>security_reviewer</code>. When they say "clean up this code," it routes to <code>quality_engineer</code>. The <code>description</code> is the agent's <strong>API contract</strong> - it advertises what this agent's goal is to the rest of the system.</p>
 
 

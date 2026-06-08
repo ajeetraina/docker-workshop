@@ -5194,7 +5194,7 @@
 
 <p>The memory tool gives the agent the ability to remember things about the user.</p>
 <p>Give this agent a try:</p>
-<pre><code>version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code>version: &quot;2&quot;
 
 agents:
   root:
@@ -5203,7 +5203,7 @@ agents:
     toolsets:
       - type: memory
         path: ./memory.db
-</code></pre>
+</code></pre></div>
 <p>Run this agent once, tell it your name and some random fact about you. Something like I'm XXX and I'm a software engineer. You should see it calling the memory tools to remember facts about you.</p>
 <p>If you then quit cagent and start a new session with this agent. You can ask it what it knows about you, it should correctly look up its internal memory and tell you what it knows. For example: Who am I? or What do I do for a living?</p>
 

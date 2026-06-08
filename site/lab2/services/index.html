@@ -5265,32 +5265,32 @@
   <h1>Services</h1>
 
 <h2 id="1-clone-the-repository">1. Clone the repository:</h2>
-<pre><code class="language-sh">git clone https://github.com/dockersamples/getting-started-todo-app
-cd getting-started-todo-app
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dockersamples/getting-started-todo-app
+<span class="nb">cd</span><span class="w"> </span>getting-started-todo-app
+</code></pre></div>
 <h2 id="2-switch-to-container-first-branch">2. Switch to container-first branch</h2>
-<pre><code>git checkout container-first-aws-mongo
-</code></pre>
+<div class="highlight"><pre><span></span><code>git checkout container-first-aws-mongo
+</code></pre></div>
 <h2 id="3-add-the-environment-variables">3. Add the Environment Variables</h2>
 <p>Copy .env.sample to .env file and Ensure that you have the right environmental variable added as shown:</p>
-<pre><code>MONGODB_URI=mongodb://mongodb:27017/todo-app
+<div class="highlight"><pre><span></span><code>MONGODB_URI=mongodb://mongodb:27017/todo-app
 JWT_SECRET=603b31XXXXXXX90d3b8cb62f0a585fd70a5ee0b4d
 AWS_ACCESS_KEY_ID=AKIAXXXXXDDDX
 AWS_SECRET_ACCESS_KEY=hSYXtvXXXXXXXO/k39FGt3u078pYWsh
 AWS_REGION=us-east-1
 S3_BUCKET_NAME=localbuckett
-</code></pre>
+</code></pre></div>
 <p>You can leverage <a href="https://www.javainuse.com/jwtgenerator">this link</a> to generate JWT token.</p>
 <h2 id="4-bring-up-the-services">4. Bring up the services:</h2>
-<pre><code>docker compose watch
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker compose watch
+</code></pre></div>
 <h2 id="5-access-the-app">5. Access the app</h2>
 <p>Open <a href="http://localhost:3000">http://localhost:3000</a> to access the todo-list app.
 Try adding a task and uploading the image.</p>
 <h2 id="verify-mongo">Verify Mongo</h2>
 <p>You can verify if task gets added by selecting the container and clicking on "Exec" option on the Docker dashboard.
 Now you should be able to run the following command to verify the tasks.</p>
-<pre><code># mongosh
+<div class="highlight"><pre><span></span><code># mongosh
 Current Mongosh Log ID: 66879e864955d6e7b2f3f54d
 Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&amp;serverSelectionTimeoutMS=2000&amp;appName=mongosh+2.2.10
 Using MongoDB:          7.0.12
@@ -5306,7 +5306,7 @@ You can opt-out by running the disableTelemetry() command.
    The server generated these startup warnings when booting
    2024-07-05T07:18:03.008+00:00: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
    2024-07-05T07:18:03.737+00:00: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
-   2024-07-05T07:18:03.738+00:00: /sys/kernel/mm/transparent_hugepage/enabled is 'always'. We suggest setting it to 'never' in this binary version
+   2024-07-05T07:18:03.738+00:00: /sys/kernel/mm/transparent_hugepage/enabled is &#39;always&#39;. We suggest setting it to &#39;never&#39; in this binary version
    2024-07-05T07:18:03.738+00:00: vm.max_map_count is too low
 ------
 
@@ -5329,7 +5329,7 @@ todo-app&gt; db.todos.countDocuments()
 todo-app&gt; db.todos.countDocuments()
 3
 todo-app&gt;
-</code></pre>
+</code></pre></div>
 <h2 id="verify-the-images-added-to-aws-s3">Verify the images added to AWS S3</h2>
 <p>Open AWS Dashboard &gt; S3 service to see the list of images uploaded.</p>
 <p><img alt="image" src="https://github.com/dockersamples/getting-started-todo-app/assets/313480/ffb64c22-f358-41ef-a7a6-2c1055d43753" /></p>

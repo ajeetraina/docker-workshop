@@ -5353,14 +5353,14 @@
 <h2 id="the-scout-github-action">The Scout GitHub Action</h2>
 <p>Open <code>catalog-service-node/.github/workflows/pipeline-docker-cloud.yaml</code> to see how Scout integrates into a real pipeline.</p>
 <p>The key gate step:</p>
-<pre><code class="language-yaml">      - name: Docker Scout CVEs
-        uses: docker/scout-action@v1
-        with:
-          command: cves
-          image: ${{ steps.build.outputs.imageid }}
-          only-severities: critical,high
-          exit-code: true
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Docker Scout CVEs</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/scout-action@v1</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cves</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.build.outputs.imageid }}</span>
+<span class="w">          </span><span class="nt">only-severities</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">critical,high</span>
+<span class="w">          </span><span class="nt">exit-code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 <p>Two flags do the heavy lifting:</p>
 <ul>
 <li><code>only-severities: critical,high</code> - only fail on what actually matters; medium and low don't block the pipeline</li>
@@ -5369,49 +5369,49 @@
 <p>That's the gate. If a critical or high CVE shows up, the PR can't merge and the image can't deploy.</p>
 <h2 id="a-more-complete-pipeline">A more complete pipeline</h2>
 <p>A typical Scout-in-CI pipeline does several things in sequence:</p>
-<pre><code class="language-yaml">      # 1. Build with SBOM and provenance attached
-      - name: Build image
-        id: build
-        uses: docker/build-push-action@v5
-        with:
-          tags: ${{ env.IMAGE_NAME }}
-          sbom: true
-          provenance: mode=max
-          load: true
+<div class="highlight"><pre><span></span><code><span class="w">      </span><span class="c1"># 1. Build with SBOM and provenance attached</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Build image</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">build</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/build-push-action@v5</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">tags</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ env.IMAGE_NAME }}</span>
+<span class="w">          </span><span class="nt">sbom</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="w">          </span><span class="nt">provenance</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mode=max</span>
+<span class="w">          </span><span class="nt">load</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-      # 2. Quickview - surfaces a summary in the action log
-      - name: Docker Scout quickview
-        uses: docker/scout-action@v1
-        with:
-          command: quickview
-          image: ${{ steps.build.outputs.imageid }}
+<span class="w">      </span><span class="c1"># 2. Quickview - surfaces a summary in the action log</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Docker Scout quickview</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/scout-action@v1</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">quickview</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.build.outputs.imageid }}</span>
 
-      # 3. Compare against the previous prod image
-      - name: Docker Scout compare
-        uses: docker/scout-action@v1
-        with:
-          command: compare
-          image: ${{ steps.build.outputs.imageid }}
-          to: registry.example.com/catalog-service:prod
-          ignore-unchanged: true
+<span class="w">      </span><span class="c1"># 3. Compare against the previous prod image</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Docker Scout compare</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/scout-action@v1</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">compare</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.build.outputs.imageid }}</span>
+<span class="w">          </span><span class="nt">to</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">registry.example.com/catalog-service:prod</span>
+<span class="w">          </span><span class="nt">ignore-unchanged</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-      # 4. Hard gate on critical/high
-      - name: Docker Scout CVE gate
-        uses: docker/scout-action@v1
-        with:
-          command: cves
-          image: ${{ steps.build.outputs.imageid }}
-          only-severities: critical,high
-          exit-code: true
+<span class="w">      </span><span class="c1"># 4. Hard gate on critical/high</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Docker Scout CVE gate</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/scout-action@v1</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cves</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.build.outputs.imageid }}</span>
+<span class="w">          </span><span class="nt">only-severities</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">critical,high</span>
+<span class="w">          </span><span class="nt">exit-code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 
-      # 5. Policy gate
-      - name: Docker Scout policy gate
-        uses: docker/scout-action@v1
-        with:
-          command: policy
-          image: ${{ steps.build.outputs.imageid }}
-          exit-code: true
-</code></pre>
+<span class="w">      </span><span class="c1"># 5. Policy gate</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Docker Scout policy gate</span>
+<span class="w">        </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/scout-action@v1</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">policy</span>
+<span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ steps.build.outputs.imageid }}</span>
+<span class="w">          </span><span class="nt">exit-code</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 <p>The order matters: <code>quickview</code> and <code>compare</code> run <em>before</em> the gate, so the developer sees what's wrong even when the gate fails. Nothing is more frustrating than a CI that says "FAILED" with no detail.</p>
 <h2 id="tuning-the-gate">Tuning the gate</h2>
 <p>A real-world gate has to balance security and developer flow. A few patterns that work well:</p>
@@ -5443,11 +5443,11 @@
 </table>
 <h2 id="local-pre-flight-check">Local pre-flight check</h2>
 <p>Developers can run the same gate locally before pushing - fewer broken builds:</p>
-<pre><code class="language-bash">docker scout cves catalog-service:slim \
-    --only-severity critical,high \
-    --org &lt;YOUR_ORG&gt; \
-    --exit-code
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>cves<span class="w"> </span>catalog-service:slim<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--only-severity<span class="w"> </span>critical,high<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--org<span class="w"> </span>&lt;YOUR_ORG&gt;<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--exit-code
+</code></pre></div>
 <p>Exit code is non-zero if anything matches. Wire this into a pre-commit hook or a <code>make security</code> target.</p>
 <p>Continue to <a href="../recommendations/">Recommendations &amp; Comparisons</a>, or jump to the pro-active half of the workshop: <a href="../../dhi-proactive/overview/">Migrating to DHI</a>.</p>
 

@@ -5337,13 +5337,13 @@
 <hr />
 <h2 id="how-network-control-works">How network control works</h2>
 <p>Every sandbox has an egress proxy. All outbound traffic from the sandbox goes through it. By default, a kit's <code>allowedDomains</code> are additive - they extend whatever the base network policy allows.</p>
-<pre><code class="language-yaml">network:
-  allowedDomains:
-    - pypi.org
-    - files.pythonhosted.org
-  deniedDomains:
-    - telemetry.example.com   # explicit block even if another policy permits it
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">allowedDomains</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pypi.org</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">files.pythonhosted.org</span>
+<span class="w">  </span><span class="nt">deniedDomains</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.example.com</span><span class="w">   </span><span class="c1"># explicit block even if another policy permits it</span>
+</code></pre></div>
 <p>Use <code>sbx policy log</code> to see every request the proxy handled - essential for debugging blocked domains during install.</p>
 <hr />
 <h2 id="how-credential-injection-works">How credential injection works</h2>
@@ -5355,31 +5355,31 @@
 <li>The proxy injects it as an HTTP header on matching outbound requests</li>
 <li>The agent inside the sandbox never sees the raw value</li>
 </ol>
-<pre><code class="language-yaml">credentials:
-  sources:
-    my-service:
-      env:
-        - MY_SERVICE_API_KEY   # read from host environment
+<div class="highlight"><pre><span></span><code><span class="nt">credentials</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">sources</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">my-service</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_SERVICE_API_KEY</span><span class="w">   </span><span class="c1"># read from host environment</span>
 
-network:
-  serviceDomains:
-    api.my-service.com: my-service   # link domain to credential source
-  serviceAuth:
-    my-service:
-      headerName: Authorization
-      valueFormat: &quot;Bearer %s&quot;       # proxy injects this header
-  allowedDomains:
-    - api.my-service.com
+<span class="nt">network</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">serviceDomains</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">api.my-service.com</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-service</span><span class="w">   </span><span class="c1"># link domain to credential source</span>
+<span class="w">  </span><span class="nt">serviceAuth</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">my-service</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">headerName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
+<span class="w">      </span><span class="nt">valueFormat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">%s&quot;</span><span class="w">       </span><span class="c1"># proxy injects this header</span>
+<span class="w">  </span><span class="nt">allowedDomains</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api.my-service.com</span>
 
-environment:
-  proxyManaged:
-    - MY_SERVICE_API_KEY   # visible as env var inside sandbox; value substituted at request time
-</code></pre>
+<span class="nt">environment</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">proxyManaged</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_SERVICE_API_KEY</span><span class="w">   </span><span class="c1"># visible as env var inside sandbox; value substituted at request time</span>
+</code></pre></div>
 <hr />
 <h2 id="try-it-verify-anthropic-credential-injection">Try it: verify Anthropic credential injection</h2>
 <p>The built-in <code>claude</code> agent already uses this pattern. Run:</p>
-<pre><code class="language-bash">sbx policy log
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>log
+</code></pre></div>
 <p>You'll see requests to <code>api.anthropic.com</code> logged as <code>forward</code> with the credential injected by the proxy. The API key is never written to the VM's environment - it's substituted per-request.</p>
 <hr />
 <h2 id="compare-shell-script-vs-kit">Compare: shell script vs kit</h2>

@@ -5379,56 +5379,56 @@
 </blockquote>
 <h2 id="update-the-dockerfile-base-image">Update the Dockerfile base image</h2>
 <p>Open <code>catalog-service-node/Dockerfile</code> and replace the existing content with this:</p>
-<pre><code class="language-dockerfile">###########################################################
-# Stage: base
-###########################################################
-FROM node:25-slim AS base
+<div class="highlight"><pre><span></span><code><span class="c">###########################################################</span>
+<span class="c"># Stage: base</span>
+<span class="c">###########################################################</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">node:25-slim</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">base</span>
 
-WORKDIR /usr/local/app
-RUN useradd -m appuser &amp;&amp; chown -R appuser /usr/local/app
-USER appuser
-COPY --chown=appuser:appuser package.json package-lock.json ./
+<span class="k">WORKDIR</span><span class="w"> </span><span class="s">/usr/local/app</span>
+<span class="k">RUN</span><span class="w"> </span>useradd<span class="w"> </span>-m<span class="w"> </span>appuser<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>chown<span class="w"> </span>-R<span class="w"> </span>appuser<span class="w"> </span>/usr/local/app
+<span class="k">USER</span><span class="w"> </span><span class="s">appuser</span>
+<span class="k">COPY</span><span class="w"> </span>--chown<span class="o">=</span>appuser:appuser<span class="w"> </span>package.json<span class="w"> </span>package-lock.json<span class="w"> </span>./
 
-###########################################################
-# Stage: dev
-###########################################################
-FROM base AS dev
-ENV NODE_ENV=development
-RUN npm install
-CMD [&quot;yarn&quot;, &quot;dev-container&quot;]
+<span class="c">###########################################################</span>
+<span class="c"># Stage: dev</span>
+<span class="c">###########################################################</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">dev</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>development
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>install
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;yarn&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;dev-container&quot;</span><span class="p">]</span>
 
-###########################################################
-# Stage: final
-###########################################################
-FROM base AS final
-ENV NODE_ENV=production
-RUN npm ci --production --ignore-scripts &amp;&amp; npm cache clean --force
-COPY ./src ./src
+<span class="c">###########################################################</span>
+<span class="c"># Stage: final</span>
+<span class="c">###########################################################</span>
+<span class="k">FROM</span><span class="w"> </span><span class="s">base</span><span class="w"> </span><span class="k">AS</span><span class="w"> </span><span class="s">final</span>
+<span class="k">ENV</span><span class="w"> </span><span class="nv">NODE_ENV</span><span class="o">=</span>production
+<span class="k">RUN</span><span class="w"> </span>npm<span class="w"> </span>ci<span class="w"> </span>--production<span class="w"> </span>--ignore-scripts<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npm<span class="w"> </span>cache<span class="w"> </span>clean<span class="w"> </span>--force
+<span class="k">COPY</span><span class="w"> </span>./src<span class="w"> </span>./src
 
-EXPOSE 3000
+<span class="k">EXPOSE</span><span class="w"> </span><span class="s">3000</span>
 
-CMD [&quot;node&quot;, &quot;src/index.js&quot;]
-</code></pre>
+<span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;node&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;src/index.js&quot;</span><span class="p">]</span>
+</code></pre></div>
 <p>The single critical change:</p>
-<pre><code class="language-diff">- FROM node:18 AS base
-+ FROM node:25-slim AS base
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="gd">- FROM node:18 AS base</span>
+<span class="gi">+ FROM node:25-slim AS base</span>
+</code></pre></div>
 <h2 id="rebuild-and-re-scan">Rebuild and re-scan</h2>
-<pre><code class="language-bash">docker build -t catalog-service:slim --sbom=true --provenance=mode=max .
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span>catalog-service:slim<span class="w"> </span>--sbom<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--provenance<span class="o">=</span><span class="nv">mode</span><span class="o">=</span>max<span class="w"> </span>.
+</code></pre></div>
 <p>Compare image sizes:</p>
-<pre><code class="language-bash">docker images catalog-service
-</code></pre>
-<pre><code class="language-text">IMAGE                    ID             DISK USAGE   CONTENT SIZE
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>images<span class="w"> </span>catalog-service
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>IMAGE                    ID             DISK USAGE   CONTENT SIZE
 catalog-service:latest   48806e62b871       1.62GB          413MB
 catalog-service:slim     8d03cef7a79f        368MB         84.1MB
-</code></pre>
+</code></pre></div>
 <p>Now re-run the Scout quickview:</p>
-<pre><code class="language-bash">docker scout quickview catalog-service:slim --org &lt;YOUR_ORG&gt;
-</code></pre>
-<pre><code class="language-text">  Target             │  catalog-service:slim  │    0C     2H     2M    24L
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>quickview<span class="w"> </span>catalog-service:slim<span class="w"> </span>--org<span class="w"> </span>&lt;YOUR_ORG&gt;
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>  Target             │  catalog-service:slim  │    0C     2H     2M    24L
   Base image         │  node:25-slim          │    0C     1H     2M    24L
-</code></pre>
+</code></pre></div>
 <p><strong>One <code>FROM</code> change. Result:</strong></p>
 <ul>
 <li>✅ <strong>2 critical eliminated</strong></li>

@@ -5511,7 +5511,7 @@
 <h2 id="docker-compose-support-for-model-runner">Docker Compose Support for Model Runner</h2>
 <p>Compose allows you to use <code>models</code> as a top-level element in the following way:</p>
 </blockquote>
-<pre><code>services:
+<div class="highlight"><pre><span></span><code>services:
   chat-app:
     image: my-chat-app
     models:
@@ -5520,14 +5520,14 @@
 models:
   llm:
     model: ai/smollm2
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Docker Model Runner can be integrated with Docker Compose to run AI models as part of your multi-container applications.
 This lets you define and run AI-powered applications alongside your other services.</p>
 <p>Compose introduces a new service type called provider that allows you to declare platform capabilities required by your application. For AI models, you can use the model type to declare model dependencies.
 Here's an example of how to define a model provider:</p>
 </blockquote>
-<pre><code>services:
+<div class="highlight"><pre><span></span><code>services:
   chat:
     image: my-chat-app
     depends_on:
@@ -5538,7 +5538,7 @@ Here's an example of how to define a model provider:</p>
       type: model
       options:
         model: ai/smollm2
-</code></pre>
+</code></pre></div>
 <blockquote>
 <p>Notice the dedicated provider attribute in the ai_runner service.
 This attribute specifies that the service is a model provider and lets you define options such as the name of the model to be used.
@@ -5547,19 +5547,19 @@ This attribute specifies that the chat service depends on the ai_runner service.
 This means that the ai_runner service will be started before the chat service to allow injection of model information to the chat service.</p>
 </blockquote>
 <h3 id="clone-the-repository">Clone the repository</h3>
-<pre><code>git clone https://github.com/dockersamples/genai-model-runner-metrics
+<div class="highlight"><pre><span></span><code>git clone https://github.com/dockersamples/genai-model-runner-metrics
 cd genai-model-runner-metrics
-</code></pre>
+</code></pre></div>
 <h3 id="enable-docker-model-runner-in-docker-desktop">Enable Docker Model Runner in Docker Desktop</h3>
 <p>Go to Settings &gt; Features in Development &gt; Beta tab
 Enable "Docker Model Runner"
 Select “Apply and restart”</p>
 <p><img alt="GenAi Architecture" src="../../images/dmr-enable.png" /></p>
 <h3 id="download-the-model">Download the model</h3>
-<pre><code>docker model pull ai/llama3.2:1B-Q8_0
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker model pull ai/llama3.2:1B-Q8_0
+</code></pre></div>
 <h2 id="verify-the-backendenv">Verify the backend.env</h2>
-<pre><code>BASE_URL=http://localhost:12434/engines/llama.cpp/v1/
+<div class="highlight"><pre><span></span><code>BASE_URL=http://localhost:12434/engines/llama.cpp/v1/
 MODEL=ai/llama3.2:1B-Q8_0
 API_KEY=${API_KEY:-dockermodelrunner}
 
@@ -5568,10 +5568,10 @@ LOG_LEVEL=info
 LOG_PRETTY=true
 TRACING_ENABLED=true
 OTLP_ENDPOINT=jaeger:4318
-</code></pre>
+</code></pre></div>
 <h3 id="start-the-application-using-docker-compose">Start the application using Docker Compose</h3>
-<pre><code>docker compose up -d --build
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker compose up -d --build
+</code></pre></div>
 <p><img alt="list the containers" src="../../images/list-containers.png" /></p>
 <p>You can access the frontend at <a href="http://localhost:3000">http://localhost:3000</a></p>
 <p><img alt="chatbot ui" src="../../images/chatbot-ui.png" /></p>

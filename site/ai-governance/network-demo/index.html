@@ -5531,8 +5531,10 @@
 <h1 id="network-enforcement-demo">Network Enforcement Demo</h1>
 <p>Define network policies in the Admin Console, watch them flow to your developer machine, and prove enforcement with three <code>curl</code> commands inside a sandbox.</p>
 <p>This section proves the network half of Pillar 1. The next section proves the filesystem half.</p>
-<p>!!! info "At a glance"
-    <strong>Time:</strong> ~10 minutes &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Prerequisites:</strong> You're an admin of your org and you completed Setup.</p>
+<div class="admonition info">
+<p class="admonition-title">At a glance</p>
+<p><strong>Time:</strong> ~10 minutes &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Prerequisites:</strong> You're an admin of your org and you completed Setup.</p>
+</div>
 <hr />
 <h2 id="what-youll-prove">What you'll prove</h2>
 <ul>
@@ -5552,11 +5554,12 @@
 <ul>
 <li>Action: Allow</li>
 <li>Network path (paste these as multiple lines - the modal accepts multi-line input):
-  <code>api.anthropic.com:443
-  api.openai.com:443
-  platform.claude.com:443
-  *.googleapis.com:443
-  statsig.anthropic.com:443</code></li>
+  <div class="highlight"><pre><span></span><code>api.anthropic.com:443
+api.openai.com:443
+platform.claude.com:443
+*.googleapis.com:443
+statsig.anthropic.com:443
+</code></pre></div></li>
 <li>Protocol: TCP, UDP</li>
 <li>Name: <code>allow AI services</code></li>
 </ul>
@@ -5564,9 +5567,10 @@
 <ul>
 <li>Action: Allow</li>
 <li>Network path:
-  <code>*.docker.com:443
-  *.docker.io:443
-  dhi.io:443</code></li>
+  <div class="highlight"><pre><span></span><code>*.docker.com:443
+*.docker.io:443
+dhi.io:443
+</code></pre></div></li>
 <li>Protocol: TCP, UDP</li>
 <li>Name: <code>allow Docker services</code></li>
 </ul>
@@ -5576,9 +5580,10 @@
 <ul>
 <li>Action: <strong>Deny</strong></li>
 <li>Network path:
-  <code>paste.ee
-  pastebin.com
-  hooks.slack.com</code></li>
+  <div class="highlight"><pre><span></span><code>paste.ee
+pastebin.com
+hooks.slack.com
+</code></pre></div></li>
 <li>Protocol: TCP, UDP</li>
 <li>Name: <code>deny exfiltration</code></li>
 </ul>
@@ -5595,12 +5600,12 @@
 <hr />
 <h2 id="step-5-verify-policies-reached-your-machine">Step 5 - Verify policies reached your machine</h2>
 <p>Back on your terminal:</p>
-<pre><code class="language-bash">sbx policy reset
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>reset
+</code></pre></div>
 <p>When prompted, choose <strong>Balanced</strong> (option 2).</p>
 <p>Then list active policies:</p>
-<pre><code class="language-bash">sbx policy ls
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>ls
+</code></pre></div>
 <p>You should see:</p>
 <ul>
 <li>A header reading <code>Governance: managed by &lt;your-org&gt;</code></li>
@@ -5611,25 +5616,25 @@
 <p>That last line is the central control proof. Even though sbx ships with sensible defaults, the org policy is overriding them.</p>
 <hr />
 <h2 id="step-6-spin-up-a-sandbox">Step 6 - Spin up a sandbox</h2>
-<pre><code class="language-bash">mkdir -p ~/scratch &amp;&amp; cd ~/scratch
-sbx run shell .
-</code></pre>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/scratch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/scratch
+sbx<span class="w"> </span>run<span class="w"> </span>shell<span class="w"> </span>.
+</code></pre></div>
 <p>This creates an isolated microVM with <code>shell</code> as the agent and the current directory as the workspace. Outbound network from the sandbox goes through the proxy that enforces your org policies.</p>
 <p>You'll land at a shell prompt inside the sandbox.</p>
 <hr />
 <h2 id="step-7-run-the-three-enforcement-tests">Step 7 - Run the three enforcement tests</h2>
 <p>Inside the sandbox prompt:</p>
-<pre><code class="language-bash">curl -sS https://api.anthropic.com -o /dev/null -w &quot;anthropic: %{http_code}\n&quot;
-curl -sS https://paste.ee -o /dev/null -w &quot;paste.ee: %{http_code}\n&quot;
-curl -sS https://example.com -o /dev/null -w &quot;example.com: %{http_code}\n&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>https://api.anthropic.com<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;anthropic: %{http_code}\n&quot;</span>
+curl<span class="w"> </span>-sS<span class="w"> </span>https://paste.ee<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;paste.ee: %{http_code}\n&quot;</span>
+curl<span class="w"> </span>-sS<span class="w"> </span>https://example.com<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;example.com: %{http_code}\n&quot;</span>
+</code></pre></div>
 <hr />
 <h2 id="step-8-read-the-results">Step 8 - Read the results</h2>
 <p>Expected output (codes may vary slightly):</p>
-<pre><code>anthropic: 200
+<div class="highlight"><pre><span></span><code>anthropic: 200
 paste.ee: 403
 example.com: 403
-</code></pre>
+</code></pre></div>
 <table>
 <thead>
 <tr>
@@ -5660,31 +5665,31 @@ example.com: 403
 <hr />
 <h2 id="step-9-see-the-proxy-refusal-up-close-optional">Step 9 - See the proxy refusal up close (optional)</h2>
 <p>For a more visceral demo, run a verbose <code>curl</code> from inside the sandbox:</p>
-<pre><code class="language-bash">curl -v https://paste.ee 2&gt;&amp;1 | head -50
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-v<span class="w"> </span>https://paste.ee<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-50
+</code></pre></div>
 <p>You'll see the sbx proxy intercept the request in three distinct phases:</p>
 <p><strong>1. The proxy variable</strong> - the sandbox routes outbound traffic through <code>gateway.docker.internal:3128</code>:</p>
-<pre><code>* Uses proxy env variable https_proxy == 'http://gateway.docker.internal:3128'
-</code></pre>
+<div class="highlight"><pre><span></span><code>* Uses proxy env variable https_proxy == &#39;http://gateway.docker.internal:3128&#39;
+</code></pre></div>
 <p><strong>2. The CONNECT tunnel succeeds</strong> - counter-intuitively, the proxy returns <code>HTTP/1.0 200 OK</code> to the <code>CONNECT</code> request. It accepts the tunnel so it can do content inspection:</p>
-<pre><code>&gt; CONNECT paste.ee:443 HTTP/1.1
+<div class="highlight"><pre><span></span><code>&gt; CONNECT paste.ee:443 HTTP/1.1
 &lt; HTTP/1.0 200 OK
 * CONNECT tunnel established, response 200
-</code></pre>
+</code></pre></div>
 <p><strong>3. The MITM cert is the smoking gun</strong> - the TLS handshake completes, but the server certificate is <em>not</em> from Let's Encrypt or paste.ee's real issuer. It's an impersonation cert minted by the sbx proxy:</p>
-<pre><code>* Server certificate:
+<div class="highlight"><pre><span></span><code>* Server certificate:
 *   subject: O=GoProxy untrusted MITM proxy Inc; CN=paste.ee
-</code></pre>
+</code></pre></div>
 <p>That <code>O=GoProxy untrusted MITM proxy Inc</code> is the proxy openly identifying itself. paste.ee never received the connection - the proxy terminated the TLS itself, inspected the request inside the tunnel, matched the <code>deny exfiltration</code> rule, and returned <code>HTTP/1.1 403 Forbidden</code>.</p>
 <p>To see the 403 itself, lengthen the head:</p>
-<pre><code class="language-bash">curl -v https://paste.ee 2&gt;&amp;1 | head -80 | tail -30
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-v<span class="w"> </span>https://paste.ee<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-80<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-30
+</code></pre></div>
 <p>You'll see <code>&lt; HTTP/1.1 403 Forbidden</code> after the TLS handshake - proof that the policy was enforced inside the MITM tunnel, before the request was forwarded anywhere.</p>
 <p>For contrast, from your <strong>host machine</strong> (outside the sandbox), the same <code>curl -v https://paste.ee</code> shows a normal Let's Encrypt cert and reaches the real paste.ee. Policy enforcement is sandbox-scoped - that's by design.</p>
 <hr />
 <h2 id="step-10-exit-the-sandbox">Step 10 - Exit the sandbox</h2>
-<pre><code class="language-bash">exit
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">exit</span>
+</code></pre></div>
 <p>The microVM is torn down. Everything inside it is gone unless it was written to the mounted workspace.</p>
 <hr />
 <h2 id="what-you-just-demonstrated">What you just demonstrated</h2>

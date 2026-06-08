@@ -5285,42 +5285,44 @@
 <p>This demo shows how to integrate external MCP (Model Context Protocol) servers to create a specialized financial research team.</p>
 <h2 id="configuration">Configuration</h2>
 <p>Create a file named <code>finance.yaml</code>:</p>
-<pre><code class="language-yaml">agents:
-  root:
-    model: openai/gpt-4o
-    description: Financial research and analysis coordinator
-    sub_agents: [finance_agent, web_search_agent]
+<div class="highlight"><pre><span></span><code><span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-4o</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Financial research and analysis coordinator</span>
+<span class="w">    </span><span class="nt">sub_agents</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">finance_agent</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">web_search_agent</span><span class="p p-Indicator">]</span>
 
-  finance_agent:
-    model: openai/gpt-4o
-    description: Analyze given stock
-    toolsets:
-      - type: mcp
-        command: uvx
-        args: [&quot;yfmcp&quot;]  # Yahoo Finance MCP server
+<span class="w">  </span><span class="nt">finance_agent</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-4o</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analyze given stock</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp</span>
+<span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uvx</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;yfmcp&quot;</span><span class="p p-Indicator">]</span><span class="w">  </span><span class="c1"># Yahoo Finance MCP server</span>
 
-  web_search_agent:
-    model: openai/gpt-4o
-    description: Search web for information
-    toolsets:
-      - type: mcp
-        command: uvx
-        args: [&quot;duckduckgo-mcp-server&quot;]
-</code></pre>
+<span class="w">  </span><span class="nt">web_search_agent</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-4o</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Search web for information</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp</span>
+<span class="w">        </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uvx</span>
+<span class="w">        </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;duckduckgo-mcp-server&quot;</span><span class="p p-Indicator">]</span>
+</code></pre></div>
 <h2 id="prerequisites">Prerequisites</h2>
 <ol>
-<li>Install <code>uv</code> (Python package manager):</li>
+<li>
+<p>Install <code>uv</code> (Python package manager):
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+</code></pre></div></p>
+</li>
+<li>
+<p>Set API key:
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>your_openai_key
+</code></pre></div></p>
+</li>
 </ol>
-<pre><code class="language-bash">curl -LsSf https://astral.sh/uv/install.sh | sh
-</code></pre>
-<ol>
-<li>Set API key:</li>
-</ol>
-<pre><code class="language-bash">export OPENAI_API_KEY=your_openai_key
-</code></pre>
 <h2 id="running-the-agent">Running the Agent</h2>
-<pre><code class="language-bash">./bin/cagent run finance.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>./bin/cagent<span class="w"> </span>run<span class="w"> </span>finance.yaml
+</code></pre></div>
 <h2 id="mcp-server-integration">MCP Server Integration</h2>
 <p>MCP (Model Context Protocol) servers extend agent capabilities with external tools:</p>
 <table>
@@ -5342,13 +5344,13 @@
 </tbody>
 </table>
 <h3 id="mcp-toolset-configuration">MCP Toolset Configuration</h3>
-<pre><code class="language-yaml">toolsets:
-  - type: mcp
-    command: uvx          # Command to run the MCP server
-    args: [&quot;yfmcp&quot;]       # Arguments passed to the command
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp</span>
+<span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uvx</span><span class="w">          </span><span class="c1"># Command to run the MCP server</span>
+<span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;yfmcp&quot;</span><span class="p p-Indicator">]</span><span class="w">       </span><span class="c1"># Arguments passed to the command</span>
+</code></pre></div>
 <h2 id="agent-workflow">Agent Workflow</h2>
-<pre><code>User Query: &quot;Analyze Tesla stock&quot;
+<div class="highlight"><pre><span></span><code>User Query: &quot;Analyze Tesla stock&quot;
         ↓
 Root Agent (Coordinator)
         ↓
@@ -5360,13 +5362,13 @@ Web Search  Finance Agent
     └───┬───┘
         ↓
 Combined Analysis
-</code></pre>
+</code></pre></div>
 <h2 id="example-interaction">Example Interaction</h2>
-<pre><code>&gt; What's the current state of Tesla stock and recent news?
+<div class="highlight"><pre><span></span><code>&gt; What&#39;s the current state of Tesla stock and recent news?
 
 --- Agent: root ---
 
-I'll gather comprehensive information for you.
+I&#39;ll gather comprehensive information for you.
 
 [Delegating to web_search_agent for news]
 [Delegating to finance_agent for stock data]
@@ -5395,7 +5397,7 @@ Based on the analysis:
 - Tesla stock is trading at $248.50, well within its 52-week range
 - Recent positive news about deliveries and FSD could support momentum
 - The P/E ratio suggests growth expectations remain high
-</code></pre>
+</code></pre></div>
 <h2 id="key-takeaways">Key Takeaways</h2>
 <ul>
 <li>MCP servers provide specialized capabilities (finance, search, databases, etc.)</li>

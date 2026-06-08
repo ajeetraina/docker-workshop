@@ -159,6 +159,12 @@ nav:
     - Overview: lab7/overview.md
     - Getting Started: lab7/getting-started.md
 
+# Markdown extensions
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+
 theme:
   name: material
   language: en

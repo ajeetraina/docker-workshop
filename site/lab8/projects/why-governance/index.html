@@ -5455,23 +5455,23 @@
 <hr />
 <h2 id="why-current-solutions-dont-work">Why Current "Solutions" Don't Work</h2>
 <h3 id="permission-dialogs">Permission Dialogs</h3>
-<pre><code>┌─────────────────────────┐
+<div class="highlight"><pre><span></span><code>┌─────────────────────────┐
 │   Delete all your data? │
 │                         │
 │   [ Yes ]    [ No ]     │
 └─────────────────────────┘
-</code></pre>
+</code></pre></div>
 <p>Developers running agents in YOLO mode (the default for productivity) dismiss these. They accumulate. They become noise. They are not security.</p>
 <h3 id="system-prompt-instructions">System Prompt Instructions</h3>
-<pre><code>I solemnly promise not to read any 
+<div class="highlight"><pre><span></span><code>I solemnly promise not to read any 
 sensitive .env files unless you ask 
 me really nicely.
-</code></pre>
+</code></pre></div>
 <p>A system prompt is text. It can be overridden by prompt injection. It has no enforcement mechanism. It is not security.</p>
 <hr />
 <h2 id="what-actually-works-the-microvm-boundary">What Actually Works: The microVM Boundary</h2>
 <p>Docker Sandboxes runs each agent in a <strong>lightweight microVM</strong> - a virtual machine with its own dedicated Linux kernel. The agent runs inside the VM. Your credentials live on your host. The only thing shared is the workspace directory you explicitly mount.</p>
-<pre><code>Your Mac (host)
+<div class="highlight"><pre><span></span><code>Your Mac (host)
 ├── ~/.aws/credentials     ← here, untouched
 ├── ~/.ssh/id_rsa          ← here, untouched  
 ├── /var/run/docker.sock   ← host daemon, untouched
@@ -5480,7 +5480,7 @@ me really nicely.
     ├── /your/workspace    ← shared, bidirectional
     ├── private Docker daemon
     └── outbound proxy     ← enforces network policy, injects creds
-</code></pre>
+</code></pre></div>
 <p>The boundary is structural. It's enforced by the hypervisor, not by a policy document or a system prompt. The agent can't reach what isn't mounted - not because it's been told not to, but because it doesn't exist inside the VM.</p>
 <hr />
 <h2 id="the-agent-autonomy-scale">The Agent Autonomy Scale</h2>

@@ -5467,49 +5467,49 @@
 </table>
 <h3 id="inspect-image-layers-confirm-no-secrets-leaked">Inspect image layers - confirm no secrets leaked</h3>
 <p><code>docker history</code> shows every command that built the image - and exposes anything that was inlined into a layer:</p>
-<pre><code class="language-bash">docker history catalog-service:slim
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">history</span><span class="w"> </span>catalog-service:slim
+</code></pre></div>
 <p>Look through every layer - no credentials, tokens, or keys should be visible. If you see a <code>RUN echo "API_KEY=..."</code> or a <code>COPY .env</code>, that secret is now permanently embedded in the image.</p>
 <h3 id="buildkit-build-time-secrets">BuildKit build-time secrets</h3>
 <p>BuildKit's <code>--mount=type=secret</code> lets you use a secret during build <strong>without it ever being written to any layer</strong>:</p>
-<pre><code class="language-dockerfile"># WRONG - SSH key baked into layer forever
-RUN cp /root/.ssh/id_rsa /app/key
+<div class="highlight"><pre><span></span><code><span class="c"># WRONG - SSH key baked into layer forever</span>
+<span class="k">RUN</span><span class="w"> </span>cp<span class="w"> </span>/root/.ssh/id_rsa<span class="w"> </span>/app/key
 
-# RIGHT - BuildKit secret, never written to any layer
-RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret
-</code></pre>
-<pre><code class="language-bash">docker build --secret id=mysecret,src=./mysecret.txt -t myapp .
-</code></pre>
+<span class="c"># RIGHT - BuildKit secret, never written to any layer</span>
+<span class="k">RUN</span><span class="w"> </span>--mount<span class="o">=</span><span class="nv">type</span><span class="o">=</span>secret,id<span class="o">=</span>mysecret<span class="w"> </span>cat<span class="w"> </span>/run/secrets/mysecret
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>build<span class="w"> </span>--secret<span class="w"> </span><span class="nv">id</span><span class="o">=</span>mysecret,src<span class="o">=</span>./mysecret.txt<span class="w"> </span>-t<span class="w"> </span>myapp<span class="w"> </span>.
+</code></pre></div>
 <p>The secret is mounted into the build container at <code>/run/secrets/mysecret</code>, used during the <code>RUN</code>, then disappears. It never lands in <code>docker history</code> and never ships in the image.</p>
 <p>For runtime secrets, integrate with a real vault (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault) and fetch them at startup - never bake them in.</p>
 <hr />
 <h2 id="bp7-no-dev-tools-in-production">BP#7: No dev tools in production</h2>
 <p>Verify the production image has no dev tooling beyond the runtime itself:</p>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which npm   || echo &quot;npm not found - good&quot;
-</code></pre>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which yarn  || echo &quot;yarn not found - good&quot;
-</code></pre>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which git   || echo &quot;git not found - good&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>catalog-service:slim<span class="w"> </span>which<span class="w"> </span>npm<span class="w">   </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;npm not found - good&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>catalog-service:slim<span class="w"> </span>which<span class="w"> </span>yarn<span class="w">  </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;yarn not found - good&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>catalog-service:slim<span class="w"> </span>which<span class="w"> </span>git<span class="w">   </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;git not found - good&quot;</span>
+</code></pre></div>
 <p>If any of these <em>do</em> exist in your prod image, you have either too much in the base layer or you're shipping the dev stage by mistake.</p>
 <hr />
 <h2 id="bp8-no-os-tools-in-production">BP#8: No OS tools in production</h2>
 <p>The same logic applies to standard OS utilities:</p>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which curl    || echo &quot;curl not found - good&quot;
-</code></pre>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which wget    || echo &quot;wget not found - good&quot;
-</code></pre>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which apt-get || echo &quot;apt-get not found - good&quot;
-</code></pre>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which sudo    || echo &quot;sudo not found - good&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>catalog-service:slim<span class="w"> </span>which<span class="w"> </span>curl<span class="w">    </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;curl not found - good&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>catalog-service:slim<span class="w"> </span>which<span class="w"> </span>wget<span class="w">    </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;wget not found - good&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>catalog-service:slim<span class="w"> </span>which<span class="w"> </span>apt-get<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;apt-get not found - good&quot;</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>catalog-service:slim<span class="w"> </span>which<span class="w"> </span>sudo<span class="w">    </span><span class="o">||</span><span class="w"> </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;sudo not found - good&quot;</span>
+</code></pre></div>
 <blockquote>
 <p><strong>Why no <code>curl</code>?</strong> An attacker who gets code execution typically uses <code>curl</code> or <code>wget</code> to download additional payloads - a reverse shell, a crypto miner, a credential stealer. Removing these utilities meaningfully raises the cost of a successful exploit. The attacker now has to write their own networking code from inside the runtime they're stuck with.</p>
 <p><strong>Why no <code>apt-get</code>?</strong> Without a package manager, the attacker can't install anything new - they're limited to whatever is already in the image. With a minimal image, that's almost nothing.</p>
 </blockquote>
 <h2 id="attack-surface-count-so-far">Attack surface count so far</h2>
-<pre><code class="language-bash">docker scout cves catalog-service:slim --format only-packages --org &lt;YOUR_ORG&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>cves<span class="w"> </span>catalog-service:slim<span class="w"> </span>--format<span class="w"> </span>only-packages<span class="w"> </span>--org<span class="w"> </span>&lt;YOUR_ORG&gt;
+</code></pre></div>
 <p>Where we started: <strong>693 packages</strong> (<code>node:18</code>).</p>
 <p>Where we are now: <strong>~272 packages</strong> (<code>node:25-slim</code>).</p>
 <p>Where DHI takes us: <strong>~12 packages</strong>.</p>

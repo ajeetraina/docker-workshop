@@ -5544,35 +5544,35 @@ never see it in a normal diff.</p>
 <hr />
 <h2 id="prove-it-yourself">Prove it yourself</h2>
 <p>Let's demonstrate this. First, make sure you are in your sbx workspace:</p>
-<pre><code class="language-bash">cd ~/sbx-lab
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/sbx-lab
+</code></pre></div>
 <p>Start your sandbox:</p>
-<pre><code class="language-bash">sbx run sbxlab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>sbxlab
+</code></pre></div>
 <p>Ask the agent to create a Git hook:</p>
-<pre><code class="language-text">Create a pre-commit hook that prints &quot;hello from the agent&quot; before every commit
-</code></pre>
+<div class="highlight"><pre><span></span><code>Create a pre-commit hook that prints &quot;hello from the agent&quot; before every commit
+</code></pre></div>
 <p>Exit the sandbox:</p>
-<pre><code class="language-bash">exit
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">exit</span>
+</code></pre></div>
 <p>The microVM is now gone. Check the hook on your host:</p>
-<pre><code class="language-bash">ls -la .git/hooks/
-</code></pre>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-la<span class="w"> </span>.git/hooks/
+</code></pre></div>
 <p>Look for <code>pre-commit</code> with a recent timestamp - created by the agent, now
 living on your Mac.</p>
-<pre><code class="language-bash">cat .git/hooks/pre-commit
-</code></pre>
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>.git/hooks/pre-commit
+</code></pre></div>
 <p>Expected output:</p>
-<pre><code>#!/usr/bin/env bash
+<div class="highlight"><pre><span></span><code>#!/usr/bin/env bash
 echo &quot;hello from the agent&quot;
-</code></pre>
+</code></pre></div>
 <p>Now trigger it:</p>
-<pre><code class="language-bash">git commit --allow-empty -m &quot;test hook&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>commit<span class="w"> </span>--allow-empty<span class="w"> </span>-m<span class="w"> </span><span class="s2">&quot;test hook&quot;</span>
+</code></pre></div>
 <p>Expected output:</p>
-<pre><code>hello from the agent
+<div class="highlight"><pre><span></span><code>hello from the agent
 [main 9c1f07e] test hook
-</code></pre>
+</code></pre></div>
 <p>That's agent-written code running on your Mac. The microVM is gone - but the
 file persists and executes with your full host privileges.</p>
 <blockquote>
@@ -5583,36 +5583,36 @@ writes to your workspace. Review before you execute.</p>
 <hr />
 <h2 id="cleaning-up">Cleaning up</h2>
 <p>To remove the hook the agent created:</p>
-<pre><code class="language-bash">rm .git/hooks/pre-commit
-</code></pre>
+<div class="highlight"><pre><span></span><code>rm<span class="w"> </span>.git/hooks/pre-commit
+</code></pre></div>
 <p>To reset all hooks to their default state:</p>
-<pre><code class="language-bash">find .git/hooks -type f ! -name &quot;*.sample&quot; -delete
-</code></pre>
+<div class="highlight"><pre><span></span><code>find<span class="w"> </span>.git/hooks<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>!<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*.sample&quot;</span><span class="w"> </span>-delete
+</code></pre></div>
 <hr />
 <h2 id="branch-mode-the-safer-workflow-for-untrusted-tasks">Branch mode: the safer workflow for untrusted tasks</h2>
 <p>When you're not sure what an agent will do, use branch mode. The agent still
 has full write access - but its changes land on a separate worktree and branch,
 not your main working tree.</p>
-<pre><code class="language-bash">sbx run sbxlab --branch=agent-experiment
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>sbxlab<span class="w"> </span>--branch<span class="o">=</span>agent-experiment
+</code></pre></div>
 <p>sbx creates a new worktree at <code>~/sbxlab-worktrees/agent-experiment</code> and opens
 the agent there. Your <code>~/sbx-lab</code> working tree is untouched while the agent runs.</p>
 <p>When the agent is done, exit the sandbox:</p>
-<pre><code class="language-bash">exit
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">exit</span>
+</code></pre></div>
 <p>Now review what changed before touching anything:</p>
-<pre><code class="language-bash">cd ~/sbx-lab
-git diff main..agent-experiment
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/sbx-lab
+git<span class="w"> </span>diff<span class="w"> </span>main..agent-experiment
+</code></pre></div>
 <p>Check git hooks separately - they won't appear in the diff:</p>
-<pre><code class="language-bash">ls -la ~/sbxlab-worktrees/agent-experiment/.git/hooks/
-</code></pre>
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-la<span class="w"> </span>~/sbxlab-worktrees/agent-experiment/.git/hooks/
+</code></pre></div>
 <p>If you're happy with the changes, merge:</p>
-<pre><code class="language-bash">git merge agent-experiment
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>merge<span class="w"> </span>agent-experiment
+</code></pre></div>
 <p>If not, discard everything:</p>
-<pre><code class="language-bash">git branch -D agent-experiment
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>branch<span class="w"> </span>-D<span class="w"> </span>agent-experiment
+</code></pre></div>
 <p>Pay special attention to the same file types - Git hooks, CI config, build
 files, IDE config. Even in branch mode, review before you merge.</p>
 <blockquote>

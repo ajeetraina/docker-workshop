@@ -5358,7 +5358,7 @@
 <p>In this section you'll build a mixin kit that ships a Claude Code skill into the sandbox workspace. Claude Code picks up skills automatically from <code>.claude/skills/</code> in the workspace, so any kit that drops a <code>SKILL.md</code> file there is immediately usable when the agent starts.</p>
 <hr />
 <h2 id="the-kit-structure">The kit structure</h2>
-<pre><code>kits/docker-review/
+<div class="highlight"><pre><span></span><code>kits/docker-review/
 ├── spec.yaml
 └── files/
     └── workspace/
@@ -5366,42 +5366,42 @@
             └── skills/
                 └── docker-review/
                     └── SKILL.md
-</code></pre>
+</code></pre></div>
 <p>The <code>files/workspace/</code> tree maps directly to the sandbox workspace path. Everything inside it is injected at sandbox creation - no install commands, no staging directory workaround.</p>
 <hr />
 <h2 id="create-the-spec">Create the spec</h2>
 <p>Create <code>kits/docker-review/spec.yaml</code>:</p>
-<pre><code class="language-yaml">schemaVersion: &quot;1&quot;
-kind: mixin
-name: docker-review
-displayName: Dockerfile review skill
-description: Ships a Claude Code skill that reviews Dockerfiles for best practices
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mixin</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-review</span>
+<span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile review skill</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ships a Claude Code skill that reviews Dockerfiles for best practices</span>
+</code></pre></div>
 <p>That's the entire spec. No network rules needed, no install commands - just the skill file injection handled by the <code>files/</code> tree.</p>
 <hr />
 <h2 id="create-the-skill">Create the skill</h2>
 <p>Create <code>kits/docker-review/files/workspace/.claude/skills/docker-review/SKILL.md</code>:</p>
-<pre><code class="language-markdown">---
+<div class="highlight"><pre><span></span><code>---
 name: docker-review
-description: Review a Dockerfile for best practices. Use when the user asks to review, audit, or improve a Dockerfile.
----
+<span class="gu">description: Review a Dockerfile for best practices. Use when the user asks to review, audit, or improve a Dockerfile.</span>
+<span class="gu">---</span>
 
 When reviewing a Dockerfile, check:
 
-1. **Base image** - pinned tag or digest, minimal and appropriate for the workload
-2. **Layer order** - dependencies before application source to maximise cache reuse
-3. **Image size** - multi-stage builds, `.dockerignore`, package-manager cache flags (`--no-cache`, `--no-install-recommends`)
-4. **Security** - non-root `USER`, no secrets in `ARG`/`ENV`, no `--privileged`
-5. **Reproducibility** - pinned package versions, explicit `COPY` targets
-</code></pre>
+<span class="k">1.</span> <span class="gs">**Base image**</span> - pinned tag or digest, minimal and appropriate for the workload
+<span class="k">2.</span> <span class="gs">**Layer order**</span> - dependencies before application source to maximise cache reuse
+<span class="k">3.</span> <span class="gs">**Image size**</span> - multi-stage builds, <span class="sb">`.dockerignore`</span>, package-manager cache flags (<span class="sb">`--no-cache`</span>, <span class="sb">`--no-install-recommends`</span>)
+<span class="k">4.</span> <span class="gs">**Security**</span> - non-root <span class="sb">`USER`</span>, no secrets in <span class="sb">`ARG`</span>/<span class="sb">`ENV`</span>, no <span class="sb">`--privileged`</span>
+<span class="k">5.</span> <span class="gs">**Reproducibility**</span> - pinned package versions, explicit <span class="sb">`COPY`</span> targets
+</code></pre></div>
 <hr />
 <h2 id="run-it">Run it</h2>
 <p>From the repo root:</p>
-<pre><code class="language-bash">sbx run claude --kit ./kits/docker-review/ --name kits-lab
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span>./kits/docker-review/<span class="w"> </span>--name<span class="w"> </span>kits-lab
+</code></pre></div>
 <p>Once Claude loads, ask it:</p>
-<pre><code>Review the Dockerfile in this workspace
-</code></pre>
+<div class="highlight"><pre><span></span><code>Review the Dockerfile in this workspace
+</code></pre></div>
 <p>You should see the <code>docker-review</code> skill load and Claude use it to structure the review. Notice that Claude can see all the Dockerfiles in your bind-mounted workspace - that's expected. The sandbox isolates everything <em>outside</em> the workspace, not what's inside it.</p>
 <hr />
 <h2 id="what-just-happened">What just happened</h2>
@@ -5411,8 +5411,10 @@ When reviewing a Dockerfile, check:
 <li>The skill loaded and Claude used it automatically when you asked for a Dockerfile review</li>
 <li>Nothing was installed, no shell commands ran - the kit is entirely file-based</li>
 </ul>
-<p>!!! tip
-    Run <code>sbx kit validate ./kits/docker-review/</code> before running to catch any spec errors early.</p>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>Run <code>sbx kit validate ./kits/docker-review/</code> before running to catch any spec errors early.</p>
+</div>
 
 
 

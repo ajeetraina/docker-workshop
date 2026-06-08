@@ -5243,7 +5243,7 @@
   <h1>Compose watch</h1>
 
 <p>Compose File Watch is a feature introduced in Docker Compose version 2.22.0. It allows for automatic updates and previews of your running Compose services as you edit and save your code. This can enable a hands-off development workflow once Compose is running, as services automatically update themselves when you save your work.</p>
-<pre><code>services:
+<div class="highlight"><pre><span></span><code>services:
   web:
     build: .
     command: npm start
@@ -5256,7 +5256,7 @@
             - node_modules/
         - action: rebuild
           path: package.json
-</code></pre>
+</code></pre></div>
 <p>The <code>watch</code> attribute in the Compose file defines a list of rules that control these automatic service updates based on local file changes. Each rule requires a path pattern and an action to take when a modification is detected. The action can be set to rebuild, sync, or sync+restart.</p>
 <p>Here's a brief explanation of these actions:</p>
 <ul>
@@ -5269,26 +5269,26 @@ To use Compose Watch, you need to add the watch instructions to your compose.yam
 <p><img alt="file watch actions" src="../images/file-watch-actions.png" /></p>
 <h2 id="getting-started">Getting Started</h2>
 <h2 id="clone-the-repository">Clone the repository</h2>
-<pre><code>git clone https://github.com/dockersamples/getting-started-todo-app/
+<div class="highlight"><pre><span></span><code>git clone https://github.com/dockersamples/getting-started-todo-app/
 cd getting-started-todo-app
-</code></pre>
+</code></pre></div>
 <h2 id="switch-to-compose-watch-branch">Switch to compose-watch branch</h2>
-<pre><code>git checkout compose-watch
-</code></pre>
+<div class="highlight"><pre><span></span><code>git checkout compose-watch
+</code></pre></div>
 <h2 id="bringing-up-the-app">Bringing up the app</h2>
-<pre><code>docker compose watch
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker compose watch
+</code></pre></div>
 <h2 id="make-some-changes">Make some changes</h2>
 <p>Open a new terminal and modify the following package under frontend/package.json from </p>
-<pre><code>&quot;optionalDependencies&quot;: {
+<div class="highlight"><pre><span></span><code>&quot;optionalDependencies&quot;: {
     &quot;fsevents&quot;: &quot;^2.1.2&quot;
-</code></pre>
+</code></pre></div>
 <p>to</p>
-<pre><code>&quot;optionalDependencies&quot;: {
+<div class="highlight"><pre><span></span><code>&quot;optionalDependencies&quot;: {
     &quot;fsevents&quot;: &quot;^2.1.3&quot;
-</code></pre>
+</code></pre></div>
 <p>You will find that the frontend service gets rebuild automatcially for you</p>
-<pre><code>[+] Running 6/6
+<div class="highlight"><pre><span></span><code>[+] Running 6/6
  ✔ Network getting-started-todo-app_express-mongo     Created                                                          0.1s 
  ✔ Network getting-started-todo-app_react-express     Created                                                          0.0s 
  ✔ Container mongo                                    Started                                                          1.1s 
@@ -5323,7 +5323,7 @@ Rebuilding service &quot;frontend&quot; after changes were detected...
  =&gt; =&gt; loading layer 874fffdf421f 115.87MB / 121.34MB                                                                  9.9s
  =&gt; =&gt; loading layer b8d4de9612f2 27.14kB / 27.14kB                                                                    0.0s
 service &quot;frontend&quot; successfully built
-</code></pre>
+</code></pre></div>
 
 
 

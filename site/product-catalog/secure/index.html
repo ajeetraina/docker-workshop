@@ -5262,16 +5262,16 @@
 
 <h2 id="using-docker-scout">Using Docker Scout</h2>
 <p>For a Scout demo, the following patch will adjust the Dockerfile to use an older base image and install an older version of Express, allowing you to demo out-of-date base images and vunlerable dependencies.</p>
-<pre><code>git apply --whitespace=fix demo/scout.patch
-</code></pre>
+<div class="highlight"><pre><span></span><code>git apply --whitespace=fix demo/scout.patch
+</code></pre></div>
 <p>Let's build the Docker image.</p>
-<pre><code>docker build -t scout:v1.0 .
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker build -t scout:v1.0 .
+</code></pre></div>
 <p>Search "Express" package and it will instruct that you can fix it by using express 4.17.3+.</p>
 <p>Open up <code>package.json</code> file and change express version from 4.17.3 to 4.19.2.</p>
 <p>Next, run <code>npm install</code> before running the following command</p>
-<pre><code>docker build -t scout:v2.0 .
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker build -t scout:v2.0 .
+</code></pre></div>
 <p>You'll notice that all the H and C vulnerabilities are all gone.</p>
 
 

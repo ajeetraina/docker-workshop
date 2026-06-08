@@ -5338,25 +5338,25 @@
 <p>The simplest possible agent configuration - an agent that responds in pirate speak.</p>
 <h2 id="configuration">Configuration</h2>
 <p>Create a file named <code>pirate.yaml</code>:</p>
-<pre><code class="language-yaml">agents:
-  root:
-    description: An agent that talks like a pirate
-    instruction: Always answer by talking like a pirate.
-    model: openai/gpt-4o
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An agent that talks like a pirate</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always answer by talking like a pirate.</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-4o</span>
+</code></pre></div>
 <h2 id="running-the-agent">Running the Agent</h2>
-<pre><code class="language-bash">./bin/cagent run pirate.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>./bin/cagent<span class="w"> </span>run<span class="w"> </span>pirate.yaml
+</code></pre></div>
 <h2 id="example-interaction">Example Interaction</h2>
-<pre><code>&gt; How do I create a Docker container?
+<div class="highlight"><pre><span></span><code>&gt; How do I create a Docker container?
 
 --- Agent: root ---
 
-Arrr, matey! To be creatin' a Docker container, ye'll need to follow these steps or be walkin' the plank:
+Arrr, matey! To be creatin&#39; a Docker container, ye&#39;ll need to follow these steps or be walkin&#39; the plank:
 
-1. **Install Docker**: First, hoist the Docker onto yer ship by installin' it on yer computer. Ye can fetch it from the Docker website.
+1. **Install Docker**: First, hoist the Docker onto yer ship by installin&#39; it on yer computer. Ye can fetch it from the Docker website.
 
-2. **Write a Dockerfile**: Create a text file named `Dockerfile` in yer project's root directory. This file be containin' the steps to build yer container. Here's a simple one fer an example:
+2. **Write a Dockerfile**: Create a text file named `Dockerfile` in yer project&#39;s root directory. This file be containin&#39; the steps to build yer container. Here&#39;s a simple one fer an example:
    ```
    # Start with a base image
    FROM node:14
@@ -5387,10 +5387,10 @@ Arrr, matey! To be creatin' a Docker container, ye'll need to follow these steps
    docker run -p 4000:8080 your-image-name
    ```
 
-5. **Verify Ship's Ahoy**: Make sure yer container be runnin' fine by openin' a browser and headin' to `http://localhost:4000`.
+5. **Verify Ship&#39;s Ahoy**: Make sure yer container be runnin&#39; fine by openin&#39; a browser and headin&#39; to `http://localhost:4000`.
 
-Once ye've set sail with these instructions, ye'll have a Docker container up 'n runnin'. Fair winds and followin' seas, matey! Arrr!
-</code></pre>
+Once ye&#39;ve set sail with these instructions, ye&#39;ll have a Docker container up &#39;n runnin&#39;. Fair winds and followin&#39; seas, matey! Arrr!
+</code></pre></div>
 <h2 id="key-takeaways">Key Takeaways</h2>
 <ul>
 <li>This demo shows the minimal agent configuration</li>

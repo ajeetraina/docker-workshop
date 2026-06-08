@@ -5351,8 +5351,8 @@
 <h2 id="attestations">Attestations</h2>
 <p>In addition to providing a minimal and secure base image, Docker Hardened Images include a comprehensive set of attestations.</p>
 <p>You can run the following command to see the full list of attestations for <code>dhi-node:24-debian13</code>:</p>
-<pre><code>docker scout attest list &lt;YOUR_ORG_NAME&gt;/dhi-node:24-debian13
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker scout attest list &lt;YOUR_ORG_NAME&gt;/dhi-node:24-debian13
+</code></pre></div>
 <p>In the output you will see the list of available attestations, such as:</p>
 <ul>
 <li><strong>CycloneDX SBOM</strong> - A software bill of materials in CycloneDX format, listing components, libraries, and versions.</li>
@@ -5370,47 +5370,47 @@
 </ul>
 <h2 id="view-sboms-in-docker-hardened-images">View SBOMs in Docker Hardened Images</h2>
 <p>DHI provides SBOMs in the CycloneDX, SPDX, or Scout formats. To view a specific SBOM file, such as the SPDX SBOM that is widely adopted in open-source ecosystems, you can use the <code>docker scout attest get</code> command:</p>
-<pre><code>docker scout attest get &lt;YOUR_ORG_NAME&gt;/dhi-node:24-debian13 \
+<div class="highlight"><pre><span></span><code>docker scout attest get &lt;YOUR_ORG_NAME&gt;/dhi-node:24-debian13 \
   --predicate-type https://spdx.dev/Document
-</code></pre>
+</code></pre></div>
 <h2 id="fedramp-fips-compliance">FedRAMP / FIPS Compliance</h2>
 <p>FIPS 140 compliance is required or strongly recommended in many regulated environments where sensitive data must be protected, such as government, healthcare, finance, and defense.</p>
 <p>DHIs include variants that use cryptographic modules validated under FIPS 140.</p>
 <p>You can retrieve and inspect the FIPS attestation for the FIPS variant using the Docker Scout CLI:</p>
-<pre><code>docker scout attest get \
+<div class="highlight"><pre><span></span><code>docker scout attest get \
   --predicate-type https://docker.com/dhi/fips/v0.1 \
   --predicate \
   &lt;YOUR_ORG_NAME&gt;/dhi-node:24-debian13-fips
-</code></pre>
+</code></pre></div>
 <p>In the output you'll see the CMVP number and the FIPS Provider name, for example:</p>
-<pre><code class="language-json">{
-  &quot;certification&quot;: &quot;CMVP #4985&quot;,
-  &quot;certificationUrl&quot;: &quot;https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4985&quot;,
-  &quot;name&quot;: &quot;OpenSSL FIPS Provider&quot;,
-  &quot;package&quot;: &quot;pkg:dhi/openssl-provider-fips@3.1.2&quot;,
-  &quot;standard&quot;: &quot;FIPS 140-3&quot;,
-  &quot;status&quot;: &quot;active&quot;,
-  &quot;sunsetDate&quot;: &quot;2030-03-10&quot;,
-  &quot;version&quot;: &quot;3.1.2&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;certification&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;CMVP #4985&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;certificationUrl&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4985&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;OpenSSL FIPS Provider&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;package&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;pkg:dhi/openssl-provider-fips@3.1.2&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;standard&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;FIPS 140-3&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;status&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;active&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sunsetDate&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2030-03-10&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;3.1.2&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <h2 id="stig-compliance">STIG Compliance</h2>
 <p>Docker also provides a signed STIG scan attestation for each STIG-hardened image.</p>
 <p>You can retrieve and inspect a STIG scan attestation using the Docker Scout CLI:</p>
-<pre><code>docker scout attest get \
+<div class="highlight"><pre><span></span><code>docker scout attest get \
   --predicate-type https://docker.com/dhi/stig/v0.1 \
   --predicate \
   &lt;YOUR_ORG_NAME&gt;/dhi-node:24-debian13-fips
-</code></pre>
+</code></pre></div>
 <h2 id="integration-with-external-security-tools">Integration with External Security Tools</h2>
 <p>To verify the security posture using an external scanning tool you already use, such as Grype or Trivy, you will need to pass the vulnerability information in a compatible format, which Docker Scout can generate for you.</p>
 <p>First, you can view the list of available attestations for the DHI-based image using the <code>docker scout attest</code> command:</p>
-<pre><code>docker scout attest list &lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker scout attest list &lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1
+</code></pre></div>
 <p>You'll see two OpenVEX files: one for the DHI base image and another for any custom exceptions (like no-dsa) specific to your image.</p>
 <p>Then, to integrate this information with external tools, you can export the VEX data into a <code>vex.json</code> file. Starting with Docker Scout v1.18.3, you can use the <code>docker scout vex get</code> command to get the merged VEX document from all VEX attestations:</p>
-<pre><code>docker scout vex get &lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1 --output vex.json
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker scout vex get &lt;YOUR_ORG_NAME&gt;/demo-node-dhi:v1 --output vex.json
+</code></pre></div>
 <p>This generates a <code>vex.json</code> file containing all VEX statements for the specified image. Tools that support VEX can then use this file to suppress known non-exploitable CVEs.</p>
 <blockquote>
 <p>Congratulations! You have successfully completed the Docker Hardened Images workshop. You've learned how to mirror DHI images, scan and compare images using Docker Scout, migrate from community base images to DHI, and leverage built-in attestations for compliance and supply chain security.</p>

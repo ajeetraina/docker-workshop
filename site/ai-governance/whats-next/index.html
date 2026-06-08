@@ -5354,8 +5354,10 @@
 
 <h1 id="whats-next">What's Next</h1>
 <p>You just proved <strong>Pillar 1 - Sandbox Policies</strong> end-to-end. Here's how Pillars 2 and 3 fit in.</p>
-<p>!!! warning "Roadmap content"
-    The CLI surface for audit and MCP governance is still landing on <code>sbx</code>. The descriptions below explain the model and point to where each pillar lives today. Validate against your installed version as features ship.</p>
+<div class="admonition warning">
+<p class="admonition-title">Roadmap content</p>
+<p>The CLI surface for audit and MCP governance is still landing on <code>sbx</code>. The descriptions below explain the model and point to where each pillar lives today. Validate against your installed version as features ship.</p>
+</div>
 <hr />
 <h2 id="pillar-2-mcp-tool-governance">Pillar 2 - MCP Tool Governance</h2>
 <p>MCP (Model Context Protocol) servers give agents access to tools - GitHub, Notion, your internal APIs, custom servers your team builds. Each tool is a new attack surface.</p>
@@ -5371,29 +5373,29 @@
 <hr />
 <h2 id="pillar-3-audit-and-visibility">Pillar 3 - Audit and Visibility</h2>
 <p>Every policy decision - allow or deny, network or filesystem or MCP - generates a structured audit event. Conceptually:</p>
-<pre><code class="language-json">{
-  &quot;timestamp&quot;: &quot;2026-06-01T01:35:22Z&quot;,
-  &quot;user&quot;: &quot;ajeetraina777&quot;,
-  &quot;org&quot;: &quot;&lt;your-org&gt;&quot;,
-  &quot;sandbox_id&quot;: &quot;sbx_abc123&quot;,
-  &quot;rule_type&quot;: &quot;network&quot;,
-  &quot;rule_name&quot;: &quot;deny exfiltration&quot;,
-  &quot;decision&quot;: &quot;deny&quot;,
-  &quot;resource&quot;: &quot;paste.ee:443&quot;,
-  &quot;agent&quot;: &quot;shell&quot;
-}
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-06-01T01:35:22Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;user&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;ajeetraina777&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;org&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;&lt;your-org&gt;&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;sandbox_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sbx_abc123&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rule_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;network&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;rule_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deny exfiltration&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;decision&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;deny&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;resource&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;paste.ee:443&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;agent&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;shell&quot;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>These events stream to your existing SIEM (Splunk, Datadog, Elastic, Sentinel) for retention, alerting, and compliance reporting.</p>
 <p><strong>Where to see it today:</strong></p>
 <ul>
 <li><strong>Admin Console</strong> - for your org, the Activity / Audit logs view shows org-level policy and access events (when enabled for your plan)</li>
 <li><strong>Local daemon log</strong> - runtime decisions on this machine are streamed to the sbx daemon log. For ad-hoc inspection during demos:</li>
 </ul>
-<pre><code class="language-bash">tail -50 ~/Library/Application\ Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log
-</code></pre>
+<div class="highlight"><pre><span></span><code>tail<span class="w"> </span>-50<span class="w"> </span>~/Library/Application<span class="se">\ </span>Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log
+</code></pre></div>
 <p>This is <strong>not</strong> a polished audit surface - it's the raw daemon log. But after running the Network and Filesystem enforcement tests, you can grep it for the paste.ee, example.com, and credential-access denials to see the underlying machinery in action:</p>
-<pre><code class="language-bash">grep -iE &quot;paste\.ee|example\.com|deny|block&quot; ~/Library/Application\ Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log | tail -20
-</code></pre>
+<div class="highlight"><pre><span></span><code>grep<span class="w"> </span>-iE<span class="w"> </span><span class="s2">&quot;paste\.ee|example\.com|deny|block&quot;</span><span class="w"> </span>~/Library/Application<span class="se">\ </span>Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+</code></pre></div>
 <p>A dedicated <code>sbx audit</code> CLI with structured query, export, and SIEM integration is on the roadmap. The <strong>Observability</strong> section walks through the structured JSONL surface and a live dashboard built on top of it.</p>
 <hr />
 <h2 id="the-complete-three-pillar-picture">The complete three-pillar picture</h2>

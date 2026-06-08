@@ -5463,52 +5463,52 @@
 </table>
 <h2 id="step-1-clean-up-any-leftover-containers">Step 1 - Clean up any leftover containers</h2>
 <p>Run this first every time. It removes any containers from a previous attempt so names and ports are free.</p>
-<pre><code class="language-bash">docker rm -f catalog-hardened catalog-hardened-tmpfs 2&gt;/dev/null
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>catalog-hardened<span class="w"> </span>catalog-hardened-tmpfs<span class="w"> </span><span class="m">2</span>&gt;/dev/null
+</code></pre></div>
 <h2 id="step-2-run-with-hardened-flags">Step 2 - Run with hardened flags</h2>
-<pre><code class="language-bash">docker run \
-    -d \
-    -p 3100:3000 \
-    --read-only \
-    --cap-drop=ALL \
-    --user=65532 \
-    --name catalog-hardened \
-    catalog-service:slim
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">3100</span>:3000<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--read-only<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cap-drop<span class="o">=</span>ALL<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--user<span class="o">=</span><span class="m">65532</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>catalog-hardened<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>catalog-service:slim
+</code></pre></div>
 <p>Verify the container is up:</p>
-<pre><code class="language-bash">docker ps --filter name=catalog-hardened
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>ps<span class="w"> </span>--filter<span class="w"> </span><span class="nv">name</span><span class="o">=</span>catalog-hardened
+</code></pre></div>
 <p>Confirm the app responds:</p>
-<pre><code class="language-bash">curl http://localhost:3100
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>http://localhost:3100
+</code></pre></div>
 <h2 id="step-3-verify-the-filesystem-is-read-only">Step 3 - Verify the filesystem is read-only</h2>
 <p>Try to write a file inside the container:</p>
-<pre><code class="language-bash">docker exec catalog-hardened sh -c &quot;echo test &gt; /tmp/test.txt&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>catalog-hardened<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo test &gt; /tmp/test.txt&quot;</span>
+</code></pre></div>
 <p>Expected output: <code>sh: /tmp/test.txt: Read-only file system</code></p>
 <p>The attacker gained code execution but <strong>cannot write anywhere</strong> - no dropping payloads, no modifying config files, no creating SUID binaries.</p>
 <h2 id="step-4-prove-the-capability-drop">Step 4 - Prove the capability drop</h2>
-<pre><code class="language-bash">docker inspect catalog-hardened \
-    --format 'ReadonlyRootfs={{.HostConfig.ReadonlyRootfs}} CapDrop={{.HostConfig.CapDrop}}'
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>inspect<span class="w"> </span>catalog-hardened<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--format<span class="w"> </span><span class="s1">&#39;ReadonlyRootfs={{.HostConfig.ReadonlyRootfs}} CapDrop={{.HostConfig.CapDrop}}&#39;</span>
+</code></pre></div>
 <p>Expected output:</p>
-<pre><code class="language-text">ReadonlyRootfs=true CapDrop=[ALL]
-</code></pre>
+<div class="highlight"><pre><span></span><code>ReadonlyRootfs=true CapDrop=[ALL]
+</code></pre></div>
 <h2 id="step-5-when-your-app-needs-a-writable-area-use-tmpfs">Step 5 - When your app needs a writable area: use <code>tmpfs</code></h2>
 <p>Some apps genuinely need scratch space - caches, temp files, sessions. <code>tmpfs</code> is in-memory only - writable, but never persisted to disk and gone when the container stops:</p>
-<pre><code class="language-bash">docker run \
-    -d \
-    -p 3101:3000 \
-    --read-only \
-    --tmpfs /tmp:noexec,nosuid,size=64m \
-    --cap-drop=ALL \
-    --user=65532 \
-    --name catalog-hardened-tmpfs \
-    catalog-service:slim
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>run<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-d<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>-p<span class="w"> </span><span class="m">3101</span>:3000<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--read-only<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--tmpfs<span class="w"> </span>/tmp:noexec,nosuid,size<span class="o">=</span>64m<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--cap-drop<span class="o">=</span>ALL<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--user<span class="o">=</span><span class="m">65532</span><span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--name<span class="w"> </span>catalog-hardened-tmpfs<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>catalog-service:slim
+</code></pre></div>
 <p>Verify <code>/tmp</code> is writable but everything else is still read-only:</p>
-<pre><code class="language-bash">docker exec catalog-hardened-tmpfs sh -c &quot;echo test &gt; /tmp/test.txt &amp;&amp; cat /tmp/test.txt&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>catalog-hardened-tmpfs<span class="w"> </span>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;echo test &gt; /tmp/test.txt &amp;&amp; cat /tmp/test.txt&quot;</span>
+</code></pre></div>
 <p>Note the extra <code>tmpfs</code> flags:</p>
 <ul>
 <li><code>noexec</code> - files in <code>/tmp</code> cannot be executed (blocks payload drop-and-run)</li>
@@ -5516,8 +5516,8 @@
 <li><code>size=64m</code> - caps memory usage to 64 MB (prevents tmpfs DoS)</li>
 </ul>
 <h2 id="step-6-clean-up">Step 6 - Clean up</h2>
-<pre><code class="language-bash">docker rm -f catalog-hardened catalog-hardened-tmpfs
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>catalog-hardened<span class="w"> </span>catalog-hardened-tmpfs
+</code></pre></div>
 <p>Continue to <a href="../secrets-and-tools/">BP#6, #7, #8: Secrets and Limiting Tools</a>.</p>
 
 

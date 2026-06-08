@@ -5357,91 +5357,91 @@
 <h1 id="action-in-docker-agent-tool-execution-sub-agent-delegation">Action in Docker Agent - Tool Execution + Sub-Agent Delegation</h1>
 <p>Action is <strong>how the agent changes its environment</strong>. In cagent, action has two forms: calling tools directly (filesystem, shell, MCP) and delegating tasks to specialized sub-agents.</p>
 <h2 id="step-1-create-a-project-that-needs-multiple-specialists">Step 1: Create a project that needs multiple specialists</h2>
-<pre><code class="language-bash">mkdir ~/action-test &amp;&amp; cd ~/action-test
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>~/action-test<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/action-test
 
-# A messy Python file that needs fixing, docs, and tests
-cat &gt; calculator.py &lt;&lt; 'EOF'
-# no docstrings, no error handling, inconsistent style
-def add(a,b):
-    return a+b
-def subtract(a,b):
-    return a-b
-def divide(a,b):
-    return a/b
-def multiply(a,b):
-    return a*b
-EOF
-</code></pre>
+<span class="c1"># A messy Python file that needs fixing, docs, and tests</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>calculator.py<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s"># no docstrings, no error handling, inconsistent style</span>
+<span class="s">def add(a,b):</span>
+<span class="s">    return a+b</span>
+<span class="s">def subtract(a,b):</span>
+<span class="s">    return a-b</span>
+<span class="s">def divide(a,b):</span>
+<span class="s">    return a/b</span>
+<span class="s">def multiply(a,b):</span>
+<span class="s">    return a*b</span>
+<span class="s">EOF</span>
+</code></pre></div>
 <h2 id="step-2-create-a-multi-agent-team-with-distinct-actions">Step 2: Create a multi-agent team with distinct actions</h2>
-<pre><code class="language-yaml"># action.yaml
-version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># action.yaml</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
 
-agents:
-  root:
-    model: openai/gpt-5-mini
-    description: Tech lead that delegates tasks to specialists
-    instruction: |
-      You are a tech lead. You have 3 specialists:
-      - coder: Refactors code, adds error handling, improves style
-      - tester: Writes comprehensive test files
-      - documenter: Writes README and docstrings
+<span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Tech lead that delegates tasks to specialists</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You are a tech lead. You have 3 specialists:</span>
+<span class="w">      </span><span class="no">- coder: Refactors code, adds error handling, improves style</span>
+<span class="w">      </span><span class="no">- tester: Writes comprehensive test files</span>
+<span class="w">      </span><span class="no">- documenter: Writes README and docstrings</span>
 
-      For calculator.py:
-      1. Delegate to coder to refactor and add error handling
-      2. Delegate to tester to write tests
-      3. Delegate to documenter to write a README
-      4. Verify everything works by running the tests yourself
+<span class="w">      </span><span class="no">For calculator.py:</span>
+<span class="w">      </span><span class="no">1. Delegate to coder to refactor and add error handling</span>
+<span class="w">      </span><span class="no">2. Delegate to tester to write tests</span>
+<span class="w">      </span><span class="no">3. Delegate to documenter to write a README</span>
+<span class="w">      </span><span class="no">4. Verify everything works by running the tests yourself</span>
 
-      Coordinate the team. Do NOT do the work yourself.
-    sub_agents: [coder, tester, documenter]
-    toolsets:
-      - type: shell
+<span class="w">      </span><span class="no">Coordinate the team. Do NOT do the work yourself.</span>
+<span class="w">    </span><span class="nt">sub_agents</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">coder</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">tester</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">documenter</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shell</span>
 
-  coder:
-    model: openai/gpt-5-mini
-    description: Refactors code and adds error handling
-    instruction: |
-      You are a senior Python developer. Your ACTION is to:
-      - Read the existing code
-      - Rewrite it with proper style (PEP 8)
-      - Add docstrings to every function
-      - Add error handling (e.g., ZeroDivisionError for divide)
-      - Write the improved file back
-    toolsets:
-      - type: filesystem
+<span class="w">  </span><span class="nt">coder</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Refactors code and adds error handling</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You are a senior Python developer. Your ACTION is to:</span>
+<span class="w">      </span><span class="no">- Read the existing code</span>
+<span class="w">      </span><span class="no">- Rewrite it with proper style (PEP 8)</span>
+<span class="w">      </span><span class="no">- Add docstrings to every function</span>
+<span class="w">      </span><span class="no">- Add error handling (e.g., ZeroDivisionError for divide)</span>
+<span class="w">      </span><span class="no">- Write the improved file back</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
 
-  tester:
-    model: openai/gpt-5-mini
-    description: Writes comprehensive test suites
-    instruction: |
-      You are a QA engineer. Your ACTION is to:
-      - Read the source code
-      - Write a test file (test_calculator.py) with pytest
-      - Cover happy paths, edge cases, and error cases
-      - Include at least 2 tests per function
-    toolsets:
-      - type: filesystem
+<span class="w">  </span><span class="nt">tester</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Writes comprehensive test suites</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You are a QA engineer. Your ACTION is to:</span>
+<span class="w">      </span><span class="no">- Read the source code</span>
+<span class="w">      </span><span class="no">- Write a test file (test_calculator.py) with pytest</span>
+<span class="w">      </span><span class="no">- Cover happy paths, edge cases, and error cases</span>
+<span class="w">      </span><span class="no">- Include at least 2 tests per function</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
 
-  documenter:
-    model: openai/gpt-5-mini
-    description: Writes documentation and README files
-    instruction: |
-      You are a technical writer. Your ACTION is to:
-      - Read the source code
-      - Write a clear README.md with usage examples
-      - Include installation, usage, and API reference sections
-    toolsets:
-      - type: filesystem
-</code></pre>
+<span class="w">  </span><span class="nt">documenter</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Writes documentation and README files</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You are a technical writer. Your ACTION is to:</span>
+<span class="w">      </span><span class="no">- Read the source code</span>
+<span class="w">      </span><span class="no">- Write a clear README.md with usage examples</span>
+<span class="w">      </span><span class="no">- Include installation, usage, and API reference sections</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+</code></pre></div>
 <h2 id="step-3-run-it">Step 3: Run it</h2>
-<pre><code class="language-bash">export OPENAI_API_KEY=&lt;your_key&gt;
-cagent run ./action.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>&lt;your_key&gt;
+cagent<span class="w"> </span>run<span class="w"> </span>./action.yaml
+</code></pre></div>
 <p>Then type:</p>
-<pre><code>Refactor calculator.py, write tests, and create documentation. Use your team.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Refactor calculator.py, write tests, and create documentation. Use your team.
+</code></pre></div>
 <h2 id="what-you-should-see">What you should see</h2>
-<pre><code>[root]        → Delegates to coder          ← ACTION: delegation
+<div class="highlight"><pre><span></span><code>[root]        → Delegates to coder          ← ACTION: delegation
 [coder]       ✓ Read  calculator.py         ← ACTION: perceive
 [coder]       ✓ Edit  calculator.py         ← ACTION: modify environment
 [root]        → Delegates to tester         ← ACTION: delegation
@@ -5451,7 +5451,7 @@ cagent run ./action.yaml
 [documenter]  ✓ Read  calculator.py         ← ACTION: perceive
 [documenter]  ✓ Write README.md             ← ACTION: create new file
 [root]        ✓ Shell pytest -q             ← ACTION: verify everything works
-</code></pre>
+</code></pre></div>
 <h2 id="key-teaching-point">Key Teaching Point</h2>
 <table>
 <thead>

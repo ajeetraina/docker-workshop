@@ -5408,8 +5408,8 @@
 <p>Two of Scout's most useful commands aren't about finding CVEs - they're about figuring out <strong>what to do next</strong>: <code>recommendations</code> and <code>compare</code>.</p>
 <h2 id="docker-scout-recommendations-what-should-i-upgrade-to"><code>docker scout recommendations</code> - what should I upgrade to?</h2>
 <p>Most CVE-fix advice from a generic scanner is "upgrade the package". For base images that's not always actionable - you don't pin individual OS packages, you pin a base image tag. Scout knows that and gives you tag-level upgrade paths instead.</p>
-<pre><code class="language-bash">docker scout recommendations catalog-service:slim --org &lt;YOUR_ORG&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>recommendations<span class="w"> </span>catalog-service:slim<span class="w"> </span>--org<span class="w"> </span>&lt;YOUR_ORG&gt;
+</code></pre></div>
 <p>The output ranks candidate base image tags by:</p>
 <ul>
 <li>How many CVEs are eliminated</li>
@@ -5420,27 +5420,27 @@
 <h2 id="docker-scout-compare-what-changed-between-two-images"><code>docker scout compare</code> - what changed between two images?</h2>
 <p><code>compare</code> is the command most teams underuse. It's the difference between a scary CVE report and an actionable one.</p>
 <h3 id="compare-two-local-image-tags">Compare two local image tags</h3>
-<pre><code class="language-bash">docker scout compare \
-    --ignore-unchanged \
-    --to catalog-service \
-    catalog-service:slim \
-    --org &lt;YOUR_ORG&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>compare<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--ignore-unchanged<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--to<span class="w"> </span>catalog-service<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>catalog-service:slim<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--org<span class="w"> </span>&lt;YOUR_ORG&gt;
+</code></pre></div>
 <p>This compares the new image (<code>catalog-service:slim</code>) against the baseline (<code>catalog-service</code>, the old vulnerable build). With <code>--ignore-unchanged</code>, you see only what's <em>different</em> - not every package both images share.</p>
 <h3 id="compare-against-the-previous-production-image">Compare against the previous production image</h3>
 <p>In CI, you almost always want to compare against what's currently running in prod:</p>
-<pre><code class="language-bash">docker scout compare \
-    --to registry.example.com/catalog-service:prod \
-    catalog-service:candidate \
-    --org &lt;YOUR_ORG&gt;
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>compare<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--to<span class="w"> </span>registry.example.com/catalog-service:prod<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>catalog-service:candidate<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--org<span class="w"> </span>&lt;YOUR_ORG&gt;
+</code></pre></div>
 <p>The output answers the question every reviewer actually wants the answer to: <strong>"is this PR worse than what we have today?"</strong></p>
 <h3 id="reading-the-compare-output">Reading the compare output</h3>
 <p>A typical block looks like this:</p>
-<pre><code class="language-text">  vulnerabilities │  0C  0H  0M  0L  │  2C  26H  25M  122L  4?
+<div class="highlight"><pre><span></span><code>  vulnerabilities │  0C  0H  0M  0L  │  2C  26H  25M  122L  4?
   size            │  40 MB (-358 MB)  │  398 MB
   packages        │  211 (-595)       │  806
-</code></pre>
+</code></pre></div>
 <p>Three signals at a glance:</p>
 <ul>
 <li>CVEs gone vs introduced</li>

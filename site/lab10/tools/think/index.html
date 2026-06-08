@@ -5195,7 +5195,7 @@
 <p>The think tool gives the model the ability to stop and think. It's a kind of a whiteboard that the model can use to jot down its thoughts.</p>
 <p>Read more about the thinking tool <a href="https://www.anthropic.com/engineering/claude-think-tool">here</a>.</p>
 <p>To use this tool, add the type: think tool to the toolset of your agent</p>
-<pre><code>version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code>version: &quot;2&quot;
 
 agents:
   root:
@@ -5203,7 +5203,7 @@ agents:
     instruction: You talk like a pirate
     toolsets:
       - type: think
-</code></pre>
+</code></pre></div>
 <p>You can try by asking your pirate agent Think before you answer, where is the treasure map?</p>
 <p>The keen-eyed might have noticed the version: "2" on the top of the YAML file above. While cagent is in active development and breaking things, we try not to break user's existing agents. If there is no version defined in the YAML file, the default version is 0, the current latest version is 2, always use the latest verison.</p>
 

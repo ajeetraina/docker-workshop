@@ -5558,22 +5558,22 @@ needs to pass through.</p>
 <hr />
 <h2 id="step-1-confirm-dmr-is-running-on-the-host">Step 1 - Confirm DMR is running on the host</h2>
 <p>On your <strong>Mac</strong>:</p>
-<pre><code class="language-bash">docker model ls
-curl -s http://localhost:12434/engines/llama.cpp/v1/models | head -20
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>model<span class="w"> </span>ls
+curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:12434/engines/llama.cpp/v1/models<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-20
+</code></pre></div>
 <p>You should see a list of local models. If <code>docker model ls</code> is empty, pull a
 small one - smollm2 is 360MB and loads instantly:</p>
-<pre><code class="language-bash">docker model pull ai/smollm2:360M-Q4_K_M
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>model<span class="w"> </span>pull<span class="w"> </span>ai/smollm2:360M-Q4_K_M
+</code></pre></div>
 <p>For a real coding demo, pull something bigger:</p>
-<pre><code class="language-bash">docker model pull ai/qwen3:8B-Q4_K_M
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>model<span class="w"> </span>pull<span class="w"> </span>ai/qwen3:8B-Q4_K_M
+</code></pre></div>
 <hr />
 <h2 id="step-2-create-a-fresh-sbx">Step 2 - Create a fresh sbx</h2>
 <p>On the host:</p>
-<pre><code class="language-bash">mkdir -p /tmp/dmr-test &amp;&amp; cd /tmp/dmr-test
-sbx create --name dmr-test shell .
-</code></pre>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>/tmp/dmr-test<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/tmp/dmr-test
+sbx<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>dmr-test<span class="w"> </span>shell<span class="w"> </span>.
+</code></pre></div>
 <p>The <code>shell</code> agent gives you a plain bash prompt inside the microVM - no AI
 agent attached. Perfect for testing connectivity before wiring up Codex or
 Claude.</p>
@@ -5582,11 +5582,11 @@ Claude.</p>
 <p>Before you attach, add a local allow rule. The sbx proxy normalizes the target
 to <code>localhost:12434</code> internally - even when you'll reach it via
 <code>host.docker.internal</code>.</p>
-<pre><code class="language-bash">sbx policy allow network localhost:12434
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>allow<span class="w"> </span>network<span class="w"> </span>localhost:12434
+</code></pre></div>
 <p>Verify:</p>
-<pre><code class="language-bash">sbx policy ls | grep localhost
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>ls<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>localhost
+</code></pre></div>
 <p>You should see one local allow entry for <code>localhost:12434</code>.</p>
 <blockquote>
 <p><strong>Why <code>localhost:12434</code> and not <code>host.docker.internal:12434</code>?</strong> The sbx proxy
@@ -5597,15 +5597,15 @@ internals.</p>
 </blockquote>
 <hr />
 <h2 id="step-4-attach-to-the-sbx">Step 4 - Attach to the sbx</h2>
-<pre><code class="language-bash">sbx run dmr-test
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>dmr-test
+</code></pre></div>
 <p>You'll land inside the VM:</p>
-<pre><code class="language-plaintext">agent@dmr-test:dmr-test$
-</code></pre>
+<div class="highlight"><pre><span></span><code>agent@dmr-test:dmr-test$
+</code></pre></div>
 <p>Confirm you're really in a fresh Linux guest:</p>
-<pre><code class="language-bash">hostname
-cat /etc/os-release | head -2
-</code></pre>
+<div class="highlight"><pre><span></span><code>hostname
+cat<span class="w"> </span>/etc/os-release<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-2
+</code></pre></div>
 <p>You'll see the sandbox name and a clean Ubuntu 25.10 image - not your Mac.</p>
 <hr />
 <h2 id="step-5-reach-dmr-from-inside-the-sbx">Step 5 - Reach DMR from inside the sbx</h2>
@@ -5618,20 +5618,20 @@ cat /etc/os-release | head -2
 <li><code>model-runner.docker.internal</code> does <strong>not</strong> resolve inside sbx. Don't use it.</li>
 </ul>
 <p>Get the model list:</p>
-<pre><code class="language-bash">curl -s http://host.docker.internal:12434/engines/llama.cpp/v1/models | head -30
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>http://host.docker.internal:12434/engines/llama.cpp/v1/models<span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-30
+</code></pre></div>
 <p>You'll see the same list you saw on the host in Step 1 - proof that the sbx
 proxy forwarded the request to DMR.</p>
 <hr />
 <h2 id="step-6-run-inference-across-the-boundary">Step 6 - Run inference across the boundary</h2>
-<pre><code class="language-bash">curl -s http://host.docker.internal:12434/engines/llama.cpp/v1/chat/completions \
-  -H &quot;Content-Type: application/json&quot; \
-  -d '{
-    &quot;model&quot;: &quot;ai/smollm2:360M-Q4_K_M&quot;,
-    &quot;messages&quot;: [{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;Reply with exactly: sbx to DMR works&quot;}],
-    &quot;max_tokens&quot;: 20
-  }'
-</code></pre>
+<div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-s<span class="w"> </span>http://host.docker.internal:12434/engines/llama.cpp/v1/chat/completions<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{</span>
+<span class="s1">    &quot;model&quot;: &quot;ai/smollm2:360M-Q4_K_M&quot;,</span>
+<span class="s1">    &quot;messages&quot;: [{&quot;role&quot;:&quot;user&quot;,&quot;content&quot;:&quot;Reply with exactly: sbx to DMR works&quot;}],</span>
+<span class="s1">    &quot;max_tokens&quot;: 20</span>
+<span class="s1">  }&#39;</span>
+</code></pre></div>
 <p>You'll get back JSON with the model's response in <code>choices[0].message.content</code>.
 That's a completed inference round-trip - agent in microVM, model on host,
 OpenAI-compatible protocol between them.</p>
@@ -5644,28 +5644,28 @@ real coding. For production-quality demos use <code>ai/qwen3:8B-Q4_K_M</code> or
 <h2 id="step-7-python-client-using-the-openai-sdk">Step 7 - Python client using the OpenAI SDK</h2>
 <p>This is the pattern any real agent will use. Create <code>test_local.py</code> inside
 the sbx:</p>
-<pre><code class="language-bash">cat &gt; test_local.py &lt;&lt;'EOF'
-from openai import OpenAI
+<div class="highlight"><pre><span></span><code>cat<span class="w"> </span>&gt;<span class="w"> </span>test_local.py<span class="w"> </span><span class="s">&lt;&lt;&#39;EOF&#39;</span>
+<span class="s">from openai import OpenAI</span>
 
-client = OpenAI(
-    base_url=&quot;http://host.docker.internal:12434/engines/llama.cpp/v1&quot;,
-    api_key=&quot;not-needed&quot;
-)
+<span class="s">client = OpenAI(</span>
+<span class="s">    base_url=&quot;http://host.docker.internal:12434/engines/llama.cpp/v1&quot;,</span>
+<span class="s">    api_key=&quot;not-needed&quot;</span>
+<span class="s">)</span>
 
-resp = client.chat.completions.create(
-    model=&quot;ai/qwen3:8B-Q4_K_M&quot;,
-    messages=[{
-        &quot;role&quot;: &quot;user&quot;,
-        &quot;content&quot;: &quot;Write a Python function that reads a CSV and counts rows.&quot;
-    }]
-)
-print(resp.choices[0].message.content)
-EOF
-</code></pre>
+<span class="s">resp = client.chat.completions.create(</span>
+<span class="s">    model=&quot;ai/qwen3:8B-Q4_K_M&quot;,</span>
+<span class="s">    messages=[{</span>
+<span class="s">        &quot;role&quot;: &quot;user&quot;,</span>
+<span class="s">        &quot;content&quot;: &quot;Write a Python function that reads a CSV and counts rows.&quot;</span>
+<span class="s">    }]</span>
+<span class="s">)</span>
+<span class="s">print(resp.choices[0].message.content)</span>
+<span class="s">EOF</span>
+</code></pre></div>
 <p>Install the SDK and run it:</p>
-<pre><code class="language-bash">pip install --break-system-packages openai
-python3 test_local.py
-</code></pre>
+<div class="highlight"><pre><span></span><code>pip<span class="w"> </span>install<span class="w"> </span>--break-system-packages<span class="w"> </span>openai
+python3<span class="w"> </span>test_local.py
+</code></pre></div>
 <p>The model generates Python code - completely offline, no API key, no egress.</p>
 <hr />
 <h2 id="step-8-run-a-coding-agent-against-the-local-model">Step 8 - Run a coding agent against the local model</h2>
@@ -5673,27 +5673,27 @@ python3 test_local.py
 <code>OPENAI_BASE_URL</code> and <code>OPENAI_API_KEY</code> environment variables, so pointing them
 at DMR is a one-liner.</p>
 <p>First stop the shell sandbox:</p>
-<pre><code class="language-bash">sbx stop dmr-test
-sbx rm dmr-test
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>stop<span class="w"> </span>dmr-test
+sbx<span class="w"> </span>rm<span class="w"> </span>dmr-test
+</code></pre></div>
 <p>Create a codex sandbox and inject the local-model env vars:</p>
-<pre><code class="language-bash">cd /tmp/dmr-test
-sbx create --name dmr-codex codex .
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>/tmp/dmr-test
+sbx<span class="w"> </span>create<span class="w"> </span>--name<span class="w"> </span>dmr-codex<span class="w"> </span>codex<span class="w"> </span>.
+</code></pre></div>
 <p>Add the env vars to the codex config so they're available to the agent every
 run. Inside the sbx once you attach:</p>
-<pre><code class="language-bash">export OPENAI_BASE_URL=http://host.docker.internal:12434/engines/llama.cpp/v1
-export OPENAI_API_KEY=not-needed
-codex &quot;write a Python script that prints the first 10 Fibonacci numbers&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_BASE_URL</span><span class="o">=</span>http://host.docker.internal:12434/engines/llama.cpp/v1
+<span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>not-needed
+codex<span class="w"> </span><span class="s2">&quot;write a Python script that prints the first 10 Fibonacci numbers&quot;</span>
+</code></pre></div>
 <p>The agent is running inside the microVM. The model is running on your Mac.
 The only thing crossing the boundary is OpenAI-compatible JSON over HTTP. No
 cloud. No secrets leaving the host. No tokens billed.</p>
 <hr />
 <h2 id="watch-the-policy-log-during-the-run">Watch the policy log during the run</h2>
 <p>In a separate host terminal:</p>
-<pre><code class="language-bash">sbx policy log dmr-codex
-</code></pre>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>log<span class="w"> </span>dmr-codex
+</code></pre></div>
 <p>Every inference request shows up as an allowed <code>localhost:12434</code> entry. That's
 your audit trail - proof that the agent only talked to the local model and
 nothing else.</p>

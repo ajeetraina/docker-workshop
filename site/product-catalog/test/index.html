@@ -5614,13 +5614,13 @@
 <h2 id="running-the-tests">Running the Tests</h2>
 <h3 id="unit-tests">Unit Tests</h3>
 <p>To run the unit tests:</p>
-<pre><code class="language-bash">npm run unit-test
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>unit-test
+</code></pre></div>
 <p>These tests verify the behavior of individual functions without external dependencies.</p>
 <h3 id="integration-tests">Integration Tests</h3>
 <p>To run the integration tests:</p>
-<pre><code class="language-bash">npm run integration-test
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>integration-test
+</code></pre></div>
 <p>When you run integration tests, Testcontainers will:
 1. Spin up required containers (PostgreSQL, Kafka, LocalStack)
 2. Run the tests against these containers
@@ -5630,76 +5630,76 @@
 <h2 id="understanding-the-integration-test-code">Understanding the Integration Test Code</h2>
 <p>Let's examine the key components of the integration test:</p>
 <h3 id="container-setup">Container Setup</h3>
-<pre><code class="language-javascript">// From containerSupport.js
-async function setup() {
-  // Start PostgreSQL container
-  postgres = await new GenericContainer(&quot;postgres:15&quot;)
-    .withExposedPorts(5432)
-    .withEnvironment({ POSTGRES_PASSWORD: &quot;postgres&quot; })
-    .start();
+<div class="highlight"><pre><span></span><code><span class="c1">// From containerSupport.js</span>
+<span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="c1">// Start PostgreSQL container</span>
+<span class="w">  </span><span class="nx">postgres</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GenericContainer</span><span class="p">(</span><span class="s2">&quot;postgres:15&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withExposedPorts</span><span class="p">(</span><span class="mf">5432</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withEnvironment</span><span class="p">({</span><span class="w"> </span><span class="nx">POSTGRES_PASSWORD</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;postgres&quot;</span><span class="w"> </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 
-  // Start Kafka container
-  kafka = await new GenericContainer(&quot;confluentinc/cp-kafka:7.4.0&quot;)
-    .withExposedPorts(9092)
-    .withEnvironment({
-      KAFKA_ADVERTISED_LISTENERS: &quot;PLAINTEXT://localhost:9092&quot;,
-      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
-    })
-    .start();
+<span class="w">  </span><span class="c1">// Start Kafka container</span>
+<span class="w">  </span><span class="nx">kafka</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GenericContainer</span><span class="p">(</span><span class="s2">&quot;confluentinc/cp-kafka:7.4.0&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withExposedPorts</span><span class="p">(</span><span class="mf">9092</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withEnvironment</span><span class="p">({</span>
+<span class="w">      </span><span class="nx">KAFKA_ADVERTISED_LISTENERS</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;PLAINTEXT://localhost:9092&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR</span><span class="o">:</span><span class="w"> </span><span class="mf">1</span>
+<span class="w">    </span><span class="p">})</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 
-  // Start LocalStack (for S3)
-  localstack = await new GenericContainer(&quot;localstack/localstack:2.2&quot;)
-    .withExposedPorts(4566)
-    .start();
+<span class="w">  </span><span class="c1">// Start LocalStack (for S3)</span>
+<span class="w">  </span><span class="nx">localstack</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="ow">new</span><span class="w"> </span><span class="nx">GenericContainer</span><span class="p">(</span><span class="s2">&quot;localstack/localstack:2.2&quot;</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">withExposedPorts</span><span class="p">(</span><span class="mf">4566</span><span class="p">)</span>
+<span class="w">    </span><span class="p">.</span><span class="nx">start</span><span class="p">();</span>
 
-  // Configure environment variables for tests
-  process.env.DATABASE_URL = `postgres://postgres:postgres@localhost:${postgres.getMappedPort(5432)}/postgres`;
-  process.env.KAFKA_BROKER = `localhost:${kafka.getMappedPort(9092)}`;
-  process.env.S3_ENDPOINT = `http://localhost:${localstack.getMappedPort(4566)}`;
-}
-</code></pre>
+<span class="w">  </span><span class="c1">// Configure environment variables for tests</span>
+<span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">DATABASE_URL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`postgres://postgres:postgres@localhost:</span><span class="si">${</span><span class="nx">postgres</span><span class="p">.</span><span class="nx">getMappedPort</span><span class="p">(</span><span class="mf">5432</span><span class="p">)</span><span class="si">}</span><span class="sb">/postgres`</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">KAFKA_BROKER</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`localhost:</span><span class="si">${</span><span class="nx">kafka</span><span class="p">.</span><span class="nx">getMappedPort</span><span class="p">(</span><span class="mf">9092</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="w">  </span><span class="nx">process</span><span class="p">.</span><span class="nx">env</span><span class="p">.</span><span class="nx">S3_ENDPOINT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="sb">`http://localhost:</span><span class="si">${</span><span class="nx">localstack</span><span class="p">.</span><span class="nx">getMappedPort</span><span class="p">(</span><span class="mf">4566</span><span class="p">)</span><span class="si">}</span><span class="sb">`</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div>
 <p>This code sets up isolated containers for each service our application depends on.</p>
 <h3 id="test-cases">Test Cases</h3>
-<pre><code class="language-javascript">// From productCreation.integration.test.js
-describe(&quot;Product creation&quot;, () =&gt; {
-  it(&quot;should publish and return a product when creating a product&quot;, async () =&gt; {
-    const product = {
-      name: &quot;Test Product&quot;,
-      upc: &quot;123456789012&quot;,
-      price: 9.99
-    };
+<div class="highlight"><pre><span></span><code><span class="c1">// From productCreation.integration.test.js</span>
+<span class="nx">describe</span><span class="p">(</span><span class="s2">&quot;Product creation&quot;</span><span class="p">,</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should publish and return a product when creating a product&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Test Product&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">upc</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123456789012&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="mf">9.99</span>
+<span class="w">    </span><span class="p">};</span>
 
-    const createdProduct = await productService.createProduct(product);
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">createdProduct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">productService</span><span class="p">.</span><span class="nx">createProduct</span><span class="p">(</span><span class="nx">product</span><span class="p">);</span>
 
-    expect(createdProduct.id).toBeDefined();
-    expect(createdProduct.name).toBe(product.name);
-    expect(createdProduct.upc).toBe(product.upc);
-    expect(createdProduct.price).toBe(product.price);
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">createdProduct</span><span class="p">.</span><span class="nx">id</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">createdProduct</span><span class="p">.</span><span class="nx">name</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">createdProduct</span><span class="p">.</span><span class="nx">upc</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">upc</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">createdProduct</span><span class="p">.</span><span class="nx">price</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">price</span><span class="p">);</span>
 
-    const retrievedProduct = await productService.getProduct(createdProduct.id);
-    expect(retrievedProduct).toEqual(createdProduct);
-  });
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">retrievedProduct</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">productService</span><span class="p">.</span><span class="nx">getProduct</span><span class="p">(</span><span class="nx">createdProduct</span><span class="p">.</span><span class="nx">id</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">retrievedProduct</span><span class="p">).</span><span class="nx">toEqual</span><span class="p">(</span><span class="nx">createdProduct</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 
-  it(&quot;should publish a Kafka message when creating a product&quot;, async () =&gt; {
-    const product = {
-      name: &quot;Kafka Test Product&quot;,
-      upc: &quot;123456789013&quot;,
-      price: 19.99
-    };
+<span class="w">  </span><span class="nx">it</span><span class="p">(</span><span class="s2">&quot;should publish a Kafka message when creating a product&quot;</span><span class="p">,</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="p">()</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">product</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span>
+<span class="w">      </span><span class="nx">name</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;Kafka Test Product&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">upc</span><span class="o">:</span><span class="w"> </span><span class="s2">&quot;123456789013&quot;</span><span class="p">,</span>
+<span class="w">      </span><span class="nx">price</span><span class="o">:</span><span class="w"> </span><span class="mf">19.99</span>
+<span class="w">    </span><span class="p">};</span>
 
-    await productService.createProduct(product);
+<span class="w">    </span><span class="k">await</span><span class="w"> </span><span class="nx">productService</span><span class="p">.</span><span class="nx">createProduct</span><span class="p">(</span><span class="nx">product</span><span class="p">);</span>
 
-    const message = await kafkaConsumer.waitForMessage(&quot;products&quot;, 5000);
-    expect(message).toBeDefined();
-    expect(message.action).toBe(&quot;product_created&quot;);
-    expect(message.name).toBe(product.name);
-    expect(message.upc).toBe(product.upc);
-    expect(message.price).toBe(product.price);
-  });
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">message</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">kafkaConsumer</span><span class="p">.</span><span class="nx">waitForMessage</span><span class="p">(</span><span class="s2">&quot;products&quot;</span><span class="p">,</span><span class="w"> </span><span class="mf">5000</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">message</span><span class="p">).</span><span class="nx">toBeDefined</span><span class="p">();</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">action</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="s2">&quot;product_created&quot;</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">name</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">upc</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">upc</span><span class="p">);</span>
+<span class="w">    </span><span class="nx">expect</span><span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">price</span><span class="p">).</span><span class="nx">toBe</span><span class="p">(</span><span class="nx">product</span><span class="p">.</span><span class="nx">price</span><span class="p">);</span>
+<span class="w">  </span><span class="p">});</span>
 
-  // Additional tests...
-});
-</code></pre>
+<span class="w">  </span><span class="c1">// Additional tests...</span>
+<span class="p">});</span>
+</code></pre></div>
 <p>These tests verify that:
 1. Products can be created and retrieved
 2. Kafka messages are published correctly

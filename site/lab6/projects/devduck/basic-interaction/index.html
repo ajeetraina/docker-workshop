@@ -5407,8 +5407,8 @@
 <p>Let's start with simple interactions to test the system:</p>
 <h3 id="exercise-1-introduction">Exercise 1: Introduction</h3>
 <p><strong>Try this conversation:</strong></p>
-<pre><code>You: Hello DevDuck! Can you introduce yourself?
-</code></pre>
+<div class="highlight"><pre><span></span><code>You: Hello DevDuck! Can you introduce yourself?
+</code></pre></div>
 <p><strong>Expected Response Pattern:</strong>
 - DevDuck will introduce itself as a multi-agent system
 - It should mention its capabilities and available agents
@@ -5420,8 +5420,8 @@ You can track not just what the agent did, but how long each step took, what sta
 <p>This interface transforms AI agent development from a "black box" experience into transparent, debuggable system. Wonder "Why did the agent make that decision?" or "What's taking so long?", they can use this exact interface to trace through every step, measure performance bottlenecks, and understand the agent's reasoning process. This is what makes DevDuck not just a demo, but a serious development platform for building production AI agents.</p>
 <h3 id="exercise-2-agent-awareness">Exercise 2: Agent Awareness</h3>
 <p><strong>Ask about the agents:</strong></p>
-<pre><code>You: What agents are available in this system?
-</code></pre>
+<div class="highlight"><pre><span></span><code>You: What agents are available in this system?
+</code></pre></div>
 <p><strong>Expected Response:</strong>
 DevDuck should explain:
 - Local Agent for quick processing
@@ -5440,17 +5440,17 @@ DevDuck should explain:
 <h3 id="understanding-agent-routing">🧠 Understanding Agent Routing</h3>
 <p>DevDuck makes intelligent decisions about which agent should handle each request. Let's explore this:</p>
 <h3 id="exercise-3-simple-vs-complex-queries">Exercise 3: Simple vs Complex Queries</h3>
-<p><strong>Simple Query (likely routed to Local Agent):</strong></p>
-<pre><code>You: What is Python?
-</code></pre>
-<p><strong>Complex Query (likely routed to Cerebras Agent):</strong></p>
-<pre><code>You: Can you analyze this algorithm and suggest optimizations?
+<p><strong>Simple Query (likely routed to Local Agent):</strong>
+<div class="highlight"><pre><span></span><code>You: What is Python?
+</code></pre></div></p>
+<p><strong>Complex Query (likely routed to Cerebras Agent):</strong>
+<div class="highlight"><pre><span></span><code>You: Can you analyze this algorithm and suggest optimizations?
 
 def fibonacci(n):
     if n &lt;= 1:
         return n
     return fibonacci(n-1) + fibonacci(n-2)
-</code></pre>
+</code></pre></div></p>
 <p><strong>Observation Points:</strong>
 - Notice response time differences
 - Check which agent handles each request in the logs

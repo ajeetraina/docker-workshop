@@ -5583,7 +5583,7 @@
 <li><strong>Production Ready</strong>: Scalable architecture with comprehensive tooling</li>
 </ul>
 <h2 id="architecture">Architecture</h2>
-<pre><code>┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
+<div class="highlight"><pre><span></span><code>┌─────────────────┐    ┌─────────────────┐    ┌─────────────────┐
 │   Next.js UI    │───▶│  Python Agents  │───▶│   MCP Gateway   │
 │   (Port 3003)   │    │   (Port 7777)   │    │   (Port 8811)   │
 └─────────────────┘    └─────────────────┘    └─────────────────┘
@@ -5606,7 +5606,7 @@
 │     User        │
 │   Browser       │
 └─────────────────┘
-</code></pre>
+</code></pre></div>
 <h2 id="quick-start">Quick Start</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
@@ -5615,21 +5615,21 @@
 <li>8GB+ RAM (for local AI models)</li>
 </ul>
 <h3 id="1-clone-setup">1. Clone &amp; Setup</h3>
-<pre><code class="language-bash">git clone https://github.com/ajeetraina/ai-agents-hackathon-recommender
-cd ai-agents-hackathon-recommender
-</code></pre>
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ajeetraina/ai-agents-hackathon-recommender
+<span class="nb">cd</span><span class="w"> </span>ai-agents-hackathon-recommender
+</code></pre></div>
 <h3 id="2-configure-secrets">2. Configure Secrets</h3>
 <p>Create a file .mcp.env and add your GitHub PAT</p>
-<pre><code class="language-bash">nano .mcp.env
-github.personal_access_token=XXX
-</code></pre>
+<div class="highlight"><pre><span></span><code>nano<span class="w"> </span>.mcp.env
+github.personal_access_token<span class="o">=</span>XXX
+</code></pre></div>
 <h3 id="3-launch-the-application">3. Launch the Application</h3>
-<pre><code class="language-bash"># Build and start all services
-docker compose up -d --build
+<div class="highlight"><pre><span></span><code><span class="c1"># Build and start all services</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
 
-# Monitor the logs
-docker compose logs -f
-</code></pre>
+<span class="c1"># Monitor the logs</span>
+docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f
+</code></pre></div>
 <h3 id="4-access-the-application">4. Access the Application</h3>
 <ul>
 <li><strong>Web Interface</strong>: http://localhost:3003</li>
@@ -5645,13 +5645,13 @@ docker compose logs -f
 </ol>
 <h2 id="development">🔧 Development</h2>
 <h3 id="local-development-setup">Local Development Setup</h3>
-<pre><code class="language-bash"># Start in development mode
-docker compose up --build
+<div class="highlight"><pre><span></span><code><span class="c1"># Start in development mode</span>
+docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>--build
 
-# Watch logs
-docker compose logs -f agents-ui
-docker compose logs -f agents
-</code></pre>
+<span class="c1"># Watch logs</span>
+docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>agents-ui
+docker<span class="w"> </span>compose<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>agents
+</code></pre></div>
 <h3 id="api-endpoints">API Endpoints</h3>
 <h4 id="agents-service-port-7777">Agents Service (Port 7777)</h4>
 <ul>
@@ -5659,11 +5659,11 @@ docker compose logs -f agents
 <li><code>POST /analyze</code> - Analyze GitHub profile</li>
 <li><code>GET /agents</code> - List available agents</li>
 </ul>
-<pre><code class="language-bash"># Example API usage
-curl -X POST http://localhost:7777/analyze \
-  -H &quot;Content-Type: application/json&quot; \
-  -d '{&quot;username&quot;: &quot;microsoft&quot;, &quot;agent&quot;: &quot;hackathon_recommender&quot;}'
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="c1"># Example API usage</span>
+curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:7777/analyze<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Content-Type: application/json&quot;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;username&quot;: &quot;microsoft&quot;, &quot;agent&quot;: &quot;hackathon_recommender&quot;}&#39;</span>
+</code></pre></div>
 
 
 

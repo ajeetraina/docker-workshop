@@ -5285,23 +5285,23 @@
 <p>This demo introduces cagent's built-in toolsets, enabling agents to interact with files and manage tasks.</p>
 <h2 id="configuration">Configuration</h2>
 <p>Create a file named <code>todo.yaml</code>:</p>
-<pre><code class="language-yaml">agents:
-  root:
-    model: anthropic/claude-3-5-sonnet-latest
-    description: Expert developer
-    instruction: |
-      Help user with coding queries.
-      Edit code directly using tools.
-    toolsets:
-      - type: filesystem  # File operations
-      - type: todo       # Task management
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropic/claude-3-5-sonnet-latest</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Expert developer</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">Help user with coding queries.</span>
+<span class="w">      </span><span class="no">Edit code directly using tools.</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span><span class="w">  </span><span class="c1"># File operations</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">todo</span><span class="w">       </span><span class="c1"># Task management</span>
+</code></pre></div>
 <h2 id="prerequisites">Prerequisites</h2>
-<pre><code class="language-bash">export ANTHROPIC_API_KEY=your_anthropic_key
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>your_anthropic_key
+</code></pre></div>
 <h2 id="running-the-agent">Running the Agent</h2>
-<pre><code class="language-bash">./bin/cagent run todo.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>./bin/cagent<span class="w"> </span>run<span class="w"> </span>todo.yaml
+</code></pre></div>
 <h2 id="built-in-toolsets">Built-in Toolsets</h2>
 <p>cagent provides several built-in tools that agents can use:</p>
 <table>
@@ -5340,19 +5340,19 @@
 </table>
 <h2 id="example-interactions">Example Interactions</h2>
 <h3 id="file-operations">File Operations</h3>
-<pre><code>&gt; Create a Python script that prints &quot;Hello, World!&quot;
+<div class="highlight"><pre><span></span><code>&gt; Create a Python script that prints &quot;Hello, World!&quot;
 
 --- Agent: root ---
 
-I'll create that script for you.
+I&#39;ll create that script for you.
 
 [Using filesystem tool to create hello.py]
 
-Done! I've created `hello.py` with the following content:
+Done! I&#39;ve created `hello.py` with the following content:
 print(&quot;Hello, World!&quot;)
-</code></pre>
+</code></pre></div>
 <h3 id="task-management">Task Management</h3>
-<pre><code>&gt; Add a task to review the PR for the authentication module
+<div class="highlight"><pre><span></span><code>&gt; Add a task to review the PR for the authentication module
 
 --- Agent: root ---
 
@@ -5361,7 +5361,7 @@ print(&quot;Hello, World!&quot;)
 Task added: &quot;Review PR for authentication module&quot;
 Your current tasks:
 1. Review PR for authentication module
-</code></pre>
+</code></pre></div>
 <h2 id="key-takeaways">Key Takeaways</h2>
 <ul>
 <li>Toolsets extend what agents can do beyond conversation</li>

@@ -5464,8 +5464,8 @@
 </blockquote>
 <p>This is what most teams don't realise about DHI: it's not just a smaller image with fewer CVEs. It's a fully-attested artifact. Every image carries cryptographic evidence of what's in it, where it came from, and what risks have been assessed.</p>
 <h2 id="list-all-attestations">List all attestations</h2>
-<pre><code class="language-bash">docker scout attest list &lt;DHI_PREFIX&gt;node:24-debian13
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>attest<span class="w"> </span>list<span class="w"> </span>&lt;DHI_PREFIX&gt;node:24-debian13
+</code></pre></div>
 <p>A single DHI image typically ships with all of the following:</p>
 <table>
 <thead>
@@ -5519,57 +5519,57 @@
 </table>
 <p>That's <em>evidence-grade</em> supply-chain documentation, available out of the box.</p>
 <h2 id="view-the-spdx-sbom">View the SPDX SBOM</h2>
-<pre><code class="language-bash">docker scout attest get &lt;DHI_PREFIX&gt;node:24-debian13 \
-    --predicate-type https://spdx.dev/Document
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>attest<span class="w"> </span>get<span class="w"> </span>&lt;DHI_PREFIX&gt;node:24-debian13<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--predicate-type<span class="w"> </span>https://spdx.dev/Document
+</code></pre></div>
 <p>The SPDX SBOM lists every package, version, license, and supplier. This is the document a compliance team will ask for during an audit.</p>
 <h2 id="inspect-the-slsa-provenance">Inspect the SLSA provenance</h2>
-<pre><code class="language-bash">docker buildx imagetools inspect &lt;DHI_PREFIX&gt;node:24-debian13 \
-    --format '{{json .Provenance}}' | head -80
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>buildx<span class="w"> </span>imagetools<span class="w"> </span>inspect<span class="w"> </span>&lt;DHI_PREFIX&gt;node:24-debian13<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--format<span class="w"> </span><span class="s1">&#39;{{json .Provenance}}&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-80
+</code></pre></div>
 <p>SLSA provenance answers "where did this image come from?" - source repository, commit, build parameters, builder identity. Combined with a signature, it becomes verifiable proof of origin.</p>
 <h2 id="verify-the-image-signature">Verify the image signature</h2>
-<pre><code class="language-bash">docker trust inspect --pretty &lt;DHI_PREFIX&gt;node:24-debian13
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>trust<span class="w"> </span>inspect<span class="w"> </span>--pretty<span class="w"> </span>&lt;DHI_PREFIX&gt;node:24-debian13
+</code></pre></div>
 <p>The signature ties the image bytes to a verified publisher. A modified image won't verify; an attacker can't substitute a tampered version without breaking the chain.</p>
 <h2 id="fips-compliance">FIPS compliance</h2>
 <p>DHI includes FIPS 140-validated cryptographic modules for regulated environments - government, healthcare, finance, defence.</p>
-<pre><code class="language-bash">docker scout attest get \
-    --predicate-type https://docker.com/dhi/fips/v0.1 \
-    --predicate \
-    &lt;DHI_PREFIX&gt;node:24-debian13-fips
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>attest<span class="w"> </span>get<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--predicate-type<span class="w"> </span>https://docker.com/dhi/fips/v0.1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--predicate<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;DHI_PREFIX&gt;node:24-debian13-fips
+</code></pre></div>
 <p>Sample output:</p>
-<pre><code class="language-text">&quot;certification&quot;: &quot;CMVP #4985&quot;,
+<div class="highlight"><pre><span></span><code>&quot;certification&quot;: &quot;CMVP #4985&quot;,
 &quot;certificationUrl&quot;: &quot;https://csrc.nist.gov/projects/cryptographic-module-validation-program/certificate/4985&quot;,
 &quot;name&quot;: &quot;OpenSSL FIPS Provider&quot;,
 &quot;standard&quot;: &quot;FIPS 140-3&quot;,
 &quot;status&quot;: &quot;active&quot;,
 &quot;sunsetDate&quot;: &quot;2030-03-10&quot;
-</code></pre>
+</code></pre></div>
 <p>That's a real CMVP certificate number, queryable on NIST's site, attached as a signed predicate to the image. For regulated workloads, that's the difference between "we think we're compliant" and "here's the certificate".</p>
 <h2 id="stig-attestation">STIG attestation</h2>
-<pre><code class="language-bash">docker scout attest get \
-    --predicate-type https://docker.com/dhi/stig/v0.1 \
-    --predicate \
-    &lt;DHI_PREFIX&gt;node:24-debian13-fips
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>attest<span class="w"> </span>get<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--predicate-type<span class="w"> </span>https://docker.com/dhi/stig/v0.1<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>--predicate<span class="w"> </span><span class="se">\</span>
+<span class="w">    </span>&lt;DHI_PREFIX&gt;node:24-debian13-fips
+</code></pre></div>
 <p>STIG (Security Technical Implementation Guide) attestations cover compliance with US DoD security baselines - required for many government deployments.</p>
 <h2 id="vex-export-eliminate-false-positives-in-external-scanners">VEX export - eliminate false positives in external scanners</h2>
 <p>VEX (Vulnerability Exploitability eXchange) documents tell external scanners (Grype, Trivy, Wiz) which CVEs have already been <strong>assessed as non-exploitable</strong> - eliminating false positives automatically.</p>
 <p>This is the killer feature for teams already running third-party scanners. Instead of triaging the same CVE every week, the VEX document tells the scanner "this one's been reviewed, it doesn't apply to this image, move on."</p>
 <p>View attestations on your migrated app image:</p>
-<pre><code class="language-bash">docker scout attest list catalog-service:dhi
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>attest<span class="w"> </span>list<span class="w"> </span>catalog-service:dhi
+</code></pre></div>
 <p>Export the merged VEX document:</p>
-<pre><code class="language-bash">docker scout vex get catalog-service:dhi --output vex.json
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>scout<span class="w"> </span>vex<span class="w"> </span>get<span class="w"> </span>catalog-service:dhi<span class="w"> </span>--output<span class="w"> </span>vex.json
+</code></pre></div>
 <p>Pass it to Grype:</p>
-<pre><code class="language-bash">grype catalog-service:dhi --vex vex.json
-</code></pre>
+<div class="highlight"><pre><span></span><code>grype<span class="w"> </span>catalog-service:dhi<span class="w"> </span>--vex<span class="w"> </span>vex.json
+</code></pre></div>
 <p>Pass it to Trivy:</p>
-<pre><code class="language-bash">trivy image --vex vex.json catalog-service:dhi
-</code></pre>
+<div class="highlight"><pre><span></span><code>trivy<span class="w"> </span>image<span class="w"> </span>--vex<span class="w"> </span>vex.json<span class="w"> </span>catalog-service:dhi
+</code></pre></div>
 <p>The same image, scanned with VEX, reports far fewer CVEs - because the noise has been pre-filtered out by people who actually understand whether a given CVE applies in this build.</p>
 <h2 id="the-complete-supply-chain-story">The complete supply chain story</h2>
 <table>

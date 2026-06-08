@@ -5272,10 +5272,10 @@
 
 <p><img alt="docker init" src="../images/dockerinit.png" /></p>
 <p>Introduced for the first time in Docker Desktop 4.18, the new docker init CLI generates Docker assets for projects, making it easier to create Docker images and containers. When you run the docker init command in your project directory, it will guide you through the creation of the necessary files for your project with sensible defaults. These files include:</p>
-<pre><code>.dockerignore
+<div class="highlight"><pre><span></span><code>.dockerignore
 Dockerfile
 docker-compose.yaml
-</code></pre>
+</code></pre></div>
 <p>The docker init command also allows you to choose the application platform that your project uses and the relative directory of your main package. </p>
 <h2 id="whos-this-for">Who’s this for?</h2>
 <p>This feature is targeted at developers who want to quickly create and manage Docker assets without having to manually configure everything. </p>
@@ -5298,20 +5298,20 @@ docker-compose.yaml
 You must download and install the Node pre-built installer on your local system to get the <code>npm install</code> command to work seamlessly. <a href="https://nodejs.org/en/download/">Click here to download</a></p>
 </blockquote>
 <h3 id="clone-the-repository">Clone the repository</h3>
-<pre><code>git clone https://github.com/dockersamples/docker-init-demos
+<div class="highlight"><pre><span></span><code>git clone https://github.com/dockersamples/docker-init-demos
 cd docker-init-demos/node
-</code></pre>
+</code></pre></div>
 <p>The usual way to bring up this node application is to follow the steps:</p>
-<pre><code>npm install
+<p><div class="highlight"><pre><span></span><code>npm install
 node app.js
-</code></pre>
-<p>You can verify the output by accessing the URL:</p>
-<pre><code>curl localhost:8080
-</code></pre>
+</code></pre></div>
+You can verify the output by accessing the URL:</p>
+<div class="highlight"><pre><span></span><code>curl localhost:8080
+</code></pre></div>
 <p>Now let's see how to containerise this project using the <code>docker init</code> CLI.</p>
 <h3 id="run-the-following-command">Run the following command:</h3>
-<pre><code class="language-bash"> docker init
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="w"> </span>docker<span class="w"> </span>init
+</code></pre></div>
 <p>This utility will walk you through creating the following files with sensible defaults for your project:</p>
 <ul>
 <li>Select Node as your application platform</li>
@@ -5321,14 +5321,15 @@ node app.js
 <li>Type "8080" as a port that server listens on</li>
 </ul>
 <p>The tool creates the following Docker assets for you:</p>
-<pre><code>  - .dockerignore
+<div class="highlight"><pre><span></span><code>  - .dockerignore
   - Dockerfile
   - docker-compose.yaml
-</code></pre>
+</code></pre></div>
 <h3 id="running-the-container-service">Running the container service</h3>
-<p><code>docker compose up -d --build</code></p>
+<div class="highlight"><pre><span></span><code> docker compose up -d --build
+</code></pre></div>
 <h3 id="accessing-the-node-app">Accessing the Node app</h3>
-<pre><code> curl localhost:8080      .
+<div class="highlight"><pre><span></span><code> curl localhost:8080      .
 /&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;&quot;\___/ ===
 {                       /  ===-
 \______ O           __/
@@ -5337,7 +5338,7 @@ node app.js
 
 
 Hello from Docker
-</code></pre>
+</code></pre></div>
 
 
 

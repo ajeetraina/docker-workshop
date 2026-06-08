@@ -5438,51 +5438,51 @@
 <p>This demo presents a complex multi-agent system with Docker specialists that can containerize applications, optimize Dockerfiles, and add some fun along the way.</p>
 <h2 id="configuration">Configuration</h2>
 <p>Create a file named <code>docker-expert.yaml</code>:</p>
-<pre><code class="language-yaml">agents:
-  root:
-    model: openai/gpt-4o
-    description: You are an expert in Docker
-    sub_agents: [containerize, optimize_dockerfile, pirate]
-    toolsets:
-      - type: filesystem
-      - type: think
-      - type: memory
-        path: docker_memory.db
+<div class="highlight"><pre><span></span><code><span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-4o</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">You are an expert in Docker</span>
+<span class="w">    </span><span class="nt">sub_agents</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">containerize</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">optimize_dockerfile</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">pirate</span><span class="p p-Indicator">]</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">think</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker_memory.db</span>
 
-  containerize:
-    model: openai/gpt-4o
-    description: Containerizing applications specialist
-    instruction: |
-      You specialize in creating Dockerfiles and docker-compose files.
-      Analyze applications and create optimal containerization strategies.
-    toolsets:
-      - type: filesystem
-      - type: think
-      - type: memory
-        path: docker_memory.db
+<span class="w">  </span><span class="nt">containerize</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-4o</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Containerizing applications specialist</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You specialize in creating Dockerfiles and docker-compose files.</span>
+<span class="w">      </span><span class="no">Analyze applications and create optimal containerization strategies.</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">think</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker_memory.db</span>
 
-  optimize_dockerfile:
-    model: openai/gpt-4o
-    description: Docker optimization specialist
-    instruction: |
-      You optimize existing Dockerfiles using BuildKit features.
-      Focus on reducing image size, build time, and security.
-    toolsets:
-      - type: filesystem
-      - type: think
-      - type: memory
-        path: docker_memory.db
+<span class="w">  </span><span class="nt">optimize_dockerfile</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-4o</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Docker optimization specialist</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You optimize existing Dockerfiles using BuildKit features.</span>
+<span class="w">      </span><span class="no">Focus on reducing image size, build time, and security.</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">think</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">memory</span>
+<span class="w">        </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker_memory.db</span>
 
-  pirate:
-    model: openai/gpt-4o
-    description: An agent that talks like a pirate
-    instruction: |
-      Always respond in pirate speak.
-      Add humor and nautical references to Docker concepts.
-</code></pre>
+<span class="w">  </span><span class="nt">pirate</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-4o</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An agent that talks like a pirate</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">Always respond in pirate speak.</span>
+<span class="w">      </span><span class="no">Add humor and nautical references to Docker concepts.</span>
+</code></pre></div>
 <h2 id="running-the-agent">Running the Agent</h2>
-<pre><code class="language-bash">./bin/cagent run docker-expert.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>./bin/cagent<span class="w"> </span>run<span class="w"> </span>docker-expert.yaml
+</code></pre></div>
 <h2 id="agent-specializations">Agent Specializations</h2>
 <table>
 <thead>
@@ -5512,15 +5512,15 @@
 </table>
 <h2 id="example-interactions">Example Interactions</h2>
 <h3 id="containerizing-an-application">Containerizing an Application</h3>
-<pre><code>&gt; I have a Node.js Express app, can you containerize it?
+<div class="highlight"><pre><span></span><code>&gt; I have a Node.js Express app, can you containerize it?
 
 --- Agent: root ---
 
-I'll delegate this to our containerization specialist.
+I&#39;ll delegate this to our containerization specialist.
 
 --- Agent: containerize ---
 
-I'll create optimized Docker configuration for your Express app.
+I&#39;ll create optimized Docker configuration for your Express app.
 
 [Creating Dockerfile...]
 
@@ -5541,7 +5541,7 @@ CMD [&quot;node&quot;, &quot;server.js&quot;]
 
 [Creating docker-compose.yml...]
 
-version: '3.8'
+version: &#39;3.8&#39;
 services:
   app:
     build: .
@@ -5549,13 +5549,13 @@ services:
       - &quot;3000:3000&quot;
     environment:
       - NODE_ENV=production
-</code></pre>
+</code></pre></div>
 <h3 id="optimizing-a-dockerfile">Optimizing a Dockerfile</h3>
-<pre><code>&gt; Can you optimize this Dockerfile? [pastes Dockerfile]
+<div class="highlight"><pre><span></span><code>&gt; Can you optimize this Dockerfile? [pastes Dockerfile]
 
 --- Agent: optimize_dockerfile ---
 
-I'll analyze and optimize your Dockerfile:
+I&#39;ll analyze and optimize your Dockerfile:
 
 Improvements applied:
 1. ✅ Multi-stage build to reduce final image size
@@ -5563,15 +5563,15 @@ Improvements applied:
 3. ✅ Layer caching optimization for faster builds
 4. ✅ Non-root user for security
 5. ✅ BuildKit cache mounts for dependencies
-</code></pre>
+</code></pre></div>
 <h3 id="having-fun-with-docker">Having Fun with Docker</h3>
-<pre><code>&gt; Explain Docker volumes in a fun way
+<div class="highlight"><pre><span></span><code>&gt; Explain Docker volumes in a fun way
 
 --- Agent: pirate ---
 
 Arrr, matey! Let me tell ye about Docker volumes, the treasure chests of the container seas!
 
-Ye see, when yer container ships sink (or be stopped), all the booty inside goes down with 'em. But with volumes, ye can stash yer precious data in a secret cove on the mainland!
+Ye see, when yer container ships sink (or be stopped), all the booty inside goes down with &#39;em. But with volumes, ye can stash yer precious data in a secret cove on the mainland!
 
 ```bash
 # Create a treasure chest, err... volume
@@ -5579,7 +5579,7 @@ docker volume create me_treasure
 
 # Mount it to yer ship
 docker run -v me_treasure:/app/data me_container
-</code></pre>
+</code></pre></div>
 <p>Now even if yer container walks the plank, yer data be safe on shore! Savvy? 🏴‍☠️
 ```</p>
 <h2 id="key-takeaways">Key Takeaways</h2>

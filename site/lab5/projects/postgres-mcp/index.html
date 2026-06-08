@@ -5344,12 +5344,12 @@
 <p>Instead of using an empty Postgres database, let's use a real example with actual data. 
 We'll use a sample product catalog service:</p>
 <h2 id="step-1-clone-the-sample-catalog-service">Step 1. Clone the sample catalog service</h2>
-<pre><code>git clone https://github.com/ajeetraina/catalog-service-node
+<div class="highlight"><pre><span></span><code>git clone https://github.com/ajeetraina/catalog-service-node
 cd catalog-service-node
-</code></pre>
+</code></pre></div>
 <h2 id="step-2-start-the-backend-services-includes-postgres-with-sample-data">Step 2. Start the backend services (includes Postgres with sample data)</h2>
-<pre><code>docker compose up -d --build
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker compose up -d --build
+</code></pre></div>
 <p>This will spin up:</p>
 <ul>
 <li>A Postgres database on port 5432 with sample catalog data</li>
@@ -5358,11 +5358,11 @@ cd catalog-service-node
 </ul>
 <p>Now let's bring up the frontend to see what data we're working with:</p>
 <h2 id="step-3-install-frontend-dependencies">Step 3. Install frontend dependencies</h2>
-<pre><code>npm install
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm install
+</code></pre></div>
 <h2 id="step-4-start-the-development-server">Step 4. Start the development server</h2>
-<pre><code>npm run dev
-</code></pre>
+<div class="highlight"><pre><span></span><code>npm run dev
+</code></pre></div>
 <p>Open your browser to `http://localhost:5173 to see the catalog application. 
 This gives you a visual understanding of the data structure we'll be querying with Claude.</p>
 <p>Hit "Create Product" button and start adding the new items to your Product catalog system.</p>
@@ -5373,8 +5373,8 @@ Under "MCP Server", search for "Postgres" and select the Postgres MCP Server</p>
 <p><img alt="postgresmcp" src="../../images/postgres-mcp.png" /></p>
 <h2 id="step-6-configure-the-postgres-mcp-server">Step 6. Configure the Postgres MCP Server</h2>
 <p>Click "Configuration" and add the right URL for your Postgres database:</p>
-<pre><code>postgresql://postgres:postgres@host.docker.internal:5432/catalog
-</code></pre>
+<div class="highlight"><pre><span></span><code>postgresql://postgres:postgres@host.docker.internal:5432/catalog
+</code></pre></div>
 <p><img alt="postgresmcp" src="../../images/postgres-config.png" /></p>
 <h2 id="step-7-activate-the-postgres-mcp-server">Step 7. Activate the Postgres MCP Server</h2>
 <p>Toggle the "Enable" switch to activate the Postgres MCP Server.</p>
@@ -5388,7 +5388,7 @@ Under "MCP Server", search for "Postgres" and select the Postgres MCP Server</p>
 <li>Click on the Edit Config button</li>
 <li>Add MCP_DOCKER to mcpServers section:</li>
 </ul>
-<pre><code>{
+<div class="highlight"><pre><span></span><code>{
   &quot;mcpServers&quot;: {
     &quot;MCP_DOCKER&quot;: {
       &quot;command&quot;: &quot;docker&quot;,
@@ -5403,12 +5403,12 @@ Under "MCP Server", search for "Postgres" and select the Postgres MCP Server</p>
     }
   }
 }
-</code></pre>
+</code></pre></div>
 <h2 id="step-10-restart-the-claude-desktop">Step 10. Restart the Claude Desktop</h2>
 <h2 id="step-11-start-chatting-with-the-postgres-database">Step 11. Start chatting with the Postgres Database</h2>
 <p>Prompt: </p>
-<pre><code>List out all the products in the catalog
-</code></pre>
+<div class="highlight"><pre><span></span><code>List out all the products in the catalog
+</code></pre></div>
 <p><img alt="listotables" src="../images/listoftables.png" /></p>
 
 

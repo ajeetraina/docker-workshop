@@ -5257,30 +5257,30 @@
 <p>This demo showcases cagent's "alloy models" feature - the ability to use multiple AI models within a single agent.</p>
 <h2 id="configuration">Configuration</h2>
 <p>Create a file named <code>alloy.yaml</code>:</p>
-<pre><code class="language-yaml">agents:
-  root:
-    model: claude,gpt-4o  # Multiple models!
-    description: An agent that helps you learn new things
-    instruction: |
-      You are an expert learning companion.
-      Help users learn effectively and enjoyably.
+<div class="highlight"><pre><span></span><code><span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">claude,gpt-4o</span><span class="w">  </span><span class="c1"># Multiple models!</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">An agent that helps you learn new things</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You are an expert learning companion.</span>
+<span class="w">      </span><span class="no">Help users learn effectively and enjoyably.</span>
 
-models:
-  claude:
-    provider: anthropic
-    model: claude-3-5-sonnet-latest
-  gpt-4o:
-    provider: openai 
-    model: gpt-4o
-</code></pre>
+<span class="nt">models</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">claude</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropic</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">claude-3-5-sonnet-latest</span>
+<span class="w">  </span><span class="nt">gpt-4o</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai</span><span class="w"> </span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">gpt-4o</span>
+</code></pre></div>
 <h2 id="prerequisites">Prerequisites</h2>
 <p>Set up API keys for both providers:</p>
-<pre><code class="language-bash">export OPENAI_API_KEY=your_openai_key
-export ANTHROPIC_API_KEY=your_anthropic_key
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>your_openai_key
+<span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>your_anthropic_key
+</code></pre></div>
 <h2 id="running-the-agent">Running the Agent</h2>
-<pre><code class="language-bash">./bin/cagent run alloy.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code>./bin/cagent<span class="w"> </span>run<span class="w"> </span>alloy.yaml
+</code></pre></div>
 <h2 id="how-alloy-models-work">How Alloy Models Work</h2>
 <p>When you specify multiple models separated by commas (<code>model: claude,gpt-4o</code>), cagent:</p>
 <ol>

@@ -5758,7 +5758,7 @@
 <li>Handle token limits when using free-tier APIs</li>
 </ol>
 <h2 id="architecture">🏗️ Architecture</h2>
-<pre><code>┌─────────────────────────────────────────────────────────────────┐
+<div class="highlight"><pre><span></span><code>┌─────────────────────────────────────────────────────────────────┐
 │                      CURATOR (Root)                             │
 │                                                                 │
 │  • Coordinates all maintenance tasks                           │
@@ -5783,7 +5783,7 @@
 │ DuckDuckGo│    │   Fetch   │  │  GitHub  │
 │    MCP    │    │   Tool    │  │   MCP    │
 └───────────┘    └───────────┘  └──────────┘
-</code></pre>
+</code></pre></div>
 <h2 id="quick-start">🚀 Quick Start</h2>
 <h3 id="prerequisites">Prerequisites</h3>
 <ul>
@@ -5813,15 +5813,15 @@
 </tr>
 </tbody>
 </table>
-<pre><code class="language-bash">export GITHUB_TOKEN=your_github_pat
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GITHUB_TOKEN</span><span class="o">=</span>your_github_pat
+</code></pre></div>
 <h3 id="step-2-clone-and-run">Step 2: Clone and Run</h3>
-<pre><code class="language-bash">git clone https://github.com/ajeetraina/docker-workshop
-cd docker-workshop/docs/lab10/projects/auto-curator-agent/
+<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ajeetraina/docker-workshop
+<span class="nb">cd</span><span class="w"> </span>docker-workshop/docs/lab10/projects/auto-curator-agent/
 
-# Run the lite version (recommended for GitHub Models free tier)
-cagent run ./cagent-curator-lite.yaml &quot;Find new cagent blog posts&quot;
-</code></pre>
+<span class="c1"># Run the lite version (recommended for GitHub Models free tier)</span>
+cagent<span class="w"> </span>run<span class="w"> </span>./cagent-curator-lite.yaml<span class="w"> </span><span class="s2">&quot;Find new cagent blog posts&quot;</span>
+</code></pre></div>
 <h2 id="two-configs-full-vs-lite">⚡ Two Configs: Full vs Lite</h2>
 <table>
 <thead>
@@ -5859,57 +5859,61 @@ cagent run ./cagent-curator-lite.yaml &quot;Find new cagent blog posts&quot;
 </tr>
 </tbody>
 </table>
-<p>!!! warning "GitHub Models Free Tier Token Limit"
-    GitHub Models free tier limits gpt-4o to <strong>8,000 input tokens per request</strong>.
-    Skills + detailed instructions + fetched content can easily exceed this.
-    Use the <strong>lite</strong> version unless you have paid GitHub Models or another provider.</p>
+<div class="admonition warning">
+<p class="admonition-title">GitHub Models Free Tier Token Limit</p>
+<p>GitHub Models free tier limits gpt-4o to <strong>8,000 input tokens per request</strong>.
+Skills + detailed instructions + fetched content can easily exceed this.
+Use the <strong>lite</strong> version unless you have paid GitHub Models or another provider.</p>
+</div>
 <h2 id="usage-examples">📋 Usage Examples</h2>
 <h3 id="discover-new-resources">Discover New Resources</h3>
-<pre><code class="language-bash"># Basic discovery
-cagent run ./cagent-curator-lite.yaml &quot;Find new Docker cagent blog posts published this week&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># Basic discovery</span>
+cagent<span class="w"> </span>run<span class="w"> </span>./cagent-curator-lite.yaml<span class="w"> </span><span class="s2">&quot;Find new Docker cagent blog posts published this week&quot;</span>
 
-# Specific and targeted (recommended)
-cagent run ./cagent-curator-lite.yaml &quot;Search for blog posts that specifically mention \
-  'cagent' the Docker multi-agent runtime tool. Only include posts that discuss \
-  cagent YAML configs, cagent run commands, or multi-agent orchestration. \
-  Exclude generic Docker or Docker Model Runner posts.&quot;
+<span class="c1"># Specific and targeted (recommended)</span>
+cagent<span class="w"> </span>run<span class="w"> </span>./cagent-curator-lite.yaml<span class="w"> </span><span class="s2">&quot;Search for blog posts that specifically mention \</span>
+<span class="s2">  &#39;cagent&#39; the Docker multi-agent runtime tool. Only include posts that discuss \</span>
+<span class="s2">  cagent YAML configs, cagent run commands, or multi-agent orchestration. \</span>
+<span class="s2">  Exclude generic Docker or Docker Model Runner posts.&quot;</span>
 
-# With deduplication against existing list
-cagent run ./cagent-curator-lite.yaml &quot;Read the current README from \
-  collabnix/awesome-docker-cagent, then search for new blog posts about \
-  Docker cagent that are NOT already in the list.&quot;
-</code></pre>
+<span class="c1"># With deduplication against existing list</span>
+cagent<span class="w"> </span>run<span class="w"> </span>./cagent-curator-lite.yaml<span class="w"> </span><span class="s2">&quot;Read the current README from \</span>
+<span class="s2">  collabnix/awesome-docker-cagent, then search for new blog posts about \</span>
+<span class="s2">  Docker cagent that are NOT already in the list.&quot;</span>
+</code></pre></div>
 <h3 id="validate-existing-links">Validate Existing Links</h3>
-<pre><code class="language-bash">cagent run ./cagent-curator-lite.yaml &quot;Read the awesome-docker-cagent README \
-  and check all URLs for broken links&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>cagent<span class="w"> </span>run<span class="w"> </span>./cagent-curator-lite.yaml<span class="w"> </span><span class="s2">&quot;Read the awesome-docker-cagent README \</span>
+<span class="s2">  and check all URLs for broken links&quot;</span>
+</code></pre></div>
 <h3 id="submit-updates-via-pr">Submit Updates via PR</h3>
-<pre><code class="language-bash">cagent run ./cagent-curator-lite.yaml &quot;Find new cagent resources, validate them, \
-  and create a PR adding them to the awesome list&quot;
-</code></pre>
+<div class="highlight"><pre><span></span><code>cagent<span class="w"> </span>run<span class="w"> </span>./cagent-curator-lite.yaml<span class="w"> </span><span class="s2">&quot;Find new cagent resources, validate them, \</span>
+<span class="s2">  and create a PR adding them to the awesome list&quot;</span>
+</code></pre></div>
 <h2 id="configuration-deep-dive">🔧 Configuration Deep Dive</h2>
 <h3 id="github-models-as-a-custom-provider">GitHub Models as a Custom Provider</h3>
 <p>There is <strong>no built-in <code>github</code> provider</strong> in cagent. We define one using the <code>providers:</code> section:</p>
-<pre><code class="language-yaml">providers:
-  github:
-    api_type: openai_chatcompletions
-    base_url: https://models.github.ai/inference
-    token_key: GITHUB_TOKEN
+<div class="highlight"><pre><span></span><code><span class="nt">providers</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">github</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">api_type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai_chatcompletions</span>
+<span class="w">    </span><span class="nt">base_url</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://models.github.ai/inference</span>
+<span class="w">    </span><span class="nt">token_key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">GITHUB_TOKEN</span>
 
-models:
-  smart:
-    provider: github
-    model: openai/gpt-4o      # vendor prefix required!
-    max_tokens: 4096
-  fast:
-    provider: github
-    model: openai/gpt-4o-mini
-    max_tokens: 2048
-</code></pre>
-<p>!!! danger "Common Pitfall: Model Name Format"
-    GitHub Models requires the <strong><code>openai/</code> vendor prefix</strong> in model names.
-    Using just <code>gpt-4o</code> results in <code>403 Forbidden: No access to model: /gpt-4o</code>.
-    Always use <code>openai/gpt-4o</code>, <code>openai/gpt-4o-mini</code>, etc.</p>
+<span class="nt">models</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">smart</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-4o</span><span class="w">      </span><span class="c1"># vendor prefix required!</span>
+<span class="w">    </span><span class="nt">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4096</span>
+<span class="w">  </span><span class="nt">fast</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">provider</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">github</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-4o-mini</span>
+<span class="w">    </span><span class="nt">max_tokens</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2048</span>
+</code></pre></div>
+<div class="admonition danger">
+<p class="admonition-title">Common Pitfall: Model Name Format</p>
+<p>GitHub Models requires the <strong><code>openai/</code> vendor prefix</strong> in model names.
+Using just <code>gpt-4o</code> results in <code>403 Forbidden: No access to model: /gpt-4o</code>.
+Always use <code>openai/gpt-4o</code>, <code>openai/gpt-4o-mini</code>, etc.</p>
+</div>
 <h3 id="github-models-free-tier-rate-limits">GitHub Models Free Tier Rate Limits</h3>
 <table>
 <thead>
@@ -6031,30 +6035,30 @@ models:
 </tbody>
 </table>
 <h2 id="automation-with-github-actions">🔄 Automation with GitHub Actions</h2>
-<pre><code class="language-yaml"># .github/workflows/curate.yml
-name: Weekly Curation
-on:
-  schedule:
-    - cron: '0 9 * * 1'  # Every Monday at 9am
-  workflow_dispatch:
+<div class="highlight"><pre><span></span><code><span class="c1"># .github/workflows/curate.yml</span>
+<span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Weekly Curation</span>
+<span class="nt">on</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">schedule</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">cron</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;0</span><span class="nv"> </span><span class="s">9</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">*</span><span class="nv"> </span><span class="s">1&#39;</span><span class="w">  </span><span class="c1"># Every Monday at 9am</span>
+<span class="w">  </span><span class="nt">workflow_dispatch</span><span class="p">:</span>
 
-jobs:
-  curate:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: docker/cagent-action@v1
-        with:
-          config: cagent-curator-lite.yaml
-          prompt: &quot;Search for blog posts that specifically mention cagent the Docker multi-agent runtime. Read the current README first to avoid duplicates. Create a PR with any new findings.&quot;
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-</code></pre>
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">curate</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker/cagent-action@v1</span>
+<span class="w">        </span><span class="nt">with</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">config</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">cagent-curator-lite.yaml</span>
+<span class="w">          </span><span class="nt">prompt</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Search</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">blog</span><span class="nv"> </span><span class="s">posts</span><span class="nv"> </span><span class="s">that</span><span class="nv"> </span><span class="s">specifically</span><span class="nv"> </span><span class="s">mention</span><span class="nv"> </span><span class="s">cagent</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">Docker</span><span class="nv"> </span><span class="s">multi-agent</span><span class="nv"> </span><span class="s">runtime.</span><span class="nv"> </span><span class="s">Read</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">current</span><span class="nv"> </span><span class="s">README</span><span class="nv"> </span><span class="s">first</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">avoid</span><span class="nv"> </span><span class="s">duplicates.</span><span class="nv"> </span><span class="s">Create</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">PR</span><span class="nv"> </span><span class="s">with</span><span class="nv"> </span><span class="s">any</span><span class="nv"> </span><span class="s">new</span><span class="nv"> </span><span class="s">findings.&quot;</span>
+<span class="w">        </span><span class="nt">env</span><span class="p">:</span>
+<span class="w">          </span><span class="nt">GITHUB_TOKEN</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">${{ secrets.GITHUB_TOKEN }}</span>
+</code></pre></div>
 <h2 id="push-to-docker-hub">📦 Push to Docker Hub</h2>
-<pre><code class="language-bash">docker login
-cagent push ./cagent-curator-lite.yaml docker.io/YOUR_USERNAME/awesome-cagent-curator:latest
-</code></pre>
+<div class="highlight"><pre><span></span><code>docker<span class="w"> </span>login
+cagent<span class="w"> </span>push<span class="w"> </span>./cagent-curator-lite.yaml<span class="w"> </span>docker.io/YOUR_USERNAME/awesome-cagent-curator:latest
+</code></pre></div>
 <h2 id="workshop-flow">📊 Workshop Flow</h2>
-<pre><code>┌──────────────────────────────────────────────────────────────────┐
+<div class="highlight"><pre><span></span><code>┌──────────────────────────────────────────────────────────────────┐
 │              AUTO-CURATOR AGENT WORKFLOW                          │
 ├──────────────────────────────────────────────────────────────────┤
 │                                                                  │
@@ -6073,7 +6077,7 @@ cagent push ./cagent-curator-lite.yaml docker.io/YOUR_USERNAME/awesome-cagent-cu
 │  section             validates URLs        + opens PR            │
 │                                                                  │
 └──────────────────────────────────────────────────────────────────┘
-</code></pre>
+</code></pre></div>
 <h2 id="key-concepts-covered">🎓 Key Concepts Covered</h2>
 <table>
 <thead>

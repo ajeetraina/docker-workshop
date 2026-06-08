@@ -5374,81 +5374,81 @@
 
 <p>Perception is <strong>how the agent sees its environment</strong>. An agent without toolsets is blind - it can only use training data. Each toolset you add is a new sensor.</p>
 <h2 id="step-1-create-a-project-with-multiple-perception-sources">Step 1: Create a project with multiple "perception sources"</h2>
-<pre><code class="language-bash">mkdir ~/perception-test &amp;&amp; cd ~/perception-test
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>~/perception-test<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/perception-test
 
-# Source 1: A config file with a problem
-cat &gt; config.json &lt;&lt; 'EOF'
-{
-  &quot;app_name&quot;: &quot;MyApp&quot;,
-  &quot;version&quot;: &quot;2.1.0&quot;,
-  &quot;database&quot;: {
-    &quot;host&quot;: &quot;localhost&quot;,
-    &quot;port&quot;: 5432,
-    &quot;password&quot;: &quot;admin123&quot;
-  },
-  &quot;debug&quot;: true,
-  &quot;api_key&quot;: &quot;sk-1234567890abcdef&quot;
-}
-EOF
+<span class="c1"># Source 1: A config file with a problem</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>config.json<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">{</span>
+<span class="s">  &quot;app_name&quot;: &quot;MyApp&quot;,</span>
+<span class="s">  &quot;version&quot;: &quot;2.1.0&quot;,</span>
+<span class="s">  &quot;database&quot;: {</span>
+<span class="s">    &quot;host&quot;: &quot;localhost&quot;,</span>
+<span class="s">    &quot;port&quot;: 5432,</span>
+<span class="s">    &quot;password&quot;: &quot;admin123&quot;</span>
+<span class="s">  },</span>
+<span class="s">  &quot;debug&quot;: true,</span>
+<span class="s">  &quot;api_key&quot;: &quot;sk-1234567890abcdef&quot;</span>
+<span class="s">}</span>
+<span class="s">EOF</span>
 
-# Source 2: A deployment script
-cat &gt; deploy.sh &lt;&lt; 'EOF'
-#!/bin/bash
-echo &quot;Deploying MyApp...&quot;
-docker run -e DB_PASSWORD=admin123 -e API_KEY=sk-1234567890abcdef myapp:latest
-echo &quot;Deploy complete&quot;
-EOF
+<span class="c1"># Source 2: A deployment script</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>deploy.sh<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s">#!/bin/bash</span>
+<span class="s">echo &quot;Deploying MyApp...&quot;</span>
+<span class="s">docker run -e DB_PASSWORD=admin123 -e API_KEY=sk-1234567890abcdef myapp:latest</span>
+<span class="s">echo &quot;Deploy complete&quot;</span>
+<span class="s">EOF</span>
 
-# Source 3: A README with context
-cat &gt; README.md &lt;&lt; 'EOF'
-# MyApp
-Production-ready application. 
-Ensure no secrets are hardcoded before deploying.
-Run security checks before every release.
-EOF
-</code></pre>
+<span class="c1"># Source 3: A README with context</span>
+cat<span class="w"> </span>&gt;<span class="w"> </span>README.md<span class="w"> </span><span class="s">&lt;&lt; &#39;EOF&#39;</span>
+<span class="s"># MyApp</span>
+<span class="s">Production-ready application. </span>
+<span class="s">Ensure no secrets are hardcoded before deploying.</span>
+<span class="s">Run security checks before every release.</span>
+<span class="s">EOF</span>
+</code></pre></div>
 <h2 id="step-2-create-agent-with-multiple-perception-layers">Step 2: Create agent with MULTIPLE perception layers</h2>
-<pre><code class="language-yaml"># perception.yaml
-version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># perception.yaml</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
 
-agents:
-  root:
-    model: openai/gpt-5-mini
-    description: Security auditor with multi-layer perception
-    instruction: |
-      You are a security auditor. You can perceive the environment through:
+<span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security auditor with multi-layer perception</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">You are a security auditor. You can perceive the environment through:</span>
 
-      1. FILESYSTEM perception - Read all files in the current directory
-      2. SHELL perception - Run commands like `grep`, `find`, `cat` to scan
-      3. WEB perception - Search for latest security best practices
+<span class="w">      </span><span class="no">1. FILESYSTEM perception - Read all files in the current directory</span>
+<span class="w">      </span><span class="no">2. SHELL perception - Run commands like `grep`, `find`, `cat` to scan</span>
+<span class="w">      </span><span class="no">3. WEB perception - Search for latest security best practices</span>
 
-      Audit this project for security issues. Use ALL your senses:
-      - Read every file to find hardcoded secrets
-      - Run shell commands to scan for patterns like passwords, API keys
-      - Search the web for current best practices on secret management
+<span class="w">      </span><span class="no">Audit this project for security issues. Use ALL your senses:</span>
+<span class="w">      </span><span class="no">- Read every file to find hardcoded secrets</span>
+<span class="w">      </span><span class="no">- Run shell commands to scan for patterns like passwords, API keys</span>
+<span class="w">      </span><span class="no">- Search the web for current best practices on secret management</span>
 
-      Report what you found using each perception method.
-    toolsets:
-      - type: filesystem
-      - type: shell
-      - type: mcp
-        ref: docker:duckduckgo
-</code></pre>
+<span class="w">      </span><span class="no">Report what you found using each perception method.</span>
+<span class="w">    </span><span class="nt">toolsets</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">filesystem</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">shell</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mcp</span>
+<span class="w">        </span><span class="nt">ref</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker:duckduckgo</span>
+</code></pre></div>
 <h2 id="step-3-run-it">Step 3: Run it</h2>
-<pre><code class="language-bash">export OPENAI_API_KEY=&lt;your_key&gt;
-cagent run ./perception.yaml
-</code></pre>
+<div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>&lt;your_key&gt;
+cagent<span class="w"> </span>run<span class="w"> </span>./perception.yaml
+</code></pre></div>
 <p>Then type:</p>
-<pre><code>Audit this project for security issues. Use filesystem, shell, and web search.
-</code></pre>
+<div class="highlight"><pre><span></span><code>Audit this project for security issues. Use filesystem, shell, and web search.
+</code></pre></div>
 <h2 id="what-you-should-see">What you should see</h2>
-<pre><code>✓ Read    config.json           ← FILESYSTEM perception (sees the file contents)
+<div class="highlight"><pre><span></span><code>✓ Read    config.json           ← FILESYSTEM perception (sees the file contents)
 ✓ Read    deploy.sh             ← FILESYSTEM perception (sees hardcoded secrets)
 ✓ Read    README.md             ← FILESYSTEM perception (sees project context)
 ✓ Shell   grep -r &quot;password&quot; .  ← SHELL perception (scans for patterns)
 ✓ Shell   grep -r &quot;api_key&quot; .   ← SHELL perception (finds exposed keys)
 ✓ Search  &quot;secret management best practices 2025&quot;  ← WEB perception (sees the internet)
-</code></pre>
+</code></pre></div>
 <h2 id="key-teaching-point">Key Teaching Point</h2>
 <table>
 <thead>
@@ -5479,17 +5479,17 @@ cagent run ./perception.yaml
 <p><strong>Remove a toolset = the agent goes partially blind.</strong> Try removing the <code>mcp: duckduckgo</code> line and running again - the agent can no longer search the web. That's the proof that each toolset is literally a perception channel.</p>
 <h2 id="bonus-prove-perception-matters">Bonus: Prove perception matters</h2>
 <p>Create a version with NO toolsets:</p>
-<pre><code class="language-yaml"># blind-agent.yaml
-version: &quot;2&quot;
+<div class="highlight"><pre><span></span><code><span class="c1"># blind-agent.yaml</span>
+<span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
 
-agents:
-  root:
-    model: openai/gpt-5-mini
-    description: Security auditor with NO perception
-    instruction: |
-      Audit this project for security issues.
-    # No toolsets = no perception = blind agent
-</code></pre>
+<span class="nt">agents</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">root</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">openai/gpt-5-mini</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Security auditor with NO perception</span>
+<span class="w">    </span><span class="nt">instruction</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">      </span><span class="no">Audit this project for security issues.</span>
+<span class="w">    </span><span class="c1"># No toolsets = no perception = blind agent</span>
+</code></pre></div>
 <p>Run it and compare - the blind agent can only give generic advice. It cannot actually see your code. That's the difference between a chatbot and an agent.</p>
 
 
