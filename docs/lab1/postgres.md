@@ -1,4 +1,15 @@
+!!! tip "Run the interactive Labspace"
+    This topic is also part of a self-contained, click-to-run **Labspace** -
+    [github.com/ajeetraina/labspace-developer-productivity](https://github.com/ajeetraina/labspace-developer-productivity) -
+    that walks the full inner-loop developer workflow, from running Postgres
+    containers through building, testing, and securing the Product Catalog
+    service, all the way to local AI with Docker Model Runner and the MCP Gateway:
 
+    ```bash
+    git clone https://github.com/ajeetraina/labspace-developer-productivity
+    cd labspace-developer-productivity
+    CONTENT_PATH=$PWD docker compose up --watch
+    ```
 
 ## Running Multiple Postgres Containers
 
