@@ -14,6 +14,8 @@ The standard answer - **"don't let agents do that"** - doesn't scale. Developers
 That's AI governance.
 
 ---
+<img width="1003" height="496" alt="image" src="https://github.com/user-attachments/assets/3abeb360-eb55-40c7-b287-459effe275dd" />
+
 
 ## The three pillars
 
