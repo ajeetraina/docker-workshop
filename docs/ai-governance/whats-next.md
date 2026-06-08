@@ -80,6 +80,7 @@ All three share **one policy engine** and **one source of truth** - the Admin Co
 - **Product page:** [docker.com/products/ai-governance](https://www.docker.com/products/ai-governance/)
 - **Docker docs:** [docs.docker.com](https://docs.docker.com) - check for the latest AI governance documentation
 - **The accompanying deck** covers the policy framework and supporting architecture in more depth
+- **Interactive Labspace:** [github.com/ajeetraina/labspace-ai-governance](https://github.com/ajeetraina/labspace-ai-governance) - the click-to-run version of this lab with built-in terminals and a live audit dashboard
 - **Sandbox Kits** - the next track in this lab shows how to package reproducible, shareable sandbox configurations
 
 ---

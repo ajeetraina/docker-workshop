@@ -6,6 +6,20 @@ Over the next two hours you'll prove - empirically - how Docker AI Governance po
 
 **Define once. Enforce everywhere.**
 
+!!! tip "Run the interactive Labspace"
+    This lab is also available as a self-contained, click-to-run **Labspace** at
+    [github.com/ajeetraina/labspace-ai-governance](https://github.com/ajeetraina/labspace-ai-governance).
+    It ships the terminals, the audit dashboard, and all supporting assets in one repo:
+
+    ```bash
+    git clone https://github.com/ajeetraina/labspace-ai-governance
+    cd labspace-ai-governance
+    bash start-labspace.sh
+    ```
+
+    Then open [http://localhost:3030](http://localhost:3030). The pages that follow mirror that
+    Labspace content, adapted for this workshop.
+
 ---
 
 ## Pick your organization
