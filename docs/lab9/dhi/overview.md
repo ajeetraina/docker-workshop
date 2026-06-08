@@ -88,4 +88,4 @@ CMD ["app.js"]
 EXPOSE 3000
 ```
 
-The Dockerfile takes a multi-stage build approach and is based on the `node:24-trixie-slim` image. As you'll see in the next sections, this base image comes with CVEs and fails several Docker Scout policies — which is exactly where DHI comes into play.
+The Dockerfile takes a multi-stage build approach and is based on the `node:24-trixie-slim` image. As you'll see in the next sections, this base image comes with CVEs and fails several Docker Scout policies - which is exactly where DHI comes into play.

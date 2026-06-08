@@ -1,15 +1,15 @@
 /* ============================================================
-   Sidebar & Global Beautification — Docker Workshop
+   Sidebar & Global Beautification - Docker Workshop
    ============================================================ */
 
-/* ── 1. LOGO — make it bigger ── */
+/* ── 1. LOGO - make it bigger ── */
 .md-header__button.md-logo img,
 .md-logo img {
   height: 36px !important;
   width: auto !important;
 }
 
-/* ── 2. FONT NORMALISATION — all sidebar items at 0.8rem ── */
+/* ── 2. FONT NORMALISATION - all sidebar items at 0.8rem ── */
 
 /* Top-level plain links (Getting Started, Prerequisites) */
 .md-nav--primary > .md-nav__list > .md-nav__item > .md-nav__link {
@@ -115,7 +115,7 @@
   border-radius: 4px;
 }
 
-/* ── 7. RIGHT TOC — match sidebar font size ── */
+/* ── 7. RIGHT TOC - match sidebar font size ── */
 .md-nav--secondary .md-nav__link {
   font-size: 0.8rem !important;
   color: rgba(0, 0, 0, 0.7) !important;
@@ -130,7 +130,7 @@
   font-weight: 600 !important;
 }
 
-/* ── 8. SIDEBAR background — subtle off-white ── */
+/* ── 8. SIDEBAR background - subtle off-white ── */
 .md-sidebar--primary .md-sidebar__scrollwrap {
   background: #f8fafc;
 }

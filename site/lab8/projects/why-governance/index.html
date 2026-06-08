@@ -3319,7 +3319,7 @@
   <a href="#real-incidents-not-hypothetical" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Real Incidents — Not Hypothetical
+        Real Incidents - Not Hypothetical
       
     </span>
   </a>
@@ -5333,7 +5333,7 @@
   <a href="#real-incidents-not-hypothetical" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Real Incidents — Not Hypothetical
+        Real Incidents - Not Hypothetical
       
     </span>
   </a>
@@ -5433,24 +5433,24 @@
 
 
 <h1 id="why-ai-agents-need-governance">Why AI Agents Need Governance</h1>
-<p>No terminal needed for this module. Read carefully — everything you run in the next seven modules exists because of what's on this page.</p>
+<p>No terminal needed for this module. Read carefully - everything you run in the next seven modules exists because of what's on this page.</p>
 <hr />
 <h2 id="the-problem-agents-running-on-the-host">The Problem: Agents Running on the Host</h2>
 <p>When a developer runs Claude Code on their laptop without sandboxing, the agent runs as their user process. That means it has access to everything they have access to:</p>
 <ul>
-<li><code>~/.aws/credentials</code> — AWS access keys</li>
-<li><code>~/.ssh/id_rsa</code> — SSH private keys  </li>
-<li><code>.env</code> files — database passwords, API tokens</li>
+<li><code>~/.aws/credentials</code> - AWS access keys</li>
+<li><code>~/.ssh/id_rsa</code> - SSH private keys  </li>
+<li><code>.env</code> files - database passwords, API tokens</li>
 <li>The entire home directory</li>
 <li>Any running Docker containers on the host</li>
 </ul>
-<p>The agent isn't malicious. But it doesn't need to be for something to go wrong. A confused agent, a malicious MCP server, a prompt injection attack — any of these can cause the agent to exfiltrate credentials or corrupt data. And if there's no audit trail, you won't know it happened.</p>
+<p>The agent isn't malicious. But it doesn't need to be for something to go wrong. A confused agent, a malicious MCP server, a prompt injection attack - any of these can cause the agent to exfiltrate credentials or corrupt data. And if there's no audit trail, you won't know it happened.</p>
 <hr />
-<h2 id="real-incidents-not-hypothetical">Real Incidents — Not Hypothetical</h2>
+<h2 id="real-incidents-not-hypothetical">Real Incidents - Not Hypothetical</h2>
 <p>These are documented vulnerabilities from 2025:</p>
-<p><strong>Cursor's System Prompt Leaked</strong> — The agent's internal instructions were exposed, revealing details about its tool access and capabilities. Developers building on top of Cursor couldn't trust their agents weren't being manipulated.</p>
-<p><strong>GitHub Copilot / Cursor RCE via Malicious MCP File Swaps</strong> — An attacker could replace an approved MCP server file after approval, causing the agent to execute arbitrary code with the developer's credentials.</p>
-<p><strong>MCP Tool Poisoning</strong> — A critical vulnerability in the Model Context Protocol allowed attackers to poison tool descriptions, causing agents to take unintended actions. Anthropic, OpenAI, Zapier, and Cursor were all affected.</p>
+<p><strong>Cursor's System Prompt Leaked</strong> - The agent's internal instructions were exposed, revealing details about its tool access and capabilities. Developers building on top of Cursor couldn't trust their agents weren't being manipulated.</p>
+<p><strong>GitHub Copilot / Cursor RCE via Malicious MCP File Swaps</strong> - An attacker could replace an approved MCP server file after approval, causing the agent to execute arbitrary code with the developer's credentials.</p>
+<p><strong>MCP Tool Poisoning</strong> - A critical vulnerability in the Model Context Protocol allowed attackers to poison tool descriptions, causing agents to take unintended actions. Anthropic, OpenAI, Zapier, and Cursor were all affected.</p>
 <p>The pattern: <strong>agents are trusted, and that trust is being exploited.</strong></p>
 <hr />
 <h2 id="why-current-solutions-dont-work">Why Current "Solutions" Don't Work</h2>
@@ -5470,7 +5470,7 @@ me really nicely.
 <p>A system prompt is text. It can be overridden by prompt injection. It has no enforcement mechanism. It is not security.</p>
 <hr />
 <h2 id="what-actually-works-the-microvm-boundary">What Actually Works: The microVM Boundary</h2>
-<p>Docker Sandboxes runs each agent in a <strong>lightweight microVM</strong> — a virtual machine with its own dedicated Linux kernel. The agent runs inside the VM. Your credentials live on your host. The only thing shared is the workspace directory you explicitly mount.</p>
+<p>Docker Sandboxes runs each agent in a <strong>lightweight microVM</strong> - a virtual machine with its own dedicated Linux kernel. The agent runs inside the VM. Your credentials live on your host. The only thing shared is the workspace directory you explicitly mount.</p>
 <pre><code>Your Mac (host)
 ├── ~/.aws/credentials     ← here, untouched
 ├── ~/.ssh/id_rsa          ← here, untouched  
@@ -5481,7 +5481,7 @@ me really nicely.
     ├── private Docker daemon
     └── outbound proxy     ← enforces network policy, injects creds
 </code></pre>
-<p>The boundary is structural. It's enforced by the hypervisor, not by a policy document or a system prompt. The agent can't reach what isn't mounted — not because it's been told not to, but because it doesn't exist inside the VM.</p>
+<p>The boundary is structural. It's enforced by the hypervisor, not by a policy document or a system prompt. The agent can't reach what isn't mounted - not because it's been told not to, but because it doesn't exist inside the VM.</p>
 <hr />
 <h2 id="the-agent-autonomy-scale">The Agent Autonomy Scale</h2>
 <table>

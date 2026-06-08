@@ -1,4 +1,4 @@
-# Action in Docker Agent — Tool Execution + Sub-Agent Delegation
+# Action in Docker Agent - Tool Execution + Sub-Agent Delegation
 
 Action is **how the agent changes its environment**. In cagent, action has two forms: calling tools directly (filesystem, shell, MCP) and delegating tasks to specialized sub-agents.
 
@@ -121,4 +121,4 @@ Refactor calculator.py, write tests, and create documentation. Use your team.
 | **Sub-agent delegation** | `sub_agents: [coder, tester]` | Root hands off task to specialist |
 | **Environment change** | Edit, Write, Shell | Files created, code modified, tests run |
 
-The critical insight: the **root agent never touches a file**. It only has `shell` access to verify at the end. All the real work is delegated to specialists. This is the "Agents are the New Microservices" pattern — each agent has a single responsibility and its own action space.
+The critical insight: the **root agent never touches a file**. It only has `shell` access to verify at the end. All the real work is delegated to specialists. This is the "Agents are the New Microservices" pattern - each agent has a single responsibility and its own action space.

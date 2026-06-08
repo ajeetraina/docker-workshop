@@ -2,13 +2,13 @@
 
 So far you've governed agents that call cloud LLMs. This module closes the last
 gap: running agents inside sbx against **local open-source models** on your Mac
-— no API keys, no egress, no cloud dependency.
+- no API keys, no egress, no cloud dependency.
 
 The pattern is simple once you see it:
 
 - **Docker Model Runner** runs on your Mac host at `localhost:12434`
 - **The agent** runs inside the sbx microVM
-- **Only one port** crosses the VM boundary — the OpenAI-compatible HTTP endpoint
+- **Only one port** crosses the VM boundary - the OpenAI-compatible HTTP endpoint
 
 That's the strong story: air-gapped agent workflows with zero cloud
 dependency, still governed by the same sandbox, same network policy, same
@@ -21,7 +21,7 @@ audit log.
 Two reasons:
 
 1. **Models are heavy.** A 4GB GGUF file plus GPU/Metal acceleration belongs on
-   the host. The sbx is a lean microVM — it doesn't have Metal access.
+   the host. The sbx is a lean microVM - it doesn't have Metal access.
 2. **Docker Model Runner already exists on the host.** It's built into Docker
    Desktop, exposes an OpenAI-compatible API, and can be shared by every sbx on
    your machine.
@@ -41,7 +41,7 @@ curl -s http://localhost:12434/engines/llama.cpp/v1/models | head -20
 ```
 
 You should see a list of local models. If `docker model ls` is empty, pull a
-small one — smollm2 is 360MB and loads instantly:
+small one - smollm2 is 360MB and loads instantly:
 
 ```bash
 docker model pull ai/smollm2:360M-Q4_K_M
@@ -64,7 +64,7 @@ mkdir -p /tmp/dmr-test && cd /tmp/dmr-test
 sbx create --name dmr-test shell .
 ```
 
-The `shell` agent gives you a plain bash prompt inside the microVM — no AI
+The `shell` agent gives you a plain bash prompt inside the microVM - no AI
 agent attached. Perfect for testing connectivity before wiring up Codex or
 Claude.
 
@@ -73,7 +73,7 @@ Claude.
 ## Step 3 - Allow DMR through the network policy
 
 Before you attach, add a local allow rule. The sbx proxy normalizes the target
-to `localhost:12434` internally — even when you'll reach it via
+to `localhost:12434` internally - even when you'll reach it via
 `host.docker.internal`.
 
 ```bash
@@ -91,7 +91,7 @@ You should see one local allow entry for `localhost:12434`.
 > **Why `localhost:12434` and not `host.docker.internal:12434`?** The sbx proxy
 > strips the hostname and matches the destination port against policy as
 > `localhost:<port>`. It's the same reason you'll use `host.docker.internal`
-> for the curl but allow `localhost` in the policy — a quirk of the proxy
+> for the curl but allow `localhost` in the policy - a quirk of the proxy
 > internals.
 
 ---
@@ -115,7 +115,7 @@ hostname
 cat /etc/os-release | head -2
 ```
 
-You'll see the sandbox name and a clean Ubuntu 25.10 image — not your Mac.
+You'll see the sandbox name and a clean Ubuntu 25.10 image - not your Mac.
 
 ---
 
@@ -123,9 +123,9 @@ You'll see the sandbox name and a clean Ubuntu 25.10 image — not your Mac.
 
 Three things to know about networking inside sbx:
 
-- `localhost` inside the VM is the **VM's own loopback** — not your Mac.
+- `localhost` inside the VM is the **VM's own loopback** - not your Mac.
   `curl localhost:12434` will get **connection refused**.
-- `host.docker.internal` **does** resolve — it points at your Mac host via the
+- `host.docker.internal` **does** resolve - it points at your Mac host via the
   sbx gateway.
 - `model-runner.docker.internal` does **not** resolve inside sbx. Don't use it.
 
@@ -135,7 +135,7 @@ Get the model list:
 curl -s http://host.docker.internal:12434/engines/llama.cpp/v1/models | head -30
 ```
 
-You'll see the same list you saw on the host in Step 1 — proof that the sbx
+You'll see the same list you saw on the host in Step 1 - proof that the sbx
 proxy forwarded the request to DMR.
 
 ---
@@ -153,7 +153,7 @@ curl -s http://host.docker.internal:12434/engines/llama.cpp/v1/chat/completions 
 ```
 
 You'll get back JSON with the model's response in `choices[0].message.content`.
-That's a completed inference round-trip — agent in microVM, model on host,
+That's a completed inference round-trip - agent in microVM, model on host,
 OpenAI-compatible protocol between them.
 
 > **Tip:** smollm2 at 360M is great for connectivity tests but too small for
@@ -194,7 +194,7 @@ pip install --break-system-packages openai
 python3 test_local.py
 ```
 
-The model generates Python code — completely offline, no API key, no egress.
+The model generates Python code - completely offline, no API key, no egress.
 
 ---
 
@@ -242,10 +242,10 @@ sbx policy log dmr-codex
 ```
 
 Every inference request shows up as an allowed `localhost:12434` entry. That's
-your audit trail — proof that the agent only talked to the local model and
+your audit trail - proof that the agent only talked to the local model and
 nothing else.
 
-Try breaking it. Stop the sbx, change the allow rule to a deny, and restart —
+Try breaking it. Stop the sbx, change the allow rule to a deny, and restart -
 the agent will fail to reach the model. Network policy governs local traffic
 the same way it governs cloud traffic.
 
@@ -262,7 +262,7 @@ This is the pitch to hand your rep:
   credentials. The sbx never sees them.
 - **Network is governed.** Even `localhost:12434` requires an explicit allow
   rule. Every request is logged.
-- **Works air-gapped.** Regulated enterprises — healthcare, finance, defense —
+- **Works air-gapped.** Regulated enterprises - healthcare, finance, defense -
   can run this pattern on air-gapped networks with zero cloud dependency.
 
 That's the "agent in a microVM, model on the host, zero cloud dependency"
@@ -284,7 +284,7 @@ on the host and restart the sbx.
 That DNS name doesn't resolve inside sbx. Only `host.docker.internal` does.
 
 **Agent reaches DMR but inference returns 404 or garbled output.**
-Check the exact model ID with `docker model ls` on the host — model names with
+Check the exact model ID with `docker model ls` on the host - model names with
 quantization tags like `ai/smollm2:360M-Q4_K_M` must be passed verbatim in the
 request body.
 
@@ -300,4 +300,4 @@ Before moving on, confirm you can:
 - Point a coding agent (codex) at the local model via `OPENAI_BASE_URL`
 - Watch the connections in `sbx policy log`
 
-Next: the governance summary — the full architecture pulled together.
+Next: the governance summary - the full architecture pulled together.

@@ -1,6 +1,6 @@
 # Why AI Governance
 
-AI agents — Claude, Copilot, Cursor, custom MCP servers — run with the same blast radius as the developer running them. That means access to your filesystem, your secrets, your network, your everything.
+AI agents - Claude, Copilot, Cursor, custom MCP servers - run with the same blast radius as the developer running them. That means access to your filesystem, your secrets, your network, your everything.
 
 This is fine when the agent does what you expect. It's a disaster when:
 
@@ -9,7 +9,7 @@ This is fine when the agent does what you expect. It's a disaster when:
 - An agent acting on hallucinated instructions pushes a malicious commit to `main`
 - A coding agent reads your `.env` and posts it to the model API alongside your code
 
-The standard answer — **"don't let agents do that"** — doesn't scale. Developers want agents. They'll find a way. The right answer is to put guardrails around the agent's execution environment so it physically *cannot* exceed its scope.
+The standard answer - **"don't let agents do that"** - doesn't scale. Developers want agents. They'll find a way. The right answer is to put guardrails around the agent's execution environment so it physically *cannot* exceed its scope.
 
 That's AI governance.
 

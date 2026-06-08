@@ -5333,10 +5333,10 @@
 
 
 <h1 id="network-control-and-proxy-managed-credentials">Network Control and Proxy-Managed Credentials</h1>
-<p>The docker-review kit needed no network access. Most real kits do — they need to reach a package registry during install, or call an external API at runtime. This section covers how to declare those rules and wire up credentials so they never enter the VM.</p>
+<p>The docker-review kit needed no network access. Most real kits do - they need to reach a package registry during install, or call an external API at runtime. This section covers how to declare those rules and wire up credentials so they never enter the VM.</p>
 <hr />
 <h2 id="how-network-control-works">How network control works</h2>
-<p>Every sandbox has an egress proxy. All outbound traffic from the sandbox goes through it. By default, a kit's <code>allowedDomains</code> are additive — they extend whatever the base network policy allows.</p>
+<p>Every sandbox has an egress proxy. All outbound traffic from the sandbox goes through it. By default, a kit's <code>allowedDomains</code> are additive - they extend whatever the base network policy allows.</p>
 <pre><code class="language-yaml">network:
   allowedDomains:
     - pypi.org
@@ -5344,13 +5344,13 @@
   deniedDomains:
     - telemetry.example.com   # explicit block even if another policy permits it
 </code></pre>
-<p>Use <code>sbx policy log</code> to see every request the proxy handled — essential for debugging blocked domains during install.</p>
+<p>Use <code>sbx policy log</code> to see every request the proxy handled - essential for debugging blocked domains during install.</p>
 <hr />
 <h2 id="how-credential-injection-works">How credential injection works</h2>
 <p>Here's the security property that makes kits more rigorous than a shell script: <strong>the raw credential never enters the VM</strong>.</p>
 <p>Instead:</p>
 <ol>
-<li>You declare a credential source in the kit — where the proxy should look on the host</li>
+<li>You declare a credential source in the kit - where the proxy should look on the host</li>
 <li>The proxy reads it at request time</li>
 <li>The proxy injects it as an HTTP header on matching outbound requests</li>
 <li>The agent inside the sandbox never sees the raw value</li>
@@ -5380,7 +5380,7 @@ environment:
 <p>The built-in <code>claude</code> agent already uses this pattern. Run:</p>
 <pre><code class="language-bash">sbx policy log
 </code></pre>
-<p>You'll see requests to <code>api.anthropic.com</code> logged as <code>forward</code> with the credential injected by the proxy. The API key is never written to the VM's environment — it's substituted per-request.</p>
+<p>You'll see requests to <code>api.anthropic.com</code> logged as <code>forward</code> with the credential injected by the proxy. The API key is never written to the VM's environment - it's substituted per-request.</p>
 <hr />
 <h2 id="compare-shell-script-vs-kit">Compare: shell script vs kit</h2>
 <table>

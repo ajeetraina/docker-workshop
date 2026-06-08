@@ -21,7 +21,7 @@ sbx run claude \
     sbx kit add kits-lab ./kits/docker-review/
     ```
 
-    This re-runs install commands and re-copies files. Kits can't be removed from a running sandbox — `sbx rm` and recreate to start clean.
+    This re-runs install commands and re-copies files. Kits can't be removed from a running sandbox - `sbx rm` and recreate to start clean.
 
 ---
 
@@ -72,8 +72,8 @@ sbx run claude --kit "git+https://github.com/yourorg/yourrepo.git#dir=kits/docke
 
 | Command | When to use |
 |---|---|
-| `sbx kit validate ./kits/my-kit/` | Before running — catches spec errors |
+| `sbx kit validate ./kits/my-kit/` | Before running - catches spec errors |
 | `sbx policy log` | Blocked domains, install failures, credential injection |
 | `sbx exec kits-lab -- which ruff` | Verify a tool landed after install |
 | `sbx exec kits-lab -- ls /home/agent/.local/bin/` | Inspect agent-user bin path |
-| `sbx rm kits-lab && sbx run …` | Clean recreate — fastest reset loop |
+| `sbx rm kits-lab && sbx run …` | Clean recreate - fastest reset loop |

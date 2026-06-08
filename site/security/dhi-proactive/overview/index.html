@@ -4804,7 +4804,7 @@
   <a href="#docker-hardened-images-the-pro-active-approach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Docker Hardened Images — The Pro-active Approach
+        Docker Hardened Images - The Pro-active Approach
       
     </span>
   </a>
@@ -5275,7 +5275,7 @@
   <a href="#docker-hardened-images-the-pro-active-approach" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Docker Hardened Images — The Pro-active Approach
+        Docker Hardened Images - The Pro-active Approach
       
     </span>
   </a>
@@ -5348,9 +5348,9 @@
 
   <h1>Overview</h1>
 
-<h2 id="docker-hardened-images-the-pro-active-approach">Docker Hardened Images — The Pro-active Approach</h2>
+<h2 id="docker-hardened-images-the-pro-active-approach">Docker Hardened Images - The Pro-active Approach</h2>
 <blockquote>
-<p><strong>Start Secure.</strong> Docker Hardened Images are purpose-built from the ground up to be extremely minimal — not stripped-down versions of something bloated.</p>
+<p><strong>Start Secure.</strong> Docker Hardened Images are purpose-built from the ground up to be extremely minimal - not stripped-down versions of something bloated.</p>
 </blockquote>
 <p>This is the <strong>pro-active</strong> half of the container security story. Where <a href="../../scout-reactive/overview/">Scout</a> helps you find and fix CVEs in images you already have, DHI helps you stop <em>creating</em> them in the first place.</p>
 <p>The premise is simple: if your base image starts with <strong>near-zero CVEs</strong>, follows a <strong>distroless philosophy</strong>, and ships with <strong>signed supply-chain attestations</strong>, you've eliminated most of the reactive cycle before it begins.</p>
@@ -5432,19 +5432,19 @@
 <tr>
 <td><strong>Dev</strong></td>
 <td><code>&lt;DHI_PREFIX&gt;node:24-debian13-dev</code></td>
-<td>Building — has shell, <code>npm</code>, build tools</td>
+<td>Building - has shell, <code>npm</code>, build tools</td>
 </tr>
 <tr>
 <td><strong>Runtime</strong></td>
 <td><code>&lt;DHI_PREFIX&gt;node:24-debian13</code></td>
-<td>Production — distroless, no shell</td>
+<td>Production - distroless, no shell</td>
 </tr>
 </tbody>
 </table>
 <blockquote>
 <p>Replace <code>&lt;DHI_PREFIX&gt;</code> with <code>dhi.io/</code> for the free tier or <code>&lt;YOUR_ORG&gt;/dhi-</code> for the paid tier (see <a href="../../container-security/setup/">Setup</a>).</p>
 </blockquote>
-<p>Because the runtime variant has no shell or <code>npm</code>, you use <strong>multi-stage builds</strong>: the dev image installs dependencies, the runtime image gets only the output. This isn't a constraint — it's how production images <em>should</em> be built.</p>
+<p>Because the runtime variant has no shell or <code>npm</code>, you use <strong>multi-stage builds</strong>: the dev image installs dependencies, the runtime image gets only the output. This isn't a constraint - it's how production images <em>should</em> be built.</p>
 <hr />
 <h2 id="workshop-sections">Workshop sections</h2>
 <table>
@@ -5494,7 +5494,7 @@
 </tr>
 </tbody>
 </table>
-<p>That's why DHI is the <strong>pro-active</strong> answer. You're not finding CVEs and patching them — you're starting from a base where there are almost none, with cryptographic evidence to prove it.</p>
+<p>That's why DHI is the <strong>pro-active</strong> answer. You're not finding CVEs and patching them - you're starting from a base where there are almost none, with cryptographic evidence to prove it.</p>
 <blockquote>
 <p><strong>Use both.</strong> Scout for visibility on what you run. DHI for the foundation you build on.</p>
 </blockquote>

@@ -5432,7 +5432,7 @@
   
 
 
-<h1 id="goal-orientation-in-cagent-instruction-description">Goal-Orientation in cagent — instruction + description</h1>
+<h1 id="goal-orientation-in-cagent-instruction-description">Goal-Orientation in cagent - instruction + description</h1>
 <p>Goal-orientation is <strong>what drives the agent to keep working</strong>. In cagent, goals are defined through two fields: <code>instruction</code> (the agent's mission) and <code>description</code> (how other agents know when to delegate to it).</p>
 <h2 id="step-1-create-a-project-with-a-clear-objective">Step 1: Create a project with a clear objective</h2>
 <pre><code class="language-bash">mkdir ~/goal-test &amp;&amp; cd ~/goal-test
@@ -5605,7 +5605,7 @@ Agent stops ✅ (goal: all quality issues fixed)
 </tr>
 </tbody>
 </table>
-<p>The <code>instruction</code> field is the agent's <strong>mission statement</strong> — it determines what the agent does, what it ignores, and when it considers the job done. Two agents with identical toolsets but different instructions will produce completely different outcomes.</p>
+<p>The <code>instruction</code> field is the agent's <strong>mission statement</strong> - it determines what the agent does, what it ignores, and when it considers the job done. Two agents with identical toolsets but different instructions will produce completely different outcomes.</p>
 <h2 id="bonus-goal-via-description-in-multi-agent-teams">Bonus: Goal via description in multi-agent teams</h2>
 <p>In a multi-agent setup, <code>description</code> is how the root agent decides <strong>who to delegate to</strong>:</p>
 <pre><code class="language-yaml">agents:
@@ -5627,7 +5627,7 @@ Agent stops ✅ (goal: all quality issues fixed)
     instruction: |
       Your GOAL is to fix code quality only...
 </code></pre>
-<p>When a user says "check this for security," the root agent reads the <code>description</code> fields and routes to <code>security_reviewer</code>. When they say "clean up this code," it routes to <code>quality_engineer</code>. The <code>description</code> is the agent's <strong>API contract</strong> — it advertises what this agent's goal is to the rest of the system.</p>
+<p>When a user says "check this for security," the root agent reads the <code>description</code> fields and routes to <code>security_reviewer</code>. When they say "clean up this code," it routes to <code>quality_engineer</code>. The <code>description</code> is the agent's <strong>API contract</strong> - it advertises what this agent's goal is to the rest of the system.</p>
 
 
 

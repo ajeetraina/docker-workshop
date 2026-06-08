@@ -1,9 +1,9 @@
 # Filesystem Enforcement Demo
 
-Network was the first half of Pillar 1. Filesystem is the other half — and arguably the more visceral one for security teams. *"The agent can't steal SSH keys"* lands harder than *"the agent can't reach paste.ee."*
+Network was the first half of Pillar 1. Filesystem is the other half - and arguably the more visceral one for security teams. *"The agent can't steal SSH keys"* lands harder than *"the agent can't reach paste.ee."*
 
 !!! note "A key difference from the Network demo"
-    Filesystem rules are checked **at sandbox creation time**, not at file-access time inside the sandbox. The sandbox refuses to be created with a denied mount, instead of letting it in and blocking reads later. That's a stronger model — the denied mount never exists inside the sandbox.
+    Filesystem rules are checked **at sandbox creation time**, not at file-access time inside the sandbox. The sandbox refuses to be created with a denied mount, instead of letting it in and blocking reads later. That's a stronger model - the denied mount never exists inside the sandbox.
 
 !!! info "At a glance"
     **Time:** ~10 minutes &nbsp;&nbsp;|&nbsp;&nbsp; **Prerequisites:** You completed the Network Enforcement Demo.
@@ -19,7 +19,7 @@ Network was the first half of Pillar 1. Filesystem is the other half — and arg
 
 ---
 
-## Step 1 — Open the Admin Console
+## Step 1 - Open the Admin Console
 
 Open **`https://app.docker.com/accounts/<your-org>`** and navigate to **AI governance** → **Filesystem access**.
 
@@ -27,7 +27,7 @@ The page works the same way as Network access, but rules are scoped to paths (wi
 
 ---
 
-## Step 2 — Add the allow rule for the test directory
+## Step 2 - Add the allow rule for the test directory
 
 You need at least one allow rule so the sandbox can be created. Add:
 
@@ -40,7 +40,7 @@ The `**` matches recursively. You can add other allow rules for `~/work/`, `~/co
 
 ---
 
-## Step 3 — Add the deny rule
+## Step 3 - Add the deny rule
 
 This is the rule that earns its keep.
 
@@ -56,17 +56,17 @@ This is the rule that earns its keep.
 - Action scope: **Read, Write** (both)
 - Name: `deny credentials`
 
-That covers SSH keys, AWS creds, GCloud creds, K8s config, and Docker registry auth — the five places agents most commonly leak secrets from.
+That covers SSH keys, AWS creds, GCloud creds, K8s config, and Docker registry auth - the five places agents most commonly leak secrets from.
 
 ---
 
-## Step 4 — Remove any catch-all
+## Step 4 - Remove any catch-all
 
-If a rule exists with path `~/**` or `/**` and action Allow, **delete it**. A catch-all allow defeats every deny rule — same trap as Network.
+If a rule exists with path `~/**` or `/**` and action Allow, **delete it**. A catch-all allow defeats every deny rule - same trap as Network.
 
 ---
 
-## Step 5 — Verify policies reached your machine
+## Step 5 - Verify policies reached your machine
 
 ```bash
 sbx policy reset
@@ -82,7 +82,7 @@ Scroll to filesystem rules. You should see `allow lab test directory` and `deny 
 
 ---
 
-## Step 6 — Create the test directories
+## Step 6 - Create the test directories
 
 Three separate workdirs so each `sbx run` creates a fresh sandbox without name collision:
 
@@ -94,7 +94,7 @@ mkdir -p /tmp/labspace-fs-test-3
 
 ---
 
-## Step 7 — Test 1: Allowed workdir, no extra mounts
+## Step 7 - Test 1: Allowed workdir, no extra mounts
 
 ```bash
 cd ~/labspace-fs-test/test-1
@@ -111,7 +111,7 @@ exit
 
 ---
 
-## Step 8 — Test 2: Allowed workdir + denied extra mount
+## Step 8 - Test 2: Allowed workdir + denied extra mount
 
 ```bash
 cd ~/labspace-fs-test/test-2
@@ -130,7 +130,7 @@ resource=fs:path:/Users/<you>/.ssh
 
 ---
 
-## Step 9 — Test 3: Unallowed workdir (default-deny)
+## Step 9 - Test 3: Unallowed workdir (default-deny)
 
 ```bash
 cd /tmp/labspace-fs-test-3
@@ -148,11 +148,11 @@ op(action=fs:mount:write, resource=fs:path:/private/tmp/labspace-fs-test-3)
 ✅ The sandbox **never starts**. No allow rule covers `/tmp/labspace-fs-test-3`, default-deny applies.
 
 !!! note
-    macOS resolves `/tmp` to `/private/tmp` — the policy engine sees the canonical path.
+    macOS resolves `/tmp` to `/private/tmp` - the policy engine sees the canonical path.
 
 ---
 
-## Step 10 — Read the results
+## Step 10 - Read the results
 
 | Test | Workdir | Extra mount | Outcome | Why |
 | --- | --- | --- | --- | --- |
@@ -177,7 +177,7 @@ If you want to remove the test sandboxes between runs:
 sbx ls
 ```
 
-Then remove the entries listed. Cleanup subcommand varies by sbx version — check `sbx --help` for `rm`, `delete`, or `stop`.
+Then remove the entries listed. Cleanup subcommand varies by sbx version - check `sbx --help` for `rm`, `delete`, or `stop`.
 
 ---
 
@@ -185,12 +185,12 @@ Then remove the entries listed. Cleanup subcommand varies by sbx version — che
 
 The policy engine **prevents the sandbox from being created** with a denied mount. Enforcement happens *before* the agent ever runs.
 
-This is stronger than runtime filtering — no race condition where the agent might briefly see denied data, no partial reads, no leaked file handles. The denied mount simply never exists in the sandbox.
+This is stronger than runtime filtering - no race condition where the agent might briefly see denied data, no partial reads, no leaked file handles. The denied mount simply never exists in the sandbox.
 
 Combined with the Network demo, Pillar 1 is now proven end-to-end:
 
-- **Network egress** — agent can't reach unapproved destinations (proxy intercept)
-- **Filesystem access** — agent can't even mount unapproved paths (creation-time denial)
+- **Network egress** - agent can't reach unapproved destinations (proxy intercept)
+- **Filesystem access** - agent can't even mount unapproved paths (creation-time denial)
 
 ---
 
@@ -200,7 +200,7 @@ Combined with the Network demo, Pillar 1 is now proven end-to-end:
 They get the default-deny error from Test 3. They have to work in an org-approved directory or get a rule added.
 
 **"What about files written inside the sandbox?"**
-Writes go to the explicit workspace (the mount that got `fs:mount:write`). When the sandbox exits, writes persist on the host — but only at allowed paths.
+Writes go to the explicit workspace (the mount that got `fs:mount:write`). When the sandbox exits, writes persist on the host - but only at allowed paths.
 
 **"Can the developer override governance locally?"**
 No. Local sbx options can adjust convenience flags but can't bypass `ORIGIN: remote` policies. Once the org sets filesystem rules, they're authoritative.

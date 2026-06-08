@@ -18,7 +18,7 @@ This section proves the network half of Pillar 1. The next section proves the fi
 
 ---
 
-## Step 1 — Open the Admin Console
+## Step 1 - Open the Admin Console
 
 Open **`https://app.docker.com/accounts/<your-org>`** and navigate to **AI governance** → **Network access**.
 
@@ -26,14 +26,14 @@ Confirm the AI governance toggle is **ON**. If it isn't, turn it on.
 
 ---
 
-## Step 2 — Set up the allow rules
+## Step 2 - Set up the allow rules
 
 If they're not already present, add two **Allow** rules.
 
 **Rule 1: allow AI services**
 
 - Action: Allow
-- Network path (paste these as multiple lines — the modal accepts multi-line input):
+- Network path (paste these as multiple lines - the modal accepts multi-line input):
   ```
   api.anthropic.com:443
   api.openai.com:443
@@ -58,7 +58,7 @@ If they're not already present, add two **Allow** rules.
 
 ---
 
-## Step 3 — Add the deny rule
+## Step 3 - Add the deny rule
 
 This is the rule that makes the demo land for security teams.
 
@@ -74,11 +74,11 @@ This is the rule that makes the demo land for security teams.
 
 ---
 
-## Step 4 — Remove any catch-all rule
+## Step 4 - Remove any catch-all rule
 
 If a rule exists with paths `0.0.0.0/0` or `::/0` (often labelled "allow all IPs"), **delete it**. Click the red trash icon on that row.
 
-A catch-all `0.0.0.0/0` allow means everything is permitted regardless of other rules — the deny rule has nothing to prove. Removing it activates the default-deny posture.
+A catch-all `0.0.0.0/0` allow means everything is permitted regardless of other rules - the deny rule has nothing to prove. Removing it activates the default-deny posture.
 
 After this, the final rule list should have exactly **three rules**:
 
@@ -88,7 +88,7 @@ After this, the final rule list should have exactly **three rules**:
 
 ---
 
-## Step 5 — Verify policies reached your machine
+## Step 5 - Verify policies reached your machine
 
 Back on your terminal:
 
@@ -109,13 +109,13 @@ You should see:
 - A header reading `Governance: managed by <your-org>`
 - A fresh sync timestamp
 - Three rules with `ORIGIN: remote` matching what you set in the Admin Console
-- Several `default-*` rules marked `inactive — corporate policy takes precedence`
+- Several `default-*` rules marked `inactive - corporate policy takes precedence`
 
 That last line is the central control proof. Even though sbx ships with sensible defaults, the org policy is overriding them.
 
 ---
 
-## Step 6 — Spin up a sandbox
+## Step 6 - Spin up a sandbox
 
 ```bash
 mkdir -p ~/scratch && cd ~/scratch
@@ -128,7 +128,7 @@ You'll land at a shell prompt inside the sandbox.
 
 ---
 
-## Step 7 — Run the three enforcement tests
+## Step 7 - Run the three enforcement tests
 
 Inside the sandbox prompt:
 
@@ -140,7 +140,7 @@ curl -sS https://example.com -o /dev/null -w "example.com: %{http_code}\n"
 
 ---
 
-## Step 8 — Read the results
+## Step 8 - Read the results
 
 Expected output (codes may vary slightly):
 
@@ -160,7 +160,7 @@ The distinction between 200/404 (origin server replied) and 403 (proxy refused) 
 
 ---
 
-## Step 9 — See the proxy refusal up close (optional)
+## Step 9 - See the proxy refusal up close (optional)
 
 For a more visceral demo, run a verbose `curl` from inside the sandbox:
 
@@ -170,13 +170,13 @@ curl -v https://paste.ee 2>&1 | head -50
 
 You'll see the sbx proxy intercept the request in three distinct phases:
 
-**1. The proxy variable** — the sandbox routes outbound traffic through `gateway.docker.internal:3128`:
+**1. The proxy variable** - the sandbox routes outbound traffic through `gateway.docker.internal:3128`:
 
 ```
 * Uses proxy env variable https_proxy == 'http://gateway.docker.internal:3128'
 ```
 
-**2. The CONNECT tunnel succeeds** — counter-intuitively, the proxy returns `HTTP/1.0 200 OK` to the `CONNECT` request. It accepts the tunnel so it can do content inspection:
+**2. The CONNECT tunnel succeeds** - counter-intuitively, the proxy returns `HTTP/1.0 200 OK` to the `CONNECT` request. It accepts the tunnel so it can do content inspection:
 
 ```
 > CONNECT paste.ee:443 HTTP/1.1
@@ -184,14 +184,14 @@ You'll see the sbx proxy intercept the request in three distinct phases:
 * CONNECT tunnel established, response 200
 ```
 
-**3. The MITM cert is the smoking gun** — the TLS handshake completes, but the server certificate is *not* from Let's Encrypt or paste.ee's real issuer. It's an impersonation cert minted by the sbx proxy:
+**3. The MITM cert is the smoking gun** - the TLS handshake completes, but the server certificate is *not* from Let's Encrypt or paste.ee's real issuer. It's an impersonation cert minted by the sbx proxy:
 
 ```
 * Server certificate:
 *   subject: O=GoProxy untrusted MITM proxy Inc; CN=paste.ee
 ```
 
-That `O=GoProxy untrusted MITM proxy Inc` is the proxy openly identifying itself. paste.ee never received the connection — the proxy terminated the TLS itself, inspected the request inside the tunnel, matched the `deny exfiltration` rule, and returned `HTTP/1.1 403 Forbidden`.
+That `O=GoProxy untrusted MITM proxy Inc` is the proxy openly identifying itself. paste.ee never received the connection - the proxy terminated the TLS itself, inspected the request inside the tunnel, matched the `deny exfiltration` rule, and returned `HTTP/1.1 403 Forbidden`.
 
 To see the 403 itself, lengthen the head:
 
@@ -199,13 +199,13 @@ To see the 403 itself, lengthen the head:
 curl -v https://paste.ee 2>&1 | head -80 | tail -30
 ```
 
-You'll see `< HTTP/1.1 403 Forbidden` after the TLS handshake — proof that the policy was enforced inside the MITM tunnel, before the request was forwarded anywhere.
+You'll see `< HTTP/1.1 403 Forbidden` after the TLS handshake - proof that the policy was enforced inside the MITM tunnel, before the request was forwarded anywhere.
 
-For contrast, from your **host machine** (outside the sandbox), the same `curl -v https://paste.ee` shows a normal Let's Encrypt cert and reaches the real paste.ee. Policy enforcement is sandbox-scoped — that's by design.
+For contrast, from your **host machine** (outside the sandbox), the same `curl -v https://paste.ee` shows a normal Let's Encrypt cert and reaches the real paste.ee. Policy enforcement is sandbox-scoped - that's by design.
 
 ---
 
-## Step 10 — Exit the sandbox
+## Step 10 - Exit the sandbox
 
 ```bash
 exit
@@ -219,12 +219,12 @@ The microVM is torn down. Everything inside it is gone unless it was written to 
 
 The full Pillar 1 story end-to-end:
 
-1. **One source of truth** — policies defined in the Admin Console for your org
-2. **Automatic propagation** — every developer logged in with org credentials inherits the policies
-3. **Real enforcement** — the network proxy actually blocked the deny destination and the unscoped destination, while letting allowed traffic through
-4. **No developer override** — local rules went inactive in favour of the org rules
+1. **One source of truth** - policies defined in the Admin Console for your org
+2. **Automatic propagation** - every developer logged in with org credentials inherits the policies
+3. **Real enforcement** - the network proxy actually blocked the deny destination and the unscoped destination, while letting allowed traffic through
+4. **No developer override** - local rules went inactive in favour of the org rules
 
-Three rules, two browser tabs, three `curl`s — and you have a working enforcement story you can defend to a security team.
+Three rules, two browser tabs, three `curl`s - and you have a working enforcement story you can defend to a security team.
 
 ---
 
@@ -234,7 +234,7 @@ Three rules, two browser tabs, three `curl`s — and you have a working enforcem
 They can. But then they can't pull org-hosted images, push to org registries, or use any other org Docker services. The incentive is to stay logged in.
 
 **"What if they run `sbx` without org credentials?"**
-The local default policy (Balanced) applies — a generic dev allowlist. They lose access to anything outside that list *and* don't get the org-specific rules. They can do less, not more.
+The local default policy (Balanced) applies - a generic dev allowlist. They lose access to anything outside that list *and* don't get the org-specific rules. They can do less, not more.
 
 **"How fast does a policy change reach developers?"**
 A few minutes typically. To force a refresh: `sbx policy reset`.
@@ -242,7 +242,7 @@ A few minutes typically. To force a refresh: `sbx policy reset`.
 **"Can the developer override a deny rule locally?"**
 No. Local rules are only honored for rule types the org policy does not own. Once the org defines network rules, local network rules go inactive.
 
-**"I skipped Step 2 (allow rules) and `api.anthropic.com` still returned 200/404 — why?"**
-sbx may retain baseline access to a small set of well-known AI provider destinations even when corporate network policy is active and the `default-ai-services` local rule shows `inactive — corporate policy takes precedence`. Whether this is intentional ("preserve sensible defaults") or an artifact of how the proxy initialises is currently undocumented. The takeaway: **always do Step 2**. Explicit allow rules give you something concrete to point at when a security team asks "why did this work?" — instead of relying on undocumented baseline behaviour.
+**"I skipped Step 2 (allow rules) and `api.anthropic.com` still returned 200/404 - why?"**
+sbx may retain baseline access to a small set of well-known AI provider destinations even when corporate network policy is active and the `default-ai-services` local rule shows `inactive - corporate policy takes precedence`. Whether this is intentional ("preserve sensible defaults") or an artifact of how the proxy initialises is currently undocumented. The takeaway: **always do Step 2**. Explicit allow rules give you something concrete to point at when a security team asks "why did this work?" - instead of relying on undocumented baseline behaviour.
 
 Move on to the **Filesystem Enforcement Demo** to prove the filesystem half of the same model.

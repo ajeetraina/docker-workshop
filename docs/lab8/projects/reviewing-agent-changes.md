@@ -46,7 +46,7 @@ Run `git diff main..my-feature` to see the agent's changes on a separate branch.
 
 ## The hidden danger: Git hooks
 
-Git hooks live inside `.git/hooks/` — they are **not tracked by Git** and
+Git hooks live inside `.git/hooks/` - they are **not tracked by Git** and
 do **not appear in `git diff` output**. An agent could modify a hook and you'd
 never see it in a normal diff.
 
@@ -88,7 +88,7 @@ The microVM is now gone. Check the hook on your host:
 ls -la .git/hooks/
 ```
 
-Look for `pre-commit` with a recent timestamp — created by the agent, now
+Look for `pre-commit` with a recent timestamp - created by the agent, now
 living on your Mac.
 
 ```bash
@@ -115,7 +115,7 @@ hello from the agent
 [main 9c1f07e] test hook
 ```
 
-That's agent-written code running on your Mac. The microVM is gone — but the
+That's agent-written code running on your Mac. The microVM is gone - but the
 file persists and executes with your full host privileges.
 
 > **This is not a bug. This is the expected behavior.**
@@ -144,7 +144,7 @@ find .git/hooks -type f ! -name "*.sample" -delete
 ## Branch mode: the safer workflow for untrusted tasks
 
 When you're not sure what an agent will do, use branch mode. The agent still
-has full write access — but its changes land on a separate worktree and branch,
+has full write access - but its changes land on a separate worktree and branch,
 not your main working tree.
 
 ```bash
@@ -167,7 +167,7 @@ cd ~/sbx-lab
 git diff main..agent-experiment
 ```
 
-Check git hooks separately — they won't appear in the diff:
+Check git hooks separately - they won't appear in the diff:
 
 ```bash
 ls -la ~/sbxlab-worktrees/agent-experiment/.git/hooks/
@@ -185,11 +185,11 @@ If not, discard everything:
 git branch -D agent-experiment
 ```
 
-Pay special attention to the same file types — Git hooks, CI config, build
+Pay special attention to the same file types - Git hooks, CI config, build
 files, IDE config. Even in branch mode, review before you merge.
 
 > **Branch mode is not a security boundary.** The agent still has full write
-> access to the worktree. It gives you a clean diff to review — not protection
+> access to the worktree. It gives you a clean diff to review - not protection
 > from malicious writes.
 
 ---
@@ -211,12 +211,12 @@ pull request from an external contributor. Review before you trust.
 
 Before moving on:
 
-- [ ] Run `cd ~/sbx-lab` before testing hooks — git hooks are per-repository
+- [ ] Run `cd ~/sbx-lab` before testing hooks - git hooks are per-repository
 - [ ] Run `git diff` after an agent session and review the changes
-- [ ] Check `.git/hooks/` separately — it won't appear in `git diff`
+- [ ] Check `.git/hooks/` separately - it won't appear in `git diff`
 - [ ] Understand that branch mode gives you a clean diff to review, but is not
       a security boundary
 - [ ] Know how to remove or reset hooks the agent created
 
-Next: secrets without exposure — how sbx injects credentials without the agent
+Next: secrets without exposure - how sbx injects credentials without the agent
 ever seeing them.

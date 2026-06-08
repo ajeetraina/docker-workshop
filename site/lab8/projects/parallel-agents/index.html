@@ -5420,30 +5420,30 @@
   
 
 
-<h1 id="parallel-agents-two-agents-one-sandbox-zero-conflicts">Parallel Agents — Two Agents, One Sandbox, Zero Conflicts</h1>
+<h1 id="parallel-agents-two-agents-one-sandbox-zero-conflicts">Parallel Agents - Two Agents, One Sandbox, Zero Conflicts</h1>
 <p>Branch mode isn't just for review workflows. It's how you run multiple agents simultaneously on the same codebase without any conflicts.</p>
 <p>Each branch-mode run creates its own isolated Git worktree. Two agents on two branches never touch each other's files. Both are governed by the same network policy. Both generate audit logs.</p>
 <hr />
 <h2 id="the-devboard-has-two-unfinished-features">The DevBoard has two unfinished features</h2>
 <p>Perfect for parallel execution:</p>
-<p><strong>Search</strong> — <code>GET /issues/search?q=</code> returns HTTP 501. The query logic hasn't been written yet.</p>
-<p><strong>Notifications</strong> — <code>send_status_change_notification()</code> is a no-op stub. It should send emails when issue status changes.</p>
-<p>These are independent — no shared code paths. Ideal for parallel work.</p>
+<p><strong>Search</strong> - <code>GET /issues/search?q=</code> returns HTTP 501. The query logic hasn't been written yet.</p>
+<p><strong>Notifications</strong> - <code>send_status_change_notification()</code> is a no-op stub. It should send emails when issue status changes.</p>
+<p>These are independent - no shared code paths. Ideal for parallel work.</p>
 <hr />
 <h2 id="launch-two-agents-simultaneously">Launch two agents simultaneously</h2>
 <p>Open <strong>two host terminal windows</strong>. Run each command in its own window at the same time.</p>
-<p><strong>Terminal 1 — Search feature:</strong></p>
+<p><strong>Terminal 1 - Search feature:</strong></p>
 <pre><code class="language-bash">cd ~/sbx-lab
 sbx run sbxlab --branch=add-search -- &quot;$(cat prompts/implement-search.txt)&quot;
 </code></pre>
-<p><strong>Terminal 2 — Notifications feature:</strong></p>
+<p><strong>Terminal 2 - Notifications feature:</strong></p>
 <pre><code class="language-bash">cd ~/sbx-lab
 sbx run sbxlab --branch=add-notif -- &quot;$(cat prompts/implement-notifications.txt)&quot;
 </code></pre>
 <blockquote>
 <p><strong>Note:</strong> The <code>"$(cat ...)"</code> must be quoted or the prompt won't pass correctly.</p>
 </blockquote>
-<p>Both run against the same <code>sbxlab</code> sandbox — no new sandbox is created. You still see one entry in <code>sbx ls</code>. Each agent has its own isolated worktree under <code>.sbx/sbxlab-worktrees/</code>.</p>
+<p>Both run against the same <code>sbxlab</code> sandbox - no new sandbox is created. You still see one entry in <code>sbx ls</code>. Each agent has its own isolated worktree under <code>.sbx/sbxlab-worktrees/</code>.</p>
 <hr />
 <h2 id="watch-both-agents-work">Watch both agents work</h2>
 <p>In a <strong>third terminal</strong>, watch the worktrees update in real time:</p>
@@ -5458,7 +5458,7 @@ watch -n 2 'git log --oneline add-search | head -5; echo &quot;---&quot;; git lo
 <p>In a <strong>fourth terminal</strong>:</p>
 <pre><code class="language-bash">sbx policy log sbxlab
 </code></pre>
-<p>You'll see both agents making API calls — all routed through the same proxy, all logged, all governed by the same policy.</p>
+<p>You'll see both agents making API calls - all routed through the same proxy, all logged, all governed by the same policy.</p>
 <hr />
 <h2 id="review-and-open-prs">Review and open PRs</h2>
 <p>When both agents have finished (you'll see them exit or hit prompts):</p>
@@ -5485,11 +5485,11 @@ gh pr create --head add-notif \
 <h2 id="what-this-means-at-scale">What this means at scale</h2>
 <p>You just ran two autonomous agents on the same repo simultaneously. Each had governance:
 - Isolated VM boundary
-- Secrets via proxy injection — no keys in the VM
+- Secrets via proxy injection - no keys in the VM
 - Network policy enforcing what they could reach
 - Audit log of every connection
 - Clean Git diffs for human review before merge</p>
-<p>Now imagine this at 10,000 developers. Each developer might have 2–3 agents running simultaneously. That's potentially 30,000 concurrent agent sessions — all governed by the same central policy, all generating audit logs, all hitting the same LLM gateway.</p>
+<p>Now imagine this at 10,000 developers. Each developer might have 2–3 agents running simultaneously. That's potentially 30,000 concurrent agent sessions - all governed by the same central policy, all generating audit logs, all hitting the same LLM gateway.</p>
 <p>That's the enterprise story. That's what the network policy and sandbox architecture are built for.</p>
 <hr />
 <h2 id="clean-up-worktrees">Clean up worktrees</h2>
@@ -5506,7 +5506,7 @@ git branch -d add-search add-notif
 - <code>git worktree list</code> showed both branches
 - Both produced clean diffs reviewable by a human
 - The policy log showed both agents' activity</p>
-<p>Next: Docker Compose inside the sandbox — the full-stack use case.</p>
+<p>Next: Docker Compose inside the sandbox - the full-stack use case.</p>
 
 
 

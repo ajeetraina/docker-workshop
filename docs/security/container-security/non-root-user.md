@@ -2,7 +2,7 @@
 
 > **Never run containers as root.** Root inside a container is effectively root on the host if isolation fails.
 
-By default, Docker containers run as `root` (UID 0). If an attacker exploits your app, they get root-level access inside the container — and potentially on the host if the container is misconfigured or running with a privileged socket.
+By default, Docker containers run as `root` (UID 0). If an attacker exploits your app, they get root-level access inside the container - and potentially on the host if the container is misconfigured or running with a privileged socket.
 
 ## Why this matters
 
@@ -16,7 +16,7 @@ A container is just a Linux process with namespaces around it. If an attacker:
 
 ## Three ways to enforce non-root
 
-### Option A — In the Dockerfile (recommended)
+### Option A - In the Dockerfile (recommended)
 
 This is what we already have in our `Dockerfile`:
 
@@ -27,7 +27,7 @@ USER appuser
 
 Setting `USER` in the Dockerfile means **every** invocation of the image runs as `appuser` by default. No flag required at `docker run` time, no chance of someone forgetting.
 
-### Option B — At `docker run` time
+### Option B - At `docker run` time
 
 You can override the user when starting a container:
 
@@ -36,9 +36,9 @@ docker run --rm --user 1000:1000 catalog-service:slim \
     node -e "console.log(process.getuid())"
 ```
 
-Expected output: `1000` — not `0`.
+Expected output: `1000` - not `0`.
 
-### Option C — In `docker compose`
+### Option C - In `docker compose`
 
 ```yaml
 services:
@@ -47,7 +47,7 @@ services:
     user: "${CURRENT_UID}"
 ```
 
-Use the host user's UID/GID — particularly useful for development where bind-mounted volumes need to match host file ownership.
+Use the host user's UID/GID - particularly useful for development where bind-mounted volumes need to match host file ownership.
 
 ## Verify the running user
 
@@ -55,7 +55,7 @@ Use the host user's UID/GID — particularly useful for development where bind-m
 docker run --rm catalog-service:slim whoami
 ```
 
-Expected output: `appuser` — not `root`.
+Expected output: `appuser` - not `root`.
 
 ## The hardened `docker init` pattern
 
@@ -87,6 +87,6 @@ Extra hardening in this version:
 docker scout quickview catalog-service:slim --org <YOUR_ORG>
 ```
 
-Look for `Default non-root user` in the policy output — it should show ✓.
+Look for `Default non-root user` in the policy output - it should show ✓.
 
 Continue to [BP#4: Read-Only Filesystem + Drop Capabilities](readonly-capabilities.md).

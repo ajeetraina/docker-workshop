@@ -42,7 +42,7 @@ Docker Offload provisions ephemeral cloud environments for each session:
 
 #### Enhanced Build Performance
 
-When you use Docker Offload for builds, the docker buildx build command executes on remote BuildKit instances in the cloud instead of locally. Your workflow remains identical—only the execution environment changes.
+When you use Docker Offload for builds, the docker buildx build command executes on remote BuildKit instances in the cloud instead of locally. Your workflow remains identical-only the execution environment changes.
 
 #### Build Infrastructure
 

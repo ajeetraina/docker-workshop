@@ -2,7 +2,7 @@
 
 > **Keep dev tools, compilers, and test frameworks out of production.**
 
-A common antipattern is using a single Dockerfile stage that installs everything — dev dependencies, compilers, test frameworks, debuggers — and then ships that whole image to production. Everything that's only useful at build time becomes attack surface at runtime.
+A common antipattern is using a single Dockerfile stage that installs everything - dev dependencies, compilers, test frameworks, debuggers - and then ships that whole image to production. Everything that's only useful at build time becomes attack surface at runtime.
 
 ## What must NOT ship to production
 
@@ -33,9 +33,9 @@ RUN npm ci --production --ignore-scripts && npm cache clean --force
 
 Each flag matters:
 
-- `--production` — only production dependencies, `devDependencies` excluded
-- `--ignore-scripts` — no post-install scripts (a common supply chain attack vector)
-- `npm cache clean --force` — removes the npm cache from the layer, shrinking the image
+- `--production` - only production dependencies, `devDependencies` excluded
+- `--ignore-scripts` - no post-install scripts (a common supply chain attack vector)
+- `npm cache clean --force` - removes the npm cache from the layer, shrinking the image
 
 ## Build specific stages
 
@@ -59,7 +59,7 @@ Compare the two:
 docker images catalog-service
 ```
 
-The `dev` image is significantly larger — it contains all `devDependencies`. The `prod` image is lean: smaller attack surface, faster pulls, less risk.
+The `dev` image is significantly larger - it contains all `devDependencies`. The `prod` image is lean: smaller attack surface, faster pulls, less risk.
 
 ## Why `--ignore-scripts` matters
 

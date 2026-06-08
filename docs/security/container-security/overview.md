@@ -1,13 +1,13 @@
 ## Container Security
 
-Welcome to **Creating a More Secure Production with Containers** — a hands-on workshop covering **8 container security best practices** plus a full **Docker Hardened Images (DHI) migration**, using the `catalog-service-node` app as the running example.
+Welcome to **Creating a More Secure Production with Containers** - a hands-on workshop covering **8 container security best practices** plus a full **Docker Hardened Images (DHI) migration**, using the `catalog-service-node` app as the running example.
 
 This workshop is split into two complementary tracks:
 
 | Track | Approach | What it covers |
 |-------|----------|----------------|
-| **Docker Scout** | 🔄 **Reactive** — Scan and Fix | Surface CVEs in existing images, gate them in CI, fix them as they appear |
-| **Docker Hardened Images** | 🛡️ **Pro-active** — Start Secure | Build on minimal, distroless, attested images with near-zero CVEs from day one |
+| **Docker Scout** | 🔄 **Reactive** - Scan and Fix | Surface CVEs in existing images, gate them in CI, fix them as they appear |
+| **Docker Hardened Images** | 🛡️ **Pro-active** - Start Secure | Build on minimal, distroless, attested images with near-zero CVEs from day one |
 
 Both approaches matter. Scout helps you understand and remediate what you already run; DHI helps you stop creating the problem in the first place.
 
@@ -15,10 +15,10 @@ Both approaches matter. Scout helps you understand and remediate what you alread
 
 ## The four attack vectors that keep production teams up at night
 
-1. **Image vulnerabilities** — known CVEs in OS packages and language dependencies
-2. **Supply chain integrity** — compromised dependencies, post-install scripts, untrusted base images
-3. **Runtime attack surface** — shells, package managers, dev tools, and OS utilities that aid attackers
-4. **Compliance** — FIPS, STIG, license obligations, audit-ready provenance
+1. **Image vulnerabilities** - known CVEs in OS packages and language dependencies
+2. **Supply chain integrity** - compromised dependencies, post-install scripts, untrusted base images
+3. **Runtime attack surface** - shells, package managers, dev tools, and OS utilities that aid attackers
+4. **Compliance** - FIPS, STIG, license obligations, audit-ready provenance
 
 The 8 best practices below directly address vectors 1, 3, and 4. Scout addresses vector 1 reactively. DHI addresses all four pro-actively.
 
@@ -53,6 +53,6 @@ The 8 best practices below directly address vectors 1, 3, and 4. Scout addresses
 
 ## The sample application
 
-Throughout this workshop we use [`catalog-service-node`](https://github.com/dockersamples/catalog-service-node) — a real-world Node.js service with PostgreSQL, Kafka, and S3 dependencies. It ships with a setup script that deliberately introduces a vulnerable state (old base image, downgraded dependencies) so you can experience the full security journey from the bottom up.
+Throughout this workshop we use [`catalog-service-node`](https://github.com/dockersamples/catalog-service-node) - a real-world Node.js service with PostgreSQL, Kafka, and S3 dependencies. It ships with a setup script that deliberately introduces a vulnerable state (old base image, downgraded dependencies) so you can experience the full security journey from the bottom up.
 
 Ready to start? Head over to [Setup](setup.md) to clone the project and configure your environment.

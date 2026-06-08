@@ -37,7 +37,7 @@ This makes Scout output policy results aligned to your organization's configurat
 
 ## Step 4. Clone and bootstrap the project
 
-The setup script applies a patch that **deliberately introduces a vulnerable state** — old base image and downgraded dependencies — so you can demonstrate the full security journey from the bottom up.
+The setup script applies a patch that **deliberately introduces a vulnerable state** - old base image and downgraded dependencies - so you can demonstrate the full security journey from the bottom up.
 
 ```bash
 git clone https://github.com/dockersamples/catalog-service-node
@@ -67,4 +67,4 @@ docker build -t catalog-service --sbom=true --provenance=mode=max .
 
 The `--sbom=true` and `--provenance=mode=max` flags tell BuildKit to attach a Software Bill of Materials and SLSA provenance attestations to the image. We'll use these in later sections.
 
-You're all set! Continue to [Surface the Problem](surface-the-problem.md) to see what's wrong with the starting image — or jump directly to any of the [8 best practices](overview.md#the-8-container-security-best-practices).
+You're all set! Continue to [Surface the Problem](surface-the-problem.md) to see what's wrong with the starting image - or jump directly to any of the [8 best practices](overview.md#the-8-container-security-best-practices).

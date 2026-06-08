@@ -1,6 +1,6 @@
-# Reasoning in cagent — think, todo, memory
+# Reasoning in cagent - think, todo, memory
 
-Reasoning is **how the agent thinks through problems**. cagent has three built-in reasoning tools — `think` (scratchpad), `todo` (planning), and `memory` (context retention).
+Reasoning is **how the agent thinks through problems**. cagent has three built-in reasoning tools - `think` (scratchpad), `todo` (planning), and `memory` (context retention).
 
 ## Step 1: Create a complex project that requires planning
 
@@ -157,4 +157,4 @@ There are 4 bugs across user.py and order.py. Run tests, plan your approach, and
 | `todo` | Creates and tracks a multi-step plan | Agent loses track, skips bugs, repeats work |
 | `memory` | Retains context across the session | Agent forgets what it already fixed |
 
-The critical insight: **these are NOT external tools** — they're built into the cagent runtime. Every agent gets them automatically. They're what separates a reasoning agent from a simple autocomplete.
+The critical insight: **these are NOT external tools** - they're built into the cagent runtime. Every agent gets them automatically. They're what separates a reasoning agent from a simple autocomplete.

@@ -1,5 +1,5 @@
 
-Perception is **how the agent sees its environment**. An agent without toolsets is blind — it can only use training data. Each toolset you add is a new sensor.
+Perception is **how the agent sees its environment**. An agent without toolsets is blind - it can only use training data. Each toolset you add is a new sensor.
 
 ## Step 1: Create a project with multiple "perception sources"
 
@@ -96,11 +96,11 @@ Audit this project for security issues. Use filesystem, shell, and web search.
 
 | Toolset | What it "sees" | Analogy |
 |---|---|---|
-| `filesystem` | Files, code, configs | 👁 **Eyes** — reading documents |
-| `shell` | System state, grep output, process info | 👂 **Ears** — listening to the system |
-| `mcp: duckduckgo` | Live web, latest best practices | 📡 **Radar** — sensing the outside world |
+| `filesystem` | Files, code, configs | 👁 **Eyes** - reading documents |
+| `shell` | System state, grep output, process info | 👂 **Ears** - listening to the system |
+| `mcp: duckduckgo` | Live web, latest best practices | 📡 **Radar** - sensing the outside world |
 
-**Remove a toolset = the agent goes partially blind.** Try removing the `mcp: duckduckgo` line and running again — the agent can no longer search the web. That's the proof that each toolset is literally a perception channel.
+**Remove a toolset = the agent goes partially blind.** Try removing the `mcp: duckduckgo` line and running again - the agent can no longer search the web. That's the proof that each toolset is literally a perception channel.
 
 ## Bonus: Prove perception matters
 
@@ -119,4 +119,4 @@ agents:
     # No toolsets = no perception = blind agent
 ```
 
-Run it and compare — the blind agent can only give generic advice. It cannot actually see your code. That's the difference between a chatbot and an agent.
+Run it and compare - the blind agent can only give generic advice. It cannot actually see your code. That's the difference between a chatbot and an agent.

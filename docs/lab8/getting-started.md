@@ -15,7 +15,7 @@ Before starting the lab, confirm your environment is ready. Every exercise depen
 
 ---
 
-## Step 1 — Verify sbx is installed
+## Step 1 - Verify sbx is installed
 
 Open a terminal on your host machine and run:
 
@@ -40,7 +40,7 @@ newgrp kvm
 
 ---
 
-## Step 2 — Log in to Docker
+## Step 2 - Log in to Docker
 
 ```bash
 sbx login
@@ -61,16 +61,16 @@ Daemon started (PID: XXXXX, socket: ~/Library/Application Support/com.docker.san
 Logs: ~/Library/Application Support/com.docker.sandboxes/sandboxd/daemon.log
 ```
 
-Open the URL in your browser — the CLI confirms sign-in automatically.
+Open the URL in your browser - the CLI confirms sign-in automatically.
 
 ### Choose a network policy
 
 ```
 Select a default network policy for your sandboxes:
 
-     1. Open         — All network traffic allowed, no restrictions.
-  ❯  2. Balanced     — Default deny, with common dev sites allowed.
-     3. Locked Down  — All network traffic blocked unless you allow it.
+     1. Open         - All network traffic allowed, no restrictions.
+  ❯  2. Balanced     - Default deny, with common dev sites allowed.
+     3. Locked Down  - All network traffic blocked unless you allow it.
 
   Use ↑/↓ or 1–3 to navigate, Enter to confirm, Esc to cancel.
 
@@ -80,16 +80,16 @@ Network policy set to "Balanced". Default deny, with common dev sites allowed.
 | Policy | When to use |
 |--------|-------------|
 | Open | Local dev, no external exposure concerns |
-| **Balanced** | **Recommended — least privilege without breaking typical dev workflows** |
+| **Balanced** | **Recommended - least privilege without breaking typical dev workflows** |
 | Locked Down | High-security or air-gapped environments |
 
 > **Note:** This policy applies to all sandboxes on this machine. Change it anytime with `sbx policy reset`.
 
 ---
 
-## Step 3 — Choose your agent and provider
+## Step 3 - Choose your agent and provider
 
-This lab works with any mainstream coding agent. Pick the provider whose API key you have — the rest of the lab will adapt.
+This lab works with any mainstream coding agent. Pick the provider whose API key you have - the rest of the lab will adapt.
 
 !!! tip "Pick a provider for the rest of this lab"
     Each option below assumes you've chosen one of these:
@@ -112,7 +112,7 @@ This lab works with any mainstream coding agent. Pick the provider whose API key
     export OPENAI_API_KEY=sk-proj-...    # your real key, set in your own shell
     ```
 
-    Then store it as a global sbx secret. The command below reads `$OPENAI_API_KEY` from your shell — your key never leaves the terminal and is not displayed anywhere:
+    Then store it as a global sbx secret. The command below reads `$OPENAI_API_KEY` from your shell - your key never leaves the terminal and is not displayed anywhere:
 
     ```bash
     echo "$OPENAI_API_KEY" | sbx secret set -g openai
@@ -130,7 +130,7 @@ This lab works with any mainstream coding agent. Pick the provider whose API key
     export ANTHROPIC_API_KEY=sk-ant-...    # your real key, set in your own shell
     ```
 
-    Then store it as a global sbx secret. The command below reads `$ANTHROPIC_API_KEY` from your shell — your key never leaves the terminal and is not displayed anywhere:
+    Then store it as a global sbx secret. The command below reads `$ANTHROPIC_API_KEY` from your shell - your key never leaves the terminal and is not displayed anywhere:
 
     ```bash
     echo "$ANTHROPIC_API_KEY" | sbx secret set -g anthropic
@@ -148,13 +148,13 @@ This lab works with any mainstream coding agent. Pick the provider whose API key
     export GOOGLE_API_KEY=AIza...    # your real key, set in your own shell
     ```
 
-    Then store it as a global sbx secret. The command below reads `$GOOGLE_API_KEY` from your shell — your key never leaves the terminal and is not displayed anywhere:
+    Then store it as a global sbx secret. The command below reads `$GOOGLE_API_KEY` from your shell - your key never leaves the terminal and is not displayed anywhere:
 
     ```bash
     echo "$GOOGLE_API_KEY" | sbx secret set -g google
     ```
 
-> **Why not type the key into this page?** Labspace renders anything you enter into an input field inline in the command below it — so the raw key becomes visible in the lab UI and in screenshots. Setting the env var in your own shell keeps the key off the page entirely.
+> **Why not type the key into this page?** Labspace renders anything you enter into an input field inline in the command below it - so the raw key becomes visible in the lab UI and in screenshots. Setting the env var in your own shell keeps the key off the page entirely.
 
 Verify the secret was stored:
 
@@ -168,9 +168,9 @@ Expected output: a line matching your chosen provider (`openai`, `anthropic`, or
 
 ---
 
-## Step 4 — Clone the lab repository
+## Step 4 - Clone the lab repository
 
-The exercises use DevBoard — a full-stack FastAPI + Next.js issue tracker with intentional bugs. It's pre-configured for this lab.
+The exercises use DevBoard - a full-stack FastAPI + Next.js issue tracker with intentional bugs. It's pre-configured for this lab.
 
 ```bash
 git clone https://github.com/dockersamples/sbx-quickstart ~/sbx-lab
@@ -179,7 +179,7 @@ cd ~/sbx-lab
 
 ---
 
-## Step 5 — Create your sandbox
+## Step 5 - Create your sandbox
 
 ```bash
 cd ~/sbx-lab
@@ -203,7 +203,7 @@ Once you run it (Step 6), the status changes to `running`.
 
 ---
 
-## Step 6 — Run your sandbox
+## Step 6 - Run your sandbox
 
 ```bash
 sbx run sbxlab

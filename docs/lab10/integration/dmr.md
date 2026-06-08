@@ -87,11 +87,11 @@ agents:
 ```
 
 > Note: since Llama 3.2 1B is a small model, you need to pick prompts that play to its strengths and avoid ones that expose its limitations.
-> Avoid for 1B models: complex multi-step reasoning, large code generation, multi-file refactoring — it'll hallucinate or get stuck.
+> Avoid for 1B models: complex multi-step reasoning, large code generation, multi-file refactoring - it'll hallucinate or get stuck.
 
 ```
 Good Prompts:
-- "Hello. What can you do for me?" — your current one, works fine
+- "Hello. What can you do for me?" - your current one, works fine
 - "Explain Docker in 3 sentences"
 - "What is a Dockerfile? Give me a simple example"
 - "Write a haiku about containers"
@@ -129,10 +129,10 @@ root
 
 What could be the reason?
 
-This isn't a shell vs filesystem issue — the filesystem toolset does include list_directory.
+This isn't a shell vs filesystem issue - the filesystem toolset does include list_directory.
 The problem is Llama 3.2 1B is too small to handle tool calling properly. It's dumping the raw tool schema instead of actually invoking it.
 
-Small models (1B) struggle with structured function calling — they see the tool definition but don't know how to format a proper tool call response.
+Small models (1B) struggle with structured function calling - they see the tool definition but don't know how to format a proper tool call response.
 
 Fix: use a larger model. Try this now:
 

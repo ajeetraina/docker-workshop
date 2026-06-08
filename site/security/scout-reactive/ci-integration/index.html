@@ -5363,8 +5363,8 @@
 </code></pre>
 <p>Two flags do the heavy lifting:</p>
 <ul>
-<li><code>only-severities: critical,high</code> — only fail on what actually matters; medium and low don't block the pipeline</li>
-<li><code>exit-code: true</code> — makes the action <strong>fail</strong> the build when matching CVEs are found</li>
+<li><code>only-severities: critical,high</code> - only fail on what actually matters; medium and low don't block the pipeline</li>
+<li><code>exit-code: true</code> - makes the action <strong>fail</strong> the build when matching CVEs are found</li>
 </ul>
 <p>That's the gate. If a critical or high CVE shows up, the PR can't merge and the image can't deploy.</p>
 <h2 id="a-more-complete-pipeline">A more complete pipeline</h2>
@@ -5379,7 +5379,7 @@
           provenance: mode=max
           load: true
 
-      # 2. Quickview — surfaces a summary in the action log
+      # 2. Quickview - surfaces a summary in the action log
       - name: Docker Scout quickview
         uses: docker/scout-action@v1
         with:
@@ -5442,7 +5442,7 @@
 </tbody>
 </table>
 <h2 id="local-pre-flight-check">Local pre-flight check</h2>
-<p>Developers can run the same gate locally before pushing — fewer broken builds:</p>
+<p>Developers can run the same gate locally before pushing - fewer broken builds:</p>
 <pre><code class="language-bash">docker scout cves catalog-service:slim \
     --only-severity critical,high \
     --org &lt;YOUR_ORG&gt; \

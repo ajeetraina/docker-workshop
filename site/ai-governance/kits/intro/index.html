@@ -5295,11 +5295,11 @@
 <li>Make sure a specific API's credentials never enter the VM?</li>
 <li>Share your exact sandbox setup with a teammate in one command?</li>
 </ul>
-<p>That's what <strong>kits</strong> solve. A kit is a declarative artifact — a <code>spec.yaml</code> file plus an optional <code>files/</code> directory — that packages everything a sandbox needs: tools to install, files to inject, network rules to enforce, and credentials to wire up through the proxy.</p>
+<p>That's what <strong>kits</strong> solve. A kit is a declarative artifact - a <code>spec.yaml</code> file plus an optional <code>files/</code> directory - that packages everything a sandbox needs: tools to install, files to inject, network rules to enforce, and credentials to wire up through the proxy.</p>
 <hr />
 <h2 id="two-kinds-of-kits">Two kinds of kits</h2>
 <p><strong>Mixin kits</strong> (<code>kind: mixin</code>) extend an existing agent. You can stack several on the same sandbox with multiple <code>--kit</code> flags. Use these for adding tools, dropping in config files, or granting access to a new service.</p>
-<p><strong>Agent kits</strong> (<code>kind: agent</code>) define a full agent from scratch — image, entrypoint, network policy, credentials, everything. The built-in <code>claude</code> agent you've been using is itself defined as a kit. You can fork it and change just what you need.</p>
+<p><strong>Agent kits</strong> (<code>kind: agent</code>) define a full agent from scratch - image, entrypoint, network policy, credentials, everything. The built-in <code>claude</code> agent you've been using is itself defined as a kit. You can fork it and change just what you need.</p>
 <hr />
 <h2 id="what-a-kit-can-do">What a kit can do</h2>
 <table>
@@ -5312,11 +5312,11 @@
 <tbody>
 <tr>
 <td><code>commands.install</code></td>
-<td>Runs once at sandbox creation — installs tools, downloads binaries</td>
+<td>Runs once at sandbox creation - installs tools, downloads binaries</td>
 </tr>
 <tr>
 <td><code>commands.startup</code></td>
-<td>Runs every time the sandbox starts — launches background services</td>
+<td>Runs every time the sandbox starts - launches background services</td>
 </tr>
 <tr>
 <td><code>commands.initFiles</code></td>
@@ -5332,7 +5332,7 @@
 </tr>
 <tr>
 <td><code>credentials.sources</code></td>
-<td>Where the proxy reads secrets on the host — they never enter the VM</td>
+<td>Where the proxy reads secrets on the host - they never enter the VM</td>
 </tr>
 <tr>
 <td><code>environment.proxyManaged</code></td>

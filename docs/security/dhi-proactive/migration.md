@@ -1,6 +1,6 @@
 ## Migrate to Docker Hardened Images
 
-> **The pro-active approach: Start Secure.** DHI images are purpose-built from the ground up to be extremely minimal — not stripped-down versions of something bloated.
+> **The pro-active approach: Start Secure.** DHI images are purpose-built from the ground up to be extremely minimal - not stripped-down versions of something bloated.
 
 In this section we'll convert `catalog-service-node` from `node:25-slim` (where the [best-practices track](../container-security/overview.md) ended) to a Docker Hardened Image, then compare the results.
 
@@ -18,7 +18,7 @@ Open `catalog-service-node/Dockerfile` and replace it with this DHI-based versio
 
 ```dockerfile
 ###########################################################
-# Stage: base (DHI dev variant — has shell + npm for builds)
+# Stage: base (DHI dev variant - has shell + npm for builds)
 ###########################################################
 FROM <DHI_PREFIX>node:24-debian13-dev AS base
 
@@ -41,7 +41,7 @@ ENV NODE_ENV=production
 RUN npm ci --production --ignore-scripts && npm cache clean --force
 
 ###########################################################
-# Stage: final (DHI runtime — distroless, no shell)
+# Stage: final (DHI runtime - distroless, no shell)
 ###########################################################
 FROM <DHI_PREFIX>node:24-debian13 AS final
 ENV NODE_ENV=production
@@ -56,7 +56,7 @@ The two critical changes:
 ```diff
 - FROM node:25-slim AS base
 + FROM <DHI_PREFIX>node:24-debian13-dev AS base   # build stage
-+ FROM <DHI_PREFIX>node:24-debian13 AS final      # runtime — distroless
++ FROM <DHI_PREFIX>node:24-debian13 AS final      # runtime - distroless
 ```
 
 Notice the structure: the dev variant is used as the build environment (it has `npm`), but the final image is built `FROM` the **distroless runtime** variant. Only the compiled `node_modules` and `src` are copied in.
@@ -80,9 +80,9 @@ catalog-service:latest   48806e62b871       1.62GB          413MB
 catalog-service:slim     8d03cef7a79f        368MB         84.1MB
 ```
 
-The DHI runtime is **10× smaller than the original** and **half the size of the slim version** — and we still haven't looked at security.
+The DHI runtime is **10× smaller than the original** and **half the size of the slim version** - and we still haven't looked at security.
 
-## Scout quickview — all 7 policies green
+## Scout quickview - all 7 policies green
 
 ```bash
 docker scout quickview catalog-service:dhi --org <YOUR_ORG>
@@ -124,7 +124,7 @@ docker scout compare \
 
 The numbers:
 
-- ✅ **595 packages removed** — 595 fewer potential CVE vectors
+- ✅ **595 packages removed** - 595 fewer potential CVE vectors
 - ✅ **179 vulnerabilities removed** across all severities
 - ✅ Image is **10× smaller**
 
@@ -136,17 +136,17 @@ Because the DHI runtime is distroless, an attacker who gains code execution **ca
 docker run --rm catalog-service:dhi sh
 ```
 
-Expected: error — `sh` does not exist in the image.
+Expected: error - `sh` does not exist in the image.
 
 Compare to slim:
 
 ```bash
-docker run --rm catalog-service:slim sh -c "echo 'shell available — attack surface'"
+docker run --rm catalog-service:slim sh -c "echo 'shell available - attack surface'"
 ```
 
 The slim image still gives the attacker a shell. The DHI image does not. That's a meaningful difference in what an exploit can do once it lands.
 
-## DHI vs slim — property comparison
+## DHI vs slim - property comparison
 
 | Property | `node:25-slim` | DHI runtime |
 |----------|---------------|-------------|

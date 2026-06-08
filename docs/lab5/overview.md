@@ -61,7 +61,7 @@ Think of MCP like a USB-C port for AI applications. Just as USB-C provides a sta
 
 However, the current MCP experience faces several challenges:
 
-- **Fragmented Discovery**: Developers struggle to find MCP servers across registries, community lists, and blog posts—with no way to verify which are official and trustworthy.
+- **Fragmented Discovery**: Developers struggle to find MCP servers across registries, community lists, and blog posts-with no way to verify which are official and trustworthy.
 - **Complex Setup**: Getting started requires cloning repositories, managing conflicting dependencies, and self-hosting services that often aren't containerized, hindering portability.
 - **Security Concerns**: Many MCP tools run with full host access (via npx or uvx) without isolation or sandboxing. Credentials are commonly passed as plain text environment variables, exposing sensitive data.
 - **Lack of Enterprise Readiness**: Current tools often miss critical features like policy enforcement, audit logs, and standardized security practices.

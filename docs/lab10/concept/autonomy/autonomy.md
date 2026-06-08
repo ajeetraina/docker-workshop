@@ -1,6 +1,6 @@
-# Autonomy in Docker Agent — The Agentic Loop
+# Autonomy in Docker Agent - The Agentic Loop
 
-The agent **loops independently** — deciding, acting, observing — up to N iterations with zero human intervention.
+The agent **loops independently** - deciding, acting, observing - up to N iterations with zero human intervention.
 
 ## Step 1: Create a directory structure and add buggy Python file
 
@@ -73,10 +73,10 @@ agents:
 > Did you notice?
 > We've defined the built-in tools:
 >
-> - filesystem — to Read and Edit app.py
-> - shell — to run pytest -q
+> - filesystem - to Read and Edit app.py
+> - shell - to run pytest -q
 
-> If you remove type: shell from the YAML, the agent might be able to read and edit files but won't run tests — it would be like a developer who can write code but has no terminal. 
+> If you remove type: shell from the YAML, the agent might be able to read and edit files but won't run tests - it would be like a developer who can write code but has no terminal. 
 
 ## Step 4: Run Docker Agent
 
@@ -117,7 +117,7 @@ With `docker agent run`, the autonomy boundary is defined by:
 - The **model's built-in tool-calling loop** (the runtime keeps looping as long as the model makes tool calls)
 - **Ctrl+C** to manually stop
 
-No human told it what to do between steps — that's **autonomy** in action.
+No human told it what to do between steps - that's **autonomy** in action.
 
 
 ## Step 5: Quick test for cagent new with --max-iterations
@@ -127,11 +127,11 @@ No human told it what to do between steps — that's **autonomy** in action.
 docker agent new --model openai/gpt-5-mini --max-iterations 10
 ```
 
-Then give it the same task. Watch it stop after 10 loops max even if it hasn't finished — that's the autonomy boundary at work.
+Then give it the same task. Watch it stop after 10 loops max even if it hasn't finished - that's the autonomy boundary at work.
 
 ## Conclusion
 
-This is what makes it truly agentic — compared to a simple chatbot that just responds once, this system makes a chain of independent decisions across multiple specialists. The `--max-iterations` gives the entire team a budget of autonomous cycles to work with.
+This is what makes it truly agentic - compared to a simple chatbot that just responds once, this system makes a chain of independent decisions across multiple specialists. The `--max-iterations` gives the entire team a budget of autonomous cycles to work with.
 
 Here the autonomy is **multi-layered**:
 

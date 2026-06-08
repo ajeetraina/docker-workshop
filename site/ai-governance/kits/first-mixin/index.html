@@ -5367,7 +5367,7 @@
                 └── docker-review/
                     └── SKILL.md
 </code></pre>
-<p>The <code>files/workspace/</code> tree maps directly to the sandbox workspace path. Everything inside it is injected at sandbox creation — no install commands, no staging directory workaround.</p>
+<p>The <code>files/workspace/</code> tree maps directly to the sandbox workspace path. Everything inside it is injected at sandbox creation - no install commands, no staging directory workaround.</p>
 <hr />
 <h2 id="create-the-spec">Create the spec</h2>
 <p>Create <code>kits/docker-review/spec.yaml</code>:</p>
@@ -5377,7 +5377,7 @@ name: docker-review
 displayName: Dockerfile review skill
 description: Ships a Claude Code skill that reviews Dockerfiles for best practices
 </code></pre>
-<p>That's the entire spec. No network rules needed, no install commands — just the skill file injection handled by the <code>files/</code> tree.</p>
+<p>That's the entire spec. No network rules needed, no install commands - just the skill file injection handled by the <code>files/</code> tree.</p>
 <hr />
 <h2 id="create-the-skill">Create the skill</h2>
 <p>Create <code>kits/docker-review/files/workspace/.claude/skills/docker-review/SKILL.md</code>:</p>
@@ -5388,11 +5388,11 @@ description: Review a Dockerfile for best practices. Use when the user asks to r
 
 When reviewing a Dockerfile, check:
 
-1. **Base image** — pinned tag or digest, minimal and appropriate for the workload
-2. **Layer order** — dependencies before application source to maximise cache reuse
-3. **Image size** — multi-stage builds, `.dockerignore`, package-manager cache flags (`--no-cache`, `--no-install-recommends`)
-4. **Security** — non-root `USER`, no secrets in `ARG`/`ENV`, no `--privileged`
-5. **Reproducibility** — pinned package versions, explicit `COPY` targets
+1. **Base image** - pinned tag or digest, minimal and appropriate for the workload
+2. **Layer order** - dependencies before application source to maximise cache reuse
+3. **Image size** - multi-stage builds, `.dockerignore`, package-manager cache flags (`--no-cache`, `--no-install-recommends`)
+4. **Security** - non-root `USER`, no secrets in `ARG`/`ENV`, no `--privileged`
+5. **Reproducibility** - pinned package versions, explicit `COPY` targets
 </code></pre>
 <hr />
 <h2 id="run-it">Run it</h2>
@@ -5402,14 +5402,14 @@ When reviewing a Dockerfile, check:
 <p>Once Claude loads, ask it:</p>
 <pre><code>Review the Dockerfile in this workspace
 </code></pre>
-<p>You should see the <code>docker-review</code> skill load and Claude use it to structure the review. Notice that Claude can see all the Dockerfiles in your bind-mounted workspace — that's expected. The sandbox isolates everything <em>outside</em> the workspace, not what's inside it.</p>
+<p>You should see the <code>docker-review</code> skill load and Claude use it to structure the review. Notice that Claude can see all the Dockerfiles in your bind-mounted workspace - that's expected. The sandbox isolates everything <em>outside</em> the workspace, not what's inside it.</p>
 <hr />
 <h2 id="what-just-happened">What just happened</h2>
 <ul>
 <li>The <code>files/workspace/</code> tree was injected into the workspace at sandbox creation</li>
 <li>Claude Code discovered the skill at <code>.claude/skills/docker-review/SKILL.md</code></li>
 <li>The skill loaded and Claude used it automatically when you asked for a Dockerfile review</li>
-<li>Nothing was installed, no shell commands ran — the kit is entirely file-based</li>
+<li>Nothing was installed, no shell commands ran - the kit is entirely file-based</li>
 </ul>
 <p>!!! tip
     Run <code>sbx kit validate ./kits/docker-review/</code> before running to catch any spec errors early.</p>

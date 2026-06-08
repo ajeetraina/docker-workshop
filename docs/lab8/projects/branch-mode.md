@@ -1,6 +1,6 @@
-# Branch Mode — Agent on Its Own Worktree
+# Branch Mode - Agent on Its Own Worktree
 
-So far the agent has been editing files directly in your workspace. That's **direct mode** — fast, visible, bidirectional. Good for interactive work.
+So far the agent has been editing files directly in your workspace. That's **direct mode** - fast, visible, bidirectional. Good for interactive work.
 
 **Branch mode** is different. The agent gets its own Git worktree and branch, isolated from your main working tree. You keep working normally. The agent works on its branch. You review the diff and decide whether to merge.
 
@@ -98,7 +98,7 @@ gh pr create \
   --body "Fixes off-by-one error in list_issues() pagination"
 ```
 
-This is the same PR workflow your team already uses — just with the agent as the author.
+This is the same PR workflow your team already uses - just with the agent as the author.
 
 ---
 
@@ -140,4 +140,4 @@ Confirm:
 - Your `main` branch is unchanged
 - `git worktree list` shows both branches
 
-Next: running multiple agents in parallel — without conflicts.
+Next: running multiple agents in parallel - without conflicts.

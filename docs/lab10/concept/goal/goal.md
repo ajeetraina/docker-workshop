@@ -1,4 +1,4 @@
-# Goal-Orientation in cagent — instruction + description
+# Goal-Orientation in cagent - instruction + description
 
 Goal-orientation is **what drives the agent to keep working**. In cagent, goals are defined through two fields: `instruction` (the agent's mission) and `description` (how other agents know when to delegate to it).
 
@@ -174,7 +174,7 @@ Agent stops ✅ (goal: all quality issues fixed)
 | **Stops when** | Report is written | Code passes quality check |
 | **Touches app.py?** | ❌ Never | ✅ Edits it |
 
-The `instruction` field is the agent's **mission statement** — it determines what the agent does, what it ignores, and when it considers the job done. Two agents with identical toolsets but different instructions will produce completely different outcomes.
+The `instruction` field is the agent's **mission statement** - it determines what the agent does, what it ignores, and when it considers the job done. Two agents with identical toolsets but different instructions will produce completely different outcomes.
 
 ## Bonus: Goal via description in multi-agent teams
 
@@ -201,4 +201,4 @@ agents:
       Your GOAL is to fix code quality only...
 ```
 
-When a user says "check this for security," the root agent reads the `description` fields and routes to `security_reviewer`. When they say "clean up this code," it routes to `quality_engineer`. The `description` is the agent's **API contract** — it advertises what this agent's goal is to the rest of the system.
+When a user says "check this for security," the root agent reads the `description` fields and routes to `security_reviewer`. When they say "clean up this code," it routes to `quality_engineer`. The `description` is the agent's **API contract** - it advertises what this agent's goal is to the rest of the system.

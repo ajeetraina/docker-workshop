@@ -1,6 +1,6 @@
 # 🤖 Auto-Curator Agent - Self-Maintaining Awesome List
 
-A multi-agent system built with Docker cagent that **maintains itself** — it discovers new Docker cagent resources, validates links, and submits PRs to keep the [awesome-docker-cagent](https://github.com/collabnix/awesome-docker-cagent) list fresh.
+A multi-agent system built with Docker cagent that **maintains itself** - it discovers new Docker cagent resources, validates links, and submits PRs to keep the [awesome-docker-cagent](https://github.com/collabnix/awesome-docker-cagent) list fresh.
 
 ## 🎯 What You'll Learn
 
@@ -169,10 +169,10 @@ The lite config trades detailed skill instructions for token headroom. **Your pr
 
 **Key tips:**
 
-- **Say "cagent" explicitly** — helps distinguish from generic Docker content
-- **Mention what to exclude** — "Exclude Docker Model Runner, Claude Code posts"
-- **Ask it to read the README first** — enables deduplication
-- **One task per prompt** — saves tokens within the 8K limit
+- **Say "cagent" explicitly** - helps distinguish from generic Docker content
+- **Mention what to exclude** - "Exclude Docker Model Runner, Claude Code posts"
+- **Ask it to read the README first** - enables deduplication
+- **One task per prompt** - saves tokens within the 8K limit
 
 ## 🐛 Troubleshooting
 
@@ -182,7 +182,7 @@ The lite config trades detailed skill instructions for token headroom. **Your pr
 | `403 no_access to model: openai/gpt-4o` | Token missing models permission | Add `models:read` to your PAT |
 | `413 Request Entity Too Large` | Input exceeds 8K tokens | Switch to `cagent-curator-lite.yaml` |
 | `429 Too Many Requests` | Rate limit hit | Wait and retry (10 req/min for gpt-4o) |
-| Results include generic Docker posts | Prompt too vague | Be specific — see Prompting Tips above |
+| Results include generic Docker posts | Prompt too vague | Be specific - see Prompting Tips above |
 
 ## 📦 Skills (Full Version Only)
 

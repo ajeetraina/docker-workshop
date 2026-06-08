@@ -1,6 +1,6 @@
 # AI Governance at Enterprise Scale
 
-You've run through every major capability of Docker Sandboxes. Now let's connect what you learned to the bigger picture — and to your own team.
+You've run through every major capability of Docker Sandboxes. Now let's connect what you learned to the bigger picture - and to your own team.
 
 ---
 
@@ -12,8 +12,8 @@ Here's what you demonstrated hands-on:
 
 | Governance Capability | How You Proved It |
 |---|---|
-| **Structural isolation** | Tried to access `~/.aws/credentials` and `~/.ssh/id_rsa` — not there |
-| **Credential proxy injection** | Asked the agent to print its API key — it couldn't |
+| **Structural isolation** | Tried to access `~/.aws/credentials` and `~/.ssh/id_rsa` - not there |
+| **Credential proxy injection** | Asked the agent to print its API key - it couldn't |
 | **Network enforcement** | Blocked PyPI, saw the install fail in real time |
 | **Audit trail** | Watched `sbx policy log` show every connection |
 | **Safe review workflow** | Used branch mode to get a clean diff before merging |
@@ -24,7 +24,7 @@ None of these relied on a policy document. None relied on a system prompt instru
 
 ---
 
-## The four enterprise requirements — answered
+## The four enterprise requirements - answered
 
 If you were presenting this to a risk team, here's how each requirement maps:
 
@@ -35,14 +35,14 @@ MicroVM boundary. Agent runs inside its own kernel. Host credentials don't exist
 Secrets are stored in the OS keychain, injected at the proxy layer. All LLM traffic routes through the host-side proxy. The gateway is the proxy. Verified in Module 4. For air-gapped deployments, local models via Docker Model Runner give you the same architecture with zero cloud dependency.
 
 **3. Telemetry and audit logging**
-`sbx policy log` shows every outbound connection — allowed or blocked — with timestamps and agent attribution. Verified in Module 5.
+`sbx policy log` shows every outbound connection - allowed or blocked - with timestamps and agent attribution. Verified in Module 5.
 
 **4. Container customisation**
 Custom templates let you pre-bake certs, proxy settings, toolchains into the sandbox image. The same policy applies whether agents run on a developer laptop, in CI, or in the cloud.
 
 ---
 
-## The autonomy scale — where does your team sit?
+## The autonomy scale - where does your team sit?
 
 | Stage | Name | Description | Governance needed |
 |---|---|---|---|
@@ -53,7 +53,7 @@ Custom templates let you pre-bake certs, proxy settings, toolchains into the san
 | **5** | **Autonomous** | **Self-directed** | **Required** |
 | 6 | Steward | Long-term trust | Required + audit |
 
-Most teams today are at stage 2–3. The question isn't whether they'll move to 4–5 — agents will get more capable, and developers will use them more autonomously. The question is whether governance is in place before that happens.
+Most teams today are at stage 2–3. The question isn't whether they'll move to 4–5 - agents will get more capable, and developers will use them more autonomously. The question is whether governance is in place before that happens.
 
 ---
 
@@ -81,7 +81,7 @@ Answer these questions before finishing the lab:
 **For teams:**
 - Map your team's current agent usage (who's using what, with what access)
 - Identify the highest-risk credential exposure scenarios
-- Define your network policy — start with Balanced, move to Locked Down for production use
+- Define your network policy - start with Balanced, move to Locked Down for production use
 - Set up branch mode as the default for autonomous agent runs
 
 **For enterprises:**
@@ -124,6 +124,6 @@ Valid agent values for `sbx create`: `codex`, `claude`, `gemini`, `copilot`, `ki
 
 ## ✅ Lab complete
 
-You've earned it. You didn't just read about microVM isolation — you tried to break it. You didn't just read about secret injection — you asked the agent to expose its own key. You didn't just read about network policy — you blocked domains and watched things fail.
+You've earned it. You didn't just read about microVM isolation - you tried to break it. You didn't just read about secret injection - you asked the agent to expose its own key. You didn't just read about network policy - you blocked domains and watched things fail.
 
 That's what "show don't tell" means. And that's what governance you can trust looks like.

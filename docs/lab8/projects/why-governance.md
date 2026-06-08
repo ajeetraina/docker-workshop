@@ -1,6 +1,6 @@
 # Why AI Agents Need Governance
 
-No terminal needed for this module. Read carefully — everything you run in the next seven modules exists because of what's on this page.
+No terminal needed for this module. Read carefully - everything you run in the next seven modules exists because of what's on this page.
 
 ---
 
@@ -8,25 +8,25 @@ No terminal needed for this module. Read carefully — everything you run in the
 
 When a developer runs Claude Code on their laptop without sandboxing, the agent runs as their user process. That means it has access to everything they have access to:
 
-- `~/.aws/credentials` — AWS access keys
-- `~/.ssh/id_rsa` — SSH private keys  
-- `.env` files — database passwords, API tokens
+- `~/.aws/credentials` - AWS access keys
+- `~/.ssh/id_rsa` - SSH private keys  
+- `.env` files - database passwords, API tokens
 - The entire home directory
 - Any running Docker containers on the host
 
-The agent isn't malicious. But it doesn't need to be for something to go wrong. A confused agent, a malicious MCP server, a prompt injection attack — any of these can cause the agent to exfiltrate credentials or corrupt data. And if there's no audit trail, you won't know it happened.
+The agent isn't malicious. But it doesn't need to be for something to go wrong. A confused agent, a malicious MCP server, a prompt injection attack - any of these can cause the agent to exfiltrate credentials or corrupt data. And if there's no audit trail, you won't know it happened.
 
 ---
 
-## Real Incidents — Not Hypothetical
+## Real Incidents - Not Hypothetical
 
 These are documented vulnerabilities from 2025:
 
-**Cursor's System Prompt Leaked** — The agent's internal instructions were exposed, revealing details about its tool access and capabilities. Developers building on top of Cursor couldn't trust their agents weren't being manipulated.
+**Cursor's System Prompt Leaked** - The agent's internal instructions were exposed, revealing details about its tool access and capabilities. Developers building on top of Cursor couldn't trust their agents weren't being manipulated.
 
-**GitHub Copilot / Cursor RCE via Malicious MCP File Swaps** — An attacker could replace an approved MCP server file after approval, causing the agent to execute arbitrary code with the developer's credentials.
+**GitHub Copilot / Cursor RCE via Malicious MCP File Swaps** - An attacker could replace an approved MCP server file after approval, causing the agent to execute arbitrary code with the developer's credentials.
 
-**MCP Tool Poisoning** — A critical vulnerability in the Model Context Protocol allowed attackers to poison tool descriptions, causing agents to take unintended actions. Anthropic, OpenAI, Zapier, and Cursor were all affected.
+**MCP Tool Poisoning** - A critical vulnerability in the Model Context Protocol allowed attackers to poison tool descriptions, causing agents to take unintended actions. Anthropic, OpenAI, Zapier, and Cursor were all affected.
 
 The pattern: **agents are trusted, and that trust is being exploited.**
 
@@ -60,7 +60,7 @@ A system prompt is text. It can be overridden by prompt injection. It has no enf
 
 ## What Actually Works: The microVM Boundary
 
-Docker Sandboxes runs each agent in a **lightweight microVM** — a virtual machine with its own dedicated Linux kernel. The agent runs inside the VM. Your credentials live on your host. The only thing shared is the workspace directory you explicitly mount.
+Docker Sandboxes runs each agent in a **lightweight microVM** - a virtual machine with its own dedicated Linux kernel. The agent runs inside the VM. Your credentials live on your host. The only thing shared is the workspace directory you explicitly mount.
 
 ```
 Your Mac (host)
@@ -74,7 +74,7 @@ Your Mac (host)
     └── outbound proxy     ← enforces network policy, injects creds
 ```
 
-The boundary is structural. It's enforced by the hypervisor, not by a policy document or a system prompt. The agent can't reach what isn't mounted — not because it's been told not to, but because it doesn't exist inside the VM.
+The boundary is structural. It's enforced by the hypervisor, not by a policy document or a system prompt. The agent can't reach what isn't mounted - not because it's been told not to, but because it doesn't exist inside the VM.
 
 ---
 

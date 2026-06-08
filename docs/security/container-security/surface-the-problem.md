@@ -6,7 +6,7 @@ Before we fix anything, let's measure exactly what's wrong with the starting ima
 FROM node:18 AS base
 ```
 
-`node:18` is a full, unoptimised image — and it's where most teams start by default. Let's see what that costs us.
+`node:18` is a full, unoptimised image - and it's where most teams start by default. Let's see what that costs us.
 
 ## Quick vulnerability overview
 
@@ -28,7 +28,7 @@ Scout is already pointing at the answer: **one `FROM` line change** from `node:1
 
 ## Policy evaluation
 
-Scout doesn't just count CVEs — it evaluates your image against a set of organisational policies:
+Scout doesn't just count CVEs - it evaluates your image against a set of organisational policies:
 
 ```bash
 docker scout policy catalog-service --org <YOUR_ORG>
@@ -53,7 +53,7 @@ Policy status  FAILED  (4/7 policies met)
 1. Developers pull a base image, build, ship
 2. CI scanner finds 2 critical and 26 high CVEs
 3. Developers spend 3 days researching fixes
-4. Rebuild — 189 vulnerabilities still remain
+4. Rebuild - 189 vulnerabilities still remain
 5. Cycle repeats; security blocks deployment
 
-The next 8 sections walk through fixing this **proactively, one best practice at a time** — and then [migrating to DHI](../dhi-proactive/overview.md) to eliminate the cycle altogether.
+The next 8 sections walk through fixing this **proactively, one best practice at a time** - and then [migrating to DHI](../dhi-proactive/overview.md) to eliminate the cycle altogether.

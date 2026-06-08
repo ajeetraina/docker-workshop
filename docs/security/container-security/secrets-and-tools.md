@@ -6,7 +6,7 @@ The last three best practices all share a common theme: **don't ship anything to
 
 Containers often need credentials: DB passwords, TLS certs, API keys, SSH keys for private package registries. Where you put them determines who can read them.
 
-### The wrong approaches — all visible to attackers
+### The wrong approaches - all visible to attackers
 
 | Location | Risk |
 |----------|------|
@@ -17,25 +17,25 @@ Containers often need credentials: DB passwords, TLS certs, API keys, SSH keys f
 | In a file on disk | Available to any process on the machine |
 | **In a secrets vault** | **Only available to the process asking for it ✓** |
 
-### Inspect image layers — confirm no secrets leaked
+### Inspect image layers - confirm no secrets leaked
 
-`docker history` shows every command that built the image — and exposes anything that was inlined into a layer:
+`docker history` shows every command that built the image - and exposes anything that was inlined into a layer:
 
 ```bash
 docker history catalog-service:slim
 ```
 
-Look through every layer — no credentials, tokens, or keys should be visible. If you see a `RUN echo "API_KEY=..."` or a `COPY .env`, that secret is now permanently embedded in the image.
+Look through every layer - no credentials, tokens, or keys should be visible. If you see a `RUN echo "API_KEY=..."` or a `COPY .env`, that secret is now permanently embedded in the image.
 
 ### BuildKit build-time secrets
 
 BuildKit's `--mount=type=secret` lets you use a secret during build **without it ever being written to any layer**:
 
 ```dockerfile
-# WRONG — SSH key baked into layer forever
+# WRONG - SSH key baked into layer forever
 RUN cp /root/.ssh/id_rsa /app/key
 
-# RIGHT — BuildKit secret, never written to any layer
+# RIGHT - BuildKit secret, never written to any layer
 RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret
 ```
 
@@ -45,7 +45,7 @@ docker build --secret id=mysecret,src=./mysecret.txt -t myapp .
 
 The secret is mounted into the build container at `/run/secrets/mysecret`, used during the `RUN`, then disappears. It never lands in `docker history` and never ships in the image.
 
-For runtime secrets, integrate with a real vault (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault) and fetch them at startup — never bake them in.
+For runtime secrets, integrate with a real vault (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault) and fetch them at startup - never bake them in.
 
 ---
 
@@ -54,15 +54,15 @@ For runtime secrets, integrate with a real vault (HashiCorp Vault, AWS Secrets M
 Verify the production image has no dev tooling beyond the runtime itself:
 
 ```bash
-docker run --rm catalog-service:slim which npm   || echo "npm not found — good"
+docker run --rm catalog-service:slim which npm   || echo "npm not found - good"
 ```
 
 ```bash
-docker run --rm catalog-service:slim which yarn  || echo "yarn not found — good"
+docker run --rm catalog-service:slim which yarn  || echo "yarn not found - good"
 ```
 
 ```bash
-docker run --rm catalog-service:slim which git   || echo "git not found — good"
+docker run --rm catalog-service:slim which git   || echo "git not found - good"
 ```
 
 If any of these *do* exist in your prod image, you have either too much in the base layer or you're shipping the dev stage by mistake.
@@ -74,24 +74,24 @@ If any of these *do* exist in your prod image, you have either too much in the b
 The same logic applies to standard OS utilities:
 
 ```bash
-docker run --rm catalog-service:slim which curl    || echo "curl not found — good"
+docker run --rm catalog-service:slim which curl    || echo "curl not found - good"
 ```
 
 ```bash
-docker run --rm catalog-service:slim which wget    || echo "wget not found — good"
+docker run --rm catalog-service:slim which wget    || echo "wget not found - good"
 ```
 
 ```bash
-docker run --rm catalog-service:slim which apt-get || echo "apt-get not found — good"
+docker run --rm catalog-service:slim which apt-get || echo "apt-get not found - good"
 ```
 
 ```bash
-docker run --rm catalog-service:slim which sudo    || echo "sudo not found — good"
+docker run --rm catalog-service:slim which sudo    || echo "sudo not found - good"
 ```
 
-> **Why no `curl`?** An attacker who gets code execution typically uses `curl` or `wget` to download additional payloads — a reverse shell, a crypto miner, a credential stealer. Removing these utilities meaningfully raises the cost of a successful exploit. The attacker now has to write their own networking code from inside the runtime they're stuck with.
+> **Why no `curl`?** An attacker who gets code execution typically uses `curl` or `wget` to download additional payloads - a reverse shell, a crypto miner, a credential stealer. Removing these utilities meaningfully raises the cost of a successful exploit. The attacker now has to write their own networking code from inside the runtime they're stuck with.
 
-> **Why no `apt-get`?** Without a package manager, the attacker can't install anything new — they're limited to whatever is already in the image. With a minimal image, that's almost nothing.
+> **Why no `apt-get`?** Without a package manager, the attacker can't install anything new - they're limited to whatever is already in the image. With a minimal image, that's almost nothing.
 
 ## Attack surface count so far
 

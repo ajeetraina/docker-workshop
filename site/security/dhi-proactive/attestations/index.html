@@ -4937,7 +4937,7 @@
   <a href="#vex-export-eliminate-false-positives-in-external-scanners" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VEX export — eliminate false positives in external scanners
+        VEX export - eliminate false positives in external scanners
       
     </span>
   </a>
@@ -5407,7 +5407,7 @@
   <a href="#vex-export-eliminate-false-positives-in-external-scanners" class="md-nav__link">
     <span class="md-ellipsis">
       
-        VEX export — eliminate false positives in external scanners
+        VEX export - eliminate false positives in external scanners
       
     </span>
   </a>
@@ -5477,7 +5477,7 @@
 <tbody>
 <tr>
 <td>CycloneDX SBOM</td>
-<td>Bill of materials — components, libraries, versions</td>
+<td>Bill of materials - components, libraries, versions</td>
 </tr>
 <tr>
 <td>SPDX SBOM</td>
@@ -5527,13 +5527,13 @@
 <pre><code class="language-bash">docker buildx imagetools inspect &lt;DHI_PREFIX&gt;node:24-debian13 \
     --format '{{json .Provenance}}' | head -80
 </code></pre>
-<p>SLSA provenance answers "where did this image come from?" — source repository, commit, build parameters, builder identity. Combined with a signature, it becomes verifiable proof of origin.</p>
+<p>SLSA provenance answers "where did this image come from?" - source repository, commit, build parameters, builder identity. Combined with a signature, it becomes verifiable proof of origin.</p>
 <h2 id="verify-the-image-signature">Verify the image signature</h2>
 <pre><code class="language-bash">docker trust inspect --pretty &lt;DHI_PREFIX&gt;node:24-debian13
 </code></pre>
 <p>The signature ties the image bytes to a verified publisher. A modified image won't verify; an attacker can't substitute a tampered version without breaking the chain.</p>
 <h2 id="fips-compliance">FIPS compliance</h2>
-<p>DHI includes FIPS 140-validated cryptographic modules for regulated environments — government, healthcare, finance, defence.</p>
+<p>DHI includes FIPS 140-validated cryptographic modules for regulated environments - government, healthcare, finance, defence.</p>
 <pre><code class="language-bash">docker scout attest get \
     --predicate-type https://docker.com/dhi/fips/v0.1 \
     --predicate \
@@ -5554,9 +5554,9 @@
     --predicate \
     &lt;DHI_PREFIX&gt;node:24-debian13-fips
 </code></pre>
-<p>STIG (Security Technical Implementation Guide) attestations cover compliance with US DoD security baselines — required for many government deployments.</p>
-<h2 id="vex-export-eliminate-false-positives-in-external-scanners">VEX export — eliminate false positives in external scanners</h2>
-<p>VEX (Vulnerability Exploitability eXchange) documents tell external scanners (Grype, Trivy, Wiz) which CVEs have already been <strong>assessed as non-exploitable</strong> — eliminating false positives automatically.</p>
+<p>STIG (Security Technical Implementation Guide) attestations cover compliance with US DoD security baselines - required for many government deployments.</p>
+<h2 id="vex-export-eliminate-false-positives-in-external-scanners">VEX export - eliminate false positives in external scanners</h2>
+<p>VEX (Vulnerability Exploitability eXchange) documents tell external scanners (Grype, Trivy, Wiz) which CVEs have already been <strong>assessed as non-exploitable</strong> - eliminating false positives automatically.</p>
 <p>This is the killer feature for teams already running third-party scanners. Instead of triaging the same CVE every week, the VEX document tells the scanner "this one's been reviewed, it doesn't apply to this image, move on."</p>
 <p>View attestations on your migrated app image:</p>
 <pre><code class="language-bash">docker scout attest list catalog-service:dhi
@@ -5570,7 +5570,7 @@
 <p>Pass it to Trivy:</p>
 <pre><code class="language-bash">trivy image --vex vex.json catalog-service:dhi
 </code></pre>
-<p>The same image, scanned with VEX, reports far fewer CVEs — because the noise has been pre-filtered out by people who actually understand whether a given CVE applies in this build.</p>
+<p>The same image, scanned with VEX, reports far fewer CVEs - because the noise has been pre-filtered out by people who actually understand whether a given CVE applies in this build.</p>
 <h2 id="the-complete-supply-chain-story">The complete supply chain story</h2>
 <table>
 <thead>
@@ -5619,9 +5619,9 @@
 <p>Securing your containers is step one.
 Securing your <strong>supply chain</strong> is the rest.</p>
 <ol>
-<li><strong>Know what software you are running</strong> — SBOMs, dependency trees, base image provenance</li>
-<li><strong>Know what risks that software has</strong> — continuous vulnerability scanning, VEX-aware</li>
-<li><strong>Fix those risks quickly</strong> — DHI gives you a <strong>7-day SLA</strong> on critical/high CVEs</li>
+<li><strong>Know what software you are running</strong> - SBOMs, dependency trees, base image provenance</li>
+<li><strong>Know what risks that software has</strong> - continuous vulnerability scanning, VEX-aware</li>
+<li><strong>Fix those risks quickly</strong> - DHI gives you a <strong>7-day SLA</strong> on critical/high CVEs</li>
 </ol>
 </blockquote>
 <p><a href="https://docs.docker.com/dhi/get-started/">Get started with DHI →</a></p>

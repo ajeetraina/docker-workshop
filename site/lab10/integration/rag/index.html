@@ -5374,10 +5374,10 @@ agents:
 <ul>
 <li>chunked-embeddings converts code into vectors for semantic search (finding "authentication" when you search "login"), while bm25 does keyword matching (finding exact function names like HandleRequest).</li>
 </ul>
-<p>Chunks are 1500 characters with 150-character overlap to preserve context at boundaries. Both strategies run in parallel—embeddings returns up to 20 results, bm25 up to 15. RRF fusion merges them by rank (not score), deduplicates, and returns the top 5. The agent gets a search tool linked to this index and is instructed to search before answering.</p>
+<p>Chunks are 1500 characters with 150-character overlap to preserve context at boundaries. Both strategies run in parallel-embeddings returns up to 20 results, bm25 up to 15. RRF fusion merges them by rank (not score), deduplicates, and returns the top 5. The agent gets a search tool linked to this index and is instructed to search before answering.</p>
 <h2 id="how-it-works">How it works?</h2>
 <p>This is a RAG (Retrieval-Augmented Generation) config for cagent. Here's what each section does:</p>
-<pre><code>rag: — The knowledge base
+<pre><code>rag: - The knowledge base
 yamldocs: [./src, ./pkg]          # Index these 2 directories (your Go source code)
 </code></pre>
 <p>Two retrieval strategies running in parallel:</p>
@@ -5399,9 +5399,9 @@ yamldocs: [./src, ./pkg]          # Index these 2 directories (your Go source co
 </tr>
 </tbody>
 </table>
-<p>results: — How results are merged</p>
+<p>results: - How results are merged</p>
 <pre><code>fusion:
-  strategy: rrf    # Reciprocal Rank Fusion — combines both rankings
+  strategy: rrf    # Reciprocal Rank Fusion - combines both rankings
   k: 60           # Smoothing factor (higher = more equal weighting)
 deduplicate: true  # Remove duplicate chunks
 limit: 5          # Feed only the best 5 chunks to the LLM

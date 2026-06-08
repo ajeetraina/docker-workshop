@@ -14,7 +14,7 @@ A single DHI image typically ships with all of the following:
 
 | Attestation | What it is |
 |-------------|------------|
-| CycloneDX SBOM | Bill of materials — components, libraries, versions |
+| CycloneDX SBOM | Bill of materials - components, libraries, versions |
 | SPDX SBOM | SBOM in SPDX format (widely adopted in open-source) |
 | Scout SBOM | SBOM generated and signed by Docker Scout |
 | OpenVEX | Identifies non-applicable CVEs and explains why |
@@ -43,7 +43,7 @@ docker buildx imagetools inspect <DHI_PREFIX>node:24-debian13 \
     --format '{{json .Provenance}}' | head -80
 ```
 
-SLSA provenance answers "where did this image come from?" — source repository, commit, build parameters, builder identity. Combined with a signature, it becomes verifiable proof of origin.
+SLSA provenance answers "where did this image come from?" - source repository, commit, build parameters, builder identity. Combined with a signature, it becomes verifiable proof of origin.
 
 ## Verify the image signature
 
@@ -55,7 +55,7 @@ The signature ties the image bytes to a verified publisher. A modified image won
 
 ## FIPS compliance
 
-DHI includes FIPS 140-validated cryptographic modules for regulated environments — government, healthcare, finance, defence.
+DHI includes FIPS 140-validated cryptographic modules for regulated environments - government, healthcare, finance, defence.
 
 ```bash
 docker scout attest get \
@@ -86,11 +86,11 @@ docker scout attest get \
     <DHI_PREFIX>node:24-debian13-fips
 ```
 
-STIG (Security Technical Implementation Guide) attestations cover compliance with US DoD security baselines — required for many government deployments.
+STIG (Security Technical Implementation Guide) attestations cover compliance with US DoD security baselines - required for many government deployments.
 
-## VEX export — eliminate false positives in external scanners
+## VEX export - eliminate false positives in external scanners
 
-VEX (Vulnerability Exploitability eXchange) documents tell external scanners (Grype, Trivy, Wiz) which CVEs have already been **assessed as non-exploitable** — eliminating false positives automatically.
+VEX (Vulnerability Exploitability eXchange) documents tell external scanners (Grype, Trivy, Wiz) which CVEs have already been **assessed as non-exploitable** - eliminating false positives automatically.
 
 This is the killer feature for teams already running third-party scanners. Instead of triaging the same CVE every week, the VEX document tells the scanner "this one's been reviewed, it doesn't apply to this image, move on."
 
@@ -118,7 +118,7 @@ Pass it to Trivy:
 trivy image --vex vex.json catalog-service:dhi
 ```
 
-The same image, scanned with VEX, reports far fewer CVEs — because the noise has been pre-filtered out by people who actually understand whether a given CVE applies in this build.
+The same image, scanned with VEX, reports far fewer CVEs - because the noise has been pre-filtered out by people who actually understand whether a given CVE applies in this build.
 
 ## The complete supply chain story
 
@@ -138,8 +138,8 @@ The same image, scanned with VEX, reports far fewer CVEs — because the noise h
 > Securing your containers is step one.
 > Securing your **supply chain** is the rest.
 >
-> 1. **Know what software you are running** — SBOMs, dependency trees, base image provenance
-> 2. **Know what risks that software has** — continuous vulnerability scanning, VEX-aware
-> 3. **Fix those risks quickly** — DHI gives you a **7-day SLA** on critical/high CVEs
+> 1. **Know what software you are running** - SBOMs, dependency trees, base image provenance
+> 2. **Know what risks that software has** - continuous vulnerability scanning, VEX-aware
+> 3. **Fix those risks quickly** - DHI gives you a **7-day SLA** on critical/high CVEs
 
 [Get started with DHI →](https://docs.docker.com/dhi/get-started/)

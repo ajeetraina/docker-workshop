@@ -4533,7 +4533,7 @@
   <a href="#linux-capabilities-what-gets-dropped-with-cap-dropall" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linux capabilities — what gets dropped with --cap-drop=ALL
+        Linux capabilities - what gets dropped with --cap-drop=ALL
       
     </span>
   </a>
@@ -4544,7 +4544,7 @@
   <a href="#step-1-clean-up-any-leftover-containers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — Clean up any leftover containers
+        Step 1 - Clean up any leftover containers
       
     </span>
   </a>
@@ -4555,7 +4555,7 @@
   <a href="#step-2-run-with-hardened-flags" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Run with hardened flags
+        Step 2 - Run with hardened flags
       
     </span>
   </a>
@@ -4566,7 +4566,7 @@
   <a href="#step-3-verify-the-filesystem-is-read-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Verify the filesystem is read-only
+        Step 3 - Verify the filesystem is read-only
       
     </span>
   </a>
@@ -4577,7 +4577,7 @@
   <a href="#step-4-prove-the-capability-drop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Prove the capability drop
+        Step 4 - Prove the capability drop
       
     </span>
   </a>
@@ -4588,7 +4588,7 @@
   <a href="#step-5-when-your-app-needs-a-writable-area-use-tmpfs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 5 — When your app needs a writable area: use tmpfs
+        Step 5 - When your app needs a writable area: use tmpfs
       
     </span>
   </a>
@@ -4599,7 +4599,7 @@
   <a href="#step-6-clean-up" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 6 — Clean up
+        Step 6 - Clean up
       
     </span>
   </a>
@@ -5319,7 +5319,7 @@
   <a href="#linux-capabilities-what-gets-dropped-with-cap-dropall" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Linux capabilities — what gets dropped with --cap-drop=ALL
+        Linux capabilities - what gets dropped with --cap-drop=ALL
       
     </span>
   </a>
@@ -5330,7 +5330,7 @@
   <a href="#step-1-clean-up-any-leftover-containers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — Clean up any leftover containers
+        Step 1 - Clean up any leftover containers
       
     </span>
   </a>
@@ -5341,7 +5341,7 @@
   <a href="#step-2-run-with-hardened-flags" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Run with hardened flags
+        Step 2 - Run with hardened flags
       
     </span>
   </a>
@@ -5352,7 +5352,7 @@
   <a href="#step-3-verify-the-filesystem-is-read-only" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Verify the filesystem is read-only
+        Step 3 - Verify the filesystem is read-only
       
     </span>
   </a>
@@ -5363,7 +5363,7 @@
   <a href="#step-4-prove-the-capability-drop" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Prove the capability drop
+        Step 4 - Prove the capability drop
       
     </span>
   </a>
@@ -5374,7 +5374,7 @@
   <a href="#step-5-when-your-app-needs-a-writable-area-use-tmpfs" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 5 — When your app needs a writable area: use tmpfs
+        Step 5 - When your app needs a writable area: use tmpfs
       
     </span>
   </a>
@@ -5385,7 +5385,7 @@
   <a href="#step-6-clean-up" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 6 — Clean up
+        Step 6 - Clean up
       
     </span>
   </a>
@@ -5421,7 +5421,7 @@
 <p>This is the "even if everything else fails" layer. Assume your app has a vulnerability. Assume the attacker gets code execution. What can they do?</p>
 <p>If the filesystem is writable and capabilities are intact: drop a payload, modify config, install a backdoor, escalate.</p>
 <p>If the filesystem is read-only and capabilities are dropped: almost nothing.</p>
-<h2 id="linux-capabilities-what-gets-dropped-with-cap-dropall">Linux capabilities — what gets dropped with <code>--cap-drop=ALL</code></h2>
+<h2 id="linux-capabilities-what-gets-dropped-with-cap-dropall">Linux capabilities - what gets dropped with <code>--cap-drop=ALL</code></h2>
 <p>Linux capabilities split root's privileges into discrete chunks. Most apps need none of them. Dropping them all closes huge attack paths:</p>
 <table>
 <thead>
@@ -5449,7 +5449,7 @@
 </tr>
 <tr>
 <td><code>SYS_CHROOT</code></td>
-<td><code>chroot()</code> — change root directory</td>
+<td><code>chroot()</code> - change root directory</td>
 </tr>
 <tr>
 <td><code>KILL</code></td>
@@ -5461,11 +5461,11 @@
 </tr>
 </tbody>
 </table>
-<h2 id="step-1-clean-up-any-leftover-containers">Step 1 — Clean up any leftover containers</h2>
+<h2 id="step-1-clean-up-any-leftover-containers">Step 1 - Clean up any leftover containers</h2>
 <p>Run this first every time. It removes any containers from a previous attempt so names and ports are free.</p>
 <pre><code class="language-bash">docker rm -f catalog-hardened catalog-hardened-tmpfs 2&gt;/dev/null
 </code></pre>
-<h2 id="step-2-run-with-hardened-flags">Step 2 — Run with hardened flags</h2>
+<h2 id="step-2-run-with-hardened-flags">Step 2 - Run with hardened flags</h2>
 <pre><code class="language-bash">docker run \
     -d \
     -p 3100:3000 \
@@ -5481,21 +5481,21 @@
 <p>Confirm the app responds:</p>
 <pre><code class="language-bash">curl http://localhost:3100
 </code></pre>
-<h2 id="step-3-verify-the-filesystem-is-read-only">Step 3 — Verify the filesystem is read-only</h2>
+<h2 id="step-3-verify-the-filesystem-is-read-only">Step 3 - Verify the filesystem is read-only</h2>
 <p>Try to write a file inside the container:</p>
 <pre><code class="language-bash">docker exec catalog-hardened sh -c &quot;echo test &gt; /tmp/test.txt&quot;
 </code></pre>
 <p>Expected output: <code>sh: /tmp/test.txt: Read-only file system</code></p>
-<p>The attacker gained code execution but <strong>cannot write anywhere</strong> — no dropping payloads, no modifying config files, no creating SUID binaries.</p>
-<h2 id="step-4-prove-the-capability-drop">Step 4 — Prove the capability drop</h2>
+<p>The attacker gained code execution but <strong>cannot write anywhere</strong> - no dropping payloads, no modifying config files, no creating SUID binaries.</p>
+<h2 id="step-4-prove-the-capability-drop">Step 4 - Prove the capability drop</h2>
 <pre><code class="language-bash">docker inspect catalog-hardened \
     --format 'ReadonlyRootfs={{.HostConfig.ReadonlyRootfs}} CapDrop={{.HostConfig.CapDrop}}'
 </code></pre>
 <p>Expected output:</p>
 <pre><code class="language-text">ReadonlyRootfs=true CapDrop=[ALL]
 </code></pre>
-<h2 id="step-5-when-your-app-needs-a-writable-area-use-tmpfs">Step 5 — When your app needs a writable area: use <code>tmpfs</code></h2>
-<p>Some apps genuinely need scratch space — caches, temp files, sessions. <code>tmpfs</code> is in-memory only — writable, but never persisted to disk and gone when the container stops:</p>
+<h2 id="step-5-when-your-app-needs-a-writable-area-use-tmpfs">Step 5 - When your app needs a writable area: use <code>tmpfs</code></h2>
+<p>Some apps genuinely need scratch space - caches, temp files, sessions. <code>tmpfs</code> is in-memory only - writable, but never persisted to disk and gone when the container stops:</p>
 <pre><code class="language-bash">docker run \
     -d \
     -p 3101:3000 \
@@ -5511,11 +5511,11 @@
 </code></pre>
 <p>Note the extra <code>tmpfs</code> flags:</p>
 <ul>
-<li><code>noexec</code> — files in <code>/tmp</code> cannot be executed (blocks payload drop-and-run)</li>
-<li><code>nosuid</code> — SUID bits on files in <code>/tmp</code> are ignored (blocks privilege escalation via dropped binaries)</li>
-<li><code>size=64m</code> — caps memory usage to 64 MB (prevents tmpfs DoS)</li>
+<li><code>noexec</code> - files in <code>/tmp</code> cannot be executed (blocks payload drop-and-run)</li>
+<li><code>nosuid</code> - SUID bits on files in <code>/tmp</code> are ignored (blocks privilege escalation via dropped binaries)</li>
+<li><code>size=64m</code> - caps memory usage to 64 MB (prevents tmpfs DoS)</li>
 </ul>
-<h2 id="step-6-clean-up">Step 6 — Clean up</h2>
+<h2 id="step-6-clean-up">Step 6 - Clean up</h2>
 <pre><code class="language-bash">docker rm -f catalog-hardened catalog-hardened-tmpfs
 </code></pre>
 <p>Continue to <a href="../secrets-and-tools/">BP#6, #7, #8: Secrets and Limiting Tools</a>.</p>

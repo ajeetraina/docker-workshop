@@ -1,6 +1,6 @@
 # Fork an Agent Kit: Claude Without --dangerously-skip-permissions
 
-Mixin kits extend existing agents. Agent kits define one from scratch. The most common use case is forking a built-in agent to change one thing — the entrypoint, the model, or a network rule.
+Mixin kits extend existing agents. Agent kits define one from scratch. The most common use case is forking a built-in agent to change one thing - the entrypoint, the model, or a network rule.
 
 This section forks the built-in `claude` agent to remove `--dangerously-skip-permissions`, giving you a version where every tool call requires explicit approval.
 
@@ -15,7 +15,7 @@ schemaVersion: "1"
 kind: agent
 name: claude-safe
 displayName: Claude Code (with approval prompts)
-description: Claude Code without --dangerously-skip-permissions — every tool call requires approval
+description: Claude Code without --dangerously-skip-permissions - every tool call requires approval
 
 agent:
   image: "docker/sandbox-templates:claude-code-docker"
@@ -50,7 +50,7 @@ credentials:
 sbx run claude-safe --kit ./kits/claude-safe/
 ```
 
-The agent argument to `sbx run` matches the `name:` field in the spec — not the directory name.
+The agent argument to `sbx run` matches the `name:` field in the spec - not the directory name.
 
 ---
 

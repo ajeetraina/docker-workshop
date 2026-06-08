@@ -1,12 +1,12 @@
-# DevBoard — Fix a Real Bug Inside a Sandbox
+# DevBoard - Fix a Real Bug Inside a Sandbox
 
-So far each module of this lab has focused on *one* primitive — isolation,
+So far each module of this lab has focused on *one* primitive - isolation,
 secret injection, network policy, branch mode. This project ties them all
 together against a real codebase: **DevBoard**, a FastAPI + Next.js issue
 tracker with five documented intentional bugs.
 
 You'll pick one of them, point an agent at it inside `sbxlab`, watch it
-investigate and fix, then review and merge — without the agent ever touching
+investigate and fix, then review and merge - without the agent ever touching
 your host credentials or making a network call you didn't allow.
 
 ---
@@ -26,7 +26,7 @@ By the end of this project you'll have:
 ## The codebase
 
 DevBoard is a small but realistic project tracker. It's the same repo the
-labspace clones into `~/sbx-lab` — if you've worked through Module 2, you
+labspace clones into `~/sbx-lab` - if you've worked through Module 2, you
 already have it.
 
 ```
@@ -63,19 +63,19 @@ DevBoard ships with five intentional issues, ordered roughly easiest to hardest:
 
 | # | Bug | File |
 |---|---|---|
-| 1 | **Pagination off-by-one** — `list_issues` uses `page * page_size` instead of `(page - 1) * page_size`, so page 1 always skips items. | `backend/app/routers/issues.py` |
-| 2 | **`updated_at` never updates** — SQLAlchemy `updated_at` columns are missing `onupdate=datetime.utcnow`. | `backend/app/models.py` |
-| 3 | **Missing authorization on issue update** — any project member can edit any issue. | `backend/app/routers/issues.py` |
-| 4 | **Search not implemented** — `GET /projects/{id}/issues/search` returns `501`. | `backend/app/routers/issues.py` |
-| 5 | **Email notifications are stubs** — `services/notifications.py` logs but doesn't send. | `backend/app/services/notifications.py` |
+| 1 | **Pagination off-by-one** - `list_issues` uses `page * page_size` instead of `(page - 1) * page_size`, so page 1 always skips items. | `backend/app/routers/issues.py` |
+| 2 | **`updated_at` never updates** - SQLAlchemy `updated_at` columns are missing `onupdate=datetime.utcnow`. | `backend/app/models.py` |
+| 3 | **Missing authorization on issue update** - any project member can edit any issue. | `backend/app/routers/issues.py` |
+| 4 | **Search not implemented** - `GET /projects/{id}/issues/search` returns `501`. | `backend/app/routers/issues.py` |
+| 5 | **Email notifications are stubs** - `services/notifications.py` logs but doesn't send. | `backend/app/services/notifications.py` |
 
 The walkthrough below uses **bug #1 (pagination)** because it's the cleanest
-demonstration — single function, clear root cause, existing test coverage.
+demonstration - single function, clear root cause, existing test coverage.
 The same workflow works for any of them.
 
 ---
 
-## Step 1 — Boot DevBoard on your host
+## Step 1 - Boot DevBoard on your host
 
 In a host terminal, from `~/sbx-lab`:
 
@@ -93,13 +93,13 @@ Expected output: `db`, `backend`, and `frontend` all `running`. The API is at
 `http://localhost:8000/docs` and the UI at `http://localhost:3000`.
 
 > **Why on the host and not in the sandbox?** DevBoard is the *application*.
-> The agent's job is to read and modify its source files — not to run it.
+> The agent's job is to read and modify its source files - not to run it.
 > Running the stack on the host means you can poke at `localhost:3000` while
 > the agent works.
 
 ---
 
-## Step 2 — Confirm the bug exists
+## Step 2 - Confirm the bug exists
 
 Hit the issues endpoint with `page=1` and a small page size:
 
@@ -107,7 +107,7 @@ Hit the issues endpoint with `page=1` and a small page size:
 curl -s "http://localhost:8000/projects/1/issues?page=1&page_size=2" | jq '.[] | .id'
 ```
 
-You'll see issues `3` and `4` — *not* `1` and `2`. That's the bug.
+You'll see issues `3` and `4` - *not* `1` and `2`. That's the bug.
 
 The test suite already has a case that fails because of this:
 
@@ -115,14 +115,14 @@ The test suite already has a case that fails because of this:
 docker compose exec backend pytest tests/test_issues.py::test_pagination_first_page -v
 ```
 
-Expected: `FAILED`. Good — that's a failing test the agent will turn green.
+Expected: `FAILED`. Good - that's a failing test the agent will turn green.
 
 ---
 
-## Step 3 — Run the agent on the codebase in branch mode
+## Step 3 - Run the agent on the codebase in branch mode
 
 You've used **direct mode** so far (Module 6). For this exercise, use
-**branch mode** instead — the agent works on its own Git worktree and you
+**branch mode** instead - the agent works on its own Git worktree and you
 review the diff before merging.
 
 From the host, in `~/sbx-lab`:
@@ -132,12 +132,12 @@ sbx run sbxlab --branch fix/pagination
 ```
 
 The sandbox starts up, creates a worktree at `~/sbx-lab-sbxlab-fix-pagination`,
-and drops you into the agent prompt. The trust prompt appears once — choose
+and drops you into the agent prompt. The trust prompt appears once - choose
 **1. Yes, continue**.
 
 ---
 
-## Step 4 — Brief the agent
+## Step 4 - Brief the agent
 
 Paste this prompt:
 
@@ -166,7 +166,7 @@ filesystem.
 
 ---
 
-## Step 5 — Verify what just happened
+## Step 5 - Verify what just happened
 
 In a separate host terminal, while the agent is still running:
 
@@ -183,7 +183,7 @@ git diff
 ```
 
 You should see the one-line fix to `list_issues`. The host's main worktree at
-`~/sbx-lab` is untouched — `git status` there is still clean.
+`~/sbx-lab` is untouched - `git status` there is still clean.
 
 ```bash
 cd ~/sbx-lab
@@ -199,11 +199,11 @@ sbx
 
 You'll see allowed connections to `pypi.org` (the agent installing test deps)
 and nothing to `~/.aws`, `~/.ssh`, or any host service. The proof remains the
-same as in Module 3 — only now you're running it on a real codebase change.
+same as in Module 3 - only now you're running it on a real codebase change.
 
 ---
 
-## Step 6 — Review and merge
+## Step 6 - Review and merge
 
 Back in `~/sbx-lab-sbxlab-fix-pagination`:
 
@@ -225,7 +225,7 @@ matches what you reviewed.
 
 ---
 
-## Step 7 — Tear down
+## Step 7 - Tear down
 
 ```bash
 sbx stop sbxlab
@@ -241,7 +241,7 @@ it later. `docker compose down` stops DevBoard.
 
 Same flow, different brief. A few suggestions for prompts:
 
-**Bug #2 — `updated_at` never updates:**
+**Bug #2 - `updated_at` never updates:**
 
 ```
 backend/app/models.py defines updated_at columns that never change after
@@ -250,7 +250,7 @@ Find every affected model, add onupdate=datetime.utcnow, and write a test
 that updates an issue and asserts updated_at changed.
 ```
 
-**Bug #4 — implement search** (the labspace ships a prompt for this in
+**Bug #4 - implement search** (the labspace ships a prompt for this in
 `prompts/implement-search.txt`):
 
 ```
@@ -260,7 +260,7 @@ description case-insensitively (use Issue.title.ilike(f"%{q}%")) and return
 the same schema as list_issues. Make the existing search tests pass.
 ```
 
-**Bug #5 — implement email notifications** (a more open-ended task — needs
+**Bug #5 - implement email notifications** (a more open-ended task - needs
 SMTP config and gracefully handling its absence):
 
 ```
@@ -272,7 +272,7 @@ Add a test that mocks smtplib.SMTP and asserts send_message was called.
 ```
 
 For #5, notice the agent will need to make outbound SMTP connections to
-verify behaviour — but the default `Balanced` policy doesn't allow arbitrary
+verify behaviour - but the default `Balanced` policy doesn't allow arbitrary
 SMTP. This is a good moment to revisit Module 5: either add an `allow` rule
 for your test SMTP host, or have the agent rely entirely on mocked transport
 and never actually open a socket.
@@ -287,7 +287,7 @@ You've now run the full sandbox workflow end-to-end:
 - [x] Real agent inside the sandbox, reading and modifying source
 - [x] Real fix landed on a branch, with a passing test
 - [x] Reviewed the diff before it touched main
-- [x] Verified — via `sbx ls` and the network panel — that the agent only
+- [x] Verified - via `sbx ls` and the network panel - that the agent only
       reached what the policy allowed
 
 That's the complete loop the rest of this lab was building toward.

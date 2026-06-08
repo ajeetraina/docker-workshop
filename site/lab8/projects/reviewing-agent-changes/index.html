@@ -5535,7 +5535,7 @@ what files were modified.</p>
 <p>Run <code>git diff main..my-feature</code> to see the agent's changes on a separate branch.</p>
 <hr />
 <h2 id="the-hidden-danger-git-hooks">The hidden danger: Git hooks</h2>
-<p>Git hooks live inside <code>.git/hooks/</code> — they are <strong>not tracked by Git</strong> and
+<p>Git hooks live inside <code>.git/hooks/</code> - they are <strong>not tracked by Git</strong> and
 do <strong>not appear in <code>git diff</code> output</strong>. An agent could modify a hook and you'd
 never see it in a normal diff.</p>
 <p>Always check hooks separately after an agent session by running
@@ -5558,7 +5558,7 @@ never see it in a normal diff.</p>
 <p>The microVM is now gone. Check the hook on your host:</p>
 <pre><code class="language-bash">ls -la .git/hooks/
 </code></pre>
-<p>Look for <code>pre-commit</code> with a recent timestamp — created by the agent, now
+<p>Look for <code>pre-commit</code> with a recent timestamp - created by the agent, now
 living on your Mac.</p>
 <pre><code class="language-bash">cat .git/hooks/pre-commit
 </code></pre>
@@ -5573,7 +5573,7 @@ echo &quot;hello from the agent&quot;
 <pre><code>hello from the agent
 [main 9c1f07e] test hook
 </code></pre>
-<p>That's agent-written code running on your Mac. The microVM is gone — but the
+<p>That's agent-written code running on your Mac. The microVM is gone - but the
 file persists and executes with your full host privileges.</p>
 <blockquote>
 <p><strong>This is not a bug. This is the expected behavior.</strong></p>
@@ -5591,7 +5591,7 @@ writes to your workspace. Review before you execute.</p>
 <hr />
 <h2 id="branch-mode-the-safer-workflow-for-untrusted-tasks">Branch mode: the safer workflow for untrusted tasks</h2>
 <p>When you're not sure what an agent will do, use branch mode. The agent still
-has full write access — but its changes land on a separate worktree and branch,
+has full write access - but its changes land on a separate worktree and branch,
 not your main working tree.</p>
 <pre><code class="language-bash">sbx run sbxlab --branch=agent-experiment
 </code></pre>
@@ -5604,7 +5604,7 @@ the agent there. Your <code>~/sbx-lab</code> working tree is untouched while the
 <pre><code class="language-bash">cd ~/sbx-lab
 git diff main..agent-experiment
 </code></pre>
-<p>Check git hooks separately — they won't appear in the diff:</p>
+<p>Check git hooks separately - they won't appear in the diff:</p>
 <pre><code class="language-bash">ls -la ~/sbxlab-worktrees/agent-experiment/.git/hooks/
 </code></pre>
 <p>If you're happy with the changes, merge:</p>
@@ -5613,11 +5613,11 @@ git diff main..agent-experiment
 <p>If not, discard everything:</p>
 <pre><code class="language-bash">git branch -D agent-experiment
 </code></pre>
-<p>Pay special attention to the same file types — Git hooks, CI config, build
+<p>Pay special attention to the same file types - Git hooks, CI config, build
 files, IDE config. Even in branch mode, review before you merge.</p>
 <blockquote>
 <p><strong>Branch mode is not a security boundary.</strong> The agent still has full write
-access to the worktree. It gives you a clean diff to review — not protection
+access to the worktree. It gives you a clean diff to review - not protection
 from malicious writes.</p>
 </blockquote>
 <hr />
@@ -5634,14 +5634,14 @@ pull request from an external contributor. Review before you trust.</p>
 <h2 id="checkpoint">✅ Checkpoint</h2>
 <p>Before moving on:</p>
 <ul>
-<li>[ ] Run <code>cd ~/sbx-lab</code> before testing hooks — git hooks are per-repository</li>
+<li>[ ] Run <code>cd ~/sbx-lab</code> before testing hooks - git hooks are per-repository</li>
 <li>[ ] Run <code>git diff</code> after an agent session and review the changes</li>
-<li>[ ] Check <code>.git/hooks/</code> separately — it won't appear in <code>git diff</code></li>
+<li>[ ] Check <code>.git/hooks/</code> separately - it won't appear in <code>git diff</code></li>
 <li>[ ] Understand that branch mode gives you a clean diff to review, but is not
       a security boundary</li>
 <li>[ ] Know how to remove or reset hooks the agent created</li>
 </ul>
-<p>Next: secrets without exposure — how sbx injects credentials without the agent
+<p>Next: secrets without exposure - how sbx injects credentials without the agent
 ever seeing them.</p>
 
 

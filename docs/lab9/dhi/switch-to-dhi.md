@@ -4,8 +4,8 @@ Switching to a Docker Hardened Image is straightforward. All we need to do is re
 
 Docker Hardened Images come in two variants:
 
-- **Dev variant** (`<YOUR_ORG_NAME>/dhi-node:24-debian13-dev`) — includes a shell and package managers, making it suitable for building and testing.
-- **Runtime variant** (`<YOUR_ORG_NAME>/dhi-node:24-debian13`) — stripped down to only the essentials, providing a minimal and secure footprint for production.
+- **Dev variant** (`<YOUR_ORG_NAME>/dhi-node:24-debian13-dev`) - includes a shell and package managers, making it suitable for building and testing.
+- **Runtime variant** (`<YOUR_ORG_NAME>/dhi-node:24-debian13`) - stripped down to only the essentials, providing a minimal and secure footprint for production.
 
 This makes them perfect for use in multi-stage Dockerfiles. We can build the app in the dev image, then copy the built application into the runtime image, which will serve as the base for production.
 

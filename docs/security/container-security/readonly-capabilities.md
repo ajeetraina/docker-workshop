@@ -8,7 +8,7 @@ If the filesystem is writable and capabilities are intact: drop a payload, modif
 
 If the filesystem is read-only and capabilities are dropped: almost nothing.
 
-## Linux capabilities — what gets dropped with `--cap-drop=ALL`
+## Linux capabilities - what gets dropped with `--cap-drop=ALL`
 
 Linux capabilities split root's privileges into discrete chunks. Most apps need none of them. Dropping them all closes huge attack paths:
 
@@ -18,11 +18,11 @@ Linux capabilities split root's privileges into discrete chunks. Most apps need 
 | `DAC_OVERRIDE` | Bypass file read/write/execute permission checks |
 | `NET_RAW` | Raw and packet sockets (used in some network attacks) |
 | `SETUID` / `SETGID` | Change process UID/GID |
-| `SYS_CHROOT` | `chroot()` — change root directory |
+| `SYS_CHROOT` | `chroot()` - change root directory |
 | `KILL` | Send signals to other processes |
 | `MKNOD` | Create special files |
 
-## Step 1 — Clean up any leftover containers
+## Step 1 - Clean up any leftover containers
 
 Run this first every time. It removes any containers from a previous attempt so names and ports are free.
 
@@ -30,7 +30,7 @@ Run this first every time. It removes any containers from a previous attempt so 
 docker rm -f catalog-hardened catalog-hardened-tmpfs 2>/dev/null
 ```
 
-## Step 2 — Run with hardened flags
+## Step 2 - Run with hardened flags
 
 ```bash
 docker run \
@@ -55,7 +55,7 @@ Confirm the app responds:
 curl http://localhost:3100
 ```
 
-## Step 3 — Verify the filesystem is read-only
+## Step 3 - Verify the filesystem is read-only
 
 Try to write a file inside the container:
 
@@ -65,9 +65,9 @@ docker exec catalog-hardened sh -c "echo test > /tmp/test.txt"
 
 Expected output: `sh: /tmp/test.txt: Read-only file system`
 
-The attacker gained code execution but **cannot write anywhere** — no dropping payloads, no modifying config files, no creating SUID binaries.
+The attacker gained code execution but **cannot write anywhere** - no dropping payloads, no modifying config files, no creating SUID binaries.
 
-## Step 4 — Prove the capability drop
+## Step 4 - Prove the capability drop
 
 ```bash
 docker inspect catalog-hardened \
@@ -80,9 +80,9 @@ Expected output:
 ReadonlyRootfs=true CapDrop=[ALL]
 ```
 
-## Step 5 — When your app needs a writable area: use `tmpfs`
+## Step 5 - When your app needs a writable area: use `tmpfs`
 
-Some apps genuinely need scratch space — caches, temp files, sessions. `tmpfs` is in-memory only — writable, but never persisted to disk and gone when the container stops:
+Some apps genuinely need scratch space - caches, temp files, sessions. `tmpfs` is in-memory only - writable, but never persisted to disk and gone when the container stops:
 
 ```bash
 docker run \
@@ -104,11 +104,11 @@ docker exec catalog-hardened-tmpfs sh -c "echo test > /tmp/test.txt && cat /tmp/
 
 Note the extra `tmpfs` flags:
 
-- `noexec` — files in `/tmp` cannot be executed (blocks payload drop-and-run)
-- `nosuid` — SUID bits on files in `/tmp` are ignored (blocks privilege escalation via dropped binaries)
-- `size=64m` — caps memory usage to 64 MB (prevents tmpfs DoS)
+- `noexec` - files in `/tmp` cannot be executed (blocks payload drop-and-run)
+- `nosuid` - SUID bits on files in `/tmp` are ignored (blocks privilege escalation via dropped binaries)
+- `size=64m` - caps memory usage to 64 MB (prevents tmpfs DoS)
 
-## Step 6 — Clean up
+## Step 6 - Clean up
 
 ```bash
 docker rm -f catalog-hardened catalog-hardened-tmpfs

@@ -5352,7 +5352,7 @@
 <blockquote>
 <p><strong>Keep dev tools, compilers, and test frameworks out of production.</strong></p>
 </blockquote>
-<p>A common antipattern is using a single Dockerfile stage that installs everything — dev dependencies, compilers, test frameworks, debuggers — and then ships that whole image to production. Everything that's only useful at build time becomes attack surface at runtime.</p>
+<p>A common antipattern is using a single Dockerfile stage that installs everything - dev dependencies, compilers, test frameworks, debuggers - and then ships that whole image to production. Everything that's only useful at build time becomes attack surface at runtime.</p>
 <h2 id="what-must-not-ship-to-production">What must NOT ship to production</h2>
 <ul>
 <li>Source code beyond what's needed (after copy/compile)</li>
@@ -5374,9 +5374,9 @@
 </code></pre>
 <p>Each flag matters:</p>
 <ul>
-<li><code>--production</code> — only production dependencies, <code>devDependencies</code> excluded</li>
-<li><code>--ignore-scripts</code> — no post-install scripts (a common supply chain attack vector)</li>
-<li><code>npm cache clean --force</code> — removes the npm cache from the layer, shrinking the image</li>
+<li><code>--production</code> - only production dependencies, <code>devDependencies</code> excluded</li>
+<li><code>--ignore-scripts</code> - no post-install scripts (a common supply chain attack vector)</li>
+<li><code>npm cache clean --force</code> - removes the npm cache from the layer, shrinking the image</li>
 </ul>
 <h2 id="build-specific-stages">Build specific stages</h2>
 <p>You can build any stage by name with <code>--target</code>. This is useful in CI: run unit tests against the dev stage, ship the final stage to production.</p>
@@ -5389,7 +5389,7 @@
 <p>Compare the two:</p>
 <pre><code class="language-bash">docker images catalog-service
 </code></pre>
-<p>The <code>dev</code> image is significantly larger — it contains all <code>devDependencies</code>. The <code>prod</code> image is lean: smaller attack surface, faster pulls, less risk.</p>
+<p>The <code>dev</code> image is significantly larger - it contains all <code>devDependencies</code>. The <code>prod</code> image is lean: smaller attack surface, faster pulls, less risk.</p>
 <h2 id="why-ignore-scripts-matters">Why <code>--ignore-scripts</code> matters</h2>
 <p>Post-install scripts are a well-known supply chain attack vector. The 2022 <a href="https://snyk.io/blog/peacenotwar-malicious-npm-node-ipc-package-vulnerability/"><code>node-ipc</code> incident</a> used a post-install script to wipe files on disks in specific countries. <code>--ignore-scripts</code> prevents <code>npm</code> from running these scripts during <code>ci</code> or <code>install</code>, blocking that entire class of attack at build time.</p>
 <p>You can verify your prod image stayed clean of critical/high CVEs with Scout:</p>

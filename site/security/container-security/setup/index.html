@@ -5410,7 +5410,7 @@
 </code></pre>
 <p>This makes Scout output policy results aligned to your organization's configuration. To learn more, see the <a href="https://docs.docker.com/scout/policy/">Docker Scout Policy guides</a>.</p>
 <h2 id="step-4-clone-and-bootstrap-the-project">Step 4. Clone and bootstrap the project</h2>
-<p>The setup script applies a patch that <strong>deliberately introduces a vulnerable state</strong> — old base image and downgraded dependencies — so you can demonstrate the full security journey from the bottom up.</p>
+<p>The setup script applies a patch that <strong>deliberately introduces a vulnerable state</strong> - old base image and downgraded dependencies - so you can demonstrate the full security journey from the bottom up.</p>
 <pre><code class="language-bash">git clone https://github.com/dockersamples/catalog-service-node
 cd catalog-service-node
 ./demo/sdlc-e2e/setup.sh
@@ -5426,7 +5426,7 @@ cd catalog-service-node
 <pre><code class="language-bash">docker build -t catalog-service --sbom=true --provenance=mode=max .
 </code></pre>
 <p>The <code>--sbom=true</code> and <code>--provenance=mode=max</code> flags tell BuildKit to attach a Software Bill of Materials and SLSA provenance attestations to the image. We'll use these in later sections.</p>
-<p>You're all set! Continue to <a href="../surface-the-problem/">Surface the Problem</a> to see what's wrong with the starting image — or jump directly to any of the <a href="../overview/#the-8-container-security-best-practices">8 best practices</a>.</p>
+<p>You're all set! Continue to <a href="../surface-the-problem/">Surface the Problem</a> to see what's wrong with the starting image - or jump directly to any of the <a href="../overview/#the-8-container-security-best-practices">8 best practices</a>.</p>
 
 
 

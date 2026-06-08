@@ -5372,7 +5372,7 @@
 
   <h1>Perception</h1>
 
-<p>Perception is <strong>how the agent sees its environment</strong>. An agent without toolsets is blind — it can only use training data. Each toolset you add is a new sensor.</p>
+<p>Perception is <strong>how the agent sees its environment</strong>. An agent without toolsets is blind - it can only use training data. Each toolset you add is a new sensor.</p>
 <h2 id="step-1-create-a-project-with-multiple-perception-sources">Step 1: Create a project with multiple "perception sources"</h2>
 <pre><code class="language-bash">mkdir ~/perception-test &amp;&amp; cd ~/perception-test
 
@@ -5462,21 +5462,21 @@ cagent run ./perception.yaml
 <tr>
 <td><code>filesystem</code></td>
 <td>Files, code, configs</td>
-<td>👁 <strong>Eyes</strong> — reading documents</td>
+<td>👁 <strong>Eyes</strong> - reading documents</td>
 </tr>
 <tr>
 <td><code>shell</code></td>
 <td>System state, grep output, process info</td>
-<td>👂 <strong>Ears</strong> — listening to the system</td>
+<td>👂 <strong>Ears</strong> - listening to the system</td>
 </tr>
 <tr>
 <td><code>mcp: duckduckgo</code></td>
 <td>Live web, latest best practices</td>
-<td>📡 <strong>Radar</strong> — sensing the outside world</td>
+<td>📡 <strong>Radar</strong> - sensing the outside world</td>
 </tr>
 </tbody>
 </table>
-<p><strong>Remove a toolset = the agent goes partially blind.</strong> Try removing the <code>mcp: duckduckgo</code> line and running again — the agent can no longer search the web. That's the proof that each toolset is literally a perception channel.</p>
+<p><strong>Remove a toolset = the agent goes partially blind.</strong> Try removing the <code>mcp: duckduckgo</code> line and running again - the agent can no longer search the web. That's the proof that each toolset is literally a perception channel.</p>
 <h2 id="bonus-prove-perception-matters">Bonus: Prove perception matters</h2>
 <p>Create a version with NO toolsets:</p>
 <pre><code class="language-yaml"># blind-agent.yaml
@@ -5490,7 +5490,7 @@ agents:
       Audit this project for security issues.
     # No toolsets = no perception = blind agent
 </code></pre>
-<p>Run it and compare — the blind agent can only give generic advice. It cannot actually see your code. That's the difference between a chatbot and an agent.</p>
+<p>Run it and compare - the blind agent can only give generic advice. It cannot actually see your code. That's the difference between a chatbot and an agent.</p>
 
 
 

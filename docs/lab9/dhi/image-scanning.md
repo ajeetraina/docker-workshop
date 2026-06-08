@@ -2,7 +2,7 @@
 
 This demo repository contains a Hello World Node.js application consisting of a basic HTTP server and Dockerfile pointing to a Trixie (Debian 13) base image.
 
-The app logic is implemented in `app.js` — a minimal Node.js HTTP server that responds with "Hello World!" on the root path.
+The app logic is implemented in `app.js` - a minimal Node.js HTTP server that responds with "Hello World!" on the root path.
 
 ## The Dockerfile
 
@@ -52,8 +52,8 @@ Policy status  FAILED  (6/10 policies met)
 
 As you can see, there are no CVEs at the application level, but the base image contains a number of high, medium, and low severity CVEs, so it is recommended to be updated. Additionally, the critical policies have failed:
 
-1. **No default non-root user found** — The image runs as root by default
-2. **Fixable critical or high vulnerabilities found** — The base image has known fixable CVEs
-3. **Unapproved base images found** — The base image is not on the approved list
+1. **No default non-root user found** - The image runs as root by default
+2. **Fixable critical or high vulnerabilities found** - The base image has known fixable CVEs
+3. **Unapproved base images found** - The base image is not on the approved list
 
 This is where DHI comes into play. Head over to the next section to see how switching to Docker Hardened Images resolves all of these issues.

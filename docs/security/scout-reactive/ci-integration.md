@@ -20,8 +20,8 @@ The key gate step:
 
 Two flags do the heavy lifting:
 
-- `only-severities: critical,high` — only fail on what actually matters; medium and low don't block the pipeline
-- `exit-code: true` — makes the action **fail** the build when matching CVEs are found
+- `only-severities: critical,high` - only fail on what actually matters; medium and low don't block the pipeline
+- `exit-code: true` - makes the action **fail** the build when matching CVEs are found
 
 That's the gate. If a critical or high CVE shows up, the PR can't merge and the image can't deploy.
 
@@ -40,7 +40,7 @@ A typical Scout-in-CI pipeline does several things in sequence:
           provenance: mode=max
           load: true
 
-      # 2. Quickview — surfaces a summary in the action log
+      # 2. Quickview - surfaces a summary in the action log
       - name: Docker Scout quickview
         uses: docker/scout-action@v1
         with:
@@ -89,7 +89,7 @@ A real-world gate has to balance security and developer flow. A few patterns tha
 
 ## Local pre-flight check
 
-Developers can run the same gate locally before pushing — fewer broken builds:
+Developers can run the same gate locally before pushing - fewer broken builds:
 
 ```bash
 docker scout cves catalog-service:slim \

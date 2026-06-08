@@ -2,7 +2,7 @@
 
 This is the most important module in the lab. Everything else is context. This is the evidence.
 
-You're going to systematically attempt to access sensitive host resources from inside the sandbox — and document exactly what you find. This is not a trick. Run every command. Read every result.
+You're going to systematically attempt to access sensitive host resources from inside the sandbox - and document exactly what you find. This is not a trick. Run every command. Read every result.
 
 ---
 
@@ -10,12 +10,12 @@ You're going to systematically attempt to access sensitive host resources from i
 
 You need two terminals side by side:
 
-- **Terminal A** — your running sandbox session (`sbx run sbxlab`)
-- **Terminal B** — your host, for comparison
+- **Terminal A** - your running sandbox session (`sbx run sbxlab`)
+- **Terminal B** - your host, for comparison
 
 ---
 
-## Part 1 — What the agent can see
+## Part 1 - What the agent can see
 
 Run these commands **inside the sandbox** (Terminal A):
 
@@ -73,8 +73,8 @@ drwxr-xr-x 1 agent agent   27 Apr 11 06:03 workspace
 ```
 
 Three things to notice:
-- Agent home is `/home/agent/` — a clean Linux environment, not your Mac home
-- `pwd` shows the exact host path `/Users/ajeetraina/sbx-lab` — preserved as the workspace mount point
+- Agent home is `/home/agent/` - a clean Linux environment, not your Mac home
+- `pwd` shows the exact host path `/Users/ajeetraina/sbx-lab` - preserved as the workspace mount point
 - No `.ssh/`, `.aws/`, `.zshrc`, no Mac files anywhere
 
 ### 1d. Inspect the scaffolding boundary
@@ -104,10 +104,10 @@ containerd  docker  docker.pid  docker.sock  secrets
 
 | Path | What you see | What it means |
 |------|-------------|---------------|
-| `/Users/ajeetraina/` | Only `AGENTS.md` + `sbx-lab` | Empty scaffolding — directory tree preserved for the workspace path, nothing else from your Mac home exists |
+| `/Users/ajeetraina/` | Only `AGENTS.md` + `sbx-lab` | Empty scaffolding - directory tree preserved for the workspace path, nothing else from your Mac home exists |
 | `/home/` | `agent`, `ubuntu` | Two Linux users, completely separate from your Mac user |
-| `/var/run/docker.sock` | Present | The VM's own Docker daemon — separate from your host's |
-| `/var/run/secrets` | Present | The credential proxy socket — intercepts outbound API calls and injects your keys |
+| `/var/run/docker.sock` | Present | The VM's own Docker daemon - separate from your host's |
+| `/var/run/secrets` | Present | The credential proxy socket - intercepts outbound API calls and injects your keys |
 
 ### 1e. Try to reach the AWS metadata endpoint
 
@@ -122,7 +122,7 @@ Blocked by network policy: matched rule no applicable policies for op(action=net
 resource=net:domain:169.254.169.254:80)
 ```
 
-The Balanced network policy blocks the AWS IMDS endpoint entirely — the most dangerous target for a compromised agent running in a cloud VM.
+The Balanced network policy blocks the AWS IMDS endpoint entirely - the most dangerous target for a compromised agent running in a cloud VM.
 
 ### 1f. Check the VM identity
 
@@ -144,13 +144,13 @@ VERSION_ID="25.10"
 0::/docker/d65f75fdecab4f730049fd5991cfb82c7a7ff539ec34828b1955021f1f42141c
 ```
 
-- Kernel `6.12.44` — Linux, not macOS. This is a real VM with its own kernel
-- Ubuntu 25.10 — full Linux distro running inside the microVM
-- `0::/docker/d65f75fd...` — the `/docker/` prefix confirms the agent runs as a container inside the VM's own Docker daemon
+- Kernel `6.12.44` - Linux, not macOS. This is a real VM with its own kernel
+- Ubuntu 25.10 - full Linux distro running inside the microVM
+- `0::/docker/d65f75fd...` - the `/docker/` prefix confirms the agent runs as a container inside the VM's own Docker daemon
 
 ---
 
-## Part 2 — Verify the host is untouched
+## Part 2 - Verify the host is untouched
 
 Switch to **Terminal B** (host):
 
@@ -158,7 +158,7 @@ Switch to **Terminal B** (host):
 cat ~/.aws/credentials    # still here
 cat ~/.ssh/id_rsa         # still here
 ls -la ~/                 # unchanged
-docker ps                 # your host containers — sbxlab never appears
+docker ps                 # your host containers - sbxlab never appears
 sbx ls                    # sbxlab appears here instead
 ```
 
@@ -166,7 +166,7 @@ Everything that doesn't exist inside the VM is alive and well on the host.
 
 ---
 
-## Part 3 — Guardrails vs sbx: why you need both
+## Part 3 - Guardrails vs sbx: why you need both
 
 You might wonder: if the model refuses to print credentials, why does the sandbox matter?
 
@@ -175,13 +175,13 @@ You might wonder: if the model refuses to print credentials, why does the sandbo
 | Threat | Model guardrails | sbx |
 |--------|-----------------|-----|
 | Model refuses a direct bad request | ✅ Blocked | ❌ Not its job |
-| Prompt injection in a README or code file | ❌ May comply — looks like a task | ✅ File doesn't exist |
+| Prompt injection in a README or code file | ❌ May comply - looks like a task | ✅ File doesn't exist |
 | Jailbroken model | ❌ Guardrails bypassed | ✅ VM boundary holds |
 | Model with no safety training | ❌ No protection | ✅ Same isolation |
-| Agent runs `rm -rf` outside workspace | ❌ Depends on model | ✅ Impossible — not mounted |
+| Agent runs `rm -rf` outside workspace | ❌ Depends on model | ✅ Impossible - not mounted |
 | Agent exfiltrates to attacker URL | ❌ Depends on model | ✅ Blocked by network policy |
 
-**Guardrails are a bet on the model.** They work when the model is well-behaved, well-trained, and not under adversarial pressure. Change the model, jailbreak it, or hide the instruction in a file the agent reads — and the guardrails disappear.
+**Guardrails are a bet on the model.** They work when the model is well-behaved, well-trained, and not under adversarial pressure. Change the model, jailbreak it, or hide the instruction in a file the agent reads - and the guardrails disappear.
 
 **sbx is a technical guarantee.** The VM boundary is enforced by the hypervisor, not the model. It holds regardless of what the model does, what prompt it receives, or how it was trained.
 
@@ -189,7 +189,7 @@ You might wonder: if the model refuses to print credentials, why does the sandbo
 
 ---
 
-## Part 4 — The architecture
+## Part 4 - The architecture
 
 ```
 macOS host (L0)
@@ -207,7 +207,7 @@ macOS host (L0)
         └── Balanced policy: allows dev sites, blocks everything else
 ```
 
-The key technical fact: **the VM has its own kernel**. A container escape would still be inside the VM. There is no path from the VM's userspace to your host's userspace — the hypervisor enforces that boundary in hardware.
+The key technical fact: **the VM has its own kernel**. A container escape would still be inside the VM. There is no path from the VM's userspace to your host's userspace - the hypervisor enforces that boundary in hardware.
 
 ---
 
@@ -219,7 +219,7 @@ You've now empirically proven the isolation guarantee with real commands and rea
 - `~/.ssh/id_rsa` → `No such file or directory`
 - `169.254.169.254` → `Blocked by network policy`
 - `uname -r` → Linux kernel `6.12.44`, not macOS
-- `cat /proc/1/cgroup` → `/docker/...` — agent runs in VM's own Docker daemon
+- `cat /proc/1/cgroup` → `/docker/...` - agent runs in VM's own Docker daemon
 
 Not taken Docker's word for it. Proven it yourself.
 

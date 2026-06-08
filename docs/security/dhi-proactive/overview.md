@@ -1,6 +1,6 @@
-## Docker Hardened Images — The Pro-active Approach
+## Docker Hardened Images - The Pro-active Approach
 
-> **Start Secure.** Docker Hardened Images are purpose-built from the ground up to be extremely minimal — not stripped-down versions of something bloated.
+> **Start Secure.** Docker Hardened Images are purpose-built from the ground up to be extremely minimal - not stripped-down versions of something bloated.
 
 This is the **pro-active** half of the container security story. Where [Scout](../scout-reactive/overview.md) helps you find and fix CVEs in images you already have, DHI helps you stop *creating* them in the first place.
 
@@ -31,12 +31,12 @@ DHI ships in two variants per language/runtime:
 
 | Variant | Tag pattern | Use case |
 |---------|-------------|----------|
-| **Dev** | `<DHI_PREFIX>node:24-debian13-dev` | Building — has shell, `npm`, build tools |
-| **Runtime** | `<DHI_PREFIX>node:24-debian13` | Production — distroless, no shell |
+| **Dev** | `<DHI_PREFIX>node:24-debian13-dev` | Building - has shell, `npm`, build tools |
+| **Runtime** | `<DHI_PREFIX>node:24-debian13` | Production - distroless, no shell |
 
 > Replace `<DHI_PREFIX>` with `dhi.io/` for the free tier or `<YOUR_ORG>/dhi-` for the paid tier (see [Setup](../container-security/setup.md)).
 
-Because the runtime variant has no shell or `npm`, you use **multi-stage builds**: the dev image installs dependencies, the runtime image gets only the output. This isn't a constraint — it's how production images *should* be built.
+Because the runtime variant has no shell or `npm`, you use **multi-stage builds**: the dev image installs dependencies, the runtime image gets only the output. This isn't a constraint - it's how production images *should* be built.
 
 ---
 
@@ -60,6 +60,6 @@ Recall the four attack vectors from the [Container Security overview](../contain
 | Runtime attack surface | Distroless: no shell, no package manager, no curl, no apt |
 | Compliance | FIPS 140-validated and STIG variants ship out of the box |
 
-That's why DHI is the **pro-active** answer. You're not finding CVEs and patching them — you're starting from a base where there are almost none, with cryptographic evidence to prove it.
+That's why DHI is the **pro-active** answer. You're not finding CVEs and patching them - you're starting from a base where there are almost none, with cryptographic evidence to prove it.
 
 > **Use both.** Scout for visibility on what you run. DHI for the foundation you build on.

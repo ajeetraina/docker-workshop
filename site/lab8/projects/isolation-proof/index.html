@@ -3432,12 +3432,12 @@
   <a href="#part-1-what-the-agent-can-see" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 1 — What the agent can see
+        Part 1 - What the agent can see
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Part 1 — What the agent can see">
+    <nav class="md-nav" aria-label="Part 1 - What the agent can see">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3515,7 +3515,7 @@
   <a href="#part-2-verify-the-host-is-untouched" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 2 — Verify the host is untouched
+        Part 2 - Verify the host is untouched
       
     </span>
   </a>
@@ -3526,7 +3526,7 @@
   <a href="#part-3-guardrails-vs-sbx-why-you-need-both" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 3 — Guardrails vs sbx: why you need both
+        Part 3 - Guardrails vs sbx: why you need both
       
     </span>
   </a>
@@ -3537,7 +3537,7 @@
   <a href="#part-4-the-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 4 — The architecture
+        Part 4 - The architecture
       
     </span>
   </a>
@@ -5377,12 +5377,12 @@
   <a href="#part-1-what-the-agent-can-see" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 1 — What the agent can see
+        Part 1 - What the agent can see
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Part 1 — What the agent can see">
+    <nav class="md-nav" aria-label="Part 1 - What the agent can see">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5460,7 +5460,7 @@
   <a href="#part-2-verify-the-host-is-untouched" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 2 — Verify the host is untouched
+        Part 2 - Verify the host is untouched
       
     </span>
   </a>
@@ -5471,7 +5471,7 @@
   <a href="#part-3-guardrails-vs-sbx-why-you-need-both" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 3 — Guardrails vs sbx: why you need both
+        Part 3 - Guardrails vs sbx: why you need both
       
     </span>
   </a>
@@ -5482,7 +5482,7 @@
   <a href="#part-4-the-architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Part 4 — The architecture
+        Part 4 - The architecture
       
     </span>
   </a>
@@ -5522,16 +5522,16 @@
 
 <h1 id="the-isolation-proof">The Isolation Proof</h1>
 <p>This is the most important module in the lab. Everything else is context. This is the evidence.</p>
-<p>You're going to systematically attempt to access sensitive host resources from inside the sandbox — and document exactly what you find. This is not a trick. Run every command. Read every result.</p>
+<p>You're going to systematically attempt to access sensitive host resources from inside the sandbox - and document exactly what you find. This is not a trick. Run every command. Read every result.</p>
 <hr />
 <h2 id="setup">Setup</h2>
 <p>You need two terminals side by side:</p>
 <ul>
-<li><strong>Terminal A</strong> — your running sandbox session (<code>sbx run sbxlab</code>)</li>
-<li><strong>Terminal B</strong> — your host, for comparison</li>
+<li><strong>Terminal A</strong> - your running sandbox session (<code>sbx run sbxlab</code>)</li>
+<li><strong>Terminal B</strong> - your host, for comparison</li>
 </ul>
 <hr />
-<h2 id="part-1-what-the-agent-can-see">Part 1 — What the agent can see</h2>
+<h2 id="part-1-what-the-agent-can-see">Part 1 - What the agent can see</h2>
 <p>Run these commands <strong>inside the sandbox</strong> (Terminal A):</p>
 <h3 id="1a-try-to-access-aws-credentials">1a. Try to access AWS credentials</h3>
 <pre><code class="language-bash">cat ~/.aws/credentials
@@ -5569,8 +5569,8 @@ drwxr-xr-x 1 agent agent   27 Apr 11 06:03 workspace
 /Users/ajeetraina/sbx-lab
 </code></pre>
 <p>Three things to notice:
-- Agent home is <code>/home/agent/</code> — a clean Linux environment, not your Mac home
-- <code>pwd</code> shows the exact host path <code>/Users/ajeetraina/sbx-lab</code> — preserved as the workspace mount point
+- Agent home is <code>/home/agent/</code> - a clean Linux environment, not your Mac home
+- <code>pwd</code> shows the exact host path <code>/Users/ajeetraina/sbx-lab</code> - preserved as the workspace mount point
 - No <code>.ssh/</code>, <code>.aws/</code>, <code>.zshrc</code>, no Mac files anywhere</p>
 <h3 id="1d-inspect-the-scaffolding-boundary">1d. Inspect the scaffolding boundary</h3>
 <pre><code class="language-bash">ls /Users/
@@ -5603,7 +5603,7 @@ containerd  docker  docker.pid  docker.sock  secrets
 <tr>
 <td><code>/Users/ajeetraina/</code></td>
 <td>Only <code>AGENTS.md</code> + <code>sbx-lab</code></td>
-<td>Empty scaffolding — directory tree preserved for the workspace path, nothing else from your Mac home exists</td>
+<td>Empty scaffolding - directory tree preserved for the workspace path, nothing else from your Mac home exists</td>
 </tr>
 <tr>
 <td><code>/home/</code></td>
@@ -5613,12 +5613,12 @@ containerd  docker  docker.pid  docker.sock  secrets
 <tr>
 <td><code>/var/run/docker.sock</code></td>
 <td>Present</td>
-<td>The VM's own Docker daemon — separate from your host's</td>
+<td>The VM's own Docker daemon - separate from your host's</td>
 </tr>
 <tr>
 <td><code>/var/run/secrets</code></td>
 <td>Present</td>
-<td>The credential proxy socket — intercepts outbound API calls and injects your keys</td>
+<td>The credential proxy socket - intercepts outbound API calls and injects your keys</td>
 </tr>
 </tbody>
 </table>
@@ -5629,7 +5629,7 @@ containerd  docker  docker.pid  docker.sock  secrets
 <pre><code>Blocked by network policy: matched rule no applicable policies for op(action=net:connect:tcp,
 resource=net:domain:169.254.169.254:80)
 </code></pre>
-<p>The Balanced network policy blocks the AWS IMDS endpoint entirely — the most dangerous target for a compromised agent running in a cloud VM.</p>
+<p>The Balanced network policy blocks the AWS IMDS endpoint entirely - the most dangerous target for a compromised agent running in a cloud VM.</p>
 <h3 id="1f-check-the-vm-identity">1f. Check the VM identity</h3>
 <pre><code class="language-bash">uname -r
 cat /etc/os-release
@@ -5645,22 +5645,22 @@ VERSION_ID=&quot;25.10&quot;
 0::/docker/d65f75fdecab4f730049fd5991cfb82c7a7ff539ec34828b1955021f1f42141c
 </code></pre>
 <ul>
-<li>Kernel <code>6.12.44</code> — Linux, not macOS. This is a real VM with its own kernel</li>
-<li>Ubuntu 25.10 — full Linux distro running inside the microVM</li>
-<li><code>0::/docker/d65f75fd...</code> — the <code>/docker/</code> prefix confirms the agent runs as a container inside the VM's own Docker daemon</li>
+<li>Kernel <code>6.12.44</code> - Linux, not macOS. This is a real VM with its own kernel</li>
+<li>Ubuntu 25.10 - full Linux distro running inside the microVM</li>
+<li><code>0::/docker/d65f75fd...</code> - the <code>/docker/</code> prefix confirms the agent runs as a container inside the VM's own Docker daemon</li>
 </ul>
 <hr />
-<h2 id="part-2-verify-the-host-is-untouched">Part 2 — Verify the host is untouched</h2>
+<h2 id="part-2-verify-the-host-is-untouched">Part 2 - Verify the host is untouched</h2>
 <p>Switch to <strong>Terminal B</strong> (host):</p>
 <pre><code class="language-bash">cat ~/.aws/credentials    # still here
 cat ~/.ssh/id_rsa         # still here
 ls -la ~/                 # unchanged
-docker ps                 # your host containers — sbxlab never appears
+docker ps                 # your host containers - sbxlab never appears
 sbx ls                    # sbxlab appears here instead
 </code></pre>
 <p>Everything that doesn't exist inside the VM is alive and well on the host.</p>
 <hr />
-<h2 id="part-3-guardrails-vs-sbx-why-you-need-both">Part 3 — Guardrails vs sbx: why you need both</h2>
+<h2 id="part-3-guardrails-vs-sbx-why-you-need-both">Part 3 - Guardrails vs sbx: why you need both</h2>
 <p>You might wonder: if the model refuses to print credentials, why does the sandbox matter?</p>
 <p><strong>Because guardrails and sbx defend different threats.</strong></p>
 <table>
@@ -5679,7 +5679,7 @@ sbx ls                    # sbxlab appears here instead
 </tr>
 <tr>
 <td>Prompt injection in a README or code file</td>
-<td>❌ May comply — looks like a task</td>
+<td>❌ May comply - looks like a task</td>
 <td>✅ File doesn't exist</td>
 </tr>
 <tr>
@@ -5695,7 +5695,7 @@ sbx ls                    # sbxlab appears here instead
 <tr>
 <td>Agent runs <code>rm -rf</code> outside workspace</td>
 <td>❌ Depends on model</td>
-<td>✅ Impossible — not mounted</td>
+<td>✅ Impossible - not mounted</td>
 </tr>
 <tr>
 <td>Agent exfiltrates to attacker URL</td>
@@ -5704,13 +5704,13 @@ sbx ls                    # sbxlab appears here instead
 </tr>
 </tbody>
 </table>
-<p><strong>Guardrails are a bet on the model.</strong> They work when the model is well-behaved, well-trained, and not under adversarial pressure. Change the model, jailbreak it, or hide the instruction in a file the agent reads — and the guardrails disappear.</p>
+<p><strong>Guardrails are a bet on the model.</strong> They work when the model is well-behaved, well-trained, and not under adversarial pressure. Change the model, jailbreak it, or hide the instruction in a file the agent reads - and the guardrails disappear.</p>
 <p><strong>sbx is a technical guarantee.</strong> The VM boundary is enforced by the hypervisor, not the model. It holds regardless of what the model does, what prompt it receives, or how it was trained.</p>
 <blockquote>
 <p>The right mental model: use guardrails to make agents well-behaved. Use sbx to limit the blast radius when they're not.</p>
 </blockquote>
 <hr />
-<h2 id="part-4-the-architecture">Part 4 — The architecture</h2>
+<h2 id="part-4-the-architecture">Part 4 - The architecture</h2>
 <pre><code>macOS host (L0)
 │
 ├── Your files, credentials, Docker daemon   ← outside the VM
@@ -5725,7 +5725,7 @@ sbx ls                    # sbxlab appears here instead
         ├── Blocks 169.254.169.254             ← AWS IMDS unreachable
         └── Balanced policy: allows dev sites, blocks everything else
 </code></pre>
-<p>The key technical fact: <strong>the VM has its own kernel</strong>. A container escape would still be inside the VM. There is no path from the VM's userspace to your host's userspace — the hypervisor enforces that boundary in hardware.</p>
+<p>The key technical fact: <strong>the VM has its own kernel</strong>. A container escape would still be inside the VM. There is no path from the VM's userspace to your host's userspace - the hypervisor enforces that boundary in hardware.</p>
 <hr />
 <h2 id="checkpoint">✅ Checkpoint</h2>
 <p>You've now empirically proven the isolation guarantee with real commands and real output:</p>
@@ -5734,7 +5734,7 @@ sbx ls                    # sbxlab appears here instead
 <li><code>~/.ssh/id_rsa</code> → <code>No such file or directory</code></li>
 <li><code>169.254.169.254</code> → <code>Blocked by network policy</code></li>
 <li><code>uname -r</code> → Linux kernel <code>6.12.44</code>, not macOS</li>
-<li><code>cat /proc/1/cgroup</code> → <code>/docker/...</code> — agent runs in VM's own Docker daemon</li>
+<li><code>cat /proc/1/cgroup</code> → <code>/docker/...</code> - agent runs in VM's own Docker daemon</li>
 </ul>
 <p>Not taken Docker's word for it. Proven it yourself.</p>
 <p>Next: how secrets are handled without ever entering the VM.</p>

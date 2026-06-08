@@ -4686,7 +4686,7 @@
   <a href="#1-quickview-fast-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Quickview — fast summary
+        1. Quickview - fast summary
       
     </span>
   </a>
@@ -4697,7 +4697,7 @@
   <a href="#2-cve-drill-down-see-the-actual-vulnerabilities" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. CVE drill-down — see the actual vulnerabilities
+        2. CVE drill-down - see the actual vulnerabilities
       
     </span>
   </a>
@@ -4708,7 +4708,7 @@
   <a href="#3-compare-see-exactly-what-changed-between-two-images" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Compare — see exactly what changed between two images
+        3. Compare - see exactly what changed between two images
       
     </span>
   </a>
@@ -4724,7 +4724,7 @@
   <a href="#recommendations-the-upgrade-path" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recommendations — the upgrade path
+        Recommendations - the upgrade path
       
     </span>
   </a>
@@ -5337,7 +5337,7 @@
   <a href="#1-quickview-fast-summary" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. Quickview — fast summary
+        1. Quickview - fast summary
       
     </span>
   </a>
@@ -5348,7 +5348,7 @@
   <a href="#2-cve-drill-down-see-the-actual-vulnerabilities" class="md-nav__link">
     <span class="md-ellipsis">
       
-        2. CVE drill-down — see the actual vulnerabilities
+        2. CVE drill-down - see the actual vulnerabilities
       
     </span>
   </a>
@@ -5359,7 +5359,7 @@
   <a href="#3-compare-see-exactly-what-changed-between-two-images" class="md-nav__link">
     <span class="md-ellipsis">
       
-        3. Compare — see exactly what changed between two images
+        3. Compare - see exactly what changed between two images
       
     </span>
   </a>
@@ -5375,7 +5375,7 @@
   <a href="#recommendations-the-upgrade-path" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Recommendations — the upgrade path
+        Recommendations - the upgrade path
       
     </span>
   </a>
@@ -5428,28 +5428,28 @@
 
 <h2 id="continuous-scanning-not-just-at-build">Continuous Scanning, Not Just at Build</h2>
 <blockquote>
-<p><strong>Best Practice #5:</strong> New CVEs are disclosed every day against images you built months ago. Scanning must happen throughout the entire SDLC — at code, build, registry push, and in production.</p>
+<p><strong>Best Practice #5:</strong> New CVEs are disclosed every day against images you built months ago. Scanning must happen throughout the entire SDLC - at code, build, registry push, and in production.</p>
 </blockquote>
 <p>A scan at build time tells you what was vulnerable when you built. It does <em>not</em> tell you whether yesterday's freshly-disclosed CVE affects the image you shipped last quarter. Continuous scanning closes that gap.</p>
 <h2 id="the-three-core-scout-commands">The three core Scout commands</h2>
-<h3 id="1-quickview-fast-summary">1. Quickview — fast summary</h3>
+<h3 id="1-quickview-fast-summary">1. Quickview - fast summary</h3>
 <pre><code class="language-bash">docker scout quickview catalog-service:slim --org &lt;YOUR_ORG&gt;
 </code></pre>
 <p>Use this as your default first look at any image. It returns CVE counts grouped by severity (Critical / High / Medium / Low / Unknown), plus the recommended base image upgrade.</p>
-<h3 id="2-cve-drill-down-see-the-actual-vulnerabilities">2. CVE drill-down — see the actual vulnerabilities</h3>
+<h3 id="2-cve-drill-down-see-the-actual-vulnerabilities">2. CVE drill-down - see the actual vulnerabilities</h3>
 <pre><code class="language-bash">docker scout cves catalog-service:slim \
     --only-severity critical,high \
     --org &lt;YOUR_ORG&gt;
 </code></pre>
-<p>This lists every CVE matching the severity filter, the affected package, the version, and (when available) the fix version. Filter aggressively in CI — most teams gate only on <code>critical,high</code>.</p>
-<h3 id="3-compare-see-exactly-what-changed-between-two-images">3. Compare — see exactly what changed between two images</h3>
+<p>This lists every CVE matching the severity filter, the affected package, the version, and (when available) the fix version. Filter aggressively in CI - most teams gate only on <code>critical,high</code>.</p>
+<h3 id="3-compare-see-exactly-what-changed-between-two-images">3. Compare - see exactly what changed between two images</h3>
 <pre><code class="language-bash">docker scout compare \
     --ignore-unchanged \
     --to catalog-service \
     catalog-service:slim \
     --org &lt;YOUR_ORG&gt;
 </code></pre>
-<p>The <code>compare</code> output shows exactly which packages were added/removed/changed and which CVEs were introduced or eliminated — actionable signal, not just noise. This is the command that turns a scary "289 CVEs!" report into "here are the 3 packages that actually changed".</p>
+<p>The <code>compare</code> output shows exactly which packages were added/removed/changed and which CVEs were introduced or eliminated - actionable signal, not just noise. This is the command that turns a scary "289 CVEs!" report into "here are the 3 packages that actually changed".</p>
 <p>Use <code>compare</code> whenever you:</p>
 <ul>
 <li>Bump a base image version</li>
@@ -5457,20 +5457,20 @@
 <li>Review a PR that touches the Dockerfile</li>
 <li>Roll out a new image to production</li>
 </ul>
-<h2 id="recommendations-the-upgrade-path">Recommendations — the upgrade path</h2>
+<h2 id="recommendations-the-upgrade-path">Recommendations - the upgrade path</h2>
 <pre><code class="language-bash">docker scout recommendations catalog-service:slim --org &lt;YOUR_ORG&gt;
 </code></pre>
 <p>Scout shows the exact upgrade tag that resolves remaining CVEs, along with how many vulnerabilities each candidate eliminates. Instead of "the base image has CVEs, good luck", you get "upgrade to <code>node:25-slim</code> and 23 of these go away."</p>
 <h2 id="background-sbom-indexing-in-docker-desktop">Background SBOM indexing in Docker Desktop</h2>
 <p>Enable via <strong>Settings → Features in development → Enable background Scout SBOM indexing</strong> in Docker Desktop.</p>
-<p>Once enabled, Scout continuously analyses every image you pull or build — you get alerts before you even think to scan. New CVE disclosed against an image you're running? Scout will tell you, automatically.</p>
+<p>Once enabled, Scout continuously analyses every image you pull or build - you get alerts before you even think to scan. New CVE disclosed against an image you're running? Scout will tell you, automatically.</p>
 <p>This is the missing piece for true continuous scanning: the CVE database changes every day, but most teams only scan at build time. Background indexing means your local images are always re-evaluated against the latest data.</p>
 <h2 id="what-about-production">What about production?</h2>
 <p>For production fleets, the same principles apply but at registry-/cluster-scale:</p>
 <ul>
-<li><strong>Registry scanning</strong> — Docker Hub and most registries can scan on push and continuously re-evaluate</li>
-<li><strong>Cluster scanning</strong> — runtime scanners like Trivy, Grype, and Wiz can pull and analyse every image referenced by a running deployment</li>
-<li><strong>VEX integration</strong> — DHI ships VEX documents that tell these scanners <em>which CVEs are non-applicable</em> (more in the <a href="../../dhi-proactive/attestations/">DHI attestations section</a>)</li>
+<li><strong>Registry scanning</strong> - Docker Hub and most registries can scan on push and continuously re-evaluate</li>
+<li><strong>Cluster scanning</strong> - runtime scanners like Trivy, Grype, and Wiz can pull and analyse every image referenced by a running deployment</li>
+<li><strong>VEX integration</strong> - DHI ships VEX documents that tell these scanners <em>which CVEs are non-applicable</em> (more in the <a href="../../dhi-proactive/attestations/">DHI attestations section</a>)</li>
 </ul>
 <p>Continue to <a href="../ci-integration/">CI Integration</a>.</p>
 

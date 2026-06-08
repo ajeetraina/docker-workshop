@@ -58,7 +58,7 @@ This config indexes ./src and ./pkg using two strategies:
 
 - chunked-embeddings converts code into vectors for semantic search (finding "authentication" when you search "login"), while bm25 does keyword matching (finding exact function names like HandleRequest).
 
-Chunks are 1500 characters with 150-character overlap to preserve context at boundaries. Both strategies run in parallel—embeddings returns up to 20 results, bm25 up to 15. RRF fusion merges them by rank (not score), deduplicates, and returns the top 5. The agent gets a search tool linked to this index and is instructed to search before answering.
+Chunks are 1500 characters with 150-character overlap to preserve context at boundaries. Both strategies run in parallel-embeddings returns up to 20 results, bm25 up to 15. RRF fusion merges them by rank (not score), deduplicates, and returns the top 5. The agent gets a search tool linked to this index and is instructed to search before answering.
 
 
 ## How it works?
@@ -66,7 +66,7 @@ Chunks are 1500 characters with 150-character overlap to preserve context at bou
 This is a RAG (Retrieval-Augmented Generation) config for cagent. Here's what each section does:
 
 ```
-rag: — The knowledge base
+rag: - The knowledge base
 yamldocs: [./src, ./pkg]          # Index these 2 directories (your Go source code)
 ```
 
@@ -77,11 +77,11 @@ Two retrieval strategies running in parallel:
 | chunked-embeddings | Splits code into 1500-char chunks (150 overlap), converts to vectors via OpenAI embeddings, finds top 20 semantically similar chunks |
 | bm25 | Keyword-based search (like grep but smarter), finds top 15 matches by term frequency |
 
-results: — How results are merged
+results: - How results are merged
 
 ```
 fusion:
-  strategy: rrf    # Reciprocal Rank Fusion — combines both rankings
+  strategy: rrf    # Reciprocal Rank Fusion - combines both rankings
   k: 60           # Smoothing factor (higher = more equal weighting)
 deduplicate: true  # Remove duplicate chunks
 limit: 5          # Feed only the best 5 chunks to the LLM

@@ -3539,7 +3539,7 @@
   <a href="#step-1-block-pypi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — Block PyPI
+        Step 1 - Block PyPI
       
     </span>
   </a>
@@ -3550,7 +3550,7 @@
   <a href="#step-2-restart-the-sandbox" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Restart the sandbox
+        Step 2 - Restart the sandbox
       
     </span>
   </a>
@@ -3561,7 +3561,7 @@
   <a href="#step-3-watch-the-agent-fail" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Watch the agent fail
+        Step 3 - Watch the agent fail
       
     </span>
   </a>
@@ -3572,7 +3572,7 @@
   <a href="#step-4-find-and-remove-the-deny-rule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Find and remove the deny rule
+        Step 4 - Find and remove the deny rule
       
     </span>
   </a>
@@ -3583,7 +3583,7 @@
   <a href="#step-5-confirm-the-agent-works-again" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 5 — Confirm the agent works again
+        Step 5 - Confirm the agent works again
       
     </span>
   </a>
@@ -5400,7 +5400,7 @@
   <a href="#step-1-block-pypi" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 — Block PyPI
+        Step 1 - Block PyPI
       
     </span>
   </a>
@@ -5411,7 +5411,7 @@
   <a href="#step-2-restart-the-sandbox" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 — Restart the sandbox
+        Step 2 - Restart the sandbox
       
     </span>
   </a>
@@ -5422,7 +5422,7 @@
   <a href="#step-3-watch-the-agent-fail" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 — Watch the agent fail
+        Step 3 - Watch the agent fail
       
     </span>
   </a>
@@ -5433,7 +5433,7 @@
   <a href="#step-4-find-and-remove-the-deny-rule" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 — Find and remove the deny rule
+        Step 4 - Find and remove the deny rule
       
     </span>
   </a>
@@ -5444,7 +5444,7 @@
   <a href="#step-5-confirm-the-agent-works-again" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 5 — Confirm the agent works again
+        Step 5 - Confirm the agent works again
       
     </span>
   </a>
@@ -5522,7 +5522,7 @@
 
 <h1 id="network-policy">Network Policy</h1>
 <p>The sandbox controls what the agent can reach on the network. This is the third
-layer of isolation — and it gives you a complete audit trail of every connection
+layer of isolation - and it gives you a complete audit trail of every connection
 the agent attempts.</p>
 <hr />
 <h2 id="the-default-already-open-for-common-dev-tools">The default: already open for common dev tools</h2>
@@ -5562,7 +5562,7 @@ typically needs. You don't need to configure anything for standard workflows.</p
 </tr>
 </tbody>
 </table>
-<p><code>pypi.org</code>, <code>files.pythonhosted.org</code>, <code>npmjs.org</code>, <code>github.com</code> — all already
+<p><code>pypi.org</code>, <code>files.pythonhosted.org</code>, <code>npmjs.org</code>, <code>github.com</code> - all already
 allowed. No setup required.</p>
 <hr />
 <h2 id="prove-it-install-a-package">Prove it: install a package</h2>
@@ -5581,14 +5581,14 @@ allowed. No setup required.</p>
   └ Successfully installed httpx-0.28.1
     0.28.1
 </code></pre>
-<p>The agent self-corrected and got the answer — all inside the microVM, your Mac
+<p>The agent self-corrected and got the answer - all inside the microVM, your Mac
 untouched.</p>
 <hr />
 <h2 id="the-real-power-deny-rules">The real power: deny rules</h2>
 <p>The default policies allow common tools. But you can <strong>restrict</strong> what the agent
-can reach — blocking specific domains at the network layer, regardless of what
+can reach - blocking specific domains at the network layer, regardless of what
 the agent tries.</p>
-<h3 id="step-1-block-pypi">Step 1 — Block PyPI</h3>
+<h3 id="step-1-block-pypi">Step 1 - Block PyPI</h3>
 <pre><code class="language-bash">sbx policy deny network pypi.org
 </code></pre>
 <p>Verify it's active:</p>
@@ -5597,17 +5597,17 @@ the agent tries.</p>
 <p>You'll see a new local entry at the bottom:</p>
 <pre><code class="language-plaintext">local:9701dc6e-...   network   deny   pypi.org
 </code></pre>
-<h3 id="step-2-restart-the-sandbox">Step 2 — Restart the sandbox</h3>
+<h3 id="step-2-restart-the-sandbox">Step 2 - Restart the sandbox</h3>
 <p>Policy changes require a sandbox restart to take effect:</p>
 <pre><code class="language-bash">sbx stop sbxlab
 sbx run sbxlab
 </code></pre>
-<h3 id="step-3-watch-the-agent-fail">Step 3 — Watch the agent fail</h3>
+<h3 id="step-3-watch-the-agent-fail">Step 3 - Watch the agent fail</h3>
 <p>Ask the agent to install a package:</p>
 <blockquote>
 <p>Install requests and tell me the version</p>
 </blockquote>
-<p>The agent is persistent — it will try multiple approaches, all of which fail:</p>
+<p>The agent is persistent - it will try multiple approaches, all of which fail:</p>
 <pre><code class="language-plaintext">• Ran pip install requests
   └ error: externally-managed-environment
 
@@ -5619,13 +5619,13 @@ sbx run sbxlab
   └ HTTP/2 403
 </code></pre>
 <p>The agent tried everything it knew. It still failed. Not because of a system
-prompt instruction — because the proxy blocked the TCP connection at the network
+prompt instruction - because the proxy blocked the TCP connection at the network
 layer.</p>
 <blockquote>
 <p><strong>Key insight:</strong> A smarter agent cannot bypass a network deny rule.
 Agent capability and network policy are completely independent layers.</p>
 </blockquote>
-<h3 id="step-4-find-and-remove-the-deny-rule">Step 4 — Find and remove the deny rule</h3>
+<h3 id="step-4-find-and-remove-the-deny-rule">Step 4 - Find and remove the deny rule</h3>
 <p>List policies to get the rule ID:</p>
 <pre><code class="language-bash">sbx policy ls
 </code></pre>
@@ -5634,25 +5634,25 @@ Agent capability and network policy are completely independent layers.</p>
 <pre><code class="language-bash">sbx policy rm network --id &lt;uuid-from-policy-ls&gt;
 </code></pre>
 <blockquote>
-<p><strong>Important:</strong> Use <code>--id</code> with just the UUID — drop the <code>local:</code> prefix.</p>
+<p><strong>Important:</strong> Use <code>--id</code> with just the UUID - drop the <code>local:</code> prefix.</p>
 </blockquote>
 <p>Verify it's gone:</p>
 <pre><code class="language-bash">sbx policy ls
 </code></pre>
 <p>No local entries should remain.</p>
-<h3 id="step-5-confirm-the-agent-works-again">Step 5 — Confirm the agent works again</h3>
+<h3 id="step-5-confirm-the-agent-works-again">Step 5 - Confirm the agent works again</h3>
 <p>Restart the sandbox:</p>
 <pre><code class="language-bash">sbx stop sbxlab
 sbx run sbxlab
 </code></pre>
-<p>Ask the agent to install requests again — it works immediately.</p>
+<p>Ask the agent to install requests again - it works immediately.</p>
 <hr />
 <h2 id="key-rules-about-policy-precedence">Key rules about policy precedence</h2>
 <ul>
-<li><strong>Deny overrides allow</strong> — a local deny rule beats any default allow policy</li>
-<li><strong>Restart required</strong> — policy changes take effect on the next <code>sbx run</code></li>
-<li><strong>Always clean up deny rules</strong> — use <code>sbx policy rm network --id &lt;uuid&gt;</code></li>
-<li><strong>Default policies cannot be removed</strong> — only local rules you add can be removed</li>
+<li><strong>Deny overrides allow</strong> - a local deny rule beats any default allow policy</li>
+<li><strong>Restart required</strong> - policy changes take effect on the next <code>sbx run</code></li>
+<li><strong>Always clean up deny rules</strong> - use <code>sbx policy rm network --id &lt;uuid&gt;</code></li>
+<li><strong>Default policies cannot be removed</strong> - only local rules you add can be removed</li>
 </ul>
 <hr />
 <h2 id="watch-live-connections">Watch live connections</h2>
@@ -5663,7 +5663,7 @@ sbx run sbxlab
 <pre><code class="language-plaintext">ALLOWED   pypi.org                 200
 ALLOWED   files.pythonhosted.org   200
 </code></pre>
-<p>Add a deny rule and repeat — you'll see:</p>
+<p>Add a deny rule and repeat - you'll see:</p>
 <pre><code class="language-plaintext">BLOCKED   pypi.org   -
 </code></pre>
 <p>This log is your <strong>audit trail</strong>. For regulated enterprises it answers:
@@ -5671,7 +5671,7 @@ ALLOWED   files.pythonhosted.org   200
 <hr />
 <h2 id="reach-host-services-from-inside-the-sandbox">Reach host services from inside the sandbox</h2>
 <p>If you have a local service running on your Mac (like Ollama on port 11434),
-use <code>host.docker.internal</code> — not <code>localhost</code>, which resolves to the VM itself:</p>
+use <code>host.docker.internal</code> - not <code>localhost</code>, which resolves to the VM itself:</p>
 <pre><code class="language-bash">sbx policy allow network localhost:11434
 </code></pre>
 <p>Then inside the sandbox, connect to <code>host.docker.internal:11434</code>.</p>
@@ -5684,7 +5684,7 @@ use <code>host.docker.internal</code> — not <code>localhost</code>, which reso
 <li>Remove the deny rule with <code>sbx policy rm network --id &lt;uuid&gt;</code></li>
 <li>Confirm the agent works again after the deny rule is removed</li>
 </ul>
-<p>Next: branch mode — how to run agents without touching your working tree.</p>
+<p>Next: branch mode - how to run agents without touching your working tree.</p>
 
 
 

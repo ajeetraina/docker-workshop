@@ -1,6 +1,6 @@
 # Welcome to Docker Workshop
 
-A hands-on, workshop covering the full Docker developer experience — from inner-loop workflows and containerization basics all the way to AI agents, MCP servers, security hardening, and Sandboxing.
+A hands-on, workshop covering the full Docker developer experience - from inner-loop workflows and containerization basics all the way to AI agents, MCP servers, security hardening, and Sandboxing.
 
 
 ## 🗺️ What's Covered
@@ -14,18 +14,18 @@ Get comfortable with core Docker concepts and a real-world sample app.
 | Inner vs Outer Loop Development | [Start →](lab1/overview/) |
 | What is a Container | [Start →](lab1/what-is-a-container/) |
 | Running Postgres Containers | [Start →](lab1/postgres/) |
-| Product Catalog — Overview | [Start →](product-catalog/overview/) |
-| Product Catalog — Tech Stack | [Start →](product-catalog/tech-stack/) |
-| Product Catalog — Develop | [Start →](product-catalog/develop/) |
-| Product Catalog — Test | [Start →](product-catalog/test/) |
-| Product Catalog — Build | [Start →](product-catalog/build/) |
-| Product Catalog — Secure | [Start →](product-catalog/secure/) |
+| Product Catalog - Overview | [Start →](product-catalog/overview/) |
+| Product Catalog - Tech Stack | [Start →](product-catalog/tech-stack/) |
+| Product Catalog - Develop | [Start →](product-catalog/develop/) |
+| Product Catalog - Test | [Start →](product-catalog/test/) |
+| Product Catalog - Build | [Start →](product-catalog/build/) |
+| Product Catalog - Secure | [Start →](product-catalog/secure/) |
 
 ---
 
 ### 🧠 Docker & AI
 
-Run AI models locally, connect them to tools via MCP, build agents, and safely sandbox AI-generated actions — all inside Docker.
+Run AI models locally, connect them to tools via MCP, build agents, and safely sandbox AI-generated actions - all inside Docker.
 
 #### 🤖 Docker Agent
 
@@ -64,7 +64,7 @@ Build, run, and share AI agents using Docker's declarative multi-agent runtime.
 
 #### 🚀 Docker Model Runner
 
-Run LLMs locally inside Docker — no cloud required, GPU-accelerated inference out of the box.
+Run LLMs locally inside Docker - no cloud required, GPU-accelerated inference out of the box.
 
 | Topic | Link |
 | --- | --- |
@@ -110,11 +110,11 @@ Multi-agent workflows orchestrated with Docker Compose.
 | --- | --- |
 | Overview | [Start →](lab6/overview/) |
 | Getting Started | [Start →](lab6/getting-started/) |
-| DevDuck — Overview | [Start →](lab6/projects/devduck/overview/) |
-| DevDuck — Prerequisite | [Start →](lab6/projects/devduck/prereq/) |
-| DevDuck — Getting Started | [Start →](lab6/projects/devduck/getting-started/) |
-| DevDuck — Local Agent Interaction | [Start →](lab6/projects/devduck/local-agent/) |
-| DevDuck — Cerebras Interaction | [Start →](lab6/projects/devduck/cerebras-interaction/) |
+| DevDuck - Overview | [Start →](lab6/projects/devduck/overview/) |
+| DevDuck - Prerequisite | [Start →](lab6/projects/devduck/prereq/) |
+| DevDuck - Getting Started | [Start →](lab6/projects/devduck/getting-started/) |
+| DevDuck - Local Agent Interaction | [Start →](lab6/projects/devduck/local-agent/) |
+| DevDuck - Cerebras Interaction | [Start →](lab6/projects/devduck/cerebras-interaction/) |
 | Agentic Product Catalog | [Start →](lab6/projects/agentic-catalog/) |
 | Hackathon Recommender | [Start →](lab6/projects/hackathon-recommender/) |
 | A2A Multi-Agent Fact Checker | [Start →](lab6/projects/a2a-multi-agent-fact-checker/) |
@@ -148,7 +148,7 @@ Offload GPU-intensive workloads to the cloud seamlessly.
 
 ## 🗓️ Suggested Learning Paths
 
-This workshop is **self-paced and modular** — pick any topic and go. Here are a few suggested paths based on your goals:
+This workshop is **self-paced and modular** - pick any topic and go. Here are a few suggested paths based on your goals:
 
 | Goal | Suggested Topics |
 | --- | --- |

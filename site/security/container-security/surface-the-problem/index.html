@@ -5308,7 +5308,7 @@
 <p>Before we fix anything, let's measure exactly what's wrong with the starting image. After the setup patch, our <code>Dockerfile</code> starts with:</p>
 <pre><code class="language-dockerfile">FROM node:18 AS base
 </code></pre>
-<p><code>node:18</code> is a full, unoptimised image — and it's where most teams start by default. Let's see what that costs us.</p>
+<p><code>node:18</code> is a full, unoptimised image - and it's where most teams start by default. Let's see what that costs us.</p>
 <h2 id="quick-vulnerability-overview">Quick vulnerability overview</h2>
 <pre><code class="language-bash">docker scout quickview catalog-service --org &lt;YOUR_ORG&gt;
 </code></pre>
@@ -5321,7 +5321,7 @@
 </code></pre>
 <p>Scout is already pointing at the answer: <strong>one <code>FROM</code> line change</strong> from <code>node:18</code> to <code>node:25-slim</code> would eliminate <strong>2 critical and 25 high</strong> CVEs immediately.</p>
 <h2 id="policy-evaluation">Policy evaluation</h2>
-<p>Scout doesn't just count CVEs — it evaluates your image against a set of organisational policies:</p>
+<p>Scout doesn't just count CVEs - it evaluates your image against a set of organisational policies:</p>
 <pre><code class="language-bash">docker scout policy catalog-service --org &lt;YOUR_ORG&gt;
 </code></pre>
 <pre><code class="language-text">Policy status  FAILED  (4/7 policies met)
@@ -5341,10 +5341,10 @@
 <li>Developers pull a base image, build, ship</li>
 <li>CI scanner finds 2 critical and 26 high CVEs</li>
 <li>Developers spend 3 days researching fixes</li>
-<li>Rebuild — 189 vulnerabilities still remain</li>
+<li>Rebuild - 189 vulnerabilities still remain</li>
 <li>Cycle repeats; security blocks deployment</li>
 </ol>
-<p>The next 8 sections walk through fixing this <strong>proactively, one best practice at a time</strong> — and then <a href="../../dhi-proactive/overview/">migrating to DHI</a> to eliminate the cycle altogether.</p>
+<p>The next 8 sections walk through fixing this <strong>proactively, one best practice at a time</strong> - and then <a href="../../dhi-proactive/overview/">migrating to DHI</a> to eliminate the cycle altogether.</p>
 
 
 

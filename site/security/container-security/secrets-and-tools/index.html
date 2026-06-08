@@ -4573,7 +4573,7 @@
   <a href="#the-wrong-approaches-all-visible-to-attackers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The wrong approaches — all visible to attackers
+        The wrong approaches - all visible to attackers
       
     </span>
   </a>
@@ -4584,7 +4584,7 @@
   <a href="#inspect-image-layers-confirm-no-secrets-leaked" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inspect image layers — confirm no secrets leaked
+        Inspect image layers - confirm no secrets leaked
       
     </span>
   </a>
@@ -5337,7 +5337,7 @@
   <a href="#the-wrong-approaches-all-visible-to-attackers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        The wrong approaches — all visible to attackers
+        The wrong approaches - all visible to attackers
       
     </span>
   </a>
@@ -5348,7 +5348,7 @@
   <a href="#inspect-image-layers-confirm-no-secrets-leaked" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Inspect image layers — confirm no secrets leaked
+        Inspect image layers - confirm no secrets leaked
       
     </span>
   </a>
@@ -5430,7 +5430,7 @@
 <p>The last three best practices all share a common theme: <strong>don't ship anything to production that an attacker could use against you</strong>. That includes credentials, dev tooling, and standard OS utilities.</p>
 <h2 id="bp6-secrets">BP#6: Secrets</h2>
 <p>Containers often need credentials: DB passwords, TLS certs, API keys, SSH keys for private package registries. Where you put them determines who can read them.</p>
-<h3 id="the-wrong-approaches-all-visible-to-attackers">The wrong approaches — all visible to attackers</h3>
+<h3 id="the-wrong-approaches-all-visible-to-attackers">The wrong approaches - all visible to attackers</h3>
 <table>
 <thead>
 <tr>
@@ -5465,47 +5465,47 @@
 </tr>
 </tbody>
 </table>
-<h3 id="inspect-image-layers-confirm-no-secrets-leaked">Inspect image layers — confirm no secrets leaked</h3>
-<p><code>docker history</code> shows every command that built the image — and exposes anything that was inlined into a layer:</p>
+<h3 id="inspect-image-layers-confirm-no-secrets-leaked">Inspect image layers - confirm no secrets leaked</h3>
+<p><code>docker history</code> shows every command that built the image - and exposes anything that was inlined into a layer:</p>
 <pre><code class="language-bash">docker history catalog-service:slim
 </code></pre>
-<p>Look through every layer — no credentials, tokens, or keys should be visible. If you see a <code>RUN echo "API_KEY=..."</code> or a <code>COPY .env</code>, that secret is now permanently embedded in the image.</p>
+<p>Look through every layer - no credentials, tokens, or keys should be visible. If you see a <code>RUN echo "API_KEY=..."</code> or a <code>COPY .env</code>, that secret is now permanently embedded in the image.</p>
 <h3 id="buildkit-build-time-secrets">BuildKit build-time secrets</h3>
 <p>BuildKit's <code>--mount=type=secret</code> lets you use a secret during build <strong>without it ever being written to any layer</strong>:</p>
-<pre><code class="language-dockerfile"># WRONG — SSH key baked into layer forever
+<pre><code class="language-dockerfile"># WRONG - SSH key baked into layer forever
 RUN cp /root/.ssh/id_rsa /app/key
 
-# RIGHT — BuildKit secret, never written to any layer
+# RIGHT - BuildKit secret, never written to any layer
 RUN --mount=type=secret,id=mysecret cat /run/secrets/mysecret
 </code></pre>
 <pre><code class="language-bash">docker build --secret id=mysecret,src=./mysecret.txt -t myapp .
 </code></pre>
 <p>The secret is mounted into the build container at <code>/run/secrets/mysecret</code>, used during the <code>RUN</code>, then disappears. It never lands in <code>docker history</code> and never ships in the image.</p>
-<p>For runtime secrets, integrate with a real vault (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault) and fetch them at startup — never bake them in.</p>
+<p>For runtime secrets, integrate with a real vault (HashiCorp Vault, AWS Secrets Manager, Azure Key Vault) and fetch them at startup - never bake them in.</p>
 <hr />
 <h2 id="bp7-no-dev-tools-in-production">BP#7: No dev tools in production</h2>
 <p>Verify the production image has no dev tooling beyond the runtime itself:</p>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which npm   || echo &quot;npm not found — good&quot;
+<pre><code class="language-bash">docker run --rm catalog-service:slim which npm   || echo &quot;npm not found - good&quot;
 </code></pre>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which yarn  || echo &quot;yarn not found — good&quot;
+<pre><code class="language-bash">docker run --rm catalog-service:slim which yarn  || echo &quot;yarn not found - good&quot;
 </code></pre>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which git   || echo &quot;git not found — good&quot;
+<pre><code class="language-bash">docker run --rm catalog-service:slim which git   || echo &quot;git not found - good&quot;
 </code></pre>
 <p>If any of these <em>do</em> exist in your prod image, you have either too much in the base layer or you're shipping the dev stage by mistake.</p>
 <hr />
 <h2 id="bp8-no-os-tools-in-production">BP#8: No OS tools in production</h2>
 <p>The same logic applies to standard OS utilities:</p>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which curl    || echo &quot;curl not found — good&quot;
+<pre><code class="language-bash">docker run --rm catalog-service:slim which curl    || echo &quot;curl not found - good&quot;
 </code></pre>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which wget    || echo &quot;wget not found — good&quot;
+<pre><code class="language-bash">docker run --rm catalog-service:slim which wget    || echo &quot;wget not found - good&quot;
 </code></pre>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which apt-get || echo &quot;apt-get not found — good&quot;
+<pre><code class="language-bash">docker run --rm catalog-service:slim which apt-get || echo &quot;apt-get not found - good&quot;
 </code></pre>
-<pre><code class="language-bash">docker run --rm catalog-service:slim which sudo    || echo &quot;sudo not found — good&quot;
+<pre><code class="language-bash">docker run --rm catalog-service:slim which sudo    || echo &quot;sudo not found - good&quot;
 </code></pre>
 <blockquote>
-<p><strong>Why no <code>curl</code>?</strong> An attacker who gets code execution typically uses <code>curl</code> or <code>wget</code> to download additional payloads — a reverse shell, a crypto miner, a credential stealer. Removing these utilities meaningfully raises the cost of a successful exploit. The attacker now has to write their own networking code from inside the runtime they're stuck with.</p>
-<p><strong>Why no <code>apt-get</code>?</strong> Without a package manager, the attacker can't install anything new — they're limited to whatever is already in the image. With a minimal image, that's almost nothing.</p>
+<p><strong>Why no <code>curl</code>?</strong> An attacker who gets code execution typically uses <code>curl</code> or <code>wget</code> to download additional payloads - a reverse shell, a crypto miner, a credential stealer. Removing these utilities meaningfully raises the cost of a successful exploit. The attacker now has to write their own networking code from inside the runtime they're stuck with.</p>
+<p><strong>Why no <code>apt-get</code>?</strong> Without a package manager, the attacker can't install anything new - they're limited to whatever is already in the image. With a minimal image, that's almost nothing.</p>
 </blockquote>
 <h2 id="attack-surface-count-so-far">Attack surface count so far</h2>
 <pre><code class="language-bash">docker scout cves catalog-service:slim --format only-packages --org &lt;YOUR_ORG&gt;

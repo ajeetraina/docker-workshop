@@ -75,7 +75,7 @@ Explore this codebase and give me:
 4. Any obvious issues or areas of concern
 ```
 
-The agent will read the source files and report back. Watch it work — it's reading the actual files from your `~/sbx-lab` directory.
+The agent will read the source files and report back. Watch it work - it's reading the actual files from your `~/sbx-lab` directory.
 
 ---
 
@@ -96,7 +96,7 @@ SANDBOX   AGENT      STATUS    PORTS   WORKSPACE
 sbxlab    <agent>   running           /your/project/path
 ```
 
-The sandbox isn't a container on your host — it's a VM. That distinction matters, and you'll prove it hands-on in the next module.
+The sandbox isn't a container on your host - it's a VM. That distinction matters, and you'll prove it hands-on in the next module.
 
 ---
 
@@ -108,7 +108,7 @@ Your `~/sbx-lab` directory is mounted into the VM at the same absolute path. Thi
 - **Changes the agent makes inside the sandbox** appear instantly on your host
 - **Nothing else from your host** is accessible inside the VM
 
-Open one of the source files in your editor on the host. Make a small change and save it. Then ask the agent inside the sandbox to read that file. It sees your change immediately — no sync delay, no copy step.
+Open one of the source files in your editor on the host. Make a small change and save it. Then ask the agent inside the sandbox to read that file. It sees your change immediately - no sync delay, no copy step.
 
 ---
 
@@ -129,7 +129,7 @@ In a separate host terminal, run:
 sbx
 ```
 
-The dashboard shows your sandboxes as cards with live CPU and memory usage. Press `Tab` to switch to the **Network panel** — a live log of every outbound connection the sandbox makes.
+The dashboard shows your sandboxes as cards with live CPU and memory usage. Press `Tab` to switch to the **Network panel** - a live log of every outbound connection the sandbox makes.
 
 Press `Ctrl-C` then `Y` to exit without stopping your sandboxes.
 
@@ -143,4 +143,4 @@ Before moving on, confirm:
 - `sbx ls` on the host shows `sbxlab` with status `running`
 - The agent can read the codebase files
 
-Next: the isolation proof — where you'll systematically try to break out of the VM.
+Next: the isolation proof - where you'll systematically try to break out of the VM.

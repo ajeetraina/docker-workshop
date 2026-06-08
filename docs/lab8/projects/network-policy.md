@@ -1,7 +1,7 @@
 # Network Policy
 
 The sandbox controls what the agent can reach on the network. This is the third
-layer of isolation — and it gives you a complete audit trail of every connection
+layer of isolation - and it gives you a complete audit trail of every connection
 the agent attempts.
 
 ---
@@ -27,7 +27,7 @@ You'll see five policy groups:
 | `default-cloud-infrastructure` | AWS, GCP, Azure, Vercel, Fastly |
 | `default-os-packages` | Ubuntu, Debian, Alpine package repos |
 
-`pypi.org`, `files.pythonhosted.org`, `npmjs.org`, `github.com` — all already
+`pypi.org`, `files.pythonhosted.org`, `npmjs.org`, `github.com` - all already
 allowed. No setup required.
 
 ---
@@ -55,7 +55,7 @@ The agent will work through PEP 668 on its own and successfully install:
     0.28.1
 ```
 
-The agent self-corrected and got the answer — all inside the microVM, your Mac
+The agent self-corrected and got the answer - all inside the microVM, your Mac
 untouched.
 
 ---
@@ -63,10 +63,10 @@ untouched.
 ## The real power: deny rules
 
 The default policies allow common tools. But you can **restrict** what the agent
-can reach — blocking specific domains at the network layer, regardless of what
+can reach - blocking specific domains at the network layer, regardless of what
 the agent tries.
 
-### Step 1 — Block PyPI
+### Step 1 - Block PyPI
 
 ```bash
 sbx policy deny network pypi.org
@@ -84,7 +84,7 @@ You'll see a new local entry at the bottom:
 local:9701dc6e-...   network   deny   pypi.org
 ```
 
-### Step 2 — Restart the sandbox
+### Step 2 - Restart the sandbox
 
 Policy changes require a sandbox restart to take effect:
 
@@ -93,13 +93,13 @@ sbx stop sbxlab
 sbx run sbxlab
 ```
 
-### Step 3 — Watch the agent fail
+### Step 3 - Watch the agent fail
 
 Ask the agent to install a package:
 
 > Install requests and tell me the version
 
-The agent is persistent — it will try multiple approaches, all of which fail:
+The agent is persistent - it will try multiple approaches, all of which fail:
 
 ```plaintext
 • Ran pip install requests
@@ -114,13 +114,13 @@ The agent is persistent — it will try multiple approaches, all of which fail:
 ```
 
 The agent tried everything it knew. It still failed. Not because of a system
-prompt instruction — because the proxy blocked the TCP connection at the network
+prompt instruction - because the proxy blocked the TCP connection at the network
 layer.
 
 > **Key insight:** A smarter agent cannot bypass a network deny rule.
 > Agent capability and network policy are completely independent layers.
 
-### Step 4 — Find and remove the deny rule
+### Step 4 - Find and remove the deny rule
 
 List policies to get the rule ID:
 
@@ -135,7 +135,7 @@ Look for the local deny entry at the bottom. Copy its UUID (the part after
 sbx policy rm network --id <uuid-from-policy-ls>
 ```
 
-> **Important:** Use `--id` with just the UUID — drop the `local:` prefix.
+> **Important:** Use `--id` with just the UUID - drop the `local:` prefix.
 
 Verify it's gone:
 
@@ -145,7 +145,7 @@ sbx policy ls
 
 No local entries should remain.
 
-### Step 5 — Confirm the agent works again
+### Step 5 - Confirm the agent works again
 
 Restart the sandbox:
 
@@ -154,16 +154,16 @@ sbx stop sbxlab
 sbx run sbxlab
 ```
 
-Ask the agent to install requests again — it works immediately.
+Ask the agent to install requests again - it works immediately.
 
 ---
 
 ## Key rules about policy precedence
 
-- **Deny overrides allow** — a local deny rule beats any default allow policy
-- **Restart required** — policy changes take effect on the next `sbx run`
-- **Always clean up deny rules** — use `sbx policy rm network --id <uuid>`
-- **Default policies cannot be removed** — only local rules you add can be removed
+- **Deny overrides allow** - a local deny rule beats any default allow policy
+- **Restart required** - policy changes take effect on the next `sbx run`
+- **Always clean up deny rules** - use `sbx policy rm network --id <uuid>`
+- **Default policies cannot be removed** - only local rules you add can be removed
 
 ---
 
@@ -182,7 +182,7 @@ ALLOWED   pypi.org                 200
 ALLOWED   files.pythonhosted.org   200
 ```
 
-Add a deny rule and repeat — you'll see:
+Add a deny rule and repeat - you'll see:
 
 ```plaintext
 BLOCKED   pypi.org   -
@@ -196,7 +196,7 @@ This log is your **audit trail**. For regulated enterprises it answers:
 ## Reach host services from inside the sandbox
 
 If you have a local service running on your Mac (like Ollama on port 11434),
-use `host.docker.internal` — not `localhost`, which resolves to the VM itself:
+use `host.docker.internal` - not `localhost`, which resolves to the VM itself:
 
 ```bash
 sbx policy allow network localhost:11434
@@ -215,4 +215,4 @@ Before moving on, confirm you can:
 - Remove the deny rule with `sbx policy rm network --id <uuid>`
 - Confirm the agent works again after the deny rule is removed
 
-Next: branch mode — how to run agents without touching your working tree.
+Next: branch mode - how to run agents without touching your working tree.

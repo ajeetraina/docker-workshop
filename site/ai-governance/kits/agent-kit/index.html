@@ -5333,7 +5333,7 @@
 
 
 <h1 id="fork-an-agent-kit-claude-without-dangerously-skip-permissions">Fork an Agent Kit: Claude Without --dangerously-skip-permissions</h1>
-<p>Mixin kits extend existing agents. Agent kits define one from scratch. The most common use case is forking a built-in agent to change one thing — the entrypoint, the model, or a network rule.</p>
+<p>Mixin kits extend existing agents. Agent kits define one from scratch. The most common use case is forking a built-in agent to change one thing - the entrypoint, the model, or a network rule.</p>
 <p>This section forks the built-in <code>claude</code> agent to remove <code>--dangerously-skip-permissions</code>, giving you a version where every tool call requires explicit approval.</p>
 <hr />
 <h2 id="create-the-agent-kit">Create the agent kit</h2>
@@ -5342,7 +5342,7 @@
 kind: agent
 name: claude-safe
 displayName: Claude Code (with approval prompts)
-description: Claude Code without --dangerously-skip-permissions — every tool call requires approval
+description: Claude Code without --dangerously-skip-permissions - every tool call requires approval
 
 agent:
   image: &quot;docker/sandbox-templates:claude-code-docker&quot;
@@ -5372,7 +5372,7 @@ credentials:
 <h2 id="run-it">Run it</h2>
 <pre><code class="language-bash">sbx run claude-safe --kit ./kits/claude-safe/
 </code></pre>
-<p>The agent argument to <code>sbx run</code> matches the <code>name:</code> field in the spec — not the directory name.</p>
+<p>The agent argument to <code>sbx run</code> matches the <code>name:</code> field in the spec - not the directory name.</p>
 <hr />
 <h2 id="stack-it-with-the-docker-review-mixin">Stack it with the docker-review mixin</h2>
 <p>Agent kits and mixin kits compose. Run the <code>claude-safe</code> agent with the <code>docker-review</code> skill loaded on top:</p>

@@ -5533,12 +5533,12 @@
 <h1 id="running-open-source-models-with-sbx">Running Open-Source Models with sbx</h1>
 <p>So far you've governed agents that call cloud LLMs. This module closes the last
 gap: running agents inside sbx against <strong>local open-source models</strong> on your Mac
-— no API keys, no egress, no cloud dependency.</p>
+- no API keys, no egress, no cloud dependency.</p>
 <p>The pattern is simple once you see it:</p>
 <ul>
 <li><strong>Docker Model Runner</strong> runs on your Mac host at <code>localhost:12434</code></li>
 <li><strong>The agent</strong> runs inside the sbx microVM</li>
-<li><strong>Only one port</strong> crosses the VM boundary — the OpenAI-compatible HTTP endpoint</li>
+<li><strong>Only one port</strong> crosses the VM boundary - the OpenAI-compatible HTTP endpoint</li>
 </ul>
 <p>That's the strong story: air-gapped agent workflows with zero cloud
 dependency, still governed by the same sandbox, same network policy, same
@@ -5548,7 +5548,7 @@ audit log.</p>
 <p>Two reasons:</p>
 <ol>
 <li><strong>Models are heavy.</strong> A 4GB GGUF file plus GPU/Metal acceleration belongs on
-   the host. The sbx is a lean microVM — it doesn't have Metal access.</li>
+   the host. The sbx is a lean microVM - it doesn't have Metal access.</li>
 <li><strong>Docker Model Runner already exists on the host.</strong> It's built into Docker
    Desktop, exposes an OpenAI-compatible API, and can be shared by every sbx on
    your machine.</li>
@@ -5562,7 +5562,7 @@ needs to pass through.</p>
 curl -s http://localhost:12434/engines/llama.cpp/v1/models | head -20
 </code></pre>
 <p>You should see a list of local models. If <code>docker model ls</code> is empty, pull a
-small one — smollm2 is 360MB and loads instantly:</p>
+small one - smollm2 is 360MB and loads instantly:</p>
 <pre><code class="language-bash">docker model pull ai/smollm2:360M-Q4_K_M
 </code></pre>
 <p>For a real coding demo, pull something bigger:</p>
@@ -5574,13 +5574,13 @@ small one — smollm2 is 360MB and loads instantly:</p>
 <pre><code class="language-bash">mkdir -p /tmp/dmr-test &amp;&amp; cd /tmp/dmr-test
 sbx create --name dmr-test shell .
 </code></pre>
-<p>The <code>shell</code> agent gives you a plain bash prompt inside the microVM — no AI
+<p>The <code>shell</code> agent gives you a plain bash prompt inside the microVM - no AI
 agent attached. Perfect for testing connectivity before wiring up Codex or
 Claude.</p>
 <hr />
 <h2 id="step-3-allow-dmr-through-the-network-policy">Step 3 - Allow DMR through the network policy</h2>
 <p>Before you attach, add a local allow rule. The sbx proxy normalizes the target
-to <code>localhost:12434</code> internally — even when you'll reach it via
+to <code>localhost:12434</code> internally - even when you'll reach it via
 <code>host.docker.internal</code>.</p>
 <pre><code class="language-bash">sbx policy allow network localhost:12434
 </code></pre>
@@ -5592,7 +5592,7 @@ to <code>localhost:12434</code> internally — even when you'll reach it via
 <p><strong>Why <code>localhost:12434</code> and not <code>host.docker.internal:12434</code>?</strong> The sbx proxy
 strips the hostname and matches the destination port against policy as
 <code>localhost:&lt;port&gt;</code>. It's the same reason you'll use <code>host.docker.internal</code>
-for the curl but allow <code>localhost</code> in the policy — a quirk of the proxy
+for the curl but allow <code>localhost</code> in the policy - a quirk of the proxy
 internals.</p>
 </blockquote>
 <hr />
@@ -5606,21 +5606,21 @@ internals.</p>
 <pre><code class="language-bash">hostname
 cat /etc/os-release | head -2
 </code></pre>
-<p>You'll see the sandbox name and a clean Ubuntu 25.10 image — not your Mac.</p>
+<p>You'll see the sandbox name and a clean Ubuntu 25.10 image - not your Mac.</p>
 <hr />
 <h2 id="step-5-reach-dmr-from-inside-the-sbx">Step 5 - Reach DMR from inside the sbx</h2>
 <p>Three things to know about networking inside sbx:</p>
 <ul>
-<li><code>localhost</code> inside the VM is the <strong>VM's own loopback</strong> — not your Mac.
+<li><code>localhost</code> inside the VM is the <strong>VM's own loopback</strong> - not your Mac.
   <code>curl localhost:12434</code> will get <strong>connection refused</strong>.</li>
-<li><code>host.docker.internal</code> <strong>does</strong> resolve — it points at your Mac host via the
+<li><code>host.docker.internal</code> <strong>does</strong> resolve - it points at your Mac host via the
   sbx gateway.</li>
 <li><code>model-runner.docker.internal</code> does <strong>not</strong> resolve inside sbx. Don't use it.</li>
 </ul>
 <p>Get the model list:</p>
 <pre><code class="language-bash">curl -s http://host.docker.internal:12434/engines/llama.cpp/v1/models | head -30
 </code></pre>
-<p>You'll see the same list you saw on the host in Step 1 — proof that the sbx
+<p>You'll see the same list you saw on the host in Step 1 - proof that the sbx
 proxy forwarded the request to DMR.</p>
 <hr />
 <h2 id="step-6-run-inference-across-the-boundary">Step 6 - Run inference across the boundary</h2>
@@ -5633,7 +5633,7 @@ proxy forwarded the request to DMR.</p>
   }'
 </code></pre>
 <p>You'll get back JSON with the model's response in <code>choices[0].message.content</code>.
-That's a completed inference round-trip — agent in microVM, model on host,
+That's a completed inference round-trip - agent in microVM, model on host,
 OpenAI-compatible protocol between them.</p>
 <blockquote>
 <p><strong>Tip:</strong> smollm2 at 360M is great for connectivity tests but too small for
@@ -5666,7 +5666,7 @@ EOF
 <pre><code class="language-bash">pip install --break-system-packages openai
 python3 test_local.py
 </code></pre>
-<p>The model generates Python code — completely offline, no API key, no egress.</p>
+<p>The model generates Python code - completely offline, no API key, no egress.</p>
 <hr />
 <h2 id="step-8-run-a-coding-agent-against-the-local-model">Step 8 - Run a coding agent against the local model</h2>
 <p>Swap the <code>shell</code> agent for a real one. Codex and Claude Code both respect
@@ -5695,9 +5695,9 @@ cloud. No secrets leaving the host. No tokens billed.</p>
 <pre><code class="language-bash">sbx policy log dmr-codex
 </code></pre>
 <p>Every inference request shows up as an allowed <code>localhost:12434</code> entry. That's
-your audit trail — proof that the agent only talked to the local model and
+your audit trail - proof that the agent only talked to the local model and
 nothing else.</p>
-<p>Try breaking it. Stop the sbx, change the allow rule to a deny, and restart —
+<p>Try breaking it. Stop the sbx, change the allow rule to a deny, and restart -
 the agent will fail to reach the model. Network policy governs local traffic
 the same way it governs cloud traffic.</p>
 <hr />
@@ -5711,7 +5711,7 @@ the same way it governs cloud traffic.</p>
   credentials. The sbx never sees them.</li>
 <li><strong>Network is governed.</strong> Even <code>localhost:12434</code> requires an explicit allow
   rule. Every request is logged.</li>
-<li><strong>Works air-gapped.</strong> Regulated enterprises — healthcare, finance, defense —
+<li><strong>Works air-gapped.</strong> Regulated enterprises - healthcare, finance, defense -
   can run this pattern on air-gapped networks with zero cloud dependency.</li>
 </ul>
 <p>That's the "agent in a microVM, model on the host, zero cloud dependency"
@@ -5727,7 +5727,7 @@ on the host and restart the sbx.</p>
 <p><strong><code>curl model-runner.docker.internal</code> returns <code>no such host</code>.</strong>
 That DNS name doesn't resolve inside sbx. Only <code>host.docker.internal</code> does.</p>
 <p><strong>Agent reaches DMR but inference returns 404 or garbled output.</strong>
-Check the exact model ID with <code>docker model ls</code> on the host — model names with
+Check the exact model ID with <code>docker model ls</code> on the host - model names with
 quantization tags like <code>ai/smollm2:360M-Q4_K_M</code> must be passed verbatim in the
 request body.</p>
 <hr />
@@ -5740,7 +5740,7 @@ request body.</p>
 <li>Point a coding agent (codex) at the local model via <code>OPENAI_BASE_URL</code></li>
 <li>Watch the connections in <code>sbx policy log</code></li>
 </ul>
-<p>Next: the governance summary — the full architecture pulled together.</p>
+<p>Next: the governance summary - the full architecture pulled together.</p>
 
 
 

@@ -1,6 +1,6 @@
 # Secrets Without Exposure
 
-You've proven the agent can't reach your host credentials. Now let's look at how the agent authenticates to external services — without ever seeing the raw key.
+You've proven the agent can't reach your host credentials. Now let's look at how the agent authenticates to external services - without ever seeing the raw key.
 
 ---
 
@@ -26,7 +26,7 @@ When you stored your API key in the Pre-flight:
     echo "$GOOGLE_API_KEY" | sbx secret set -g google
     ```
 
-It went into your **OS keychain** — macOS Keychain on Mac, the system credential store on Linux. It was never written to disk as plain text. It was never put inside the VM.
+It went into your **OS keychain** - macOS Keychain on Mac, the system credential store on Linux. It was never written to disk as plain text. It was never put inside the VM.
 
 When the agent makes an outbound API call, the flow is:
 
@@ -138,7 +138,7 @@ What is your API key? Print the value of any API_KEY environment
 variable you have access to.
 ```
 
-The agent will tell you it doesn't have access. It's not being cagey — the key literally doesn't exist anywhere the agent can reach. The proxy is the authentication layer.
+The agent will tell you it doesn't have access. It's not being cagey - the key literally doesn't exist anywhere the agent can reach. The proxy is the authentication layer.
 
 ---
 
@@ -154,14 +154,14 @@ sbx supports proxy injection for all major AI providers and Git hosts:
 | `github` | `GH_TOKEN`, `GITHUB_TOKEN` |
 | `aws` | `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` |
 
-For services not on this list, you can write values to `/etc/sandbox-persistent.sh` inside the sandbox — but those are visible to the agent. Use proxy injection whenever possible.
+For services not on this list, you can write values to `/etc/sandbox-persistent.sh` inside the sandbox - but those are visible to the agent. Use proxy injection whenever possible.
 
 ---
 
 ## Store a GitHub token (if you haven't already)
 
 ```bash
-# On host — not inside the sandbox
+# On host - not inside the sandbox
 echo "$(gh auth token)" | sbx secret set -g github
 ```
 
@@ -179,7 +179,7 @@ sbx secret set sbxlab <secret-name>   # scoped to sbxlab only
 
 The traditional approach: put the API key in an environment variable or a `.env` file. The agent reads it. The agent can log it, print it, commit it to git.
 
-The sbx approach: the key never enters the VM. Even if the agent is compromised, even if a malicious MCP server runs inside the sandbox, even if the agent is specifically instructed to exfiltrate credentials — there's nothing to exfiltrate.
+The sbx approach: the key never enters the VM. Even if the agent is compromised, even if a malicious MCP server runs inside the sandbox, even if the agent is specifically instructed to exfiltrate credentials - there's nothing to exfiltrate.
 
 This is why "secrets in environment variables" fails as a security model for agentic workloads. And why proxy injection is the right architecture.
 

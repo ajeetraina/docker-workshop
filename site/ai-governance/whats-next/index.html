@@ -3989,7 +3989,7 @@
   <a href="#pillar-2-mcp-tool-governance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pillar 2 — MCP Tool Governance
+        Pillar 2 - MCP Tool Governance
       
     </span>
   </a>
@@ -4000,7 +4000,7 @@
   <a href="#pillar-3-audit-and-visibility" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pillar 3 — Audit and Visibility
+        Pillar 3 - Audit and Visibility
       
     </span>
   </a>
@@ -5281,7 +5281,7 @@
   <a href="#pillar-2-mcp-tool-governance" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pillar 2 — MCP Tool Governance
+        Pillar 2 - MCP Tool Governance
       
     </span>
   </a>
@@ -5292,7 +5292,7 @@
   <a href="#pillar-3-audit-and-visibility" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Pillar 3 — Audit and Visibility
+        Pillar 3 - Audit and Visibility
       
     </span>
   </a>
@@ -5353,12 +5353,12 @@
 
 
 <h1 id="whats-next">What's Next</h1>
-<p>You just proved <strong>Pillar 1 — Sandbox Policies</strong> end-to-end. Here's how Pillars 2 and 3 fit in.</p>
+<p>You just proved <strong>Pillar 1 - Sandbox Policies</strong> end-to-end. Here's how Pillars 2 and 3 fit in.</p>
 <p>!!! warning "Roadmap content"
     The CLI surface for audit and MCP governance is still landing on <code>sbx</code>. The descriptions below explain the model and point to where each pillar lives today. Validate against your installed version as features ship.</p>
 <hr />
-<h2 id="pillar-2-mcp-tool-governance">Pillar 2 — MCP Tool Governance</h2>
-<p>MCP (Model Context Protocol) servers give agents access to tools — GitHub, Notion, your internal APIs, custom servers your team builds. Each tool is a new attack surface.</p>
+<h2 id="pillar-2-mcp-tool-governance">Pillar 2 - MCP Tool Governance</h2>
+<p>MCP (Model Context Protocol) servers give agents access to tools - GitHub, Notion, your internal APIs, custom servers your team builds. Each tool is a new attack surface.</p>
 <p>Docker AI Governance lets org admins define:</p>
 <ul>
 <li><strong>Which MCP servers</strong> are approved for agents in your org</li>
@@ -5369,8 +5369,8 @@
 <p>This is the <strong>MCP Gateway Enterprise</strong> layer. It sits between agent and tool, evaluating every call against the same policy engine that enforces sandbox network rules in the Network demo.</p>
 <p><strong>Where to see it today:</strong> The MCP Gateway Enterprise control plane is rolling out. Check <a href="https://www.docker.com/products/ai-governance/">docker.com/products/ai-governance</a> for current availability and your org's enablement status.</p>
 <hr />
-<h2 id="pillar-3-audit-and-visibility">Pillar 3 — Audit and Visibility</h2>
-<p>Every policy decision — allow or deny, network or filesystem or MCP — generates a structured audit event. Conceptually:</p>
+<h2 id="pillar-3-audit-and-visibility">Pillar 3 - Audit and Visibility</h2>
+<p>Every policy decision - allow or deny, network or filesystem or MCP - generates a structured audit event. Conceptually:</p>
 <pre><code class="language-json">{
   &quot;timestamp&quot;: &quot;2026-06-01T01:35:22Z&quot;,
   &quot;user&quot;: &quot;ajeetraina777&quot;,
@@ -5386,12 +5386,12 @@
 <p>These events stream to your existing SIEM (Splunk, Datadog, Elastic, Sentinel) for retention, alerting, and compliance reporting.</p>
 <p><strong>Where to see it today:</strong></p>
 <ul>
-<li><strong>Admin Console</strong> — for your org, the Activity / Audit logs view shows org-level policy and access events (when enabled for your plan)</li>
-<li><strong>Local daemon log</strong> — runtime decisions on this machine are streamed to the sbx daemon log. For ad-hoc inspection during demos:</li>
+<li><strong>Admin Console</strong> - for your org, the Activity / Audit logs view shows org-level policy and access events (when enabled for your plan)</li>
+<li><strong>Local daemon log</strong> - runtime decisions on this machine are streamed to the sbx daemon log. For ad-hoc inspection during demos:</li>
 </ul>
 <pre><code class="language-bash">tail -50 ~/Library/Application\ Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log
 </code></pre>
-<p>This is <strong>not</strong> a polished audit surface — it's the raw daemon log. But after running the Network and Filesystem enforcement tests, you can grep it for the paste.ee, example.com, and credential-access denials to see the underlying machinery in action:</p>
+<p>This is <strong>not</strong> a polished audit surface - it's the raw daemon log. But after running the Network and Filesystem enforcement tests, you can grep it for the paste.ee, example.com, and credential-access denials to see the underlying machinery in action:</p>
 <pre><code class="language-bash">grep -iE &quot;paste\.ee|example\.com|deny|block&quot; ~/Library/Application\ Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log | tail -20
 </code></pre>
 <p>A dedicated <code>sbx audit</code> CLI with structured query, export, and SIEM integration is on the roadmap. The <strong>Observability</strong> section walks through the structured JSONL surface and a live dashboard built on top of it.</p>
@@ -5427,23 +5427,23 @@
 </tr>
 </tbody>
 </table>
-<p>All three share <strong>one policy engine</strong> and <strong>one source of truth</strong> — the Admin Console for your org.</p>
+<p>All three share <strong>one policy engine</strong> and <strong>one source of truth</strong> - the Admin Console for your org.</p>
 <hr />
 <h2 id="where-to-go-from-here">Where to go from here</h2>
 <ul>
 <li><strong>Product page:</strong> <a href="https://www.docker.com/products/ai-governance/">docker.com/products/ai-governance</a></li>
-<li><strong>Docker docs:</strong> <a href="https://docs.docker.com">docs.docker.com</a> — check for the latest AI governance documentation</li>
+<li><strong>Docker docs:</strong> <a href="https://docs.docker.com">docs.docker.com</a> - check for the latest AI governance documentation</li>
 <li><strong>The accompanying deck</strong> covers the policy framework and supporting architecture in more depth</li>
-<li><strong>Sandbox Kits</strong> — the next track in this lab shows how to package reproducible, shareable sandbox configurations</li>
+<li><strong>Sandbox Kits</strong> - the next track in this lab shows how to package reproducible, shareable sandbox configurations</li>
 </ul>
 <hr />
 <h2 id="quick-recap">Quick recap</h2>
 <p>You proved:</p>
 <ul>
 <li>Policies defined once in the Admin Console flow automatically to every developer's <code>sbx</code></li>
-<li>Three rules — two allows and one deny — enforce a real security model</li>
+<li>Three rules - two allows and one deny - enforce a real security model</li>
 <li>The default-deny posture catches anything you didn't explicitly approve</li>
-<li>Developers can't override the policies locally — the CISO retains control</li>
+<li>Developers can't override the policies locally - the CISO retains control</li>
 </ul>
 <p>That's the working version of "AI governance" you can defend to a security team.</p>
 

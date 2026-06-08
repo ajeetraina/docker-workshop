@@ -1,6 +1,6 @@
-# Observability — Audit + Dashboard
+# Observability - Audit + Dashboard
 
-**Pillar 3 (Audit + Visibility)** is rolling out. The good news: the foundation is already shipping. Every policy decision sbx makes is written to a structured JSONL log on disk today — and the lab ships a live dashboard you can run alongside it.
+**Pillar 3 (Audit + Visibility)** is rolling out. The good news: the foundation is already shipping. Every policy decision sbx makes is written to a structured JSONL log on disk today - and the lab ships a live dashboard you can run alongside it.
 
 !!! info "At a glance"
     **Time:** ~10 minutes &nbsp;&nbsp;|&nbsp;&nbsp; **Prerequisites:** You completed the Network demo and (optionally) MCP Hands-On.
@@ -12,7 +12,7 @@ This section gives you two things:
 
 ---
 
-## Step 1 — Locate the daemon log
+## Step 1 - Locate the daemon log
 
 The sbx daemon writes JSONL audit records here:
 
@@ -24,7 +24,7 @@ On Linux it's typically `~/.local/share/com.docker.sandboxes/sandboxes/sandboxd/
 
 ---
 
-## Step 2 — Read it with `jq`
+## Step 2 - Read it with `jq`
 
 Each policy decision is one JSON line. The `msg` field is `"governance policy evaluation"`, and useful fields include `resource_value`, `allowed`, `policy_matched_rule`, `policy_deny_reason`, `policy_source`.
 
@@ -61,11 +61,11 @@ This is your SIEM-ready surface. Forward this file to Splunk/Datadog/Sentinel an
 | Deny reason (explicit / implicit) | Cross-machine aggregation |
 | Policy source (local / remote) | |
 
-The audit log answers *what was decided and why*. It doesn't yet answer *who triggered it on this machine* — that's roadmap.
+The audit log answers *what was decided and why*. It doesn't yet answer *who triggered it on this machine* - that's roadmap.
 
 ---
 
-## Step 3 — Run the dashboard
+## Step 3 - Run the dashboard
 
 The lab repo ships a small dashboard built on top of the daemon log. Clone the lab repo if you haven't, then start it from the observability kit:
 
@@ -82,11 +82,11 @@ open http://localhost:8090
 ```
 
 !!! tip
-    If the dashboard is empty, trigger a few events with the commands in Step 4 — it populates live.
+    If the dashboard is empty, trigger a few events with the commands in Step 4 - it populates live.
 
 ---
 
-## Step 4 — Generate some events to watch
+## Step 4 - Generate some events to watch
 
 In another terminal, enter a sandbox and trigger denies:
 
@@ -113,11 +113,11 @@ The per-rule deny count panel on the left updates live.
 
 ---
 
-## Step 5 — Layer MCP traffic on top (optional)
+## Step 5 - Layer MCP traffic on top (optional)
 
 If you have the Variant B MCP gateway from *MCP Hands-On* running on `localhost:8811`, the dashboard automatically picks up its logs (it discovers any running container whose image name contains `mcp-gateway`).
 
-Trigger an MCP call through it and you'll see entries with source `mcp-gateway` alongside the sbx rows — both signals in one screen.
+Trigger an MCP call through it and you'll see entries with source `mcp-gateway` alongside the sbx rows - both signals in one screen.
 
 ---
 
@@ -127,7 +127,7 @@ Trigger an MCP call through it and you'll see entries with source `mcp-gateway` 
 - A live UI can be built on top in a few hundred lines of code
 - The honest gap (no user attribution, no MCP-tool-level audit yet) is now visible to your security team in the same view that shows what *is* captured
 
-For a security review conversation, this section is the one that lands. You're not promising a feature — you're showing the structured event stream that already exists, and the work it would take to wrap it in your org's SIEM.
+For a security review conversation, this section is the one that lands. You're not promising a feature - you're showing the structured event stream that already exists, and the work it would take to wrap it in your org's SIEM.
 
 ---
 
@@ -141,7 +141,7 @@ The most common question after seeing this dashboard:
 
 ### Prompts
 
-Not logged. The sbx proxy does MITM TLS interception so it *could* technically read request bodies, but it only captures network metadata (destination, port, decision). No request bodies. Almost certainly a deliberate product choice — logging prompt content has privacy and legal implications.
+Not logged. The sbx proxy does MITM TLS interception so it *could* technically read request bodies, but it only captures network metadata (destination, port, decision). No request bodies. Almost certainly a deliberate product choice - logging prompt content has privacy and legal implications.
 
 ### MCP tool calls
 
@@ -151,18 +151,18 @@ Only visible for gateways you run yourself, and only as heuristic log lines:
 - **Mode 2/3 via local gateway with `--verbose=true`:** the dashboard tails the gateway stdout and surfaces `call-tool` / `list-tools` classifications. Not structured per-call records.
 - **Mode 1 (hosted servers like Notion, GitHub):** invisible from your side. You see the TCP connect in sbx, you don't see which tool was called.
 
-For structured tool-call audit, [`docker/mcp-gateway`](https://github.com/docker/mcp-gateway) would need to emit JSONL audit events. It doesn't today — file a feature request.
+For structured tool-call audit, [`docker/mcp-gateway`](https://github.com/docker/mcp-gateway) would need to emit JSONL audit events. It doesn't today - file a feature request.
 
 ### Who triggered each event
 
-The sbx daemon log has no `user`, `sandbox_id`, or `agent` field. Per-machine logs answer *what* was decided, not *who* triggered it. For org-wide audit you'd want sbx to enrich each event with `user_email` from the Docker login session — a feasible feature request, not currently shipping.
+The sbx daemon log has no `user`, `sandbox_id`, or `agent` field. Per-machine logs answer *what* was decided, not *who* triggered it. For org-wide audit you'd want sbx to enrich each event with `user_email` from the Docker login session - a feasible feature request, not currently shipping.
 
 ### What ships today vs roadmap
 
 | What | Today | Roadmap |
 |---|---|---|
-| Network policy decisions (allow/deny/rule/reason) | ✅ JSONL in daemon.log | — |
-| Filesystem mount decisions | ✅ same | — |
+| Network policy decisions (allow/deny/rule/reason) | ✅ JSONL in daemon.log | - |
+| Filesystem mount decisions | ✅ same | - |
 | User attribution | ❌ | Likely (no API change required) |
 | Prompt content | ❌ | Probably never default |
 | Structured MCP tool-call audit | ❌ (heuristic only) | Yes, via gateway changes |
@@ -177,4 +177,4 @@ That's the entire picture you can defend to a security team.
 
 - Forward the daemon.log to your SIEM (Splunk HEC, Datadog HTTP intake, Elastic HTTP)
 - Read the kit's `README.md` for caveats and config
-- Watch this space for `sbx audit` CLI and MCP-tool-level audit — both on the roadmap
+- Watch this space for `sbx audit` CLI and MCP-tool-level audit - both on the roadmap

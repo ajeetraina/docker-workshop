@@ -2,7 +2,7 @@
 
 > **Less OS surface = fewer CVEs = smaller attack window.**
 
-Most teams default to a full base image like `node:18` because it "just works". But every package in that image is a potential CVE vector — and the difference between a full and slim image is dramatic.
+Most teams default to a full base image like `node:18` because it "just works". But every package in that image is a potential CVE vector - and the difference between a full and slim image is dramatic.
 
 ## The comparison at a glance
 

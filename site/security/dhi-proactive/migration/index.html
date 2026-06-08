@@ -4887,7 +4887,7 @@
   <a href="#scout-quickview-all-7-policies-green" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scout quickview — all 7 policies green
+        Scout quickview - all 7 policies green
       
     </span>
   </a>
@@ -4920,7 +4920,7 @@
   <a href="#dhi-vs-slim-property-comparison" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DHI vs slim — property comparison
+        DHI vs slim - property comparison
       
     </span>
   </a>
@@ -5374,7 +5374,7 @@
   <a href="#scout-quickview-all-7-policies-green" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Scout quickview — all 7 policies green
+        Scout quickview - all 7 policies green
       
     </span>
   </a>
@@ -5407,7 +5407,7 @@
   <a href="#dhi-vs-slim-property-comparison" class="md-nav__link">
     <span class="md-ellipsis">
       
-        DHI vs slim — property comparison
+        DHI vs slim - property comparison
       
     </span>
   </a>
@@ -5438,7 +5438,7 @@
 
 <h2 id="migrate-to-docker-hardened-images">Migrate to Docker Hardened Images</h2>
 <blockquote>
-<p><strong>The pro-active approach: Start Secure.</strong> DHI images are purpose-built from the ground up to be extremely minimal — not stripped-down versions of something bloated.</p>
+<p><strong>The pro-active approach: Start Secure.</strong> DHI images are purpose-built from the ground up to be extremely minimal - not stripped-down versions of something bloated.</p>
 </blockquote>
 <p>In this section we'll convert <code>catalog-service-node</code> from <code>node:25-slim</code> (where the <a href="../../container-security/overview/">best-practices track</a> ended) to a Docker Hardened Image, then compare the results.</p>
 <h2 id="before-you-start">Before you start</h2>
@@ -5451,7 +5451,7 @@
 <h2 id="update-the-dockerfile">Update the Dockerfile</h2>
 <p>Open <code>catalog-service-node/Dockerfile</code> and replace it with this DHI-based version:</p>
 <pre><code class="language-dockerfile">###########################################################
-# Stage: base (DHI dev variant — has shell + npm for builds)
+# Stage: base (DHI dev variant - has shell + npm for builds)
 ###########################################################
 FROM &lt;DHI_PREFIX&gt;node:24-debian13-dev AS base
 
@@ -5474,7 +5474,7 @@ ENV NODE_ENV=production
 RUN npm ci --production --ignore-scripts &amp;&amp; npm cache clean --force
 
 ###########################################################
-# Stage: final (DHI runtime — distroless, no shell)
+# Stage: final (DHI runtime - distroless, no shell)
 ###########################################################
 FROM &lt;DHI_PREFIX&gt;node:24-debian13 AS final
 ENV NODE_ENV=production
@@ -5486,7 +5486,7 @@ CMD [&quot;node&quot;, &quot;src/index.js&quot;]
 <p>The two critical changes:</p>
 <pre><code class="language-diff">- FROM node:25-slim AS base
 + FROM &lt;DHI_PREFIX&gt;node:24-debian13-dev AS base   # build stage
-+ FROM &lt;DHI_PREFIX&gt;node:24-debian13 AS final      # runtime — distroless
++ FROM &lt;DHI_PREFIX&gt;node:24-debian13 AS final      # runtime - distroless
 </code></pre>
 <p>Notice the structure: the dev variant is used as the build environment (it has <code>npm</code>), but the final image is built <code>FROM</code> the <strong>distroless runtime</strong> variant. Only the compiled <code>node_modules</code> and <code>src</code> are copied in.</p>
 <h2 id="build-the-dhi-version">Build the DHI version</h2>
@@ -5500,8 +5500,8 @@ catalog-service:dhi      ac3a0d465de4        191MB         40.3MB
 catalog-service:latest   48806e62b871       1.62GB          413MB
 catalog-service:slim     8d03cef7a79f        368MB         84.1MB
 </code></pre>
-<p>The DHI runtime is <strong>10× smaller than the original</strong> and <strong>half the size of the slim version</strong> — and we still haven't looked at security.</p>
-<h2 id="scout-quickview-all-7-policies-green">Scout quickview — all 7 policies green</h2>
+<p>The DHI runtime is <strong>10× smaller than the original</strong> and <strong>half the size of the slim version</strong> - and we still haven't looked at security.</p>
+<h2 id="scout-quickview-all-7-policies-green">Scout quickview - all 7 policies green</h2>
 <pre><code class="language-bash">docker scout quickview catalog-service:dhi --org &lt;YOUR_ORG&gt;
 </code></pre>
 <pre><code class="language-text">Target     │  catalog-service:dhi  │    0C     0H     0M     0L
@@ -5532,7 +5532,7 @@ Policy status  SUCCEEDED  (7/7 policies met)
 </code></pre>
 <p>The numbers:</p>
 <ul>
-<li>✅ <strong>595 packages removed</strong> — 595 fewer potential CVE vectors</li>
+<li>✅ <strong>595 packages removed</strong> - 595 fewer potential CVE vectors</li>
 <li>✅ <strong>179 vulnerabilities removed</strong> across all severities</li>
 <li>✅ Image is <strong>10× smaller</strong></li>
 </ul>
@@ -5540,12 +5540,12 @@ Policy status  SUCCEEDED  (7/7 policies met)
 <p>Because the DHI runtime is distroless, an attacker who gains code execution <strong>cannot drop to a shell</strong>:</p>
 <pre><code class="language-bash">docker run --rm catalog-service:dhi sh
 </code></pre>
-<p>Expected: error — <code>sh</code> does not exist in the image.</p>
+<p>Expected: error - <code>sh</code> does not exist in the image.</p>
 <p>Compare to slim:</p>
-<pre><code class="language-bash">docker run --rm catalog-service:slim sh -c &quot;echo 'shell available — attack surface'&quot;
+<pre><code class="language-bash">docker run --rm catalog-service:slim sh -c &quot;echo 'shell available - attack surface'&quot;
 </code></pre>
 <p>The slim image still gives the attacker a shell. The DHI image does not. That's a meaningful difference in what an exploit can do once it lands.</p>
-<h2 id="dhi-vs-slim-property-comparison">DHI vs slim — property comparison</h2>
+<h2 id="dhi-vs-slim-property-comparison">DHI vs slim - property comparison</h2>
 <table>
 <thead>
 <tr>

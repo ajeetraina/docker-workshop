@@ -4730,7 +4730,7 @@
   <a href="#docker-scout-recommendations-what-should-i-upgrade-to" class="md-nav__link">
     <span class="md-ellipsis">
       
-        docker scout recommendations — what should I upgrade to?
+        docker scout recommendations - what should I upgrade to?
       
     </span>
   </a>
@@ -4741,12 +4741,12 @@
   <a href="#docker-scout-compare-what-changed-between-two-images" class="md-nav__link">
     <span class="md-ellipsis">
       
-        docker scout compare — what changed between two images?
+        docker scout compare - what changed between two images?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="docker scout compare — what changed between two images?">
+    <nav class="md-nav" aria-label="docker scout compare - what changed between two images?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5314,7 +5314,7 @@
   <a href="#docker-scout-recommendations-what-should-i-upgrade-to" class="md-nav__link">
     <span class="md-ellipsis">
       
-        docker scout recommendations — what should I upgrade to?
+        docker scout recommendations - what should I upgrade to?
       
     </span>
   </a>
@@ -5325,12 +5325,12 @@
   <a href="#docker-scout-compare-what-changed-between-two-images" class="md-nav__link">
     <span class="md-ellipsis">
       
-        docker scout compare — what changed between two images?
+        docker scout compare - what changed between two images?
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="docker scout compare — what changed between two images?">
+    <nav class="md-nav" aria-label="docker scout compare - what changed between two images?">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5405,9 +5405,9 @@
   <h1>Recommendations & Comparisons</h1>
 
 <h2 id="recommendations-comparisons">Recommendations &amp; Comparisons</h2>
-<p>Two of Scout's most useful commands aren't about finding CVEs — they're about figuring out <strong>what to do next</strong>: <code>recommendations</code> and <code>compare</code>.</p>
-<h2 id="docker-scout-recommendations-what-should-i-upgrade-to"><code>docker scout recommendations</code> — what should I upgrade to?</h2>
-<p>Most CVE-fix advice from a generic scanner is "upgrade the package". For base images that's not always actionable — you don't pin individual OS packages, you pin a base image tag. Scout knows that and gives you tag-level upgrade paths instead.</p>
+<p>Two of Scout's most useful commands aren't about finding CVEs - they're about figuring out <strong>what to do next</strong>: <code>recommendations</code> and <code>compare</code>.</p>
+<h2 id="docker-scout-recommendations-what-should-i-upgrade-to"><code>docker scout recommendations</code> - what should I upgrade to?</h2>
+<p>Most CVE-fix advice from a generic scanner is "upgrade the package". For base images that's not always actionable - you don't pin individual OS packages, you pin a base image tag. Scout knows that and gives you tag-level upgrade paths instead.</p>
 <pre><code class="language-bash">docker scout recommendations catalog-service:slim --org &lt;YOUR_ORG&gt;
 </code></pre>
 <p>The output ranks candidate base image tags by:</p>
@@ -5417,7 +5417,7 @@
 <li>Compatibility with your current image</li>
 </ul>
 <p>Use this every time you do a base image bump. It turns "I think I should move to <code>node:25-slim</code> because I read it somewhere" into "Scout says <code>node:25-slim</code> removes 23 CVEs, here are the remaining 7."</p>
-<h2 id="docker-scout-compare-what-changed-between-two-images"><code>docker scout compare</code> — what changed between two images?</h2>
+<h2 id="docker-scout-compare-what-changed-between-two-images"><code>docker scout compare</code> - what changed between two images?</h2>
 <p><code>compare</code> is the command most teams underuse. It's the difference between a scary CVE report and an actionable one.</p>
 <h3 id="compare-two-local-image-tags">Compare two local image tags</h3>
 <pre><code class="language-bash">docker scout compare \
@@ -5426,7 +5426,7 @@
     catalog-service:slim \
     --org &lt;YOUR_ORG&gt;
 </code></pre>
-<p>This compares the new image (<code>catalog-service:slim</code>) against the baseline (<code>catalog-service</code>, the old vulnerable build). With <code>--ignore-unchanged</code>, you see only what's <em>different</em> — not every package both images share.</p>
+<p>This compares the new image (<code>catalog-service:slim</code>) against the baseline (<code>catalog-service</code>, the old vulnerable build). With <code>--ignore-unchanged</code>, you see only what's <em>different</em> - not every package both images share.</p>
 <h3 id="compare-against-the-previous-production-image">Compare against the previous production image</h3>
 <p>In CI, you almost always want to compare against what's currently running in prod:</p>
 <pre><code class="language-bash">docker scout compare \
@@ -5456,9 +5456,9 @@
 <li>Run <code>docker scout compare</code> against your current prod image</li>
 <li>If the comparison looks good, ship it. If not, revisit.</li>
 </ol>
-<p>This is the <strong>reactive loop done well</strong> — fast, data-driven, and grounded in actual diffs rather than abstract advice.</p>
+<p>This is the <strong>reactive loop done well</strong> - fast, data-driven, and grounded in actual diffs rather than abstract advice.</p>
 <blockquote>
-<p>Ready to break out of the reactive loop entirely? Continue to <a href="../../dhi-proactive/overview/">Migrating to DHI</a>. DHI ships with near-zero CVEs by construction — and Scout still gives you visibility on top.</p>
+<p>Ready to break out of the reactive loop entirely? Continue to <a href="../../dhi-proactive/overview/">Migrating to DHI</a>. DHI ships with near-zero CVEs by construction - and Scout still gives you visibility on top.</p>
 </blockquote>
 
 

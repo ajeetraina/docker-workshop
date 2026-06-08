@@ -1,4 +1,4 @@
-# Parallel Agents — Two Agents, One Sandbox, Zero Conflicts
+# Parallel Agents - Two Agents, One Sandbox, Zero Conflicts
 
 Branch mode isn't just for review workflows. It's how you run multiple agents simultaneously on the same codebase without any conflicts.
 
@@ -10,11 +10,11 @@ Each branch-mode run creates its own isolated Git worktree. Two agents on two br
 
 Perfect for parallel execution:
 
-**Search** — `GET /issues/search?q=` returns HTTP 501. The query logic hasn't been written yet.
+**Search** - `GET /issues/search?q=` returns HTTP 501. The query logic hasn't been written yet.
 
-**Notifications** — `send_status_change_notification()` is a no-op stub. It should send emails when issue status changes.
+**Notifications** - `send_status_change_notification()` is a no-op stub. It should send emails when issue status changes.
 
-These are independent — no shared code paths. Ideal for parallel work.
+These are independent - no shared code paths. Ideal for parallel work.
 
 ---
 
@@ -22,14 +22,14 @@ These are independent — no shared code paths. Ideal for parallel work.
 
 Open **two host terminal windows**. Run each command in its own window at the same time.
 
-**Terminal 1 — Search feature:**
+**Terminal 1 - Search feature:**
 
 ```bash
 cd ~/sbx-lab
 sbx run sbxlab --branch=add-search -- "$(cat prompts/implement-search.txt)"
 ```
 
-**Terminal 2 — Notifications feature:**
+**Terminal 2 - Notifications feature:**
 
 ```bash
 cd ~/sbx-lab
@@ -38,7 +38,7 @@ sbx run sbxlab --branch=add-notif -- "$(cat prompts/implement-notifications.txt)
 
 > **Note:** The `"$(cat ...)"` must be quoted or the prompt won't pass correctly.
 
-Both run against the same `sbxlab` sandbox — no new sandbox is created. You still see one entry in `sbx ls`. Each agent has its own isolated worktree under `.sbx/sbxlab-worktrees/`.
+Both run against the same `sbxlab` sandbox - no new sandbox is created. You still see one entry in `sbx ls`. Each agent has its own isolated worktree under `.sbx/sbxlab-worktrees/`.
 
 ---
 
@@ -65,7 +65,7 @@ In a **fourth terminal**:
 sbx policy log sbxlab
 ```
 
-You'll see both agents making API calls — all routed through the same proxy, all logged, all governed by the same policy.
+You'll see both agents making API calls - all routed through the same proxy, all logged, all governed by the same policy.
 
 ---
 
@@ -103,12 +103,12 @@ gh pr create --head add-notif \
 
 You just ran two autonomous agents on the same repo simultaneously. Each had governance:
 - Isolated VM boundary
-- Secrets via proxy injection — no keys in the VM
+- Secrets via proxy injection - no keys in the VM
 - Network policy enforcing what they could reach
 - Audit log of every connection
 - Clean Git diffs for human review before merge
 
-Now imagine this at 10,000 developers. Each developer might have 2–3 agents running simultaneously. That's potentially 30,000 concurrent agent sessions — all governed by the same central policy, all generating audit logs, all hitting the same LLM gateway.
+Now imagine this at 10,000 developers. Each developer might have 2–3 agents running simultaneously. That's potentially 30,000 concurrent agent sessions - all governed by the same central policy, all generating audit logs, all hitting the same LLM gateway.
 
 That's the enterprise story. That's what the network policy and sandbox architecture are built for.
 
@@ -136,4 +136,4 @@ Confirm:
 - Both produced clean diffs reviewable by a human
 - The policy log showed both agents' activity
 
-Next: Docker Compose inside the sandbox — the full-stack use case.
+Next: Docker Compose inside the sandbox - the full-stack use case.

@@ -1,11 +1,11 @@
-GenAI applications have evolved beyond simple text generation into sophisticated systems that actively reason, strategize, and execute complex workflows autonomously. We call it "agentic GenAI"—a shift from AI systems that primarily generate content to systems that can actively engage in the world, solve problems, and achieve goals autonomously. These agentic GenAI applications don't just process requests—they understand goals, decompose problems, and orchestrate solutions across multiple systems and services.
+GenAI applications have evolved beyond simple text generation into sophisticated systems that actively reason, strategize, and execute complex workflows autonomously. We call it "agentic GenAI"-a shift from AI systems that primarily generate content to systems that can actively engage in the world, solve problems, and achieve goals autonomously. These agentic GenAI applications don't just process requests-they understand goals, decompose problems, and orchestrate solutions across multiple systems and services.
 
 Whether you're building a customer service agent, a research assistant, or a multi-agent workflow system, all agentic GenAI applications share a consistent architectural foundation built on three essential layers:
 
 ![agentic compose](images/agentic-compose-1.png)
 
 - Models serve as the brains of the operation, generating output and determining how to achieve desired outcomes. 
-- Tools provide the ability to fetch additional context or perform functions—it's important to note that models can't actually do anything on their own, as tools provide these critical capabilities. 
+- Tools provide the ability to fetch additional context or perform functions-it's important to note that models can't actually do anything on their own, as tools provide these critical capabilities. 
 
 - Custom app code connects and orchestrates everything, giving the model the list of available tools, performing execution of requested tools, managing state, and building prompts. 
 
@@ -13,10 +13,10 @@ While this architecture appears straightforward, deploying these interconnected 
 
 ## Why Deploying agentic GenAI apps is Harder Than It Should Be
 
-Building agentic GenAI applications is exciting—getting them to work together in production is a nightmare. 
+Building agentic GenAI applications is exciting-getting them to work together in production is a nightmare. 
 Most organizations start by running individual agentic components manually: one agent does research, another analyzes data, third handles conversations. Each component runs separately, needs its own setup, and requires constant babysitting. What begins as a simple demo quickly becomes an unmanageable collection of processes that break frequently and are impossible to monitor effectively.
 
-When these agentic systems need to work together, the complexity explodes. Imagine trying to coordinate a team where everyone speaks a different language, uses different tools, and has no shared calendar. That's essentially what happens with agentic GenAI applications—they need to pass information between each other, handle failures gracefully, and adapt when things go wrong. Without proper coordination, you end up spending more time managing the infrastructure than benefiting from the intelligence.
+When these agentic systems need to work together, the complexity explodes. Imagine trying to coordinate a team where everyone speaks a different language, uses different tools, and has no shared calendar. That's essentially what happens with agentic GenAI applications-they need to pass information between each other, handle failures gracefully, and adapt when things go wrong. Without proper coordination, you end up spending more time managing the infrastructure than benefiting from the intelligence.
 The resource challenge makes everything worse. Agentic GenAI applications are hungry for computing power, especially GPU resources. While tools like Docker Model Runner help run models locally, most development machines can't handle multiple agentic systems simultaneously. A single modern AI model might need 3.5GB of video memory just to start, and production systems need much more. Teams often find themselves choosing between running applications locally with toy models or jumping straight to expensive cloud infrastructure with no middle ground.
 
 Without standards, every pair of agentic systems that need to communicate invents its own communication method. Some use web requests, others use message queues, and some use entirely different protocols. Debugging becomes impossible because there's no single place to see what's happening across your agentic network. Security, monitoring, and troubleshooting all become exponentially harder as you add more agentic components to the mix.
@@ -26,7 +26,7 @@ Without standards, every pair of agentic systems that need to communicate invent
 Agentic Compose solves these production deployment challenges by providing a comprehensive Docker Compose framework specifically designed for orchestrating agentic GenAI applications. This approach transforms chaotic infrastructure management into elegant, declarative patterns that scale from development to enterprise production.
 
 
-Agentic Compose is a comprehensive Docker Compose framework specifically designed for orchestrating agentic GenAI applications in production. It provides declarative infrastructure management for the three essential layers of agentic AI systems—Models, Tools (via MCP Gateway), and App Code—enabling teams to deploy complex multi-agent workflows with the same simplicity as traditional containerized applications. 
+Agentic Compose is a comprehensive Docker Compose framework specifically designed for orchestrating agentic GenAI applications in production. It provides declarative infrastructure management for the three essential layers of agentic AI systems-Models, Tools (via MCP Gateway), and App Code-enabling teams to deploy complex multi-agent workflows with the same simplicity as traditional containerized applications. 
 
 While Docker Model Runner enables developers to run LLMs locally with simple commands and OpenAI-compatible APIs, the reality of GPU-intensive AI workloads creates unique orchestration challenges. Even with local model serving capabilities, most development environments lack the substantial GPU resources required for multi-agent systems (often needing 3.5GB+ VRAM per model, with production systems requiring significantly more). 
 
@@ -71,7 +71,7 @@ models:
     model: ai/gemma3
 ```
 
-Each service can specify the model it needs and the environment variables that should be injected to establish the connection. This approach provides clean separation between model configuration and service logic—services simply declare their model requirements, while the infrastructure handles the complexity of making those models available.
+Each service can specify the model it needs and the environment variables that should be injected to establish the connection. This approach provides clean separation between model configuration and service logic-services simply declare their model requirements, while the infrastructure handles the complexity of making those models available.
 
 When you launch your Compose file, the Docker Model Runner automatically figures out how to ensure the model is accessible, regardless of whether you're running in Docker Desktop or deploying to production infrastructure.
 
@@ -110,7 +110,7 @@ services:
 
 -  Simplified Tool Configuration
 
-Use the MCP Gateway container directly in your Compose stack by specifying the servers and tools your agents need to use. The configuration is straightforward—you define which MCP servers to launch and which specific tools to make available. The gateway handles all the complexity of server lifecycle management, tool discovery, and secure communication protocols. There are lots of other flags and options available for advanced configurations—check the docs and content kit for more details on customizing your tool setup.
+Use the MCP Gateway container directly in your Compose stack by specifying the servers and tools your agents need to use. The configuration is straightforward-you define which MCP servers to launch and which specific tools to make available. The gateway handles all the complexity of server lifecycle management, tool discovery, and secure communication protocols. There are lots of other flags and options available for advanced configurations-check the docs and content kit for more details on customizing your tool setup.
 
 -  Enhanced Security and Access Control
 
@@ -126,7 +126,7 @@ The MCP Gateway transforms tool management from a configuration nightmare into a
 
 ### 3. App Code
 
-The app code layer in Agentic Compose represents the most familiar part of the stack—these are "normal" containerized applications that developers already know how to build, deploy, and manage. There's nothing fundamentally new here from a Compose perspective, as this follows the same patterns and practices used for any containerized application. The power comes from how these applications integrate with the models and tools layers to create intelligent, autonomous systems.
+The app code layer in Agentic Compose represents the most familiar part of the stack-these are "normal" containerized applications that developers already know how to build, deploy, and manage. There's nothing fundamentally new here from a Compose perspective, as this follows the same patterns and practices used for any containerized application. The power comes from how these applications integrate with the models and tools layers to create intelligent, autonomous systems.
 
 - Framework-Driven Development
 

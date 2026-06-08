@@ -2,7 +2,7 @@
 
 Welcome to the Docker AI Governance lab.
 
-Over the next two hours you'll prove — empirically — how Docker AI Governance policies flow from a single Admin Console toggle to every developer's `sbx` (Docker Sandboxes) sandbox, covering both **network** and **filesystem** enforcement.
+Over the next two hours you'll prove - empirically - how Docker AI Governance policies flow from a single Admin Console toggle to every developer's `sbx` (Docker Sandboxes) sandbox, covering both **network** and **filesystem** enforcement.
 
 **Define once. Enforce everywhere.**
 
@@ -10,12 +10,12 @@ Over the next two hours you'll prove — empirically — how Docker AI Governanc
 
 ## Pick your organization
 
-Most commands and links in this lab reference your Docker Hub organization. Throughout the lab we use the placeholder `<your-org>` — substitute it with the name of an organization where you have **admin** rights (for example `whalecollab`).
+Most commands and links in this lab reference your Docker Hub organization. Throughout the lab we use the placeholder `<your-org>` - substitute it with the name of an organization where you have **admin** rights (for example `whalecollab`).
 
 !!! tip "Set this once"
-    Decide on the org you'll use now and keep it consistent. If you're a member of multiple organizations, make sure the one you pick is where you have admin rights — otherwise you won't be able to set policies in the Network and Filesystem demos.
+    Decide on the org you'll use now and keep it consistent. If you're a member of multiple organizations, make sure the one you pick is where you have admin rights - otherwise you won't be able to set policies in the Network and Filesystem demos.
 
-If you don't have an organization yet, you can still walk through Setup, *Why AI Governance*, and *The Policy Model* conceptually — the demo sections need org-level admin access to add policy rules.
+If you don't have an organization yet, you can still walk through Setup, *Why AI Governance*, and *The Policy Model* conceptually - the demo sections need org-level admin access to add policy rules.
 
 ---
 
