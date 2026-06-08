@@ -114,6 +114,22 @@ nav:
         - AI Governance at Scale: lab8/projects/governance-summary.md
       - Projects:
         - DevBoard: lab8/projects/devboard.md
+    - AI Governance:
+      - Setup: ai-governance/setup.md
+      - Why AI Governance: ai-governance/introduction.md
+      - The Policy Model: ai-governance/policy-model.md
+      - Network Enforcement Demo: ai-governance/network-demo.md
+      - Filesystem Enforcement Demo: ai-governance/filesystem-demo.md
+      - MCP Hands-On: ai-governance/mcp-hands-on.md
+      - Observability: ai-governance/observability.md
+      - What's Next: ai-governance/whats-next.md
+      - Sandbox Kits:
+        - Introduction to Kits: ai-governance/kits/intro.md
+        - Your First Mixin Kit: ai-governance/kits/first-mixin.md
+        - Network & Credentials: ai-governance/kits/network-and-creds.md
+        - Fork an Agent Kit: ai-governance/kits/agent-kit.md
+        - Stacking & Community Kits: ai-governance/kits/stacking-and-community.md
+        - Summary & Next Steps: ai-governance/kits/summary.md
   - Docker and Security:
     - Container Security:
       - Overview: security/container-security/overview.md
