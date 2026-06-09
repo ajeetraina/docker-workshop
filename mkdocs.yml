@@ -158,12 +158,25 @@ nav:
   - Docker Offload:
     - Overview: lab7/overview.md
     - Getting Started: lab7/getting-started.md
+  - Kubernetes 101:
+    - Introduction & Your Cluster: kubernetes-101/overview.md
+    - Pods: kubernetes-101/pods.md
+    - Deployments: kubernetes-101/deployments.md
+    - Services: kubernetes-101/services.md
+    - Scaling & Rolling Updates: kubernetes-101/scaling-and-updates.md
+    - Exposing Your App with Ingress: kubernetes-101/ingress.md
+    - "Bonus: Compose to Kubernetes with Compose Bridge": kubernetes-101/compose-bridge.md
+    - "Bonus: Talk to Your Model & Wrap-Up": kubernetes-101/genai-on-kubernetes.md
 
 # Markdown extensions
 markdown_extensions:
   - admonition
   - pymdownx.details
-  - pymdownx.superfences
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
 
 theme:
   name: material

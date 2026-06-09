@@ -146,6 +146,23 @@ Offload GPU-intensive workloads to the cloud seamlessly.
 
 ---
 
+### ☸️ Kubernetes 101
+
+Deploy a real app to a live cluster and learn the core building blocks hands-on - Pods, Deployments, Services, scaling, rolling updates, and Ingress.
+
+| Topic | Link |
+| --- | --- |
+| Introduction & Your Cluster | [Start →](kubernetes-101/overview/) |
+| Pods | [Start →](kubernetes-101/pods/) |
+| Deployments | [Start →](kubernetes-101/deployments/) |
+| Services | [Start →](kubernetes-101/services/) |
+| Scaling & Rolling Updates | [Start →](kubernetes-101/scaling-and-updates/) |
+| Exposing Your App with Ingress | [Start →](kubernetes-101/ingress/) |
+| Bonus: Compose to Kubernetes with Compose Bridge | [Start →](kubernetes-101/compose-bridge/) |
+| Bonus: Talk to Your Model & Wrap-Up | [Start →](kubernetes-101/genai-on-kubernetes/) |
+
+---
+
 ## 🗓️ Suggested Learning Paths
 
 This workshop is **self-paced and modular** - pick any topic and go. Here are a few suggested paths based on your goals:
