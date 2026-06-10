@@ -105,7 +105,7 @@ sbx mcp --help
 
     The local gateway is most useful when you separately invoke MCP tools through it (e.g., from Claude Desktop or a custom client pointed at `http://localhost:8811`) rather than as a control plane for `sbx`.
 
-### Variant C - 🔒 Docker Insiders
+### Variant C - 🔒 Hosted Docker MCP Gateway 
 
 If you're on a Docker team or in the preview program, `SBX_MCP_URL` should point at Docker's **hosted MCP control plane** - the service that brokers per-server OAuth on your Docker Hub identity and manages gateways inside each sandbox. Ask in the internal sbx Slack channel for the current URL. With that URL set, `sbx mcp add <name>` against catalog-backed servers (Notion, GitHub, Linear) walks you through a hosted OAuth flow on your Hub login.
 
