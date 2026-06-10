@@ -1,6 +1,6 @@
 # Observability - Audit + Dashboard
 
-**Pillar 3 (Audit + Visibility)** is rolling out. The good news: the foundation is already shipping. Every policy decision sbx makes is written to a structured JSONL log on disk today - and the lab ships a live dashboard you can run alongside it.
+**Pillar 3 (Audit + Visibility)** Every policy decision sbx makes is written to a structured JSONL log on disk today - and the lab ships a live dashboard you can run alongside it.
 
 !!! info "At a glance"
     **Time:** ~10 minutes &nbsp;&nbsp;|&nbsp;&nbsp; **Prerequisites:** You completed the Network demo and (optionally) MCP Hands-On.
