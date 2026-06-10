@@ -2,7 +2,7 @@
 
 Welcome to the Docker AI Governance lab.
 
-Over the next two hours you'll prove - empirically - how Docker AI Governance policies flow from a single Admin Console toggle to every developer's `sbx` (Docker Sandboxes) sandbox, covering both **network** and **filesystem** enforcement.
+Over the next two hours you'll prove how Docker AI Governance policies flow from a single Admin Console toggle to every developer's `sbx` (Docker Sandboxes) sandbox, covering both **network** and **filesystem** enforcement.
 
 **Define once. Enforce everywhere.**
 
