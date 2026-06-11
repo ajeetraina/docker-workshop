@@ -1,0 +1,20 @@
+services:
+  docs:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    develop:
+      watch:
+        # Live-reload the MkDocs dev server whenever content or config changes.
+        # mkdocs serve runs with livereload, so synced files reload automatically.
+        - action: sync
+          path: ./docs
+          target: /app/app/docs
+        - action: sync
+          path: ./mkdocs.yml
+          target: /app/app/mkdocs.yml
+        # Rebuild the image when Python dependencies change.
+        - action: rebuild
+          path: ./requirements.txt
