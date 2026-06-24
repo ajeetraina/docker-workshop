@@ -6124,11 +6124,30 @@ hooks.slack.com
 <p>That last line is the central control proof. Even though sbx ships with sensible defaults, the org policy is overriding them.</p>
 <hr />
 <h2 id="step-6-spin-up-a-sandbox">Step 6 - Spin up a sandbox</h2>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/scratch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/scratch
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/labspace-fs-test/test-1<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/labspace-fs-test/test-1
 sbx<span class="w"> </span>run<span class="w"> </span>shell<span class="w"> </span>.
 </code></pre></div>
 <p>This creates an isolated microVM with <code>shell</code> as the agent and the current directory as the workspace. Outbound network from the sandbox goes through the proxy that enforces your org policies.</p>
+<p>We use <code>~/labspace-fs-test/test-1</code> as the workspace because the <strong>Filesystem Enforcement Demo</strong> allows <code>~/labspace-fs-test/**</code> - so a single filesystem rule covers both labs.</p>
 <p>You'll land at a shell prompt inside the sandbox.</p>
+<div class="admonition warning">
+<p class="admonition-title">If sandbox creation fails with <code>403 mount policy denied</code></p>
+<p><code>sbx run shell .</code> mounts the <strong>current directory</strong> into the sandbox. If your org's <strong>filesystem</strong> governance is active, that mount is subject to the same default-deny posture as the network rules - so the workspace path must be covered by an allow rule. You'll see:</p>
+<div class="highlight"><pre><span></span><code>ERROR: failed to create sandbox: ... 403 Forbidden: mount policy denied:
+/Users/&lt;you&gt;/labspace-fs-test/test-1: no applicable policies for
+op(action=fs:mount:read, resource=fs:path:/Users/&lt;you&gt;/labspace-fs-test/test-1)
+</code></pre></div>
+<p>The sandbox never starts, so you can't reach the network tests below. Add the shared filesystem allow rule once - this is the <strong>same rule</strong> the <em>Filesystem Enforcement Demo</em> uses, so you only define it a single time:</p>
+<ul>
+<li>Open <strong><code>https://app.docker.com/accounts/&lt;your-org&gt;</code></strong> → <strong>AI governance → Filesystem access</strong></li>
+<li>Action: <strong>Allow</strong> · Filesystem path: <code>~/labspace-fs-test/**</code> · Action scope: <strong>Read, Write</strong> · Name: <code>allow lab test directory</code></li>
+<li>Sync and verify:
+  <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>reset<span class="w">      </span><span class="c1"># pick Balanced</span>
+sbx<span class="w"> </span>policy<span class="w"> </span>ls<span class="w">         </span><span class="c1"># confirm &quot;allow lab test directory&quot; with ORIGIN: remote</span>
+</code></pre></div></li>
+</ul>
+<p>Then re-run <code>sbx run shell .</code>. The <em>Filesystem Enforcement Demo</em> covers this mount-policy behavior in full.</p>
+</div>
 <hr />
 <h2 id="step-7-run-the-three-enforcement-tests">Step 7 - Run the three enforcement tests</h2>
 <p>Inside the sandbox prompt:</p>

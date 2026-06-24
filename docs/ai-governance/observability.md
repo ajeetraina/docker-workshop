@@ -91,9 +91,11 @@ open http://localhost:8090
 In another terminal, enter a sandbox and trigger denies:
 
 ```bash
-mkdir -p ~/scratch && cd ~/scratch
+mkdir -p ~/labspace-fs-test/test-1 && cd ~/labspace-fs-test/test-1
 sbx run shell .
 ```
+
+(Reusing `~/labspace-fs-test/test-1` means the single `allow lab test directory` filesystem rule from the earlier demos already covers this workspace - no new rule needed.)
 
 Inside the sandbox prompt:
 
@@ -147,9 +149,9 @@ Not logged. The sbx proxy does MITM TLS interception so it *could* technically r
 
 Only visible for gateways you run yourself, and only as heuristic log lines:
 
-- **Mode 4 (local stdio):** the subprocess runs on your host; wrap it yourself if you need audit
-- **Mode 2/3 via local gateway with `--verbose=true`:** the dashboard tails the gateway stdout and surfaces `call-tool` / `list-tools` classifications. Not structured per-call records.
-- **Mode 1 (hosted servers like Notion, GitHub):** invisible from your side. You see the TCP connect in sbx, you don't see which tool was called.
+- **Mode B (local stdio):** the subprocess runs on your host; wrap it yourself if you need audit
+- **Local MCP Gateway with `--verbose=true`:** the dashboard tails the gateway stdout and surfaces `call-tool` / `list-tools` classifications. Not structured per-call records.
+- **Mode A (remote OAuth servers like Notion, GitHub):** invisible from your side. You see the TCP connect in sbx, you don't see which tool was called.
 
 For structured tool-call audit, [`docker/mcp-gateway`](https://github.com/docker/mcp-gateway) would need to emit JSONL audit events. It doesn't today - file a feature request.
 

@@ -6049,7 +6049,7 @@
 
 
 <h1 id="observability-audit-dashboard">Observability - Audit + Dashboard</h1>
-<p><strong>Pillar 3 (Audit + Visibility)</strong> is rolling out. The good news: the foundation is already shipping. Every policy decision sbx makes is written to a structured JSONL log on disk today - and the lab ships a live dashboard you can run alongside it.</p>
+<p><strong>Pillar 3 (Audit + Visibility)</strong> Every policy decision sbx makes is written to a structured JSONL log on disk today - and the lab ships a live dashboard you can run alongside it.</p>
 <div class="admonition info">
 <p class="admonition-title">At a glance</p>
 <p><strong>Time:</strong> ~10 minutes &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Prerequisites:</strong> You completed the Network demo and (optionally) MCP Hands-On.</p>
@@ -6139,9 +6139,10 @@ docker<span class="w"> </span>compose<span class="w"> </span>--profile<span clas
 <hr />
 <h2 id="step-4-generate-some-events-to-watch">Step 4 - Generate some events to watch</h2>
 <p>In another terminal, enter a sandbox and trigger denies:</p>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/scratch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/scratch
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/labspace-fs-test/test-1<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/labspace-fs-test/test-1
 sbx<span class="w"> </span>run<span class="w"> </span>shell<span class="w"> </span>.
 </code></pre></div>
+<p>(Reusing <code>~/labspace-fs-test/test-1</code> means the single <code>allow lab test directory</code> filesystem rule from the earlier demos already covers this workspace - no new rule needed.)</p>
 <p>Inside the sandbox prompt:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>https://collabnix.com<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span>
 curl<span class="w"> </span>-sS<span class="w"> </span>https://example.com<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span>
@@ -6178,9 +6179,9 @@ curl<span class="w"> </span>-sS<span class="w"> </span>https://api.anthropic.com
 <h3 id="mcp-tool-calls">MCP tool calls</h3>
 <p>Only visible for gateways you run yourself, and only as heuristic log lines:</p>
 <ul>
-<li><strong>Mode 4 (local stdio):</strong> the subprocess runs on your host; wrap it yourself if you need audit</li>
-<li><strong>Mode 2/3 via local gateway with <code>--verbose=true</code>:</strong> the dashboard tails the gateway stdout and surfaces <code>call-tool</code> / <code>list-tools</code> classifications. Not structured per-call records.</li>
-<li><strong>Mode 1 (hosted servers like Notion, GitHub):</strong> invisible from your side. You see the TCP connect in sbx, you don't see which tool was called.</li>
+<li><strong>Mode B (local stdio):</strong> the subprocess runs on your host; wrap it yourself if you need audit</li>
+<li><strong>Local MCP Gateway with <code>--verbose=true</code>:</strong> the dashboard tails the gateway stdout and surfaces <code>call-tool</code> / <code>list-tools</code> classifications. Not structured per-call records.</li>
+<li><strong>Mode A (remote OAuth servers like Notion, GitHub):</strong> invisible from your side. You see the TCP connect in sbx, you don't see which tool was called.</li>
 </ul>
 <p>For structured tool-call audit, <a href="https://github.com/docker/mcp-gateway"><code>docker/mcp-gateway</code></a> would need to emit JSONL audit events. It doesn't today - file a feature request.</p>
 <h3 id="who-triggered-each-event">Who triggered each event</h3>

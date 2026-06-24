@@ -118,13 +118,36 @@ That last line is the central control proof. Even though sbx ships with sensible
 ## Step 6 - Spin up a sandbox
 
 ```bash
-mkdir -p ~/scratch && cd ~/scratch
+mkdir -p ~/labspace-fs-test/test-1 && cd ~/labspace-fs-test/test-1
 sbx run shell .
 ```
 
 This creates an isolated microVM with `shell` as the agent and the current directory as the workspace. Outbound network from the sandbox goes through the proxy that enforces your org policies.
 
+We use `~/labspace-fs-test/test-1` as the workspace because the **Filesystem Enforcement Demo** allows `~/labspace-fs-test/**` - so a single filesystem rule covers both labs.
+
 You'll land at a shell prompt inside the sandbox.
+
+!!! warning "If sandbox creation fails with `403 mount policy denied`"
+    `sbx run shell .` mounts the **current directory** into the sandbox. If your org's **filesystem** governance is active, that mount is subject to the same default-deny posture as the network rules - so the workspace path must be covered by an allow rule. You'll see:
+
+    ```
+    ERROR: failed to create sandbox: ... 403 Forbidden: mount policy denied:
+    /Users/<you>/labspace-fs-test/test-1: no applicable policies for
+    op(action=fs:mount:read, resource=fs:path:/Users/<you>/labspace-fs-test/test-1)
+    ```
+
+    The sandbox never starts, so you can't reach the network tests below. Add the shared filesystem allow rule once - this is the **same rule** the *Filesystem Enforcement Demo* uses, so you only define it a single time:
+
+    - Open **`https://app.docker.com/accounts/<your-org>`** → **AI governance → Filesystem access**
+    - Action: **Allow** · Filesystem path: `~/labspace-fs-test/**` · Action scope: **Read, Write** · Name: `allow lab test directory`
+    - Sync and verify:
+      ```bash
+      sbx policy reset      # pick Balanced
+      sbx policy ls         # confirm "allow lab test directory" with ORIGIN: remote
+      ```
+
+    Then re-run `sbx run shell .`. The *Filesystem Enforcement Demo* covers this mount-policy behavior in full.
 
 ---
 
