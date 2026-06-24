@@ -13,21 +13,21 @@
 - IntelliJ IDEA
 - VS Code
 
-### Enabling WSL 2 based engine on Docker Desktop for Windows
+### 3. Enabling WSL 2 / Hyper V based engine on Docker Desktop for Windows
 
 
 In case you're using Windows 11, you will need to enable WSL 2 by opening Docker Desktop > Settings > Resources > WSL Integration
 
 ![wsl2](images/wsl2.png)
 
-### 3. Install Nodejs
+### 4. Install Nodejs
 
 To demonstrate the container-first development workflow, you will require Nodejs installed on your system.
 
 
 > Note: You must download and install the Node pre-built installer on your local system to get the npm install command to work seamlessly. [Click here to download](https://nodejs.org/en/download/)
 
-### 4. Access to the repositories
+### 5. Access to the repositories
 
 
 - [https://github.com/dockersamples/catalog-service-node](https://github.com/dockersamples/catalog-service-node)
@@ -53,20 +53,8 @@ docker model pull hf.co/menlo/jan-nano-gguf:q4_k_m
 docker model pull hf.co/menlo/lucy-gguf:q8_0
 ```
 
-### 8. Download the following images from the Docker Hub (For Docker AI workshop)
+### 8. Docker Labspace CLI installed on your system 
 
-```
-docker pull grafana/grafana:10.1.0
-docker pull jaegertracing/all-in-one:1.46
-docker pull prom/prometheus:v2.45.0
-```
+Install Labspace CLI using this link [https://github.com/docker/docker-labspace-cli](https://github.com/docker/docker-labspace-cli) 
 
-### 9. Install and configure your preferred MCP Client (For Docker AI workshop)
 
-```
-Ask Gordon  (optional)
-Claude Desktop (optional)
-Claude Code
-Gemini CLI
-Visual Studio Code
-```
