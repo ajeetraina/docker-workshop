@@ -57,4 +57,7 @@ docker model pull hf.co/menlo/lucy-gguf:q8_0
 
 Install Labspace CLI using this link [https://github.com/docker/docker-labspace-cli](https://github.com/docker/docker-labspace-cli) 
 
+### 9. Bring your own API Keys (for AI Governance and Sandbox Workshop) 
+
+Bring your own OpenAI or Anthropic Key to test AI Coding Agent in a Sandbox environment 
 
