@@ -5941,13 +5941,7 @@
   <h1>Prerequisites</h1>
 
 <h3 id="1-docker-desktop">1. Docker Desktop</h3>
-<p><a href="https://www.docker.com/products/docker-desktop/">Download and Install Docker Desktop 4.77.0+</a> on your system. </p>
-<ul>
-<li><a href="https://desktop.docker.com/mac/main/arm64/Docker.dmg">Apple Chip</a></li>
-<li><a href="https://desktop.docker.com/mac/main/amd64/Docker.dmg">Intel Chip</a></li>
-<li><a href="https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe">Windows with NVIDIA GPUs</a></li>
-<li><a href="https://docs.docker.com/desktop/linux/install/">Linux</a></li>
-</ul>
+<p>Ensure that the latest version of Docker Desktop is installed on your system (Mac, Windows and Linux)</p>
 <h3 id="2-download-your-preferred-ides-optional">2. Download your preferred IDEs (optional)</h3>
 <ul>
 <li>IntelliJ IDEA</li>
@@ -5956,6 +5950,10 @@
 <h3 id="3-enabling-wsl-2-hyper-v-based-engine-on-docker-desktop-for-windows">3. Enabling WSL 2 / Hyper V based engine on Docker Desktop for Windows</h3>
 <p>In case you're using Windows 11, you will need to enable WSL 2 by opening Docker Desktop &gt; Settings &gt; Resources &gt; WSL Integration</p>
 <p><img alt="wsl2" src="../images/wsl2.png" /></p>
+<p>If you want to stick to Hyper-V, then you can enable the Windows Hypervisor Platform (requires an elevated terminal):</p>
+<div class="highlight"><pre><span></span><code>Enable-WindowsOptionalFeature -Online -FeatureName HypervisorPlatform -All
+</code></pre></div>
+<p>Restart your machine when prompted.</p>
 <h3 id="4-install-nodejs">4. Install Nodejs</h3>
 <p>To demonstrate the container-first development workflow, you will require Nodejs installed on your system.</p>
 <blockquote>
