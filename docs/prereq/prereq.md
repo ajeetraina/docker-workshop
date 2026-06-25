@@ -1,11 +1,6 @@
 ### 1. Docker Desktop
 
-[Download and Install Docker Desktop 4.77.0+](https://www.docker.com/products/docker-desktop/) on your system. 
-
- - [Apple Chip](https://desktop.docker.com/mac/main/arm64/Docker.dmg)
- - [Intel Chip](https://desktop.docker.com/mac/main/amd64/Docker.dmg)
- - [Windows with NVIDIA GPUs](https://desktop.docker.com/win/main/amd64/Docker%20Desktop%20Installer.exe)
- - [Linux](https://docs.docker.com/desktop/linux/install/)
+Ensure that the latest version of Docker Desktop is installed on your system (Mac, Windows and Linux)
 
 
 ### 2. Download your preferred IDEs (optional)
@@ -19,6 +14,14 @@
 In case you're using Windows 11, you will need to enable WSL 2 by opening Docker Desktop > Settings > Resources > WSL Integration
 
 ![wsl2](images/wsl2.png)
+
+If you want to stick to Hyper-V, then you can enable the Windows Hypervisor Platform (requires an elevated terminal):
+
+```
+Enable-WindowsOptionalFeature -Online -FeatureName HypervisorPlatform -All
+```
+
+Restart your machine when prompted.
 
 ### 4. Install Nodejs
 
