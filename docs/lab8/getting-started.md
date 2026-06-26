@@ -197,7 +197,7 @@ cd ~/sbx-lab
 
 ```bash
 cd ~/sbx-lab
-sbx create --name=sbxlab <agent> .
+sbx create <agent> .
 ```
 
 > **First run:** The agent image will pull (1–2 minutes) and the sandbox will be created with the Balanced network policy you selected at login.
@@ -206,11 +206,11 @@ sbx create --name=sbxlab <agent> .
 sbx ls
 ```
 
-You should see `sbxlab` in the list with status `stopped`:
+You should see `shell-sbx-kits-box-main` in the list with status `stopped`:
 
 ```
 SANDBOX   AGENT    STATUS    PORTS   WORKSPACE
-sbxlab    <agent>   stopped           /your/project/path
+shell-sbx-kits-box-main    <agent>   stopped           /your/project/path
 ```
 
 Once you run it (Step 6), the status changes to `running`.
