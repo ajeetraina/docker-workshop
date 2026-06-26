@@ -112,6 +112,12 @@ This lab works with any mainstream coding agent. Pick the provider whose API key
     export OPENAI_API_KEY=sk-proj-...    # your real key, set in your own shell
     ```
 
+    If you're using Windows:
+
+    ```bash 
+    $ enc:OPENAI_API_KEY = "sk-proj-..."
+    ```
+
     Then store it as a global sbx secret. The command below reads `$OPENAI_API_KEY` from your shell - your key never leaves the terminal and is not displayed anywhere:
 
     ```bash
