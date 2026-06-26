@@ -115,7 +115,7 @@ This lab works with any mainstream coding agent. Pick the provider whose API key
     If you're using Windows:
 
     ```bash 
-    $ enc:OPENAI_API_KEY = "sk-proj-..."
+    $ env:OPENAI_API_KEY = "sk-proj-..."
     ```
 
     Then store it as a global sbx secret. The command below reads `$OPENAI_API_KEY` from your shell - your key never leaves the terminal and is not displayed anywhere:
@@ -135,6 +135,10 @@ This lab works with any mainstream coding agent. Pick the provider whose API key
     ```bash
     export ANTHROPIC_API_KEY=sk-ant-...    # your real key, set in your own shell
     ```
+    
+    ```bash 
+    $ env:ANTHROPIC_API_KEY = "sk-ant-..."
+    ```
 
     Then store it as a global sbx secret. The command below reads `$ANTHROPIC_API_KEY` from your shell - your key never leaves the terminal and is not displayed anywhere:
 
@@ -152,6 +156,10 @@ This lab works with any mainstream coding agent. Pick the provider whose API key
 
     ```bash
     export GOOGLE_API_KEY=AIza...    # your real key, set in your own shell
+    ```
+
+    ```bash 
+    $ env:GEMINI_API_KEY = "AIza..."
     ```
 
     Then store it as a global sbx secret. The command below reads `$GOOGLE_API_KEY` from your shell - your key never leaves the terminal and is not displayed anywhere:
