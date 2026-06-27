@@ -107,6 +107,7 @@ nav:
         - The Isolation Proof: lab8/projects/isolation-proof.md
         - Reviewing Agent Changes: lab8/projects/reviewing-agent-changes.md
         - Secrets Without Exposure: lab8/projects/secrets.md
+        - 1Password Credential Injection: lab8/projects/1password-credentials.md
         - Network Policy: lab8/projects/network-policy.md
         - Branch Mode: lab8/projects/branch-mode.md
         - Parallel Agents: lab8/projects/parallel-agents.md

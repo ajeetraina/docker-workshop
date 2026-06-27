@@ -183,6 +183,12 @@ The sbx approach: the key never enters the VM. Even if the agent is compromised,
 
 This is why "secrets in environment variables" fails as a security model for agentic workloads. And why proxy injection is the right architecture.
 
+!!! tip "Keep your secrets in 1Password"
+
+    Prefer pulling credentials straight from your vault instead of the OS
+    keychain? See [1Password Credential Injection](1password-credentials.md)
+    for persistent, ephemeral, and multi-provider patterns.
+
 ---
 
 ## ✅ Checkpoint
