@@ -3631,6 +3631,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../projects/1password-credentials/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    1Password Credential Injection
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../projects/network-policy/" class="md-nav__link">
         
   
@@ -6157,6 +6185,9 @@ Network policy set to &quot;Balanced&quot;. Default deny, with common dev sites 
 <p><strong>First, export your API key in your host terminal</strong> (don't paste it into this page):</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">OPENAI_API_KEY</span><span class="o">=</span>sk-proj-...<span class="w">    </span><span class="c1"># your real key, set in your own shell</span>
 </code></pre></div>
+<p>If you're using Windows:</p>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>env:OPENAI_API_KEY<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sk-proj-...&quot;</span>
+</code></pre></div>
 <p>Then store it as a global sbx secret. The command below reads <code>$OPENAI_API_KEY</code> from your shell - your key never leaves the terminal and is not displayed anywhere:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OPENAI_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sbx<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>openai
 </code></pre></div>
@@ -6168,6 +6199,8 @@ Network policy set to &quot;Balanced&quot;. Default deny, with common dev sites 
 <p><strong>First, export your API key in your host terminal</strong> (don't paste it into this page):</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">ANTHROPIC_API_KEY</span><span class="o">=</span>sk-ant-...<span class="w">    </span><span class="c1"># your real key, set in your own shell</span>
 </code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>env:ANTHROPIC_API_KEY<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;sk-ant-...&quot;</span>
+</code></pre></div>
 <p>Then store it as a global sbx secret. The command below reads <code>$ANTHROPIC_API_KEY</code> from your shell - your key never leaves the terminal and is not displayed anywhere:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ANTHROPIC_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sbx<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>anthropic
 </code></pre></div>
@@ -6178,6 +6211,8 @@ Network policy set to &quot;Balanced&quot;. Default deny, with common dev sites 
 <p>You'll run <strong>Gemini CLI</strong> inside the sandbox, authenticated to Google.</p>
 <p><strong>First, export your API key in your host terminal</strong> (don't paste it into this page):</p>
 <div class="highlight"><pre><span></span><code><span class="nb">export</span><span class="w"> </span><span class="nv">GOOGLE_API_KEY</span><span class="o">=</span>AIza...<span class="w">    </span><span class="c1"># your real key, set in your own shell</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>env:GEMINI_API_KEY<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;AIza...&quot;</span>
 </code></pre></div>
 <p>Then store it as a global sbx secret. The command below reads <code>$GOOGLE_API_KEY</code> from your shell - your key never leaves the terminal and is not displayed anywhere:</p>
 <div class="highlight"><pre><span></span><code><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$GOOGLE_API_KEY</span><span class="s2">&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sbx<span class="w"> </span>secret<span class="w"> </span><span class="nb">set</span><span class="w"> </span>-g<span class="w"> </span>google
@@ -6202,16 +6237,16 @@ Network policy set to &quot;Balanced&quot;. Default deny, with common dev sites 
 <hr />
 <h2 id="step-5-create-your-sandbox">Step 5 - Create your sandbox</h2>
 <div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>~/sbx-lab
-sbx<span class="w"> </span>create<span class="w"> </span>--name<span class="o">=</span>sbxlab<span class="w"> </span>&lt;agent&gt;<span class="w"> </span>.
+sbx<span class="w"> </span>create<span class="w"> </span>&lt;agent&gt;<span class="w"> </span>.
 </code></pre></div>
 <blockquote>
 <p><strong>First run:</strong> The agent image will pull (1–2 minutes) and the sandbox will be created with the Balanced network policy you selected at login.</p>
 </blockquote>
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>ls
 </code></pre></div>
-<p>You should see <code>sbxlab</code> in the list with status <code>stopped</code>:</p>
+<p>You should see <code>shell-sbx-kits-box-main</code> in the list with status <code>stopped</code>:</p>
 <div class="highlight"><pre><span></span><code>SANDBOX   AGENT    STATUS    PORTS   WORKSPACE
-sbxlab    &lt;agent&gt;   stopped           /your/project/path
+shell-sbx-kits-box-main    &lt;agent&gt;   stopped           /your/project/path
 </code></pre></div>
 <p>Once you run it (Step 6), the status changes to <code>running</code>.</p>
 <hr />
