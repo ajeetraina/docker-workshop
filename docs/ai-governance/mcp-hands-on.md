@@ -1,20 +1,19 @@
 # MCP Hands-On - Registering Servers with `sbx mcp`
 
-**Pillar 2 - MCP Tool Governance** is framed as roadmap in *What's Next*. This section gets your hands on the part that's already shipping: the `sbx mcp` subcommand for registering MCP servers, fronted by the **Docker MCP Gateway**, that your sandboxed agents can call.
+*What's Next* frames **Pillar 2 - MCP Tool Governance** as roadmap. This section gets your hands on the part that's already shipping: the `sbx mcp` subcommand for registering MCP servers, fronted by the **Docker MCP Gateway**, that your sandboxed agents can call.
 
 By the end you will have:
 
-- A nightly `sbx` build with the `mcp` subtree enabled
-- A local **MCP Gateway** that `sbx` talks to
-- A registered MCP server (local stdio and a real remote OAuth server)
-- A clear mental model of the registration modes (remote OAuth, docker.io image, local stdio) and when to use each
+- An `sbx` with the `mcp` subtree enabled
+- A **gateway** fronting your servers - run one locally, or use Docker's hosted control plane
+- A registered MCP server, attached to a sandbox, and **verified inside the agent**
 
 !!! info "At a glance"
-    **Time:** ~15 minutes &nbsp;&nbsp;|&nbsp;&nbsp; **Prerequisites:** Setup and *Why AI Governance*. You do **not** need admin rights for your org - everything here runs locally.
+    **Time:** ~15 minutes &nbsp;&nbsp;|&nbsp;&nbsp; **Prerequisites:** Setup and *Why AI Governance*, plus `sbx login`.
 
 ---
 
-## Why this isn't in the stable `--help`
+## The one concept: `SBX_MCP_URL` must point at a gateway
 
 The `sbx mcp` command exists in recent `sbx` builds but is **hidden** until an environment variable enables it:
 
@@ -22,13 +21,21 @@ The `sbx mcp` command exists in recent `sbx` builds but is **hidden** until an e
 SBX_MCP_URL is not set; MCP is not enabled
 ```
 
-Once you set `SBX_MCP_URL` to any absolute http/https URL, the entire `mcp` subtree appears in `sbx --help`. That env var also tells `sbx` which **MCP Gateway / control plane** to talk to for hosted OAuth flows and managed server runs. We'll come back to that distinction below.
+Setting `SBX_MCP_URL` to an absolute http/https URL does two things: it **unlocks** the `mcp` subtree in `sbx --help`, and it tells `sbx` **which gateway** to talk to. That gateway is what provisions the connection, proxies tool calls, and applies governance.
+
+!!! warning "Point `SBX_MCP_URL` at a real gateway - nothing else"
+    Only two values carry the full governed flow:
+
+    1. a **local Docker MCP Gateway** (`http://localhost:8811`), or
+    2. Docker's **hosted control plane** (`https://connect.docker.com`).
+
+    Do **not** point it at the public MCP registry (`registry.modelcontextprotocol.io`). A registry is a *catalog, not a gateway* - it can't provision anything. With it, `sbx mcp add` appears to succeed but attaching fails: the daemon logs `501` / `WARN: mcp gateway setup failed` and the agent reports **"No MCP servers configured."**
 
 ---
 
-## Step 1 - Install or upgrade to the nightly `sbx`
+## Step 1 - Install or upgrade `sbx`
 
-The stable Homebrew formula may lag behind the nightly on MCP features. Use the nightly tap on macOS:
+The stable Homebrew formula may lag behind on MCP features. Use the nightly tap on macOS:
 
 ```bash
 brew install docker/tap/sbx@nightly
@@ -40,9 +47,7 @@ If you already have stable installed, switch the symlink:
 brew unlink sbx 2>/dev/null; brew link --overwrite sbx@nightly
 ```
 
-On Linux or Windows, grab the latest pre-release asset from the [releases page](https://github.com/docker/sbx-releases/releases) - look for `DockerSandboxes-linux.tar.gz`, the `.deb`/`.rpm` packages, or `DockerSandboxes.msi`. Do **not** download "Source code (tar.gz)" - that repo has no source, only release assets.
-
-Verify your version:
+On Linux or Windows, grab the latest pre-release asset from the [releases page](https://github.com/docker/sbx-releases/releases). Verify your version:
 
 ```bash
 sbx version
@@ -50,50 +55,74 @@ sbx version
 
 ---
 
-## Step 2 - Confirm the gating
+## Step 2 - Choose your gateway
 
-Before setting the env var, look at what's in `sbx --help`:
+Pick one of the two methods below. Both end with `SBX_MCP_URL` exported and the `sbx mcp` subtree unlocked - the rest of the lab is identical either way.
+
+- **Method 1 (local gateway)** is self-contained, works offline, and needs no org enablement - best for learning the mechanics.
+- **Method 2 (`connect.docker.com`)** is **MCP Gateway Enterprise**: the org-governed path where policy and audit actually apply.
+
+=== "🐳 Method 1 - Local gateway"
+
+    ### Run a local Docker MCP Gateway
+
+    You need a gateway listening on `localhost:8811`. Get one **either** way below - they produce the same gateway.
+
+    #### Option A - Compose (self-contained, no Docker Desktop needed)
+
+    The open-source [`docker/mcp-gateway`](https://github.com/docker/mcp-gateway) is the data plane - it proxies MCP traffic to backing servers. Pull the lab's Compose file and start it:
+
+    ```bash
+    mkdir -p ~/workdemo/mcp-gateway-lab && cd ~/workdemo/mcp-gateway-lab
+    curl -fsSL https://raw.githubusercontent.com/ajeetraina/labspace-ai-governance/main/labspace/assets/mcp-gateway-compose.yaml -o compose.yaml
+    docker compose up -d
+    ```
+
+    !!! tip "Docker CE / WSL2 without Docker Desktop"
+        If the gateway errors with `Docker Desktop is not running`, set `export DOCKER_MCP_IN_CONTAINER=1` before `docker compose up -d`.
+
+    #### Option B - Docker Desktop MCP Toolkit
+
+    Docker Desktop **4.62+** ships the *same* gateway, managed for you:
+
+    1. **Docker Desktop → Settings → MCP Toolkit** → enable it.
+    2. In the **MCP Toolkit** view, enable at least one server (e.g. **DuckDuckGo**) so the gateway has something to proxy.
+    3. Leave Desktop running - the gateway stays up on `localhost:8811`.
+
+    #### Point `sbx` at it
+
+    ```bash
+    export SBX_MCP_URL=http://localhost:8811
+    sbx daemon stop && sbx daemon start -d
+    ```
+
+=== "🏢 Method 2 - connect.docker.com"
+
+    ### Docker's hosted control plane (`connect.docker.com`)
+
+    The endgame of **Pillar 2**: instead of running your own `localhost:8811`, `SBX_MCP_URL` points at Docker's **hosted MCP control plane**, which provisions a governed gateway per sandbox - the same control plane that enforces the network and filesystem policies you proved in the *Network* and *Filesystem Enforcement* demos. This is **MCP Gateway Enterprise**.
+
+    There's nothing to stand up - point `sbx` at it and restart the daemon:
+
+    ```bash
+    export SBX_MCP_URL=https://connect.docker.com
+    sbx daemon stop && sbx daemon start -d
+    ```
+
+    When you attach a server (Step 4), the daemon calls this control plane to provision a gateway and the agent connects to it. A successful attach logs a clean `200` and `mcp gateway started ... backends:N` in `sandboxd/daemon.log`. The gateway can **reject** a registration that violates org policy, inject backend secrets per request, and write every tool call to the audit trail (see *Observability*). Check [docker.com/products/ai-governance](https://www.docker.com/products/ai-governance/) for your org's enablement status.
+
+    !!! tip "If servers attach but every network call is denied"
+        If the agent can't reach its own API and `apt`/downloads fail, check your realm. `governance policy evaluation ... allowed:false ... policy_deny_reason:"implicit"` in the daemon log means **no policies loaded** - usually because the policy/audit backend is unreachable. If the log shows a `*.stage-*.aws.dckr.io` endpoint timing out, you're on the **staging** realm: `unset DOCKER_AUTH_STAGING && docker logout && docker login` to your prod org, then restart the daemon. Governance is **fail-closed** - no policy means deny-all.
+
+### Confirm the subtree is unlocked
+
+Either method leaves `SBX_MCP_URL` exported. Confirm the commands appear:
 
 ```bash
-sbx --help | grep -iE "mcp|Available Commands" | head -20
-```
-
-You'll see the usual commands (`create`, `run`, `policy`, `secret`, etc.) but **no `mcp`**.
-
----
-
-## Step 3 - Enable `sbx mcp` with the MCP Gateway
-
-`SBX_MCP_URL` is the gate. Any reachable http/https URL turns the command on - point it at an **MCP Gateway**.
-
-### Variant A - Your own local MCP Gateway (focus of this lab)
-
-The open-source [`docker/mcp-gateway`](https://github.com/docker/mcp-gateway) is the data-plane half of the MCP architecture - it proxies MCP traffic to backing servers over stdio/SSE/streaming. Running it locally is the cleanest way to teach the gateway side of the picture, works fully offline, and needs zero internal access.
-
-Create a working directory and pull the lab's prebuilt Compose file:
-
-```bash
-mkdir -p ~/mcp-gateway-lab && cd ~/mcp-gateway-lab
-curl -fsSL https://raw.githubusercontent.com/ajeetraina/labspace-ai-governance/main/labspace/assets/mcp-gateway-compose.yaml -o compose.yaml
-cat compose.yaml
-```
-
-The Compose file runs `docker/mcp-gateway` with the DuckDuckGo server enabled, mounts the Docker socket so the gateway can spawn MCP server containers, and exposes the SSE transport on port 8811.
-
-Start it and point `sbx` at it:
-
-```bash
-docker compose up -d
-export SBX_MCP_URL=http://localhost:8811
 sbx mcp --help
 ```
 
-The `mcp` subtree is now live. The full set of subcommands:
-
 ```
-sbx mcp
-Register and manage MCP servers for use with sandbox sessions.
-
 Available Commands:
   add         Register an MCP server
   auth        Authorize MCP servers
@@ -104,150 +133,104 @@ Available Commands:
   rm          Remove a registered MCP server
 ```
 
-Note `load` - that's the command that actually attaches a registered server to a running sandbox (there is no `--mcp` flag on `sbx run`; more on that in Step 6).
-
-!!! warning "What the local gateway is and isn't"
-    The local gateway **unlocks the `sbx mcp` subtree** (any URL does that) and is the **data plane** that actually proxies tool calls. It does **not** implement the hosted OAuth/catalog control-plane endpoints. So:
-
-    - ✅ Local stdio servers (Mode C below) and docker.io image servers (Mode B) work normally through the gateway
-    - ✅ Remote OAuth servers (Mode A) still register - `sbx` runs OAuth discovery against the *target* server (e.g. Notion), not against your gateway
-
-### Variant B - 🔒 Hosted Docker MCP Gateway
-
-If you're on a Docker team or in the preview program, `SBX_MCP_URL` should point at Docker's **hosted MCP control plane** - the service that brokers per-server OAuth on your Docker Hub identity and manages gateways inside each sandbox. Ask in the internal sbx Slack channel for the current URL. With that URL set, `sbx mcp add <name>` against catalog-backed servers (Notion, GitHub, Linear) walks you through a hosted OAuth flow tied to your Hub login and stores the credentials in the control plane instead of as plaintext env vars on disk.
+Note `load` (attaches into a **running** sandbox) and that the attach flag on `sbx run` is `--static-mcp`, **not** `--mcp` (Step 4).
 
 ---
 
-## Step 4 - The registration modes
+## Step 3 - Register a server
 
-`sbx mcp add <name>` takes either `--url` or `--command`. `sbx` **auto-detects** the input type. With the MCP Gateway as your control point, the modes that matter for this lab are:
-
-| Mode | When to use | Flags |
-| --- | --- | --- |
-| **A - Remote OAuth MCP endpoint** | A hosted MCP server with OAuth (Notion, Linear, GitHub) | `--url https://mcp.<vendor>.com/mcp` |
-| **B - docker.io OCI image** | A containerized MCP server published as an OCI image - transport/port/path auto-detected from image labels | `--url docker.io/<org>/<image>:<tag>` |
-| **C - Local stdio command** | An MCP server you run as a subprocess/container on the host | `--command <exe> --args "a,b,c"` |
-
-> `sbx mcp add --help` also documents a public community-registry URL form. This lab deliberately skips it and stays on the gateway-native paths above - remote OAuth, docker.io images, and local stdio.
-
-A few rules baked into the binary that will save you debugging time:
-
-- **`--url` must be https** for remote MCP endpoints. Plain http fails with `issuer URL must use https scheme` because `sbx` does RFC 8414 OAuth discovery against the URL.
-- **OCI image refs must be on `docker.io`.** Other registries (gcr.io, ghcr.io, ECR) are rejected in v1. Transport is read from the `io.modelcontextprotocol.transport` label (falling back to a TCP `EXPOSE` → `streamable-http`, else `stdio`); override with `--transport` / `--port` / `--path`.
-- **`--command` is an executable path**, not a shell string. Don't pass `"docker run ..."` as one big string; use `--command docker --args "run,-i,--rm,mcp/postgres"`. `--args` is a string list - comma-separate multiple values.
-- **`--skip_auth`** lets you register an OAuth server without starting the hosted OAuth flow - useful if you don't have control-plane access yet.
-
-!!! tip "Registering only records the server - then attach it"
-    Per the help text, `sbx mcp add` *"only registers the server."* To actually use it you either bring it up with a sandbox (`sbx create`/`sbx run --static-mcp <name>`) or load it into one that's already running (`sbx mcp load <name>`). See Step 6.
-
----
-
-## Step 5 - Try Mode C (local stdio) - works everywhere
-
-The most reliable path that needs nothing beyond your machine. Register a local DuckDuckGo MCP server that runs as a Docker container in stdio mode:
+We'll register the Wikipedia MCP server as a **local stdio** container - the most reliable path, needs nothing beyond your machine:
 
 ```bash
-sbx mcp add local-ddg --command docker --args "run,-i,--rm,--init,mcp/duckduckgo"
+sbx mcp add local-wiki --command docker --args "run,-i,--rm,mcp/wikipedia-mcp"
 ```
 
-List what's registered:
+`--command` is an executable path (not a shell string) and `--args` is a **comma-separated** list - these map to `docker run -i --rm mcp/wikipedia-mcp`. Confirm it landed:
 
 ```bash
 sbx mcp ls
+sbx mcp inspect local-wiki
 ```
 
-Inspect the server you just added:
-
-```bash
-sbx mcp inspect local-ddg
-```
+!!! note
+    `sbx mcp inspect` shows only the **registration record** (name, type, resolved command). It does **not** start the server or list its tools - the real proof comes inside the agent in Step 5.
 
 !!! warning "Local stdio servers run on the HOST, not in the sandbox"
-    They have your full user permissions - filesystem, network, secrets, everything. Use them for development, not for code you don't trust. The `add --help` text spells this out: *"no identity, no verifiable supply chain, and no sandboxing."* This is exactly the risk the MCP Gateway exists to govern.
+    They run with your full user permissions. Use them for development, not for code you don't trust. This is exactly the risk the gateway exists to govern.
+
+Two other registration modes work the same way against either gateway:
+
+- **Remote OAuth:** `sbx mcp add notion --url https://mcp.notion.com/mcp` (must be `https`; add `--skip_auth` to register before completing OAuth).
+- **docker.io image:** `sbx mcp add ddg-image --url docker.io/mcp/duckduckgo` (OCI refs must be on `docker.io`; the gateway pulls and runs it with container isolation).
 
 ---
 
-## Step 6 - Try Mode A (remote OAuth) - register a real hosted server
-
-Pointing `sbx` at a real hosted MCP server triggers OAuth discovery and the full authorization flow. Register Notion:
-
-```bash
-sbx mcp add notion --url https://mcp.notion.com/mcp
-```
-
-On a first run `sbx` starts its background daemon and walks the OAuth flow:
-
-```
-Starting sandboxd daemon...
-Daemon started (PID: 15909, socket: .../sandboxd.sock)
-Resolving MCP server "notion"...
-INFO: mcpruntime: discovering remote server spec
-INFO: mcpruntime: remote server spec discovered
-MCP server "notion" authorized
-MCP server "notion" registered (type: remote)
-```
-
-Confirm it landed and inspect the OAuth metadata `sbx` discovered:
-
-```bash
-sbx mcp ls
-```
-
-```
-NAME                 TYPE     URL/COMMAND
-notion               remote   https://mcp.notion.com/mcp
-```
-
-```bash
-sbx mcp inspect notion
-```
-
-```
-Name:      notion
-Type:      remote
-URL:       https://mcp.notion.com/mcp
-Transport: streamable-http
-OAuth:     required
-  Issuer:       https://mcp.notion.com
-  Registration: https://mcp.notion.com/register
-```
-
-!!! note "Don't have OAuth access yet?"
-    Append `--skip_auth` to register the entry without running the OAuth dance:
-    `sbx mcp add notion --url https://mcp.notion.com/mcp --skip_auth`. The server shows up in `sbx mcp ls`, but calls won't be authorized until you complete auth.
+## Step 4 - Attach the server to a sandbox
 
 !!! warning "The flag is `--static-mcp`, not `--mcp`"
-    `sbx run claude --mcp notion` fails with `ERROR: unknown flag: --mcp` - that flag doesn't exist. Registering a server only *records* it; attach it one of two ways:
+    Registering only *records* the server. `sbx run claude --mcp local-wiki` fails with `ERROR: unknown flag: --mcp` - that flag doesn't exist. The attach flag is **`--static-mcp`**.
 
-    ```bash
-    # Bring up a sandbox with the server attached from the start
-    sbx run claude --static-mcp notion
+```bash
+# Bring up a sandbox with the server attached from the start
+sbx run claude --static-mcp local-wiki
 
-    # ...or load it into a sandbox that's already running
-    sbx mcp load notion
-    ```
-
-    Both routes go through the MCP Gateway. Use `sbx mcp ls` / `sbx mcp inspect` to confirm what's registered, `sbx mcp auth` to (re)authorize an OAuth server, and `sbx mcp bundle` to manage a named set of servers.
+# ...or load it into a sandbox that's already running
+sbx mcp load local-wiki
+```
 
 ---
 
-## Step 7 - Clean up
+## Step 5 - Verify inside the agent
 
-Remove the test servers when you're done:
+The real proof is in the running agent. In the sandbox's Claude Code, run:
+
+```
+/mcp
+```
+
+You'll see **one** server - the gateway - aggregating every backend you attached:
+
+```
+Manage MCP servers
+1 server
+  mcp-gateway · ✔ connected · 24 tools
+```
+
+!!! info "The agent connects to one `mcp-gateway` endpoint, not to your servers directly"
+    Your backend's tools are aggregated *behind* the gateway. Press Enter on `mcp-gateway` to expand them - each tool is namespaced `mcp__mcp-gateway__<tool>` (e.g. `mcp__mcp-gateway__search_wikipedia`). That single governed endpoint is the whole point of Pillar 2: every tool call flows through the gateway, where policy and audit apply.
+
+    If `/mcp` instead lists `claude.ai …` connectors plus `claude-in-chrome` / `computer-use` built-ins, you're looking at your **host** Claude Code, not the sandbox - switch to the window launched by `sbx run`.
+
+Now make the agent actually call a tool. Esc out of `/mcp` and prompt it:
+
+```
+Use the wiki tools to search Wikipedia for "Eiffel Tower", then give me the
+summary and 3 key facts. Tell me which tool(s) you called.
+```
+
+A tool-call line such as `mcp-gateway · search_wikipedia` (approve it if prompted) and an answer drawn from the live article confirm the **complete chain**: `sbx → mcp-gateway → local-wiki → Wikipedia`, every call through the governed gateway.
+
+---
+
+## Step 6 - Clean up
 
 ```bash
-sbx mcp rm local-ddg notion 2>/dev/null; sbx mcp ls
+sbx mcp rm local-wiki 2>/dev/null; sbx mcp ls
+```
+
+If you ran the Compose gateway (Method 1, Option A), stop it too:
+
+```bash
+cd ~/workdemo/mcp-gateway-lab && docker compose down
 ```
 
 ---
 
 ## How this connects to Pillar 2
 
-*What's Next* describes **MCP Tool Governance** as the layer where org admins decide *which* MCP servers and tools agents in your org are allowed to call. Everything you just did was on the **developer side** of that picture - registering servers from your CLI, fronted by the MCP Gateway.
+Everything you did was on the **developer side**: registering servers from your CLI, fronted by the Docker MCP Gateway. The governance side - the org admin approving catalogs, restricting tool sets, injecting per-request secrets, auditing every call - sits in front of the same `sbx mcp` machinery and the same gateway that `SBX_MCP_URL` points at.
 
-The governance side - the org admin approving catalogs, restricting tool sets, injecting per-request secrets - sits in front of the same `sbx mcp` machinery and the same gateway that `SBX_MCP_URL` points at. The CLI you used here is exactly the surface that enterprise policy will constrain once MCP Gateway Enterprise is generally available.
-
-In other words: today you control what's registered; tomorrow your org admin controls what's registerable.
+With **Method 1** you front your own gateway and control what's registered. With **Method 2 (`connect.docker.com`)** your org admin controls what's *registerable*, and every tool call lands in the audit trail you'll explore in *Observability*.
 
 ---
 
@@ -255,9 +238,7 @@ In other words: today you control what's registered; tomorrow your org admin con
 
 You proved:
 
-- `sbx mcp` exists today, gated behind `SBX_MCP_URL` pointing at an MCP Gateway
-- Three gateway-native registration modes - remote OAuth, docker.io image, and local stdio - cover the realistic ways to wire up an MCP server
-- The local stdio path works with zero internal access; the remote OAuth path (Notion) authorizes and registers as a `remote` server
-- The attach flag is `--static-mcp` (not `--mcp`); `sbx mcp load` attaches into an already-running sandbox - both fronted by the gateway
-
-That's the developer half of Pillar 2 in your hands.
+- `sbx mcp` is gated behind `SBX_MCP_URL`, which must point at a **real gateway** - a **local** one (`localhost:8811`) or Docker's **hosted control plane** (`https://connect.docker.com`). The public registry is a catalog and cannot carry the flow.
+- A local gateway can be run via your own Compose stack or Docker Desktop's MCP Toolkit - interchangeable.
+- The attach flag is `--static-mcp` (not `--mcp`); `sbx mcp load` attaches into an already-running sandbox.
+- Inside the agent, the gateway appears as a single aggregated `mcp-gateway` server - the governed endpoint every tool call flows through.
