@@ -62,6 +62,8 @@ It's a **single wildcard entry** - not one line per sandbox - so it keeps workin
 Your sandbox from the earlier modules is named `sbxlab`. Connect to it by hostname:
 
 ```bash
+mkdir -p ~/workdemo && cd ~/workdemo
+sbx run --name sbxlab codex .
 ssh sbxlab.sbx
 ```
 

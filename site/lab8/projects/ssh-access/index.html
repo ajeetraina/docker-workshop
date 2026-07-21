@@ -6048,7 +6048,9 @@
 <hr />
 <h2 id="step-2-open-a-shell-in-your-sandbox">Step 2 - Open a shell in your sandbox</h2>
 <p>Your sandbox from the earlier modules is named <code>sbxlab</code>. Connect to it by hostname:</p>
-<div class="highlight"><pre><span></span><code>ssh<span class="w"> </span>sbxlab.sbx
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/workdemo<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/workdemo
+sbx<span class="w"> </span>run<span class="w"> </span>--name<span class="w"> </span>sbxlab<span class="w"> </span>codex<span class="w"> </span>.
+ssh<span class="w"> </span>sbxlab.sbx
 </code></pre></div>
 <p>You land in an interactive shell <strong>inside the microVM</strong>. Prove where you are:</p>
 <div class="highlight"><pre><span></span><code>hostname<span class="w">          </span><span class="c1"># the sandbox, not your Mac</span>
