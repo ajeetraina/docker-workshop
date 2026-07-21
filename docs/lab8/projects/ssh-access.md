@@ -77,6 +77,10 @@ cat ~/.ssh/id_rsa 2>&1   # No such file or directory - your keys aren't here
 
 This is the same isolation you proved in [The Isolation Proof](isolation-proof.md) - you've just reached it over SSH instead of through the agent.
 
+![sbx setup ssh panel followed by a real ssh sbxlab.sbx session showing hostname sbxlab, user agent, and the host SSH key absent inside the VM](images/ssh-session.png)
+
+*`sbx setup ssh` prints the endpoint panel; then `ssh sbxlab.sbx` runs inside the microVM - `whoami` is the sandbox's `agent` user and the host's `~/.ssh/id_rsa` simply isn't there.*
+
 Type `exit` (or press `Ctrl-D`) to return to your host.
 
 ---

@@ -6058,6 +6058,8 @@ ls<span class="w"> </span>~<span class="w">              </span><span class="c1"
 cat<span class="w"> </span>~/.ssh/id_rsa<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w">   </span><span class="c1"># No such file or directory - your keys aren&#39;t here</span>
 </code></pre></div>
 <p>This is the same isolation you proved in <a href="../isolation-proof/">The Isolation Proof</a> - you've just reached it over SSH instead of through the agent.</p>
+<p><img alt="sbx setup ssh panel followed by a real ssh sbxlab.sbx session showing hostname sbxlab, user agent, and the host SSH key absent inside the VM" src="../images/ssh-session.png" /></p>
+<p><em><code>sbx setup ssh</code> prints the endpoint panel; then <code>ssh sbxlab.sbx</code> runs inside the microVM - <code>whoami</code> is the sandbox's <code>agent</code> user and the host's <code>~/.ssh/id_rsa</code> simply isn't there.</em></p>
 <p>Type <code>exit</code> (or press <code>Ctrl-D</code>) to return to your host.</p>
 <hr />
 <h2 id="step-3-run-a-one-off-remote-command">Step 3 - Run a one-off remote command</h2>
