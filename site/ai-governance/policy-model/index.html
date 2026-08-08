@@ -3984,6 +3984,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#set-up-your-lab-working-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set up your lab working directory
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5924,6 +5935,17 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#set-up-your-lab-working-directory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Set up your lab working directory
+      
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5945,24 +5967,52 @@
 
 
 <h1 id="the-policy-model">The Policy Model</h1>
+<pre class="mermaid"><code>flowchart TB
+    subgraph SRC["Source of truth"]
+        UI["Admin Console (UI)"]
+        API["Governance API"]
+    end
+    UI --&gt; POLICY[("Org policy&lt;br/&gt;network · filesystem rules")]
+    API --&gt; POLICY
+    POLICY -. "docker login / sbx policy reset" .-&gt; DAEMON["sbx daemon&lt;br/&gt;caches policy"]
+    DAEMON --&gt; SBOX["every sandbox&lt;br/&gt;on this machine"]
+    subgraph EVAL["Per-request evaluation"]
+        D1{"deny match?"} --&gt;|yes| BLOCK["block 403"]
+        D1 --&gt;|no| D2{"allow match?"}
+        D2 --&gt;|yes| FWD["forward"]
+        D2 --&gt;|no| DEF["default-deny → block"]
+    end
+    SBOX --&gt; D1
+
+    classDef src fill:#eef2ff,stroke:#6366f1,color:#000
+    classDef pol fill:#fff7ed,stroke:#f59e0b,color:#000
+    classDef ok fill:#ecfdf5,stroke:#10b981,color:#000
+    classDef deny fill:#fef2f2,stroke:#ef4444,color:#000
+    class UI,API src
+    class POLICY,DAEMON pol
+    class FWD,SBOX ok
+    class BLOCK,DEF deny</code></pre>
+<p><em>Authored once (UI or API), synced to the daemon at login, cached, and applied to every sandbox. Each request is evaluated deny → allow → default-deny.</em></p>
 <p>Before you run the live demo, here's the mental model.</p>
-<hr />
 <h2 id="where-policies-live">Where policies live</h2>
-<p>Policies for your organization are defined in one place:</p>
-<p><strong><code>https://app.docker.com/accounts/&lt;your-org&gt;</code></strong> → AI governance</p>
-<p>Only org admins can modify policies. Developers cannot override them locally. That's the point.</p>
-<hr />
+<p>Policies for <code>&lt;your-org&gt;</code> live in one place - the org's control plane - but there are <strong>two ways to author them</strong>:</p>
+<ol>
+<li><strong>Docker Hub Admin Console (UI)</strong> - point and click at <strong><a href="https://app.docker.com/accounts/&lt;your-org&gt;">app.docker.com/accounts/<your-org></a></strong> → <strong>AI governance</strong>. Best for a human making a one-off change.</li>
+<li><strong>Docker AI Governance API</strong> - the same control plane driven programmatically over HTTP. Best for codifying governance: version control, CI pipelines, and admin tooling. We cover it in the <strong>Governance API</strong> section.</li>
+</ol>
+<p>Substitute <code>&lt;your-org&gt;</code> with your Docker Hub organization (where you have admin rights).</p>
+<p>Both paths read and write the <strong>same policies</strong>, <strong>same rules</strong>, <strong>same org</strong> - they're just two front doors to one source of truth. This section and the demos use the Admin Console; everything you do here can be reproduced through the API.</p>
+<p>Only org admins can modify policies, whichever path they use. Developers cannot override them locally. That's the point.</p>
 <h2 id="how-policies-reach-developers">How policies reach developers</h2>
 <p>When a developer runs <code>docker login</code> with org credentials, the Docker client fetches the org's AI governance policies as part of authentication. The local <code>sbx</code> daemon caches them and applies them to every sandbox launched on that machine.</p>
-<div class="highlight"><pre><span></span><code>Admin Console  ──auth flow──▶  Developer Docker Desktop  ──cache──▶  Every sandbox
-(one source
+<div class="highlight"><pre><span></span><code>Admin Console  ──auth flow──▶  Developer machine (sbx daemon)  ──cache──▶  Every sandbox
+(one source                                              
  of truth)
 </code></pre></div>
 <p>When the admin changes a policy, developers pick up the change on next sync. To force an immediate refresh:</p>
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>reset
 </code></pre></div>
 <p>(You'll be prompted to choose a default baseline. Pick <strong>Balanced</strong>.)</p>
-<hr />
 <h2 id="how-rules-evaluate">How rules evaluate</h2>
 <p>Rules are evaluated <strong>per request</strong> at the sandbox network proxy. For an outbound HTTP request from inside a sandbox, the proxy checks:</p>
 <ol>
@@ -5976,7 +6026,6 @@
 <li><strong>Default-deny posture</strong> means you don't need to enumerate every bad destination. If you didn't explicitly allow it, it's blocked.</li>
 <li><strong>A <code>0.0.0.0/0</code> catch-all allow rule defeats this model</strong> - it permits everything. We'll remove it in the next section if it's present.</li>
 </ul>
-<hr />
 <h2 id="local-vs-remote-policies">Local vs remote policies</h2>
 <p>Run this to see what's currently active:</p>
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>ls
@@ -6002,13 +6051,39 @@
 </table>
 <p>When the org has policies set for a rule type (e.g., network), local rules of that type go <strong>inactive</strong> - you'll see <code>corporate policy takes precedence and does not delegate this rule type to local policy</code>.</p>
 <p>The CISO has the wheel.</p>
-<hr />
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Not everything the sandbox enforces is an org policy.</strong> Network and filesystem rules flow from the admin as shown above. <strong>Credential isolation</strong> - keeping real API keys and tokens out of the sandbox - is a sandbox runtime protection you configure <strong>developer-side</strong> (<code>sbx secret</code>, the OS keychain, OAuth). It complements these policies rather than being one of them. The dedicated <strong>Credential Isolation</strong> section covers it.</p>
+</div>
 <h2 id="confirm-governance-is-active">Confirm governance is active</h2>
 <p>Look at the top of the <code>sbx policy ls</code> output. You should see:</p>
 <div class="highlight"><pre><span></span><code>Governance: managed by &lt;your-org&gt;
 [OK] last synced HH:MM:SS
 </code></pre></div>
-<p>If <code>Governance</code> says anything other than your org, check that you're logged in with the right account (<code>docker login</code>) and that the account is a member of your org.</p>
+<p>If <code>Governance</code> says anything other than <code>&lt;your-org&gt;</code>, check that you're logged in with the right account (<code>docker login</code>) and that the account is a member of <code>&lt;your-org&gt;</code>.</p>
+<h2 id="set-up-your-lab-working-directory">Set up your lab working directory</h2>
+<p>Every <code>sbx run</code> in this lab launches from a single directory: <strong><code>~/workdemo</code></strong>. Create it now:</p>
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/workdemo
+</code></pre></div>
+<p>Then <strong>allowlist it in the filesystem policy</strong> so sandboxes are allowed to mount it. In the Admin Console at <strong><a href="https://app.docker.com/accounts/&lt;your-org&gt;">app.docker.com/accounts/<your-org></a></strong> → <strong>AI governance</strong> → <strong>Filesystem access</strong>, add:</p>
+<ul>
+<li>Action: <strong>Allow</strong></li>
+<li>Filesystem path: <code>~/workdemo/**</code></li>
+<li>Action scope: <strong>Read, Write</strong></li>
+<li>Name: <code>allow workdemo</code></li>
+</ul>
+<div class="admonition warning">
+<p class="admonition-title">Important</p>
+<p><strong>Why this is required first.</strong> Filesystem policy is <strong>default-deny</strong> and checked at sandbox-creation time. If <code>~/workdemo</code> isn't covered by an allow rule, every <code>sbx run</code> in this lab fails before the sandbox even starts:</p>
+<div class="highlight"><pre><span></span><code>ERROR: failed to create sandbox: ... status 403: mount policy denied:
+/Users/&lt;you&gt;/workdemo: no applicable policies for
+op(action=fs:mount:write, resource=fs:path:/Users/&lt;you&gt;/workdemo)
+</code></pre></div>
+<p>Add this allow rule before running any demo. The <strong>Filesystem Enforcement Demo</strong> goes deeper on filesystem enforcement.</p>
+</div>
+<p>After adding the rule, force a sync and confirm it reached your machine:</p>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>reset<span class="w">    </span><span class="c1"># choose Balanced when prompted</span>
+</code></pre></div>
 <p>That's the model. Now let's prove it works end-to-end.</p>
 
 

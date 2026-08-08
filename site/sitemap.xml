@@ -5,7 +5,23 @@
          <lastmod>2026-08-08</lastmod>
     </url>
     <url>
+         <loc>https://dockerworkshop.vercel.app/ai-governance/audit-logging/</loc>
+         <lastmod>2026-08-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dockerworkshop.vercel.app/ai-governance/credential-isolation/</loc>
+         <lastmod>2026-08-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dockerworkshop.vercel.app/ai-governance/end-to-end-governance/</loc>
+         <lastmod>2026-08-08</lastmod>
+    </url>
+    <url>
          <loc>https://dockerworkshop.vercel.app/ai-governance/filesystem-demo/</loc>
+         <lastmod>2026-08-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dockerworkshop.vercel.app/ai-governance/governance-api/</loc>
          <lastmod>2026-08-08</lastmod>
     </url>
     <url>
@@ -14,6 +30,10 @@
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/ai-governance/mcp-hands-on/</loc>
+         <lastmod>2026-08-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dockerworkshop.vercel.app/ai-governance/monitoring-policies/</loc>
          <lastmod>2026-08-08</lastmod>
     </url>
     <url>
@@ -26,6 +46,22 @@
     </url>
     <url>
          <loc>https://dockerworkshop.vercel.app/ai-governance/policy-model/</loc>
+         <lastmod>2026-08-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dockerworkshop.vercel.app/ai-governance/problem-statement/</loc>
+         <lastmod>2026-08-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dockerworkshop.vercel.app/ai-governance/product-catalog/</loc>
+         <lastmod>2026-08-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dockerworkshop.vercel.app/ai-governance/sandbox-kits/</loc>
+         <lastmod>2026-08-08</lastmod>
+    </url>
+    <url>
+         <loc>https://dockerworkshop.vercel.app/ai-governance/sandboxing-the-agent/</loc>
          <lastmod>2026-08-08</lastmod>
     </url>
     <url>

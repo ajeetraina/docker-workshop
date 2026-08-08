@@ -5925,55 +5925,72 @@
 
 
 <h1 id="network-control-and-proxy-managed-credentials">Network Control and Proxy-Managed Credentials</h1>
+<pre class="mermaid"><code>flowchart LR
+    subgraph KIT["Kit spec.yaml"]
+        NET["caps.network.allow&lt;br/&gt;pypi.org · api.my-service.com"]
+        CRED["credentials.apiKey.inject&lt;br/&gt;domain · header · format"]
+    end
+    subgraph HOST["Host machine"]
+        SECRET["real secret&lt;br/&gt;(env / sbx secret)"]
+        PROXY["egress proxy + policy"]
+        subgraph VM["MicroVM (sandbox)"]
+            AGENT["agent&lt;br/&gt;never holds the secret"]
+        end
+        AGENT -- request --&gt; PROXY
+    end
+    KIT --&gt; PROXY
+    SECRET --&gt; PROXY
+    PROXY --&gt;|"allow + inject header"| API["api.my-service.com"]
+    PROXY --&gt;|"not allowed"| BLOCK["blocked"]
+
+    classDef kit fill:#eff6ff,stroke:#3b82f6,color:#000
+    classDef pol fill:#fff7ed,stroke:#f59e0b,color:#000
+    classDef vm fill:#ecfdf5,stroke:#10b981,color:#000
+    classDef key fill:#f3e8fd,stroke:#9333ea,color:#000
+    classDef deny fill:#fef2f2,stroke:#ef4444,color:#000
+    class NET,CRED kit
+    class PROXY pol
+    class AGENT vm
+    class SECRET,API key
+    class BLOCK deny</code></pre>
+<p><em>The kit declares egress rules and a credential source; the proxy enforces the allowlist and injects the secret per request. The raw value stays on the host — the same isolation as the Credential Isolation section, now declarative.</em></p>
 <p>The docker-review kit needed no network access. Most real kits do - they need to reach a package registry during install, or call an external API at runtime. This section covers how to declare those rules and wire up credentials so they never enter the VM.</p>
-<hr />
 <h2 id="how-network-control-works">How network control works</h2>
-<p>Every sandbox has an egress proxy. All outbound traffic from the sandbox goes through it. By default, a kit's <code>allowedDomains</code> are additive - they extend whatever the base network policy allows.</p>
-<div class="highlight"><pre><span></span><code><span class="nt">network</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">allowedDomains</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pypi.org</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">files.pythonhosted.org</span>
-<span class="w">  </span><span class="nt">deniedDomains</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.example.com</span><span class="w">   </span><span class="c1"># explicit block even if another policy permits it</span>
+<p>Every sandbox has an egress proxy. All outbound traffic from the sandbox goes through it. By default, a kit's <code>caps.network.allow</code> entries are additive - they extend whatever the base network policy allows.</p>
+<div class="highlight"><pre><span></span><code><span class="nt">caps</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">network</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allow</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">pypi.org</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">files.pythonhosted.org</span>
+<span class="w">    </span><span class="nt">deny</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">telemetry.example.com</span><span class="w">   </span><span class="c1"># explicit block even if another policy permits it</span>
 </code></pre></div>
 <p>Use <code>sbx policy log</code> to see every request the proxy handled - essential for debugging blocked domains during install.</p>
-<hr />
 <h2 id="how-credential-injection-works">How credential injection works</h2>
 <p>Here's the security property that makes kits more rigorous than a shell script: <strong>the raw credential never enters the VM</strong>.</p>
-<p>Instead:</p>
-<ol>
-<li>You declare a credential source in the kit - where the proxy should look on the host</li>
-<li>The proxy reads it at request time</li>
-<li>The proxy injects it as an HTTP header on matching outbound requests</li>
-<li>The agent inside the sandbox never sees the raw value</li>
-</ol>
-<div class="highlight"><pre><span></span><code><span class="nt">credentials</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">sources</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">my-service</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_SERVICE_API_KEY</span><span class="w">   </span><span class="c1"># read from host environment</span>
-
-<span class="nt">network</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">serviceDomains</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">api.my-service.com</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-service</span><span class="w">   </span><span class="c1"># link domain to credential source</span>
-<span class="w">  </span><span class="nt">serviceAuth</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">my-service</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">headerName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
-<span class="w">      </span><span class="nt">valueFormat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">%s&quot;</span><span class="w">       </span><span class="c1"># proxy injects this header</span>
-<span class="w">  </span><span class="nt">allowedDomains</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api.my-service.com</span>
-
-<span class="nt">environment</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">proxyManaged</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MY_SERVICE_API_KEY</span><span class="w">   </span><span class="c1"># visible as env var inside sandbox; value substituted at request time</span>
+<p>Instead:
+1. You declare a credential source in the kit - where the proxy should look on the host
+2. The proxy reads it at request time
+3. The proxy injects it as an HTTP header on matching outbound requests
+4. The agent inside the sandbox never sees the raw value</p>
+<div class="highlight"><pre><span></span><code><span class="nt">caps</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">network</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allow</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api.my-service.com</span><span class="w">          </span><span class="c1"># let the sandbox reach the API</span>
+<span class="nt">credentials</span><span class="p">:</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-service</span><span class="w">                </span><span class="c1"># secret resolved on the host by this name</span>
+<span class="w">    </span><span class="nt">apiKey</span><span class="p">:</span><span class="w">                         </span><span class="c1">#   (a host env var, or `sbx secret set my-service`)</span>
+<span class="w">      </span><span class="nt">inject</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api.my-service.com</span>
+<span class="w">          </span><span class="nt">header</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Authorization</span>
+<span class="w">          </span><span class="nt">format</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;Bearer</span><span class="nv"> </span><span class="s">%s&quot;</span><span class="w">       </span><span class="c1"># proxy injects this header, per request</span>
 </code></pre></div>
-<hr />
+<p>The raw value stays on the host, keyed by the credential <code>name</code>; the proxy substitutes it on outbound requests to the matching <code>domain</code>. The sandbox never holds the secret - the same isolation you proved in the Credential Isolation section.</p>
 <h2 id="try-it-verify-anthropic-credential-injection">Try it: verify Anthropic credential injection</h2>
 <p>The built-in <code>claude</code> agent already uses this pattern. Run:</p>
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>log
 </code></pre></div>
 <p>You'll see requests to <code>api.anthropic.com</code> logged as <code>forward</code> with the credential injected by the proxy. The API key is never written to the VM's environment - it's substituted per-request.</p>
-<hr />
 <h2 id="compare-shell-script-vs-kit">Compare: shell script vs kit</h2>
 <table>
 <thead>

@@ -10,31 +10,27 @@
         <meta name="author" content="Ajeet Singh Raina">
       
       
-        <link rel="canonical" href="https://dockerworkshop.vercel.app/ai-governance/kits/stacking-and-community/">
+        <link rel="canonical" href="https://dockerworkshop.vercel.app/ai-governance/audit-logging/">
       
       
-        <link rel="prev" href="../agent-kit/">
-      
-      
-        <link rel="next" href="../summary/">
       
       
         
       
       
-      <link rel="icon" href="../../../assets/images/favicon.png">
+      <link rel="icon" href="../../assets/images/favicon.png">
       <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Stacking & Community Kits - Docker workshop</title>
+        <title>Audit Logging - Docker workshop</title>
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.484c7ddc.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.ab4e12ef.min.css">
       
       
 
@@ -53,13 +49,13 @@
       
     
     
-      <link rel="stylesheet" href="../../../css/styles.css">
+      <link rel="stylesheet" href="../../css/styles.css">
     
-      <link rel="stylesheet" href="../../../css/dark-mode.css">
+      <link rel="stylesheet" href="../../css/dark-mode.css">
     
-      <link rel="stylesheet" href="../../../css/sidebar.css">
+      <link rel="stylesheet" href="../../css/sidebar.css">
     
-    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
 
@@ -82,7 +78,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#stacking-kits-and-the-community-repo" class="md-skip">
+        <a href="#audit-logging" class="md-skip">
           Skip to content
         </a>
       
@@ -98,9 +94,9 @@
 
 <header class="md-header md-header--shadow" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../.." title="Docker workshop" class="md-header__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -117,7 +113,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Stacking & Community Kits
+              Audit Logging
             
           </span>
         </div>
@@ -212,9 +208,9 @@
 
 <nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
+    <a href="../.." title="Docker workshop" class="md-nav__button md-logo" aria-label="Docker workshop" data-md-component="logo">
       
-  <img src="../../../images/docker-logo-white.svg" alt="logo">
+  <img src="../../images/docker-logo-white.svg" alt="logo">
 
     </a>
     Docker workshop
@@ -241,7 +237,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../.." class="md-nav__link">
+      <a href="../.." class="md-nav__link">
         
   
   
@@ -268,7 +264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../prereq/prereq/" class="md-nav__link">
+      <a href="../../prereq/prereq/" class="md-nav__link">
         
   
   
@@ -396,7 +392,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab1/overview/" class="md-nav__link">
+      <a href="../../lab1/overview/" class="md-nav__link">
         
   
   
@@ -424,7 +420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab1/what-is-a-container/" class="md-nav__link">
+      <a href="../../lab1/what-is-a-container/" class="md-nav__link">
         
   
   
@@ -452,7 +448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab1/postgres/" class="md-nav__link">
+      <a href="../../lab1/postgres/" class="md-nav__link">
         
   
   
@@ -537,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../product-catalog/overview/" class="md-nav__link">
+      <a href="../../product-catalog/overview/" class="md-nav__link">
         
   
   
@@ -565,7 +561,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../product-catalog/tech-stack/" class="md-nav__link">
+      <a href="../../product-catalog/tech-stack/" class="md-nav__link">
         
   
   
@@ -593,7 +589,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../product-catalog/develop/" class="md-nav__link">
+      <a href="../../product-catalog/develop/" class="md-nav__link">
         
   
   
@@ -621,7 +617,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../product-catalog/test/" class="md-nav__link">
+      <a href="../../product-catalog/test/" class="md-nav__link">
         
   
   
@@ -649,7 +645,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../product-catalog/build/" class="md-nav__link">
+      <a href="../../product-catalog/build/" class="md-nav__link">
         
   
   
@@ -677,7 +673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../product-catalog/secure/" class="md-nav__link">
+      <a href="../../product-catalog/secure/" class="md-nav__link">
         
   
   
@@ -717,8 +713,6 @@
       
   
   
-    
-  
   
   
     
@@ -731,11 +725,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
         
           
           <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
@@ -756,7 +750,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             
@@ -823,7 +817,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/overview/" class="md-nav__link">
+      <a href="../../lab10/overview/" class="md-nav__link">
         
   
   
@@ -851,7 +845,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/getting-started/" class="md-nav__link">
+      <a href="../../lab10/getting-started/" class="md-nav__link">
         
   
   
@@ -928,7 +922,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/concept/autonomy/autonomy/" class="md-nav__link">
+      <a href="../../lab10/concept/autonomy/autonomy/" class="md-nav__link">
         
   
   
@@ -956,7 +950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/concept/perception/perception/" class="md-nav__link">
+      <a href="../../lab10/concept/perception/perception/" class="md-nav__link">
         
   
   
@@ -984,7 +978,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/concept/reasoning/reasoning/" class="md-nav__link">
+      <a href="../../lab10/concept/reasoning/reasoning/" class="md-nav__link">
         
   
   
@@ -1012,7 +1006,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/concept/action/action/" class="md-nav__link">
+      <a href="../../lab10/concept/action/action/" class="md-nav__link">
         
   
   
@@ -1040,7 +1034,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/concept/goal/goal/" class="md-nav__link">
+      <a href="../../lab10/concept/goal/goal/" class="md-nav__link">
         
   
   
@@ -1125,7 +1119,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/tools/memory/" class="md-nav__link">
+      <a href="../../lab10/tools/memory/" class="md-nav__link">
         
   
   
@@ -1153,7 +1147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/tools/think/" class="md-nav__link">
+      <a href="../../lab10/tools/think/" class="md-nav__link">
         
   
   
@@ -1181,7 +1175,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/tools/todo/" class="md-nav__link">
+      <a href="../../lab10/tools/todo/" class="md-nav__link">
         
   
   
@@ -1209,7 +1203,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/tools/shell/" class="md-nav__link">
+      <a href="../../lab10/tools/shell/" class="md-nav__link">
         
   
   
@@ -1237,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/tools/filesystem/" class="md-nav__link">
+      <a href="../../lab10/tools/filesystem/" class="md-nav__link">
         
   
   
@@ -1265,7 +1259,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/tools/environment/" class="md-nav__link">
+      <a href="../../lab10/tools/environment/" class="md-nav__link">
         
   
   
@@ -1350,7 +1344,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/integration/mcp/" class="md-nav__link">
+      <a href="../../lab10/integration/mcp/" class="md-nav__link">
         
   
   
@@ -1378,7 +1372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/integration/dmr/" class="md-nav__link">
+      <a href="../../lab10/integration/dmr/" class="md-nav__link">
         
   
   
@@ -1406,7 +1400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/integration/rag/" class="md-nav__link">
+      <a href="../../lab10/integration/rag/" class="md-nav__link">
         
   
   
@@ -1540,7 +1534,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/projects/pirate/" class="md-nav__link">
+      <a href="../../lab10/projects/pirate/" class="md-nav__link">
         
   
   
@@ -1625,7 +1619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/projects/alloy/" class="md-nav__link">
+      <a href="../../lab10/projects/alloy/" class="md-nav__link">
         
   
   
@@ -1653,7 +1647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/projects/dev/" class="md-nav__link">
+      <a href="../../lab10/projects/dev/" class="md-nav__link">
         
   
   
@@ -1681,7 +1675,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/projects/financial/" class="md-nav__link">
+      <a href="../../lab10/projects/financial/" class="md-nav__link">
         
   
   
@@ -1709,7 +1703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/projects/docker-expert/" class="md-nav__link">
+      <a href="../../lab10/projects/docker-expert/" class="md-nav__link">
         
   
   
@@ -1786,7 +1780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/projects/bug-investigator/bug-investigator/" class="md-nav__link">
+      <a href="../../lab10/projects/bug-investigator/bug-investigator/" class="md-nav__link">
         
   
   
@@ -1871,7 +1865,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/projects/auto-curator-agent/auto-curator-agent/" class="md-nav__link">
+      <a href="../../lab10/projects/auto-curator-agent/auto-curator-agent/" class="md-nav__link">
         
   
   
@@ -1923,7 +1917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab10/sharing/" class="md-nav__link">
+      <a href="../../lab10/sharing/" class="md-nav__link">
         
   
   
@@ -2008,7 +2002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab4/overview/" class="md-nav__link">
+      <a href="../../lab4/overview/" class="md-nav__link">
         
   
   
@@ -2036,7 +2030,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab4/getting-started/" class="md-nav__link">
+      <a href="../../lab4/getting-started/" class="md-nav__link">
         
   
   
@@ -2113,7 +2107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab4/projects/catalog-chatbot/" class="md-nav__link">
+      <a href="../../lab4/projects/catalog-chatbot/" class="md-nav__link">
         
   
   
@@ -2141,7 +2135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab4/projects/genai-chatbot/" class="md-nav__link">
+      <a href="../../lab4/projects/genai-chatbot/" class="md-nav__link">
         
   
   
@@ -2234,7 +2228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab5/overview/" class="md-nav__link">
+      <a href="../../lab5/overview/" class="md-nav__link">
         
   
   
@@ -2262,7 +2256,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab5/getting-started/" class="md-nav__link">
+      <a href="../../lab5/getting-started/" class="md-nav__link">
         
   
   
@@ -2388,7 +2382,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
+      <a href="../../lab5/projects/visual-chatbot/visual-chatbot/" class="md-nav__link">
         
   
   
@@ -2416,7 +2410,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
+      <a href="../../lab5/projects/visual-chatbot/mcp/" class="md-nav__link">
         
   
   
@@ -2444,7 +2438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab5/projects/GitHub-Claude/" class="md-nav__link">
+      <a href="../../lab5/projects/GitHub-Claude/" class="md-nav__link">
         
   
   
@@ -2472,7 +2466,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
+      <a href="../../lab5/projects/Docker-CLI-With-Gordon/" class="md-nav__link">
         
   
   
@@ -2500,7 +2494,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
+      <a href="../../lab5/projects/Docker-CLI-With-VSCode/" class="md-nav__link">
         
   
   
@@ -2528,7 +2522,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
+      <a href="../../lab5/projects/GitHub-MCP-Gordon/" class="md-nav__link">
         
   
   
@@ -2556,7 +2550,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
+      <a href="../../lab5/projects/Kubernetes-MCP/" class="md-nav__link">
         
   
   
@@ -2584,7 +2578,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
+      <a href="../../lab5/projects/Slack-MCP-With-Claude/" class="md-nav__link">
         
   
   
@@ -2685,7 +2679,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab6/overview/" class="md-nav__link">
+      <a href="../../lab6/overview/" class="md-nav__link">
         
   
   
@@ -2713,7 +2707,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab6/getting-started/" class="md-nav__link">
+      <a href="../../lab6/getting-started/" class="md-nav__link">
         
   
   
@@ -2839,7 +2833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab6/projects/devduck/overview/" class="md-nav__link">
+      <a href="../../lab6/projects/devduck/overview/" class="md-nav__link">
         
   
   
@@ -2867,7 +2861,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab6/projects/devduck/prereq/" class="md-nav__link">
+      <a href="../../lab6/projects/devduck/prereq/" class="md-nav__link">
         
   
   
@@ -2895,7 +2889,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab6/projects/devduck/getting-started/" class="md-nav__link">
+      <a href="../../lab6/projects/devduck/getting-started/" class="md-nav__link">
         
   
   
@@ -2923,7 +2917,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab6/projects/devduck/local-agent/" class="md-nav__link">
+      <a href="../../lab6/projects/devduck/local-agent/" class="md-nav__link">
         
   
   
@@ -2951,7 +2945,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab6/projects/devduck/cerebras-interaction/" class="md-nav__link">
+      <a href="../../lab6/projects/devduck/cerebras-interaction/" class="md-nav__link">
         
   
   
@@ -2987,7 +2981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab6/projects/agentic-catalog/" class="md-nav__link">
+      <a href="../../lab6/projects/agentic-catalog/" class="md-nav__link">
         
   
   
@@ -3015,7 +3009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab6/projects/hackathon-recommender/" class="md-nav__link">
+      <a href="../../lab6/projects/hackathon-recommender/" class="md-nav__link">
         
   
   
@@ -3043,7 +3037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
+      <a href="../../lab6/projects/a2a-multi-agent-fact-checker/" class="md-nav__link">
         
   
   
@@ -3136,7 +3130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/overview/" class="md-nav__link">
+      <a href="../../lab8/overview/" class="md-nav__link">
         
   
   
@@ -3164,7 +3158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/getting-started/" class="md-nav__link">
+      <a href="../../lab8/getting-started/" class="md-nav__link">
         
   
   
@@ -3241,7 +3235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/why-governance/" class="md-nav__link">
+      <a href="../../lab8/projects/why-governance/" class="md-nav__link">
         
   
   
@@ -3326,7 +3320,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/first-sandbox/" class="md-nav__link">
+      <a href="../../lab8/projects/first-sandbox/" class="md-nav__link">
         
   
   
@@ -3354,7 +3348,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/ssh-access/" class="md-nav__link">
+      <a href="../../lab8/projects/ssh-access/" class="md-nav__link">
         
   
   
@@ -3382,7 +3376,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/isolation-proof/" class="md-nav__link">
+      <a href="../../lab8/projects/isolation-proof/" class="md-nav__link">
         
   
   
@@ -3410,7 +3404,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/reviewing-agent-changes/" class="md-nav__link">
+      <a href="../../lab8/projects/reviewing-agent-changes/" class="md-nav__link">
         
   
   
@@ -3438,7 +3432,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/secrets/" class="md-nav__link">
+      <a href="../../lab8/projects/secrets/" class="md-nav__link">
         
   
   
@@ -3466,7 +3460,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/1password-credentials/" class="md-nav__link">
+      <a href="../../lab8/projects/1password-credentials/" class="md-nav__link">
         
   
   
@@ -3494,7 +3488,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/network-policy/" class="md-nav__link">
+      <a href="../../lab8/projects/network-policy/" class="md-nav__link">
         
   
   
@@ -3522,7 +3516,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/branch-mode/" class="md-nav__link">
+      <a href="../../lab8/projects/branch-mode/" class="md-nav__link">
         
   
   
@@ -3550,7 +3544,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/parallel-agents/" class="md-nav__link">
+      <a href="../../lab8/projects/parallel-agents/" class="md-nav__link">
         
   
   
@@ -3578,7 +3572,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/local-models/" class="md-nav__link">
+      <a href="../../lab8/projects/local-models/" class="md-nav__link">
         
   
   
@@ -3606,7 +3600,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/skills/" class="md-nav__link">
+      <a href="../../lab8/projects/skills/" class="md-nav__link">
         
   
   
@@ -3634,7 +3628,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/governance-summary/" class="md-nav__link">
+      <a href="../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
   
@@ -3719,7 +3713,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab8/projects/devboard/" class="md-nav__link">
+      <a href="../../lab8/projects/devboard/" class="md-nav__link">
         
   
   
@@ -3760,8 +3754,6 @@
                 
   
   
-    
-  
   
   
     
@@ -3771,11 +3763,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6" >
         
           
           <label class="md-nav__link" for="__nav_4_6" id="__nav_4_6_label" tabindex="0">
@@ -3796,7 +3788,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_4_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_6">
             <span class="md-nav__icon md-icon"></span>
             
@@ -3814,7 +3806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../setup/" class="md-nav__link">
+      <a href="../setup/" class="md-nav__link">
         
   
   
@@ -3842,7 +3834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../introduction/" class="md-nav__link">
+      <a href="../introduction/" class="md-nav__link">
         
   
   
@@ -3870,7 +3862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../policy-model/" class="md-nav__link">
+      <a href="../policy-model/" class="md-nav__link">
         
   
   
@@ -3898,7 +3890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../network-demo/" class="md-nav__link">
+      <a href="../network-demo/" class="md-nav__link">
         
   
   
@@ -3926,7 +3918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../filesystem-demo/" class="md-nav__link">
+      <a href="../filesystem-demo/" class="md-nav__link">
         
   
   
@@ -3954,7 +3946,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../mcp-hands-on/" class="md-nav__link">
+      <a href="../mcp-hands-on/" class="md-nav__link">
         
   
   
@@ -3982,7 +3974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../observability/" class="md-nav__link">
+      <a href="../observability/" class="md-nav__link">
         
   
   
@@ -4010,7 +4002,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../whats-next/" class="md-nav__link">
+      <a href="../whats-next/" class="md-nav__link">
         
   
   
@@ -4035,8 +4027,6 @@
                 
   
   
-    
-  
   
   
     
@@ -4046,11 +4036,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_9" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_6_9" >
         
           
           <label class="md-nav__link" for="__nav_4_6_9" id="__nav_4_6_9_label" tabindex="0">
@@ -4071,7 +4061,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_9_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_6_9_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4_6_9">
             <span class="md-nav__icon md-icon"></span>
             
@@ -4089,7 +4079,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../intro/" class="md-nav__link">
+      <a href="../kits/intro/" class="md-nav__link">
         
   
   
@@ -4117,7 +4107,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../first-mixin/" class="md-nav__link">
+      <a href="../kits/first-mixin/" class="md-nav__link">
         
   
   
@@ -4145,7 +4135,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network-and-creds/" class="md-nav__link">
+      <a href="../kits/network-and-creds/" class="md-nav__link">
         
   
   
@@ -4173,7 +4163,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../agent-kit/" class="md-nav__link">
+      <a href="../kits/agent-kit/" class="md-nav__link">
         
   
   
@@ -4198,37 +4188,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Stacking & Community Kits
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../kits/stacking-and-community/" class="md-nav__link">
         
   
   
@@ -4244,70 +4207,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#stacking-with-kit-kit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Stacking with --kit --kit
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#loading-from-the-community-repo" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Loading from the community repo
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#packaging-and-distributing-your-own-kit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Packaging and distributing your own kit
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#debugging-kit-issues" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Debugging kit issues
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -4320,7 +4219,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../summary/" class="md-nav__link">
+      <a href="../kits/summary/" class="md-nav__link">
         
   
   
@@ -4472,7 +4371,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/container-security/overview/" class="md-nav__link">
+      <a href="../../security/container-security/overview/" class="md-nav__link">
         
   
   
@@ -4500,7 +4399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/container-security/setup/" class="md-nav__link">
+      <a href="../../security/container-security/setup/" class="md-nav__link">
         
   
   
@@ -4528,7 +4427,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/container-security/surface-the-problem/" class="md-nav__link">
+      <a href="../../security/container-security/surface-the-problem/" class="md-nav__link">
         
   
   
@@ -4556,7 +4455,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/container-security/minimal-base-images/" class="md-nav__link">
+      <a href="../../security/container-security/minimal-base-images/" class="md-nav__link">
         
   
   
@@ -4584,7 +4483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/container-security/multi-stage-builds/" class="md-nav__link">
+      <a href="../../security/container-security/multi-stage-builds/" class="md-nav__link">
         
   
   
@@ -4612,7 +4511,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/container-security/non-root-user/" class="md-nav__link">
+      <a href="../../security/container-security/non-root-user/" class="md-nav__link">
         
   
   
@@ -4640,7 +4539,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/container-security/readonly-capabilities/" class="md-nav__link">
+      <a href="../../security/container-security/readonly-capabilities/" class="md-nav__link">
         
   
   
@@ -4668,7 +4567,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/container-security/secrets-and-tools/" class="md-nav__link">
+      <a href="../../security/container-security/secrets-and-tools/" class="md-nav__link">
         
   
   
@@ -4753,7 +4652,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/scout-reactive/overview/" class="md-nav__link">
+      <a href="../../security/scout-reactive/overview/" class="md-nav__link">
         
   
   
@@ -4781,7 +4680,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/scout-reactive/continuous-scanning/" class="md-nav__link">
+      <a href="../../security/scout-reactive/continuous-scanning/" class="md-nav__link">
         
   
   
@@ -4809,7 +4708,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/scout-reactive/ci-integration/" class="md-nav__link">
+      <a href="../../security/scout-reactive/ci-integration/" class="md-nav__link">
         
   
   
@@ -4837,7 +4736,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/scout-reactive/recommendations/" class="md-nav__link">
+      <a href="../../security/scout-reactive/recommendations/" class="md-nav__link">
         
   
   
@@ -4922,7 +4821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/dhi-proactive/overview/" class="md-nav__link">
+      <a href="../../security/dhi-proactive/overview/" class="md-nav__link">
         
   
   
@@ -4950,7 +4849,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/dhi-proactive/migration/" class="md-nav__link">
+      <a href="../../security/dhi-proactive/migration/" class="md-nav__link">
         
   
   
@@ -4978,7 +4877,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../security/dhi-proactive/attestations/" class="md-nav__link">
+      <a href="../../security/dhi-proactive/attestations/" class="md-nav__link">
         
   
   
@@ -5063,7 +4962,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab9/dhi/overview/" class="md-nav__link">
+      <a href="../../lab9/dhi/overview/" class="md-nav__link">
         
   
   
@@ -5091,7 +4990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab9/dhi/getting-started/" class="md-nav__link">
+      <a href="../../lab9/dhi/getting-started/" class="md-nav__link">
         
   
   
@@ -5119,7 +5018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab9/dhi/image-scanning/" class="md-nav__link">
+      <a href="../../lab9/dhi/image-scanning/" class="md-nav__link">
         
   
   
@@ -5147,7 +5046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab9/dhi/switch-to-dhi/" class="md-nav__link">
+      <a href="../../lab9/dhi/switch-to-dhi/" class="md-nav__link">
         
   
   
@@ -5175,7 +5074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab9/dhi/compliance/" class="md-nav__link">
+      <a href="../../lab9/dhi/compliance/" class="md-nav__link">
         
   
   
@@ -5260,7 +5159,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dhictl/introduction/" class="md-nav__link">
+      <a href="../../dhictl/introduction/" class="md-nav__link">
         
   
   
@@ -5288,7 +5187,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dhictl/product-catalog/" class="md-nav__link">
+      <a href="../../dhictl/product-catalog/" class="md-nav__link">
         
   
   
@@ -5316,7 +5215,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dhictl/introducing-vulnerabilities/" class="md-nav__link">
+      <a href="../../dhictl/introducing-vulnerabilities/" class="md-nav__link">
         
   
   
@@ -5344,7 +5243,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dhictl/browsing-catalog/" class="md-nav__link">
+      <a href="../../dhictl/browsing-catalog/" class="md-nav__link">
         
   
   
@@ -5372,7 +5271,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dhictl/migrating/" class="md-nav__link">
+      <a href="../../dhictl/migrating/" class="md-nav__link">
         
   
   
@@ -5400,7 +5299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../dhictl/supply-chain/" class="md-nav__link">
+      <a href="../../dhictl/supply-chain/" class="md-nav__link">
         
   
   
@@ -5495,7 +5394,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab7/overview/" class="md-nav__link">
+      <a href="../../lab7/overview/" class="md-nav__link">
         
   
   
@@ -5523,7 +5422,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../lab7/getting-started/" class="md-nav__link">
+      <a href="../../lab7/getting-started/" class="md-nav__link">
         
   
   
@@ -5610,7 +5509,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-101/overview/" class="md-nav__link">
+      <a href="../../kubernetes-101/overview/" class="md-nav__link">
         
   
   
@@ -5638,7 +5537,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-101/pods/" class="md-nav__link">
+      <a href="../../kubernetes-101/pods/" class="md-nav__link">
         
   
   
@@ -5666,7 +5565,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-101/deployments/" class="md-nav__link">
+      <a href="../../kubernetes-101/deployments/" class="md-nav__link">
         
   
   
@@ -5694,7 +5593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-101/services/" class="md-nav__link">
+      <a href="../../kubernetes-101/services/" class="md-nav__link">
         
   
   
@@ -5722,7 +5621,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-101/scaling-and-updates/" class="md-nav__link">
+      <a href="../../kubernetes-101/scaling-and-updates/" class="md-nav__link">
         
   
   
@@ -5750,7 +5649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-101/ingress/" class="md-nav__link">
+      <a href="../../kubernetes-101/ingress/" class="md-nav__link">
         
   
   
@@ -5778,7 +5677,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-101/compose-bridge/" class="md-nav__link">
+      <a href="../../kubernetes-101/compose-bridge/" class="md-nav__link">
         
   
   
@@ -5806,7 +5705,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../kubernetes-101/genai-on-kubernetes/" class="md-nav__link">
+      <a href="../../kubernetes-101/genai-on-kubernetes/" class="md-nav__link">
         
   
   
@@ -5861,10 +5760,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#stacking-with-kit-kit" class="md-nav__link">
+  <a href="#step-1-confirm-governance-is-active" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Stacking with --kit --kit
+        Step 1 - Confirm governance is active
       
     </span>
   </a>
@@ -5872,10 +5771,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#loading-from-the-community-repo" class="md-nav__link">
+  <a href="#step-2-find-the-audit-directory" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Loading from the community repo
+        Step 2 - Find the audit directory
       
     </span>
   </a>
@@ -5883,10 +5782,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#packaging-and-distributing-your-own-kit" class="md-nav__link">
+  <a href="#step-3-read-a-record" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Packaging and distributing your own kit
+        Step 3 - Read a record
       
     </span>
   </a>
@@ -5894,10 +5793,60 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#debugging-kit-issues" class="md-nav__link">
+  <a href="#step-4-query-it-with-jq" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Debugging kit issues
+        Step 4 - Query it with jq
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#the-record-schema" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        The record schema
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The record schema">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#two-categories-of-record" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Two categories of record
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#step-5-ship-it-to-your-siem" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Step 5 - Ship it to your SIEM
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-you-just-demonstrated" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        What you just demonstrated
       
     </span>
   </a>
@@ -5924,96 +5873,242 @@
   
 
 
-<h1 id="stacking-kits-and-the-community-repo">Stacking Kits and the Community Repo</h1>
+<h1 id="audit-logging">Audit Logging</h1>
 <pre class="mermaid"><code>flowchart LR
-    K1["./kits/claude-safe/"] --&gt; MERGE
-    K2["./kits/docker-review/"] --&gt; MERGE
-    K3["git+github.com/docker/&lt;br/&gt;sbx-kits-contrib#dir=code-server"] --&gt; MERGE
-    K4["ghcr.io/org/kit:1.0 (OCI)"] --&gt; MERGE
-    MERGE{{"--kit --kit merge&lt;br/&gt;network unioned · files injected&lt;br/&gt;installs in order"}}
+    GOV["Governance active for your org&lt;br/&gt;(required — else no audit)"] --&gt; AUDITKIT
     subgraph HOST["Host machine"]
-        subgraph VM["MicroVM (sandbox)"]
-            S["one sandbox&lt;br/&gt;all kits applied"]
-        end
+        AUDITKIT["auditkit"]
+        TMP[".tmp (active, incomplete)"]
+        JSONL["audit-*.jsonl (sealed)&lt;br/&gt;+ user · org · session"]
+        AUDITKIT --&gt; TMP
+        TMP -- "seal &amp; rename" --&gt; JSONL
     end
-    MERGE --&gt; VM
+    JSONL -- "collect *.jsonl only" --&gt; SHIP["Splunk UF · Filebeat · LogScale"] --&gt; SIEM["SIEM"]
 
-    classDef kit fill:#eff6ff,stroke:#3b82f6,color:#000
-    classDef vm fill:#ecfdf5,stroke:#10b981,color:#000
-    class K1,K2,K3,K4,MERGE kit
-    class S vm</code></pre>
-<p><em>Pass <code>--kit</code> repeatedly to stack kits — local, Git URL, or OCI image. Their rules merge: allowlists unioned, files injected, installs run in order.</em></p>
-<h2 id="stacking-with-kit-kit">Stacking with --kit --kit</h2>
-<p>Pass <code>--kit</code> more than once to stack kits on the same sandbox. Rules from all kits are merged: <code>caps.network.allow</code> entries are unioned, files from all kits are injected, install commands from all kits run in order.</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># two local kits</span>
-sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span>./kits/claude-safe/<span class="w"> </span>--kit<span class="w"> </span>./kits/docker-review/
-
-<span class="c1"># local kit + community kit from Git</span>
-sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--kit<span class="w"> </span>./kits/docker-review/<span class="w"> </span><span class="se">\</span>
-<span class="w">  </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/docker/sbx-kits-contrib.git#dir=code-server&quot;</span>
-</code></pre></div>
+    classDef pol fill:#fff7ed,stroke:#f59e0b,color:#000
+    classDef audit fill:#f3e8fd,stroke:#9333ea,color:#000
+    classDef idle fill:#f1f5f9,stroke:#94a3b8,color:#000
+    class GOV pol
+    class AUDITKIT,JSONL,SHIP,SIEM audit
+    class TMP idle</code></pre>
+<p><em>The purpose-built <code>auditkit</code> surface: one sealed JSONL event per decision, now carrying user, org, and session — the SIEM-grade trail </em><em>Observability</em><em> said was missing. Collect the <code>.jsonl</code> files, skip the <code>.tmp</code>.</em></p>
+<p><strong>Observability</strong> looked at the raw <code>daemon.log</code> and was honest about its limits: it answered <em>what</em> was decided, but it had <strong>no user identity, no org, no session correlation</strong>. We noted user attribution was on the roadmap.</p>
+<p>That roadmap item shipped. Docker AI Governance now writes a separate, purpose-built <strong>audit log</strong> through a component called <code>auditkit</code> - structured JSON Lines, one event per policy decision, <strong>with the signed-in user, the org, and a session ID on every record</strong>. This section is the SIEM-grade surface the security team actually asked for.</p>
+<p>Substitute <code>&lt;your-org&gt;</code> with your Docker Hub organization (where you have admin rights).</p>
 <div class="admonition warning">
 <p class="admonition-title">Important</p>
-<p><code>--kit</code> only applies when creating a new sandbox. To add a kit to a running sandbox use <code>sbx kit add</code>:</p>
-<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>kit<span class="w"> </span>add<span class="w"> </span>kits-lab<span class="w"> </span>./kits/docker-review/
-</code></pre></div>
-<p>This re-runs install commands and re-copies files. Kits can't be removed from a running sandbox - <code>sbx rm</code> and recreate to start clean.</p>
+<p><strong>Paid feature.</strong> Audit logging is part of Docker AI Governance (a separate paid subscription) and <strong>only activates when <code>&lt;your-org&gt;</code> enforces a centralized governance policy</strong>. With no governance applied, no audit records are written. Confirm governance is live first with <code>sbx policy ls</code> - look for the <code>Governance: managed by &lt;your-org&gt;</code> header from <strong>The Policy Model</strong>.</p>
 </div>
-<h2 id="loading-from-the-community-repo">Loading from the community repo</h2>
-<p><code>docker/sbx-kits-contrib</code> is the official community kits repository. Every kit in it has TCK tests running in CI. Load any kit directly without cloning:</p>
-<div class="highlight"><pre><span></span><code><span class="c1"># VS Code in the browser with Claude Code extension</span>
-sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/docker/sbx-kits-contrib.git#dir=code-server&quot;</span>
-
-<span class="c1"># Pin to a specific tag for reproducibility</span>
-sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/docker/sbx-kits-contrib.git#ref=v0.2.0&amp;dir=code-server&quot;</span>
+<p><strong>Time:</strong> ~10 minutes
+<strong>Prerequisites:</strong> Governance is enforced for <code>&lt;your-org&gt;</code>, and you've run the <strong>Network Enforcement Demo</strong> enforcement tests so there are decisions to inspect.</p>
+<h2 id="step-1-confirm-governance-is-active">Step 1 - Confirm governance is active</h2>
+<p>Audit records only exist when governance is on:</p>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>policy<span class="w"> </span>ls
 </code></pre></div>
-<p>Available kits in the repo: <code>code-server</code>, <code>amp</code>, <code>openclaw</code>, <code>nanoclaw</code>, <code>nanobot</code>, <code>pi</code>.</p>
-<h2 id="packaging-and-distributing-your-own-kit">Packaging and distributing your own kit</h2>
-<p>Once your kit works locally, share it three ways:</p>
-<p><strong>ZIP file:</strong>
-<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>kit<span class="w"> </span>pack<span class="w"> </span>./kits/docker-review/<span class="w"> </span>-o<span class="w"> </span>docker-review-1.0.zip
-</code></pre></div></p>
-<p><strong>OCI registry:</strong>
-<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>kit<span class="w"> </span>push<span class="w"> </span>./kits/docker-review/<span class="w"> </span>ghcr.io/yourorg/docker-review:1.0
-<span class="c1"># teammates run:</span>
-sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span>ghcr.io/yourorg/docker-review:1.0
-</code></pre></div></p>
-<p><strong>Git URL</strong> (simplest for teams):
-<div class="highlight"><pre><span></span><code><span class="c1"># just commit the kit directory to your repo, then:</span>
-sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/yourorg/yourrepo.git#dir=kits/docker-review&quot;</span>
-</code></pre></div></p>
-<h2 id="debugging-kit-issues">Debugging kit issues</h2>
+<p>If you don't see <code>Governance: managed by &lt;your-org&gt;</code> at the top, audit logging isn't running - go back to <strong>Network Enforcement Demo</strong> and enforce a policy first.</p>
+<h2 id="step-2-find-the-audit-directory">Step 2 - Find the audit directory</h2>
+<p>Unlike <code>daemon.log</code> (under <code>Application Support</code>), audit records live under a dedicated <code>auditkit</code> directory that varies by OS:</p>
 <table>
 <thead>
 <tr>
-<th>Command</th>
-<th>When to use</th>
+<th>OS</th>
+<th>Path</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><code>sbx kit validate ./kits/my-kit/</code></td>
-<td>Before running - catches spec errors</td>
+<td><strong>macOS</strong></td>
+<td><code>~/Library/Logs/com.docker.sandboxes/sandboxes/auditkit/</code></td>
 </tr>
 <tr>
-<td><code>sbx policy log</code></td>
-<td>Blocked domains, install failures, credential injection</td>
+<td><strong>Linux</strong></td>
+<td><code>${XDG_STATE_HOME:-~/.local/state}/sandboxes/sandboxes/auditkit/</code></td>
 </tr>
 <tr>
-<td><code>sbx exec kits-lab -- which ruff</code></td>
-<td>Verify a tool landed after install</td>
-</tr>
-<tr>
-<td><code>sbx exec kits-lab -- ls /home/agent/.local/bin/</code></td>
-<td>Inspect agent-user bin path</td>
-</tr>
-<tr>
-<td><code>sbx rm kits-lab &amp;&amp; sbx run …</code></td>
-<td>Clean recreate - fastest reset loop</td>
+<td><strong>Windows</strong></td>
+<td><code>%LOCALAPPDATA%\DockerSandboxes\sandboxes\logs\auditkit\</code></td>
 </tr>
 </tbody>
 </table>
+<p>List the directory for your platform:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">macOS</label><label for="__tabbed_1_2">Windows</label><label for="__tabbed_1_3">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nv">AUDIT_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Library/Logs/com.docker.sandboxes/sandboxes/auditkit&quot;</span>
+ls<span class="w"> </span>-lh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AUDIT_DIR</span><span class="s2">&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nv">$AuditDir</span> <span class="p">=</span> <span class="s2">&quot;$env:LOCALAPPDATA\DockerSandboxes\sandboxes\logs\auditkit&quot;</span>
+<span class="nb">Get-ChildItem</span> <span class="nv">$AuditDir</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nv">AUDIT_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">XDG_STATE_HOME</span><span class="k">:-</span><span class="nv">$HOME</span><span class="p">/.local/state</span><span class="si">}</span><span class="s2">/sandboxes/sandboxes/auditkit&quot;</span>
+ls<span class="w"> </span>-lh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AUDIT_DIR</span><span class="s2">&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<p>Files are named <code>audit-&lt;utc-timestamp&gt;-&lt;process-uuid&gt;-&lt;seq&gt;.jsonl</code>.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p><strong>Only read sealed <code>.jsonl</code> files.</strong> The daemon writes the active file as <code>.tmp</code>, then atomically renames it to <code>.jsonl</code> when it seals. <strong>Exclude <code>.tmp</code> files</strong> from any inspection or collection - they're incomplete. Sealing happens at a rotation threshold (by default 5 minutes, 1000 events, or 50 MiB - whichever comes first) or on daemon shutdown.</p>
+</div>
+<h2 id="step-3-read-a-record">Step 3 - Read a record</h2>
+<p>Each line is one self-contained JSON event. Here's a complete network <strong>deny</strong> record:</p>
+<div class="highlight"><pre><span></span><code><span class="p">{</span>
+<span class="w">  </span><span class="nt">&quot;audit_event_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;95e7257f-93c9-4f29-bde7-88830e2dae80&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;timestamp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2026-05-28T19:15:00.728933Z&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;schema_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;1.82.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;category&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUDIT_CATEGORY_EVALUATION&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;decision&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;AUDIT_DECISION_DENY&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;username&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jordandoe&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;user_email&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;jordandoe@example.com&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;org_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;9f8e7d6c-5b4a-3210-fedc-ba9876543210&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;org_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Acme Inc&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;audit_session_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;8a3bc076-79d0-4502-baf3-cc6ad35fb578&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;resource_id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;example.com:443&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;os&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;macos&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;app_version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;v0.31.0&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;client_name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sbx&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;hostname&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;host-machine&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;deny_reason&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">    </span><span class="s2">&quot;no applicable policies for op(action=net:connect:tcp, resource=net:domain:example.com:443)&quot;</span>
+<span class="w">  </span><span class="p">],</span>
+<span class="w">  </span><span class="nt">&quot;action_type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;network_egress&quot;</span><span class="p">,</span>
+<span class="w">  </span><span class="nt">&quot;network_egress&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nt">&quot;protocol&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;tcp&quot;</span><span class="w"> </span><span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div>
+<p>Compare this to the <code>daemon.log</code> event from <strong>Observability</strong>. The fields <strong>Observability</strong> said were <strong>missing</strong> are now present:</p>
+<table>
+<thead>
+<tr>
+<th>What <strong>Observability</strong> reported missing</th>
+<th>In the audit record</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>User identity</td>
+<td>✅ <code>username</code> <strong>and</strong> <code>user_email</code></td>
+</tr>
+<tr>
+<td>Org context</td>
+<td>✅ <code>org_id</code> + <code>org_name</code></td>
+</tr>
+<tr>
+<td>Session correlation</td>
+<td>✅ <code>audit_session_id</code></td>
+</tr>
+<tr>
+<td>Stable schema for SIEM</td>
+<td>✅ <code>schema_version</code> (a versioned contract)</td>
+</tr>
+</tbody>
+</table>
+<p>This is the honest update to <strong>Observability</strong>'s roadmap table: <strong>user attribution shipped.</strong></p>
+<h2 id="step-4-query-it-with-jq">Step 4 - Query it with <code>jq</code></h2>
+<p>The records are JSONL, so the same <code>jq</code> patterns from <strong>Observability</strong> apply - just pointed at the audit directory and using the new field names:</p>
+<div class="highlight"><pre><span></span><code><span class="nv">AUDIT_DIR</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Library/Logs/com.docker.sandboxes/sandboxes/auditkit&quot;</span>
+
+<span class="c1"># Concatenate sealed files only (skip .tmp), newest decisions last</span>
+cat<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AUDIT_DIR</span><span class="s2">&quot;</span>/*.jsonl<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;select(.category == &quot;AUDIT_CATEGORY_EVALUATION&quot;)&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tail<span class="w"> </span>-20
+
+<span class="c1"># Only denies, with who/what/why on one line</span>
+cat<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AUDIT_DIR</span><span class="s2">&quot;</span>/*.jsonl<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;select(.decision == &quot;AUDIT_DECISION_DENY&quot;)</span>
+<span class="s1">           | &quot;\(.timestamp)  \(.user_email)  \(.resource_id)  \(.deny_reason[0])&quot;&#39;</span>
+
+<span class="c1"># Count denies per user (the cross-user question Observability couldn&#39;t answer)</span>
+cat<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$AUDIT_DIR</span><span class="s2">&quot;</span>/*.jsonl<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;select(.decision == &quot;AUDIT_DECISION_DENY&quot;) | .user_email&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-rn
+</code></pre></div>
+<h2 id="the-record-schema">The record schema</h2>
+<table>
+<thead>
+<tr>
+<th>Field</th>
+<th>Purpose</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>audit_event_id</code></td>
+<td>Unique ID for this event</td>
+</tr>
+<tr>
+<td><code>timestamp</code></td>
+<td>UTC time of the decision</td>
+</tr>
+<tr>
+<td><code>schema_version</code></td>
+<td>Record schema version - a stable contract for your SIEM parsers</td>
+</tr>
+<tr>
+<td><code>category</code></td>
+<td><code>AUDIT_CATEGORY_EVALUATION</code> (a policy decision) or <code>AUDIT_CATEGORY_MANAGEMENT</code> (session lifecycle)</td>
+</tr>
+<tr>
+<td><code>decision</code></td>
+<td><code>AUDIT_DECISION_ALLOW</code> or <code>AUDIT_DECISION_DENY</code></td>
+</tr>
+<tr>
+<td><code>username</code> / <code>user_email</code></td>
+<td>The signed-in Docker user</td>
+</tr>
+<tr>
+<td><code>org_id</code> / <code>org_name</code></td>
+<td>The organization whose policy applied</td>
+</tr>
+<tr>
+<td><code>audit_session_id</code></td>
+<td>Identifies the daemon run; every evaluation record carries the matching session's ID</td>
+</tr>
+<tr>
+<td><code>action_type</code></td>
+<td>The kind of access, e.g. <code>network_egress</code></td>
+</tr>
+<tr>
+<td><code>resource_id</code></td>
+<td>The evaluation target - host and port (or path)</td>
+</tr>
+<tr>
+<td><code>deny_reason</code></td>
+<td>Array explaining a denial</td>
+</tr>
+<tr>
+<td><code>os</code> / <code>app_version</code> / <code>client_name</code> / <code>hostname</code></td>
+<td>Environment context for the machine that made the decision</td>
+</tr>
+</tbody>
+</table>
+<h3 id="two-categories-of-record">Two categories of record</h3>
+<ul>
+<li><strong>Evaluation records</strong> (<code>AUDIT_CATEGORY_EVALUATION</code>) - one per policy decision: the resource, the action, the verdict, and the deny reason. These are what you'll query most.</li>
+<li><strong>Session lifecycle records</strong> (<code>AUDIT_CATEGORY_MANAGEMENT</code>) - mark daemon start/stop. Every evaluation record shares the <code>audit_session_id</code> of the management record that opened its session, so you can correlate decisions back to a specific daemon run.</li>
+</ul>
+<h2 id="step-5-ship-it-to-your-siem">Step 5 - Ship it to your SIEM</h2>
+<p>This is the whole point: the directory is designed to be tailed by a standard log shipper. Point any of these at the <code>auditkit</code> directory:</p>
+<ul>
+<li>Splunk Universal Forwarder</li>
+<li>Elastic Filebeat</li>
+<li>CrowdStrike Falcon LogScale</li>
+</ul>
+<p>Two operational rules to bake into the shipper config:</p>
+<ol>
+<li><strong>Only collect <code>*.jsonl</code></strong> - exclude <code>*.tmp</code> so you never ingest a half-written file.</li>
+<li><strong>Retention is your responsibility.</strong> The daemon rotates and seals files but does not delete them on a retention schedule for you - your log shipper or housekeeping process owns retention. Records stay on the originating machine until something collects them.</li>
+</ol>
+<h2 id="what-you-just-demonstrated">What you just demonstrated</h2>
+<ul>
+<li>A dedicated, SIEM-ready audit surface (<code>auditkit</code>) exists separately from the raw <code>daemon.log</code></li>
+<li>Every decision now carries <strong>user, org, and session</strong> attribution - closing the biggest honesty gap from <strong>Observability</strong></li>
+<li>The <code>.tmp</code> → <code>.jsonl</code> seal-and-rename pattern means safe collection is just "grab the <code>.jsonl</code> files"</li>
+<li>Standard forwarders turn this into org-wide, cross-machine audit once aggregated in your SIEM</li>
+</ul>
+<p>Next: managing the policies behind all of this programmatically, via the Governance API.</p>
 
 
 
@@ -6073,10 +6168,10 @@ sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </s
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.sections", "navigation.instant", "navigation.top", "search.highlight", "search.share"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../..", "features": ["navigation.sections", "navigation.instant", "navigation.top", "search.highlight", "search.share"], "search": "../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
     
   </body>
