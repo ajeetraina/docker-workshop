@@ -3606,6 +3606,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../lab8/projects/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing Agent Skills
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab8/projects/declarative-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Environments (sbx env)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
@@ -5919,8 +5975,28 @@
 
 
 <h1 id="your-first-mixin-kit-dockerfile-review-skill">Your First Mixin Kit: Dockerfile Review Skill</h1>
+<pre class="mermaid"><code>flowchart LR
+    subgraph KIT["docker-review (mixin)"]
+        SPEC["spec.yaml&lt;br/&gt;kind: mixin"]
+        SKILL["files/workspace/.claude/skills/&lt;br/&gt;docker-review/SKILL.md"]
+    end
+    KIT -- "sbx run claude&lt;br/&gt;--kit ./kits/docker-review/" --&gt; VM
+    subgraph HOST["Host machine"]
+        subgraph VM["MicroVM (sandbox)"]
+            subgraph WS["workspace (mounted)"]
+                INJECTED[".claude/skills/docker-review/&lt;br/&gt;SKILL.md"]
+            end
+            CLAUDE["Claude Code&lt;br/&gt;auto-discovers the skill"]
+            INJECTED --&gt; CLAUDE
+        end
+    end
+
+    classDef kit fill:#eff6ff,stroke:#3b82f6,color:#000
+    classDef vm fill:#ecfdf5,stroke:#10b981,color:#000
+    class SPEC,SKILL kit
+    class INJECTED,CLAUDE vm</code></pre>
+<p><em>A pure file-based mixin: the <code>files/workspace/</code> tree is injected at creation, Claude Code finds the skill in <code>.claude/skills/</code>, and uses it automatically — no install commands, no shell.</em></p>
 <p>In this section you'll build a mixin kit that ships a Claude Code skill into the sandbox workspace. Claude Code picks up skills automatically from <code>.claude/skills/</code> in the workspace, so any kit that drops a <code>SKILL.md</code> file there is immediately usable when the agent starts.</p>
-<hr />
 <h2 id="the-kit-structure">The kit structure</h2>
 <div class="highlight"><pre><span></span><code>kits/docker-review/
 ├── spec.yaml
@@ -5932,17 +6008,15 @@
                     └── SKILL.md
 </code></pre></div>
 <p>The <code>files/workspace/</code> tree maps directly to the sandbox workspace path. Everything inside it is injected at sandbox creation - no install commands, no staging directory workaround.</p>
-<hr />
 <h2 id="create-the-spec">Create the spec</h2>
 <p>Create <code>kits/docker-review/spec.yaml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
 <span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mixin</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">docker-review</span>
 <span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Dockerfile review skill</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Ships a Claude Code skill that reviews Dockerfiles for best practices</span>
 </code></pre></div>
 <p>That's the entire spec. No network rules needed, no install commands - just the skill file injection handled by the <code>files/</code> tree.</p>
-<hr />
 <h2 id="create-the-skill">Create the skill</h2>
 <p>Create <code>kits/docker-review/files/workspace/.claude/skills/docker-review/SKILL.md</code>:</p>
 <div class="highlight"><pre><span></span><code>---
@@ -5958,7 +6032,6 @@ When reviewing a Dockerfile, check:
 <span class="k">4.</span> <span class="gs">**Security**</span> - non-root <span class="sb">`USER`</span>, no secrets in <span class="sb">`ARG`</span>/<span class="sb">`ENV`</span>, no <span class="sb">`--privileged`</span>
 <span class="k">5.</span> <span class="gs">**Reproducibility**</span> - pinned package versions, explicit <span class="sb">`COPY`</span> targets
 </code></pre></div>
-<hr />
 <h2 id="run-it">Run it</h2>
 <p>From the repo root:</p>
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span>./kits/docker-review/<span class="w"> </span>--name<span class="w"> </span>kits-lab
@@ -5967,7 +6040,6 @@ When reviewing a Dockerfile, check:
 <div class="highlight"><pre><span></span><code>Review the Dockerfile in this workspace
 </code></pre></div>
 <p>You should see the <code>docker-review</code> skill load and Claude use it to structure the review. Notice that Claude can see all the Dockerfiles in your bind-mounted workspace - that's expected. The sandbox isolates everything <em>outside</em> the workspace, not what's inside it.</p>
-<hr />
 <h2 id="what-just-happened">What just happened</h2>
 <ul>
 <li>The <code>files/workspace/</code> tree was injected into the workspace at sandbox creation</li>

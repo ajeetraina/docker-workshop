@@ -3606,6 +3606,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../lab8/projects/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing Agent Skills
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab8/projects/declarative-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Environments (sbx env)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
@@ -5853,18 +5909,44 @@
 
 
 <h1 id="introduction-to-docker-sandbox-kits">Introduction to Docker Sandbox Kits</h1>
-<p>So far in this lab you've been running agents directly with <code>sbx run</code>. That works great for one-off sessions. But what happens when you want to:</p>
+<pre class="mermaid"><code>flowchart LR
+    subgraph KIT["Kit artifact"]
+        SPEC["spec.yaml&lt;br/&gt;kind: mixin | sandbox"]
+        FILES["files/ directory"]
+    end
+    SPEC --&gt; CAPS
+    FILES --&gt; CAPS
+    subgraph CAPS["What it declares"]
+        I["commands.install (once)"]
+        S["commands.startup (each start)"]
+        F["files → workspace / home"]
+        N["caps.network.allow"]
+        C["credentials.inject (via proxy)"]
+    end
+    subgraph HOST["Host machine"]
+        subgraph VM["MicroVM (sandbox)"]
+            AGENT["agent + kit applied"]
+        end
+    end
+    CAPS -- "sbx run --kit" --&gt; VM
+
+    classDef kit fill:#eff6ff,stroke:#3b82f6,color:#000
+    classDef cap fill:#fff7ed,stroke:#f59e0b,color:#000
+    classDef vm fill:#ecfdf5,stroke:#10b981,color:#000
+    class SPEC,FILES kit
+    class I,S,F,N,C cap
+    class AGENT vm</code></pre>
+<p><em>A kit is a <code>spec.yaml</code> + optional <code>files/</code> that declares everything a sandbox needs — tools, files, network rules, credentials — as one shareable artifact.</em></p>
+<p>So far in this labspace you've been running agents directly with <code>sbx run</code>. That works great for one-off sessions. But what happens when you want to:</p>
 <ul>
 <li>Give every sandbox the same linting rules?</li>
 <li>Make sure a specific API's credentials never enter the VM?</li>
 <li>Share your exact sandbox setup with a teammate in one command?</li>
 </ul>
 <p>That's what <strong>kits</strong> solve. A kit is a declarative artifact - a <code>spec.yaml</code> file plus an optional <code>files/</code> directory - that packages everything a sandbox needs: tools to install, files to inject, network rules to enforce, and credentials to wire up through the proxy.</p>
-<hr />
 <h2 id="two-kinds-of-kits">Two kinds of kits</h2>
 <p><strong>Mixin kits</strong> (<code>kind: mixin</code>) extend an existing agent. You can stack several on the same sandbox with multiple <code>--kit</code> flags. Use these for adding tools, dropping in config files, or granting access to a new service.</p>
-<p><strong>Agent kits</strong> (<code>kind: agent</code>) define a full agent from scratch - image, entrypoint, network policy, credentials, everything. The built-in <code>claude</code> agent you've been using is itself defined as a kit. You can fork it and change just what you need.</p>
-<hr />
+<p><strong>Agent kits</strong> (<code>kind: sandbox</code> in kit-spec v2) define a full agent from scratch - image, entrypoint, network policy, credentials, everything. The built-in <code>claude</code> agent you've been using is itself defined as a kit. You can fork it and change just what you need.</p>
 <h2 id="what-a-kit-can-do">What a kit can do</h2>
 <table>
 <thead>
@@ -5883,24 +5965,16 @@
 <td>Runs every time the sandbox starts - launches background services</td>
 </tr>
 <tr>
-<td><code>commands.initFiles</code></td>
-<td>Writes files with runtime values (like <code>${WORKDIR}</code>) substituted in</td>
-</tr>
-<tr>
 <td><code>files/</code> directory</td>
 <td>Static files dropped into <code>/home/agent/</code> or the workspace at creation</td>
 </tr>
 <tr>
-<td><code>network.allowedDomains</code></td>
+<td><code>caps.network.allow</code></td>
 <td>Domains the sandbox can reach; everything else is blocked</td>
 </tr>
 <tr>
-<td><code>credentials.sources</code></td>
-<td>Where the proxy reads secrets on the host - they never enter the VM</td>
-</tr>
-<tr>
-<td><code>environment.proxyManaged</code></td>
-<td>Env var names whose values are injected by proxy at request time</td>
+<td><code>credentials[].apiKey.inject</code></td>
+<td>The proxy reads the secret on the host and injects it per request - it never enters the VM</td>
 </tr>
 </tbody>
 </table>

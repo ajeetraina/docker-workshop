@@ -1,28 +1,65 @@
 # Observability - Audit + Dashboard
 
-**Pillar 3 (Audit + Visibility)** Every policy decision sbx makes is written to a structured JSONL log on disk today - and the lab ships a live dashboard you can run alongside it.
+```mermaid
+flowchart LR
+    subgraph HOST["Host machine"]
+        DAEMON["sbx daemon<br/>every policy decision"]
+        LOG[("daemon.log (JSONL)<br/>allow / deny + rule + reason")]
+        MLOG[("mcp/mcp.log")]
+        DASH["Dashboard localhost:8090<br/>tails logs live"]
+        DAEMON --> LOG
+        DAEMON --> MLOG
+        LOG --> DASH
+        MLOG --> DASH
+    end
+    LOG -. "SIEM-ready JSONL" .-> SIEM["Splunk / Datadog / Sentinel"]
 
-!!! info "At a glance"
-    **Time:** ~10 minutes &nbsp;&nbsp;|&nbsp;&nbsp; **Prerequisites:** You completed the Network demo and (optionally) MCP Hands-On.
+    classDef pol fill:#fff7ed,stroke:#f59e0b,color:#000
+    classDef audit fill:#f3e8fd,stroke:#9333ea,color:#000
+    class DAEMON pol
+    class LOG,MLOG,DASH,SIEM audit
+```
+
+*Every decision the daemon makes is already written as structured JSONL. This section reads it with `jq` and starts a live dashboard that tails it — the audit substrate that's SIEM-ready today.*
+
+**What's Next** promised Pillar 3 (Audit + Visibility) was rolling out. The good news: the foundation is already shipping. Every policy decision sbx makes is written to a structured JSONL log on disk today - and this section ships a live dashboard you'll start in **Step 3** to watch those decisions in real time.
+
+<iframe src="http://localhost:8090" width="100%" height="600" style="border:1px solid #cbd5e1; border-radius:8px; background:#f8fafc;" loading="lazy"></iframe>
+
+The panel above is **blank until you start the dashboard in Step 3** - it isn't running by default (it's only needed for this section). Once it's up, open it in a new tab if the embed doesn't refresh: **[http://localhost:8090](http://localhost:8090)**, then trigger a few events with the commands below and it will populate live.
 
 This section gives you two things:
 
 1. A way to read the underlying audit log directly with `jq`
-2. A live dashboard you can build from [`labspace/kits/observability/`](https://github.com/ajeetraina/labspace-ai-governance/tree/main/labspace/kits/observability) in the lab repo
+2. The dashboard shown above - built from `labspace/kits/observability/`, which you start in Step 3
 
----
+**Time:** ~10 minutes
+**Prerequisites:** You completed **Network Enforcement Demo** and (optionally) **MCP Hands-On**.
 
 ## Step 1 - Locate the daemon log
 
-The sbx daemon writes JSONL audit records here:
+The sbx daemon writes JSONL audit records to a `sandboxd/daemon.log` file. Locate it for your platform:
 
-```bash
-ls -lh "$HOME/Library/Application Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log"
-```
+=== "macOS"
 
-On Linux it's typically `~/.local/share/com.docker.sandboxes/sandboxes/sandboxd/daemon.log`.
+    ```bash
+    ls -lh "$HOME/Library/Application Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log"
+    ```
 
----
+=== "Windows"
+
+    ```powershell
+    Get-ChildItem "$env:LOCALAPPDATA\DockerSandboxes\sandboxes\logs\sandboxd\daemon.log"
+    ```
+
+=== "Linux"
+
+    ```bash
+    ls -lh "$HOME/.local/share/com.docker.sandboxes/sandboxes/sandboxd/daemon.log"
+    ```
+
+!!! tip
+    The macOS path is `~/Library/Application Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log`. On Linux it's `~/.local/share/com.docker.sandboxes/sandboxes/sandboxd/daemon.log`; on Windows it's under `%LOCALAPPDATA%\DockerSandboxes\sandboxes\logs\sandboxd\`.
 
 ## Step 2 - Read it with `jq`
 
@@ -48,54 +85,50 @@ jq -r 'select(.msg == "governance policy evaluation" and .allowed == false) | .p
 
 This is your SIEM-ready surface. Forward this file to Splunk/Datadog/Sentinel and you have an org-grade audit trail for sandbox policy decisions.
 
----
+## What's captured and what isn't (reconciled with Docker's marketing)
 
-## What's captured and what isn't
+Docker's [AI Governance page](https://www.docker.com/products/ai-governance/) describes audit events as containing "user identity, timestamp, session context, and triggering rule." Here's what v0.32.0 actually emits today, mapped against that claim:
 
-| Captured today | Not captured today |
+| Marketing claim | v0.32.0 reality |
 |---|---|
-| Timestamp | User identity |
-| Resource (domain, port, path) | Sandbox name (sandbox_id) |
-| Decision (allow/deny) | Prompt or tool-call payload |
-| Matched rule name | MCP tool-call audit (separate roadmap) |
-| Deny reason (explicit / implicit) | Cross-machine aggregation |
-| Policy source (local / remote) | |
+| Timestamp | ✅ on every event |
+| Triggering rule | ✅ `policy_matched_rule` |
+| Session context | ⚠️ Partial - `session`, `sandbox`, `agent`, `runtime` fields appear on lifecycle events (gateway start, sandbox spawn) but **not** on `governance policy evaluation` events |
+| User identity | ❌ Not in any field today. The dashboard synthesises it from `$USER` on the host as a best-effort proxy. |
+| SIEM export | ✅ JSONL is already the format |
 
-The audit log answers *what was decided and why*. It doesn't yet answer *who triggered it on this machine* - that's roadmap.
+Plus a third log file - **`mcp/mcp.log`** alongside `daemon.log` - that captures MCP gateway lifecycle events in logfmt (`setupMCPGateway called`, `gateway started in sandboxd`, etc.). The dashboard tails it as a separate source.
 
----
+The audit log answers *what was decided and why*, with sandbox attribution on some events. It does not yet answer *who triggered it* across multiple users on one machine - Docker's marketing implies this is coming, but as of v0.32.0 it still isn't in any field, so the dashboard keeps synthesising the user from `$USER`.
 
-## Step 3 - Run the dashboard
+## Step 3 - Start the dashboard
 
-The lab repo ships a small dashboard built on top of the daemon log. Clone the lab repo if you haven't, then start it from the observability kit:
+The dashboard is **not** running by default - it's only needed for this section, so you start it here. The kit at `labspace/kits/observability/` ships a self-contained compose file. From the repo root:
 
 ```bash
-git clone https://github.com/ajeetraina/labspace-ai-governance
-cd labspace-ai-governance/labspace/kits/observability
+cd labspace/kits/observability
 docker compose --profile with-gateway up -d --build
 ```
 
-Then open it in a fresh browser tab:
+!!! note
+    If you cloned the repo elsewhere, `cd` to `<repo>/labspace/kits/observability` instead. The `--profile with-gateway` also brings up a local `docker/mcp-gateway` so MCP traffic shows up in the dashboard; drop the profile flag if you only want sbx policy events.
+
+Give it a few seconds to build, then open it (or refresh the embedded panel at the top of this section):
 
 ```bash
 open http://localhost:8090
 ```
 
-!!! tip
-    If the dashboard is empty, trigger a few events with the commands in Step 4 - it populates live.
-
----
+When you're done with this section you can stop it again with `docker compose down` from the same directory.
 
 ## Step 4 - Generate some events to watch
 
 In another terminal, enter a sandbox and trigger denies:
 
 ```bash
-mkdir -p ~/labspace-fs-test/test-1 && cd ~/labspace-fs-test/test-1
+mkdir -p ~/workdemo/scratch && cd ~/workdemo/scratch
 sbx run shell .
 ```
-
-(Reusing `~/labspace-fs-test/test-1` means the single `allow lab test directory` filesystem rule from the earlier demos already covers this workspace - no new rule needed.)
 
 Inside the sandbox prompt:
 
@@ -113,15 +146,28 @@ Switch to the dashboard. You'll see three new rows appear in real time:
 
 The per-rule deny count panel on the left updates live.
 
----
-
 ## Step 5 - Layer MCP traffic on top (optional)
 
-If you have the Variant B MCP gateway from *MCP Hands-On* running on `localhost:8811`, the dashboard automatically picks up its logs (it discovers any running container whose image name contains `mcp-gateway`).
+If you have the Variant B MCP gateway from **MCP Hands-On** running on `localhost:8811`, the dashboard automatically picks up its logs - it discovers any running container whose image name contains `mcp-gateway` and **follows its log output from the moment the dashboard attaches**.
 
-Trigger an MCP call through it and you'll see entries with source `mcp-gateway` alongside the sbx rows - both signals in one screen.
+One gotcha worth knowing: the dashboard tails *new* gateway log lines only - it does not replay history. So an **idle** gateway shows nothing under the `mcp-gateway` source; you have to send it a request *after* the dashboard is up. The block below opens an MCP session and drives a tool call through the gateway:
 
----
+```bash
+# Keep an SSE session open in the background, then drive a tool call through it
+curl -sN http://localhost:8811/sse > /tmp/mcp_sse.log 2>&1 &
+SSE_PID=$!; sleep 1.5
+URL="http://localhost:8811$(grep -m1 '^data: ' /tmp/mcp_sse.log | sed 's/^data: //' | tr -d '\r')"
+curl -s -X POST "$URL" -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":1,"method":"initialize","params":{"protocolVersion":"2024-11-05","capabilities":{},"clientInfo":{"name":"lab","version":"1.0"}}}' >/dev/null
+curl -s -X POST "$URL" -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","method":"notifications/initialized"}' >/dev/null
+curl -s -X POST "$URL" -H 'Content-Type: application/json' \
+  -d '{"jsonrpc":"2.0","id":2,"method":"tools/call","params":{"name":"search","arguments":{"query":"docker mcp gateway"}}}' >/dev/null
+sleep 2; kill $SSE_PID 2>/dev/null
+echo "Done - check the dashboard's mcp-gateway source."
+```
+
+Switch to the dashboard, click the **mcp-gateway** source filter, and make sure **info** is enabled under Decision (these are INFO-level events). You'll see `tool=search` / `call-tool` rows appear alongside the sbx policy rows - both signals in one screen.
 
 ## What you just demonstrated
 
@@ -130,8 +176,6 @@ Trigger an MCP call through it and you'll see entries with source `mcp-gateway` 
 - The honest gap (no user attribution, no MCP-tool-level audit yet) is now visible to your security team in the same view that shows what *is* captured
 
 For a security review conversation, this section is the one that lands. You're not promising a feature - you're showing the structured event stream that already exists, and the work it would take to wrap it in your org's SIEM.
-
----
 
 ## Frequently asked: prompts and tool calls
 
@@ -149,7 +193,7 @@ Not logged. The sbx proxy does MITM TLS interception so it *could* technically r
 
 Only visible for gateways you run yourself, and only as heuristic log lines:
 
-- **Mode B (local stdio):** the subprocess runs on your host; wrap it yourself if you need audit
+- **Mode C (local stdio):** the subprocess runs on your host; wrap it yourself if you need audit
 - **Local MCP Gateway with `--verbose=true`:** the dashboard tails the gateway stdout and surfaces `call-tool` / `list-tools` classifications. Not structured per-call records.
 - **Mode A (remote OAuth servers like Notion, GitHub):** invisible from your side. You see the TCP connect in sbx, you don't see which tool was called.
 
@@ -172,8 +216,6 @@ The sbx daemon log has no `user`, `sandbox_id`, or `agent` field. Per-machine lo
 | Cross-machine aggregation | ❌ | Via SIEM ingestion of the daemon.log |
 
 That's the entire picture you can defend to a security team.
-
----
 
 ## Where to go from here
 

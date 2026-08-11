@@ -3606,6 +3606,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../lab8/projects/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing Agent Skills
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab8/projects/declarative-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Environments (sbx env)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
@@ -5897,59 +5953,69 @@
 
 
 <h1 id="fork-an-agent-kit-claude-without-dangerously-skip-permissions">Fork an Agent Kit: Claude Without --dangerously-skip-permissions</h1>
-<p>Mixin kits extend existing agents. Agent kits define one from scratch. The most common use case is forking a built-in agent to change one thing - the entrypoint, the model, or a network rule.</p>
+<pre class="mermaid"><code>flowchart TB
+    BUILTIN["Built-in claude agent kit&lt;br/&gt;run: [claude,&lt;br/&gt;--dangerously-skip-permissions]"]
+    BUILTIN -- fork --&gt; SAFE["claude-safe (kind: sandbox)&lt;br/&gt;run: [claude]&lt;br/&gt;approval on every tool call"]
+    SAFE -- "sbx run claude-safe&lt;br/&gt;--kit ./kits/claude-safe/" --&gt; VM
+    MIXIN["docker-review mixin"] -- "--kit (stacked)" --&gt; VM
+    subgraph HOST["Host machine"]
+        subgraph VM["MicroVM (sandbox)"]
+            A["approval prompts + review skill&lt;br/&gt;+ proxy-managed anthropic creds"]
+        end
+    end
+
+    classDef base fill:#eef2ff,stroke:#6366f1,color:#000
+    classDef kit fill:#eff6ff,stroke:#3b82f6,color:#000
+    classDef vm fill:#ecfdf5,stroke:#10b981,color:#000
+    class BUILTIN base
+    class SAFE,MIXIN kit
+    class A vm</code></pre>
+<p><em>An agent kit defines an agent from scratch. Here you fork the built-in <code>claude</code> to drop <code>--dangerously-skip-permissions</code>, then stack the mixin on top — agent kit + mixin compose in one sandbox.</em></p>
+<p>Mixin kits extend existing agents. Agent kits (<code>kind: sandbox</code> in kit-spec v2) define one from scratch. The most common use case is forking a built-in agent to change one thing - the entrypoint, the model, or a network rule.</p>
 <p>This section forks the built-in <code>claude</code> agent to remove <code>--dangerously-skip-permissions</code>, giving you a version where every tool call requires explicit approval.</p>
-<hr />
 <h2 id="create-the-agent-kit">Create the agent kit</h2>
 <p>Create <code>kits/claude-safe/spec.yaml</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1&quot;</span>
-<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">agent</span>
+<div class="highlight"><pre><span></span><code><span class="nt">schemaVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2&quot;</span>
+<span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sandbox</span><span class="w">                 </span><span class="c1"># kit-spec v2 renamed &#39;agent&#39; to &#39;sandbox&#39;</span>
 <span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">claude-safe</span>
 <span class="nt">displayName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Claude Code (with approval prompts)</span>
 <span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Claude Code without --dangerously-skip-permissions - every tool call requires approval</span>
 
-<span class="nt">agent</span><span class="p">:</span>
+<span class="nt">sandbox</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;docker/sandbox-templates:claude-code-docker&quot;</span>
 <span class="w">  </span><span class="nt">aiFilename</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">CLAUDE.md</span>
-<span class="w">  </span><span class="nt">persistence</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">persistent</span>
 <span class="w">  </span><span class="nt">entrypoint</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">claude</span><span class="p p-Indicator">]</span><span class="w">   </span><span class="c1"># no --dangerously-skip-permissions</span>
 
-<span class="nt">network</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">serviceDomains</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">api.anthropic.com</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropic</span>
-<span class="w">    </span><span class="nt">console.anthropic.com</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropic</span>
-<span class="w">  </span><span class="nt">serviceAuth</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">anthropic</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">headerName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x-api-key</span>
-<span class="w">      </span><span class="nt">valueFormat</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;%s&quot;</span>
-<span class="w">  </span><span class="nt">allowedDomains</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;claude.com:443&quot;</span>
+<span class="nt">caps</span><span class="p">:</span>
+<span class="w">  </span><span class="nt">network</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">allow</span><span class="p">:</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api.anthropic.com</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">console.anthropic.com</span>
+<span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;claude.com:443&quot;</span>
 
 <span class="nt">credentials</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">sources</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">anthropic</span><span class="p">:</span>
-<span class="w">      </span><span class="nt">env</span><span class="p">:</span>
-<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ANTHROPIC_API_KEY</span>
+<span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">anthropic</span>
+<span class="w">    </span><span class="nt">apiKey</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">inject</span><span class="p">:</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">api.anthropic.com</span>
+<span class="w">          </span><span class="nt">header</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x-api-key</span>
+<span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">domain</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">console.anthropic.com</span>
+<span class="w">          </span><span class="nt">header</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">x-api-key</span>
 </code></pre></div>
-<hr />
 <h2 id="run-it">Run it</h2>
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>claude-safe<span class="w"> </span>--kit<span class="w"> </span>./kits/claude-safe/
 </code></pre></div>
 <p>The agent argument to <code>sbx run</code> matches the <code>name:</code> field in the spec - not the directory name.</p>
-<hr />
 <h2 id="stack-it-with-the-docker-review-mixin">Stack it with the docker-review mixin</h2>
 <p>Agent kits and mixin kits compose. Run the <code>claude-safe</code> agent with the <code>docker-review</code> skill loaded on top:</p>
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>claude-safe<span class="w"> </span>--kit<span class="w"> </span>./kits/claude-safe/<span class="w"> </span>--kit<span class="w"> </span>./kits/docker-review/
 </code></pre></div>
-<p>You now have:</p>
-<ul>
-<li>Approval prompts on every tool call (from the agent kit)</li>
-<li>The Dockerfile review skill available (from the mixin kit)</li>
-<li>Proxy-managed Anthropic credentials (from the agent kit)</li>
-<li>All the workspace files visible via bind-mount</li>
-</ul>
-<hr />
+<p>You now have:
+- Approval prompts on every tool call (from the agent kit)
+- The Dockerfile review skill available (from the mixin kit)
+- Proxy-managed Anthropic credentials (from the agent kit)
+- All the workspace files visible via bind-mount</p>
 <h2 id="key-agent-kit-fields">Key agent kit fields</h2>
 <table>
 <thead>
@@ -5960,23 +6026,19 @@
 </thead>
 <tbody>
 <tr>
-<td><code>agent.image</code></td>
+<td><code>sandbox.image</code></td>
 <td>Must provide a non-root <code>agent</code> user at UID 1000 with passwordless sudo</td>
 </tr>
 <tr>
-<td><code>agent.persistence</code></td>
-<td><code>persistent</code> = named volume across restarts; <code>ephemeral</code> = default</td>
-</tr>
-<tr>
-<td><code>agent.entrypoint.run</code></td>
+<td><code>sandbox.entrypoint.run</code></td>
 <td>Replaces the image's entrypoint entirely</td>
 </tr>
 <tr>
-<td><code>agent.entrypoint.args</code></td>
+<td><code>sandbox.entrypoint.args</code></td>
 <td>Appended to the image's existing entrypoint</td>
 </tr>
 <tr>
-<td><code>agent.aiFilename</code></td>
+<td><code>sandbox.aiFilename</code></td>
 <td>Memory file the agent reads at startup (e.g. <code>CLAUDE.md</code>, <code>AGENTS.md</code>)</td>
 </tr>
 <tr>
@@ -5987,7 +6049,7 @@
 </table>
 <div class="admonition note">
 <p class="admonition-title">Note</p>
-<p>Agent kits require the image to expose a non-root <code>agent</code> user at UID 1000. Build on <code>docker/sandbox-templates:shell-docker</code> to get this for free if you're building a custom image.</p>
+<p>Agent kits require the image to expose a non-root <code>agent</code> user at UID 1000. Build on <code>docker/sandbox-templates:shell-docker</code> to get this for free if you're building a custom image. (<code>persistence</code> from kit-spec v1 is removed in v2 - it had no effect.)</p>
 </div>
 
 

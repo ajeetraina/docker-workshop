@@ -1,18 +1,46 @@
 # Summary and Next Steps
 
+```mermaid
+flowchart LR
+    subgraph BUILT["What you built"]
+        M["docker-review<br/>mixin (skill)"]
+        A["claude-safe<br/>agent kit (approvals)"]
+    end
+    subgraph HOST["Host machine"]
+        subgraph VM["MicroVM (sandbox)"]
+            RUN["kit applied<br/>creds never enter the VM"]
+        end
+    end
+    BUILT -- "sbx run --kit" --> VM
+    VM --> WINS
+    subgraph WINS["Kits vs shell scripts"]
+        W1["creds never enter VM"]
+        W2["composable egress"]
+        W3["shareable: Git / OCI"]
+        W4["validated before run"]
+    end
+
+    classDef kit fill:#eff6ff,stroke:#3b82f6,color:#000
+    classDef vm fill:#ecfdf5,stroke:#10b981,color:#000
+    classDef win fill:#ecfdf5,stroke:#10b981,color:#000
+    class M,A kit
+    class RUN vm
+    class W1,W2,W3,W4 win
+```
+
+*Two real kits built — a mixin and an agent kit — packaging what shell scripts can't: credentials that never enter the VM, composable egress, and Git/OCI sharing.*
+
 ## What you built
 
-In this track you went from running agents directly to packaging sandbox environments as declarative, shareable kits.
+In this section you went from running agents directly to packaging sandbox environments as declarative, shareable kits.
 
 | What you did | How |
 |---|---|
 | Shipped a Claude Code skill into the sandbox | Mixin kit with `files/workspace/` injection |
-| Understood proxy-managed credential injection | `credentials.sources` + `serviceAuth` |
+| Understood proxy-managed credential injection | `credentials[].apiKey.inject` |
 | Forked the built-in `claude` agent | Agent kit with custom entrypoint |
 | Stacked two kits on one sandbox | `--kit --kit` |
 | Pulled a kit from the community repo | `git+https://github.com/docker/sbx-kits-contrib.git#dir=…` |
-
----
 
 ## The files you created
 
@@ -29,8 +57,6 @@ kits/
 
 These are real, working kits. Commit them to this repo and anyone can use them with a single `--kit` flag.
 
----
-
 ## What kits give you that shell scripts don't
 
 - **Credentials never enter the VM** - the proxy reads them from the host and injects per-request
@@ -38,8 +64,6 @@ These are real, working kits. Commit them to this repo and anyone can use them w
 - **Shareable via Git URL or OCI registry** - no clone, no setup doc, no config dance
 - **Validated before run** - `sbx kit validate` catches spec errors before they waste a sandbox creation
 - **TCK-testable** - write a Go test file using `tck.NewSuiteFromDir` and CI validates your kit against a real container
-
----
 
 ## Next steps
 

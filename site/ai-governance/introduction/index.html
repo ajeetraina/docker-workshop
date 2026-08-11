@@ -3606,6 +3606,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../lab8/projects/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing Agent Skills
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab8/projects/declarative-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Environments (sbx env)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
@@ -5929,7 +5985,23 @@
 
 
 <h1 id="why-ai-governance">Why AI Governance</h1>
-<p>AI agents - Claude, Copilot, Cursor, custom MCP servers - run with the same blast radius as the developer running them. That means access to your filesystem, your secrets, your network, your everything.</p>
+<pre class="mermaid"><code>flowchart LR
+    ADMIN["Docker Hub Org&lt;br/&gt;define policy once"]
+    subgraph PILLARS["Three pillars"]
+        P1["1 · Sandbox policies"]
+        P2["2 · MCP tool governance"]
+        P3["3 · Audit + visibility"]
+    end
+    ADMIN --&gt; PILLARS --&gt; AGENT["AI agent&lt;br/&gt;contained by policy"]
+
+    classDef admin fill:#eef2ff,stroke:#6366f1,color:#000
+    classDef pillar fill:#fff7ed,stroke:#f59e0b,color:#000
+    classDef agent fill:#ecfdf5,stroke:#10b981,color:#000
+    class ADMIN admin
+    class P1,P2,P3 pillar
+    class AGENT agent</code></pre>
+<p><em>The concept: define policy once in the Docker Hub org, and three pillars keep the agent inside the guardrails. This lab focuses on Pillar 1.</em></p>
+<p>AI agents such as Claude, Copilot, Cursor, custom MCP servers run with the same blast radius as the developer running them. That means access to your filesystem, your secrets, your network, your everything.</p>
 <p>This is fine when the agent does what you expect. It's a disaster when:</p>
 <ul>
 <li>A prompt-injected agent uploads SSH keys to <code>paste.ee</code></li>
@@ -5937,19 +6009,18 @@
 <li>An agent acting on hallucinated instructions pushes a malicious commit to <code>main</code></li>
 <li>A coding agent reads your <code>.env</code> and posts it to the model API alongside your code</li>
 </ul>
-<p>The standard answer - <strong>"don't let agents do that"</strong> - doesn't scale. Developers want agents. They'll find a way. The right answer is to put guardrails around the agent's execution environment so it physically <em>cannot</em> exceed its scope.</p>
+<p>The standard answer ~ <strong>"don't let agents do that"</strong> doesn't scale. Developers want agents. 
+They'll find a way. The right answer is to put guardrails around the agent's execution environment so it physically <em>cannot</em> exceed its scope.</p>
 <p>That's AI governance.</p>
-<hr />
-<p><img width="1003" height="496" alt="image" src="https://github.com/user-attachments/assets/3abeb360-eb55-40c7-b287-459effe275dd" /></p>
+<p><img width="1261" height="638" alt="image" src="https://github.com/user-attachments/assets/072758ac-f40d-44b0-b169-c520b340131e" /></p>
 <h2 id="the-three-pillars">The three pillars</h2>
 <p>Docker AI Governance gives you three layers of control, defined once in the Admin Console and enforced everywhere agents run.</p>
 <h3 id="1-sandbox-policies">1. Sandbox policies</h3>
-<p>Network allowlists, filesystem mount rules, resource limits. Enforced at the proxy and mount layer. The agent never sees data or destinations it isn't allowed to touch.</p>
+<p>Network allowlists, filesystem mount rules, resource limits. Enforced at the proxy and mount layer. The agent never sees data or destinations it isn't allowed to touch. The same sandbox boundary also isolates <strong>credentials</strong> - the real API keys and tokens the agent uses stay on the host and are injected per request, so the agent never holds a live secret.</p>
 <h3 id="2-mcp-tool-governance">2. MCP tool governance</h3>
 <p>Which MCP servers and tools your org's agents can use. Defined centrally, enforced for every developer, audited.</p>
 <h3 id="3-audit-visibility">3. Audit + visibility</h3>
 <p>Every policy decision generates a structured event with user identity, timestamp, session context, and triggering rule. Exports to your SIEM. CISOs get the trail.</p>
-<hr />
 <h2 id="what-this-lab-covers">What this lab covers</h2>
 <table>
 <thead>
@@ -5959,6 +6030,14 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>The Problem Statement</td>
+<td>Watch an unsandboxed agent read your secrets first-hand</td>
+</tr>
+<tr>
+<td>Sandboxing the Agent</td>
+<td>Put the agent inside an isolated sandbox and re-run — the secrets vanish</td>
+</tr>
 <tr>
 <td>The Policy Model</td>
 <td>Understand how org policies flow to developer machines</td>
@@ -5972,12 +6051,16 @@
 <td>Prove filesystem policies enforce on a credentials directory</td>
 </tr>
 <tr>
-<td>MCP Hands-On</td>
-<td>Register MCP servers locally with <code>sbx mcp</code></td>
+<td>Credential Isolation</td>
+<td>Prove the real API keys never enter the sandbox</td>
 </tr>
 <tr>
-<td>Observability</td>
-<td>Read the audit log and watch policy decisions live</td>
+<td>Sandbox Kits</td>
+<td>Package a reproducible, compliant sandbox as a declarative kit - governance as code</td>
+</tr>
+<tr>
+<td>Putting It All Together</td>
+<td><strong>The capstone</strong> - stop one rogue agent's four attacks in a single sandbox, then read the CISO scorecard</td>
 </tr>
 <tr>
 <td>What's Next</td>
@@ -5985,7 +6068,7 @@
 </tr>
 </tbody>
 </table>
-<p>The lab focuses on <strong>Pillar 1 (sandbox policies)</strong> because that's what's broadly available today and what you can prove enforces in a short demo. Pillars 2 and 3 are previewed and partially hands-on in the later sections.</p>
+<p>The lab focuses on <strong>Pillar 1 (sandbox policies)</strong> because that's what's broadly available today and what you can prove enforces in a 20-minute demo. Pillars 2 and 3 are previewed in <strong>What's Next</strong>.</p>
 <p>By the end you'll have a working, defensible enforcement story you can walk a security team through.</p>
 
 

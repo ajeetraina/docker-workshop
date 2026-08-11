@@ -3606,6 +3606,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../lab8/projects/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing Agent Skills
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab8/projects/declarative-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Environments (sbx env)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
@@ -5897,8 +5953,26 @@
 
 
 <h1 id="stacking-kits-and-the-community-repo">Stacking Kits and the Community Repo</h1>
+<pre class="mermaid"><code>flowchart LR
+    K1["./kits/claude-safe/"] --&gt; MERGE
+    K2["./kits/docker-review/"] --&gt; MERGE
+    K3["git+github.com/docker/&lt;br/&gt;sbx-kits-contrib#dir=code-server"] --&gt; MERGE
+    K4["ghcr.io/org/kit:1.0 (OCI)"] --&gt; MERGE
+    MERGE{{"--kit --kit merge&lt;br/&gt;network unioned · files injected&lt;br/&gt;installs in order"}}
+    subgraph HOST["Host machine"]
+        subgraph VM["MicroVM (sandbox)"]
+            S["one sandbox&lt;br/&gt;all kits applied"]
+        end
+    end
+    MERGE --&gt; VM
+
+    classDef kit fill:#eff6ff,stroke:#3b82f6,color:#000
+    classDef vm fill:#ecfdf5,stroke:#10b981,color:#000
+    class K1,K2,K3,K4,MERGE kit
+    class S vm</code></pre>
+<p><em>Pass <code>--kit</code> repeatedly to stack kits — local, Git URL, or OCI image. Their rules merge: allowlists unioned, files injected, installs run in order.</em></p>
 <h2 id="stacking-with-kit-kit">Stacking with --kit --kit</h2>
-<p>Pass <code>--kit</code> more than once to stack kits on the same sandbox. Rules from all kits are merged: <code>allowedDomains</code> are unioned, files from all kits are injected, install commands from all kits run in order.</p>
+<p>Pass <code>--kit</code> more than once to stack kits on the same sandbox. Rules from all kits are merged: <code>caps.network.allow</code> entries are unioned, files from all kits are injected, install commands from all kits run in order.</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># two local kits</span>
 sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span>./kits/claude-safe/<span class="w"> </span>--kit<span class="w"> </span>./kits/docker-review/
 
@@ -5908,13 +5982,12 @@ sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </s
 <span class="w">  </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/docker/sbx-kits-contrib.git#dir=code-server&quot;</span>
 </code></pre></div>
 <div class="admonition warning">
-<p class="admonition-title">--kit only applies at creation</p>
+<p class="admonition-title">Important</p>
 <p><code>--kit</code> only applies when creating a new sandbox. To add a kit to a running sandbox use <code>sbx kit add</code>:</p>
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>kit<span class="w"> </span>add<span class="w"> </span>kits-lab<span class="w"> </span>./kits/docker-review/
 </code></pre></div>
 <p>This re-runs install commands and re-copies files. Kits can't be removed from a running sandbox - <code>sbx rm</code> and recreate to start clean.</p>
 </div>
-<hr />
 <h2 id="loading-from-the-community-repo">Loading from the community repo</h2>
 <p><code>docker/sbx-kits-contrib</code> is the official community kits repository. Every kit in it has TCK tests running in CI. Load any kit directly without cloning:</p>
 <div class="highlight"><pre><span></span><code><span class="c1"># VS Code in the browser with Claude Code extension</span>
@@ -5924,22 +5997,20 @@ sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </s
 sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/docker/sbx-kits-contrib.git#ref=v0.2.0&amp;dir=code-server&quot;</span>
 </code></pre></div>
 <p>Available kits in the repo: <code>code-server</code>, <code>amp</code>, <code>openclaw</code>, <code>nanoclaw</code>, <code>nanobot</code>, <code>pi</code>.</p>
-<hr />
 <h2 id="packaging-and-distributing-your-own-kit">Packaging and distributing your own kit</h2>
 <p>Once your kit works locally, share it three ways:</p>
-<p><strong>ZIP file:</strong></p>
+<p><strong>ZIP file:</strong>
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>kit<span class="w"> </span>pack<span class="w"> </span>./kits/docker-review/<span class="w"> </span>-o<span class="w"> </span>docker-review-1.0.zip
-</code></pre></div>
-<p><strong>OCI registry:</strong></p>
+</code></pre></div></p>
+<p><strong>OCI registry:</strong>
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>kit<span class="w"> </span>push<span class="w"> </span>./kits/docker-review/<span class="w"> </span>ghcr.io/yourorg/docker-review:1.0
 <span class="c1"># teammates run:</span>
 sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span>ghcr.io/yourorg/docker-review:1.0
-</code></pre></div>
-<p><strong>Git URL</strong> (simplest for teams):</p>
+</code></pre></div></p>
+<p><strong>Git URL</strong> (simplest for teams):
 <div class="highlight"><pre><span></span><code><span class="c1"># just commit the kit directory to your repo, then:</span>
 sbx<span class="w"> </span>run<span class="w"> </span>claude<span class="w"> </span>--kit<span class="w"> </span><span class="s2">&quot;git+https://github.com/yourorg/yourrepo.git#dir=kits/docker-review&quot;</span>
-</code></pre></div>
-<hr />
+</code></pre></div></p>
 <h2 id="debugging-kit-issues">Debugging kit issues</h2>
 <table>
 <thead>

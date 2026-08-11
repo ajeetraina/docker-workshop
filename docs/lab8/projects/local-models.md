@@ -300,4 +300,4 @@ Before moving on, confirm you can:
 - Point a coding agent (codex) at the local model via `OPENAI_BASE_URL`
 - Watch the connections in `sbx policy log`
 
-Next: the governance summary - the full architecture pulled together.
+Next: sharing agent skills across sandboxes - extending the agent without breaking isolation.

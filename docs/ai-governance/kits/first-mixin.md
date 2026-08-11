@@ -1,8 +1,31 @@
 # Your First Mixin Kit: Dockerfile Review Skill
 
-In this section you'll build a mixin kit that ships a Claude Code skill into the sandbox workspace. Claude Code picks up skills automatically from `.claude/skills/` in the workspace, so any kit that drops a `SKILL.md` file there is immediately usable when the agent starts.
+```mermaid
+flowchart LR
+    subgraph KIT["docker-review (mixin)"]
+        SPEC["spec.yaml<br/>kind: mixin"]
+        SKILL["files/workspace/.claude/skills/<br/>docker-review/SKILL.md"]
+    end
+    KIT -- "sbx run claude<br/>--kit ./kits/docker-review/" --> VM
+    subgraph HOST["Host machine"]
+        subgraph VM["MicroVM (sandbox)"]
+            subgraph WS["workspace (mounted)"]
+                INJECTED[".claude/skills/docker-review/<br/>SKILL.md"]
+            end
+            CLAUDE["Claude Code<br/>auto-discovers the skill"]
+            INJECTED --> CLAUDE
+        end
+    end
 
----
+    classDef kit fill:#eff6ff,stroke:#3b82f6,color:#000
+    classDef vm fill:#ecfdf5,stroke:#10b981,color:#000
+    class SPEC,SKILL kit
+    class INJECTED,CLAUDE vm
+```
+
+*A pure file-based mixin: the `files/workspace/` tree is injected at creation, Claude Code finds the skill in `.claude/skills/`, and uses it automatically — no install commands, no shell.*
+
+In this section you'll build a mixin kit that ships a Claude Code skill into the sandbox workspace. Claude Code picks up skills automatically from `.claude/skills/` in the workspace, so any kit that drops a `SKILL.md` file there is immediately usable when the agent starts.
 
 ## The kit structure
 
@@ -19,14 +42,12 @@ kits/docker-review/
 
 The `files/workspace/` tree maps directly to the sandbox workspace path. Everything inside it is injected at sandbox creation - no install commands, no staging directory workaround.
 
----
-
 ## Create the spec
 
 Create `kits/docker-review/spec.yaml`:
 
 ```yaml
-schemaVersion: "1"
+schemaVersion: "2"
 kind: mixin
 name: docker-review
 displayName: Dockerfile review skill
@@ -34,8 +55,6 @@ description: Ships a Claude Code skill that reviews Dockerfiles for best practic
 ```
 
 That's the entire spec. No network rules needed, no install commands - just the skill file injection handled by the `files/` tree.
-
----
 
 ## Create the skill
 
@@ -56,8 +75,6 @@ When reviewing a Dockerfile, check:
 5. **Reproducibility** - pinned package versions, explicit `COPY` targets
 ```
 
----
-
 ## Run it
 
 From the repo root:
@@ -73,8 +90,6 @@ Review the Dockerfile in this workspace
 ```
 
 You should see the `docker-review` skill load and Claude use it to structure the review. Notice that Claude can see all the Dockerfiles in your bind-mounted workspace - that's expected. The sandbox isolates everything *outside* the workspace, not what's inside it.
-
----
 
 ## What just happened
 

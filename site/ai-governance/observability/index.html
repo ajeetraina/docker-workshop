@@ -3606,6 +3606,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../lab8/projects/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing Agent Skills
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab8/projects/declarative-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Environments (sbx env)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
@@ -4036,10 +4092,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-captured-and-what-isnt" class="md-nav__link">
+  <a href="#whats-captured-and-what-isnt-reconciled-with-dockers-marketing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What's captured and what isn't
+        What's captured and what isn't (reconciled with Docker's marketing)
       
     </span>
   </a>
@@ -4047,10 +4103,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-run-the-dashboard" class="md-nav__link">
+  <a href="#step-3-start-the-dashboard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 - Run the dashboard
+        Step 3 - Start the dashboard
       
     </span>
   </a>
@@ -5958,10 +6014,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#whats-captured-and-what-isnt" class="md-nav__link">
+  <a href="#whats-captured-and-what-isnt-reconciled-with-dockers-marketing" class="md-nav__link">
     <span class="md-ellipsis">
       
-        What's captured and what isn't
+        What's captured and what isn't (reconciled with Docker's marketing)
       
     </span>
   </a>
@@ -5969,10 +6025,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-run-the-dashboard" class="md-nav__link">
+  <a href="#step-3-start-the-dashboard" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 - Run the dashboard
+        Step 3 - Start the dashboard
       
     </span>
   </a>
@@ -6105,23 +6161,57 @@
 
 
 <h1 id="observability-audit-dashboard">Observability - Audit + Dashboard</h1>
-<p><strong>Pillar 3 (Audit + Visibility)</strong> Every policy decision sbx makes is written to a structured JSONL log on disk today - and the lab ships a live dashboard you can run alongside it.</p>
-<div class="admonition info">
-<p class="admonition-title">At a glance</p>
-<p><strong>Time:</strong> ~10 minutes &nbsp;&nbsp;|&nbsp;&nbsp; <strong>Prerequisites:</strong> You completed the Network demo and (optionally) MCP Hands-On.</p>
-</div>
+<pre class="mermaid"><code>flowchart LR
+    subgraph HOST["Host machine"]
+        DAEMON["sbx daemon&lt;br/&gt;every policy decision"]
+        LOG[("daemon.log (JSONL)&lt;br/&gt;allow / deny + rule + reason")]
+        MLOG[("mcp/mcp.log")]
+        DASH["Dashboard localhost:8090&lt;br/&gt;tails logs live"]
+        DAEMON --&gt; LOG
+        DAEMON --&gt; MLOG
+        LOG --&gt; DASH
+        MLOG --&gt; DASH
+    end
+    LOG -. "SIEM-ready JSONL" .-&gt; SIEM["Splunk / Datadog / Sentinel"]
+
+    classDef pol fill:#fff7ed,stroke:#f59e0b,color:#000
+    classDef audit fill:#f3e8fd,stroke:#9333ea,color:#000
+    class DAEMON pol
+    class LOG,MLOG,DASH,SIEM audit</code></pre>
+<p><em>Every decision the daemon makes is already written as structured JSONL. This section reads it with <code>jq</code> and starts a live dashboard that tails it — the audit substrate that's SIEM-ready today.</em></p>
+<p><strong>What's Next</strong> promised Pillar 3 (Audit + Visibility) was rolling out. The good news: the foundation is already shipping. Every policy decision sbx makes is written to a structured JSONL log on disk today - and this section ships a live dashboard you'll start in <strong>Step 3</strong> to watch those decisions in real time.</p>
+<iframe src="http://localhost:8090" width="100%" height="600" style="border:1px solid #cbd5e1; border-radius:8px; background:#f8fafc;" loading="lazy"></iframe>
+
+<p>The panel above is <strong>blank until you start the dashboard in Step 3</strong> - it isn't running by default (it's only needed for this section). Once it's up, open it in a new tab if the embed doesn't refresh: <strong><a href="http://localhost:8090">http://localhost:8090</a></strong>, then trigger a few events with the commands below and it will populate live.</p>
 <p>This section gives you two things:</p>
 <ol>
 <li>A way to read the underlying audit log directly with <code>jq</code></li>
-<li>A live dashboard you can build from <a href="https://github.com/ajeetraina/labspace-ai-governance/tree/main/labspace/kits/observability"><code>labspace/kits/observability/</code></a> in the lab repo</li>
+<li>The dashboard shown above - built from <code>labspace/kits/observability/</code>, which you start in Step 3</li>
 </ol>
-<hr />
+<p><strong>Time:</strong> ~10 minutes
+<strong>Prerequisites:</strong> You completed <strong>Network Enforcement Demo</strong> and (optionally) <strong>MCP Hands-On</strong>.</p>
 <h2 id="step-1-locate-the-daemon-log">Step 1 - Locate the daemon log</h2>
-<p>The sbx daemon writes JSONL audit records here:</p>
+<p>The sbx daemon writes JSONL audit records to a <code>sandboxd/daemon.log</code> file. Locate it for your platform:</p>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:3"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><input id="__tabbed_1_3" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">macOS</label><label for="__tabbed_1_2">Windows</label><label for="__tabbed_1_3">Linux</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block">
 <div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-lh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Library/Application Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log&quot;</span>
 </code></pre></div>
-<p>On Linux it's typically <code>~/.local/share/com.docker.sandboxes/sandboxes/sandboxd/daemon.log</code>.</p>
-<hr />
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code><span class="nb">Get-ChildItem</span> <span class="s2">&quot;$env:LOCALAPPDATA\DockerSandboxes\sandboxes\logs\sandboxd\daemon.log&quot;</span>
+</code></pre></div>
+</div>
+<div class="tabbed-block">
+<div class="highlight"><pre><span></span><code>ls<span class="w"> </span>-lh<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/.local/share/com.docker.sandboxes/sandboxes/sandboxd/daemon.log&quot;</span>
+</code></pre></div>
+</div>
+</div>
+</div>
+<div class="admonition tip">
+<p class="admonition-title">Tip</p>
+<p>The macOS path is <code>~/Library/Application Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log</code>. On Linux it's <code>~/.local/share/com.docker.sandboxes/sandboxes/sandboxd/daemon.log</code>; on Windows it's under <code>%LOCALAPPDATA%\DockerSandboxes\sandboxes\logs\sandboxd\</code>.</p>
+</div>
 <h2 id="step-2-read-it-with-jq">Step 2 - Read it with <code>jq</code></h2>
 <p>Each policy decision is one JSON line. The <code>msg</code> field is <code>"governance policy evaluation"</code>, and useful fields include <code>resource_value</code>, <code>allowed</code>, <code>policy_matched_rule</code>, <code>policy_deny_reason</code>, <code>policy_source</code>.</p>
 <div class="highlight"><pre><span></span><code><span class="nv">LOG</span><span class="o">=</span><span class="s2">&quot;</span><span class="nv">$HOME</span><span class="s2">/Library/Application Support/com.docker.sandboxes/sandboxes/sandboxd/daemon.log&quot;</span>
@@ -6141,64 +6231,58 @@ jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;select
 <span class="w">  </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span><span class="p">|</span><span class="w"> </span>uniq<span class="w"> </span>-c
 </code></pre></div>
 <p>This is your SIEM-ready surface. Forward this file to Splunk/Datadog/Sentinel and you have an org-grade audit trail for sandbox policy decisions.</p>
-<hr />
-<h2 id="whats-captured-and-what-isnt">What's captured and what isn't</h2>
+<h2 id="whats-captured-and-what-isnt-reconciled-with-dockers-marketing">What's captured and what isn't (reconciled with Docker's marketing)</h2>
+<p>Docker's <a href="https://www.docker.com/products/ai-governance/">AI Governance page</a> describes audit events as containing "user identity, timestamp, session context, and triggering rule." Here's what v0.32.0 actually emits today, mapped against that claim:</p>
 <table>
 <thead>
 <tr>
-<th>Captured today</th>
-<th>Not captured today</th>
+<th>Marketing claim</th>
+<th>v0.32.0 reality</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>Timestamp</td>
+<td>✅ on every event</td>
+</tr>
+<tr>
+<td>Triggering rule</td>
+<td>✅ <code>policy_matched_rule</code></td>
+</tr>
+<tr>
+<td>Session context</td>
+<td>⚠️ Partial - <code>session</code>, <code>sandbox</code>, <code>agent</code>, <code>runtime</code> fields appear on lifecycle events (gateway start, sandbox spawn) but <strong>not</strong> on <code>governance policy evaluation</code> events</td>
+</tr>
+<tr>
 <td>User identity</td>
+<td>❌ Not in any field today. The dashboard synthesises it from <code>$USER</code> on the host as a best-effort proxy.</td>
 </tr>
 <tr>
-<td>Resource (domain, port, path)</td>
-<td>Sandbox name (sandbox_id)</td>
-</tr>
-<tr>
-<td>Decision (allow/deny)</td>
-<td>Prompt or tool-call payload</td>
-</tr>
-<tr>
-<td>Matched rule name</td>
-<td>MCP tool-call audit (separate roadmap)</td>
-</tr>
-<tr>
-<td>Deny reason (explicit / implicit)</td>
-<td>Cross-machine aggregation</td>
-</tr>
-<tr>
-<td>Policy source (local / remote)</td>
-<td></td>
+<td>SIEM export</td>
+<td>✅ JSONL is already the format</td>
 </tr>
 </tbody>
 </table>
-<p>The audit log answers <em>what was decided and why</em>. It doesn't yet answer <em>who triggered it on this machine</em> - that's roadmap.</p>
-<hr />
-<h2 id="step-3-run-the-dashboard">Step 3 - Run the dashboard</h2>
-<p>The lab repo ships a small dashboard built on top of the daemon log. Clone the lab repo if you haven't, then start it from the observability kit:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/ajeetraina/labspace-ai-governance
-<span class="nb">cd</span><span class="w"> </span>labspace-ai-governance/labspace/kits/observability
+<p>Plus a third log file - <strong><code>mcp/mcp.log</code></strong> alongside <code>daemon.log</code> - that captures MCP gateway lifecycle events in logfmt (<code>setupMCPGateway called</code>, <code>gateway started in sandboxd</code>, etc.). The dashboard tails it as a separate source.</p>
+<p>The audit log answers <em>what was decided and why</em>, with sandbox attribution on some events. It does not yet answer <em>who triggered it</em> across multiple users on one machine - Docker's marketing implies this is coming, but as of v0.32.0 it still isn't in any field, so the dashboard keeps synthesising the user from <code>$USER</code>.</p>
+<h2 id="step-3-start-the-dashboard">Step 3 - Start the dashboard</h2>
+<p>The dashboard is <strong>not</strong> running by default - it's only needed for this section, so you start it here. The kit at <code>labspace/kits/observability/</code> ships a self-contained compose file. From the repo root:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">cd</span><span class="w"> </span>labspace/kits/observability
 docker<span class="w"> </span>compose<span class="w"> </span>--profile<span class="w"> </span>with-gateway<span class="w"> </span>up<span class="w"> </span>-d<span class="w"> </span>--build
 </code></pre></div>
-<p>Then open it in a fresh browser tab:</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>If you cloned the repo elsewhere, <code>cd</code> to <code>&lt;repo&gt;/labspace/kits/observability</code> instead. The <code>--profile with-gateway</code> also brings up a local <code>docker/mcp-gateway</code> so MCP traffic shows up in the dashboard; drop the profile flag if you only want sbx policy events.</p>
+</div>
+<p>Give it a few seconds to build, then open it (or refresh the embedded panel at the top of this section):</p>
 <div class="highlight"><pre><span></span><code>open<span class="w"> </span>http://localhost:8090
 </code></pre></div>
-<div class="admonition tip">
-<p class="admonition-title">Tip</p>
-<p>If the dashboard is empty, trigger a few events with the commands in Step 4 - it populates live.</p>
-</div>
-<hr />
+<p>When you're done with this section you can stop it again with <code>docker compose down</code> from the same directory.</p>
 <h2 id="step-4-generate-some-events-to-watch">Step 4 - Generate some events to watch</h2>
 <p>In another terminal, enter a sandbox and trigger denies:</p>
-<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/labspace-fs-test/test-1<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/labspace-fs-test/test-1
+<div class="highlight"><pre><span></span><code>mkdir<span class="w"> </span>-p<span class="w"> </span>~/workdemo/scratch<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>~/workdemo/scratch
 sbx<span class="w"> </span>run<span class="w"> </span>shell<span class="w"> </span>.
 </code></pre></div>
-<p>(Reusing <code>~/labspace-fs-test/test-1</code> means the single <code>allow lab test directory</code> filesystem rule from the earlier demos already covers this workspace - no new rule needed.)</p>
 <p>Inside the sandbox prompt:</p>
 <div class="highlight"><pre><span></span><code>curl<span class="w"> </span>-sS<span class="w"> </span>https://collabnix.com<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span>
 curl<span class="w"> </span>-sS<span class="w"> </span>https://example.com<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">&quot;%{http_code}\n&quot;</span>
@@ -6211,11 +6295,23 @@ curl<span class="w"> </span>-sS<span class="w"> </span>https://api.anthropic.com
 <li><code>api.anthropic.com</code> → <code>allow</code></li>
 </ul>
 <p>The per-rule deny count panel on the left updates live.</p>
-<hr />
 <h2 id="step-5-layer-mcp-traffic-on-top-optional">Step 5 - Layer MCP traffic on top (optional)</h2>
-<p>If you have the Variant B MCP gateway from <em>MCP Hands-On</em> running on <code>localhost:8811</code>, the dashboard automatically picks up its logs (it discovers any running container whose image name contains <code>mcp-gateway</code>).</p>
-<p>Trigger an MCP call through it and you'll see entries with source <code>mcp-gateway</code> alongside the sbx rows - both signals in one screen.</p>
-<hr />
+<p>If you have the Variant B MCP gateway from <strong>MCP Hands-On</strong> running on <code>localhost:8811</code>, the dashboard automatically picks up its logs - it discovers any running container whose image name contains <code>mcp-gateway</code> and <strong>follows its log output from the moment the dashboard attaches</strong>.</p>
+<p>One gotcha worth knowing: the dashboard tails <em>new</em> gateway log lines only - it does not replay history. So an <strong>idle</strong> gateway shows nothing under the <code>mcp-gateway</code> source; you have to send it a request <em>after</em> the dashboard is up. The block below opens an MCP session and drives a tool call through the gateway:</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Keep an SSE session open in the background, then drive a tool call through it</span>
+curl<span class="w"> </span>-sN<span class="w"> </span>http://localhost:8811/sse<span class="w"> </span>&gt;<span class="w"> </span>/tmp/mcp_sse.log<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">&amp;</span>
+<span class="nv">SSE_PID</span><span class="o">=</span><span class="nv">$!</span><span class="p">;</span><span class="w"> </span>sleep<span class="w"> </span><span class="m">1</span>.5
+<span class="nv">URL</span><span class="o">=</span><span class="s2">&quot;http://localhost:8811</span><span class="k">$(</span>grep<span class="w"> </span>-m1<span class="w"> </span><span class="s1">&#39;^data: &#39;</span><span class="w"> </span>/tmp/mcp_sse.log<span class="w"> </span><span class="p">|</span><span class="w"> </span>sed<span class="w"> </span><span class="s1">&#39;s/^data: //&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39;\r&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:1,&quot;method&quot;:&quot;initialize&quot;,&quot;params&quot;:{&quot;protocolVersion&quot;:&quot;2024-11-05&quot;,&quot;capabilities&quot;:{},&quot;clientInfo&quot;:{&quot;name&quot;:&quot;lab&quot;,&quot;version&quot;:&quot;1.0&quot;}}}&#39;</span><span class="w"> </span>&gt;/dev/null
+curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;method&quot;:&quot;notifications/initialized&quot;}&#39;</span><span class="w"> </span>&gt;/dev/null
+curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$URL</span><span class="s2">&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span><span class="se">\</span>
+<span class="w">  </span>-d<span class="w"> </span><span class="s1">&#39;{&quot;jsonrpc&quot;:&quot;2.0&quot;,&quot;id&quot;:2,&quot;method&quot;:&quot;tools/call&quot;,&quot;params&quot;:{&quot;name&quot;:&quot;search&quot;,&quot;arguments&quot;:{&quot;query&quot;:&quot;docker mcp gateway&quot;}}}&#39;</span><span class="w"> </span>&gt;/dev/null
+sleep<span class="w"> </span><span class="m">2</span><span class="p">;</span><span class="w"> </span><span class="nb">kill</span><span class="w"> </span><span class="nv">$SSE_PID</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null
+<span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Done - check the dashboard&#39;s mcp-gateway source.&quot;</span>
+</code></pre></div>
+<p>Switch to the dashboard, click the <strong>mcp-gateway</strong> source filter, and make sure <strong>info</strong> is enabled under Decision (these are INFO-level events). You'll see <code>tool=search</code> / <code>call-tool</code> rows appear alongside the sbx policy rows - both signals in one screen.</p>
 <h2 id="what-you-just-demonstrated">What you just demonstrated</h2>
 <ul>
 <li>Pillar 3's audit substrate already ships in <code>sbx</code>: structured JSONL ready for SIEM ingestion</li>
@@ -6223,7 +6319,6 @@ curl<span class="w"> </span>-sS<span class="w"> </span>https://api.anthropic.com
 <li>The honest gap (no user attribution, no MCP-tool-level audit yet) is now visible to your security team in the same view that shows what <em>is</em> captured</li>
 </ul>
 <p>For a security review conversation, this section is the one that lands. You're not promising a feature - you're showing the structured event stream that already exists, and the work it would take to wrap it in your org's SIEM.</p>
-<hr />
 <h2 id="frequently-asked-prompts-and-tool-calls">Frequently asked: prompts and tool calls</h2>
 <p>The most common question after seeing this dashboard:</p>
 <blockquote>
@@ -6235,7 +6330,7 @@ curl<span class="w"> </span>-sS<span class="w"> </span>https://api.anthropic.com
 <h3 id="mcp-tool-calls">MCP tool calls</h3>
 <p>Only visible for gateways you run yourself, and only as heuristic log lines:</p>
 <ul>
-<li><strong>Mode B (local stdio):</strong> the subprocess runs on your host; wrap it yourself if you need audit</li>
+<li><strong>Mode C (local stdio):</strong> the subprocess runs on your host; wrap it yourself if you need audit</li>
 <li><strong>Local MCP Gateway with <code>--verbose=true</code>:</strong> the dashboard tails the gateway stdout and surfaces <code>call-tool</code> / <code>list-tools</code> classifications. Not structured per-call records.</li>
 <li><strong>Mode A (remote OAuth servers like Notion, GitHub):</strong> invisible from your side. You see the TCP connect in sbx, you don't see which tool was called.</li>
 </ul>
@@ -6290,7 +6385,6 @@ curl<span class="w"> </span>-sS<span class="w"> </span>https://api.anthropic.com
 </tbody>
 </table>
 <p>That's the entire picture you can defend to a security team.</p>
-<hr />
 <h2 id="where-to-go-from-here">Where to go from here</h2>
 <ul>
 <li>Forward the daemon.log to your SIEM (Splunk HEC, Datadog HTTP intake, Elastic HTTP)</li>

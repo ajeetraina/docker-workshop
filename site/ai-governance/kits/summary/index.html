@@ -3606,6 +3606,62 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../lab8/projects/skills/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Sharing Agent Skills
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../lab8/projects/declarative-environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Declarative Environments (sbx env)
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../lab8/projects/governance-summary/" class="md-nav__link">
         
   
@@ -5897,8 +5953,34 @@
 
 
 <h1 id="summary-and-next-steps">Summary and Next Steps</h1>
+<pre class="mermaid"><code>flowchart LR
+    subgraph BUILT["What you built"]
+        M["docker-review&lt;br/&gt;mixin (skill)"]
+        A["claude-safe&lt;br/&gt;agent kit (approvals)"]
+    end
+    subgraph HOST["Host machine"]
+        subgraph VM["MicroVM (sandbox)"]
+            RUN["kit applied&lt;br/&gt;creds never enter the VM"]
+        end
+    end
+    BUILT -- "sbx run --kit" --&gt; VM
+    VM --&gt; WINS
+    subgraph WINS["Kits vs shell scripts"]
+        W1["creds never enter VM"]
+        W2["composable egress"]
+        W3["shareable: Git / OCI"]
+        W4["validated before run"]
+    end
+
+    classDef kit fill:#eff6ff,stroke:#3b82f6,color:#000
+    classDef vm fill:#ecfdf5,stroke:#10b981,color:#000
+    classDef win fill:#ecfdf5,stroke:#10b981,color:#000
+    class M,A kit
+    class RUN vm
+    class W1,W2,W3,W4 win</code></pre>
+<p><em>Two real kits built — a mixin and an agent kit — packaging what shell scripts can't: credentials that never enter the VM, composable egress, and Git/OCI sharing.</em></p>
 <h2 id="what-you-built">What you built</h2>
-<p>In this track you went from running agents directly to packaging sandbox environments as declarative, shareable kits.</p>
+<p>In this section you went from running agents directly to packaging sandbox environments as declarative, shareable kits.</p>
 <table>
 <thead>
 <tr>
@@ -5913,7 +5995,7 @@
 </tr>
 <tr>
 <td>Understood proxy-managed credential injection</td>
-<td><code>credentials.sources</code> + <code>serviceAuth</code></td>
+<td><code>credentials[].apiKey.inject</code></td>
 </tr>
 <tr>
 <td>Forked the built-in <code>claude</code> agent</td>
@@ -5929,7 +6011,6 @@
 </tr>
 </tbody>
 </table>
-<hr />
 <h2 id="the-files-you-created">The files you created</h2>
 <div class="highlight"><pre><span></span><code>kits/
 ├── docker-review/
@@ -5941,7 +6022,6 @@
     └── spec.yaml
 </code></pre></div>
 <p>These are real, working kits. Commit them to this repo and anyone can use them with a single <code>--kit</code> flag.</p>
-<hr />
 <h2 id="what-kits-give-you-that-shell-scripts-dont">What kits give you that shell scripts don't</h2>
 <ul>
 <li><strong>Credentials never enter the VM</strong> - the proxy reads them from the host and injects per-request</li>
@@ -5950,7 +6030,6 @@
 <li><strong>Validated before run</strong> - <code>sbx kit validate</code> catches spec errors before they waste a sandbox creation</li>
 <li><strong>TCK-testable</strong> - write a Go test file using <code>tck.NewSuiteFromDir</code> and CI validates your kit against a real container</li>
 </ul>
-<hr />
 <h2 id="next-steps">Next steps</h2>
 <ul>
 <li>Browse the community kits: <a href="https://github.com/docker/sbx-kits-contrib">github.com/docker/sbx-kits-contrib</a></li>
