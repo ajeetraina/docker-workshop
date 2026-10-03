@@ -100,7 +100,17 @@ nav:
     - Docker Sandboxes:
       - Overview: lab8/overview.md
       - Getting Started: lab8/getting-started.md
-      - sbx on Windows: lab8/projects/windows-setup.md
+      - sbx on Windows:
+        - Overview: lab8/windows/overview.md
+        - How Sandboxes Work: lab8/windows/how-sandboxes-work.md
+        - Windows Setup & Admin: lab8/windows/windows-setup.md
+        - Workspaces & Naming: lab8/windows/workspaces.md
+        - Environments, Kits & Templates: lab8/windows/environments.md
+        - Docker Compose & the Shared DB: lab8/windows/compose-and-db.md
+        - Networking & Policy: lab8/windows/networking.md
+        - Performance: lab8/windows/performance.md
+        - Security & Guardrails: lab8/windows/security.md
+        - Runbook & Examples: lab8/windows/runbook.md
       - Concepts:
         - Why Agents Need Governance: lab8/projects/why-governance.md
       - Hands-on Modules:

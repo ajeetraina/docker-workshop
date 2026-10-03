@@ -10,13 +10,13 @@
         <meta name="author" content="Ajeet Singh Raina">
       
       
-        <link rel="canonical" href="https://dockerworkshop.vercel.app/lab8/projects/windows-setup/">
+        <link rel="canonical" href="https://dockerworkshop.vercel.app/lab8/windows/how-sandboxes-work/">
       
       
-        <link rel="prev" href="../../getting-started/">
+        <link rel="prev" href="../overview/">
       
       
-        <link rel="next" href="../why-governance/">
+        <link rel="next" href="../windows-setup/">
       
       
         
@@ -27,7 +27,7 @@
     
     
       
-        <title>sbx on Windows - Docker workshop</title>
+        <title>How Sandboxes Work - Docker workshop</title>
       
     
     
@@ -82,7 +82,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#running-sbx-on-windows" class="md-skip">
+        <a href="#how-sandboxes-work" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +117,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              sbx on Windows
+              How Sandboxes Work
             
           </span>
         </div>
@@ -3195,6 +3195,85 @@
   
   
   
+    
+    
+    
+    
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4_5_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4_5_3" id="__nav_4_5_3_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    sbx on Windows
+  
+
+    
+  </span>
+  
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_4_5_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4_5_3">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    sbx on Windows
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Overview
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
     <li class="md-nav__item md-nav__item--active">
       
       <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
@@ -3210,7 +3289,7 @@
   <span class="md-ellipsis">
     
   
-    sbx on Windows
+    How Sandboxes Work
   
 
     
@@ -3228,7 +3307,7 @@
   <span class="md-ellipsis">
     
   
-    sbx on Windows
+    How Sandboxes Work
   
 
     
@@ -3254,10 +3333,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-sbx-runs-on-windows" class="md-nav__link">
+  <a href="#what-a-sandbox-is" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How sbx runs on Windows
+        What a sandbox is
       
     </span>
   </a>
@@ -3265,10 +3344,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-turn-on-virtualization-and-wsl2" class="md-nav__link">
+  <a href="#isolation-layers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 - Turn on virtualization and WSL2
+        Isolation layers
       
     </span>
   </a>
@@ -3276,10 +3355,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-install-sbx" class="md-nav__link">
+  <a href="#blocked-by-default-not-configurable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 - Install sbx
+        Blocked by default (not configurable)
       
     </span>
   </a>
@@ -3287,10 +3366,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-log-in-and-choose-a-network-policy" class="md-nav__link">
+  <a href="#default-linux-images-templates" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 - Log in and choose a network policy
+        Default Linux images (templates)
       
     </span>
   </a>
@@ -3298,10 +3377,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-store-your-provider-secret-powershell-syntax" class="md-nav__link">
+  <a href="#bring-your-own-linux-image" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 - Store your provider secret (PowerShell syntax)
+        Bring your own Linux image
       
     </span>
   </a>
@@ -3309,38 +3388,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-clone-the-lab-repo-in-the-right-place" class="md-nav__link">
+  <a href="#lifecycle-and-persistence" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 5 - Clone the lab repo in the right place
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 5 - Clone the lab repo in the right place">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fix-line-endings-before-the-agent-touches-anything" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fix line endings before the agent touches anything
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-6-create-and-run-your-sandbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 6 - Create and run your sandbox
+        Lifecycle and persistence
       
     </span>
   </a>
@@ -3348,10 +3399,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-ports-the-agent-exposes" class="md-nav__link">
+  <a href="#comparison-to-alternatives" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accessing ports the agent exposes
+        Comparison to alternatives
       
     </span>
   </a>
@@ -3359,21 +3410,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#windows-specific-gotchas" class="md-nav__link">
+  <a href="#cost" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Windows-specific gotchas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-this-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this matters
+        Cost
       
     </span>
   </a>
@@ -3394,6 +3434,238 @@
     </ul>
   
 </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../windows-setup/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Windows Setup & Admin
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../workspaces/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Workspaces & Naming
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../environments/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Environments, Kits & Templates
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../compose-and-db/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Docker Compose & the Shared DB
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../networking/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Networking & Policy
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../performance/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Performance
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../security/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Security & Guardrails
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../runbook/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Runbook & Examples
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -3456,7 +3728,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../why-governance/" class="md-nav__link">
+      <a href="../../projects/why-governance/" class="md-nav__link">
         
   
   
@@ -3541,7 +3813,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../first-sandbox/" class="md-nav__link">
+      <a href="../../projects/first-sandbox/" class="md-nav__link">
         
   
   
@@ -3569,7 +3841,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ssh-access/" class="md-nav__link">
+      <a href="../../projects/ssh-access/" class="md-nav__link">
         
   
   
@@ -3597,7 +3869,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../isolation-proof/" class="md-nav__link">
+      <a href="../../projects/isolation-proof/" class="md-nav__link">
         
   
   
@@ -3625,7 +3897,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../reviewing-agent-changes/" class="md-nav__link">
+      <a href="../../projects/reviewing-agent-changes/" class="md-nav__link">
         
   
   
@@ -3653,7 +3925,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../secrets/" class="md-nav__link">
+      <a href="../../projects/secrets/" class="md-nav__link">
         
   
   
@@ -3681,7 +3953,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../1password-credentials/" class="md-nav__link">
+      <a href="../../projects/1password-credentials/" class="md-nav__link">
         
   
   
@@ -3709,7 +3981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../network-policy/" class="md-nav__link">
+      <a href="../../projects/network-policy/" class="md-nav__link">
         
   
   
@@ -3737,7 +4009,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../branch-mode/" class="md-nav__link">
+      <a href="../../projects/branch-mode/" class="md-nav__link">
         
   
   
@@ -3765,7 +4037,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../parallel-agents/" class="md-nav__link">
+      <a href="../../projects/parallel-agents/" class="md-nav__link">
         
   
   
@@ -3793,7 +4065,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../local-models/" class="md-nav__link">
+      <a href="../../projects/local-models/" class="md-nav__link">
         
   
   
@@ -3821,7 +4093,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../skills/" class="md-nav__link">
+      <a href="../../projects/skills/" class="md-nav__link">
         
   
   
@@ -3849,7 +4121,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../declarative-environments/" class="md-nav__link">
+      <a href="../../projects/declarative-environments/" class="md-nav__link">
         
   
   
@@ -3877,7 +4149,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../governance-summary/" class="md-nav__link">
+      <a href="../../projects/governance-summary/" class="md-nav__link">
         
   
   
@@ -3962,7 +4234,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../devboard/" class="md-nav__link">
+      <a href="../../projects/devboard/" class="md-nav__link">
         
   
   
@@ -6009,10 +6281,10 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#how-sbx-runs-on-windows" class="md-nav__link">
+  <a href="#what-a-sandbox-is" class="md-nav__link">
     <span class="md-ellipsis">
       
-        How sbx runs on Windows
+        What a sandbox is
       
     </span>
   </a>
@@ -6020,10 +6292,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-1-turn-on-virtualization-and-wsl2" class="md-nav__link">
+  <a href="#isolation-layers" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 1 - Turn on virtualization and WSL2
+        Isolation layers
       
     </span>
   </a>
@@ -6031,10 +6303,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-2-install-sbx" class="md-nav__link">
+  <a href="#blocked-by-default-not-configurable" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 2 - Install sbx
+        Blocked by default (not configurable)
       
     </span>
   </a>
@@ -6042,10 +6314,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-3-log-in-and-choose-a-network-policy" class="md-nav__link">
+  <a href="#default-linux-images-templates" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 3 - Log in and choose a network policy
+        Default Linux images (templates)
       
     </span>
   </a>
@@ -6053,10 +6325,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-4-store-your-provider-secret-powershell-syntax" class="md-nav__link">
+  <a href="#bring-your-own-linux-image" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 4 - Store your provider secret (PowerShell syntax)
+        Bring your own Linux image
       
     </span>
   </a>
@@ -6064,38 +6336,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#step-5-clone-the-lab-repo-in-the-right-place" class="md-nav__link">
+  <a href="#lifecycle-and-persistence" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Step 5 - Clone the lab repo in the right place
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Step 5 - Clone the lab repo in the right place">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#fix-line-endings-before-the-agent-touches-anything" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Fix line endings before the agent touches anything
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#step-6-create-and-run-your-sandbox" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Step 6 - Create and run your sandbox
+        Lifecycle and persistence
       
     </span>
   </a>
@@ -6103,10 +6347,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#accessing-ports-the-agent-exposes" class="md-nav__link">
+  <a href="#comparison-to-alternatives" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Accessing ports the agent exposes
+        Comparison to alternatives
       
     </span>
   </a>
@@ -6114,21 +6358,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#windows-specific-gotchas" class="md-nav__link">
+  <a href="#cost" class="md-nav__link">
     <span class="md-ellipsis">
       
-        Windows-specific gotchas
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#why-this-matters" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Why this matters
+        Cost
       
     </span>
   </a>
@@ -6166,255 +6399,231 @@
   
 
 
-<h1 id="running-sbx-on-windows">Running <code>sbx</code> on Windows</h1>
-<p>Every other module in this lab assumes a macOS or Linux host, where <code>sbx</code> talks to a native hypervisor directly. Windows is different enough to deserve its own walkthrough. The isolation guarantees, the credential proxy, and the network policy all behave identically once a sandbox is running - but <strong>how you get there</strong> changes, and a handful of host-side details will bite you if you don't set them up first.</p>
-<p>This module takes a clean Windows 11 machine and gets you to the same place <code>Getting Started</code> leaves a Mac user: <code>sbx login</code> done, a provider secret stored, the lab repo cloned, and a sandbox running. Along the way you'll learn the three things that trip up every Windows newcomer - where the virtual machine actually lives, how PowerShell changes the commands, and why your files belong on the Linux side of the fence.</p>
-<div class="admonition warning">
-<p class="admonition-title">Platform support</p>
-<p><code>sbx</code> on Windows requires <strong>Windows 11 x86_64</strong> with WSL2. Windows 10, ARM-based Windows, and bare Command Prompt (without WSL2) are not supported. A few exercises in later modules behave slightly differently on Windows - each flags the difference where it matters.</p>
-</div>
+<h1 id="how-sandboxes-work">How Sandboxes Work</h1>
+<p>Your Windows 11 development team shares a single on-prem Linux server that hosts a common Postgres instance. Each developer needs to run their own Compose stack without stepping on anyone else's work, without touching the host's Docker daemon, and without quietly reaching services they shouldn't. A sandbox gives each developer exactly that: a private, disposable Linux world that an agent can drive freely while staying walled off from everything around it.</p>
+<p>This page explains the model before you touch the CLI, so the commands in later modules make sense.</p>
 <hr />
-<h2 id="how-sbx-runs-on-windows">How <code>sbx</code> runs on Windows</h2>
-<p>On macOS and Linux, <code>sbx</code> launches each agent inside a microVM using the platform's native virtualization. Windows has no equivalent user-space hypervisor that <code>sbx</code> drives directly, so it leans on the one that ships with the OS: <strong>WSL2</strong>.</p>
-<p>The chain looks like this:</p>
-<div class="highlight"><pre><span></span><code>Your PowerShell / Windows Terminal
-        │  sbx command
-        ▼
-WSL2 (a real Linux kernel, Hyper-V backed)
-        │  sandboxd daemon
-        ▼
-microVM  ──►  your agent (Claude / Codex / Gemini)
-</code></pre></div>
-<p>Two consequences fall out of this that shape the rest of the module:</p>
-<ul>
-<li><strong>The virtualization is nested.</strong> WSL2 is itself a lightweight VM, and your sandbox runs on top of it. That's why virtualization has to be enabled all the way down in firmware - if the CPU can't nest, nothing above it starts.</li>
-<li><strong>There are two filesystems.</strong> Your <code>C:\Users\you</code> Windows drive and the WSL2 Linux home are <em>different</em> filesystems bridged by a translation layer. Where you put the lab repo determines whether file edits are instant or painfully slow. We'll come back to this in Step 5.</li>
-</ul>
-<hr />
-<h2 id="step-1-turn-on-virtualization-and-wsl2">Step 1 - Turn on virtualization and WSL2</h2>
-<p>First, confirm hardware virtualization is on. Open <strong>Task Manager → Performance → CPU</strong> and look for <strong>Virtualization: Enabled</strong>. If it says <em>Disabled</em>, reboot into your BIOS/UEFI and enable <strong>Intel VT-x</strong> (or <strong>AMD-V</strong>/<strong>SVM</strong>) - the exact label depends on your vendor.</p>
-<p>Then install WSL2 from an <strong>elevated</strong> PowerShell (right-click → <em>Run as administrator</em>):</p>
-<div class="highlight"><pre><span></span><code><span class="n">wsl</span> <span class="p">-</span><span class="n">-install</span>
-</code></pre></div>
-<p>This enables the required Windows features, installs the WSL2 kernel, and pulls a default Ubuntu distribution. Reboot when prompted.</p>
-<p>After the reboot, verify you're on version 2 - not the older WSL1:</p>
-<div class="highlight"><pre><span></span><code><span class="n">wsl</span> <span class="p">-</span><span class="n">-list</span> <span class="p">-</span><span class="n">-verbose</span>
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>  NAME      STATE           VERSION
-* Ubuntu    Running         2
-</code></pre></div>
-<div class="admonition warning">
-<p class="admonition-title">WSL1 will not work</p>
-<p>If the <code>VERSION</code> column shows <code>1</code>, <code>sbx</code> cannot start a VM. Upgrade the distro with <code>wsl --set-version Ubuntu 2</code>, then set the default for future installs with <code>wsl --set-default-version 2</code>.</p>
-</div>
-<hr />
-<h2 id="step-2-install-sbx">Step 2 - Install <code>sbx</code></h2>
-<p>Open <strong>Windows Terminal</strong> (or PowerShell) and install the CLI. The Windows build ships as an MSI you can grab from the releases page, or - if you have a package manager - via <code>winget</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">winget</span> <span class="n">install</span> <span class="n">Docker</span><span class="p">.</span><span class="n">sbx</span>
-</code></pre></div>
-<p>Confirm it's on your <code>PATH</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="n">sbx</span> <span class="n">version</span>
-</code></pre></div>
-<p>Expected output: a version string such as <code>sbx 0.21.0</code>.</p>
-<p>If PowerShell reports <code>sbx : The term 'sbx' is not recognized...</code>, close and reopen the terminal so it picks up the updated <code>PATH</code>, or add the install directory (typically <code>C:\Program Files\sbx</code>) to your user <code>PATH</code> manually.</p>
-<hr />
-<h2 id="step-3-log-in-and-choose-a-network-policy">Step 3 - Log in and choose a network policy</h2>
-<div class="highlight"><pre><span></span><code><span class="n">sbx</span> <span class="n">login</span>
-</code></pre></div>
-<p>The flow is identical to macOS - the CLI prints a one-time device code and a URL:</p>
-<div class="highlight"><pre><span></span><code>Your one-time device confirmation code: XXXX-XXXX
-Open this URL to sign in: https://login.docker.com/activate?user_code=XXXX-XXXX
-
-Waiting for authentication...
-Signed in as &lt;your-docker-username&gt;.
-Daemon started (sandboxd).
-</code></pre></div>
-<p>Open the URL in your browser - the CLI confirms the sign-in automatically and starts the <code>sandboxd</code> daemon inside WSL2.</p>
-<p>You'll then pick a default network policy for every sandbox on this machine:</p>
-<div class="highlight"><pre><span></span><code>Select a default network policy for your sandboxes:
-
-     1. Open         - All network traffic allowed, no restrictions.
-  ❯  2. Balanced     - Default deny, with common dev sites allowed.
-     3. Locked Down  - All network traffic blocked unless you allow it.
-</code></pre></div>
+<h2 id="what-a-sandbox-is">What a sandbox is</h2>
+<p>A sandbox is a <strong>Linux microVM</strong> — not a container. It boots a real guest kernel through a hypervisor, so it is a far stronger boundary than namespaces and cgroups alone.</p>
+<p>On Windows, <code>sbx</code> runs this microVM on the <strong>Windows Hypervisor Platform</strong>. There is no WSL2 in the loop, so you do not need a WSL distro installed or configured.</p>
+<p>Each sandbox carries its own complete stack:</p>
 <table>
 <thead>
 <tr>
-<th>Policy</th>
-<th>When to use</th>
+<th>Resource</th>
+<th>What the sandbox gets</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Open</td>
-<td>Local dev, no external exposure concerns</td>
+<td>Kernel</td>
+<td>Its own guest kernel, isolated from the host</td>
 </tr>
 <tr>
-<td><strong>Balanced</strong></td>
-<td><strong>Recommended - least privilege without breaking typical dev workflows</strong></td>
+<td>Docker Engine</td>
+<td>A private Docker daemon running inside the VM</td>
 </tr>
 <tr>
-<td>Locked Down</td>
-<td>High-security or air-gapped environments</td>
+<td>Filesystem</td>
+<td>Its own root filesystem plus any mounted workspace</td>
+</tr>
+<tr>
+<td>Network</td>
+<td>A private stack with deny-by-default outbound egress through a host-side proxy</td>
 </tr>
 </tbody>
 </table>
-<p>Choose <strong>Balanced</strong> for the lab. You can change it anytime with <code>sbx policy reset</code>.</p>
-<hr />
-<h2 id="step-4-store-your-provider-secret-powershell-syntax">Step 4 - Store your provider secret (PowerShell syntax)</h2>
-<p>This is the first place Windows syntax diverges from the Mac instructions. PowerShell does not use <code>export</code> - it sets environment variables through the <code>$env:</code> drive. Set the key for whichever provider you chose, <strong>in your own terminal</strong>, so it never lands on a page or in a screenshot:</p>
+<p>Inside that boundary, the agent has <strong>full control</strong>: it can use <code>sudo</code>, install packages, start and stop its own Docker daemon, pull images, and read and write both its own filesystem and the mounted workspace. Nothing it does leaks out.</p>
 <div class="admonition note">
-<p class="admonition-title">If you chose Anthropic + Claude</p>
-<div class="highlight"><pre><span></span><code><span class="nv">$env:ANTHROPIC_API_KEY</span> <span class="p">=</span> <span class="s2">&quot;sk-ant-...&quot;</span>
-<span class="nb">echo </span><span class="nv">$env:ANTHROPIC_API_KEY</span> <span class="p">|</span> <span class="n">sbx</span> <span class="n">secret</span> <span class="nb">set </span><span class="n">-g</span> <span class="n">anthropic</span>
-</code></pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">If you chose OpenAI + Codex</p>
-<div class="highlight"><pre><span></span><code><span class="nv">$env:OPENAI_API_KEY</span> <span class="p">=</span> <span class="s2">&quot;sk-proj-...&quot;</span>
-<span class="nb">echo </span><span class="nv">$env:OPENAI_API_KEY</span> <span class="p">|</span> <span class="n">sbx</span> <span class="n">secret</span> <span class="nb">set </span><span class="n">-g</span> <span class="n">openai</span>
-</code></pre></div>
-</div>
-<div class="admonition note">
-<p class="admonition-title">If you chose Google + Gemini</p>
-<div class="highlight"><pre><span></span><code><span class="nv">$env:GEMINI_API_KEY</span> <span class="p">=</span> <span class="s2">&quot;AIza...&quot;</span>
-<span class="nb">echo </span><span class="nv">$env:GEMINI_API_KEY</span> <span class="p">|</span> <span class="n">sbx</span> <span class="n">secret</span> <span class="nb">set </span><span class="n">-g</span> <span class="n">google</span>
-</code></pre></div>
-</div>
-<p>The key is read from your shell, piped to <code>sbx secret set</code>, and stored in the Windows credential manager. Confirm it landed:</p>
-<div class="highlight"><pre><span></span><code><span class="n">sbx</span> <span class="n">secret</span> <span class="nb">ls</span>
-</code></pre></div>
-<p>Expected output: a line for your provider with the value masked as <code>****...****</code>.</p>
-<blockquote>
-<p><strong>Why this matters:</strong> The raw key never enters the sandbox VM. It's injected at the host-side proxy when the agent makes an outbound request - the same credential-proxy guarantee covered in <em>Secrets Without Exposure</em>, enforced identically on Windows.</p>
-</blockquote>
-<div class="admonition warning">
-<p class="admonition-title"><code>$env:</code> lasts only for the current session</p>
-<p>A variable set with <code>$env:NAME = "..."</code> disappears when you close the terminal. That's fine here - once the secret is stored with <code>sbx secret set</code>, the plaintext variable has done its job and you don't need it again. Do <strong>not</strong> persist the key with <code>setx</code>, which writes it to the registry in clear text.</p>
+<p class="admonition-title">Why a VM and not a container</p>
+<p>A container shares the host kernel. A microVM does not. For an autonomous agent running untrusted code and installing arbitrary packages, that extra kernel boundary is the point.</p>
 </div>
 <hr />
-<h2 id="step-5-clone-the-lab-repo-in-the-right-place">Step 5 - Clone the lab repo in the right place</h2>
-<p>The exercises use <strong>DevBoard</strong>, a FastAPI + Next.js issue tracker pre-seeded with bugs. Where you clone it matters more on Windows than anywhere else.</p>
-<div class="admonition warning">
-<p class="admonition-title">Clone inside the WSL2 filesystem, not <code>C:\</code></p>
-<p>Files under <code>/home/you</code> in WSL2 live on the native Linux filesystem and are read and written at full speed. Files under <code>C:\Users\you</code> are reached through a cross-OS translation layer (<code>/mnt/c/...</code>), where every file-stat an agent performs is an order of magnitude slower. A large repo can turn a two-second scan into a two-minute one. Always clone into your Linux home.</p>
-</div>
-<p>Open your WSL2 shell (<code>wsl</code> from PowerShell, or launch "Ubuntu" from the Start menu) and clone there:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/dockersamples/sbx-quickstart<span class="w"> </span>~/sbx-lab
-<span class="nb">cd</span><span class="w"> </span>~/sbx-lab
-</code></pre></div>
-<h3 id="fix-line-endings-before-the-agent-touches-anything">Fix line endings before the agent touches anything</h3>
-<p>Git on Windows defaults to <code>core.autocrlf=true</code>, which rewrites Unix <code>LF</code> line endings to Windows <code>CRLF</code> on checkout. That silently breaks shell scripts and container entrypoints the moment they run inside the Linux microVM - you'll see errors like <code>/usr/bin/env: 'bash\r': No such file or directory</code>. Set the repo to keep line endings as-is:</p>
-<div class="highlight"><pre><span></span><code>git<span class="w"> </span>config<span class="w"> </span>core.autocrlf<span class="w"> </span>input
-git<span class="w"> </span>rm<span class="w"> </span>--cached<span class="w"> </span>-r<span class="w"> </span>.<span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
-git<span class="w"> </span>reset<span class="w"> </span>--hard
-</code></pre></div>
-<p>The last two commands re-checkout every file with the corrected setting. From here on, scripts in the repo run cleanly inside the sandbox.</p>
-<hr />
-<h2 id="step-6-create-and-run-your-sandbox">Step 6 - Create and run your sandbox</h2>
-<p>From the repo directory inside WSL2:</p>
-<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>create<span class="w"> </span>&lt;agent&gt;<span class="w"> </span>.
-</code></pre></div>
-<p>Replace <code>&lt;agent&gt;</code> with <code>claude</code>, <code>codex</code>, or <code>gemini</code> to match the secret you stored. On first run the agent image pulls (1-2 minutes) and the sandbox is created with your Balanced policy.</p>
-<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>ls
-</code></pre></div>
-<div class="highlight"><pre><span></span><code>SANDBOX   AGENT     STATUS    PORTS   WORKSPACE
-sbxlab    &lt;agent&gt;   stopped           /home/you/sbx-lab
-</code></pre></div>
-<p>Start it:</p>
-<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>run<span class="w"> </span>sbxlab
-</code></pre></div>
-<p>On first launch the agent may auto-update itself - if you see an update message, simply re-run <code>sbx run sbxlab</code>. You'll then see the trust prompt:</p>
-<div class="highlight"><pre><span></span><code>  Do you trust the contents of this directory? Working with untrusted
-  contents comes with higher risk of prompt injection.
-
-› 1. Yes, continue
-  2. No, quit
-</code></pre></div>
-<p>Select <strong>1. Yes, continue</strong> and the agent starts, with <code>~/sbx-lab</code> mounted into the VM at the same path. You're now exactly where the Mac walkthrough lands at the end of <em>Your First Sandbox</em>.</p>
-<hr />
-<h2 id="accessing-ports-the-agent-exposes">Accessing ports the agent exposes</h2>
-<p>When an agent inside the sandbox starts a dev server - say DevBoard's frontend on port 3000 - <code>sbx</code> forwards it to your host. On Windows there's one extra hop: the port surfaces on the WSL2 network interface, and WSL2's own localhost forwarding then exposes it to Windows.</p>
-<p>For modern WSL2 this is automatic - open <code>http://localhost:3000</code> in your Windows browser and it works. If a port stubbornly refuses to connect, enable mirrored networking by creating <code>C:\Users\you\.wslconfig</code>:</p>
-<div class="highlight"><pre><span></span><code><span class="k">[wsl2]</span>
-<span class="na">networkingMode</span><span class="o">=</span><span class="s">mirrored</span>
-<span class="na">memory</span><span class="o">=</span><span class="s">8GB</span>
-<span class="na">processors</span><span class="o">=</span><span class="s">4</span>
-</code></pre></div>
-<p>Then restart WSL from an elevated PowerShell:</p>
-<div class="highlight"><pre><span></span><code><span class="n">wsl</span> <span class="p">-</span><span class="n">-shutdown</span>
-</code></pre></div>
-<p>The <code>memory</code> and <code>processors</code> lines are worth setting regardless - they cap how much of your machine WSL2 (and therefore your sandboxes) may consume. Without them WSL2 can balloon to half your RAM.</p>
-<hr />
-<h2 id="windows-specific-gotchas">Windows-specific gotchas</h2>
-<p>A quick reference for the issues that are unique to - or sharper on - Windows:</p>
-<table>
-<thead>
-<tr>
-<th>Symptom</th>
-<th>Cause</th>
-<th>Fix</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><code>sbx</code> won't start a VM</td>
-<td>Virtualization disabled, or distro on WSL1</td>
-<td>Enable VT-x/AMD-V in BIOS; <code>wsl --set-version Ubuntu 2</code></td>
-</tr>
-<tr>
-<td><code>bash\r: No such file</code> inside the sandbox</td>
-<td><code>CRLF</code> line endings from Git</td>
-<td><code>git config core.autocrlf input</code>, then re-checkout (Step 5)</td>
-</tr>
-<tr>
-<td>Agent file operations crawl</td>
-<td>Repo lives under <code>/mnt/c/...</code></td>
-<td>Clone into the WSL2 home (<code>~</code>), not the Windows drive</td>
-</tr>
-<tr>
-<td><code>localhost:3000</code> won't connect</td>
-<td>WSL2 port forwarding</td>
-<td>Add <code>networkingMode=mirrored</code> to <code>.wslconfig</code>, <code>wsl --shutdown</code></td>
-</tr>
-<tr>
-<td>TLS / auth errors after sleep</td>
-<td>Clock drift inside WSL2 after hibernate</td>
-<td><code>wsl --shutdown</code> and relaunch to resync the VM clock</td>
-</tr>
-<tr>
-<td>WSL2 eats all your RAM</td>
-<td>No resource caps</td>
-<td>Set <code>memory=</code> / <code>processors=</code> in <code>.wslconfig</code></td>
-</tr>
-<tr>
-<td><code>sbx: command not found</code> in WSL</td>
-<td>CLI installed on Windows only</td>
-<td>Run <code>sbx</code> from PowerShell, or install the Linux build inside WSL2</td>
-</tr>
-</tbody>
-</table>
+<h2 id="isolation-layers">Isolation layers</h2>
+<p>The protection is layered. Each layer stands on its own:</p>
+<ol>
+<li><strong>Hypervisor isolation</strong> — the guest kernel is separated from the host by the hypervisor, the hardest boundary available.</li>
+<li><strong>Network isolation</strong> — outbound TCP is proxied and <strong>deny-by-default</strong>; UDP is off unless you enable it; ICMP is blocked; DNS resolution is forced through policy.</li>
+<li><strong>Docker Engine isolation</strong> — the sandbox runs its <strong>own</strong> Docker daemon; the host's daemon is unreachable from inside.</li>
+<li><strong>Workspace isolation</strong> — your code enters through one of three modes: mountless, clone, or direct mount (covered later).</li>
+<li><strong>Credential isolation</strong> — API keys are injected into outbound HTTP <strong>headers by the host proxy</strong>; the raw secret values never enter the VM.</li>
+</ol>
 <div class="admonition tip">
-<p class="admonition-title">When in doubt, bounce WSL</p>
-<p>A surprising share of Windows-only weirdness - stuck ports, a frozen daemon, clock drift after the laptop slept - clears up with <code>wsl --shutdown</code> followed by reopening your terminal. It's the Windows equivalent of "turn the hypervisor off and on again," and it's safe: your sandboxes and stored secrets survive the restart.</p>
+<p class="admonition-title">Credentials never land in the guest</p>
+<p>Because the proxy adds auth headers on the way out, an agent can call an authenticated API without ever seeing the key. If the sandbox is compromised, there is no secret inside to steal.</p>
 </div>
 <hr />
-<h2 id="why-this-matters">Why this matters</h2>
-<p>Nothing in this module weakens the governance model - the microVM boundary, the credential proxy, and the network policy are enforced by the same machinery on Windows as on macOS and Linux. What changes is the <strong>host plumbing</strong>: a nested hypervisor (WSL2), two filesystems bridged by a translation layer, and a shell that spells environment variables differently.</p>
-<p>Get those three right - virtualization on, repo on the Linux side, <code>$env:</code> for secrets - and every remaining module in this lab runs for you exactly as written. The isolation proof still holds. The branch-mode diffs still land on a worktree. The network audit log still names every outbound connection. You simply arrived there by a slightly different road.</p>
+<h2 id="blocked-by-default-not-configurable">Blocked by default (not configurable)</h2>
+<p>Some boundaries are hard-wired. You cannot open these up:</p>
+<ul>
+<li>The host filesystem outside your mounted workspaces and the shared skills store.</li>
+<li>The host's Docker daemon.</li>
+<li>Direct network connections between one sandbox and another.</li>
+<li>Direct external ICMP (ping) traffic.</li>
+</ul>
+<p>These are the guarantees that let your team run many sandboxes against one shared server without them interfering with each other or with the host.</p>
+<hr />
+<h2 id="default-linux-images-templates">Default Linux images (templates)</h2>
+<p>Templates are the starting images for a sandbox. They are <strong>Ubuntu-based</strong> and run as a non-root user named <strong><code>agent</code></strong> (UID 1000, home <code>/home/agent</code>) that has <code>sudo</code>. Most templates ship Git, the Docker CLI, and common toolchains such as Node, Python, Go, and Java.</p>
+<p>Pick the template that matches the agent you want to run:</p>
+<table>
+<thead>
+<tr>
+<th>Template</th>
+<th>Agent inside</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>claude-code</code></td>
+<td>Claude Code</td>
+</tr>
+<tr>
+<td><code>claude-code-minimal</code></td>
+<td>Claude Code, minimal (no Node, Python, Go, or Java)</td>
+</tr>
+<tr>
+<td><code>codex</code></td>
+<td>OpenAI Codex</td>
+</tr>
+<tr>
+<td><code>copilot</code></td>
+<td>GitHub Copilot CLI</td>
+</tr>
+<tr>
+<td><code>cursor-agent</code></td>
+<td>Cursor</td>
+</tr>
+<tr>
+<td><code>devin</code></td>
+<td>Devin CLI</td>
+</tr>
+<tr>
+<td><code>docker-agent</code></td>
+<td>Docker Agent</td>
+</tr>
+<tr>
+<td><code>droid</code></td>
+<td>Droid</td>
+</tr>
+<tr>
+<td><code>gemini</code></td>
+<td>Gemini CLI</td>
+</tr>
+<tr>
+<td><code>kiro</code></td>
+<td>Kiro</td>
+</tr>
+<tr>
+<td><code>opencode</code></td>
+<td>OpenCode</td>
+</tr>
+<tr>
+<td><code>shell</code></td>
+<td>No agent — manual setup</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2 id="bring-your-own-linux-image">Bring your own Linux image</h2>
+<p>You can supply your own image as long as it meets the contract the runtime expects:</p>
+<ul>
+<li><code>curl</code>, <code>git</code>, and a set of trusted CA certificates are present.</li>
+<li><code>/bin/sh</code> and <code>/bin/bash</code> exist and are executable.</li>
+<li>A non-root <code>agent</code> account with UID 1000 and home <code>/home/agent</code> is defined in <code>/etc/passwd</code>, and the image sets <code>USER agent</code>.</li>
+<li><code>ENTRYPOINT</code>/<code>CMD</code> is set to launch the agent, or to drop into a shell.</li>
+</ul>
+<p>Meet those points and your custom image behaves like a built-in template.</p>
+<hr />
+<h2 id="lifecycle-and-persistence">Lifecycle and persistence</h2>
+<p>Knowing what survives a restart matters when your Compose stack holds state.</p>
+<table>
+<thead>
+<tr>
+<th>Action</th>
+<th>Effect</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>sbx run</code></td>
+<td>Boots the microVM and attaches you to it</td>
+</tr>
+<tr>
+<td>Stop / start</td>
+<td>Everything inside the VM persists</td>
+</tr>
+<tr>
+<td><code>sbx rm</code></td>
+<td>Deletes the sandbox and all of its contents</td>
+</tr>
+</tbody>
+</table>
+<p>What persists across stop and start: installed packages, pulled images, containers, Docker volumes, and files written to a mountless workspace.</p>
+<div class="admonition warning">
+<p class="admonition-title">Directly mounted workspaces are not deleted</p>
+<p>A directly mounted workspace lives on the host filesystem, not inside the VM. Running <code>sbx rm</code> removes the sandbox and everything in it, but a direct mount stays put on the host. Removing a sandbox does not delete your mounted source tree.</p>
+</div>
+<hr />
+<h2 id="comparison-to-alternatives">Comparison to alternatives</h2>
+<p>How sandboxes stack up against other ways teams isolate agent and tool execution:</p>
+<table>
+<thead>
+<tr>
+<th>Approach</th>
+<th>Isolation</th>
+<th>Docker daemon</th>
+<th>Best for</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Sandboxes (microVMs)</td>
+<td>Full hypervisor isolation</td>
+<td>Isolated, in-VM daemon</td>
+<td>Autonomous agents</td>
+</tr>
+<tr>
+<td>Container with socket mount</td>
+<td>Partial (namespaces)</td>
+<td>Shared host daemon</td>
+<td>Trusted tools</td>
+</tr>
+<tr>
+<td>Docker-in-Docker</td>
+<td>Partial (privileged)</td>
+<td>Nested daemon</td>
+<td>CI/CD</td>
+</tr>
+<tr>
+<td>Host execution</td>
+<td>None</td>
+<td>Host daemon</td>
+<td>Manual dev</td>
+</tr>
+</tbody>
+</table>
+<p>Sandboxes trade <strong>higher resource overhead</strong> — a full VM plus its own Docker daemon — for complete isolation. For a shared on-prem server where several developers run independent stacks against a common Postgres, that trade is usually worth it.</p>
+<hr />
+<h2 id="cost">Cost</h2>
+<ul>
+<li>The <code>sbx</code> CLI and <strong>local</strong> sandbox compute are free to use, including commercially.</li>
+<li><strong>Cloud</strong> sandbox compute is pay-as-you-go.</li>
+<li>Organization governance — central policy, audit logs, and sign-in enforcement — is a separate paid tier.</li>
+</ul>
+<p>For the single shared server in this scenario, local compute means your whole team can run sandboxes at no per-sandbox cost.</p>
 <hr />
 <h2 id="checkpoint">✅ Checkpoint</h2>
 <p>Before moving on, confirm:</p>
 <ul>
-<li>[ ] Task Manager shows <strong>Virtualization: Enabled</strong> and <code>wsl -l -v</code> reports <strong>VERSION 2</strong></li>
-<li>[ ] <code>sbx version</code> runs from PowerShell and prints a version string</li>
-<li>[ ] <code>sbx login</code> completed and you selected the <strong>Balanced</strong> network policy</li>
-<li>[ ] Your provider key is stored (<code>sbx secret ls</code> shows it masked) using <code>$env:</code> syntax</li>
-<li>[ ] The lab repo is cloned <strong>inside the WSL2 home</strong> with <code>core.autocrlf=input</code></li>
-<li>[ ] <code>sbx run sbxlab</code> started the agent and it can read the codebase</li>
-<li>[ ] You know <code>wsl --shutdown</code> is your first move when something Windows-specific breaks</li>
+<li>[ ] You can explain why a sandbox is a microVM and not a container.</li>
+<li>[ ] You can name the five isolation layers.</li>
+<li>[ ] You know which four boundaries are blocked by default and cannot be opened.</li>
+<li>[ ] You can pick the right template for the agent you want to run.</li>
+<li>[ ] You understand what persists across stop/start and what <code>sbx rm</code> deletes.</li>
+<li>[ ] You know that a directly mounted workspace survives <code>sbx rm</code>.</li>
 </ul>
-<p>Next: continue with <em>Your First Sandbox</em> - from here on, every module runs the same on Windows as it does on macOS and Linux.</p>
+<p>Next: <a href="../windows-setup/">Windows Setup &amp; Admin</a>.</p>
 
 
 
