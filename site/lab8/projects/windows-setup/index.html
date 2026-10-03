@@ -6217,10 +6217,6 @@ microVM  ──►  your agent (Claude / Codex / Gemini)
 </code></pre></div>
 <p>Expected output: a version string such as <code>sbx 0.21.0</code>.</p>
 <p>If PowerShell reports <code>sbx : The term 'sbx' is not recognized...</code>, close and reopen the terminal so it picks up the updated <code>PATH</code>, or add the install directory (typically <code>C:\Program Files\sbx</code>) to your user <code>PATH</code> manually.</p>
-<div class="admonition tip">
-<p class="admonition-title">Rancher Desktop works, Docker Desktop is not required</p>
-<p><code>sbx</code> manages its own microVMs and does <strong>not</strong> depend on Docker Desktop being installed. If you already run Rancher Desktop for containers, the two coexist cleanly - <code>sbx</code> uses WSL2 directly rather than borrowing another product's engine.</p>
-</div>
 <hr />
 <h2 id="step-3-log-in-and-choose-a-network-policy">Step 3 - Log in and choose a network policy</h2>
 <div class="highlight"><pre><span></span><code><span class="n">sbx</span> <span class="n">login</span>
