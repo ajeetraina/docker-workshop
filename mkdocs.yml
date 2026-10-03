@@ -100,6 +100,7 @@ nav:
     - Docker Sandboxes:
       - Overview: lab8/overview.md
       - Getting Started: lab8/getting-started.md
+      - sbx on Windows: lab8/projects/windows-setup.md
       - Concepts:
         - Why Agents Need Governance: lab8/projects/why-governance.md
       - Hands-on Modules:
