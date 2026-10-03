@@ -78,9 +78,6 @@ Expected output: a version string such as `sbx 0.21.0`.
 
 If PowerShell reports `sbx : The term 'sbx' is not recognized...`, close and reopen the terminal so it picks up the updated `PATH`, or add the install directory (typically `C:\Program Files\sbx`) to your user `PATH` manually.
 
-!!! tip "Rancher Desktop works, Docker Desktop is not required"
-    `sbx` manages its own microVMs and does **not** depend on Docker Desktop being installed. If you already run Rancher Desktop for containers, the two coexist cleanly - `sbx` uses WSL2 directly rather than borrowing another product's engine.
-
 ---
 
 ## Step 3 - Log in and choose a network policy
