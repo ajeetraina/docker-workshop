@@ -115,6 +115,7 @@ nav:
         - Running Open-Source Models: lab8/projects/local-models.md
         - Sharing Agent Skills: lab8/projects/skills.md
         - Declarative Environments (sbx env): lab8/projects/declarative-environments.md
+        - Moving from Local to Cloud Sandboxes: lab8/projects/cloud-sandboxes.md
         - AI Governance at Scale: lab8/projects/governance-summary.md
       - Projects:
         - DevBoard: lab8/projects/devboard.md
