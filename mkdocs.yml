@@ -188,6 +188,15 @@ nav:
   - Docker Offload:
     - Overview: lab7/overview.md
     - Getting Started: lab7/getting-started.md
+    - Cloud Sandboxes Workshop:
+      - Overview: lab7/cloud-sandboxes/overview.md
+      - Prerequisites & Setup: lab7/cloud-sandboxes/getting-started.md
+      - Creating & Sizing a Sandbox: lab7/cloud-sandboxes/create-and-size.md
+      - Idle Timeout & Keep-Alive: lab7/cloud-sandboxes/idle-timeout.md
+      - Time to Live (TTL): lab7/cloud-sandboxes/ttl.md
+      - Stop, Resume & Delete: lab7/cloud-sandboxes/stop-resume-delete.md
+      - Multi-Machine & Hybrid Workflows: lab7/cloud-sandboxes/multi-machine.md
+      - Troubleshooting & Cost Control: lab7/cloud-sandboxes/troubleshooting.md
   - Kubernetes 101:
     - Introduction & Your Cluster: kubernetes-101/overview.md
     - Pods: kubernetes-101/pods.md
