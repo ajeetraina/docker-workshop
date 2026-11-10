@@ -119,6 +119,13 @@ nav:
         - AI Governance at Scale: lab8/projects/governance-summary.md
       - Projects:
         - DevBoard: lab8/projects/devboard.md
+    - Cloud Sandboxes:
+      - Overview: cloud-sandbox/overview.md
+      - Getting Started: cloud-sandbox/getting-started.md
+      - Your First Cloud Sandbox: cloud-sandbox/first-cloud-sandbox.md
+      - Lifecycle & Expiration: cloud-sandbox/lifecycle.md
+      - Files, Ports & SSH: cloud-sandbox/files-ports-ssh.md
+      - Environment Files: cloud-sandbox/environment-files.md
     - AI Governance:
       - Setup: ai-governance/setup.md
       - Why AI Governance: ai-governance/introduction.md
