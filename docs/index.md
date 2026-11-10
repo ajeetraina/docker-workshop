@@ -5,161 +5,161 @@ A hands-on, workshop covering the full Docker developer experience - from inner-
 
 ## 🗺️ What's Covered
 
-### 🐳 Docker 101
+Pick any track and go - each card links to that track's starting point.
 
-Get comfortable with core Docker concepts and a real-world sample app.
+### 🐳 Docker Fundamentals
 
-| Topic | Link |
-| --- | --- |
-| Inner vs Outer Loop Development | [Start →](lab1/overview/) |
-| What is a Container | [Start →](lab1/what-is-a-container/) |
-| Running Postgres Containers | [Start →](lab1/postgres/) |
-| Product Catalog - Overview | [Start →](product-catalog/overview/) |
-| Product Catalog - Tech Stack | [Start →](product-catalog/tech-stack/) |
-| Product Catalog - Develop | [Start →](product-catalog/develop/) |
-| Product Catalog - Test | [Start →](product-catalog/test/) |
-| Product Catalog - Build | [Start →](product-catalog/build/) |
-| Product Catalog - Secure | [Start →](product-catalog/secure/) |
+<div class="grid cards" markdown>
+
+-   🐳 __Docker 101__
+
+    ---
+
+    Core container concepts and a real-world sample app - inner vs outer loop, running Postgres, and the Product Catalog develop → test → build → secure flow.
+
+    [Start →](lab1/overview/)
+
+-   ☸️ __Kubernetes 101__
+
+    ---
+
+    Deploy a real app to a live cluster and learn the building blocks hands-on - Pods, Deployments, Services, scaling, rolling updates, and Ingress.
+
+    [Start →](kubernetes-101/overview/)
+
+</div>
 
 ---
 
 ### 🧠 Docker & AI
 
-Run AI models locally, connect them to tools via MCP, build agents, and safely sandbox AI-generated actions - all inside Docker.
+Run models locally, wire them to tools via MCP, build agents, and safely sandbox AI-generated actions - all inside Docker.
 
-#### 🤖 Docker Agent
+<div class="grid cards" markdown>
 
-Build, run, and share AI agents using Docker's declarative multi-agent runtime.
+-   🤖 __Docker Agent__
 
-| Topic | Link |
-| --- | --- |
-| Overview | [Start →](lab10/overview/) |
-| Getting Started | [Start →](lab10/getting-started/) |
-| **Concepts** | |
-| Autonomy | [Start →](lab10/concept/autonomy/autonomy/) |
-| Perception | [Start →](lab10/concept/perception/perception/) |
-| Reasoning | [Start →](lab10/concept/reasoning/reasoning/) |
-| Action | [Start →](lab10/concept/action/action/) |
-| Goal-oriented | [Start →](lab10/concept/goal/goal/) |
-| **Built-in Tools** | |
-| memory | [Start →](lab10/tools/memory/) |
-| think | [Start →](lab10/tools/think/) |
-| todo | [Start →](lab10/tools/todo/) |
-| shell | [Start →](lab10/tools/shell/) |
-| filesystem | [Start →](lab10/tools/filesystem/) |
-| environment | [Start →](lab10/tools/environment/) |
-| **Integrations** | |
-| Docker Agent with MCP | [Start →](lab10/integration/mcp/) |
-| Docker Agent with Docker Model Runner | [Start →](lab10/integration/dmr/) |
-| Docker Agent with RAG | [Start →](lab10/integration/rag/) |
-| **Projects** | |
-| A Simple Pirate Agent | [Start →](lab10/projects/pirate/) |
-| Learning Agent with Alloy Models | [Start →](lab10/projects/alloy/) |
-| Developer Agent with Tools | [Start →](lab10/projects/dev/) |
-| Financial Analysis Team | [Start →](lab10/projects/financial/) |
-| Docker Expert Team | [Start →](lab10/projects/docker-expert/) |
-| Bug Investigator | [Start →](lab10/projects/bug-investigator/bug-investigator/) |
-| Auto Curator Agent | [Start →](lab10/projects/auto-curator-agent/auto-curator-agent/) |
-| Sharing Agents | [Start →](lab10/sharing/) |
+    ---
 
-#### 🚀 Docker Model Runner
+    Build, run, and share AI agents with Docker's declarative multi-agent runtime - concepts, built-in tools, MCP/DMR/RAG integrations, and projects.
 
-Run LLMs locally inside Docker - no cloud required, GPU-accelerated inference out of the box.
+    [Start →](lab10/overview/)
 
-| Topic | Link |
-| --- | --- |
-| Overview | [Start →](lab4/overview/) |
-| Getting Started | [Start →](lab4/getting-started/) |
-| Product Catalog Chatbot | [Start →](lab4/projects/catalog-chatbot/) |
-| GenAI Chatbot | [Start →](lab4/projects/genai-chatbot/) |
+-   🚀 __Docker Model Runner__
 
-#### 🔌 Docker MCP Catalog and Toolkit
+    ---
 
-Connect AI models to real tools and services via the Model Context Protocol, managed securely through Docker.
+    Run LLMs locally inside Docker - no cloud required, GPU-accelerated inference out of the box.
 
-| Topic | Link |
-| --- | --- |
-| Overview | [Start →](lab5/overview/) |
-| Getting Started | [Start →](lab5/getting-started/) |
-| Visual Chatbot | [Start →](lab5/projects/visual-chatbot/visual-chatbot/) |
-| Running your First MCP Server | [Start →](lab5/projects/visual-chatbot/mcp/) |
-| GitHub MCP Server and Claude Desktop | [Start →](lab5/projects/GitHub-Claude/) |
-| Docker MCP Server and Gordon | [Start →](lab5/projects/Docker-CLI-With-Gordon/) |
-| Docker MCP Server and VS Code | [Start →](lab5/projects/Docker-CLI-With-VSCode/) |
-| GitHub MCP Server and Gordon | [Start →](lab5/projects/GitHub-MCP-Gordon/) |
-| Kubernetes MCP Server and Claude | [Start →](lab5/projects/Kubernetes-MCP/) |
-| Slack MCP Server and Claude | [Start →](lab5/projects/Slack-MCP-With-Claude/) |
+    [Start →](lab4/overview/)
 
-#### 🧪 Sandboxing with Docker
+-   🔌 __MCP Catalog & Toolkit__
 
-Safely execute AI-generated code and agent actions in isolated containers to prevent unintended side effects.
+    ---
 
-| Topic | Link |
-| --- | --- |
-| Overview | [Start →](lab8/overview/) |
-| Getting Started | [Start →](lab8/getting-started/) |
-| Playwright Browser Testing | [Start →](lab8/projects/playwright-browser-testing/) |
+    Connect AI models to real tools and services via the Model Context Protocol, managed securely through Docker.
+
+    [Start →](lab5/overview/)
+
+-   🧩 __Agentic Compose__
+
+    ---
+
+    Multi-agent workflows orchestrated with Docker Compose - DevDuck, agentic Product Catalog, and an A2A fact checker.
+
+    [Start →](lab6/overview/)
+
+-   🧪 __Docker Sandboxes__
+
+    ---
+
+    Run AI coding agents in isolated microVMs with the `sbx` CLI - credential proxying, network policy, and governance at scale.
+
+    [Start →](lab8/overview/)
+
+-   ☁️ __Cloud Sandboxes__
+
+    ---
+
+    Scale `sbx` agents onto Docker-managed infrastructure - the same CLI with a `--cloud` flag.
+
+    [Start →](cloud-sandbox/overview/)
+
+-   🛡️ __AI Governance__
+
+    ---
+
+    Enforce policy on agents - network and filesystem controls, MCP guardrails, observability, and sandbox kits.
+
+    [Start →](ai-governance/setup/)
+
+</div>
 
 ---
 
-### 🧩 Agentic Compose
+### 🔒 Docker & Security
 
-Multi-agent workflows orchestrated with Docker Compose.
+<div class="grid cards" markdown>
 
-| Topic | Link |
-| --- | --- |
-| Overview | [Start →](lab6/overview/) |
-| Getting Started | [Start →](lab6/getting-started/) |
-| DevDuck - Overview | [Start →](lab6/projects/devduck/overview/) |
-| DevDuck - Prerequisite | [Start →](lab6/projects/devduck/prereq/) |
-| DevDuck - Getting Started | [Start →](lab6/projects/devduck/getting-started/) |
-| DevDuck - Local Agent Interaction | [Start →](lab6/projects/devduck/local-agent/) |
-| DevDuck - Cerebras Interaction | [Start →](lab6/projects/devduck/cerebras-interaction/) |
-| Agentic Product Catalog | [Start →](lab6/projects/agentic-catalog/) |
-| Hackathon Recommender | [Start →](lab6/projects/hackathon-recommender/) |
-| A2A Multi-Agent Fact Checker | [Start →](lab6/projects/a2a-multi-agent-fact-checker/) |
+-   🧱 __Container Security__
 
----
+    ---
 
-### 🔒 Docker and Security
+    Harden images with best practices - minimal base images, multi-stage builds, non-root users, read-only filesystems, and secrets handling.
 
-Harden your images and meet compliance requirements with Docker Hardened Images.
+    [Start →](security/container-security/overview/)
 
-| Topic | Link |
-| --- | --- |
-| Overview | [Start →](lab9/dhi/overview/) |
-| Getting Started | [Start →](lab9/dhi/getting-started/) |
-| Image Scanning | [Start →](lab9/dhi/image-scanning/) |
-| Switch to DHI | [Start →](lab9/dhi/switch-to-dhi/) |
-| Compliance & Attestations | [Start →](lab9/dhi/compliance/) |
+-   🔎 __Docker Scout__
+
+    ---
+
+    A reactive approach - continuous scanning, CI integration, and recommendations to fix vulnerabilities.
+
+    [Start →](security/scout-reactive/overview/)
+
+-   🛡️ __Docker Hardened Images__
+
+    ---
+
+    A proactive approach - migrate to DHI, image scanning, compliance, and attestations.
+
+    [Start →](lab9/dhi/overview/)
+
+-   🔗 __Supply Chain with dhictl__
+
+    ---
+
+    Secure the supply chain end-to-end - browse the DHI catalog and migrate to hardened images with `dhictl`.
+
+    [Start →](dhictl/introduction/)
+
+</div>
 
 ---
 
 ### ⚡ Docker Offload
 
-Offload GPU-intensive workloads to the cloud seamlessly.
+Offload builds and GPU-intensive workloads to the cloud seamlessly - same Docker commands, cloud execution.
 
-| Topic | Link |
-| --- | --- |
-| Overview | [Start →](lab7/overview/) |
-| Getting Started | [Start →](lab7/getting-started/) |
+<div class="grid cards" markdown>
 
----
+-   ⚡ __Overview & Getting Started__
 
-### ☸️ Kubernetes 101
+    ---
 
-Deploy a real app to a live cluster and learn the core building blocks hands-on - Pods, Deployments, Services, scaling, rolling updates, and Ingress.
+    Enable Docker Offload, start a session, and run GPU workloads on cloud infrastructure.
 
-| Topic | Link |
-| --- | --- |
-| Introduction & Your Cluster | [Start →](kubernetes-101/overview/) |
-| Pods | [Start →](kubernetes-101/pods/) |
-| Deployments | [Start →](kubernetes-101/deployments/) |
-| Services | [Start →](kubernetes-101/services/) |
-| Scaling & Rolling Updates | [Start →](kubernetes-101/scaling-and-updates/) |
-| Exposing Your App with Ingress | [Start →](kubernetes-101/ingress/) |
-| Bonus: Compose to Kubernetes with Compose Bridge | [Start →](kubernetes-101/compose-bridge/) |
-| Bonus: Talk to Your Model & Wrap-Up | [Start →](kubernetes-101/genai-on-kubernetes/) |
+    [Start →](lab7/overview/)
+
+-   ☁️ __Cloud Sandboxes Workshop__
+
+    ---
+
+    Master the cloud sandbox lifecycle hands-on - sizing, idle timeout, TTL, stop/resume/delete, multi-machine workflows, and cost control.
+
+    [Start →](lab7/cloud-sandboxes/overview/)
+
+</div>
 
 ---
 
