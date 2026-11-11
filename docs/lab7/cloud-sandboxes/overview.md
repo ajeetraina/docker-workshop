@@ -27,7 +27,7 @@ This is different from local Docker, where every `docker run` is independent. Wi
 
 Both products run isolated environments in the cloud, but they solve different problems. Don't confuse them:
 
-| | **Docker Offload ** | **Docker Sandboxes (`sbx` CLI)** |
+| | **Docker Offload** | **Docker Sandboxes (`sbx` CLI)** |
 |---|---|---|
 | Purpose | Run your **normal Docker workflow** on cloud hardware | Isolate an **AI coding agent** (Claude Code, Codex, …) |
 | CLI | `docker offload`  | `sbx --cloud …` |
