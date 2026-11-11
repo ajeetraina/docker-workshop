@@ -30,7 +30,7 @@ Both products run isolated environments in the cloud, but they solve different p
 | | **Docker Offload ** | **Docker Sandboxes (`sbx` CLI)** |
 |---|---|---|
 | Purpose | Run your **normal Docker workflow** on cloud hardware | Isolate an **AI coding agent** (Claude Code, Codex, …) |
-| CLI | `docker offload` / `docker --cloud …` | `sbx --cloud …` |
+| CLI | `docker offload`  | `sbx --cloud …` |
 | Port forwarding | ✅ Ports forwarded to your machine | ❌ Not forwarded |
 | File sync to host | ✅ Bind-mounted files synced back | ❌ Copy in/out explicitly |
 | Model | One persistent sandbox per account | Many independent sandboxes |
