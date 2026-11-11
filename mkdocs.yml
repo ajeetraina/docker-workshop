@@ -228,6 +228,7 @@ theme:
     - navigation.sections
     - navigation.instant
     - navigation.top
+    - navigation.footer
     - search.highlight
     - search.share
   palette:
