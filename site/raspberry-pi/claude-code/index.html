@@ -7168,6 +7168,22 @@ aarch64
 <div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>rm<span class="w"> </span>pi-lab<span class="w"> </span>pi-lab-2<span class="w"> </span>pi-lab-3<span class="w"> </span>pi-claude
 sbx<span class="w"> </span>ls
 </code></pre></div>
+<p>In a script there is no terminal to confirm in, so the command stops:</p>
+<div class="highlight"><pre><span></span><code>error: stdin is not a terminal; use --force to skip confirmation
+</code></pre></div>
+<p>Add <code>--force</code>, and name each sandbox you mean to delete:</p>
+<div class="highlight"><pre><span></span><code>sbx<span class="w"> </span>rm<span class="w"> </span>--force<span class="w"> </span>pi-lab<span class="w"> </span>pi-lab-2<span class="w"> </span>pi-lab-3<span class="w"> </span>pi-claude
+</code></pre></div>
+<p>Real output:</p>
+<div class="highlight"><pre><span></span><code>Removed sandbox pi-lab
+Removed sandbox pi-lab-2
+Removed sandbox pi-lab-3
+Removed sandbox pi-claude
+</code></pre></div>
+<div class="admonition note">
+<p class="admonition-title">Images stay cached</p>
+<p>Removing sandboxes does not remove their images. After cleanup here, <code>sbx df</code> still listed 3 images using 3.97 GB, with 2.47 GB marked reclaimable. One sandbox not created in this track was still on the Pi.</p>
+</div>
 <h2 id="troubleshooting">Troubleshooting</h2>
 <table>
 <thead>

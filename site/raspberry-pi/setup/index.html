@@ -7125,6 +7125,10 @@
 
 
 <h1 id="set-up-the-pi">Set Up the Pi</h1>
+<div class="admonition note">
+<p class="admonition-title">What was tested on this page</p>
+<p>The hardware checks, <code>sbx version</code> and <code>sbx diagnose</code> were run on the Pi. <code>sbx</code> was already installed and signed in, so three steps were not re-run from scratch: adding yourself to the <code>kvm</code> group, downloading and installing the package with these exact commands, and <code>sbx login</code>.</p>
+</div>
 <h2 id="step-1-check-the-hardware">Step 1 - Check the hardware</h2>
 <div class="highlight"><pre><span></span><code>cat<span class="w"> </span>/proc/device-tree/model<span class="p">;</span><span class="w"> </span><span class="nb">echo</span>
 uname<span class="w"> </span>-m

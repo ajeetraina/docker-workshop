@@ -1,5 +1,8 @@
 # Set Up the Pi
 
+!!! note "What was tested on this page"
+    The hardware checks, `sbx version` and `sbx diagnose` were run on the Pi. `sbx` was already installed and signed in, so three steps were not re-run from scratch: adding yourself to the `kvm` group, downloading and installing the package with these exact commands, and `sbx login`.
+
 ## Step 1 - Check the hardware
 
 ```bash

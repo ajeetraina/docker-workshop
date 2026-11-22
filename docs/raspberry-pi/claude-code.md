@@ -63,6 +63,30 @@ sbx rm pi-lab pi-lab-2 pi-lab-3 pi-claude
 sbx ls
 ```
 
+In a script there is no terminal to confirm in, so the command stops:
+
+```
+error: stdin is not a terminal; use --force to skip confirmation
+```
+
+Add `--force`, and name each sandbox you mean to delete:
+
+```bash
+sbx rm --force pi-lab pi-lab-2 pi-lab-3 pi-claude
+```
+
+Real output:
+
+```
+Removed sandbox pi-lab
+Removed sandbox pi-lab-2
+Removed sandbox pi-lab-3
+Removed sandbox pi-claude
+```
+
+!!! note "Images stay cached"
+    Removing sandboxes does not remove their images. After cleanup here, `sbx df` still listed 3 images using 3.97 GB, with 2.47 GB marked reclaimable. One sandbox not created in this track was still on the Pi.
+
 ## Troubleshooting
 
 | Symptom | Likely cause | Fix |
