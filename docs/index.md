@@ -77,6 +77,14 @@ Run models locally, wire them to tools via MCP, build agents, and safely sandbox
 
     [Start →](lab8/overview/)
 
+-   🍓 __Sandboxes on Raspberry Pi__
+
+    ---
+
+    Run agents in microVMs on a Raspberry Pi 5 - isolation, network policy, and fitting it all on 8 GB of RAM.
+
+    [Start →](raspberry-pi/overview/)
+
 -   ☁️ __Cloud Sandboxes__
 
     ---

@@ -130,6 +130,15 @@ nav:
         - AI Governance at Scale: lab8/projects/governance-summary.md
       - Projects:
         - DevBoard: lab8/projects/devboard.md
+    - Docker Sandboxes on Raspberry Pi:
+      - Overview: raspberry-pi/overview.md
+      - Set Up the Pi: raspberry-pi/setup.md
+      - Your First Sandbox: raspberry-pi/first-sandbox.md
+      - Prove the Isolation: raspberry-pi/isolation.md
+      - Control the Network: raspberry-pi/network-policy.md
+      - Docker Inside the Sandbox: raspberry-pi/docker-inside.md
+      - Fit It on 8 GB: raspberry-pi/resources.md
+      - Claude Code & Cleanup: raspberry-pi/claude-code.md
     - Cloud Sandboxes:
       - Overview: cloud-sandbox/overview.md
       - Getting Started: cloud-sandbox/getting-started.md
